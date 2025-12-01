@@ -1,0 +1,2 @@
+XILINX_VITIS=/home/rimurutempest/Tool/Xilinx/Vitis/2024.2
+cmdline: /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/bin/xcd -p 51997 -t 15f7d8ca-cc77-11f0-89ad-84a938adc8ea

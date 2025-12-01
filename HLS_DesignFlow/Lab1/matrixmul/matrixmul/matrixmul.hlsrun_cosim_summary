@@ -1,0 +1,226 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/matrixmul/matrixmul.hlsrun_cosim_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Sat Nov 29 00:28:44 2025",
+ "timestampMillis": "1764350924204",
+ "buildStep": {
+  "cmdId": "58ca2ae6-12fe-43fe-beed-4bb5f2612e54",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/matrixmul/logs/matrixmul.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --cosim --config /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/hls_config.cfg --work_dir matrixmul ",
+  "args": [
+   "--mode",
+   "hls",
+   "--cosim",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/hls_config.cfg",
+   "--work_dir",
+   "matrixmul"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Nov 29 00:28:44 2025",
+ "timestampMillis": "1764350924204",
+ "status": {
+  "cmdId": "58ca2ae6-12fe-43fe-beed-4bb5f2612e54",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Sat Nov 29 00:28:48 2025",
+ "timestampMillis": "1764350928477",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_RTL_COSIM",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "matrixmul",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Sat Nov 29 00:28:48 2025",
+ "timestampMillis": "1764350928478",
+ "buildStep": {
+  "cmdId": "49d8e6a4-a6bc-45dc-9228-7e76bf43b479",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/matrixmul/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Nov 29 00:28:48 2025",
+ "timestampMillis": "1764350928478",
+ "status": {
+  "cmdId": "49d8e6a4-a6bc-45dc-9228-7e76bf43b479",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Nov 29 00:28:48 2025",
+ "timestampMillis": "1764350928478",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/matrixmul/hls/sim/report/matrixmul_cosim.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "HLS_COSIMULATION",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Nov 29 00:28:48 2025",
+ "timestampMillis": "1764350928479",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/matrixmul/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_DATAFLOW",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Nov 29 00:28:48 2025",
+ "timestampMillis": "1764350928479",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/matrixmul/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_FUNCTION_CALL_GRAPH_COSIM",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Nov 29 00:28:48 2025",
+ "timestampMillis": "1764350928479",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/matrixmul/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_TIMELINE_TRACE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Nov 29 00:28:48 2025",
+ "timestampMillis": "1764350928479",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/matrixmul/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_WAVE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Nov 29 00:32:30 2025",
+ "timestampMillis": "1764351150292",
+ "status": {
+  "cmdId": "49d8e6a4-a6bc-45dc-9228-7e76bf43b479",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Nov 29 00:32:30 2025",
+ "timestampMillis": "1764351150406",
+ "status": {
+  "cmdId": "58ca2ae6-12fe-43fe-beed-4bb5f2612e54",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Nov 29 00:32:30 2025",
+ "timestampMillis": "1764351150406",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Nov 29 00:32:30 2025",
+ "timestampMillis": "1764351150407",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

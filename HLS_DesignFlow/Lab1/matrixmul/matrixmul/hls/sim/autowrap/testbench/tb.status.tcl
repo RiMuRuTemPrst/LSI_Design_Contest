@@ -1,0 +1,1 @@
+set ::AESL_AUTOSIM::gTopFileName /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab1/matrixmul/matrixmul/hls/./sim/autowrap/testbench/matrixmul.cpp_pre.cpp.tb.cpp

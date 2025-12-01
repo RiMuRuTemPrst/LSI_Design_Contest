@@ -1,0 +1,6 @@
+   Build using "/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/vcxx/libexec//clang++"
+   Compiling apatb_matrixmul.cpp
+   Compiling matrixmul.cpp_pre.cpp.tb.cpp
+   Compiling matrixmul_test.cpp_pre.cpp.tb.cpp
+   Compiling apatb_matrixmul_ir.ll
+   Generating cosim.tv.exe

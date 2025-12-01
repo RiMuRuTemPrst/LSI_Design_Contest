@@ -1,0 +1,44 @@
+  **** HLS Build v2024.2 5238294
+INFO: [HLS 200-2005] Using work_dir /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter 
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(10)
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' to the project
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(11)
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' to the project
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(14)
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' to the project
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(15)
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' to the project
+INFO: [HLS 200-1465] Applying ini 'tb.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(18)
+INFO: [HLS 200-10] Adding test bench file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' to the project
+INFO: [HLS 200-1465] Applying ini 'syn.top=yuv_filter' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(7)
+INFO: [HLS 200-1465] Applying ini 'flow_target=vivado' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(4)
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1465] Applying ini 'part=xc7z020clg400-1' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(1)
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1465] Applying ini 'clock=10ns' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(20)
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1465] Applying ini 'package.output.format=ip_catalog' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(5)
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../../Source/yuv_filter_test.c in debug mode
+   Compiling ../../../../../Source/yuv_filter.c in debug mode
+   Compiling ../../../../../Source/image_aux.c in debug mode
+   Generating csim.exe
+make: Warning: File '/dev/null' has modification time 18433 s in the future
+../../../../../Source/yuv_filter_test.c:52:34: warning: data argument not used by format string [-Wformat-extra-args]
+      printf("Test failed!!!\n", ret);
+             ~~~~~~~~~~~~~~~~~~  ^
+../../../../../Source/yuv_filter_test.c:55:32: warning: data argument not used by format string [-Wformat-extra-args]
+      printf("Test passed!\n", ret);
+             ~~~~~~~~~~~~~~~~  ^
+2 warnings generated.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+@E Simulation failed: SIGSEGV.
+ERROR: [SIM 211-100] CSim failed with errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+ERROR: 4
+INFO: [HLS 200-112] Total CPU user time: 2.8 seconds. Total CPU system time: 0.55 seconds. Total elapsed time: 4.25 seconds; peak allocated memory: 233.758 MB.

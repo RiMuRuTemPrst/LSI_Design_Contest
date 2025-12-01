@@ -1,0 +1,159 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter/yuv_filter.hlsrun_csim_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Sat Nov 29 22:32:03 2025",
+ "timestampMillis": "1764430323715",
+ "buildStep": {
+  "cmdId": "f1a8245a-c696-4bc4-ba1f-0e2b38a1ef19",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter/logs/yuv_filter.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --csim --config /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg --work_dir yuv_filter ",
+  "args": [
+   "--mode",
+   "hls",
+   "--csim",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg",
+   "--work_dir",
+   "yuv_filter"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Nov 29 22:32:03 2025",
+ "timestampMillis": "1764430323715",
+ "status": {
+  "cmdId": "f1a8245a-c696-4bc4-ba1f-0e2b38a1ef19",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Sat Nov 29 22:32:07 2025",
+ "timestampMillis": "1764430327413",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_C_SIM",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "yuv_filter",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Sat Nov 29 22:32:07 2025",
+ "timestampMillis": "1764430327413",
+ "buildStep": {
+  "cmdId": "a8e4939d-4dee-4519-a7e7-bb97ccac672b",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Nov 29 22:32:07 2025",
+ "timestampMillis": "1764430327414",
+ "status": {
+  "cmdId": "a8e4939d-4dee-4519-a7e7-bb97ccac672b",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Nov 29 22:32:09 2025",
+ "timestampMillis": "1764430329048",
+ "status": {
+  "cmdId": "a8e4939d-4dee-4519-a7e7-bb97ccac672b",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Nov 29 22:32:09 2025",
+ "timestampMillis": "1764430329135",
+ "status": {
+  "cmdId": "f1a8245a-c696-4bc4-ba1f-0e2b38a1ef19",
+  "state": "CS_FAILED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Nov 29 22:32:09 2025",
+ "timestampMillis": "1764430329136",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Nov 29 22:32:09 2025",
+ "timestampMillis": "1764430329136",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

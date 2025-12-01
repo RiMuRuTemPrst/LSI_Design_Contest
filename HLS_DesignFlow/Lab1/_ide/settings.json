@@ -1,0 +1,9 @@
+{
+    "clangd.fallbackFlags": [
+        "-I/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/include",
+        "-I/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/include/etc",
+        "-I/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/include/ap_sysc",
+        "-I/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/lnx64/tools/auto_cc/include",
+        "-I/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/lnx64/tools/systemc/include"
+    ]
+}

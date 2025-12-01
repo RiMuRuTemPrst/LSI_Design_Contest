@@ -1,0 +1,296 @@
+Execute     source -notrace -encoding utf-8 /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcl8.6/clock.tcl 
+Execute       source -encoding utf-8 /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcl8/8.5/msgcat-1.6.1.tm 
+INFO-FLOW: Workspace /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter/hls opened at Sat Nov 29 22:26:14 +07 2025
+Execute     send_msg_by_id INFO @200-1505@%s%s default  vivado 
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Execute   apply_ini /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg 
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(10) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(10)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(11) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(11)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(14) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(14)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(15) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(15)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'tb.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(18) 
+INFO: [HLS 200-1465] Applying ini 'tb.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(18)
+Execute     add_files -tb /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c 
+INFO: [HLS 200-10] Adding test bench file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.top=yuv_filter' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(7) 
+INFO: [HLS 200-1465] Applying ini 'syn.top=yuv_filter' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(7)
+Execute     set_top yuv_filter 
+Execute     send_msg_by_id INFO @200-1465@%s 'flow_target=vivado' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(4) 
+INFO: [HLS 200-1465] Applying ini 'flow_target=vivado' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(4)
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Execute     send_msg_by_id INFO @200-1465@%s 'part=xc7z020clg400-1' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(1) 
+INFO: [HLS 200-1465] Applying ini 'part=xc7z020clg400-1' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(1)
+Execute     set_part xc7z020clg400-1 
+Execute       create_platform xc7z020clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /home/rimurutempest/Tool/Xilinx/Vivado/2024.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.43 sec.
+Execute       source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/util.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.52 sec.
+Execute     send_msg_by_id INFO @200-1465@%s 'clock=10ns' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(20) 
+INFO: [HLS 200-1465] Applying ini 'clock=10ns' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(20)
+Execute     create_clock -period 10ns 
+Execute       ap_set_clock -name default -period 10 -unit ns -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     send_msg_by_id INFO @200-1465@%s 'package.output.format=ip_catalog' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(5) 
+INFO: [HLS 200-1465] Applying ini 'package.output.format=ip_catalog' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(5)
+Execute     config_export -format=ip_catalog 
+Command   apply_ini done; 0.54 sec.
+Execute   apply_ini /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter/hls/config.cmdline 
+Execute   ::AP::init_summary_file csim 
+Execute     AP::app_get_file_relativeroot [AP::app_get_root] {}
+Execute   csim_design 
+INFO-FLOW: Running SLX 'csim' proc: ::SLX::run_csim
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+Execute     send_msg_by_id INFO @200-2036@%s debug 
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+Execute     source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
+Execute     source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     source run_sim.tcl 
+Command     ap_source done; error code: 1; 1.13 sec.
+INFO-FLOW: AESL_CSIM::c_sim errorInfo:
+
+    while executing
+"::AESL_CSIM::c_sim "$argn" "
+ERROR: [SIM 211-100] CSim failed with errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: AESL_CSIM::csim_cmd_wrap errorInfo:
+4
+    while executing
+"::AESL_CSIM::csim_cmd_wrap $args"
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 1.69 sec.
+Execute   close_project 
+Execute     close_solution 
+Execute       cleanup_all 
+Execute       cleanup_all 
+Execute     source -notrace -encoding utf-8 /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcl8.6/clock.tcl 
+Execute       source -encoding utf-8 /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcl8/8.5/msgcat-1.6.1.tm 
+INFO-FLOW: Workspace /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter/hls opened at Sat Nov 29 22:29:53 +07 2025
+Execute     send_msg_by_id INFO @200-1505@%s%s default  vivado 
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Execute   apply_ini /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg 
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(10) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(10)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(11) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(11)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(14) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(14)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(15) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(15)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'tb.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(18) 
+INFO: [HLS 200-1465] Applying ini 'tb.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(18)
+Execute     add_files -tb /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c 
+INFO: [HLS 200-10] Adding test bench file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.top=yuv_filter' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(7) 
+INFO: [HLS 200-1465] Applying ini 'syn.top=yuv_filter' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(7)
+Execute     set_top yuv_filter 
+Execute     send_msg_by_id INFO @200-1465@%s 'flow_target=vivado' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(4) 
+INFO: [HLS 200-1465] Applying ini 'flow_target=vivado' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(4)
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Execute     send_msg_by_id INFO @200-1465@%s 'part=xc7z020clg400-1' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(1) 
+INFO: [HLS 200-1465] Applying ini 'part=xc7z020clg400-1' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(1)
+Execute     set_part xc7z020clg400-1 
+Execute       create_platform xc7z020clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /home/rimurutempest/Tool/Xilinx/Vivado/2024.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.44 sec.
+Execute       source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/util.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.52 sec.
+Execute     send_msg_by_id INFO @200-1465@%s 'clock=10ns' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(20) 
+INFO: [HLS 200-1465] Applying ini 'clock=10ns' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(20)
+Execute     create_clock -period 10ns 
+Execute       ap_set_clock -name default -period 10 -unit ns -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     send_msg_by_id INFO @200-1465@%s 'package.output.format=ip_catalog' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(5) 
+INFO: [HLS 200-1465] Applying ini 'package.output.format=ip_catalog' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(5)
+Execute     config_export -format=ip_catalog 
+Command   apply_ini done; 0.55 sec.
+Execute   apply_ini /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter/hls/config.cmdline 
+Execute   ::AP::init_summary_file csim 
+Execute     AP::app_get_file_relativeroot [AP::app_get_root] {}
+Execute   csim_design 
+INFO-FLOW: Running SLX 'csim' proc: ::SLX::run_csim
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     send_msg_by_id INFO @200-2036@%s debug 
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+Execute     source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
+Execute     source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     source run_sim.tcl 
+Command     ap_source done; error code: 1; 1.13 sec.
+INFO-FLOW: AESL_CSIM::c_sim errorInfo:
+
+    while executing
+"::AESL_CSIM::c_sim "$argn" "
+ERROR: [SIM 211-100] CSim failed with errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: AESL_CSIM::csim_cmd_wrap errorInfo:
+4
+    while executing
+"::AESL_CSIM::csim_cmd_wrap $args"
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 1.41 sec.
+Execute   close_project 
+Execute     close_solution 
+Execute       cleanup_all 
+Execute       cleanup_all 
+Execute     source -notrace -encoding utf-8 /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcl8.6/clock.tcl 
+Execute       source -encoding utf-8 /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcl8/8.5/msgcat-1.6.1.tm 
+INFO-FLOW: Workspace /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter/hls opened at Sat Nov 29 22:32:06 +07 2025
+Execute     send_msg_by_id INFO @200-1505@%s%s default  vivado 
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Execute   apply_ini /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg 
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(10) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(10)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.h' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(11) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(11)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.h' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(14) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(14)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/image_aux.c' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(15) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(15)
+Execute     add_files /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c 
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter.c' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'tb.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(18) 
+INFO: [HLS 200-1465] Applying ini 'tb.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(18)
+Execute     add_files -tb /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c 
+INFO: [HLS 200-10] Adding test bench file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/Source/yuv_filter_test.c' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.top=yuv_filter' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(7) 
+INFO: [HLS 200-1465] Applying ini 'syn.top=yuv_filter' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(7)
+Execute     set_top yuv_filter 
+Execute     send_msg_by_id INFO @200-1465@%s 'flow_target=vivado' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(4) 
+INFO: [HLS 200-1465] Applying ini 'flow_target=vivado' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(4)
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Execute     send_msg_by_id INFO @200-1465@%s 'part=xc7z020clg400-1' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(1) 
+INFO: [HLS 200-1465] Applying ini 'part=xc7z020clg400-1' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(1)
+Execute     set_part xc7z020clg400-1 
+Execute       create_platform xc7z020clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /home/rimurutempest/Tool/Xilinx/Vivado/2024.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.44 sec.
+Execute       source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/util.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.52 sec.
+Execute     send_msg_by_id INFO @200-1465@%s 'clock=10ns' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(20) 
+INFO: [HLS 200-1465] Applying ini 'clock=10ns' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(20)
+Execute     create_clock -period 10ns 
+Execute       ap_set_clock -name default -period 10 -unit ns -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     send_msg_by_id INFO @200-1465@%s 'package.output.format=ip_catalog' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(5) 
+INFO: [HLS 200-1465] Applying ini 'package.output.format=ip_catalog' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/hls_config.cfg(5)
+Execute     config_export -format=ip_catalog 
+Command   apply_ini done; 0.54 sec.
+Execute   apply_ini /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab2/lab2_hls_component/yuv_filter/hls/config.cmdline 
+Execute   ::AP::init_summary_file csim 
+Execute     AP::app_get_file_relativeroot [AP::app_get_root] {}
+Execute   csim_design 
+INFO-FLOW: Running SLX 'csim' proc: ::SLX::run_csim
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     send_msg_by_id INFO @200-2036@%s debug 
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+Execute     source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
+Execute     source /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     source run_sim.tcl 
+Command     ap_source done; error code: 1; 1.15 sec.
+INFO-FLOW: AESL_CSIM::c_sim errorInfo:
+
+    while executing
+"::AESL_CSIM::c_sim "$argn" "
+ERROR: [SIM 211-100] CSim failed with errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: AESL_CSIM::csim_cmd_wrap errorInfo:
+4
+    while executing
+"::AESL_CSIM::csim_cmd_wrap $args"
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 1.63 sec.
+Execute   close_project 
+Execute     close_solution 
+Execute       cleanup_all 
+Execute       cleanup_all 
