@@ -32,9 +32,10 @@
 int main() {
    short a[N], b[N], b_expected[N];
    int retval = 0, i;
-   FILE *fp;
+//    FILE *fp;
+//    fp=fopen("in.dat","r");
+    FILE *fp = fopen("/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/in.dat", "r");
 
-   fp=fopen("in.dat","r");
    for (i=0; i<N; i++){
       int tmp;
       fscanf(fp, "%d", &tmp);
@@ -42,7 +43,9 @@ int main() {
    }
    fclose(fp);
 
-   fp=fopen("out.golden.dat","r");
+   //fp=fopen("out.golden.dat","r");
+   fp = fopen("/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/out.golden.dat", "r");
+
    for (i=0; i<N; i++){
       int tmp;
       fscanf(fp, "%d", &tmp);

@@ -1,0 +1,12 @@
+{
+  "name": "hls_component_lab3_2",
+  "type": "HLS",
+  "configuration": {
+    "componentType": "HLS",
+    "configFiles": [
+      "../hls_component_dct/hls_config.cfg"
+    ],
+    "work_dir": "dct"
+  },
+  "template": "empty_hls_component"
+}

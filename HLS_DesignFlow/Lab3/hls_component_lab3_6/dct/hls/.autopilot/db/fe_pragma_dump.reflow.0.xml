@@ -1,0 +1,4 @@
+<pragmas>
+<pragma file="../source/dct.c" line="113" pragmaType="dataflow" parentfunction="dct" disable_start_propagation="0"/>
+<pragma file="../source/dct.c" line="53" pragmaType="inline" parentfunction="dct_2d" off="0" region="0" recursive="0"/>
+</pragmas>

@@ -1,0 +1,246 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/dct.hlscompile_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Tue Dec  2 14:45:55 2025",
+ "timestampMillis": "1764661555208",
+ "buildStep": {
+  "cmdId": "c369adcd-e529-450c-99a4-b4b615901238",
+  "name": "v++",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/logs/dct.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/bin/unwrapped/lnx64.o/v++  -c --mode hls --config /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/../hls_component_dct/hls_config.cfg --work_dir dct ",
+  "args": [
+   "-c",
+   "--mode",
+   "hls",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/../hls_component_dct/hls_config.cfg",
+   "--work_dir",
+   "dct"
+  ],
+  "iniFiles": [
+   {
+    "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg",
+    "content": "part=xc7z020clg400-1\n\n[hls]\nflow_target=vivado\npackage.output.format=ip_catalog\npackage.output.syn=false\nsyn.top=dct\nsyn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.c\nsyn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.h\ntb.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct_test.c\nclock=10ns\n#syn.file.data=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/in.dat\n#syn.file.data=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/out.golden.dat\ncsim.file=/path/to/in.dat\ncsim.file=/path/to/out.golden.dat\n#cosim.file=/path/to/in.dat\n#cosim.file=/path/to/out.golden.dat\nsyn.directive.pipeline=dct_1d/DCT_Inner_Loop\nsyn.directive.pipeline=dct_2d/Xpose_Row_Inner_Loop\nsyn.directive.pipeline=dct_2d/Xpose_Col_Inner_Loop\nsyn.directive.pipeline=read_data/RD_Loop_Col\nsyn.directive.pipeline=write_data/WR_Loop_Col\nsyn.directive.pipeline=dct_1d\nsyn.directive.array_partition=dct buf_2d_in dim=2 type=complete\nsyn.directive.array_partition=dct_2d col_inbuf dim=2 type=complete"
+   }
+  ],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Dec  2 14:45:55 2025",
+ "timestampMillis": "1764661555208",
+ "status": {
+  "cmdId": "c369adcd-e529-450c-99a4-b4b615901238",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Tue Dec  2 14:45:58 2025",
+ "timestampMillis": "1764661558840",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_COMPILE",
+  "target": "TT_HW",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "dct",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.c",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.h"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Dec  2 14:45:58 2025",
+ "timestampMillis": "1764661558841",
+ "buildStep": {
+  "cmdId": "eb676da1-4e08-4e5b-b9e3-c193c5d73538",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Dec  2 14:45:58 2025",
+ "timestampMillis": "1764661558841",
+ "status": {
+  "cmdId": "eb676da1-4e08-4e5b-b9e3-c193c5d73538",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Dec  2 14:45:58 2025",
+ "timestampMillis": "1764661558841",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/hls/hls_data.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "HLS_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Dec  2 14:45:58 2025",
+ "timestampMillis": "1764661558841",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/hls/syn/report/csynth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "HLS_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Dec  2 14:45:58 2025",
+ "timestampMillis": "1764661558841",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/hls/syn/report/csynth.xml",
+  "name": "",
+  "fileType": "XML",
+  "reportType": "HLS_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Dec  2 14:46:08 2025",
+ "timestampMillis": "1764661568375",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_DATAFLOW",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Dec  2 14:46:08 2025",
+ "timestampMillis": "1764661568376",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_FUNCTION_CALL_GRAPH",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Dec  2 14:46:08 2025",
+ "timestampMillis": "1764661568376",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_SCHEDULE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Dec  2 14:46:08 2025",
+ "timestampMillis": "1764661568376",
+ "status": {
+  "cmdId": "eb676da1-4e08-4e5b-b9e3-c193c5d73538",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Dec  2 14:46:08 2025",
+ "timestampMillis": "1764661568491",
+ "status": {
+  "cmdId": "c369adcd-e529-450c-99a4-b4b615901238",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Dec  2 14:46:08 2025",
+ "timestampMillis": "1764661568512",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/reports/v++_compile_dct_guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Dec  2 14:46:08 2025",
+ "timestampMillis": "1764661568512",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4/dct/reports/.db/v++_compile_dct_guidance.pb3",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

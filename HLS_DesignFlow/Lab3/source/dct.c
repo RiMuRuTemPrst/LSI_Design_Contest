@@ -39,6 +39,7 @@ DCT_Outer_Loop:
    for (k = 0; k < DCT_SIZE; k++) {
 DCT_Inner_Loop:
       for(n = 0, tmp = 0; n < DCT_SIZE; n++) {
+
          int coeff = (int)dct_coeff_table[k][n];
          tmp += src[n] * coeff;
       }
@@ -49,8 +50,10 @@ DCT_Inner_Loop:
 void dct_2d(dct_data_t in_block[DCT_SIZE][DCT_SIZE],
       dct_data_t out_block[DCT_SIZE][DCT_SIZE])
 {
+#pragma HLS INLINE
    dct_data_t row_outbuf[DCT_SIZE][DCT_SIZE];
    dct_data_t col_outbuf[DCT_SIZE][DCT_SIZE], col_inbuf[DCT_SIZE][DCT_SIZE];
+
    unsigned i, j;
 
    // DCT rows
@@ -61,6 +64,8 @@ Row_DCT_Loop:
    // Transpose data in order to re-use 1D DCT code
 Xpose_Row_Outer_Loop:
    for (j = 0; j < DCT_SIZE; j++)
+
+       
 Xpose_Row_Inner_Loop:
       for(i = 0; i < DCT_SIZE; i++)
          col_inbuf[j][i] = row_outbuf[i][j];
@@ -97,12 +102,15 @@ WR_Loop_Row:
    for (r = 0; r < DCT_SIZE; r++) {
 WR_Loop_Col:
       for (c = 0; c < DCT_SIZE; c++)
+
+          
          output[r * DCT_SIZE + c] = buf[r][c];
    }
 }
 
 void dct(short input[N], short output[N])
 {
+#pragma HLS DATAFLOW
 
    short buf_2d_in[DCT_SIZE][DCT_SIZE];
    short buf_2d_out[DCT_SIZE][DCT_SIZE];

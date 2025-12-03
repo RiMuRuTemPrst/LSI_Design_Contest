@@ -1,0 +1,3 @@
+relativeroot=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_2
+original_argv=-c --mode hls --config /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_2/../hls_component_dct/hls_config.cfg --work_dir dct 
+

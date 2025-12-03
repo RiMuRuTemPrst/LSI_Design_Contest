@@ -1,0 +1,27 @@
+[
+  {
+    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4",
+    "arguments": [
+      "/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/vcxx/libexec/clang++",
+      "--gcc-toolchain=/home/rimurutempest/Tool/Xilinx/Vivado/2024.2/tps/lnx64/gcc-8.3.0",
+      "-fhls",
+      "-hls-syn-headers-dir=/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/autopilot",
+      "-fhlstoplevel=dct",
+      "-c",
+      "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.c"
+    ],
+    "file": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.c"
+  },
+  {
+    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_lab3_4",
+    "arguments": [
+      "/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/vcxx/libexec/clang++",
+      "--gcc-toolchain=/home/rimurutempest/Tool/Xilinx/Vivado/2024.2/tps/lnx64/gcc-8.3.0",
+      "-fhls-tb",
+      "-hls-sim-headers-dir=/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/include",
+      "-c",
+      "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct_test.c"
+    ],
+    "file": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct_test.c"
+  }
+]

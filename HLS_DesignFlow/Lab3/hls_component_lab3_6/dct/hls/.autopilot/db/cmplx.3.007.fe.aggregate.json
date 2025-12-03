@@ -1,0 +1,48 @@
+{
+  "0": {
+    "basicblocks": 21,
+    "calls": "2 1",
+    "file": "dct.c",
+    "fileloc": 111,
+    "instructions": 103,
+    "loads": {
+      "G": 2,
+      "L": 4
+    },
+    "name": "dct",
+    "stores": {
+      "L": 4
+    },
+    "total_instructions": 137
+  },
+  "1": {
+    "basicblocks": 5,
+    "calls": "",
+    "file": "dct.c",
+    "fileloc": 97,
+    "instructions": 17,
+    "loads": {
+      "L": 1
+    },
+    "name": "write_data",
+    "stores": {
+      "L": 1
+    },
+    "total_instructions": 17
+  },
+  "2": {
+    "basicblocks": 5,
+    "calls": "",
+    "file": "dct.c",
+    "fileloc": 85,
+    "instructions": 17,
+    "loads": {
+      "L": 1
+    },
+    "name": "read_data",
+    "stores": {
+      "L": 1
+    },
+    "total_instructions": 17
+  }
+}

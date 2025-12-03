@@ -1,0 +1,34 @@
+  **** HLS Build v2024.2 5238294
+INFO: [HLS 200-2005] Using work_dir /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/dct 
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+WARNING: [HLS 200-1921] Skipping unknown ini [hls] entry 'csim.file=/path/to/in.dat' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(12)
+WARNING: [HLS 200-1921] Skipping unknown ini [hls] entry 'csim.file=/path/to/out.golden.dat' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(13)
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(8)
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.c' to the project
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.h' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(9)
+INFO: [HLS 200-10] Adding design file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct.h' to the project
+INFO: [HLS 200-1465] Applying ini 'tb.file=/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct_test.c' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(10)
+INFO: [HLS 200-10] Adding test bench file '/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/source/dct_test.c' to the project
+INFO: [HLS 200-1465] Applying ini 'syn.top=dct' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(7)
+INFO: [HLS 200-1465] Applying ini 'flow_target=vivado' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(4)
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1465] Applying ini 'part=xc7z020clg400-1' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(1)
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1465] Applying ini 'clock=10ns' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(11)
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1465] Applying ini 'package.output.format=ip_catalog' from /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab3/hls_component_dct/hls_config.cfg(5)
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+make: 'csim.exe' is up to date.
+make: Warning: File '/dev/null' has modification time 22599 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+    *** *** *** *** 
+    Results are good 
+    *** *** *** *** 
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-112] Total CPU user time: 2.58 seconds. Total CPU system time: 0.44 seconds. Total elapsed time: 2.8 seconds; peak allocated memory: 246.605 MB.
+INFO: [vitis-run 60-791] Total elapsed time: 0h 0m 6s
