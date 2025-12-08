@@ -1,0 +1,157 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab4/fir/fir.hlsrun_csim_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Thu Dec  4 12:45:44 2025",
+ "timestampMillis": "1764827144745",
+ "buildStep": {
+  "cmdId": "890b3bc9-9a1d-4701-a2f8-453322dd57bb",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab4/fir/logs/fir.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --csim --config /home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab4/hls_component_lab4/hls_config.cfg --work_dir fir ",
+  "args": [
+   "--mode",
+   "hls",
+   "--csim",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab4/hls_component_lab4/hls_config.cfg",
+   "--work_dir",
+   "fir"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab4"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Dec  4 12:45:44 2025",
+ "timestampMillis": "1764827144745",
+ "status": {
+  "cmdId": "890b3bc9-9a1d-4701-a2f8-453322dd57bb",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Thu Dec  4 12:45:48 2025",
+ "timestampMillis": "1764827148244",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_C_SIM",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "fir",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab4/source/fir.c",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab4/source/fir.h"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Thu Dec  4 12:45:48 2025",
+ "timestampMillis": "1764827148244",
+ "buildStep": {
+  "cmdId": "8a14c391-bf96-4f60-99f7-41519568f64a",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab4/fir/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS_DesignFlow/Lab4"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Dec  4 12:45:48 2025",
+ "timestampMillis": "1764827148245",
+ "status": {
+  "cmdId": "8a14c391-bf96-4f60-99f7-41519568f64a",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Dec  4 12:45:48 2025",
+ "timestampMillis": "1764827148822",
+ "status": {
+  "cmdId": "8a14c391-bf96-4f60-99f7-41519568f64a",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Dec  4 12:45:48 2025",
+ "timestampMillis": "1764827148918",
+ "status": {
+  "cmdId": "890b3bc9-9a1d-4701-a2f8-453322dd57bb",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Dec  4 12:45:48 2025",
+ "timestampMillis": "1764827148918",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Dec  4 12:45:48 2025",
+ "timestampMillis": "1764827148918",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
