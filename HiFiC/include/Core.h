@@ -513,4 +513,47 @@ void Floor(TensorMem<T> &X, TensorMem<T> &Y);
 template <typename T>
 TensorMem<T>* Floor(TensorMem<T> &X);
 
+/**
+ * @brief load a mean-1_axis tensor of X to Y
+ * 
+ * @tparam T 
+ * @param X 
+ * @param Y 
+ * @param axis -- N_AXIS || H_AXIS || W_AXIS || C_AXIS
+ */
+template <typename T>
+void ReduceMean(TensorMem<T> &X, TensorMem<T> &Y, int axis);
+/**
+ * @brief return a mean-1_axis of X
+ * 
+ * @tparam T 
+ * @param X 
+ * @param axis -- N_AXIS || H_AXIS || W_AXIS || C_AXIS
+ * @return TensorMem<T>* 
+ */
+template <typename T>
+TensorMem<T>* ReduceMean(TensorMem<T> &X, int axis);
+
+/**
+ * @brief load a product-1_axis tensor of X to Y
+ * 
+ * @tparam T 
+ * @param X 
+ * @param Y 
+ * @param axis -- N_AXIS || H_AXIS || W_AXIS || C_AXIS
+ */
+template <typename T>
+void ReduceProd(TensorMem<T> &X, TensorMem<T> &Y, int axis);
+/**
+ * @brief return a product-1_axis of X
+ * 
+ * @tparam T 
+ * @param X 
+ * @param axis -- N_AXIS || H_AXIS || W_AXIS || C_AXIS
+ * @return TensorMem<T>* 
+ */
+template <typename T>
+TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
+
 #endif 
+
