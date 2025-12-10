@@ -129,3 +129,13 @@ Arithmatic:
     Div:
         void Div(TensorMem<float> &X1, TensorMem<float> &X2, TensorMem<float> &Y);
         TensorMem<float>* Div(TensorMem<float> &X1, TensorMem<float> &X2);
+
+
+
+Reduce:
+    ReduceMean:
+        void ReduceMean(TensorMem<T> &X, TensorMem<T> &Y, int axis);
+        TensorMem<T>* ReduceMean(TensorMem<T> &X, int axis);
+    ReduceProd:
+        void ReduceProd(TensorMem<T> &X, TensorMem<T> &Y, int axis);
+        TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
