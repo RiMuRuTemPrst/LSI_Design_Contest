@@ -374,7 +374,7 @@ void Constant_of_shape(TensorMem<int64_t> &Y, int64_t val);
  * @param val 
  * @return TensorMem<int64_t>* 
  */
-TensorMem<int64_t>* Constant_of_shape(Shape &shape, int64_t val);
+TensorMem<int64_t>* Constant_of_shape(const Shape &shape, int64_t val);
 
 /**
  * @brief load cast data from X to Y
@@ -564,6 +564,7 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
 
 
 
