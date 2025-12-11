@@ -295,7 +295,8 @@ TensorMem<float>* Pad(TensorMem<float> &X, int pad_top, int pad_left, int pad_bo
  * @param X 
  * @param Y 
  */
-void Reshape(TensorMem<float> &X, TensorMem<float> &Y);
+template <typename T>
+void Reshape(TensorMem<T> &X, TensorMem<T> &Y);
 /**
  * @brief reshape X
  * 
@@ -303,7 +304,8 @@ void Reshape(TensorMem<float> &X, TensorMem<float> &Y);
  * @param shape 
  * @return TensorMem<float>* 
  */
-TensorMem<float>* Reshape(TensorMem<float> &X, Shape shape);
+template <typename T>
+TensorMem<T>* Reshape(TensorMem<T> &X, const Shape &shape);
 
 /**
  * @brief return shape of X
@@ -564,6 +566,7 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
 
 
 
