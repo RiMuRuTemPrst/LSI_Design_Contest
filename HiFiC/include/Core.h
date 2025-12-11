@@ -51,7 +51,10 @@
 
 #endif
 
-enum {N_AXIS, H_AXIS, W_AXIS, C_AXIS};
+#define N_AXIS 0
+#define H_AXIS 1
+#define W_AXIS 2
+#define C_AXIS 3
 
 struct Shape {
     int N; // Batch size
@@ -560,6 +563,7 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
 
 
 
