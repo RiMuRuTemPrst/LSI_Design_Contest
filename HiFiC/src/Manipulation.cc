@@ -130,8 +130,9 @@ TensorMem<float>* Reshape(TensorMem<float> &X, Shape shape) {
     return Y;
 }
 
-Shape Shapeof(TensorMem<float> &X) {
-    return X.shape;
+template <typename T>
+TensorMem<int64_t>* Shapeof(TensorMem<T> &X) {
+    return new TensorMem<int64_t>(new int64_t[4]{X.shape.N, X.shape.H, X.shape.W, X.shape.C}, {1, 1, 1, 4}, true);
 }
 
 void Slice(TensorMem<int64_t> &X, TensorMem<int64_t> &Y, Shape &pos_0, Shape &pos_1) {
@@ -182,3 +183,4 @@ TensorMem<int64_t>* Transpose(TensorMem<int64_t> &X, int perm[]) {
     Transpose(X, *Y, perm);
     return Y;
 }
+
