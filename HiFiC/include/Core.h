@@ -309,9 +309,10 @@ TensorMem<float>* Reshape(TensorMem<float> &X, Shape shape);
  * @brief return shape of X
  * 
  * @param X 
- * @return Shape [N, H, W, C]
+ * @return TensorMem<int64_t>* [N, H, W, C]
  */
-Shape Shapeof(TensorMem<float> &X);
+template <typename T>
+TensorMem<int64_t>* Shapeof(TensorMem<T> &X);
 
 /**
  * @brief slice part of X from pos_0 to pos_1 to Y
@@ -563,6 +564,7 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
 
 
 
