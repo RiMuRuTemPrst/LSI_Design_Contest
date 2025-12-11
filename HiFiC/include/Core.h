@@ -323,17 +323,21 @@ TensorMem<int64_t>* Shapeof(TensorMem<T> &X);
  * @param Y 
  * @param pos_0 [N0, H0, W0, C0]
  * @param pos_1 [N1, H1, W1, C1]
+ * @param step can be > 0 || < 0
  */
-void Slice(TensorMem<int64_t> &X, TensorMem<int64_t> &Y, Shape &pos_0, Shape &pos_1);
+template <typename T>
+void Slice(TensorMem<T> &X, TensorMem<T> &Y, Shape &pos_0, Shape &pos_1, const int* step);
 /**
  * @brief return a slice part of X from pos_0 to pos_1
  * 
  * @param X 
  * @param pos_0 [N0, H0, W0, C0]
  * @param pos_1 [N1, H1, W1, C1]
- * @return TensorMem<int64_t>* 
+ * @param step can be > 0 || < 0
+ * @return TensorMem<T>* 
  */
-TensorMem<int64_t>* Slice(TensorMem<int64_t> &X, Shape &pos_0, Shape &pos_1);
+template <typename T>
+TensorMem<T>* Slice(TensorMem<T> &X, Shape &pos_0, Shape &pos_1, const int* step);
 
 /**
  * @brief fill X permuted to Y
@@ -566,6 +570,7 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
 
 
 
