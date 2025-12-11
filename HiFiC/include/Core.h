@@ -72,6 +72,10 @@ struct Shape {
      * @param c Channels
      */
     Shape(int n, int h, int w, int c) : N(n), H(h), W(w), C(c) {}
+
+    bool operator==(const Shape &other) const {
+        return N == other.N && H == other.H && W == other.W && C == other.C;
+    }
 };
 
 template <typename T>
@@ -556,4 +560,5 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
 
