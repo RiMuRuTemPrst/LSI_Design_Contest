@@ -5,7 +5,7 @@
 static char _is_valid_point(Shape &x_shape, int height_p, int width_p) {
     return height_p >= 0 && width_p >= 0 && height_p < x_shape.H && width_p < x_shape.W;
 }
-static void _convtranspose_point(ConvTranspose_Attributes &att, float X, TensorMem<float>* W, TensorMem<float>* Y, 
+static void _convtranspose_point(const ConvTranspose_Attributes &att, float X, TensorMem<float>* W, TensorMem<float>* Y, 
                                                                             Shape &w_pos, Shape &y_pos) {
     Shape y_shape = Y->shape;
     int w_height = w_pos.H;
@@ -19,7 +19,7 @@ static void _convtranspose_point(ConvTranspose_Attributes &att, float X, TensorM
                 Y->at(y_pos.N, h, w, y_pos.C) += X* W->get(w_pos.N, i, j, w_pos.C);
         }
 }
-static void _convtranspose_channel(ConvTranspose_Attributes &att, TensorMem<float>* X, TensorMem<float>* W, TensorMem<float>* Y, 
+static void _convtranspose_channel(const ConvTranspose_Attributes &att, TensorMem<float>* X, TensorMem<float>* W, TensorMem<float>* Y, 
                                                                     Shape &x_pos, Shape &w_pos, Shape y_pos) {
     int start_height = -att.pads[0], start_width = -att.pads[1];
     int x_height = x_pos.H;
@@ -40,7 +40,7 @@ static void _convtranspose_plus_bias(TensorMem<float>* XW, TensorMem<float>* B, 
             XW->at(xw_pos.N, i, j, xw_pos.C) += B->get(b_pos.N, b_pos.H, b_pos.W, b_pos.C);
 }
 
-TensorMem<float>* ConvTranspose(ConvTranspose_Attributes &attributes, TensorMem<float>* X, TensorMem<float>* W, TensorMem<float>* B) {
+TensorMem<float>* ConvTranspose(const ConvTranspose_Attributes &attributes, TensorMem<float>* X, TensorMem<float>* W, TensorMem<float>* B) {
     assert(X && W && B);
     Shape x_shape = X->shape;
     Shape w_shape = W->shape;
@@ -79,3 +79,4 @@ TensorMem<float>* ConvTranspose(ConvTranspose_Attributes &attributes, TensorMem<
     }
     return Y;
 }
+
