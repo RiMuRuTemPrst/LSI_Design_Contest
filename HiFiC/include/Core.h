@@ -182,7 +182,7 @@ struct ConvTranspose_Attributes {
  * @param B [  1,   1, 1, Cout]
  * @return TensorMem<float>* -- [Batch, H, W, Cout]
  */
-TensorMem<float>* Conv(Conv_Attributes &attributes, TensorMem<float>* X, TensorMem<float>* W, TensorMem<float>* B);
+TensorMem<float>* Conv(const Conv_Attributes &attributes, TensorMem<float>* X, TensorMem<float>* W, TensorMem<float>* B);
 /**
  * @brief 
  * 
@@ -199,7 +199,7 @@ TensorMem<float>* Conv(Conv_Attributes &attributes, TensorMem<float>* X, TensorM
  * @param B [  1,   1, 1, Cout]
  * @return TensorMem<float>* -- [Batch, H, W, Cout]
  */
-TensorMem<float>* ConvTranspose(ConvTranspose_Attributes &attributes, TensorMem<float>* X, TensorMem<float>* W, TensorMem<float>* B);
+TensorMem<float>* ConvTranspose(const ConvTranspose_Attributes &attributes, TensorMem<float>* X, TensorMem<float>* W, TensorMem<float>* B);
 
 /**
  * @brief Concat X(s) into reference parameter Y
@@ -560,5 +560,6 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
 
 
