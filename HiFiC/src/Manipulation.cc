@@ -137,22 +137,22 @@ TensorMem<int64_t>* Shapeof(TensorMem<T> &X) {
     return new TensorMem<int64_t>(new int64_t[4]{X.shape.N, X.shape.H, X.shape.W, X.shape.C}, {1, 1, 1, 4}, true);
 }
 
-void Slice(TensorMem<int64_t> &X, TensorMem<int64_t> &Y, Shape &pos_0, Shape &pos_1) {
-    for (int n = pos_0.N, on = 0; n < pos_1.N; n++, on++) 
-    for (int h = pos_0.H, oh = 0; h < pos_1.H; h++, oh++) 
-    for (int w = pos_0.W, ow = 0; w < pos_1.W; w++, ow++) 
-    for (int c = pos_0.C, oc = 0; c < pos_1.C; c++, oc++) 
+void Slice(TensorMem<int64_t> &X, TensorMem<int64_t> &Y, Shape &pos_0, Shape &pos_1, const int* step) {
+    for (int n = pos_0.N, on = 0; step[0] > 0 && n < pos_1.N || step[0] < 0 && n > pos_1.N; n += step[0], on++) 
+    for (int h = pos_0.H, oh = 0; step[1] > 0 && h < pos_1.H || step[1] < 0 && h > pos_1.H; h += step[1], oh++) 
+    for (int w = pos_0.W, ow = 0; step[2] > 0 && w < pos_1.W || step[2] < 0 && w > pos_1.W; w += step[2], ow++) 
+    for (int c = pos_0.C, oc = 0; step[3] > 0 && c < pos_1.C || step[3] < 0 && c > pos_1.C; c += step[3], oc++) 
         Y.at(on, oh, ow, oc) = X.get(n, h, w, c);
 }
-TensorMem<int64_t>* Slice(TensorMem<int64_t> &X, Shape &pos_0, Shape &pos_1) {
+TensorMem<int64_t>* Slice(TensorMem<int64_t> &X, Shape &pos_0, Shape &pos_1, const int* step) {
     TensorMem<int64_t>* Y;
     Shape shape;
-    shape.N = pos_1.N - pos_0.N; assert(shape.N > 0);
-    shape.H = pos_1.H - pos_0.H; assert(shape.H > 0);
-    shape.W = pos_1.W - pos_0.W; assert(shape.W > 0);
-    shape.C = pos_1.C - pos_0.C; assert(shape.C > 0);
+    shape.N = std::abs(pos_1.N - pos_0.N - 1) / std::abs(step[0]) + 1;
+    shape.H = std::abs(pos_1.H - pos_0.H - 1) / std::abs(step[1]) + 1;
+    shape.W = std::abs(pos_1.W - pos_0.W - 1) / std::abs(step[2]) + 1;
+    shape.C = std::abs(pos_1.C - pos_0.C - 1) / std::abs(step[3]) + 1;
     Y = new TensorMem<int64_t>(shape);
-    Slice(X, *Y, pos_0, pos_1);
+    Slice(X, *Y, pos_0, pos_1, step);
     return Y;
 }
 
@@ -185,5 +185,6 @@ TensorMem<int64_t>* Transpose(TensorMem<int64_t> &X, int perm[]) {
     Transpose(X, *Y, perm);
     return Y;
 }
+
 
 
