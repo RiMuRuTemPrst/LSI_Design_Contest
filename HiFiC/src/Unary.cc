@@ -26,7 +26,7 @@ void Constant_of_shape(TensorMem<int64_t> &Y, int64_t val) {
     for (int i = 0; i < size; i++)
         Y.raw()[i] = val;
 }
-TensorMem<int64_t>* Constant_of_shape(Shape &shape, int64_t val) {
+TensorMem<int64_t>* Constant_of_shape(const Shape &shape, int64_t val) {
     TensorMem<int64_t>* Y = new TensorMem<int64_t>(shape);
     Constant_of_shape(*Y, val);
     return Y;
@@ -87,3 +87,4 @@ TensorMem<T>* Floor(TensorMem<T> &X) {
     Floor(X, *Y);
     return Y;
 }
+
