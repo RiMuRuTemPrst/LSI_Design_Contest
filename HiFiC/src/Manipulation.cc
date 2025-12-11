@@ -117,14 +117,16 @@ TensorMem<float>* Pad(TensorMem<float> &X, int pad_top, int pad_left, int pad_bo
     return Y;
 }
 
-void Reshape(TensorMem<float> &X, TensorMem<float> &Y) {
+template <typename T>
+void Reshape(TensorMem<T> &X, TensorMem<T> &Y) {
     int size = X.shape.N* X.shape.H* X.shape.W* X.shape.C;
     int check_size = Y.shape.N* Y.shape.H* Y.shape.W* Y.shape.C;
     assert(size == check_size);
     for (int i = 0; i < size; i++) 
         Y.raw()[i] = X.raw()[i];
 }
-TensorMem<float>* Reshape(TensorMem<float> &X, Shape shape) {
+template <typename T>
+TensorMem<T>* Reshape(TensorMem<T> &X, const Shape &shape) {
     TensorMem<float>* Y = new TensorMem<float>(shape);
     Reshape(X, *Y);
     return Y;
@@ -183,4 +185,5 @@ TensorMem<int64_t>* Transpose(TensorMem<int64_t> &X, int perm[]) {
     Transpose(X, *Y, perm);
     return Y;
 }
+
 
