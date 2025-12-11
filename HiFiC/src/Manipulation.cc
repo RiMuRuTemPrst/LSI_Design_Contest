@@ -138,7 +138,7 @@ TensorMem<int64_t>* Shapeof(TensorMem<T> &X) {
 }
 
 template <typename T>
-void Slice(TensorMem<T> &X, TensorMem<T> &Y, Shape &pos_0, Shape &pos_1, const int* step) {
+void Slice(TensorMem<T> &X, TensorMem<T> &Y, const Shape &pos_0, const Shape &pos_1, const int* step) {
     assert(step[0] && step[1] && step[2] && step[3]);
     for (int n = pos_0.N, on = 0; step[0] > 0 && n < pos_1.N || step[0] < 0 && n > pos_1.N; n += step[0], on++) 
     for (int h = pos_0.H, oh = 0; step[1] > 0 && h < pos_1.H || step[1] < 0 && h > pos_1.H; h += step[1], oh++) 
@@ -147,7 +147,7 @@ void Slice(TensorMem<T> &X, TensorMem<T> &Y, Shape &pos_0, Shape &pos_1, const i
         Y.at(on, oh, ow, oc) = X.get(n, h, w, c);
 }
 template <typename T>
-TensorMem<T>* Slice(TensorMem<T> &X, Shape &pos_0, Shape &pos_1, const int* step) {
+TensorMem<T>* Slice(TensorMem<T> &X, const Shape &pos_0, const Shape &pos_1, const int* step) {
     assert(step[0] && step[1] && step[2] && step[3]);
     TensorMem<T>* Y;
     Shape shape;
@@ -189,6 +189,7 @@ TensorMem<int64_t>* Transpose(TensorMem<int64_t> &X, int perm[]) {
     Transpose(X, *Y, perm);
     return Y;
 }
+
 
 
 
