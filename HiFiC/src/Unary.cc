@@ -68,7 +68,7 @@ void Sqrt(TensorMem<float> &X, TensorMem<float> &Y) {
     assert(X.shape == Y.shape);
     int size = X.shape.N* X.shape.H* X.shape.W* X.shape.C;
     for (int i = 0; i < size; ++i) 
-        Y.raw()[i] = std::sqrt(X.raw()[i]);
+        Y.raw()[i] = sqrt(X.raw()[i]);
 }
 TensorMem<float>* Sqrt(TensorMem<float> &X) {
     TensorMem<float>* Y = new TensorMem<float>(X.shape);
@@ -77,12 +77,28 @@ TensorMem<float>* Sqrt(TensorMem<float> &X) {
 }
 
 template <typename T>
+struct is_float_point {
+    static constexpr bool value = false;
+};
+template <>
+struct is_float_point<float> {
+    static constexpr bool value = true;
+};
+template <>
+struct is_float_point<double> {
+    static constexpr bool value = true;
+};
+template <>
+struct is_float_point<long double> {
+    static constexpr bool value = true;
+};
+template <typename T>
 void Floor(TensorMem<T> &X, TensorMem<T> &Y) {
-    static_assert(std::is_floating_point_v<T>);
+    static_assert(is_float_point<T>::value, "Error: Floor requires float point type !!");
     assert(X.shape == Y.shape);
     int size = X.shape.N* X.shape.H* X.shape.W* X.shape.C;
     for (int i = 0; i < size; ++i) 
-        Y.raw()[i] = std::floor(X.raw()[i]);
+        Y.raw()[i] = floor(X.raw()[i]);
 }
 template <typename T>
 TensorMem<T>* Floor(TensorMem<T> &X) {
@@ -93,7 +109,6 @@ TensorMem<T>* Floor(TensorMem<T> &X) {
 
 template <typename T>
 void Clip(TensorMem<T> &X, TensorMem<T> &Y, T min, T max) {
-    static_assert(std::is_arithmetic_v<T>, "Error: Clip requires numeric type");
     assert(X.shape == Y.shape);
     assert(min <= max);
     int size = X.shape.N* X.shape.H* X.shape.W* X.shape.C;
@@ -110,3 +125,4 @@ TensorMem<T>* Clip(TensorMem<T> &X, T min, T max) {
     Clip(X, *Y, min, max);
     return Y;
 }
+
