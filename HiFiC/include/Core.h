@@ -56,6 +56,32 @@
 #define W_AXIS 2
 #define C_AXIS 3
 
+
+template <typename T>
+struct is_integral {
+    enum { value = 0 };
+};
+
+template <> struct is_integral<char>        { enum { value = 1 }; };
+template <> struct is_integral<short>       { enum { value = 1 }; };
+template <> struct is_integral<int>         { enum { value = 1 }; };
+template <> struct is_integral<long>        { enum { value = 1 }; };
+template <> struct is_integral<long long>   { enum { value = 1 }; };
+
+template <> struct is_integral<unsigned char>      { enum { value = 1 }; };
+template <> struct is_integral<unsigned short>     { enum { value = 1 }; };
+template <> struct is_integral<unsigned int>       { enum { value = 1 }; };
+template <> struct is_integral<unsigned long>      { enum { value = 1 }; };
+template <> struct is_integral<unsigned long long> { enum { value = 1 }; };
+
+template <typename T>
+struct is_float_point {
+    enum { value = 0 };
+};
+
+template <> struct is_float_point<float> { enum { value = 1 }; };
+
+
 struct Shape {
     int N; // Batch size
     int H; // Height
@@ -660,4 +686,5 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
 
