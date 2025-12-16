@@ -80,6 +80,7 @@ struct is_float_point {
 };
 
 template <> struct is_float_point<float> { enum { value = 1 }; };
+template <> struct is_float_point<double> { enum { value = 1 }; };
 
 
 struct Shape {
@@ -686,5 +687,6 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
 
 
