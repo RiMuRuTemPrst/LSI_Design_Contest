@@ -210,6 +210,9 @@ TensorMem<int64_t>* Shapeof(TensorMem<T> &X) {
     return new TensorMem<int64_t>(new int64_t[4]{X.shape.N, X.shape.H, X.shape.W, X.shape.C}, {1, 1, 1, 4}, true);
 }
 
+static int absolute(int val) {
+    return val >= 0 ? val : -val;
+}
 template <typename T>
 void Slice(TensorMem<T> &X, TensorMem<T> &Y, const Shape &pos_0, const Shape &pos_1, const int* step) {
     assert(step[0] && step[1] && step[2] && step[3]);
@@ -224,10 +227,10 @@ TensorMem<T>* Slice(TensorMem<T> &X, const Shape &pos_0, const Shape &pos_1, con
     assert(step[0] && step[1] && step[2] && step[3]);
     TensorMem<T>* Y;
     Shape shape;
-    shape.N = (std::abs(pos_1.N - pos_0.N) - 1) / std::abs(step[0]) + 1;
-    shape.H = (std::abs(pos_1.H - pos_0.H) - 1) / std::abs(step[1]) + 1;
-    shape.W = (std::abs(pos_1.W - pos_0.W) - 1) / std::abs(step[2]) + 1;
-    shape.C = (std::abs(pos_1.C - pos_0.C) - 1) / std::abs(step[3]) + 1;
+    shape.N = (absolute(pos_1.N - pos_0.N) - 1) / absolute(step[0]) + 1;
+    shape.H = (absolute(pos_1.H - pos_0.H) - 1) / absolute(step[1]) + 1;
+    shape.W = (absolute(pos_1.W - pos_0.W) - 1) / absolute(step[2]) + 1;
+    shape.C = (absolute(pos_1.C - pos_0.C) - 1) / absolute(step[3]) + 1;
     Y = new TensorMem<T>(shape);
     Slice(X, *Y, pos_0, pos_1, step);
     return Y;
@@ -264,3 +267,4 @@ TensorMem<T>* Transpose(TensorMem<T> &X, int perm[]) {
     Transpose(X, *Y, perm);
     return Y;
 }
+

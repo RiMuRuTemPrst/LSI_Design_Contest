@@ -82,3 +82,39 @@ TensorMem<T>* Conv(const Conv_Attributes &attributes, TensorMem<T>* X, TensorMem
     }
     return Y;
 }
+template <typename T>
+void Conv(const Conv_Attributes &attributes, TensorMem<T>* X, TensorMem<T>* W, TensorMem<T>* B, TensorMem<T>* Y) {
+    assert(X && W && B);
+    Shape x_shape = X->shape;
+    Shape w_shape = W->shape;
+    Shape b_shape = B->shape;
+    Shape y_shape = Y->shape;
+
+    if (x_shape.C % attributes.group || w_shape.N % attributes.group || x_shape.C / attributes.group != w_shape.C
+        || attributes.kernel_shape[0] != w_shape.H || attributes.kernel_shape[1] != w_shape.W) 
+        assert(0 && "Error: Unappropriate input sizes for conv !!\n");
+    
+    if (y_shape.H != (x_shape.H - (w_shape.H - 1)* attributes.dilations[0] 
+        + attributes.pads[0] + attributes.pads[2] - 1) / attributes.strides[0] + 1 
+        || y_shape.W != (x_shape.W - (w_shape.W - 1)* attributes.dilations[1] 
+        + attributes.pads[1] + attributes.pads[3] - 1) / attributes.strides[1] + 1 
+        || y_shape.N != x_shape.N || y_shape.C != w_shape.N)
+        assert(0 && "Error: Unappropriate output sizes for conv !!\n");
+
+    int i, j, l, m, n;
+    int batch = x_shape.N, C_in = w_shape.C, C_out = w_shape.N / attributes.group;
+    b_shape.N = b_shape.H = b_shape.W = 0;
+    for (i = 0; i < batch; i++) {
+        x_shape.N = y_shape.N = i;
+        for (j = 0; j < attributes.group; j++) 
+            for (l = 0; l < C_out; l++) {
+                y_shape.C = w_shape.N = b_shape.C = j* C_out + l;
+                for (m = 0; m < C_in; m++) {
+                    x_shape.C = j* C_in + m;
+                    w_shape.C = m;
+                    _conv_channel(attributes, X, W, Y, x_shape, w_shape, y_shape);
+                }
+                _conv_plus_bias(Y, B, y_shape, b_shape);
+            }
+    }
+}

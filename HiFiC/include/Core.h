@@ -201,6 +201,23 @@ TensorMem<T>* Conv(const Conv_Attributes &attributes, TensorMem<T>* X, TensorMem
 /**
  * @brief 
  * 
+ * @param attributes parameters of conv -- {[0], [1], [2], [3], [4]}
+ * @param attributes[0] -- {dilations_h, dilations_w}
+ * @param attributes[1] -- group
+ * @param attributes[2] -- {kernel_size_h, kernel_size_w}
+ * @param attributes[3] -- {pad_top, pad_left, pad_bottom, pad_right}
+ * @param attributes[4] -- {stride_h, stride_w}
+ * 
+ * @param X [Batch, H, W, Cin]
+ * @param W [Cout,  H, W, Cin]
+ * @param B [  1,   1, 1, Cout]
+ * @param Y [Batch, H, W, Cout]
+ */
+template <typename T>
+void Conv(const Conv_Attributes &attributes, TensorMem<T>* X, TensorMem<T>* W, TensorMem<T>* B, TensorMem<T>* Y);
+/**
+ * @brief 
+ * 
  * @param attributes parameters of convtranspose -- {[0], [1], [2], [3], [4], [5]}
  * @param attributes[0] -- {dilations_h, dilations_w}
  * @param attributes[1] -- group
@@ -216,6 +233,24 @@ TensorMem<T>* Conv(const Conv_Attributes &attributes, TensorMem<T>* X, TensorMem
  */
 template <typename T>
 TensorMem<T>* ConvTranspose(const ConvTranspose_Attributes &attributes, TensorMem<T>* X, TensorMem<T>* W, TensorMem<T>* B);
+/**
+ * @brief 
+ * 
+ * @param attributes parameters of convtranspose -- {[0], [1], [2], [3], [4], [5]}
+ * @param attributes[0] -- {dilations_h, dilations_w}
+ * @param attributes[1] -- group
+ * @param attributes[2] -- {kernel_size_h, kernel_size_w}
+ * @param attributes[3] -- {output_pad_h, output_pad_w}
+ * @param attributes[4] -- {pad_top, pad_left, pad_bottom, pad_right}
+ * @param attributes[5] -- {stride_h, stride_w}
+ * 
+ * @param X [Batch, H, W, Cin]
+ * @param W [Cout,  H, W, Cin]
+ * @param B [  1,   1, 1, Cout]
+ * @param Y [Batch, H, W, Cout]
+ */
+template <typename T>
+void ConvTranspose(const ConvTranspose_Attributes &attributes, TensorMem<T>* X, TensorMem<T>* W, TensorMem<T>* B, TensorMem<T>* Y);
 
 /**
  * @brief Concat X(s) into reference parameter Y
@@ -625,3 +660,4 @@ template <typename T>
 TensorMem<T>* ReduceProd(TensorMem<T> &X, int axis);
 
 #endif 
+
