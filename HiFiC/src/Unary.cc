@@ -77,22 +77,6 @@ TensorMem<float>* Sqrt(TensorMem<float> &X) {
 }
 
 template <typename T>
-struct is_float_point {
-    static constexpr bool value = false;
-};
-template <>
-struct is_float_point<float> {
-    static constexpr bool value = true;
-};
-template <>
-struct is_float_point<double> {
-    static constexpr bool value = true;
-};
-template <>
-struct is_float_point<long double> {
-    static constexpr bool value = true;
-};
-template <typename T>
 void Floor(TensorMem<T> &X, TensorMem<T> &Y) {
     static_assert(is_float_point<T>::value, "Error: Floor requires float point type !!");
     assert(X.shape == Y.shape);
@@ -125,4 +109,5 @@ TensorMem<T>* Clip(TensorMem<T> &X, T min, T max) {
     Clip(X, *Y, min, max);
     return Y;
 }
+
 
