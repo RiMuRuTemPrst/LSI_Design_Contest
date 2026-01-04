@@ -54,3 +54,26 @@ void Norm(TensorMem<T> &X, TensorMem<T> &Y, TensorMem<T> &gamma, TensorMem<T> &b
     Mul(gamma, X, X);
     Add(X, beta, Y);
 }
+
+template <typename T>
+void Channel_Norm(TensorMem<T> &X, TensorMem<T> &Y, TensorMem<T> &gamma, TensorMem<T> &beta, T epsilon, 
+                    Shape start, Shape end) {
+    int num = end.C - start.C;
+    for (int n = start.N; n < end.N; n++)
+    for (int h = start.H; h < end.H; h++)
+    for (int w = start.W; w < end.W; w++) {
+        T mean = 0, var = 0;
+        for (int c = start.C; c < end.C; c++) 
+            mean += X.get(n, h, w, c);
+        mean /= num;
+        for (int c = start.C; c < end.C; c++) {
+            T mid = X.get(n, h, w, c) - mean;
+            var += mid / (num - 1)* mid;
+        }
+        var = static_cast<T>(sqrt(var + epsilon));
+        for (int c = start.C; c < end.C; c++) {
+            int id = c - start.C;
+            Y.at(n, h, w, c) = (X.get(n, h, w, c) - mean) / var* gamma.raw()[id] + beta.raw()[id];
+        }
+    }
+}
