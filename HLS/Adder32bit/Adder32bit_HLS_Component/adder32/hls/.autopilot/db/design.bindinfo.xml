@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BindInfo>
+	<BindNode BINDTYPE="op" DISPLAY="bind_op add" ID="" IMPL="fabric" LATENCY="0" OPTYPE="add" PRAGMA="" RTLNAME="sum" SOURCE="../Adder32bit/PL/adder32.cpp:16" VARIABLE="add_ln16" MODULE="adder32" LOOP="" BUNDLEDNAME="" DSP="0" BRAM="0" URAM="0" USAGE="" STORAGESUBTYPE="" STORAGESIZE=""/>
+	<BindNode BINDTYPE="adapter" DISPLAY="bind_adapter axilite" ID="" IMPL="" LATENCY="" OPTYPE="" PRAGMA="" RTLNAME="CTRL_s_axi_U" SOURCE="" VARIABLE="" MODULE="adder32" LOOP="" BUNDLEDNAME="CTRL" DSP="0" BRAM="0" URAM="0" USAGE="interface" STORAGESUBTYPE="s_axilite" STORAGESIZE=""/>
+</BindInfo>

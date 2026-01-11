@@ -1,0 +1,12 @@
+{
+  "name": "Adder32bit_HLS_Component",
+  "type": "HLS",
+  "configuration": {
+    "componentType": "HLS",
+    "configFiles": [
+      "hls_config.cfg"
+    ],
+    "work_dir": "adder32"
+  },
+  "template": "empty_hls_component"
+}

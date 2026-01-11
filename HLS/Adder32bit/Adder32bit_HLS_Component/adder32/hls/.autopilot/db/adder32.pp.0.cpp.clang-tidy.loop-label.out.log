@@ -1,0 +1,20 @@
+/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp:2256:5: warning: Added loop label VITIS_LOOP_676_1:   [xilinx-label-all-loops]
+    for (unsigned i = low; i != high+1; ++i) {
+    ^~~
+    VITIS_LOOP_676_1: 
+/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp:2256:5: note: FIX-IT applied suggested code changes
+/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp:2270:5: warning: Added loop label VITIS_LOOP_690_1:   [xilinx-label-all-loops]
+    for (unsigned i = low; i != high+1; ++i) {
+    ^~~
+    VITIS_LOOP_690_1: 
+/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp:2270:5: note: FIX-IT applied suggested code changes
+/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp:2284:5: warning: Added loop label VITIS_LOOP_704_1:   [xilinx-label-all-loops]
+    for (unsigned i = low; i != high+1; ++i) {
+    ^~~
+    VITIS_LOOP_704_1: 
+/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp:2284:5: note: FIX-IT applied suggested code changes
+/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp:3918:7: warning: Added loop label VITIS_LOOP_1248_1:   [xilinx-label-all-loops]
+      for (i = 0; i < __N - 1; ++i) {
+      ^~~
+      VITIS_LOOP_1248_1: 
+/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp:3918:7: note: FIX-IT applied suggested code changes

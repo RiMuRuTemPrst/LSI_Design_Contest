@@ -1,0 +1,19 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch CLANG as the compiler.
+   Compiling ../../../../../Adder32bit/PL/adder32_tb.cpp in debug mode
+   Compiling ../../../../../Adder32bit/PL/adder32.cpp in debug mode
+   Generating csim.exe
+===== HLS ADDER32 TESTBENCH =====
+a = 0, b = 0, sum = 0
+a = 10, b = 3, sum = 13
+a = 20, b = 6, sum = 26
+a = 30, b = 9, sum = 39
+a = 40, b = 12, sum = 52
+a = 50, b = 15, sum = 65
+a = 60, b = 18, sum = 78
+a = 70, b = 21, sum = 91
+a = 80, b = 24, sum = 104
+a = 90, b = 27, sum = 117
+✅ TEST PASSED
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

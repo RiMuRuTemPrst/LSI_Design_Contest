@@ -1,0 +1,40 @@
+---
+MainSourceFile:  /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp
+Diagnostics:     
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_676_1:  '
+    FileOffset:      676
+    FilePath:        /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/autopilot/etc/ap_int_ref.h
+    Replacements:    
+      - FilePath:        /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp
+        Offset:          281176
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_676_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_690_1:  '
+    FileOffset:      690
+    FilePath:        /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/autopilot/etc/ap_int_ref.h
+    Replacements:    
+      - FilePath:        /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp
+        Offset:          281642
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_690_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_704_1:  '
+    FileOffset:      704
+    FilePath:        /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/autopilot/etc/ap_int_ref.h
+    Replacements:    
+      - FilePath:        /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp
+        Offset:          282109
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_704_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_1248_1:  '
+    FileOffset:      1248
+    FilePath:        /home/rimurutempest/Tool/Xilinx/Vitis/2024.2/common/technology/autopilot/etc/ap_fixed_base.h
+    Replacements:    
+      - FilePath:        /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/.autopilot/db/adder32.pp.0.cpp
+        Offset:          566202
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_1248_1: '
+...

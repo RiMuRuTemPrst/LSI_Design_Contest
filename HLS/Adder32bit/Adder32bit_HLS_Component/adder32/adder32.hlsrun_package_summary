@@ -1,0 +1,156 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_HLS_Component/adder32/adder32.hlsrun_package_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Sun Jan 11 16:16:09 2026",
+ "timestampMillis": "1768122969365",
+ "buildStep": {
+  "cmdId": "be33e85b-963c-494b-a45b-f8c357797b9a",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_HLS_Component/adder32/logs/adder32.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Xilinx/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --package --config /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_HLS_Component/hls_config.cfg --work_dir adder32 ",
+  "args": [
+   "--mode",
+   "hls",
+   "--package",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_HLS_Component/hls_config.cfg",
+   "--work_dir",
+   "adder32"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_HLS_Component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sun Jan 11 16:16:09 2026",
+ "timestampMillis": "1768122969365",
+ "status": {
+  "cmdId": "be33e85b-963c-494b-a45b-f8c357797b9a",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Sun Jan 11 16:16:13 2026",
+ "timestampMillis": "1768122973325",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_IP",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "adder32",
+     "file": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_HLS_Component/adder32/adder32.zip",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/PL/adder32.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Sun Jan 11 16:16:13 2026",
+ "timestampMillis": "1768122973326",
+ "buildStep": {
+  "cmdId": "615ab20b-7f3f-41ff-a326-a49825892388",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_HLS_Component/adder32/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_HLS_Component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sun Jan 11 16:16:13 2026",
+ "timestampMillis": "1768122973326",
+ "status": {
+  "cmdId": "615ab20b-7f3f-41ff-a326-a49825892388",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sun Jan 11 16:16:29 2026",
+ "timestampMillis": "1768122989008",
+ "status": {
+  "cmdId": "615ab20b-7f3f-41ff-a326-a49825892388",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sun Jan 11 16:16:29 2026",
+ "timestampMillis": "1768122989113",
+ "status": {
+  "cmdId": "be33e85b-963c-494b-a45b-f8c357797b9a",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sun Jan 11 16:16:29 2026",
+ "timestampMillis": "1768122989113",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sun Jan 11 16:16:29 2026",
+ "timestampMillis": "1768122989113",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

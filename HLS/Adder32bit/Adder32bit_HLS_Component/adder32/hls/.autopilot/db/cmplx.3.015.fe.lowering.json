@@ -1,0 +1,14 @@
+{
+  "0": {
+    "basicblocks": 1,
+    "calls": "",
+    "file": "adder32.cpp",
+    "fileloc": 7,
+    "instructions": 13,
+    "name": "adder32",
+    "stores": {
+      "T": 1
+    },
+    "total_instructions": 13
+  }
+}

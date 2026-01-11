@@ -1,0 +1,311 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
+| Date              : Sun Jan 11 15:56:01 2026
+| Host              : RimuruLenovo running 64-bit Ubuntu 24.04.3 LTS
+| Command           : report_timing -max_paths 10 -file ./report/adder32_timing_paths_synth.rpt
+| Design            : bd_0_wrapper
+| Device            : xczu7ev-ffvc1156
+| Speed File        : -2  PRODUCTION 1.30 05-15-2022
+| Design State      : Synthesized
+| Temperature Grade : E
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[31]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.678ns  (logic 0.471ns (69.469%)  route 0.207ns (30.531%))
+  Logic Levels:           6  (CARRY8=4 FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/Q
+                         net (fo=3, unplaced)         0.143     0.220    bd_0_i/hls_inst/inst/CTRL_s_axi_U/a[1]
+                         LUT2 (Prop_LUT2_I1_O)        0.037     0.257 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8/O
+                         net (fo=1, unplaced)         0.023     0.280    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8_n_0
+                         CARRY8 (Prop_CARRY8_S[1]_CO[7])
+                                                      0.197     0.477 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.482    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.504 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.509    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.531 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.536    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_O[7])
+                                                      0.116     0.652 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[31]_i_1/O[7]
+                         net (fo=1, unplaced)         0.026     0.678    bd_0_i/hls_inst/inst/CTRL_s_axi_U/sum[31]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[31]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[29]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.677ns  (logic 0.471ns (69.572%)  route 0.206ns (30.428%))
+  Logic Levels:           6  (CARRY8=4 FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/Q
+                         net (fo=3, unplaced)         0.143     0.220    bd_0_i/hls_inst/inst/CTRL_s_axi_U/a[1]
+                         LUT2 (Prop_LUT2_I1_O)        0.037     0.257 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8/O
+                         net (fo=1, unplaced)         0.023     0.280    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8_n_0
+                         CARRY8 (Prop_CARRY8_S[1]_CO[7])
+                                                      0.197     0.477 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.482    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.504 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.509    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.531 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.536    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_O[5])
+                                                      0.116     0.652 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[31]_i_1/O[5]
+                         net (fo=1, unplaced)         0.025     0.677    bd_0_i/hls_inst/inst/CTRL_s_axi_U/sum[29]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[29]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_ap_start_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/rdata_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.676ns  (logic 0.219ns (32.396%)  route 0.457ns (67.604%))
+  Logic Levels:           4  (FDRE=1 LUT5=1 LUT6=1 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_ap_start_reg/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_ap_start_reg/Q
+                         net (fo=38, unplaced)        0.201     0.278    bd_0_i/hls_inst/inst/CTRL_s_axi_U/ap_done
+                         LUT5 (Prop_LUT5_I4_O)        0.037     0.315 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/rdata[0]_i_5/O
+                         net (fo=1, unplaced)         0.024     0.339    bd_0_i/hls_inst/inst/CTRL_s_axi_U/rdata[0]_i_5_n_0
+                         MUXF7 (Prop_MUXF7_I0_O)      0.067     0.406 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/rdata_reg[0]_i_2/O
+                         net (fo=1, unplaced)         0.184     0.590    bd_0_i/hls_inst/inst/CTRL_s_axi_U/rdata_reg[0]_i_2_n_0
+                         LUT6 (Prop_LUT6_I0_O)        0.038     0.628 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/rdata[0]_i_1/O
+                         net (fo=1, unplaced)         0.048     0.676    bd_0_i/hls_inst/inst/CTRL_s_axi_U/rdata[0]_i_1_n_0
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/rdata_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[30]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.665ns  (logic 0.458ns (68.872%)  route 0.207ns (31.128%))
+  Logic Levels:           6  (CARRY8=4 FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/Q
+                         net (fo=3, unplaced)         0.143     0.220    bd_0_i/hls_inst/inst/CTRL_s_axi_U/a[1]
+                         LUT2 (Prop_LUT2_I1_O)        0.037     0.257 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8/O
+                         net (fo=1, unplaced)         0.023     0.280    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8_n_0
+                         CARRY8 (Prop_CARRY8_S[1]_CO[7])
+                                                      0.197     0.477 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.482    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.504 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.509    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.531 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.536    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_O[6])
+                                                      0.103     0.639 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[31]_i_1/O[6]
+                         net (fo=1, unplaced)         0.026     0.665    bd_0_i/hls_inst/inst/CTRL_s_axi_U/sum[30]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[30]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.651ns  (logic 0.449ns (68.971%)  route 0.202ns (31.029%))
+  Logic Levels:           5  (CARRY8=3 FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/Q
+                         net (fo=3, unplaced)         0.143     0.220    bd_0_i/hls_inst/inst/CTRL_s_axi_U/a[1]
+                         LUT2 (Prop_LUT2_I1_O)        0.037     0.257 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8/O
+                         net (fo=1, unplaced)         0.023     0.280    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8_n_0
+                         CARRY8 (Prop_CARRY8_S[1]_CO[7])
+                                                      0.197     0.477 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.482    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.504 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.509    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_O[7])
+                                                      0.116     0.625 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1/O[7]
+                         net (fo=1, unplaced)         0.026     0.651    bd_0_i/hls_inst/inst/CTRL_s_axi_U/sum[23]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[21]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.650ns  (logic 0.449ns (69.077%)  route 0.201ns (30.923%))
+  Logic Levels:           5  (CARRY8=3 FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/Q
+                         net (fo=3, unplaced)         0.143     0.220    bd_0_i/hls_inst/inst/CTRL_s_axi_U/a[1]
+                         LUT2 (Prop_LUT2_I1_O)        0.037     0.257 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8/O
+                         net (fo=1, unplaced)         0.023     0.280    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8_n_0
+                         CARRY8 (Prop_CARRY8_S[1]_CO[7])
+                                                      0.197     0.477 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.482    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.504 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.509    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_O[5])
+                                                      0.116     0.625 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1/O[5]
+                         net (fo=1, unplaced)         0.025     0.650    bd_0_i/hls_inst/inst/CTRL_s_axi_U/sum[21]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[21]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[28]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.647ns  (logic 0.441ns (68.161%)  route 0.206ns (31.839%))
+  Logic Levels:           6  (CARRY8=4 FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/Q
+                         net (fo=3, unplaced)         0.143     0.220    bd_0_i/hls_inst/inst/CTRL_s_axi_U/a[1]
+                         LUT2 (Prop_LUT2_I1_O)        0.037     0.257 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8/O
+                         net (fo=1, unplaced)         0.023     0.280    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8_n_0
+                         CARRY8 (Prop_CARRY8_S[1]_CO[7])
+                                                      0.197     0.477 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.482    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.504 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.509    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.531 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.536    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_O[4])
+                                                      0.086     0.622 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[31]_i_1/O[4]
+                         net (fo=1, unplaced)         0.025     0.647    bd_0_i/hls_inst/inst/CTRL_s_axi_U/sum[28]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[28]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[27]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.644ns  (logic 0.437ns (67.857%)  route 0.207ns (32.143%))
+  Logic Levels:           6  (CARRY8=4 FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/Q
+                         net (fo=3, unplaced)         0.143     0.220    bd_0_i/hls_inst/inst/CTRL_s_axi_U/a[1]
+                         LUT2 (Prop_LUT2_I1_O)        0.037     0.257 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8/O
+                         net (fo=1, unplaced)         0.023     0.280    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8_n_0
+                         CARRY8 (Prop_CARRY8_S[1]_CO[7])
+                                                      0.197     0.477 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.482    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.504 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.509    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.531 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.536    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_O[3])
+                                                      0.082     0.618 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[31]_i_1/O[3]
+                         net (fo=1, unplaced)         0.026     0.644    bd_0_i/hls_inst/inst/CTRL_s_axi_U/sum[27]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[27]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[22]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.638ns  (logic 0.436ns (68.339%)  route 0.202ns (31.661%))
+  Logic Levels:           5  (CARRY8=3 FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/Q
+                         net (fo=3, unplaced)         0.143     0.220    bd_0_i/hls_inst/inst/CTRL_s_axi_U/a[1]
+                         LUT2 (Prop_LUT2_I1_O)        0.037     0.257 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8/O
+                         net (fo=1, unplaced)         0.023     0.280    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8_n_0
+                         CARRY8 (Prop_CARRY8_S[1]_CO[7])
+                                                      0.197     0.477 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.482    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.504 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.509    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_O[6])
+                                                      0.103     0.612 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1/O[6]
+                         net (fo=1, unplaced)         0.026     0.638    bd_0_i/hls_inst/inst/CTRL_s_axi_U/sum[22]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[22]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[25]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.637ns  (logic 0.431ns (67.661%)  route 0.206ns (32.339%))
+  Logic Levels:           6  (CARRY8=4 FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDRE                         0.000     0.000 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/C
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.077 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_a_reg[1]/Q
+                         net (fo=3, unplaced)         0.143     0.220    bd_0_i/hls_inst/inst/CTRL_s_axi_U/a[1]
+                         LUT2 (Prop_LUT2_I1_O)        0.037     0.257 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8/O
+                         net (fo=1, unplaced)         0.023     0.280    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum[7]_i_8_n_0
+                         CARRY8 (Prop_CARRY8_S[1]_CO[7])
+                                                      0.197     0.477 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.482    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[7]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.504 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.509    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[15]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.531 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1/CO[7]
+                         net (fo=1, unplaced)         0.005     0.536    bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[23]_i_1_n_0
+                         CARRY8 (Prop_CARRY8_CI_O[1])
+                                                      0.076     0.612 r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[31]_i_1/O[1]
+                         net (fo=1, unplaced)         0.025     0.637    bd_0_i/hls_inst/inst/CTRL_s_axi_U/sum[25]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/CTRL_s_axi_U/int_sum_reg[25]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+

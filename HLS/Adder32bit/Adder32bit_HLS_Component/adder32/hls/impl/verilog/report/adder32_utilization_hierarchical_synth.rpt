@@ -1,0 +1,34 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
+| Date         : Sun Jan 11 15:55:45 2026
+| Host         : RimuruLenovo running 64-bit Ubuntu 24.04.3 LTS
+| Command      : report_utilization -hierarchical -hierarchical_depth 5 -file ./report/adder32_utilization_hierarchical_synth.rpt
+| Design       : bd_0_wrapper
+| Device       : xczu7ev-ffvc1156-2-e
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------+------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|       Instance       |               Module               | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++----------------------+------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| bd_0_wrapper         |                              (top) |        128 |        128 |       0 |    0 | 148 |      0 |      0 |    0 |          0 |
+|   bd_0_i             |                               bd_0 |        128 |        128 |       0 |    0 | 148 |      0 |      0 |    0 |          0 |
+|     hls_inst         |                    bd_0_hls_inst_0 |        128 |        128 |       0 |    0 | 148 |      0 |      0 |    0 |          0 |
+|       (hls_inst)     |                    bd_0_hls_inst_0 |          0 |          0 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|       inst           |            bd_0_hls_inst_0_adder32 |        128 |        128 |       0 |    0 | 148 |      0 |      0 |    0 |          0 |
+|         (inst)       |            bd_0_hls_inst_0_adder32 |          0 |          0 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|         CTRL_s_axi_U | bd_0_hls_inst_0_adder32_CTRL_s_axi |        128 |        128 |       0 |    0 | 148 |      0 |      0 |    0 |          0 |
++----------------------+------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+
+

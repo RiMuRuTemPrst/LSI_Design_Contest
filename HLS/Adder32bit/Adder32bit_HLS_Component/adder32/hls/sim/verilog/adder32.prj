@@ -1,0 +1,7 @@
+sv work "glbl.v"
+sv xil_defaultlib "AESL_axi_slave_CTRL.v"
+sv xil_defaultlib "adder32.autotb.v"
+sv xil_defaultlib "adder32.v"
+sv xil_defaultlib "adder32_CTRL_s_axi.v"
+sv xil_defaultlib "dataflow_monitor.sv"
+

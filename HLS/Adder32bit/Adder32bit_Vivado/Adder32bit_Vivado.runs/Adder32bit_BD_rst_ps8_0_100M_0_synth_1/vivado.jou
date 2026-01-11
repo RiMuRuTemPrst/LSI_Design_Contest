@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Sun Jan 11 17:30:33 2026
+# Process ID         : 77043
+# Current directory  : /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_Vivado/Adder32bit_Vivado.runs/Adder32bit_BD_rst_ps8_0_100M_0_synth_1
+# Command line       : vivado -log Adder32bit_BD_rst_ps8_0_100M_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Adder32bit_BD_rst_ps8_0_100M_0.tcl
+# Log file           : /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_Vivado/Adder32bit_Vivado.runs/Adder32bit_BD_rst_ps8_0_100M_0_synth_1/Adder32bit_BD_rst_ps8_0_100M_0.vds
+# Journal file       : /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit/Adder32bit_Vivado/Adder32bit_Vivado.runs/Adder32bit_BD_rst_ps8_0_100M_0_synth_1/vivado.jou
+# Running On         : RimuruLenovo
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.3 LTS
+# Processor Detail   : AMD Ryzen 5 5600H with Radeon Graphics
+# CPU Frequency      : 3917.523 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 16612 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20907 MB
+# Available Virtual  : 7239 MB
+#-----------------------------------------------------------
+source Adder32bit_BD_rst_ps8_0_100M_0.tcl -notrace

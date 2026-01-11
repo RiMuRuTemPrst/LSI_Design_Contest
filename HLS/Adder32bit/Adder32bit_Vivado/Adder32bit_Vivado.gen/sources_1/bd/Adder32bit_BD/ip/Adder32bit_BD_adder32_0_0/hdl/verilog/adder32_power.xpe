@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<POWERDATA author="Vivado Power Analysis" dataVersion="2024.2" design="bd_0_wrapper" designState="routed" date="Sun Jan 11 15:57:43 2026" pwrOpt="BRAMPwropt" activityLevel="vectorless">
+	<ENVIRONMENT>
+		<DEVICE part="xczu7ev" grade="extended" package="ffvc1156" speed="-2" process="typical" vid="No">
+		</DEVICE>
+		<VOLTAGESOURCES>
+			<SOURCE name="Vccbram" voltage="0.850000" icc="0.000000" iccq="0.001768" power="0.001503">
+			</SOURCE>
+			<SOURCE name="Vccint" voltage="0.850000" icc="0.232027" iccq="0.136419" power="0.313178">
+			</SOURCE>
+			<SOURCE name="Vccaux" voltage="1.800000" icc="0.000000" iccq="0.148405" power="0.267129">
+			</SOURCE>
+			<SOURCE name="Vccint_io" voltage="0.850000" icc="0.000000" iccq="0.069955" power="0.059462">
+			</SOURCE>
+			<SOURCE name="Vccaux_io" voltage="1.800000" icc="0.000000" iccq="0.055016" power="0.099029">
+			</SOURCE>
+			<SOURCE name="Vccadc" voltage="1.800000" icc="0.000000" iccq="0.008000" power="0.014400">
+			</SOURCE>
+			<SOURCE name="VCC_PSINTLP" voltage="0.850000" icc="0.000000" iccq="0.004924" power="0.004185">
+			</SOURCE>
+			<SOURCE name="VCC_PSPLL" voltage="1.200000" icc="0.000000" iccq="0.001500" power="0.001800">
+			</SOURCE>
+			<SOURCE name="VCC_PSAUX" voltage="1.800000" icc="0.000000" iccq="0.002200" power="0.003960">
+			</SOURCE>
+			<SOURCE name="VCC_PSADC" voltage="1.800000" icc="0.000000" iccq="0.001500" power="0.002700">
+			</SOURCE>
+			<SOURCE name="VCC_PSBATT" voltage="1.200000" icc="0.000000" iccq="0.000000" power="0.000000">
+			</SOURCE>
+			<SOURCE name="VCCINT_VCU" voltage="0.900000" icc="0.000000" iccq="0.025128" power="0.022615">
+			</SOURCE>
+		</VOLTAGESOURCES>
+		<THERMAL>
+			<AMBIENT value="25.000000">
+			</AMBIENT>
+			<AIRFLOW value="250.000000">
+			</AIRFLOW>
+			<HEATSINK value="medium (Medium Profile)">
+			</HEATSINK>
+			<BOARDSELECTION value="medium (10&quot;x10&quot;)">
+			</BOARDSELECTION>
+			<BOARDLAYERS value="12to15 (12 to 15 Layers)">
+			</BOARDLAYERS>
+			<TSA value="1.500000">
+			</TSA>
+			<TJB value="2.390000">
+			</TJB>
+			<BOARDTEMP value="25.0 (C)">
+			</BOARDTEMP>
+			<JUNCTION value="25.8 (C)">
+			</JUNCTION>
+		</THERMAL>
+	</ENVIRONMENT>
+	<BLOCKDETAILS>
+		<BYTYPE>
+			<BLOCKTYPE name="LOGIC">
+				<LOGIC clock="Unclocked_or_HFN_instance" clockFreq="100000.000000" clockFreq2="4296.730631" toggleRate="4.735709" toggleRate2="3.067792" totalRate="1061.975886" name="Unassigned_Clock" hierName="bd_0_wrapper/bd_0_i" writeRate="0.000000" enableRate="0.200253" fanout="3.688406" ru="5.638592" fanout2="3.448529" totalFanout="509.000000" fanoutRate="1113064.458437" numNets="345" extNets="138" SMUX="1" carry8s="4" ffs="148" luts="127" logicCap="72536095" signalCap="42024.923187" power="0.151481" sp="0.045741">
+				</LOGIC>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="IOBANK">
+				<IOBANK numInternalVref="0" numDelayControl="0" numLVDSBanks="0">
+				</IOBANK>
+			</BLOCKTYPE>
+		</BYTYPE>
+	</BLOCKDETAILS>
+</POWERDATA>
+
