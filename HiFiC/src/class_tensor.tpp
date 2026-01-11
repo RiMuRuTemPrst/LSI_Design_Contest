@@ -39,6 +39,11 @@ inline T &TensorMem<T>::at(int n, int h, int w, int c) {
     return data[index(n, h, w, c)];
 }
 template <typename T>
+inline T* raw_at(int n, int h, int w, int c) {
+    HLS_INLINE_PRAGMA
+    return &data[index(n, h, w, c)];
+}
+template <typename T>
 void TensorMem<T>::load_tile_to_stream(const Shape &start, const Shape &size, MyStream<T>& out_stream) {
     // Vòng lặp tính toán
     for (int n = 0; n < size.N; ++n)
@@ -69,3 +74,4 @@ void TensorMem<T>::store_stream_to_mem(const Shape &start, const Shape &size, My
         }
     }
 }
+
