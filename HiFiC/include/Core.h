@@ -213,6 +213,7 @@ public:
      * @return const T* 
      */
     inline const T* raw() const { return data; }
+    inline T* raw_at(int n, int h, int w, int c);
 
     void load_tile_to_stream(const Shape &start, const Shape &size, MyStream<T>& out_stream);
     void store_stream_to_mem(const Shape &start, const Shape &size, MyStream<T>& in_stream);
@@ -918,3 +919,4 @@ void Norm(TensorMem<T> &X, TensorMem<T> &Y, TensorMem<T> &gamma, TensorMem<T> &b
 #include "..\src\Norm.tpp"
 
 #endif 
+
