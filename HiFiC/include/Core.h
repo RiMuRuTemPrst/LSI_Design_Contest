@@ -23,6 +23,7 @@
     // --- MÔI TRƯỜNG PURE C++ (Software Simulation) ---
     #define HLS_INLINE_PRAGMA
     #define HLS_PIPELINE_PRAGMA
+    #define INTRINMINH 1
 
     #include <iostream>
     #include <vector>
@@ -919,4 +920,5 @@ void Norm(TensorMem<T> &X, TensorMem<T> &Y, TensorMem<T> &gamma, TensorMem<T> &b
 #include "..\src\Norm.tpp"
 
 #endif 
+
 
