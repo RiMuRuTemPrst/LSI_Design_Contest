@@ -31,6 +31,7 @@
     #include <cmath>
     #include <cassert>
     #include <inttypes.h>
+    #include <arm_neon.h>
 
     typedef float data_t;
 
@@ -920,5 +921,6 @@ void Norm(TensorMem<T> &X, TensorMem<T> &Y, TensorMem<T> &gamma, TensorMem<T> &b
 #include "..\src\Norm.tpp"
 
 #endif 
+
 
 
