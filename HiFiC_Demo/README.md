@@ -47,6 +47,13 @@ g++ hific_app.cpp -o hific_app -O3 -mcpu=cortex-a53 - `pkg-config --cflags --lib
 > `=> [INIT] Opening Camera via GStreamer...`
 > `[SYSTEM] Ready! Press Button 0 to capture image and run HiFiC model.`
 
+**Run fast demo about 5 minutes**
+```bash
+cd /home/root/
+# Launch test_capture
+./test_capture
+```
+
 ### Step 3.3: Trigger the Pipeline
 
 Locate **Push Button SW14** (Button 0) on the ZCU104 board. **Press it once.**
