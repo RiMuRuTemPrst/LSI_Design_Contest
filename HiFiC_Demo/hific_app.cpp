@@ -25,14 +25,38 @@
 #define GPIO_IRQ_STATUS 0x120
 #define GPIO_MAP_SIZE 0x10000
 
+static void GetMonitorResolution(int& w, int& h) {
+  w = 1366;
+  h = 768;
+
+  std::ifstream file("/sys/class/drm/card0-DP-1/modes");
+  std::string res;
+
+  if (file && std::getline(file, res)) {
+    size_t pos = res.find('x');
+
+    if (pos != std::string::npos) {
+      w = std::stoi(res.substr(0, pos));
+      h = std::stoi(res.substr(pos + 1));
+
+      std::cout << "[INFO] DP Resolution: " << w << "x" << h << std::endl;
+
+      return;
+    }
+  }
+
+  std::cout << "[WARN] Cannot detect monitor resolution. Using default: " << w
+            << "x" << h << std::endl;
+}
+
 int main() {
 std::cout << "==================================================" << std::endl;
 std::cout << "                      HiFiC App                   " << std::endl;
 std::cout << "==================================================" << std::endl;
 
 // -------- DISPLAY CONFIGURATION --------
-int screen_w = 1366;
-int screen_h = 768;
+int screen_w, screen_h;
+GetMonitorResolution(screen_w, screen_h);
 int panel_w = screen_w / 2;
 
 // Crop 1:1
@@ -50,7 +74,7 @@ int crop_size = 256;
 Shape io_shape(1, crop_size, crop_size, 3);
 int total_elements = crop_size * crop_size * 3;
 
-// Allocate memory buffers for model input and output ONCE
+// Allocate memory buffers for model input and output
 std::vector<_Float16> input_vec(total_elements);
 std::vector<_Float16> output_vec(total_elements);
 TensorMem<_Float16> model_input(input_vec.data(), io_shape, false);
@@ -84,8 +108,7 @@ struct pollfd fds = {
 };
 
 unsigned int last_value = 0;
-std::string gst_in =
-    "v4l2src device=/dev/video0 num-buffers=1 ! videoconvert ! appsink";
+std::string gst_in = "v4l2src device=/dev/video0 num-buffers=1 ! videoconvert ! appsink";
 
 while (1) {
 // Wait for hardware interrupt
@@ -145,10 +168,7 @@ if (poll(&fds, 1, -1) >= 1) {
             std::cout
                 << "=> [DISPLAY] Displaying INPUT image on the left side..."
                 << std::endl;
-            system("killall -9 gst-launch-1.0 2>/dev/null");  // Clear any
-                                                            // existing
-                                                            // GStreamer
-                                                            // pipelines
+            system("killall -9 gst-launch-1.0 2>/dev/null");  // Clear any existing GStreamer pipelines
             char cmd_left_only[1024];
             snprintf(cmd_left_only, sizeof(cmd_left_only),
                     "gst-launch-1.0 compositor name=comp "
@@ -213,10 +233,7 @@ if (poll(&fds, 1, -1) >= 1) {
             std::cout << "=> [DISPLAY] Displaying both INPUT and OUTPUT on "
                         "the screen..."
                     << std::endl;
-            system("killall -9 gst-launch-1.0 2>/dev/null");  // Clear any
-                                                            // existing
-                                                            // GStreamer
-                                                            // pipelines
+            system("killall -9 gst-launch-1.0 2>/dev/null");  // Clear any existing GStreamer pipelines
             char cmd_both[2048];
             snprintf(cmd_both, sizeof(cmd_both),
                     "gst-launch-1.0 compositor name=comp "
