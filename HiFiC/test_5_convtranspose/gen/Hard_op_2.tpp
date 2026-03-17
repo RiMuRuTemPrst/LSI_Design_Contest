@@ -147,7 +147,7 @@ void ConvTranspose(T* X, T* W, T* B, T* Y) {
                 #pragma HLS PIPELINE II=1
 
                 int h = start_wind_h + hf, w = start_wind_w + wf;
-                if (h >= 0 && w >= 0 //&& h < H_OUT - 1 && w < W_OUT - 1
+                if (h >= 0 && w >= 0 && h < H_OUT && w < W_OUT 
                         && (hf < 2 || hi == H_IN - 1) && (wf < 2 || wi == W_IN - 1)) {
                     int y_id = get_index(n, h, w, 0, H_OUT, W_OUT, C_OUT);
                     store_buffer<C_OUT>(y_buffer[hf][wf], &Y[y_id]);
