@@ -156,14 +156,6 @@ void ConvTranspose(T* X, T* W, T* B, T* Y) {
         }  // end hi-wi
     }  // end batch
 }
-template void ConvTranspose<16, 1, 960, 480, 16, 16, 3, 3, 32, 32>
-        (float*, float*, float*, float*);
-template void ConvTranspose<16, 1, 480, 240, 32, 32, 3, 3, 64, 64>
-        (float*, float*, float*, float*);
-template void ConvTranspose<16, 1, 240, 120, 64, 64, 3, 3, 128, 128>
-        (float*, float*, float*, float*);
-template void ConvTranspose<16, 1, 120, 60, 128, 128, 3, 3, 256, 256>
-        (float*, float*, float*, float*);
 
 
 // Hàm Top-Level phần cứng để Vitis HLS tổng hợp
