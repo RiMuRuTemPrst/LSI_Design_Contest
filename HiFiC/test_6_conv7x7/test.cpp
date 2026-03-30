@@ -39,7 +39,7 @@ int main() {
     begin = clock();
 
     
-    Conv_7x7<12, 1, 60, 3, 256, 256, 7, 7, 256, 256>(input, weight_1, bias_1, output);
+    Conv_7x7<12, 1, 60, 3, 256, 256, 7, 7, 256, 256>(input.raw(), weight_1.raw(), bias_1.raw(), output.raw());
     end = clock();
 
     std::cout << "Arena_1 max size: " << ARENA_1.max_runtime_size << "\n" 
