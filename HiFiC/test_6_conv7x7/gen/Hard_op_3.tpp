@@ -147,3 +147,23 @@ void Conv_7x7(T* X, T* W, T* B, T* Y) {
         }
     }
 }
+
+void HW_Conv7x7(
+    float* X, float* W, float* B, float* Y
+) {
+    // 1. Khai báo cổng AXI Master để IP có thể cắm vào DRAM (DDR)
+    #pragma HLS INTERFACE m_axi port=X bundle=gmem_X depth=3932160
+    #pragma HLS INTERFACE m_axi port=W bundle=gmem_W depth=8820
+    #pragma HLS INTERFACE m_axi port=B bundle=gmem_B depth=3
+    #pragma HLS INTERFACE m_axi port=Y bundle=gmem_Y depth=196608
+    
+    // 2. Khai báo cổng AXI-Lite để CPU (ARM/Host) điều khiển truyền địa chỉ bộ nhớ
+    #pragma HLS INTERFACE s_axilite port=X bundle=control
+    #pragma HLS INTERFACE s_axilite port=W bundle=control
+    #pragma HLS INTERFACE s_axilite port=B bundle=control
+    #pragma HLS INTERFACE s_axilite port=Y bundle=control
+    #pragma HLS INTERFACE s_axilite port=return bundle=control
+
+    // 3. Gọi Template tương ứng
+    Conv_7x7<12, 1, 60, 3, 256, 256, 7, 7, 256, 256>(X, W, B, Y);
+}
