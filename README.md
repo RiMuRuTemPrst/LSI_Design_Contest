@@ -1,20 +1,22 @@
-# LSI Design Contest - High-Fidelity Generative Image Compression (HiFiC)
+# LSI Design Contest 2026 - HiFiC FPGA Optimization
 
-Dự án tối ưu hóa mô hình HiFiC cho FPGA (ZCU104) phục vụ cuộc thi thiết kế LSI.
+Dự án tối ưu hóa mô hình **High-Fidelity Generative Image Compression (HiFiC)** cho FPGA (ZCU104).
 
-## Cấu trúc thư mục (New Structure)
+## 📁 Cấu trúc Dữ liệu (Assets)
+Dữ liệu được chia thành 2 bộ chính để phục vụ test từng phần hoặc toàn bộ hệ thống:
 
-- `src/`: Mã nguồn chính của dự án.
-    - `src/core/`: Thư viện lõi (C++ templates) cho tensor operations, conv, v.v.
-    - `src/apps/`: Các ứng dụng thực thi (encoder, generator, demo).
-    - `src/hls/`: Các dự án/IP Cores cho Vitis HLS (Conv77, GAN, Adder, v.v.).
-- `tests/`: Các kịch bản kiểm thử (unit test và integration test).
-- `sim/`: Môi trường mô phỏng C++ standalone.
-- `assets/`: Tài sản tĩnh (Model weights, test vectors, cấu hình board).
-- `docs/`: Tài liệu hướng dẫn và các bài báo khảo sát.
-- `labs/`: Các bài thực hành/lab nền tảng về HLS.
-- `scripts/`: Các script hỗ trợ (Python) để kiểm tra độ chính xác (RMSE, compare).
+- **Bộ 1 (Generator Focus)**:
+    - `assets/test_data/model_params/`: Trọng số của khối **Generator (Decoder)**.
+    - `assets/test_data/io_params/`: Vector vào/ra trung gian để test độc lập Decoder.
+- **Bộ 2 (End-to-End Focus)**:
+    - `assets/test_data/model_params_2/`: Trọng số của khối **Encoder** và **Hyperprior**.
+    - `assets/test_data/io_params_2/`: Dữ liệu test toàn hệ thống.
+        - `main_input_image.txt`: Ảnh đầu vào gốc (256x256x3).
+        - `main_output_gold.txt`: Kết quả chuẩn (Gold) để so sánh.
 
-## Link Drive Model ONNX 
+## 🚀 Quick Start
+- **Mã nguồn**: `src/`.
+- **Mô phỏng End-to-End**: Chạy `src/apps/Hific_full.cpp`. Kết quả sẽ xuất ra `assets/test_data/io_params_2/main_output_result.txt`.
 
-https://drive.google.com/drive/folders/1rIFSeccSnSQJDVDc3nhCQjibEOhMbgoR
+---
+*Dự án phục vụ cuộc thi thiết kế LSI 2026.*
