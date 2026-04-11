@@ -1,18 +1,18 @@
 #pragma once
-#include "/home/rimurutempest/Code/LSI_Design_Contest/HiFiC/GAN_HLS/gen/Core.h"
+#include "Core.h"
 
 extern "C" {
 void resblock_top(
-    data_t* X,              // [1][16][16][960]
-    const data_t* W1,       // [960][3][3][960]
-    const data_t* B1,       // [960]
-    const data_t* G1,       // [960]
-    const data_t* BE1,      // [960]
-    const data_t* W2,
-    const data_t* B2,
-    const data_t* G2,
-    const data_t* BE2,
-    data_t* Y,              // [1][16][16][960]
-    data_t epsilon
+    data_256_t* X,              // [1][16][16][960] - read+write (intermediate results)
+    const data_256_t* W1,             // [960][3][3][960] - Weight block 1
+    const data_256_t* B1,             // [960] - Bias block 1
+    const data_256_t* G1,             // [960] - Gamma block 1
+    const data_256_t* BE1,            // [960] - Beta block 1
+    const data_256_t* W2,             // Weight block 2
+    const data_256_t* B2,             // Bias block 2
+    const data_256_t* G2,             // Gamma block 2
+    const data_256_t* BE2,            // Beta block 2
+    data_256_t* Y,              // [1][16][16][960] - Final Output
+    data_t epsilon                // Small value for numerical stability
 );
 }

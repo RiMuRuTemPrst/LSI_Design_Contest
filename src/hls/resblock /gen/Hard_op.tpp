@@ -1,5 +1,5 @@
 #pragma once
-#include "/home/rimurutempest/Code/LSI_Design_Contest/HiFiC/GAN_HLS/gen/Core.h"
+#include "Core.h"
 
 #if !defined(__SYNTHESIS__)
   #include <cassert>
@@ -10,37 +10,56 @@
   #include <hls_math.h>
 #endif
 
+#include <cstring>
+
 // ============================================================
-// Small utilities
+// TYPE PUNNING & SCALAR HELPERS
 // ============================================================
-template<int SIZE, typename T>
-static inline void load_buffer(T buffer[SIZE], const T* data) {
+
+template <typename T>
+static inline ap_uint<16> half_to_bits(T val) {
 #pragma HLS INLINE
-    for (int i = 0; i < SIZE; i++) {
-#pragma HLS PIPELINE II=1
-        buffer[i] = data[i];
-    }
+#if defined(__SYNTHESIS__)
+    union { T f; uint16_t i; } u;
+    u.f = val;
+    return ap_uint<16>(u.i);
+#else
+    ap_uint<16> out;
+    unsigned short temp;
+    std::memcpy(&temp, &val, sizeof(unsigned short));
+    out = temp;
+    return out;
+#endif
 }
 
-template<int SIZE, typename T>
-static inline void store_buffer(const T buffer[SIZE], T* data) {
-#pragma HLS INLINE
-    for (int i = 0; i < SIZE; i++) {
-#pragma HLS PIPELINE II=1
-        data[i] = buffer[i];
-    }
+template <typename T>
+static inline T bits_to_half(ap_uint<16> bits) {
+#pragma HLS INLINE  
+#if defined(__SYNTHESIS__)
+    union { uint16_t i; T f; } u;
+    u.i = bits.to_uint();
+    return u.f;
+#else
+    T out;
+    unsigned short val = bits.to_uint();
+    std::memcpy(&out, &val, sizeof(unsigned short));
+    return out;
+#endif
 }
 
-static inline int mod_3(int n) {
+// Flattened index for 4D tensor (N, H, W, C)
+static inline int flat_idx(int n, int h, int w, int c, int H, int W, int C) {
 #pragma HLS INLINE
-    switch (n) {
-        case 0: case 3: case 6: case 9:  case 12: case 15: return 0;
-        case 1: case 4: case 7: case 10: case 13: case 16: return 1;
-        case 2: case 5: case 8: case 11: case 14: case 17: return 2;
-        default: return 0;
-    }
+    return ((n * H + h) * W + w) * C + c;
 }
 
+// Flattened index for 4D weight tensor (CO, KH, KW, CI) — 3×3 kernel
+static inline int w_flat_idx(int co, int kh, int kw, int ci, int C_IN) {
+#pragma HLS INLINE
+    return ((co * 3 + kh) * 3 + kw) * C_IN + ci;
+}
+
+// Hardware-aware square root
 static inline float my_sqrt_f(float x) {
 #pragma HLS INLINE
 #if defined(__SYNTHESIS__)
@@ -50,427 +69,445 @@ static inline float my_sqrt_f(float x) {
 #endif
 }
 
-template<typename T>
-static inline T fmul_dsp(T a, T b) {
-#pragma HLS INLINE
-    T p = a * b;
-#pragma HLS BIND_OP variable=p op=fmul impl=dsp
-    return p;
-}
-
-template<typename T>
-static inline T fadd_lat4(T a, T b) {
-#pragma HLS INLINE
-    T s = a + b;
-#pragma HLS BIND_OP variable=s op=fadd latency=4
-    return s;
-}
-
 // ============================================================
-// Direction-2 compute kernel: C_OUT blocking + 2-pass norm
+// SUB-FUNCTION 1: load_params
 // ============================================================
-
-template<
-    int PEs, int C_IN, int C_OUT,
-    int LANE, int ACC_DEPTH, int ACC_MASK, int C_OBLK,
-    typename T
->
-static inline void conv_block_one_pe(
-    const Shape &x_shape,
-    const Shape &y_shape,
-    int r, int width,
-    int pe,
-    T x_buffer[],
-    T w_buffer[],
-    const T b_buffer[],
-    TensorMem<T> &W_1,
-    TensorMem<T> &W_2,
-    int times,
-    int co0,
-    T y_blk_out[C_OBLK]
+// Purpose : Load bias / gamma / beta from DDR → on-chip data_256_t buffers.
+// Shared  : Called identically for Layer 1 (B1/G1/BE1) and Layer 2 (B2/G2/BE2).
+// Transfer: DDR ──256-bit/beat──► b_buf_256 / gamma_buf_256 / beta_buf_256
+//           Data remains packed as 256-bit words; unpacking is deferred to PASS B.
+// ============================================================
+template<int C_OUT, typename T>
+static void load_params(
+    DDR_CONST_PTR  B_ptr,                       // [C_OUT/16] Bias  (256-bit words)
+    DDR_CONST_PTR  G_ptr,                       // [C_OUT/16] Gamma (256-bit words)
+    DDR_CONST_PTR  BE_ptr,                      // [C_OUT/16] Beta  (256-bit words)
+    data_256_t     b_buf   [C_OUT / PACK_256],  // On-chip bias   buffer (256-bit)
+    data_256_t     gamma_buf[C_OUT / PACK_256], // On-chip gamma  buffer (256-bit)
+    data_256_t     beta_buf [C_OUT / PACK_256]  // On-chip beta   buffer (256-bit)
 ) {
-#pragma HLS INLINE
-
-    const int y_h = r * width;
-    (void)y_h;
-    const int y_w = pe;
-    (void)y_w;
-    const int x_h = -1 + y_h;
-    const int x_w = -1 + y_w;
-
-    int i, j, *w_h, *w_w, _dh, _dw;
-    T* x_points_1;
-    T* x_points_2;
-
-    if (x_w < 0 || x_w + 2 == x_shape.W) {
-        w_h = &j; w_w = &i; _dh = 0; _dw = 2;
-    } else {
-        w_h = &i; w_w = &j; _dh = 2; _dw = 0;
+#pragma HLS INLINE off
+    // Three separate burst loops → each AXI port delivers II=1 independently.
+    // One combined loop caused II=3 because B_ptr/G_ptr/BE_ptr share gmem_param bundle.
+    LOAD_BIAS: for (int i = 0; i < C_OUT / PACK_256; i++) {
+#pragma HLS PIPELINE II=1
+        b_buf[i] = B_ptr[i];
     }
-
-#ifndef __SYNTHESIS__
-    assert((co0 & 1) == 0); // keep (co odd -> co-1) inside block
-#endif
-
-CO_LOOP:
-    for (int t = 0; t < C_OBLK; t++) {
-        const int co = co0 + t;
-
-        T v_sum1[LANE][ACC_DEPTH];
-        T v_sum2[LANE][ACC_DEPTH];
-#pragma HLS ARRAY_PARTITION variable=v_sum1 complete dim=0
-#pragma HLS ARRAY_PARTITION variable=v_sum2 complete dim=0
-
-RST_K:
-        for (int k = 0; k < LANE; k++) {
-#pragma HLS UNROLL
-RST_D:
-            for (int d = 0; d < ACC_DEPTH; d++) {
-#pragma HLS UNROLL
-                v_sum1[k][d] = (T)0;
-                v_sum2[k][d] = (T)0;
-            }
-        }
-
-        int d_h, d_w;
-
-KERNEL_IJ:
-        for (i = 0, d_h = _dh, d_w = _dw; i < 2; i++, d_h = 2 - d_h, d_w = 2 - d_w)
-        for (j = 0; j < 3; j++) {
-
-            int h = x_h + *w_h;
-            int w = x_w + *w_w;
-
-            // Middle point logic (match original)
-            if (i == 1 && j == 1) {
-                if (co & 1) {
-                    T v_prev[LANE][ACC_DEPTH];
-#pragma HLS ARRAY_PARTITION variable=v_prev complete dim=0
-
-RST_PRE_K:
-                    for (int k = 0; k < LANE; k++) {
-#pragma HLS UNROLL
-RST_PRE_D:
-                        for (int d = 0; d < ACC_DEPTH; d++) {
-#pragma HLS UNROLL
-                            v_prev[k][d] = (T)0;
-                        }
-                    }
-
-                    x_points_1 = x_points_2 = &x_buffer[(mod_3(h + 1) * y_shape.W + w) * C_IN];
-
-                    if (!times) {
-                        load_buffer<C_IN>(w_buffer,        W_1.raw_at(co,     i, j, 0));
-                        load_buffer<C_IN>(&w_buffer[C_IN], W_1.raw_at(co - 1, i, j, 0));
-                    } else {
-                        load_buffer<C_IN>(w_buffer,        W_2.raw_at(co,     i, j, 0));
-                        load_buffer<C_IN>(&w_buffer[C_IN], W_2.raw_at(co - 1, i, j, 0));
-                    }
-
-                    int acc_idx = 0;
-
-CI_CENTER:
-                    for (int ci = 0; ci < C_IN; ci += LANE) {
+    LOAD_GAMMA: for (int i = 0; i < C_OUT / PACK_256; i++) {
 #pragma HLS PIPELINE II=1
-K_CENTER:
-                        for (int k = 0; k < LANE; k++) {
-#pragma HLS UNROLL
-                            T xval = x_points_1[ci + k];
-                            T wcur = w_buffer[ci + k];
-                            T wpre = w_buffer[ci + k + C_IN];
-
-                            T val_cur = fmul_dsp(xval, wcur);
-                            T val_pre = fmul_dsp(xval, wpre);
-
-                            v_sum1[k][acc_idx] = fadd_lat4(v_sum1[k][acc_idx], val_cur);
-                            v_prev[k][acc_idx] = fadd_lat4(v_prev[k][acc_idx], val_pre);
-                        }
-                        acc_idx = (acc_idx + 1) & ACC_MASK;
-                    }
-
-                    T prev_sum = (T)0;
-RED_PRE_K:
-                    for (int k = 0; k < LANE; k++) {
-#pragma HLS UNROLL
-RED_PRE_D:
-                        for (int d = 0; d < ACC_DEPTH; d++) {
-#pragma HLS UNROLL
-                            prev_sum = fadd_lat4(prev_sum, v_prev[k][d]);
-                        }
-                    }
-
-                    y_blk_out[t - 1] = fadd_lat4(y_blk_out[t - 1], prev_sum);
-                }
-                break;
-            }
-
-            // Normal convolution logic (reflect padding + dup)
-            char dup = 0;
-            int ops_h = h + d_h, ops_w = w + d_w;
-            int ops_w_h = *w_h + d_h, ops_w_w = *w_w + d_w;
-
-            if (h < 0) { dup = 1; h = -h; }
-            else if (h >= x_shape.H) { dup = 1; h = (x_shape.H << 1) - h - 2; }
-            if (w < 0) { dup = 1; w = -w; }
-            else if (w >= x_shape.W) { dup = 1; w = (x_shape.W << 1) - w - 2; }
-            if (ops_h < 0 || ops_h >= x_shape.H || ops_w < 0 || ops_w >= x_shape.W) dup = 1;
-
-            x_points_1 = &x_buffer[(mod_3(h + 1) * y_shape.W + w) * C_IN];
-            if (dup) x_points_2 = x_points_1;
-            else     x_points_2 = &x_buffer[(mod_3(ops_h + 1) * y_shape.W + ops_w) * C_IN];
-
-            if (!times) {
-                load_buffer<C_IN>(w_buffer,        W_1.raw_at(co, *w_h, *w_w, 0));
-                load_buffer<C_IN>(&w_buffer[C_IN], W_1.raw_at(co, ops_w_h, ops_w_w, 0));
-            } else {
-                load_buffer<C_IN>(w_buffer,        W_2.raw_at(co, *w_h, *w_w, 0));
-                load_buffer<C_IN>(&w_buffer[C_IN], W_2.raw_at(co, ops_w_h, ops_w_w, 0));
-            }
-
-            int acc_idx = 0;
-
-CI_LOOP:
-            for (int ci = 0; ci < C_IN; ci += LANE) {
+        gamma_buf[i] = G_ptr[i];
+    }
+    LOAD_BETA: for (int i = 0; i < C_OUT / PACK_256; i++) {
 #pragma HLS PIPELINE II=1
-K_LOOP:
-                for (int k = 0; k < LANE; k++) {
-#pragma HLS UNROLL
-                    T x1 = x_points_1[ci + k];
-                    T x2 = x_points_2[ci + k];
-                    T w1 = w_buffer[ci + k];
-                    T w2 = w_buffer[ci + k + C_IN];
-
-                    T val1 = fmul_dsp(x1, w1);
-                    T val2 = fmul_dsp(x2, w2);
-
-                    v_sum1[k][acc_idx] = fadd_lat4(v_sum1[k][acc_idx], val1);
-                    v_sum2[k][acc_idx] = fadd_lat4(v_sum2[k][acc_idx], val2);
-                }
-                acc_idx = (acc_idx + 1) & ACC_MASK;
-            }
-        }
-
-        T psum = (T)0;
-RED_K:
-        for (int k = 0; k < LANE; k++) {
-#pragma HLS UNROLL
-RED_D:
-            for (int d = 0; d < ACC_DEPTH; d++) {
-#pragma HLS UNROLL
-                T tmp = fadd_lat4(v_sum1[k][d], v_sum2[k][d]);
-                psum = fadd_lat4(psum, tmp);
-            }
-        }
-
-        y_blk_out[t] = fadd_lat4(psum, b_buffer[co]);
+        beta_buf[i] = BE_ptr[i];
     }
 }
 
 // ============================================================
-// Main kernel
+// SUB-FUNCTION 2: init_rows
+// ============================================================
+// Purpose  : Load 3 IFM seed rows from DDR → circular x_buf_256 (BRAM).
+// Shared   : SAVE_SKIP=true for Layer 1 (copies input identity to URAM skip buffer).
+//            SAVE_SKIP=false for Layer 2 (row load only; skip already saved).
+// Transfer : DDR ──256-bit/beat──► x_buf_256[slot][w][c_word]
+//            x_buf_256 ──256-bit/beat──► skip_buf_256 (Layer 1 only)
+// ============================================================
+template<int W_DIM, int C_IN, bool SAVE_SKIP, typename T>
+static void init_rows(
+    DDR_CONST_PTR   X_ptr,                                         // Input DDR
+    data_256_t      x_buf_256[4][W_DIM][C_IN / PACK_256],          // IFM circular buf
+    data_256_t      skip_buf_256[MODEL_H * MODEL_W * C_IN / PACK_256], // URAM skip buf
+    int             n                                               // Batch index
+) {
+#pragma HLS INLINE off
+    constexpr int H             = MODEL_H;
+    constexpr int W             = MODEL_W;
+    constexpr int C_WORDS       = C_IN / PACK_256;         // e.g. 60 for C_IN=960
+    constexpr int WORDS_PER_ROW = W_DIM * C_WORDS;         // 256-bit words per IFM row
+
+    INIT_3_INPUT_ROWS: for (int row_init = 0; row_init < 3; row_init++) {
+        int h       = row_init - 1;
+        int h_clamp = (h < 0) ? -h : ((h >= H) ? (H << 1) - h - 2 : h);
+        int slot    = (h + 1) & 3;                     // Circular buffer slot [0..3]
+        int base    = flat_idx(n, h_clamp, 0, 0, H, W, C_IN); // Flat element offset
+
+        // Load one full IFM row as 256-bit words
+        LOAD_1_INPUT_ROW: for (int i = 0; i < WORDS_PER_ROW; i++) {
+#pragma HLS PIPELINE II=1
+            x_buf_256[slot][i / C_WORDS][i % C_WORDS] = X_ptr[base / PACK_256 + i];
+        }
+
+        // Save identity skip connection (Layer 1 only — compile-time eliminated for L2)
+        if (SAVE_SKIP && h >= 0 && h < H) {
+            int skip_base = h * WORDS_PER_ROW;
+            SAVE_1_SKIP_ROW: for (int i = 0; i < WORDS_PER_ROW; i++) {
+#pragma HLS PIPELINE II=1
+                skip_buf_256[skip_base + i] = x_buf_256[slot][i / C_WORDS][i % C_WORDS];
+            }
+        }
+    }
+}
+
+// ============================================================
+// SUB-FUNCTION 3: conv_cnorm_act
+// ============================================================
+// Purpose     : Full ResBlock compute stage for one layer.
+//               IS_FINAL_LAYER=false → Layer 1 (Conv → CNorm → ReLU → X_ptr)
+//               IS_FINAL_LAYER=true  → Layer 2 (Conv → CNorm → Add Skip → Y_ptr)
+//
+// Internal 256-bit data paths:
+//   x_buf_256 ──256b──► unpack 4 FP16/PE ──► PE×16 accumulate ──pack──► y_cache_256
+//   y_cache_256 ──256b──► unpack 16 FP16 ──► CNorm ──► ReLU/AddSkip ──pack──► DDR
+//   skip_buf_256 ──256b──► unpack 16 FP16 (Layer 2 Add)
+//   W_ptr DDR ──256b──► w_buf_256 ping-pong ──► weight unpacking
+// ============================================================
+template<int PEs, int C_IN, int C_OUT, typename T>
+static void conv_cnorm_act(
+    DDR_CONST_PTR   X_ptr,                                         // IFM (DDR, 256-bit)
+    DDR_CONST_PTR   W_ptr,                                         // Weights (DDR, 256-bit)
+    DDR_PTR         Out_ptr,                                       // Output (DDR, 256-bit)
+    data_256_t      b_buf_256   [C_OUT / PACK_256],                // Bias   (on-chip, 256-bit)
+    data_256_t      gamma_buf_256[C_OUT / PACK_256],               // Gamma  (on-chip, 256-bit)
+    data_256_t      beta_buf_256 [C_OUT / PACK_256],               // Beta   (on-chip, 256-bit)
+    data_256_t      x_buf_256[4][MODEL_W][C_IN / PACK_256],        // IFM circular buffer
+    data_256_t      skip_buf_256[MODEL_H * MODEL_W * C_OUT / PACK_256], // URAM skip buffer
+    data_256_t      w_buf_256[2][C_IN / PACK_256],                 // Weight ping-pong
+    T               y_cache_16[PEs][C_OUT],                        // Conv output (FP16 array to strictly avoid wide RMW)
+    T               epsilon,
+    int             n,                                             // Batch index
+    bool            is_final_layer                                 // Extracted from template to enable Resource Sharing
+) {
+#pragma HLS INLINE off
+    constexpr int H         = MODEL_H;
+    constexpr int W         = MODEL_W;
+    constexpr int width     = PEs / W;
+    constexpr int rolls     = H / width;
+    constexpr int C_WORDS   = C_IN / PACK_256;      // 256-bit words per channel set
+    constexpr int WPR       = MODEL_W * C_IN / PACK_256; // Words per IFM row
+
+    const int   num              = C_OUT;
+    const T     adjustment_scale = (T)num / (T)(num - 1);
+    const float pre_div          = 1.0f / my_sqrt_f((float)(num - 1));
+    const float pre_div_sq       = pre_div * pre_div;
+
+    Slide_PEs_loop:
+    for (int r = 0; r < rolls; r++) {
+
+        // ChannelNorm statistics accumulators (one per PE)
+        float sum_acc[PEs];
+        float sumsq_acc[PEs];
+#pragma HLS ARRAY_PARTITION variable=sum_acc   complete
+#pragma HLS ARRAY_PARTITION variable=sumsq_acc complete
+        INIT_STATS: for (int pe = 0; pe < PEs; pe++) { sum_acc[pe] = 0.0f; sumsq_acc[pe] = 0.0f; }
+
+        // ================================================================
+        // PASS A: Convolution
+        // Transfer: x_buf_256 ──256-bit──► unpack 4 FP16/PE/cycle
+        //           ──► PE×16 MAC ──pack──► y_cache_256
+        // ================================================================
+        
+        int ping = 0;
+
+        // Pre-load very first Ping buffer (co=0, step=0) BEFORE the co loop
+        // to completely eliminate the 57,600 cycle LOAD_1_WEIGHT_PINGPONG penalty.
+        int w_init_base = w_flat_idx(0, 0, 0, 0, C_IN) / PACK_256;
+        LOAD_1_WEIGHT_PINGPONG: for (int i = 0; i < C_WORDS; i++) {
+#pragma HLS PIPELINE II=1
+            w_buf_256[0][i] = W_ptr[w_init_base + i];
+        }
+
+        data_256_t b_word_reg; // Gearbox Shift Register cho Bias
+
+        PASS_A: for (int co = 0; co < C_OUT; co++) {
+
+            T psum[PEs][8];
+#pragma HLS ARRAY_PARTITION variable=psum complete dim=0
+            INIT_PSUM: for (int pe = 0; pe < PEs; pe++) {
+#pragma HLS UNROLL
+                for (int l = 0; l < 8; l++) {
+#pragma HLS UNROLL
+                    psum[pe][l] = (T)0;
+                }
+            }
+
+            // Scan all 9 positions of the 3×3 kernel
+            CONV_STEP_LOOP: for (int step = 0; step < 9; step++) {
+                int kh = step / 3, kw = step % 3;
+                int ns   = step + 1;
+                int n_kh = ns / 3, n_kw = ns % 3;
+
+                int h_row = r * width + (kh - 1);
+                int slot  = (h_row + 1) & 3;
+
+                // Pre-compute Pong weight word base (for next step OR next co output channel)
+                int wn_base;
+                bool do_load = false;
+                if (ns < 9) {
+                    wn_base = w_flat_idx(co, n_kh, n_kw, 0, C_IN) / PACK_256;
+                    do_load = true;
+                } else if (co < C_OUT - 1) { // step == 8, load step=0 of Next Channel!
+                    wn_base = w_flat_idx(co + 1, 0, 0, 0, C_IN) / PACK_256;
+                    do_load = true;
+                }
+
+                // Gearbox Shift Registers (Replaces dynamic MUXing)
+                data_256_t w_word_reg;
+                data_256_t x_word_reg[PEs];
+#pragma HLS ARRAY_PARTITION variable=x_word_reg complete
+
+                // Compute + Pong-load interleaved (PIPELINE II=1)
+                // ci steps by 4 — unpack 4 FP16 from 256-bit word per cycle
+                COMPUTE_LOAD_LOOP: for (int ci = 0; ci < C_IN; ci += 4) {
+#pragma HLS PIPELINE II=1
+                    int acc_idx = (ci / 4) & 7;
+                    int widx    = ci / PACK_256;   // Which 256-bit word
+                    int boff    = ci % PACK_256;   // Bit offset within word: 0, 4, 8, 12
+#pragma HLS DEPENDENCE variable=psum type=inter false
+
+                    // --- Gearbox: Load from BRAM or Shift ---
+                    if (boff == 0) {
+                        w_word_reg = w_buf_256[ping][widx];
+                    } else {
+                        w_word_reg >>= 64; // Zero-LUT shift down
+                    }
+
+                    // Extract static 64-bit slice perfectly mapped to MUX-free wire routing
+                    T w0 = bits_to_half<T>(w_word_reg.range(15, 0));
+                    T w1 = bits_to_half<T>(w_word_reg.range(31, 16));
+                    T w2 = bits_to_half<T>(w_word_reg.range(47, 32));
+                    T w3 = bits_to_half<T>(w_word_reg.range(63, 48));
+
+                    // --- 256-bit x_buf_256 → PE kernel ---
+                    // Each PE reads a 256-bit word and unpacks 4 FP16 values per cycle
+                    PE_UNROLL: for (int pe = 0; pe < PEs; pe++) {
+#pragma HLS UNROLL
+                        int wx  = pe + (kw - 1);
+                        int wc  = (wx < 0) ? -wx : ((wx >= W) ? (W<<1)-wx-2 : wx);
+                        
+                        if (boff == 0) {
+                            x_word_reg[pe] = x_buf_256[slot][wc][widx];
+                        } else {
+                            x_word_reg[pe] >>= 64; // Zero-LUT shift down
+                        }
+
+                        T x0 = bits_to_half<T>(x_word_reg[pe].range(15, 0));
+                        T x1 = bits_to_half<T>(x_word_reg[pe].range(31, 16));
+                        T x2 = bits_to_half<T>(x_word_reg[pe].range(47, 32));
+                        T x3 = bits_to_half<T>(x_word_reg[pe].range(63, 48));
+
+                        psum[pe][acc_idx] += (x0*w0 + x1*w1) + (x2*w2 + x3*w3);
+                    }
+
+                    // --- Pong load: one 256-bit word per 4 ci steps (boff==0) ---
+                    // Loads next-step or next-channel weights while current-step computation runs
+                    if (do_load && boff == 0) {
+                        w_buf_256[1-ping][widx] = W_ptr[wn_base + widx];
+                    }
+                } // End COMPUTE_LOAD_LOOP
+                ping ^= 1; // Swap ping and pong
+            } // End CONV_STEP_LOOP
+
+            // Unpack bias for channel co using Gearbox ! (0 LUT MUX, 1 BRAM read per 16 co)
+            if ((co % PACK_256) == 0) {
+                b_word_reg = b_buf_256[co / PACK_256];
+            } else {
+                b_word_reg >>= 16; // Shift down by 16 bits (one FP16)
+            }
+            T bias = bits_to_half<T>(b_word_reg.range(15, 0)); // Hard-wiring, Zero-LUT MUX
+
+            // --- Final reduction → write into y_cache_16 ---
+            // Transfer: Conv output ─FP16─► y_cache_16[pe][co] (Conv → CNorm interface)
+            FINAL_ACCUMULATION: for (int pe = 0; pe < PEs; pe++) {
+#pragma HLS PIPELINE II=1
+                T total = (T)0;
+                for (int l = 0; l < 8; l++) total += psum[pe][l];
+
+                T fout = total + bias;
+
+                // Write single FP16 directly (Tốn đúng 1 nhịp Write, KHÔNG Read-Modify-Write)
+                y_cache_16[pe][co] = fout;
+
+                float ff = (float)fout;
+                sum_acc[pe]   += ff;
+                sumsq_acc[pe] += ff * ff;
+            }
+        } // End PASS_A
+
+        // --- Pre-fetch next IFM row + optionally save skip (Layer 1 only) ---
+        if (r < rolls - 1) {
+            int h_next = r + 2;
+            int h_c    = (h_next >= H) ? (H<<1)-h_next-2 : h_next;
+            int slot   = (h_next + 1) & 3;
+            int base   = flat_idx(n, h_c, 0, 0, H, W, C_IN);
+
+            PREFETCH_NEXT_INPUT_ROW: for (int i = 0; i < WPR; i++) {
+#pragma HLS PIPELINE II=1
+                x_buf_256[slot][i / C_WORDS][i % C_WORDS] = X_ptr[base / PACK_256 + i];
+            }
+
+            // Save skip for newly prefetched row (runtime-checked for is_final_layer)
+            if (!is_final_layer && h_next < H) {
+                int skip_base = h_next * WPR;
+                FETCH_NEXT_SKIP_ROW: for (int i = 0; i < WPR; i++) {
+#pragma HLS PIPELINE II=1
+                    skip_buf_256[skip_base + i] = x_buf_256[slot][i / C_WORDS][i % C_WORDS];
+                }
+            }
+        }
+
+        // ================================================================
+        // PASS B: ChannelNorm → ReLU / Add Skip → DDR
+        // Transfer: y_cache_256 ──256-bit──► unpack 16 FP16/cycle
+        //           ──► CNorm ──► ReLU (L1) or + skip_buf_256 (L2)
+        //           ──pack─► out_word ──256-bit──► DDR
+        // ================================================================
+        PASS_B: for (int pe = 0; pe < PEs; pe++) {
+            float mean_f  = sum_acc[pe] / (float)C_OUT;
+            float var_f   = sumsq_acc[pe] * pre_div_sq;
+            float denom_f = var_f - mean_f * mean_f * (float)adjustment_scale + (float)epsilon;
+            T inv_std     = (T)(1.0f / my_sqrt_f(denom_f));
+            T mean_t      = (T)mean_f;
+
+            // Skip connection base index (pixel: row r, column pe)
+            int skip_256_base = ((r * W) + pe) * (C_OUT / PACK_256);
+            // Output DDR word base
+            int out_off_256   = flat_idx(n, r*width, pe, 0, H, W, C_OUT) / PACK_256;
+
+            // 16 FP16 channels processed per pipeline cycle (true 256-bit/cycle throughput)
+            CHANNEL_NORM_PASS_B: for (int co = 0; co < C_OUT; co += PACK_256) {
+#pragma HLS PIPELINE II=1
+                int word_idx = co / PACK_256;
+
+                // 256-bit read: CNorm parameters
+                data_256_t g_word   = gamma_buf_256[word_idx];
+                data_256_t bet_word = beta_buf_256 [word_idx];
+                // 256-bit read: skip connection (L2 only — compile-time mux)
+                data_256_t sk_word  = is_final_layer
+                                      ? skip_buf_256[skip_256_base + word_idx]
+                                      : (data_256_t)0;
+
+                data_256_t out_word = 0;
+
+                // Unroll 16 FP16 lanes (CNorm → ReLU/AddSkip interface at 256-bit)
+                UNROLL_16: for (int k = 0; k < PACK_256; k++) {
+#pragma HLS UNROLL
+                    T yvT   = y_cache_16[pe][co + k]; // Read 16 items cleanly from 16 cyclically partitioned banks
+                    T gamma = bits_to_half<T>(g_word.range  (16*k+15, 16*k));
+                    T beta  = bits_to_half<T>(bet_word.range(16*k+15, 16*k));
+
+                    // ChannelNorm: normalize using per-tile statistics
+                    T weight   = gamma * inv_std;
+                    T bias_v   = beta - (mean_t * weight);
+                    T norm_out = yvT * weight + bias_v;
+
+                    T act_out;
+                    if (is_final_layer) {
+                        // Layer 2: Add Skip Connection (256-bit skip transfer)
+                        T skip_v = bits_to_half<T>(sk_word.range(16*k+15, 16*k));
+                        act_out  = norm_out + skip_v;
+                    } else {
+                        // Layer 1: ReLU activation
+                        act_out = (norm_out < (T)0) ? (T)0 : norm_out;
+                    }
+                    // Pack 16 FP16 results into one 256-bit output word
+                    out_word.range(16*k+15, 16*k) = (ap_uint<16>)half_to_bits(act_out);
+                }
+
+                // Write packed 256-bit output word directly to DDR
+                Out_ptr[out_off_256 + word_idx] = out_word;
+            } // End CHANNEL_PASS_B
+        } // End PASS_B
+    } // End Slide_PEs_loop
+}
+
+// ============================================================
+// MAIN RESBLOCK KERNEL  (Top-level caller)
+// ============================================================
+// Orchestrates 2 layers by calling the 3 shared sub-functions:
+//   Layer 1: load_params → init_rows<SAVE_SKIP=true> → conv_cnorm_act<IS_FINAL=false>
+//   Layer 2: load_params → init_rows<SAVE_SKIP=false> → conv_cnorm_act<IS_FINAL=true>
+//
+// ALL on-chip buffers are typed as data_256_t (256-bit).
 // ============================================================
 template<int PEs, int C_IN, int C_OUT, int BATCH, typename T>
 void Resblock___Pad_ref_Conv_11133111111_CNorm_Relu___(
-    TensorMem<T> &X,
-    TensorMem<T> &W_1, TensorMem<T> &B_1,
-    TensorMem<T> &gamma_1, TensorMem<T> &beta_1,
-    TensorMem<T> &W_2, TensorMem<T> &B_2,
-    TensorMem<T> &gamma_2, TensorMem<T> &beta_2,
-    T epsilon,
-    TensorMem<T> &Y
+    DDR_PTR         X_ptr,
+    DDR_CONST_PTR   W1_ptr, DDR_CONST_PTR B1_ptr,
+    DDR_CONST_PTR   G1_ptr, DDR_CONST_PTR BE1_ptr,
+    DDR_CONST_PTR   W2_ptr, DDR_CONST_PTR B2_ptr,
+    DDR_CONST_PTR   G2_ptr, DDR_CONST_PTR BE2_ptr,
+    T               epsilon,
+    DDR_PTR         Y_ptr
 ) {
-    Shape x_shape = X.shape;
-    Shape w_shape = W_1.shape;
-    Shape y_shape = Y.shape;
+    // ----------------------------------------------------------
+    // ON-CHIP MEMORY — ALL DATA_256_T (256-bit/cycle transfers)
+    // ----------------------------------------------------------
 
-#ifndef __SYNTHESIS__
-    if (3 != w_shape.H || 3 != w_shape.W)
-        assert(0 && "Error: Unappropriate input sizes for Conv !!\n");
-#endif
+    // 1. IFM Circular Buffer: x_buf_256
+    //    Layout: [4 slots][W pixel positions][C_IN/16 channel words]
+    //    dim=1 (slots): unpartitioned → we only read from ONE slot during any cycle. Saves 75% BRAM!
+    //    dim=2 (W)    : complete partition → 16 independent banks.
+    //                   Guarantees at most 2 PE accesses per bank even with boundary reflection, keeping II=1.
+    //    Total banks: 16 (was 64 when dim=1 complete)
+    data_256_t x_buf_256[4][MODEL_W][C_IN / PACK_256];
+#pragma HLS BIND_STORAGE variable=x_buf_256 type=ram_2p impl=bram
+#pragma HLS ARRAY_PARTITION variable=x_buf_256 complete dim=2
 
-    const int width = PEs / y_shape.W;
-    const int rolls = y_shape.H / width;
+    // 2. URAM Skip Buffer: stores original input for residual Add (Layer 2)
+    //    Packed 256-bit: skip_buf_256[pixel] = 16 FP16 channels per word
+    data_256_t skip_buf_256[MODEL_H * MODEL_W * C_OUT / PACK_256];
+#pragma HLS BIND_STORAGE variable=skip_buf_256 type=ram_2p impl=uram
 
-    const int num = C_OUT;
-    const T adjustment_scale = (T)num / (T)(num - 1);
-    const T pre_div = (T)1 / (T)my_sqrt_f((float)(num - 1));
+    // 3. Conv Output Cache: y_cache_16  (Conv → CNorm interface)
+    //    Layout: [PEs rows][C_OUT channel FP16 words]
+    //    Not static: HLS reuses the single instance across both layer calls.
+    //    Cyclic dim=2 avoids 256-bit structural Read-Modify-Write and allows 16 parallel FP16 reads.
+    T y_cache_16[PEs][C_OUT];
+#pragma HLS BIND_STORAGE variable=y_cache_16 type=ram_2p impl=bram
+#pragma HLS ARRAY_PARTITION variable=y_cache_16 cyclic factor=16 dim=2
 
-    constexpr int vector_depth_size = PEs * C_IN;
+    // 4. CNorm Parameter Buffers (256-bit packed)
+    data_256_t b_buf_256   [C_OUT / PACK_256];
+    data_256_t gamma_buf_256[C_OUT / PACK_256];
+    data_256_t beta_buf_256 [C_OUT / PACK_256];
 
-    // =====================
-    // TIMING-CLEAN CONFIG
-    // =====================
-    static const int LANE       = 4;
-    static const int ACC_DEPTH = 4;
-    static const int ACC_MASK  = 3;
-    static const int C_OBLK    = 120;   // 960/120=8 blocks
-    static const int PE_UNROLL = 4;     // <<< key change: reduce routing/uncertainty
+    // 5. Weight Ping-Pong Buffer (256-bit, 2 banks)
+    //    ping = w_buf_256[0], pong = w_buf_256[1]
+    data_256_t w_buf_256[2][C_IN / PACK_256];
+#pragma HLS ARRAY_PARTITION variable=w_buf_256 complete dim=1
 
-#ifndef __SYNTHESIS__
-    assert((C_OUT % C_OBLK) == 0);
-    assert((C_OBLK % 2) == 0);
-#endif
-
-    // --- Buffers ---
-    // [QUAN TRỌNG] FIX 1: Dùng 'static' để tránh tràn Stack (SIGSEGV) khi mô phỏng
-    static T skip_buffer[C_OUT * 256];
-    
-    // [QUAN TRỌNG] FIX 2: Dùng 'impl=uram' để ép dùng UltraRAM trên chip ZCU104
-    // giúp tránh tràn tài nguyên BRAM (Implementation Failed)
-#pragma HLS BIND_STORAGE variable=skip_buffer type=ram_2p impl=uram
-
-    // Các buffer nhỏ khác có thể để tự động hoặc ép vào BRAM
-    static T x_buffer[3 * vector_depth_size];
-#pragma HLS BIND_STORAGE variable=x_buffer type=ram_2p impl=bram
-
-    static T w_buffer[C_IN << 1];
-#pragma HLS BIND_STORAGE variable=w_buffer type=ram_2p impl=bram
-
-    static T b_buffer[C_OUT];
-    static T gamma_buffer[C_OUT];
-    static T beta_buffer[C_OUT];
-
-#pragma HLS ARRAY_PARTITION variable=x_buffer cyclic factor=LANE
-#pragma HLS ARRAY_PARTITION variable=w_buffer cyclic factor=LANE
-
-    static T y_blk[PEs][C_OBLK];
-#pragma HLS ARRAY_PARTITION variable=y_blk complete dim=1
-#pragma HLS ARRAY_PARTITION variable=y_blk cyclic factor=LANE dim=2
-#pragma HLS BIND_STORAGE variable=y_blk type=ram_2p impl=bram
-
-    static float mean_buf[PEs];
-    static float var_buf[PEs];
-#pragma HLS ARRAY_PARTITION variable=mean_buf complete dim=1
-#pragma HLS ARRAY_PARTITION variable=var_buf  complete dim=1
-
-Batch_loop:
+    // ----------------------------------------------------------
+    // BATCH LOOP
+    // ----------------------------------------------------------
+    Batch_loop:
     for (int n = 0; n < BATCH; n++) {
-        int skip_buf_id = 0;
 
-Res_block_loop:
-        for (int times = 0; times < 2; times++) {
+        // ════ LAYER 1 (times = 0): Input → Conv1 → ChannelNorm → ReLU ════
+        load_params<C_OUT, T>(
+            B1_ptr, G1_ptr, BE1_ptr,
+            b_buf_256, gamma_buf_256, beta_buf_256);
 
-            T* raw_ifm_data = X.raw_at(n, 0, 0, 0);
-            load_buffer<vector_depth_size>(&x_buffer[vector_depth_size], raw_ifm_data);
+        init_rows<MODEL_W, C_IN, /*SAVE_SKIP=*/true, T>(
+            X_ptr, x_buf_256, skip_buf_256, n);
 
-            if (!times) {
-                load_buffer<vector_depth_size>(&skip_buffer[skip_buf_id], raw_ifm_data);
-                skip_buf_id += vector_depth_size;
+        conv_cnorm_act<PEs, C_IN, C_OUT, T>(
+            X_ptr, W1_ptr, /*Out=*/X_ptr,   // Write result back to X_ptr
+            b_buf_256, gamma_buf_256, beta_buf_256,
+            x_buf_256, skip_buf_256, w_buf_256, y_cache_16,
+            epsilon, n, /*is_final_layer=*/false);
 
-                load_buffer<C_OUT>(b_buffer,      B_1.raw());
-                load_buffer<C_OUT>(gamma_buffer, gamma_1.raw());
-                load_buffer<C_OUT>(beta_buffer,  beta_1.raw());
-            } else {
-                load_buffer<C_OUT>(b_buffer,      B_2.raw());
-                load_buffer<C_OUT>(gamma_buffer, gamma_2.raw());
-                load_buffer<C_OUT>(beta_buffer,  beta_2.raw());
-            }
+        // ════ LAYER 2 (times = 1): passA → Conv2 → ChannelNorm → Add Skip ════
+        load_params<C_OUT, T>(
+            B2_ptr, G2_ptr, BE2_ptr,
+            b_buf_256, gamma_buf_256, beta_buf_256);
 
-Slide_PEs_loop:
-            for (int r = 0, load_id = 2; r < rolls; r++, load_id++) {
-#pragma HLS LOOP_TRIPCOUNT min=16 max=16  // for 16x16
-                if (load_id == 3) load_id = 0;
+        init_rows<MODEL_W, C_IN, /*SAVE_SKIP=*/false, T>(
+            X_ptr, x_buf_256, skip_buf_256, n);   // Reload from L1 output; skip already saved
 
-                if (r < rolls - 1) {
-                    T* raw_ifm_data_inner = X.raw_at(n, r + width, 0, 0);
-                    load_buffer<vector_depth_size>(&x_buffer[load_id * vector_depth_size], raw_ifm_data_inner);
-                    if (!times) {
-                        load_buffer<vector_depth_size>(&skip_buffer[skip_buf_id], raw_ifm_data_inner);
-                        skip_buf_id += vector_depth_size;
-                    }
-                }
-
-                // =========================================================
-                // PASS A: mean/var
-                // =========================================================
-PE_PASSA:
-#pragma HLS UNROLL factor=PE_UNROLL
-                for (int pe = 0; pe < PEs; pe++) {
-                    float sum   = 0.0f;
-                    float sumsq = 0.0f;
-
-CO0_PASSA:
-                    for (int co0 = 0; co0 < C_OUT; co0 += C_OBLK) {
-#pragma HLS LOOP_TRIPCOUNT min=8 max=8   // 960/120
-                        conv_block_one_pe<PEs, C_IN, C_OUT, LANE, ACC_DEPTH, ACC_MASK, C_OBLK, T>(
-                            x_shape, y_shape, r, width, pe,
-                            x_buffer, w_buffer, b_buffer,
-                            W_1, W_2, times,
-                            co0,
-                            y_blk[pe]
-                        );
-
-STAT_LOOP:
-                        for (int t = 0; t < C_OBLK; t++) {
-#pragma HLS PIPELINE II=1
-                            float yv = (float)y_blk[pe][t];
-                            sum += yv;
-                            float yn = yv * (float)pre_div;
-                            sumsq += yn * yn;
-                        }
-                    }
-
-                    mean_buf[pe] = sum / (float)C_OUT;
-                    var_buf[pe]  = sumsq;
-                }
-
-                // =========================================================
-                // PASS B: conv + affine + relu/add + store
-                // =========================================================
-PE_PASSB:
-#pragma HLS UNROLL factor=PE_UNROLL
-                for (int pe = 0; pe < PEs; pe++) {
-                    const int y_h = r * width;
-                    const int y_w = pe;
-
-                    const float mean_f = mean_buf[pe];
-                    const float var_f  = var_buf[pe];
-
-                    const float denom_f =
-                        (var_f - mean_f * mean_f * (float)adjustment_scale + (float)epsilon);
-                    const float invstd_f = 1.0f / my_sqrt_f(denom_f);
-
-                    const T inv_std = (T)invstd_f;
-                    const T mean_t  = (T)mean_f;
-
-                    T* yptr = Y.raw_at(n, y_h, y_w, 0);
-                    T* xptr = X.raw_at(n, y_h, y_w, 0);
-                    const int skip_base = (y_h * y_shape.W + y_w) * C_OUT;
-
-CO0_PASSB:
-                    for (int co0 = 0; co0 < C_OUT; co0 += C_OBLK) {
-#pragma HLS LOOP_TRIPCOUNT min=8 max=8
-                        conv_block_one_pe<PEs, C_IN, C_OUT, LANE, ACC_DEPTH, ACC_MASK, C_OBLK, T>(
-                            x_shape, y_shape, r, width, pe,
-                            x_buffer, w_buffer, b_buffer,
-                            W_1, W_2, times,
-                            co0,
-                            y_blk[pe]
-                        );
-
-AFFINE_STORE:
-                        for (int t = 0; t < C_OBLK; t++) {
-#pragma HLS PIPELINE II=1
-                            const int co = co0 + t;
-
-                            T weight = fmul_dsp(gamma_buffer[co], inv_std);
-                            T mean_w = fmul_dsp(mean_t, weight);
-                            T bias   = beta_buffer[co] - mean_w;
-
-                            T pw  = fmul_dsp(y_blk[pe][t], weight);
-                            T out = pw + bias;
-
-                            if (times) {
-                                out = out + skip_buffer[skip_base + co];
-                                yptr[co] = out;
-                            } else {
-                                if (out < (T)0) out = (T)0;
-                                xptr[co] = out;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        conv_cnorm_act<PEs, C_IN, C_OUT, T>(
+            X_ptr, W2_ptr, /*Out=*/Y_ptr,  // Write final result to Y_ptr
+            b_buf_256, gamma_buf_256, beta_buf_256,
+            x_buf_256, skip_buf_256, w_buf_256, y_cache_16,
+            epsilon, n, /*is_final_layer=*/true);
     }
 }

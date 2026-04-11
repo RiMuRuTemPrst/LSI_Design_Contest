@@ -1,4 +1,4 @@
-#include "/home/rimurutempest/Code/LSI_Design_Contest/HiFiC/GAN_HLS/gen/Core.h"
+#include "Core.h"
 #include <cstddef>
 template <typename T>
 TensorMem<T>::TensorMem() : data(NULL), own_memory(false) { HLS_INLINE_PRAGMA }
@@ -13,7 +13,7 @@ TensorMem<T>::TensorMem(const Shape &shape) : shape(shape), own_memory(true) {
 #ifndef __SYNTHESIS__
     data = new T[shape.N * shape.H * shape.W * shape.C]{};
 #else
-    data = nullptr; // Không dùng ctor này trong HW
+    data = nullptr; // Constructor not used in Hardware synthesis
 #endif
 }
 
