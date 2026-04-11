@@ -1,0 +1,27 @@
+[
+  {
+    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component",
+    "arguments": [
+      "/home/rimurutempest/Tool/Vitis/2024.2/vcxx/libexec/clang++",
+      "--gcc-toolchain=/home/rimurutempest/Tool/Vitis/2024.2/tps/lnx64/gcc-8.3.0",
+      "-fhls",
+      "-hls-syn-headers-dir=/home/rimurutempest/Tool/Vitis/2024.2/common/technology/autopilot",
+      "-fhlstoplevel=HW_ConvTranspose_0",
+      "-c",
+      "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/gen/convtranspose_top.cpp"
+    ],
+    "file": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/gen/convtranspose_top.cpp"
+  },
+  {
+    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component",
+    "arguments": [
+      "/home/rimurutempest/Tool/Vitis/2024.2/vcxx/libexec/clang++",
+      "--gcc-toolchain=/home/rimurutempest/Tool/Vitis/2024.2/tps/lnx64/gcc-8.3.0",
+      "-fhls-tb",
+      "-hls-sim-headers-dir=/home/rimurutempest/Tool/Vitis/2024.2/include",
+      "-c",
+      "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/test.cpp"
+    ],
+    "file": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/test.cpp"
+  }
+]

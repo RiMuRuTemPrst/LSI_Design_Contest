@@ -1,0 +1,3 @@
+relativeroot=/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS
+original_argv=--mode hls --cosim --config /home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/hls_config.cfg --work_dir Mul32bit_component_HLS 
+

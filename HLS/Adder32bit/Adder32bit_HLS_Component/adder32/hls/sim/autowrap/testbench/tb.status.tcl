@@ -1,1 +1,0 @@
-set ::AESL_AUTOSIM::gTopFileName /home/rimurutempest/Code/LSI_Design_Contest/HLS/Adder32bit_HLS_Component/adder32/hls/./sim/autowrap/testbench/adder32.cpp_pre.cpp.tb.cpp

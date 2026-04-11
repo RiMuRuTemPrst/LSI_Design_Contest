@@ -1,0 +1,9 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "../../../../Adder32bit_Vivado.gen/sources_1/bd/Adder32bit_BD/ipshared/ec67/hdl" --include "../../../../Adder32bit_Vivado.gen/sources_1/bd/Adder32bit_BD/ipshared/6f8f/hdl" --include "../../../../Adder32bit_Vivado.gen/sources_1/bd/Adder32bit_BD/ipshared/f0b6/hdl/verilog" --include "../../../../Adder32bit_Vivado.gen/sources_1/bd/Adder32bit_BD/ipshared/0127/hdl/verilog" --include "../../../../Adder32bit_Vivado.gen/sources_1/bd/Adder32bit_sim/ipshared/f0b6/hdl/verilog" --include "../../../../Adder32bit_Vivado.gen/sources_1/bd/Adder32bit_sim/ipshared/0127/hdl/verilog" --include "../../../../Adder32bit_Vivado.gen/sources_1/bd/Adder32bit_sim/ipshared/ec67/hdl" --include "../../../../Adder32bit_Vivado.gen/sources_1/bd/Adder32bit_sim/ipshared/3cbc" --include "/home/rimurutempest/Tool/Vivado/2024.2/data/xilinx_vip/include" \
+"../../../../Adder32bit_Vivado.srcs/sim_1/new/adder32_rtl_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

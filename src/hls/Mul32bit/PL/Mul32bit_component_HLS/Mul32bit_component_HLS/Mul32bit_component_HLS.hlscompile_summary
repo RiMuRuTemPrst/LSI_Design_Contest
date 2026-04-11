@@ -1,0 +1,245 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/Mul32bit_component_HLS.hlscompile_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Wed Jan 14 17:13:41 2026",
+ "timestampMillis": "1768385621469",
+ "buildStep": {
+  "cmdId": "a85d4259-1037-4c62-b49c-7980f9dc756d",
+  "name": "v++",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/logs/Mul32bit_component_HLS.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Vitis/2024.2/bin/unwrapped/lnx64.o/v++  -c --mode hls --config /home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/hls_config.cfg --work_dir Mul32bit_component_HLS ",
+  "args": [
+   "-c",
+   "--mode",
+   "hls",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/hls_config.cfg",
+   "--work_dir",
+   "Mul32bit_component_HLS"
+  ],
+  "iniFiles": [
+   {
+    "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/hls_config.cfg",
+    "content": "part=xczu7ev-ffvc1156-2-e\n\n[hls]\nflow_target=vivado\npackage.output.format=ip_catalog\npackage.output.syn=false\nsyn.file=mul32bit_hls.cpp\ntb.file=mul32bit_hls_tb.cpp\ncosim.wave_debug=1\nsyn.top=mul32_hls"
+   }
+  ],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:13:41 2026",
+ "timestampMillis": "1768385621469",
+ "status": {
+  "cmdId": "a85d4259-1037-4c62-b49c-7980f9dc756d",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Wed Jan 14 17:13:45 2026",
+ "timestampMillis": "1768385625966",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_COMPILE",
+  "target": "TT_HW",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "mul32_hls",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/mul32bit_hls.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Jan 14 17:13:45 2026",
+ "timestampMillis": "1768385625967",
+ "buildStep": {
+  "cmdId": "6c1fcd23-da46-48c5-b2ab-13e285563dd1",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:13:45 2026",
+ "timestampMillis": "1768385625967",
+ "status": {
+  "cmdId": "6c1fcd23-da46-48c5-b2ab-13e285563dd1",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:13:45 2026",
+ "timestampMillis": "1768385625967",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/hls_data.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "HLS_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:13:45 2026",
+ "timestampMillis": "1768385625968",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/syn/report/csynth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "HLS_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:13:45 2026",
+ "timestampMillis": "1768385625968",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/syn/report/csynth.xml",
+  "name": "",
+  "fileType": "XML",
+  "reportType": "HLS_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:13:57 2026",
+ "timestampMillis": "1768385637367",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_DATAFLOW",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:13:57 2026",
+ "timestampMillis": "1768385637368",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_FUNCTION_CALL_GRAPH",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:13:57 2026",
+ "timestampMillis": "1768385637368",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_SCHEDULE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:13:57 2026",
+ "timestampMillis": "1768385637368",
+ "status": {
+  "cmdId": "6c1fcd23-da46-48c5-b2ab-13e285563dd1",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:13:57 2026",
+ "timestampMillis": "1768385637552",
+ "status": {
+  "cmdId": "a85d4259-1037-4c62-b49c-7980f9dc756d",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:13:57 2026",
+ "timestampMillis": "1768385637581",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/reports/v++_compile_Mul32bit_component_HLS_guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:13:57 2026",
+ "timestampMillis": "1768385637582",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/reports/.db/v++_compile_Mul32bit_component_HLS_guidance.pb3",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

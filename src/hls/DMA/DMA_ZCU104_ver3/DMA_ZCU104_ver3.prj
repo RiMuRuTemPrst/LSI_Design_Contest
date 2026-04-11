@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="DMA_ZCU104_ver3" location="/home/rimurutempest/Code/LSI_Design_Contest/HLS/DMA/DMA_ZCU104_ver3" platform="/home/rimurutempest/Code/LSI_Design_Contest/HLS/DMA/DMA_ZCU104_BD_wrapper_ver3/export/DMA_ZCU104_BD_wrapper_ver3/DMA_ZCU104_BD_wrapper_ver3.xpfm" platformUID="xilinx:zcu104::0.0(custom)" systemProject="DMA_ZCU104_ver3_system" sysConfig="DMA_ZCU104_BD_wrapper_ver3" runtime="cpp" cpu="standalone_psu_cortexa53_0" cpuInstance="psu_cortexa53_0" os="standalone" mssSignature="fc3695c83fbfa4c95d2c28db6ca8bdaf">
+  <configuration name="Debug" id="xilinx.gnu.arm.a53.exe.debug.1264177179">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.arm.a53.exe.release.1667674192" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

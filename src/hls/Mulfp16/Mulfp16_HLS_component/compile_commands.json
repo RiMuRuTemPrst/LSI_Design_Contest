@@ -1,0 +1,27 @@
+[
+  {
+    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/Mulfp16_HLS_component",
+    "arguments": [
+      "/home/rimurutempest/Tool/Vitis/2024.2/vcxx/libexec/clang++",
+      "--gcc-toolchain=/home/rimurutempest/Tool/Vitis/2024.2/tps/lnx64/gcc-8.3.0",
+      "-fhls",
+      "-hls-syn-headers-dir=/home/rimurutempest/Tool/Vitis/2024.2/common/technology/autopilot",
+      "-fhlstoplevel=mul_fp16_hls",
+      "-c",
+      "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/Mulfp16_HLS_component/mul_fp16_hls.cpp"
+    ],
+    "file": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/Mulfp16_HLS_component/mul_fp16_hls.cpp"
+  },
+  {
+    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/Mulfp16_HLS_component",
+    "arguments": [
+      "/home/rimurutempest/Tool/Vitis/2024.2/vcxx/libexec/clang++",
+      "--gcc-toolchain=/home/rimurutempest/Tool/Vitis/2024.2/tps/lnx64/gcc-8.3.0",
+      "-fhls-tb",
+      "-hls-sim-headers-dir=/home/rimurutempest/Tool/Vitis/2024.2/include",
+      "-c",
+      "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/Mulfp16_HLS_component/mul_fp16_hls_tb.cpp"
+    ],
+    "file": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/Mulfp16_HLS_component/mul_fp16_hls_tb.cpp"
+  }
+]

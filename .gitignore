@@ -1,0 +1,53 @@
+# --- Dữ liệu tham số & Model (Chặn các file text nặng, chỉ giữ file .zip) ---
+**/io_params/*.txt
+**/io_params_2/*.txt
+**/model_params/*.txt
+**/model_params_2/*.txt
+**/layer_test_vectors/*.txt
+!**/*.zip
+
+# --- Chặn kết quả đầu ra tạm thời ---
+**/*_result.txt
+
+# --- Vitis HLS / FPGA Build Artifacts ---
+**/solution/
+**/.autopilot/
+**/impl/
+**/syn/
+**/csim/
+**/sim/
+**/ip/
+**/*.app
+**/vitis_hls.log
+**/vitis_hls.log.*
+**/hls.app
+**/_ide/
+**/.metadata/
+**/.omc/
+**/RemoteSystemsTempFiles/
+
+# --- Vivado & Build System ---
+**/build/
+**/CMakeFiles/
+**/Makefile
+**/cmake_install.cmake
+**/CMakeCache.txt
+**/*.o
+**/*.obj
+**/*.elf
+**/*.bit
+**/*.xsa
+**/*.jou
+**/*.log
+**/*.pb
+**/*.wdb
+**/*.protoinst
+
+# --- OS / IDE ---
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+IDE.log
+.analytics

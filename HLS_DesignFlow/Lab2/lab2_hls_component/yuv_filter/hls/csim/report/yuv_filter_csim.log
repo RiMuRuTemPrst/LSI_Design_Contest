@@ -1,7 +1,0 @@
-INFO: [SIM 2] *************** CSIM start ***************
-INFO: [SIM 4] CSIM will launch CLANG as the compiler.
-   Compiling ../../../../../Source/yuv_filter_test.c in debug mode
-   Compiling ../../../../../Source/image_aux.c in debug mode
-   Generating csim.exe
-ERR: [SIM 100] CSim failed with errors.
-INFO: [SIM 3] *************** CSIM finish ***************

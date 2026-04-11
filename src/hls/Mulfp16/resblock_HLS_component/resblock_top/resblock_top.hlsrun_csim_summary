@@ -1,0 +1,162 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/resblock_HLS_component/resblock_top/resblock_top.hlsrun_csim_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Wed Jan 21 18:15:40 2026",
+ "timestampMillis": "1768994140975",
+ "buildStep": {
+  "cmdId": "6307ef1b-6fd5-4f4d-ba7e-e3d31df611eb",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/resblock_HLS_component/resblock_top/logs/resblock_top.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --csim --config /home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/resblock_HLS_component/resblock_top/hls-debug.cfg --config /home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/resblock_HLS_component/hls_config.cfg --work_dir resblock_top ",
+  "args": [
+   "--mode",
+   "hls",
+   "--csim",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/resblock_HLS_component/resblock_top/hls-debug.cfg",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/resblock_HLS_component/hls_config.cfg",
+   "--work_dir",
+   "resblock_top"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/resblock_HLS_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 21 18:15:40 2026",
+ "timestampMillis": "1768994140975",
+ "status": {
+  "cmdId": "6307ef1b-6fd5-4f4d-ba7e-e3d31df611eb",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Wed Jan 21 18:15:46 2026",
+ "timestampMillis": "1768994146907",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_C_SIM",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "resblock_top",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HiFiC/GAN_HLS/gen/Core.h",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HiFiC/GAN_HLS/gen/resblock_top.h",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HiFiC/GAN_HLS/gen/resblock_top.cpp",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HiFiC/GAN_HLS/gen/class_tensor.tpp",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HiFiC/GAN_HLS/gen/Hard_op.tpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Jan 21 18:15:46 2026",
+ "timestampMillis": "1768994146908",
+ "buildStep": {
+  "cmdId": "204fae88-1908-471e-ad50-17eb8eddfa1d",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/resblock_HLS_component/resblock_top/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mulfp16/resblock_HLS_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 21 18:15:46 2026",
+ "timestampMillis": "1768994146908",
+ "status": {
+  "cmdId": "204fae88-1908-471e-ad50-17eb8eddfa1d",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 21 18:15:52 2026",
+ "timestampMillis": "1768994152089",
+ "status": {
+  "cmdId": "204fae88-1908-471e-ad50-17eb8eddfa1d",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 21 18:15:52 2026",
+ "timestampMillis": "1768994152289",
+ "status": {
+  "cmdId": "6307ef1b-6fd5-4f4d-ba7e-e3d31df611eb",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 21 18:15:52 2026",
+ "timestampMillis": "1768994152290",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 21 18:15:52 2026",
+ "timestampMillis": "1768994152290",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
