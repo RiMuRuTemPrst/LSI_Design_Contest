@@ -1,0 +1,12 @@
+{
+  "name": "Mul32bit_component_HLS",
+  "type": "HLS",
+  "configuration": {
+    "componentType": "HLS",
+    "configFiles": [
+      "hls_config.cfg"
+    ],
+    "work_dir": "Mul32bit_component_HLS"
+  },
+  "template": "empty_hls_component"
+}

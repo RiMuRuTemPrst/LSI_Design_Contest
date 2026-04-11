@@ -1,0 +1,69 @@
+{
+	"version": "1.0",
+	"modules": {
+		"HW_ConvTranspose_0": {
+			"proto_instances": {
+				"/AESL_inst_HW_ConvTranspose_0_activity": {
+					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
+					"ports": {
+						"AP_CLK": { "actual": "ap_clk"},
+						"AP_DONE": { "actual": "ap_done"},
+						"AP_READY": { "actual": "ap_ready"},
+						"AP_RESET": { "actual": "ap_rst_n"},
+						"AP_START": { "actual": "ap_start"}
+					}
+				},
+				"grp_ConvTranspose_16_1_960_480_16_16_3_3_32_32_ap_fixed_16_8_5_3_0_s_fu_196/grp_ConvTranspose_16_1_960_480_16_16_3_3_32_32_ap_fixed_16_8_5_3_0_s_fu_196_activity": {
+					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
+					"ports": {
+						"AP_CLK": { "actual": "ap_clk"},
+						"AP_DONE": { "actual": "ap_done"},
+						"AP_READY": { "actual": "ap_ready"},
+						"AP_RESET": { "actual": "ap_rst"},
+						"AP_START": { "actual": "ap_start"}
+					}
+				},
+				"grp_ConvTranspose_16_1_960_480_16_16_3_3_32_32_ap_fixed_16_8_5_3_0_s_fu_196/grp_ConvTranspose_Pipeline_Load_X_VITIS_LOOP_91_2_VITIS_LOOP_95_3_fu_6967/grp_ConvTranspose_Pipeline_Load_X_VITIS_LOOP_91_2_VITIS_LOOP_95_3_fu_6967_activity": {
+					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
+					"ports": {
+						"AP_CLK": { "actual": "ap_clk"},
+						"AP_DONE": { "actual": "ap_done"},
+						"AP_READY": { "actual": "ap_ready"},
+						"AP_RESET": { "actual": "ap_rst"},
+						"AP_START": { "actual": "ap_start"}
+					}
+				},
+				"grp_ConvTranspose_16_1_960_480_16_16_3_3_32_32_ap_fixed_16_8_5_3_0_s_fu_196/grp_ConvTranspose_Pipeline_Load_bias_fu_6958/grp_ConvTranspose_Pipeline_Load_bias_fu_6958_activity": {
+					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
+					"ports": {
+						"AP_CLK": { "actual": "ap_clk"},
+						"AP_DONE": { "actual": "ap_done"},
+						"AP_READY": { "actual": "ap_ready"},
+						"AP_RESET": { "actual": "ap_rst"},
+						"AP_START": { "actual": "ap_start"}
+					}
+				},
+				"grp_ConvTranspose_16_1_960_480_16_16_3_3_32_32_ap_fixed_16_8_5_3_0_s_fu_196/grp_ConvTranspose_Pipeline_Load_w_VITIS_LOOP_127_6_VITIS_LOOP_129_7_fu_6990/grp_ConvTranspose_Pipeline_Load_w_VITIS_LOOP_127_6_VITIS_LOOP_129_7_fu_6990_activity": {
+					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
+					"ports": {
+						"AP_CLK": { "actual": "ap_clk"},
+						"AP_DONE": { "actual": "ap_done"},
+						"AP_READY": { "actual": "ap_ready"},
+						"AP_RESET": { "actual": "ap_rst"},
+						"AP_START": { "actual": "ap_start"}
+					}
+				},
+				"grp_ConvTranspose_16_1_960_480_16_16_3_3_32_32_ap_fixed_16_8_5_3_0_s_fu_196/grp_ConvTranspose_Pipeline_Mac_loop_fu_7573/grp_ConvTranspose_Pipeline_Mac_loop_fu_7573_activity": {
+					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
+					"ports": {
+						"AP_CLK": { "actual": "ap_clk"},
+						"AP_DONE": { "actual": "ap_done"},
+						"AP_READY": { "actual": "ap_ready"},
+						"AP_RESET": { "actual": "ap_rst"},
+						"AP_START": { "actual": "ap_start"}
+					}
+				}
+			}
+		}
+	}
+}

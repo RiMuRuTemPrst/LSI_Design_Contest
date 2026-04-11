@@ -1,0 +1,50 @@
+#include "/home/rimurutempest/Code/LSI_Design_Contest/HiFiC/GAN_HLS/gen/Core.h"
+#include <cstddef>
+template <typename T>
+TensorMem<T>::TensorMem() : data(NULL), own_memory(false) { HLS_INLINE_PRAGMA }
+
+template <typename T>
+TensorMem<T>::TensorMem(T* data, const Shape &shape, bool own_memory)
+    : data(data), shape(shape), own_memory(own_memory) { HLS_INLINE_PRAGMA }
+
+template <typename T>
+TensorMem<T>::TensorMem(const Shape &shape) : shape(shape), own_memory(true) {
+    HLS_INLINE_PRAGMA
+#ifndef __SYNTHESIS__
+    data = new T[shape.N * shape.H * shape.W * shape.C]{};
+#else
+    data = nullptr; // Không dùng ctor này trong HW
+#endif
+}
+
+template <typename T>
+TensorMem<T>::~TensorMem() {
+    HLS_INLINE_PRAGMA
+#ifndef __SYNTHESIS__
+    if (own_memory && data) delete[] data;
+#endif
+}
+
+template <typename T>
+inline int TensorMem<T>::index(int n, int h, int w, int c) {
+    HLS_INLINE_PRAGMA
+    return ((n * shape.H + h) * shape.W + w) * shape.C + c;
+}
+
+template <typename T>
+inline T TensorMem<T>::get(int n, int h, int w, int c) {
+    HLS_INLINE_PRAGMA
+    return data[index(n,h,w,c)];
+}
+
+template <typename T>
+inline T &TensorMem<T>::at(int n, int h, int w, int c) {
+    HLS_INLINE_PRAGMA
+    return data[index(n,h,w,c)];
+}
+
+template <typename T>
+inline T* TensorMem<T>::raw_at(int n, int h, int w, int c) {
+    HLS_INLINE_PRAGMA
+    return &data[index(n,h,w,c)];
+}

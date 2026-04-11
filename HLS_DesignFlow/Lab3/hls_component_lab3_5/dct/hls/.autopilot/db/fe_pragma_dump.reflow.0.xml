@@ -1,3 +1,0 @@
-<pragmas>
-<pragma file="../source/dct.c" line="112" pragmaType="dataflow" parentfunction="dct" disable_start_propagation="0"/>
-</pragmas>

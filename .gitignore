@@ -1,0 +1,63 @@
+# --- Dữ liệu tham số & Model ---
+**/io_params/*.txt
+**/model_params/*.txt
+!**/params.zip
+
+# --- Vitis HLS / FPGA Build ---
+**/solution/
+**/.autopilot/
+**/impl/
+**/syn/
+**/csim/
+**/sim/
+**/*.app
+**/vitis_hls.log
+**/vitis_hls.log.*
+**/hls.app
+**/_ide/
+**/_ide/_ide/
+**/.metadata/
+**/.omc/
+**/RemoteSystemsTempFiles/
+
+# --- Build Artifacts ---
+**/build/
+**/CMakeFiles/
+**/Makefile
+**/cmake_install.cmake
+**/CMakeCache.txt
+**/TargetDirectories.txt
+**/link.txt
+**/depend.internal
+**/flags.make
+**/Debug/
+**/Release/
+**/*.o
+**/*.obj
+**/*.exe
+**/*.log
+**/*.elf
+**/*.bit
+**/*.xsa
+
+# --- OS / IDE ---
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+IDE.log
+.analytics
+
+# --- Chặn các file simulation và trọng số quá lớn ---
+**/*.wdb
+**/*.protoinst
+assets/test_data/Gen_rb0_weight_*.txt
+
+
+# --- Chặn mọi file text trong io_params và model_params ---
+**/io_params/*.txt
+**/model_params/*.txt
+**/gen/*.txt
+**/non_gen/*.txt
+

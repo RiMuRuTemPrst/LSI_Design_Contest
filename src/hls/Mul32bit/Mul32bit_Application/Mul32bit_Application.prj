@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="Mul32bit_Application" location="/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/Mul32bit_Application" platform="/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/Adder32bit_Platform/export/Adder32bit_Platform/Adder32bit_Platform.xpfm" platformUID="xilinx:zcu104::0.0(custom)" systemProject="Mul32bit_Application_system" sysConfig="Adder32bit_Platform" runtime="cpp" cpu="standalone_psu_cortexa53_0" cpuInstance="psu_cortexa53_0" os="standalone" mssSignature="64dce87ba9f2d4308233997bdec4f155">
+  <configuration name="Debug" id="xilinx.gnu.arm.a53.exe.debug.216991732">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.arm.a53.exe.release.1280584191" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

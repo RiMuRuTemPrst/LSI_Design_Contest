@@ -1,0 +1,157 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component/convtranspose_component/convtranspose_component.hlsrun_csim_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Fri Mar 27 09:02:37 2026",
+ "timestampMillis": "1774576957122",
+ "buildStep": {
+  "cmdId": "408786b9-3f3a-44ae-8883-52c5183dcca6",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component/convtranspose_component/logs/convtranspose_component.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --csim --config /home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component/hls_config.cfg --work_dir convtranspose_component ",
+  "args": [
+   "--mode",
+   "hls",
+   "--csim",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component/hls_config.cfg",
+   "--work_dir",
+   "convtranspose_component"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Mar 27 09:02:37 2026",
+ "timestampMillis": "1774576957122",
+ "status": {
+  "cmdId": "408786b9-3f3a-44ae-8883-52c5183dcca6",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Fri Mar 27 09:02:41 2026",
+ "timestampMillis": "1774576961647",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_C_SIM",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "HW_ConvTranspose_0",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/gen/convtranspose_top.cpp",
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/gen/Hard_op_2.tpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Fri Mar 27 09:02:41 2026",
+ "timestampMillis": "1774576961647",
+ "buildStep": {
+  "cmdId": "800c038c-aabb-4ded-84ea-5f9aed8cda17",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component/convtranspose_component/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Mar 27 09:02:41 2026",
+ "timestampMillis": "1774576961648",
+ "status": {
+  "cmdId": "800c038c-aabb-4ded-84ea-5f9aed8cda17",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Mar 27 09:02:51 2026",
+ "timestampMillis": "1774576971272",
+ "status": {
+  "cmdId": "800c038c-aabb-4ded-84ea-5f9aed8cda17",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Mar 27 09:02:51 2026",
+ "timestampMillis": "1774576971474",
+ "status": {
+  "cmdId": "408786b9-3f3a-44ae-8883-52c5183dcca6",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Fri Mar 27 09:02:51 2026",
+ "timestampMillis": "1774576971474",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Fri Mar 27 09:02:51 2026",
+ "timestampMillis": "1774576971475",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

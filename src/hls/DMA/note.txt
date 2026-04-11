@@ -1,0 +1,3 @@
+Lưu ý khi làm dữ liệu với RAM thật:
+Không chạy code ngay, mà build --> Ấn debug --> Nạp DRAM --> F8 để chạy 
+Lý do phải làm quy trình này: Tránh data rác được lưu trong cache cũng được nạp vào DRAM

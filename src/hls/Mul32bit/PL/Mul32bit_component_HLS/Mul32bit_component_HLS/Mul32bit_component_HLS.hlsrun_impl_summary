@@ -1,0 +1,268 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/Mul32bit_component_HLS.hlsrun_impl_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Wed Jan 14 17:41:47 2026",
+ "timestampMillis": "1768387307875",
+ "buildStep": {
+  "cmdId": "603c8218-32e5-4fa2-9363-7045c337e43f",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/logs/Mul32bit_component_HLS.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --impl --config /home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/hls_config.cfg --work_dir Mul32bit_component_HLS ",
+  "args": [
+   "--mode",
+   "hls",
+   "--impl",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/hls_config.cfg",
+   "--work_dir",
+   "Mul32bit_component_HLS"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:41:47 2026",
+ "timestampMillis": "1768387307876",
+ "status": {
+  "cmdId": "603c8218-32e5-4fa2-9363-7045c337e43f",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Wed Jan 14 17:41:52 2026",
+ "timestampMillis": "1768387312800",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_IMPL",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "mul32_hls",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/mul32bit_hls.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Jan 14 17:41:52 2026",
+ "timestampMillis": "1768387312800",
+ "buildStep": {
+  "cmdId": "9637b3de-6455-4dd7-a662-c154394b1282",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:41:52 2026",
+ "timestampMillis": "1768387312800",
+ "status": {
+  "cmdId": "9637b3de-6455-4dd7-a662-c154394b1282",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:41:52 2026",
+ "timestampMillis": "1768387312801",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/impl/verilog",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_RTL_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:41:52 2026",
+ "timestampMillis": "1768387312801",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/impl/report/verilog/export_syn.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "HLS_RTL_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:41:52 2026",
+ "timestampMillis": "1768387312801",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/impl/report/verilog/export_syn.xml",
+  "name": "",
+  "fileType": "XML",
+  "reportType": "HLS_RTL_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:41:52 2026",
+ "timestampMillis": "1768387312802",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/impl/verilog",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_PLACE_AND_ROUTE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:41:52 2026",
+ "timestampMillis": "1768387312802",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/impl/report/verilog/export_impl.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "HLS_PLACE_AND_ROUTE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:41:52 2026",
+ "timestampMillis": "1768387312802",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/impl/report/verilog/export_impl.xml",
+  "name": "",
+  "fileType": "XML",
+  "reportType": "HLS_PLACE_AND_ROUTE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:46:47 2026",
+ "timestampMillis": "1768387607922",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_RTL_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:46:47 2026",
+ "timestampMillis": "1768387607937",
+ "report": {
+  "path": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_PLACE_AND_ROUTE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:46:47 2026",
+ "timestampMillis": "1768387607938",
+ "status": {
+  "cmdId": "9637b3de-6455-4dd7-a662-c154394b1282",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:46:48 2026",
+ "timestampMillis": "1768387608792",
+ "status": {
+  "cmdId": "603c8218-32e5-4fa2-9363-7045c337e43f",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:46:48 2026",
+ "timestampMillis": "1768387608796",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:46:48 2026",
+ "timestampMillis": "1768387608796",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

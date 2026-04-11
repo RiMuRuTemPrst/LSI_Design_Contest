@@ -1,0 +1,42 @@
+/ {
+	amba_pl: amba_pl {
+		ranges;
+		compatible = "simple-bus";
+		#address-cells = <2>;
+		#size-cells = <2>;
+		firmware-name = "Adder32bit_BD_wrapper.bit.bin";
+		clocking0: clocking0 {
+			compatible = "xlnx,fclk";
+			status = "okay";
+			assigned-clocks = <&zynqmp_clk 71>;
+			assigned-clock-rates = <100000000>;
+			#clock-cells = <0>;
+			clock-output-names = "fabric_clk";
+			clocks = <&zynqmp_clk 71>;
+		};
+		afi0: afi0 {
+			status = "okay";
+			compatible = "xlnx,afi-fpga";
+			resets = <&zynqmp_reset 116>, <&zynqmp_reset 117>, <&zynqmp_reset 118>, <&zynqmp_reset 119>;
+			config-afi = < 0 0>, <1 0>, <2 0>, <3 0>, <4 0>, <5 0>, <6 0>, <7 0>, <8 0>, <9 0>, <10 0>, <11 0>, <12 0>, <13 0>, <14 0xa00>, <15 0x000>;
+		};
+		adder32_0: adder32@a0000000 {
+			compatible = "xlnx,adder32-1.0";
+			xlnx,ii = <1>;
+			xlnx,machine = <64>;
+			xlnx,rable = <0>;
+			xlnx,ip-name = "adder32";
+			reg = <0x0 0xa0000000 0x0 0x10000>;
+			clocks = <&zynqmp_clk 71>;
+			xlnx,s-axi-ctrl-addr-width = <6>;
+			xlnx,clk-period = <10>;
+			xlnx,edk-iptype = "PERIPHERAL";
+			status = "okay";
+			clock-names = "ap_clk";
+			xlnx,combinational = <1>;
+			xlnx,s-axi-ctrl-data-width = <32>;
+			xlnx,latency = <0>;
+			xlnx,name = "adder32_0";
+		};
+	};
+};

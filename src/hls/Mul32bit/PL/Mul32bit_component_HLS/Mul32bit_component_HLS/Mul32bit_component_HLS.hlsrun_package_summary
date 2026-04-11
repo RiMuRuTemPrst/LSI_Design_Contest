@@ -1,0 +1,156 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/Mul32bit_component_HLS.hlsrun_package_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Wed Jan 14 17:50:35 2026",
+ "timestampMillis": "1768387835312",
+ "buildStep": {
+  "cmdId": "97fdc295-29dd-4663-8c91-706da6ba1f97",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/logs/Mul32bit_component_HLS.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --package --config /home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/hls_config.cfg --work_dir Mul32bit_component_HLS ",
+  "args": [
+   "--mode",
+   "hls",
+   "--package",
+   "--config",
+   "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/hls_config.cfg",
+   "--work_dir",
+   "Mul32bit_component_HLS"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:50:35 2026",
+ "timestampMillis": "1768387835312",
+ "status": {
+  "cmdId": "97fdc295-29dd-4663-8c91-706da6ba1f97",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Wed Jan 14 17:50:40 2026",
+ "timestampMillis": "1768387840340",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_IP",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "mul32_hls",
+     "file": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/mul32_hls.zip",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/mul32bit_hls.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Jan 14 17:50:40 2026",
+ "timestampMillis": "1768387840341",
+ "buildStep": {
+  "cmdId": "1eaf4345-dda9-402c-8ea9-6652bed72968",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS/Mul32bit_component_HLS/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/Mul32bit/PL/Mul32bit_component_HLS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:50:40 2026",
+ "timestampMillis": "1768387840341",
+ "status": {
+  "cmdId": "1eaf4345-dda9-402c-8ea9-6652bed72968",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:51:01 2026",
+ "timestampMillis": "1768387861020",
+ "status": {
+  "cmdId": "1eaf4345-dda9-402c-8ea9-6652bed72968",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jan 14 17:51:01 2026",
+ "timestampMillis": "1768387861204",
+ "status": {
+  "cmdId": "97fdc295-29dd-4663-8c91-706da6ba1f97",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:51:01 2026",
+ "timestampMillis": "1768387861204",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jan 14 17:51:01 2026",
+ "timestampMillis": "1768387861204",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

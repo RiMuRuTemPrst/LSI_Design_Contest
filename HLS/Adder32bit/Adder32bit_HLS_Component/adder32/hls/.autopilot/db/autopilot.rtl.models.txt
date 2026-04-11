@@ -1,2 +1,0 @@
-adder32_CTRL_s_axi
-adder32
