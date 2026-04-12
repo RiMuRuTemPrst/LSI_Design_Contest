@@ -909,16 +909,18 @@ template <typename T>
 void Norm(TensorMem<T> &X, TensorMem<T> &Y, TensorMem<T> &gamma, TensorMem<T> &beta, T epsilon, int axis, 
             TensorMem<T> &extra_mem_size_X_reduced_axis);
 
-#include "../src/Arithmetic.tpp"
-#include "../src/class_tensor.tpp"
-#include "../src/Manipulation.tpp"
-#include "../src/Reduce.tpp"
-#include "../src/Unary.tpp"
-#include "../src/Conv.tpp"
-#include "../src/ConvTranspose.tpp"
-#include "../src/QuantizationLinear.tpp"
-#include "../src/Quantize_Fused_op.tpp"
-#include "../src/Norm.tpp"
+#include "Arithmetic.tpp"
+#include "class_tensor.tpp"
+#include "Manipulation.tpp"
+#include "Reduce.tpp"
+#include "Unary.tpp"
+#include "Conv.tpp"
+#include "ConvTranspose.tpp"
+#include "QuantizationLinear.tpp"
+#include "Quantize_Fused_op.tpp"
+#include "Norm.tpp"
+#include "Fused_op.tpp"
+#include "Hard_op.tpp"
 
 #endif 
 

@@ -1,6 +1,10 @@
 #include <cassert>
 
 #include "./Core.h"
+#if INTRINMINH
+#include <immintrin.h>
+#endif
+
 #ifndef INTRINMINH
 #define INTRINMINH 0
 #endif

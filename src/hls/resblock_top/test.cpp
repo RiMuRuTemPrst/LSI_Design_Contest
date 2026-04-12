@@ -13,7 +13,7 @@
 #include "non_gen/resblock_golden.h"
 
 #define BATCH_SIZE 1
-#define DATA_PATH "/home/hoinguyen/Documents/Vitis/Resblock_HLS/"
+#define DATA_PATH "../../assets/test_data/"
 
 // ============================================================
 // Arena allocation size based on MODEL_C

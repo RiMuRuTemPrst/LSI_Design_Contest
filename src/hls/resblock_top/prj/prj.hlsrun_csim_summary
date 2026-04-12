@@ -1,0 +1,156 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/resblock_top/prj/prj.hlsrun_csim_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Mon Apr 13 05:21:00 2026",
+ "timestampMillis": "1776032460845",
+ "buildStep": {
+  "cmdId": "90026bf0-fc27-472e-afc6-fb460d5be0ad",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/resblock_top/prj/logs/prj.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --config hls_config.cfg --work_dir prj --csim ",
+  "args": [
+   "--mode",
+   "hls",
+   "--config",
+   "hls_config.cfg",
+   "--work_dir",
+   "prj",
+   "--csim"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/resblock_top"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Apr 13 05:21:00 2026",
+ "timestampMillis": "1776032460845",
+ "status": {
+  "cmdId": "90026bf0-fc27-472e-afc6-fb460d5be0ad",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Mon Apr 13 05:21:05 2026",
+ "timestampMillis": "1776032465272",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_C_SIM",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "resblock_top",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/resblock_top/gen/resblock_top.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Mon Apr 13 05:21:05 2026",
+ "timestampMillis": "1776032465273",
+ "buildStep": {
+  "cmdId": "2234347c-de38-474c-a5d6-6f6c2898cc2c",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/resblock_top/prj/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/resblock_top"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Apr 13 05:21:05 2026",
+ "timestampMillis": "1776032465273",
+ "status": {
+  "cmdId": "2234347c-de38-474c-a5d6-6f6c2898cc2c",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Apr 13 05:21:10 2026",
+ "timestampMillis": "1776032470962",
+ "status": {
+  "cmdId": "2234347c-de38-474c-a5d6-6f6c2898cc2c",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Apr 13 05:21:11 2026",
+ "timestampMillis": "1776032471138",
+ "status": {
+  "cmdId": "90026bf0-fc27-472e-afc6-fb460d5be0ad",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Mon Apr 13 05:21:11 2026",
+ "timestampMillis": "1776032471139",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Mon Apr 13 05:21:11 2026",
+ "timestampMillis": "1776032471139",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
