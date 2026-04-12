@@ -15,8 +15,20 @@ Dữ liệu được chia thành 2 bộ chính để phục vụ test từng ph�
         - `main_output_gold.txt`: Kết quả chuẩn (Gold) để so sánh.
 
 ## 🚀 Quick Start
-- **Mã nguồn**: `src/`.
-- **Mô phỏng End-to-End**: Chạy `src/apps/Hific_full.cpp`. Kết quả sẽ xuất ra `assets/test_data/io_params_2/main_output_result.txt`.
+### 1. Mô phỏng End-to-End (Software)
+Chạy mã nguồn C++ thuần cho toàn bộ hệ thống bằng `g++`. Yêu cầu hỗ trợ AVX/F16C để chạy các hàm intrinsic được tối ưu hóa.
+```bash
+g++ -Isrc/core -mavx -mavx2 -mf16c -mfma src/apps/Hific_full.cpp -o hific_full
+./hific_full
+```
+Kết quả sẽ xuất ra `assets/test_data/io_params_2/main_output_result.txt`.
+
+### 2. Mô phỏng HLS Block (C-Simulation)
+Các khối phần cứng (ví dụ: `resblock_top`) được cấu trúc với `hls_config.cfg`. Chạy mô phỏng bằng công cụ Vitis HLS 2024.2+:
+```bash
+cd src/hls/resblock_top
+vitis-run --mode hls --config hls_config.cfg --work_dir prj --csim
+```
 
 ---
 *Dự án phục vụ cuộc thi thiết kế LSI 2026.*
