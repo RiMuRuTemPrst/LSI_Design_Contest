@@ -13,9 +13,9 @@ template <int PEs, int BATCH,
           int H_OUT, int W_OUT,
           typename T>
 #ifdef __SYNTHESIS__
-void ConvTranspose(ap_uint<64>* X, ap_uint<64>* W_ptr, ap_uint<64>* B, ap_uint<64>* Y) {
+void ConvTranspose_Kernel(ap_uint<64>* X, ap_uint<64>* W_ptr, ap_uint<64>* B, ap_uint<64>* Y) {
 #else
-void ConvTranspose(T* X, T* W_ptr, T* B, T* Y) {
+void ConvTranspose_Kernel(T* X, T* W_ptr, T* B, T* Y) {
 #endif
     constexpr int S       = 2;
     constexpr int PAD     = 1;

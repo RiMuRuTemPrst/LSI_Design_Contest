@@ -11,12 +11,13 @@ Vitis HLS 2024.2. Target: ZCU104 (xczu7ev-ffvc1156-2-e) @ 300 MHz (3.333 ns).
 ```
 Conv77/
   gen/
-    Hard_op_3.tpp      # HLS kernel (ACTIVE — fp16 SIMD + spatial-PE design)
+    Hls_Layers_Conv77.tpp # HLS kernel (Standardized — fp16 SIMD + spatial-PE design)
+    conv77_top.cpp        # Top-level AXI interface (calls Conv77_Kernel)
   non_gen/
-    Core.h             # TensorMem<T>, Shape, dual-mode env detection
-    fake_stack.h       # Arena allocator
+    Core.h                # TensorMem<T>, Shape, dual-mode env detection
+    fake_stack.h          # Arena allocator
     class_tensor.tpp
-    tensor_io.tpp      # read_tensor / write_tensor
+    tensor_io.tpp         # read_tensor / write_tensor
   io_params/
     Gen_ucb4_Relu_output_0.txt   # Input tensor X (1×256×256×60)
     Gen_cbo_Conv_output_0.txt    # Gold output (float32 reference)
@@ -55,9 +56,9 @@ Conv77/
 ## Kernel Parameters
 
 ```
-Conv_7x7<SIMD_DEPTH=8, NUM_WIN_PEs=8, BATCH=1,
-         C_IN=60, C_OUT=3, H_IN=256, W_IN=256,
-         H_R=7, W_R=7, H_OUT=256, W_OUT=256>
+Conv77_Kernel<SIMD_DEPTH=8, NUM_WIN_PEs=8, BATCH=1,
+              C_IN=60, C_OUT=3, H_IN=256, W_IN=256,
+              H_R=7, W_R=7, H_OUT=256, W_OUT=256>
 ```
 
 | Symbol | Value | Description |
@@ -123,7 +124,7 @@ Batch_loop (1):
 ## Running Software Simulation
 
 ```bash
-g++ -std=c++17 -O2 -I. test.cpp -x c++ gen/Hard_op_3.tpp -o test_sw && ./test_sw
+g++ -std=c++17 -O2 -I. test.cpp -x c++ gen/Hls_Layers_Conv77.tpp -o test_sw && ./test_sw
 ```
 
 Expected: `RESULT: PASS` with `max_err < 0.5` (fp16 quantization tolerance).

@@ -1,0 +1,156 @@
+<ENTRY>
+{
+ "thisFile": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/Conv3x3/prj/prj.hlsrun_csim_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Tue Apr 14 09:31:48 2026",
+ "timestampMillis": "1776133908815",
+ "buildStep": {
+  "cmdId": "baadb9ea-cbec-4723-9d0e-dbf85271d263",
+  "name": "vitis-run",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/Conv3x3/prj/logs/prj.steps.log",
+  "commandLine": "/home/rimurutempest/Tool/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --config hls_config.cfg --work_dir prj --csim ",
+  "args": [
+   "--mode",
+   "hls",
+   "--config",
+   "hls_config.cfg",
+   "--work_dir",
+   "prj",
+   "--csim"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/Conv3x3"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Apr 14 09:31:48 2026",
+ "timestampMillis": "1776133908815",
+ "status": {
+  "cmdId": "baadb9ea-cbec-4723-9d0e-dbf85271d263",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Tue Apr 14 09:31:53 2026",
+ "timestampMillis": "1776133913293",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_C_SIM",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "Conv3x3_IP",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/Conv3x3/gen/Conv3x3.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Apr 14 09:31:53 2026",
+ "timestampMillis": "1776133913294",
+ "buildStep": {
+  "cmdId": "1cc64df6-b67c-488a-9442-12aca49a282c",
+  "name": "",
+  "logFile": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/Conv3x3/prj/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/Conv3x3"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Apr 14 09:31:53 2026",
+ "timestampMillis": "1776133913294",
+ "status": {
+  "cmdId": "1cc64df6-b67c-488a-9442-12aca49a282c",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Apr 14 09:31:56 2026",
+ "timestampMillis": "1776133916006",
+ "status": {
+  "cmdId": "1cc64df6-b67c-488a-9442-12aca49a282c",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Apr 14 09:31:56 2026",
+ "timestampMillis": "1776133916179",
+ "status": {
+  "cmdId": "baadb9ea-cbec-4723-9d0e-dbf85271d263",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Apr 14 09:31:56 2026",
+ "timestampMillis": "1776133916179",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Apr 14 09:31:56 2026",
+ "timestampMillis": "1776133916179",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

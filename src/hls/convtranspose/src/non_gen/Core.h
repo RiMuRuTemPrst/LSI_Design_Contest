@@ -2,23 +2,11 @@
 #define TENSOR_MEM_H
 
 // ============================================================
-//  Chọn môi trường: uncomment 1 trong 2 dòng dưới
+//  Path shortcuts (Relative paths for portability)
 // ============================================================
-#define ENV_LOCAL
-// #define ENV_SERVER
-
-// ============================================================
-//  Path shortcuts (dùng trong test.cpp)
-// ============================================================
-#ifdef ENV_LOCAL
-    #define PATH_IO_PARAMS "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/io_params"
-    #define PATH_FAKE_STACK_H "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/non_gen/fake_stack.h"
-    #define PATH_TENSOR_IO "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/non_gen/tensor_io.tpp"
-#else
-    #define PATH_IO_PARAMS "/home/qanh_k67/Project/GAN_HLS/HLS/Conv_Transpose_layer/src/io_params"
-    #define PATH_FAKE_STACK_H "/home/qanh_k67/Project/GAN_HLS/HLS/Conv_Transpose_layer/src/non_gen/fake_stack.h"
-    #define PATH_TENSOR_IO "/home/qanh_k67/Project/GAN_HLS/HLS/Conv_Transpose_layer/src/non_gen/tensor_io.tpp"
-#endif
+#define PATH_IO_PARAMS "../io_params"
+#define PATH_FAKE_STACK_H "../non_gen/fake_stack.h"
+#define PATH_TENSOR_IO "../non_gen/tensor_io.tpp"
 
 // ============================================================
 
@@ -84,12 +72,8 @@ public:
     inline T* raw_at(int n, int h, int w, int c);
 };
 
-#ifdef ENV_LOCAL
-    #include "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/non_gen/class_tensor.tpp"
-    #include "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/gen/Hard_op_2.tpp"
-#else
-    #include "/home/qanh_k67/Project/GAN_HLS/HLS/Conv_Transpose_layer/src/non_gen/class_tensor.tpp"
-    #include "/home/qanh_k67/Project/GAN_HLS/HLS/Conv_Transpose_layer/src/gen/Hard_op_2.tpp"
-#endif
+// Include standardized layer logic
+#include "../non_gen/class_tensor.tpp"
+#include "../gen/Hls_Layers_ConvTranspose.tpp"
 
 #endif // TENSOR_MEM_H

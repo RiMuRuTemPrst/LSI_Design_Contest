@@ -162,6 +162,6 @@ public:
     }
 };
 
-#include "Hard_op.tpp"
+#include "Hls_Layers.tpp"
 
 #endif

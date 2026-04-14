@@ -1,0 +1,3 @@
+relativeroot=/home/rimurutempest/Code/LSI_Design_Contest/src/hls/ChannelNorm
+original_argv=--mode hls --config hls_config.cfg --work_dir prj --csim 
+

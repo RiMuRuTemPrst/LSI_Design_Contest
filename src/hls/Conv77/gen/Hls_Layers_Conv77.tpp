@@ -63,7 +63,7 @@ template<int SIMD_DEPTH, int NUM_WIN_PEs,
          int BATCH, int C_IN, int C_OUT,
          int H_IN, int W_IN, int H_R, int W_R,
          int H_OUT, int W_OUT>
-void Conv_7x7(float* X_f, float* W_f, float* B_f, float* Y_f) {
+void Conv77_Kernel(float* X_f, float* W_f, float* B_f, float* Y_f) {
 
     constexpr int HALF_H  = H_R / 2;
     constexpr int HALF_W  = W_R / 2;
@@ -357,7 +357,7 @@ void HW_Conv7x7(float* X, float* W, float* B, float* Y) {
     #pragma HLS INTERFACE s_axilite port=Y      bundle=control
     #pragma HLS INTERFACE s_axilite port=return bundle=control
 
-    Conv_7x7<
+    Conv77_Kernel<
         8,    // SIMD_DEPTH  : 8 MACs per PE (depth parallelism)
         8,    // NUM_WIN_PEs : 8 adjacent windows (spatial parallelism)
         1,    // BATCH
