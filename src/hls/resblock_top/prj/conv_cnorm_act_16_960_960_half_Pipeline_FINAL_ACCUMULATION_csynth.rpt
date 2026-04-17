@@ -1,0 +1,682 @@
+
+
+================================================================
+== Vitis HLS Report for 'conv_cnorm_act_16_960_960_half_Pipeline_FINAL_ACCUMULATION'
+================================================================
+* Date:           Fri Apr 17 08:47:57 2026
+
+* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Project:        resblock_top
+* Solution:       hls (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.416 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
+    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |       82|       82|  0.273 us|  0.273 us|   17|   17|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                      |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |       Loop Name      |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- FINAL_ACCUMULATION  |       80|       80|        66|          1|          1|    16|       yes|
+        +----------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      63|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       0|     650|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|     324|    -|
+|Register         |        -|     -|     679|      64|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|     679|    1101|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------+-----------------------+---------+----+---+----+-----+
+    |          Instance          |         Module        | BRAM_18K| DSP| FF| LUT| URAM|
+    +----------------------------+-----------------------+---------+----+---+----+-----+
+    |sparsemux_33_4_16_1_1_U420  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_16_1_1_U421  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_16_1_1_U422  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_16_1_1_U423  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_16_1_1_U424  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_16_1_1_U425  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_16_1_1_U426  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_16_1_1_U427  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_32_1_1_U428  |sparsemux_33_4_32_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_32_1_1_U429  |sparsemux_33_4_32_1_1  |        0|   0|  0|  65|    0|
+    +----------------------------+-----------------------+---------+----+---+----+-----+
+    |Total                       |                       |        0|   0|  0| 650|    0|
+    +----------------------------+-----------------------+---------+----+---+----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------+----------+----+---+----+------------+------------+
+    |     Variable Name     | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------+----------+----+---+----+------------+------------+
+    |add_ln326_fu_2030_p2   |         +|   0|  0|  12|           5|           1|
+    |add_ln334_fu_2526_p2   |         +|   0|  0|  18|          10|          10|
+    |sub_ln334_fu_2520_p2   |         -|   0|  0|  18|          10|          10|
+    |icmp_ln326_fu_2024_p2  |      icmp|   0|  0|  13|           5|           6|
+    |ap_enable_pp0          |       xor|   0|  0|   2|           1|           2|
+    +-----------------------+----------+----+---+----+------------+------------+
+    |Total                  |          |   0|  0|  63|          31|          29|
+    +-----------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_done_int              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_sig_allocacmp_pe_1    |   9|          2|    5|         10|
+    |pe_fu_450                |   9|          2|    5|         10|
+    |sum_acc_10_o             |   9|          2|   32|         64|
+    |sum_acc_11_o             |   9|          2|   32|         64|
+    |sum_acc_12_o             |   9|          2|   32|         64|
+    |sum_acc_13_o             |   9|          2|   32|         64|
+    |sum_acc_14_o             |   9|          2|   32|         64|
+    |sum_acc_15_o             |   9|          2|   32|         64|
+    |sum_acc_1_o              |   9|          2|   32|         64|
+    |sum_acc_2_o              |   9|          2|   32|         64|
+    |sum_acc_3_o              |   9|          2|   32|         64|
+    |sum_acc_4_o              |   9|          2|   32|         64|
+    |sum_acc_5_o              |   9|          2|   32|         64|
+    |sum_acc_6_o              |   9|          2|   32|         64|
+    |sum_acc_7_o              |   9|          2|   32|         64|
+    |sum_acc_8_o              |   9|          2|   32|         64|
+    |sum_acc_9_o              |   9|          2|   32|         64|
+    |sum_acc_o                |   9|          2|   32|         64|
+    |sumsq_acc_10_o           |   9|          2|   32|         64|
+    |sumsq_acc_11_o           |   9|          2|   32|         64|
+    |sumsq_acc_12_o           |   9|          2|   32|         64|
+    |sumsq_acc_13_o           |   9|          2|   32|         64|
+    |sumsq_acc_14_o           |   9|          2|   32|         64|
+    |sumsq_acc_15_o           |   9|          2|   32|         64|
+    |sumsq_acc_1_o            |   9|          2|   32|         64|
+    |sumsq_acc_2_o            |   9|          2|   32|         64|
+    |sumsq_acc_3_o            |   9|          2|   32|         64|
+    |sumsq_acc_4_o            |   9|          2|   32|         64|
+    |sumsq_acc_5_o            |   9|          2|   32|         64|
+    |sumsq_acc_6_o            |   9|          2|   32|         64|
+    |sumsq_acc_7_o            |   9|          2|   32|         64|
+    |sumsq_acc_8_o            |   9|          2|   32|         64|
+    |sumsq_acc_9_o            |   9|          2|   32|         64|
+    |sumsq_acc_o              |   9|          2|   32|         64|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    | 324|         72| 1036|       2072|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------+----+----+-----+-----------+
+    |                Name               | FF | LUT| Bits| Const Bits|
+    +-----------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                          |   1|   0|    1|          0|
+    |ap_done_reg                        |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter10           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter11           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter12           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter13           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter14           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter15           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter16           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter17           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter18           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter19           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter20           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter21           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter22           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter23           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter24           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter25           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter26           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter27           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter28           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter29           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter30           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter31           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter32           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter33           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter34           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter35           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter36           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter37           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter38           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter39           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter4            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter40           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter41           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter42           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter43           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter44           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter45           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter46           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter47           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter48           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter49           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter5            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter50           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter51           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter52           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter53           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter54           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter55           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter56           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter57           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter58           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter59           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter6            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter60           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter61           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter62           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter63           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter64           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter65           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter7            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter8            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter9            |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter10_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter11_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter12_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter13_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter14_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter15_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter16_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter17_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter18_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter19_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter1_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter20_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter21_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter22_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter23_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter24_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter25_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter26_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter27_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter28_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter29_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter2_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter30_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter31_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter32_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter33_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter34_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter35_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter36_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter37_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter38_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter39_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter3_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter40_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter41_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter42_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter43_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter44_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter45_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter46_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter47_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter48_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter49_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter4_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter50_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter51_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter52_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter53_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter54_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter55_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter56_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter57_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter58_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter59_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter5_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter60_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter61_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter62_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter63_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter64_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter6_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter7_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter8_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter9_reg   |   1|   0|    1|          0|
+    |ff_reg_3398                        |  32|   0|   32|          0|
+    |fout_reg_3377                      |  16|   0|   16|          0|
+    |mul4_reg_3410                      |  32|   0|   32|          0|
+    |pe_1_reg_3274                      |   5|   0|    5|          0|
+    |pe_fu_450                          |   5|   0|    5|          0|
+    |tmp_10_reg_3367                    |  16|   0|   16|          0|
+    |tmp_11_reg_3405                    |  32|   0|   32|          0|
+    |tmp_12_reg_3415                    |  32|   0|   32|          0|
+    |tmp_4_reg_3307                     |  16|   0|   16|          0|
+    |tmp_5_reg_3317                     |  16|   0|   16|          0|
+    |tmp_6_reg_3327                     |  16|   0|   16|          0|
+    |tmp_7_reg_3337                     |  16|   0|   16|          0|
+    |tmp_8_reg_3347                     |  16|   0|   16|          0|
+    |tmp_9_reg_3357                     |  16|   0|   16|          0|
+    |tmp_s_reg_3297                     |  16|   0|   16|          0|
+    |total_1_reg_3312                   |  16|   0|   16|          0|
+    |total_2_reg_3322                   |  16|   0|   16|          0|
+    |total_3_reg_3332                   |  16|   0|   16|          0|
+    |total_4_reg_3342                   |  16|   0|   16|          0|
+    |total_5_reg_3352                   |  16|   0|   16|          0|
+    |total_6_reg_3362                   |  16|   0|   16|          0|
+    |total_7_reg_3372                   |  16|   0|   16|          0|
+    |total_reg_3302                     |  16|   0|   16|          0|
+    |trunc_ln334_reg_3283               |   4|   0|    4|          0|
+    |zext_ln235_1_cast_reg_3269         |   6|   0|   10|          4|
+    |pe_1_reg_3274                      |  64|  32|    5|          0|
+    |trunc_ln334_reg_3283               |  64|  32|    4|          0|
+    +-----------------------------------+----+----+-----+-----------+
+    |Total                              | 679|  64|  564|          4|
+    +-----------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+----------------------------------------------------------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  |                          Source Object                         |    C Type    |
++------------------------+-----+-----+------------+----------------------------------------------------------------+--------------+
+|ap_clk                  |   in|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|ap_rst                  |   in|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|ap_start                |   in|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|ap_done                 |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|ap_idle                 |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|ap_ready                |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4684_p_din0      |  out|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4684_p_din1      |  out|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4684_p_opcode    |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4684_p_dout0     |   in|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4684_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4688_p_din0      |  out|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4688_p_din1      |  out|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4688_p_opcode    |  out|    2|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4688_p_dout0     |   in|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4688_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4692_p_din0      |  out|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4692_p_din1      |  out|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4692_p_dout0     |   in|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4692_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_1553_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_1553_p_dout0     |   in|   32|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_1553_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4364_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4364_p_din1      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4364_p_dout0     |   in|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4364_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4368_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4368_p_din1      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4368_p_dout0     |   in|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4368_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4372_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4372_p_din1      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4372_p_dout0     |   in|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4372_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4376_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4376_p_din1      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4376_p_dout0     |   in|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4376_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4380_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4380_p_din1      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4380_p_dout0     |   in|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4380_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4384_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4384_p_din1      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4384_p_dout0     |   in|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4384_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4388_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4388_p_din1      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4388_p_dout0     |   in|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4388_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4392_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4392_p_din1      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4392_p_dout0     |   in|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4392_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4396_p_din0      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4396_p_din1      |  out|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4396_p_dout0     |   in|   16|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4396_p_ce        |  out|    1|  ap_ctrl_hs|  conv_cnorm_act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|sum_acc_i               |   in|   32|     ap_ovld|                                                         sum_acc|       pointer|
+|sum_acc_o               |  out|   32|     ap_ovld|                                                         sum_acc|       pointer|
+|sum_acc_o_ap_vld        |  out|    1|     ap_ovld|                                                         sum_acc|       pointer|
+|sumsq_acc_i             |   in|   32|     ap_ovld|                                                       sumsq_acc|       pointer|
+|sumsq_acc_o             |  out|   32|     ap_ovld|                                                       sumsq_acc|       pointer|
+|sumsq_acc_o_ap_vld      |  out|    1|     ap_ovld|                                                       sumsq_acc|       pointer|
+|sum_acc_1_i             |   in|   32|     ap_ovld|                                                       sum_acc_1|       pointer|
+|sum_acc_1_o             |  out|   32|     ap_ovld|                                                       sum_acc_1|       pointer|
+|sum_acc_1_o_ap_vld      |  out|    1|     ap_ovld|                                                       sum_acc_1|       pointer|
+|sum_acc_2_i             |   in|   32|     ap_ovld|                                                       sum_acc_2|       pointer|
+|sum_acc_2_o             |  out|   32|     ap_ovld|                                                       sum_acc_2|       pointer|
+|sum_acc_2_o_ap_vld      |  out|    1|     ap_ovld|                                                       sum_acc_2|       pointer|
+|sum_acc_3_i             |   in|   32|     ap_ovld|                                                       sum_acc_3|       pointer|
+|sum_acc_3_o             |  out|   32|     ap_ovld|                                                       sum_acc_3|       pointer|
+|sum_acc_3_o_ap_vld      |  out|    1|     ap_ovld|                                                       sum_acc_3|       pointer|
+|sum_acc_4_i             |   in|   32|     ap_ovld|                                                       sum_acc_4|       pointer|
+|sum_acc_4_o             |  out|   32|     ap_ovld|                                                       sum_acc_4|       pointer|
+|sum_acc_4_o_ap_vld      |  out|    1|     ap_ovld|                                                       sum_acc_4|       pointer|
+|sum_acc_5_i             |   in|   32|     ap_ovld|                                                       sum_acc_5|       pointer|
+|sum_acc_5_o             |  out|   32|     ap_ovld|                                                       sum_acc_5|       pointer|
+|sum_acc_5_o_ap_vld      |  out|    1|     ap_ovld|                                                       sum_acc_5|       pointer|
+|sum_acc_6_i             |   in|   32|     ap_ovld|                                                       sum_acc_6|       pointer|
+|sum_acc_6_o             |  out|   32|     ap_ovld|                                                       sum_acc_6|       pointer|
+|sum_acc_6_o_ap_vld      |  out|    1|     ap_ovld|                                                       sum_acc_6|       pointer|
+|sum_acc_7_i             |   in|   32|     ap_ovld|                                                       sum_acc_7|       pointer|
+|sum_acc_7_o             |  out|   32|     ap_ovld|                                                       sum_acc_7|       pointer|
+|sum_acc_7_o_ap_vld      |  out|    1|     ap_ovld|                                                       sum_acc_7|       pointer|
+|sum_acc_8_i             |   in|   32|     ap_ovld|                                                       sum_acc_8|       pointer|
+|sum_acc_8_o             |  out|   32|     ap_ovld|                                                       sum_acc_8|       pointer|
+|sum_acc_8_o_ap_vld      |  out|    1|     ap_ovld|                                                       sum_acc_8|       pointer|
+|sum_acc_9_i             |   in|   32|     ap_ovld|                                                       sum_acc_9|       pointer|
+|sum_acc_9_o             |  out|   32|     ap_ovld|                                                       sum_acc_9|       pointer|
+|sum_acc_9_o_ap_vld      |  out|    1|     ap_ovld|                                                       sum_acc_9|       pointer|
+|sum_acc_10_i            |   in|   32|     ap_ovld|                                                      sum_acc_10|       pointer|
+|sum_acc_10_o            |  out|   32|     ap_ovld|                                                      sum_acc_10|       pointer|
+|sum_acc_10_o_ap_vld     |  out|    1|     ap_ovld|                                                      sum_acc_10|       pointer|
+|sum_acc_11_i            |   in|   32|     ap_ovld|                                                      sum_acc_11|       pointer|
+|sum_acc_11_o            |  out|   32|     ap_ovld|                                                      sum_acc_11|       pointer|
+|sum_acc_11_o_ap_vld     |  out|    1|     ap_ovld|                                                      sum_acc_11|       pointer|
+|sum_acc_12_i            |   in|   32|     ap_ovld|                                                      sum_acc_12|       pointer|
+|sum_acc_12_o            |  out|   32|     ap_ovld|                                                      sum_acc_12|       pointer|
+|sum_acc_12_o_ap_vld     |  out|    1|     ap_ovld|                                                      sum_acc_12|       pointer|
+|sum_acc_13_i            |   in|   32|     ap_ovld|                                                      sum_acc_13|       pointer|
+|sum_acc_13_o            |  out|   32|     ap_ovld|                                                      sum_acc_13|       pointer|
+|sum_acc_13_o_ap_vld     |  out|    1|     ap_ovld|                                                      sum_acc_13|       pointer|
+|sum_acc_14_i            |   in|   32|     ap_ovld|                                                      sum_acc_14|       pointer|
+|sum_acc_14_o            |  out|   32|     ap_ovld|                                                      sum_acc_14|       pointer|
+|sum_acc_14_o_ap_vld     |  out|    1|     ap_ovld|                                                      sum_acc_14|       pointer|
+|sum_acc_15_i            |   in|   32|     ap_ovld|                                                      sum_acc_15|       pointer|
+|sum_acc_15_o            |  out|   32|     ap_ovld|                                                      sum_acc_15|       pointer|
+|sum_acc_15_o_ap_vld     |  out|    1|     ap_ovld|                                                      sum_acc_15|       pointer|
+|sumsq_acc_1_i           |   in|   32|     ap_ovld|                                                     sumsq_acc_1|       pointer|
+|sumsq_acc_1_o           |  out|   32|     ap_ovld|                                                     sumsq_acc_1|       pointer|
+|sumsq_acc_1_o_ap_vld    |  out|    1|     ap_ovld|                                                     sumsq_acc_1|       pointer|
+|sumsq_acc_2_i           |   in|   32|     ap_ovld|                                                     sumsq_acc_2|       pointer|
+|sumsq_acc_2_o           |  out|   32|     ap_ovld|                                                     sumsq_acc_2|       pointer|
+|sumsq_acc_2_o_ap_vld    |  out|    1|     ap_ovld|                                                     sumsq_acc_2|       pointer|
+|sumsq_acc_3_i           |   in|   32|     ap_ovld|                                                     sumsq_acc_3|       pointer|
+|sumsq_acc_3_o           |  out|   32|     ap_ovld|                                                     sumsq_acc_3|       pointer|
+|sumsq_acc_3_o_ap_vld    |  out|    1|     ap_ovld|                                                     sumsq_acc_3|       pointer|
+|sumsq_acc_4_i           |   in|   32|     ap_ovld|                                                     sumsq_acc_4|       pointer|
+|sumsq_acc_4_o           |  out|   32|     ap_ovld|                                                     sumsq_acc_4|       pointer|
+|sumsq_acc_4_o_ap_vld    |  out|    1|     ap_ovld|                                                     sumsq_acc_4|       pointer|
+|sumsq_acc_5_i           |   in|   32|     ap_ovld|                                                     sumsq_acc_5|       pointer|
+|sumsq_acc_5_o           |  out|   32|     ap_ovld|                                                     sumsq_acc_5|       pointer|
+|sumsq_acc_5_o_ap_vld    |  out|    1|     ap_ovld|                                                     sumsq_acc_5|       pointer|
+|sumsq_acc_6_i           |   in|   32|     ap_ovld|                                                     sumsq_acc_6|       pointer|
+|sumsq_acc_6_o           |  out|   32|     ap_ovld|                                                     sumsq_acc_6|       pointer|
+|sumsq_acc_6_o_ap_vld    |  out|    1|     ap_ovld|                                                     sumsq_acc_6|       pointer|
+|sumsq_acc_7_i           |   in|   32|     ap_ovld|                                                     sumsq_acc_7|       pointer|
+|sumsq_acc_7_o           |  out|   32|     ap_ovld|                                                     sumsq_acc_7|       pointer|
+|sumsq_acc_7_o_ap_vld    |  out|    1|     ap_ovld|                                                     sumsq_acc_7|       pointer|
+|sumsq_acc_8_i           |   in|   32|     ap_ovld|                                                     sumsq_acc_8|       pointer|
+|sumsq_acc_8_o           |  out|   32|     ap_ovld|                                                     sumsq_acc_8|       pointer|
+|sumsq_acc_8_o_ap_vld    |  out|    1|     ap_ovld|                                                     sumsq_acc_8|       pointer|
+|sumsq_acc_9_i           |   in|   32|     ap_ovld|                                                     sumsq_acc_9|       pointer|
+|sumsq_acc_9_o           |  out|   32|     ap_ovld|                                                     sumsq_acc_9|       pointer|
+|sumsq_acc_9_o_ap_vld    |  out|    1|     ap_ovld|                                                     sumsq_acc_9|       pointer|
+|sumsq_acc_10_i          |   in|   32|     ap_ovld|                                                    sumsq_acc_10|       pointer|
+|sumsq_acc_10_o          |  out|   32|     ap_ovld|                                                    sumsq_acc_10|       pointer|
+|sumsq_acc_10_o_ap_vld   |  out|    1|     ap_ovld|                                                    sumsq_acc_10|       pointer|
+|sumsq_acc_11_i          |   in|   32|     ap_ovld|                                                    sumsq_acc_11|       pointer|
+|sumsq_acc_11_o          |  out|   32|     ap_ovld|                                                    sumsq_acc_11|       pointer|
+|sumsq_acc_11_o_ap_vld   |  out|    1|     ap_ovld|                                                    sumsq_acc_11|       pointer|
+|sumsq_acc_12_i          |   in|   32|     ap_ovld|                                                    sumsq_acc_12|       pointer|
+|sumsq_acc_12_o          |  out|   32|     ap_ovld|                                                    sumsq_acc_12|       pointer|
+|sumsq_acc_12_o_ap_vld   |  out|    1|     ap_ovld|                                                    sumsq_acc_12|       pointer|
+|sumsq_acc_13_i          |   in|   32|     ap_ovld|                                                    sumsq_acc_13|       pointer|
+|sumsq_acc_13_o          |  out|   32|     ap_ovld|                                                    sumsq_acc_13|       pointer|
+|sumsq_acc_13_o_ap_vld   |  out|    1|     ap_ovld|                                                    sumsq_acc_13|       pointer|
+|sumsq_acc_14_i          |   in|   32|     ap_ovld|                                                    sumsq_acc_14|       pointer|
+|sumsq_acc_14_o          |  out|   32|     ap_ovld|                                                    sumsq_acc_14|       pointer|
+|sumsq_acc_14_o_ap_vld   |  out|    1|     ap_ovld|                                                    sumsq_acc_14|       pointer|
+|sumsq_acc_15_i          |   in|   32|     ap_ovld|                                                    sumsq_acc_15|       pointer|
+|sumsq_acc_15_o          |  out|   32|     ap_ovld|                                                    sumsq_acc_15|       pointer|
+|sumsq_acc_15_o_ap_vld   |  out|    1|     ap_ovld|                                                    sumsq_acc_15|       pointer|
+|zext_ln235_1            |   in|    6|     ap_none|                                                    zext_ln235_1|        scalar|
+|y_cache_16_0_address1   |  out|   10|   ap_memory|                                                    y_cache_16_0|         array|
+|y_cache_16_0_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_0|         array|
+|y_cache_16_0_we1        |  out|    1|   ap_memory|                                                    y_cache_16_0|         array|
+|y_cache_16_0_d1         |  out|   16|   ap_memory|                                                    y_cache_16_0|         array|
+|y_cache_16_1_address1   |  out|   10|   ap_memory|                                                    y_cache_16_1|         array|
+|y_cache_16_1_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_1|         array|
+|y_cache_16_1_we1        |  out|    1|   ap_memory|                                                    y_cache_16_1|         array|
+|y_cache_16_1_d1         |  out|   16|   ap_memory|                                                    y_cache_16_1|         array|
+|y_cache_16_2_address1   |  out|   10|   ap_memory|                                                    y_cache_16_2|         array|
+|y_cache_16_2_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_2|         array|
+|y_cache_16_2_we1        |  out|    1|   ap_memory|                                                    y_cache_16_2|         array|
+|y_cache_16_2_d1         |  out|   16|   ap_memory|                                                    y_cache_16_2|         array|
+|y_cache_16_3_address1   |  out|   10|   ap_memory|                                                    y_cache_16_3|         array|
+|y_cache_16_3_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_3|         array|
+|y_cache_16_3_we1        |  out|    1|   ap_memory|                                                    y_cache_16_3|         array|
+|y_cache_16_3_d1         |  out|   16|   ap_memory|                                                    y_cache_16_3|         array|
+|y_cache_16_4_address1   |  out|   10|   ap_memory|                                                    y_cache_16_4|         array|
+|y_cache_16_4_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_4|         array|
+|y_cache_16_4_we1        |  out|    1|   ap_memory|                                                    y_cache_16_4|         array|
+|y_cache_16_4_d1         |  out|   16|   ap_memory|                                                    y_cache_16_4|         array|
+|y_cache_16_5_address1   |  out|   10|   ap_memory|                                                    y_cache_16_5|         array|
+|y_cache_16_5_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_5|         array|
+|y_cache_16_5_we1        |  out|    1|   ap_memory|                                                    y_cache_16_5|         array|
+|y_cache_16_5_d1         |  out|   16|   ap_memory|                                                    y_cache_16_5|         array|
+|y_cache_16_6_address1   |  out|   10|   ap_memory|                                                    y_cache_16_6|         array|
+|y_cache_16_6_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_6|         array|
+|y_cache_16_6_we1        |  out|    1|   ap_memory|                                                    y_cache_16_6|         array|
+|y_cache_16_6_d1         |  out|   16|   ap_memory|                                                    y_cache_16_6|         array|
+|y_cache_16_7_address1   |  out|   10|   ap_memory|                                                    y_cache_16_7|         array|
+|y_cache_16_7_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_7|         array|
+|y_cache_16_7_we1        |  out|    1|   ap_memory|                                                    y_cache_16_7|         array|
+|y_cache_16_7_d1         |  out|   16|   ap_memory|                                                    y_cache_16_7|         array|
+|y_cache_16_8_address1   |  out|   10|   ap_memory|                                                    y_cache_16_8|         array|
+|y_cache_16_8_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_8|         array|
+|y_cache_16_8_we1        |  out|    1|   ap_memory|                                                    y_cache_16_8|         array|
+|y_cache_16_8_d1         |  out|   16|   ap_memory|                                                    y_cache_16_8|         array|
+|y_cache_16_9_address1   |  out|   10|   ap_memory|                                                    y_cache_16_9|         array|
+|y_cache_16_9_ce1        |  out|    1|   ap_memory|                                                    y_cache_16_9|         array|
+|y_cache_16_9_we1        |  out|    1|   ap_memory|                                                    y_cache_16_9|         array|
+|y_cache_16_9_d1         |  out|   16|   ap_memory|                                                    y_cache_16_9|         array|
+|y_cache_16_10_address1  |  out|   10|   ap_memory|                                                   y_cache_16_10|         array|
+|y_cache_16_10_ce1       |  out|    1|   ap_memory|                                                   y_cache_16_10|         array|
+|y_cache_16_10_we1       |  out|    1|   ap_memory|                                                   y_cache_16_10|         array|
+|y_cache_16_10_d1        |  out|   16|   ap_memory|                                                   y_cache_16_10|         array|
+|y_cache_16_11_address1  |  out|   10|   ap_memory|                                                   y_cache_16_11|         array|
+|y_cache_16_11_ce1       |  out|    1|   ap_memory|                                                   y_cache_16_11|         array|
+|y_cache_16_11_we1       |  out|    1|   ap_memory|                                                   y_cache_16_11|         array|
+|y_cache_16_11_d1        |  out|   16|   ap_memory|                                                   y_cache_16_11|         array|
+|y_cache_16_12_address1  |  out|   10|   ap_memory|                                                   y_cache_16_12|         array|
+|y_cache_16_12_ce1       |  out|    1|   ap_memory|                                                   y_cache_16_12|         array|
+|y_cache_16_12_we1       |  out|    1|   ap_memory|                                                   y_cache_16_12|         array|
+|y_cache_16_12_d1        |  out|   16|   ap_memory|                                                   y_cache_16_12|         array|
+|y_cache_16_13_address1  |  out|   10|   ap_memory|                                                   y_cache_16_13|         array|
+|y_cache_16_13_ce1       |  out|    1|   ap_memory|                                                   y_cache_16_13|         array|
+|y_cache_16_13_we1       |  out|    1|   ap_memory|                                                   y_cache_16_13|         array|
+|y_cache_16_13_d1        |  out|   16|   ap_memory|                                                   y_cache_16_13|         array|
+|y_cache_16_14_address1  |  out|   10|   ap_memory|                                                   y_cache_16_14|         array|
+|y_cache_16_14_ce1       |  out|    1|   ap_memory|                                                   y_cache_16_14|         array|
+|y_cache_16_14_we1       |  out|    1|   ap_memory|                                                   y_cache_16_14|         array|
+|y_cache_16_14_d1        |  out|   16|   ap_memory|                                                   y_cache_16_14|         array|
+|y_cache_16_15_address1  |  out|   10|   ap_memory|                                                   y_cache_16_15|         array|
+|y_cache_16_15_ce1       |  out|    1|   ap_memory|                                                   y_cache_16_15|         array|
+|y_cache_16_15_we1       |  out|    1|   ap_memory|                                                   y_cache_16_15|         array|
+|y_cache_16_15_d1        |  out|   16|   ap_memory|                                                   y_cache_16_15|         array|
+|psum_load_reload        |   in|   16|     ap_none|                                                psum_load_reload|        scalar|
+|psum_8_load_reload      |   in|   16|     ap_none|                                              psum_8_load_reload|        scalar|
+|psum_16_load_reload     |   in|   16|     ap_none|                                             psum_16_load_reload|        scalar|
+|psum_24_load_reload     |   in|   16|     ap_none|                                             psum_24_load_reload|        scalar|
+|psum_32_load_reload     |   in|   16|     ap_none|                                             psum_32_load_reload|        scalar|
+|psum_40_load_reload     |   in|   16|     ap_none|                                             psum_40_load_reload|        scalar|
+|psum_48_load_reload     |   in|   16|     ap_none|                                             psum_48_load_reload|        scalar|
+|psum_56_load_reload     |   in|   16|     ap_none|                                             psum_56_load_reload|        scalar|
+|psum_64_load_reload     |   in|   16|     ap_none|                                             psum_64_load_reload|        scalar|
+|psum_72_load_reload     |   in|   16|     ap_none|                                             psum_72_load_reload|        scalar|
+|psum_80_load_reload     |   in|   16|     ap_none|                                             psum_80_load_reload|        scalar|
+|psum_88_load_reload     |   in|   16|     ap_none|                                             psum_88_load_reload|        scalar|
+|psum_96_load_reload     |   in|   16|     ap_none|                                             psum_96_load_reload|        scalar|
+|psum_104_load_reload    |   in|   16|     ap_none|                                            psum_104_load_reload|        scalar|
+|psum_112_load_reload    |   in|   16|     ap_none|                                            psum_112_load_reload|        scalar|
+|psum_120_load_reload    |   in|   16|     ap_none|                                            psum_120_load_reload|        scalar|
+|psum_1_load_reload      |   in|   16|     ap_none|                                              psum_1_load_reload|        scalar|
+|psum_9_load_reload      |   in|   16|     ap_none|                                              psum_9_load_reload|        scalar|
+|psum_17_load_reload     |   in|   16|     ap_none|                                             psum_17_load_reload|        scalar|
+|psum_25_load_reload     |   in|   16|     ap_none|                                             psum_25_load_reload|        scalar|
+|psum_33_load_reload     |   in|   16|     ap_none|                                             psum_33_load_reload|        scalar|
+|psum_41_load_reload     |   in|   16|     ap_none|                                             psum_41_load_reload|        scalar|
+|psum_49_load_reload     |   in|   16|     ap_none|                                             psum_49_load_reload|        scalar|
+|psum_57_load_reload     |   in|   16|     ap_none|                                             psum_57_load_reload|        scalar|
+|psum_65_load_reload     |   in|   16|     ap_none|                                             psum_65_load_reload|        scalar|
+|psum_73_load_reload     |   in|   16|     ap_none|                                             psum_73_load_reload|        scalar|
+|psum_81_load_reload     |   in|   16|     ap_none|                                             psum_81_load_reload|        scalar|
+|psum_89_load_reload     |   in|   16|     ap_none|                                             psum_89_load_reload|        scalar|
+|psum_97_load_reload     |   in|   16|     ap_none|                                             psum_97_load_reload|        scalar|
+|psum_105_load_reload    |   in|   16|     ap_none|                                            psum_105_load_reload|        scalar|
+|psum_113_load_reload    |   in|   16|     ap_none|                                            psum_113_load_reload|        scalar|
+|psum_121_load_reload    |   in|   16|     ap_none|                                            psum_121_load_reload|        scalar|
+|psum_2_load_reload      |   in|   16|     ap_none|                                              psum_2_load_reload|        scalar|
+|psum_10_load_reload     |   in|   16|     ap_none|                                             psum_10_load_reload|        scalar|
+|psum_18_load_reload     |   in|   16|     ap_none|                                             psum_18_load_reload|        scalar|
+|psum_26_load_reload     |   in|   16|     ap_none|                                             psum_26_load_reload|        scalar|
+|psum_34_load_reload     |   in|   16|     ap_none|                                             psum_34_load_reload|        scalar|
+|psum_42_load_reload     |   in|   16|     ap_none|                                             psum_42_load_reload|        scalar|
+|psum_50_load_reload     |   in|   16|     ap_none|                                             psum_50_load_reload|        scalar|
+|psum_58_load_reload     |   in|   16|     ap_none|                                             psum_58_load_reload|        scalar|
+|psum_66_load_reload     |   in|   16|     ap_none|                                             psum_66_load_reload|        scalar|
+|psum_74_load_reload     |   in|   16|     ap_none|                                             psum_74_load_reload|        scalar|
+|psum_82_load_reload     |   in|   16|     ap_none|                                             psum_82_load_reload|        scalar|
+|psum_90_load_reload     |   in|   16|     ap_none|                                             psum_90_load_reload|        scalar|
+|psum_98_load_reload     |   in|   16|     ap_none|                                             psum_98_load_reload|        scalar|
+|psum_106_load_reload    |   in|   16|     ap_none|                                            psum_106_load_reload|        scalar|
+|psum_114_load_reload    |   in|   16|     ap_none|                                            psum_114_load_reload|        scalar|
+|psum_122_load_reload    |   in|   16|     ap_none|                                            psum_122_load_reload|        scalar|
+|psum_3_load_reload      |   in|   16|     ap_none|                                              psum_3_load_reload|        scalar|
+|psum_11_load_reload     |   in|   16|     ap_none|                                             psum_11_load_reload|        scalar|
+|psum_19_load_reload     |   in|   16|     ap_none|                                             psum_19_load_reload|        scalar|
+|psum_27_load_reload     |   in|   16|     ap_none|                                             psum_27_load_reload|        scalar|
+|psum_35_load_reload     |   in|   16|     ap_none|                                             psum_35_load_reload|        scalar|
+|psum_43_load_reload     |   in|   16|     ap_none|                                             psum_43_load_reload|        scalar|
+|psum_51_load_reload     |   in|   16|     ap_none|                                             psum_51_load_reload|        scalar|
+|psum_59_load_reload     |   in|   16|     ap_none|                                             psum_59_load_reload|        scalar|
+|psum_67_load_reload     |   in|   16|     ap_none|                                             psum_67_load_reload|        scalar|
+|psum_75_load_reload     |   in|   16|     ap_none|                                             psum_75_load_reload|        scalar|
+|psum_83_load_reload     |   in|   16|     ap_none|                                             psum_83_load_reload|        scalar|
+|psum_91_load_reload     |   in|   16|     ap_none|                                             psum_91_load_reload|        scalar|
+|psum_99_load_reload     |   in|   16|     ap_none|                                             psum_99_load_reload|        scalar|
+|psum_107_load_reload    |   in|   16|     ap_none|                                            psum_107_load_reload|        scalar|
+|psum_115_load_reload    |   in|   16|     ap_none|                                            psum_115_load_reload|        scalar|
+|psum_123_load_reload    |   in|   16|     ap_none|                                            psum_123_load_reload|        scalar|
+|psum_4_load_reload      |   in|   16|     ap_none|                                              psum_4_load_reload|        scalar|
+|psum_12_load_reload     |   in|   16|     ap_none|                                             psum_12_load_reload|        scalar|
+|psum_20_load_reload     |   in|   16|     ap_none|                                             psum_20_load_reload|        scalar|
+|psum_28_load_reload     |   in|   16|     ap_none|                                             psum_28_load_reload|        scalar|
+|psum_36_load_reload     |   in|   16|     ap_none|                                             psum_36_load_reload|        scalar|
+|psum_44_load_reload     |   in|   16|     ap_none|                                             psum_44_load_reload|        scalar|
+|psum_52_load_reload     |   in|   16|     ap_none|                                             psum_52_load_reload|        scalar|
+|psum_60_load_reload     |   in|   16|     ap_none|                                             psum_60_load_reload|        scalar|
+|psum_68_load_reload     |   in|   16|     ap_none|                                             psum_68_load_reload|        scalar|
+|psum_76_load_reload     |   in|   16|     ap_none|                                             psum_76_load_reload|        scalar|
+|psum_84_load_reload     |   in|   16|     ap_none|                                             psum_84_load_reload|        scalar|
+|psum_92_load_reload     |   in|   16|     ap_none|                                             psum_92_load_reload|        scalar|
+|psum_100_load_reload    |   in|   16|     ap_none|                                            psum_100_load_reload|        scalar|
+|psum_108_load_reload    |   in|   16|     ap_none|                                            psum_108_load_reload|        scalar|
+|psum_116_load_reload    |   in|   16|     ap_none|                                            psum_116_load_reload|        scalar|
+|psum_124_load_reload    |   in|   16|     ap_none|                                            psum_124_load_reload|        scalar|
+|psum_5_load_reload      |   in|   16|     ap_none|                                              psum_5_load_reload|        scalar|
+|psum_13_load_reload     |   in|   16|     ap_none|                                             psum_13_load_reload|        scalar|
+|psum_21_load_reload     |   in|   16|     ap_none|                                             psum_21_load_reload|        scalar|
+|psum_29_load_reload     |   in|   16|     ap_none|                                             psum_29_load_reload|        scalar|
+|psum_37_load_reload     |   in|   16|     ap_none|                                             psum_37_load_reload|        scalar|
+|psum_45_load_reload     |   in|   16|     ap_none|                                             psum_45_load_reload|        scalar|
+|psum_53_load_reload     |   in|   16|     ap_none|                                             psum_53_load_reload|        scalar|
+|psum_61_load_reload     |   in|   16|     ap_none|                                             psum_61_load_reload|        scalar|
+|psum_69_load_reload     |   in|   16|     ap_none|                                             psum_69_load_reload|        scalar|
+|psum_77_load_reload     |   in|   16|     ap_none|                                             psum_77_load_reload|        scalar|
+|psum_85_load_reload     |   in|   16|     ap_none|                                             psum_85_load_reload|        scalar|
+|psum_93_load_reload     |   in|   16|     ap_none|                                             psum_93_load_reload|        scalar|
+|psum_101_load_reload    |   in|   16|     ap_none|                                            psum_101_load_reload|        scalar|
+|psum_109_load_reload    |   in|   16|     ap_none|                                            psum_109_load_reload|        scalar|
+|psum_117_load_reload    |   in|   16|     ap_none|                                            psum_117_load_reload|        scalar|
+|psum_125_load_reload    |   in|   16|     ap_none|                                            psum_125_load_reload|        scalar|
+|psum_6_load_reload      |   in|   16|     ap_none|                                              psum_6_load_reload|        scalar|
+|psum_14_load_reload     |   in|   16|     ap_none|                                             psum_14_load_reload|        scalar|
+|psum_22_load_reload     |   in|   16|     ap_none|                                             psum_22_load_reload|        scalar|
+|psum_30_load_reload     |   in|   16|     ap_none|                                             psum_30_load_reload|        scalar|
+|psum_38_load_reload     |   in|   16|     ap_none|                                             psum_38_load_reload|        scalar|
+|psum_46_load_reload     |   in|   16|     ap_none|                                             psum_46_load_reload|        scalar|
+|psum_54_load_reload     |   in|   16|     ap_none|                                             psum_54_load_reload|        scalar|
+|psum_62_load_reload     |   in|   16|     ap_none|                                             psum_62_load_reload|        scalar|
+|psum_70_load_reload     |   in|   16|     ap_none|                                             psum_70_load_reload|        scalar|
+|psum_78_load_reload     |   in|   16|     ap_none|                                             psum_78_load_reload|        scalar|
+|psum_86_load_reload     |   in|   16|     ap_none|                                             psum_86_load_reload|        scalar|
+|psum_94_load_reload     |   in|   16|     ap_none|                                             psum_94_load_reload|        scalar|
+|psum_102_load_reload    |   in|   16|     ap_none|                                            psum_102_load_reload|        scalar|
+|psum_110_load_reload    |   in|   16|     ap_none|                                            psum_110_load_reload|        scalar|
+|psum_118_load_reload    |   in|   16|     ap_none|                                            psum_118_load_reload|        scalar|
+|psum_126_load_reload    |   in|   16|     ap_none|                                            psum_126_load_reload|        scalar|
+|psum_7_load_reload      |   in|   16|     ap_none|                                              psum_7_load_reload|        scalar|
+|psum_15_load_reload     |   in|   16|     ap_none|                                             psum_15_load_reload|        scalar|
+|psum_23_load_reload     |   in|   16|     ap_none|                                             psum_23_load_reload|        scalar|
+|psum_31_load_reload     |   in|   16|     ap_none|                                             psum_31_load_reload|        scalar|
+|psum_39_load_reload     |   in|   16|     ap_none|                                             psum_39_load_reload|        scalar|
+|psum_47_load_reload     |   in|   16|     ap_none|                                             psum_47_load_reload|        scalar|
+|psum_55_load_reload     |   in|   16|     ap_none|                                             psum_55_load_reload|        scalar|
+|psum_63_load_reload     |   in|   16|     ap_none|                                             psum_63_load_reload|        scalar|
+|psum_71_load_reload     |   in|   16|     ap_none|                                             psum_71_load_reload|        scalar|
+|psum_79_load_reload     |   in|   16|     ap_none|                                             psum_79_load_reload|        scalar|
+|psum_87_load_reload     |   in|   16|     ap_none|                                             psum_87_load_reload|        scalar|
+|psum_95_load_reload     |   in|   16|     ap_none|                                             psum_95_load_reload|        scalar|
+|psum_103_load_reload    |   in|   16|     ap_none|                                            psum_103_load_reload|        scalar|
+|psum_111_load_reload    |   in|   16|     ap_none|                                            psum_111_load_reload|        scalar|
+|psum_119_load_reload    |   in|   16|     ap_none|                                            psum_119_load_reload|        scalar|
+|psum_127_load_reload    |   in|   16|     ap_none|                                            psum_127_load_reload|        scalar|
+|bias                    |   in|   16|     ap_none|                                                            bias|        scalar|
+|co                      |   in|    4|     ap_none|                                                              co|        scalar|
++------------------------+-----+-----+------------+----------------------------------------------------------------+--------------+
+
