@@ -10,9 +10,10 @@
 //   2: MODE_RB_L2 (Plain load -> Conv -> Norm -> Add)
 // ============================================================
 
-#define MODE_CBI   0
-#define MODE_RB_L1 1
-#define MODE_RB_L2 2
+#define MODE_CBI          0
+#define MODE_RB_L1        1
+#define MODE_RB_L2        2
+#define MODE_GLOBAL_ADD   3
 
 extern "C" {
 void fusion_core_top(

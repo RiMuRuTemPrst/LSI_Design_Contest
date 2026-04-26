@@ -30,6 +30,4 @@ typedef ap_uint<256> data_256_t;
 typedef data_256_t*       DDR_PTR;
 typedef const data_256_t* DDR_CONST_PTR;
 
-#include "Hls_Layers_Universal.tpp"
-
 #endif

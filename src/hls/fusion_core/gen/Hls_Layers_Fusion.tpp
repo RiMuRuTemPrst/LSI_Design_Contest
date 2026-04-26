@@ -15,6 +15,9 @@
 // SHARED HELPER FUNCTIONS
 // ============================================================
 
+#ifndef HLS_HALF_HELPERS_DEFINED
+#define HLS_HALF_HELPERS_DEFINED
+
 template <typename T>
 static inline ap_uint<16> half_to_bits(T val) {
 #pragma HLS INLINE
@@ -65,6 +68,37 @@ static inline float my_sqrt_f(float x) {
 #endif
 }
 
+#endif // HLS_HALF_HELPERS_DEFINED
+
+// ============================================================
+// GLOBAL ADD KERNEL
+// ============================================================
+
+template<int PEs>
+void GlobalAdd_Kernel(
+    DDR_CONST_PTR X,
+    data_256_t*   global_buf,
+    DDR_PTR       Y,
+    int           total_vecs
+) {
+#pragma HLS INLINE off
+    for (int i = 0; i < total_vecs; i++) {
+#pragma HLS PIPELINE II=1
+        data_256_t x_vec = X[i];
+        data_256_t g_vec = global_buf[i];
+        data_256_t out_vec;
+
+        for (int k = 0; k < 16; k++) {
+#pragma HLS UNROLL
+            half x_val = bits_to_half<half>(x_vec.range(16*k+15, 16*k));
+            half g_val = bits_to_half<half>(g_vec.range(16*k+15, 16*k));
+            half res = x_val + g_val;
+            out_vec.range(16*k+15, 16*k) = half_to_bits(res);
+        }
+        Y[i] = out_vec;
+    }
+}
+
 // ============================================================
 // UNIVERSAL ENGINE KERNEL (Unified Architecture)
 // ============================================================
@@ -79,6 +113,8 @@ static void Universal_Engine_Kernel(
     DDR_CONST_PTR G_IN_ptr,   // Only for MODE_CBI
     DDR_CONST_PTR BE_IN_ptr,  // Only for MODE_CBI
     DDR_PTR       Out_ptr,
+    data_256_t*   skip_buf,   // Persistent ResBlock buffer
+    data_256_t*   global_buf, // Persistent Global Skip buffer
     T             epsilon,
     int           mode        // 0=CBI, 1=RB_L1, 2=RB_L2
 ) {
@@ -104,14 +140,6 @@ static void Universal_Engine_Kernel(
     #endif
     #pragma HLS BIND_STORAGE variable=x_buf type=ram_2p impl=bram
     #pragma HLS ARRAY_PARTITION variable=x_buf complete dim=2
-
-    #if defined(__SYNTHESIS__)
-    static data_256_t skip_buf[H * W * 60];
-    #else
-    static data_256_t* skip_buf_ptr = new data_256_t[H * W * 60];
-    data_256_t* skip_buf = skip_buf_ptr;
-    #endif
-    #pragma HLS BIND_STORAGE variable=skip_buf type=ram_2p impl=uram
 
     // --- Local buffers ---
     data_256_t g_buf[60], be_buf[60], b_buf[60];
@@ -273,6 +301,7 @@ static void Universal_Engine_Kernel(
                     out_w.range(16*k+15,16*k) = half_to_bits(act);
                 }
                 Out_ptr[out_px_base+j] = out_w;
+                if (is_cbi) global_buf[out_px_base+j] = out_w;
             }
         }
     }

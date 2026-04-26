@@ -4,6 +4,10 @@
 
 static const int PEs = 16;
 
+// Persistent buffers: skip connection (RB_L1→RB_L2) and global skip (CBI→GLOBAL_ADD)
+static data_256_t skip_buf[MODEL_H * MODEL_W * 60];
+static data_256_t global_buf[MODEL_H * MODEL_W * 60];
+
 extern "C" {
 
 void fusion_core_top(
@@ -18,15 +22,16 @@ void fusion_core_top(
     data_t            epsilon,
     int               mode
 ) {
-// Optimized burst length to 64 to save ~150 BRAMs
-#pragma HLS INTERFACE m_axi port=X     offset=slave bundle=gmem_data  max_read_burst_length=64 max_write_burst_length=64
+#pragma HLS BIND_STORAGE variable=skip_buf   type=ram_2p impl=uram
+#pragma HLS BIND_STORAGE variable=global_buf type=ram_2p impl=uram
+#pragma HLS INTERFACE m_axi port=X     offset=slave bundle=gmem_data   max_read_burst_length=64 max_write_burst_length=64
 #pragma HLS INTERFACE m_axi port=W     offset=slave bundle=gmem_weight max_read_burst_length=64
 #pragma HLS INTERFACE m_axi port=B     offset=slave bundle=gmem_param  max_read_burst_length=64
 #pragma HLS INTERFACE m_axi port=G     offset=slave bundle=gmem_param  max_read_burst_length=64
 #pragma HLS INTERFACE m_axi port=BE    offset=slave bundle=gmem_param  max_read_burst_length=64
 #pragma HLS INTERFACE m_axi port=G_IN  offset=slave bundle=gmem_param  max_read_burst_length=64
 #pragma HLS INTERFACE m_axi port=BE_IN offset=slave bundle=gmem_param  max_read_burst_length=64
-#pragma HLS INTERFACE m_axi port=Y     offset=slave bundle=gmem_data  max_write_burst_length=64
+#pragma HLS INTERFACE m_axi port=Y     offset=slave bundle=gmem_data   max_write_burst_length=64
 
 #pragma HLS INTERFACE s_axilite port=X       bundle=control
 #pragma HLS INTERFACE s_axilite port=W       bundle=control
@@ -40,9 +45,13 @@ void fusion_core_top(
 #pragma HLS INTERFACE s_axilite port=mode    bundle=control
 #pragma HLS INTERFACE s_axilite port=return  bundle=control
 
-    Universal_Engine_Kernel<PEs, data_t>(
-        X, W, B, G, BE, G_IN, BE_IN, Y, epsilon, mode
-    );
+    if (mode == MODE_GLOBAL_ADD) {
+        GlobalAdd_Kernel<PEs>(X, global_buf, Y, MODEL_H * MODEL_W * 60);
+    } else {
+        Universal_Engine_Kernel<PEs, data_t>(
+            X, W, B, G, BE, G_IN, BE_IN, Y, skip_buf, global_buf, epsilon, mode
+        );
+    }
 }
 
 } // extern "C"

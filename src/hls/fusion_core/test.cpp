@@ -187,7 +187,7 @@ int main() {
     unsigned seed = 42; int all_pass = 1;
 
     // --- TEST 1: CBI ---
-    cout << "\n[TEST 1/2] CBI MODE" << endl;
+    cout << "\n[TEST 1/3] CBI MODE" << endl;
     vector<float> cbi_x(HW*C_CBI), cbi_w(C_OUT*9*C_CBI), cbi_b(C_OUT), cbi_g0(C_CBI), cbi_be0(C_CBI), cbi_g3(C_OUT), cbi_be3(C_OUT), cbi_ref(HW*C_OUT), cbi_got(HW*C_OUT);
     rand_fill(cbi_x.data(), HW*C_CBI, -1.0f, 1.0f, seed); rand_fill(cbi_w.data(), C_OUT*9*C_CBI, -0.1f, 0.1f, seed); rand_fill(cbi_b.data(), C_OUT, -0.1f, 0.1f, seed);
     rand_fill(cbi_g0.data(), C_CBI, 0.5f, 1.5f, seed); rand_fill(cbi_be0.data(), C_CBI, -0.1f, 0.1f, seed); rand_fill(cbi_g3.data(), C_OUT, 0.5f, 1.5f, seed); rand_fill(cbi_be3.data(), C_OUT, -0.1f, 0.1f, seed);
@@ -206,7 +206,7 @@ int main() {
     if(r1.err_cnt>0) all_pass=0;
 
     // --- TEST 2: ResBlock (L1 + L2) ---
-    cout << "\n[TEST 2/2] RESBLOCK MODE" << endl;
+    cout << "\n[TEST 2/3] RESBLOCK MODE" << endl;
     int HWC=HW*C_RB, WE=C_RB*9*C_RB;
     vector<float> rb_x(HWC), rb_w1(WE), rb_b1(C_RB), rb_g1(C_RB), rb_be1(C_RB), rb_w2(WE), rb_b2(C_RB), rb_g2(C_RB), rb_be2(C_RB), rb_ref(HWC), rb_got(HWC);
     rand_fill(rb_x.data(), HWC, -1.0f, 1.0f, seed); rand_fill(rb_w1.data(), WE, -0.05f, 0.05f, seed); rand_fill(rb_b1.data(), C_RB, -0.1f, 0.1f, seed); rand_fill(rb_g1.data(), C_RB, 0.5f, 1.5f, seed); rand_fill(rb_be1.data(), C_RB, -0.1f, 0.1f, seed);
@@ -227,6 +227,26 @@ int main() {
     CmpResult r2 = compare(rb_got.data(), rb_ref.data(), HWC, TOL);
     cout << "  RB Result : " << (r2.err_cnt==0?"PASS":"FAIL") << " (MaxErr=" << r2.max_err << ")" << endl;
     if(r2.err_cnt>0) all_pass=0;
+
+    // --- TEST 3: Global Add ---
+    cout << "\n[TEST 3/3] GLOBAL ADD MODE" << endl;
+    vector<float> ga_x(HW*C_OUT), ga_ref(HW*C_OUT), ga_got(HW*C_OUT);
+    rand_fill(ga_x.data(), HW*C_OUT, -1.0f, 1.0f, seed);
+
+    // ga_ref = cbi_got + ga_x
+    // Note: cbi_got contains the output of MODE_CBI which was saved to global_buf
+    for(int i=0; i<HW*C_OUT; i++) ga_ref[i] = cbi_got[i] + ga_x[i];
+
+    vector<data_256_t> ga_X_hls(HW*CO_WORDS), ga_Y_hls(HW*CO_WORDS);
+    pack(ga_x.data(), ga_X_hls.data(), HW*C_OUT);
+
+    cout << "  Running Global Add (Adding to saved CBI output)..." << endl;
+    fusion_core_top(ga_X_hls.data(), NULL, NULL, NULL, NULL, NULL, NULL, ga_Y_hls.data(), (data_t)EPS, MODE_GLOBAL_ADD);
+
+    unpack(ga_Y_hls.data(), ga_got.data(), HW*C_OUT);
+    CmpResult r3 = compare(ga_got.data(), ga_ref.data(), HW*C_OUT, TOL);
+    cout << "  GA Result : " << (r3.err_cnt==0?"PASS":"FAIL") << " (MaxErr=" << r3.max_err << ")" << endl;
+    if(r3.err_cnt>0) all_pass=0;
 
     cout << "\n======================================" << endl;
     cout << (all_pass ? " RESULT: ALL TESTS PASSED" : " RESULT: SOME TESTS FAILED") << endl;
