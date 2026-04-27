@@ -4,26 +4,35 @@
 Dự án triển khai mô hình HiFiC lên FPGA ZCU104.
 Kiến trúc Generator (Decoder) được triển khai thành **một IP hoàn chỉnh duy nhất** (`full_generator_top`) bao gồm: **Fusion Core** (CBI + 9×ResBlock + GlobalAdd) và **UpConv Core** (4×UCB).
 
-## IP Architecture
-
-### full_generator_top (unified IP)
+## Full Generator Architecture (reference — từ GAN.jpg)
 ```
-Latent Input (16×16×960)
+hyper-latent (16×16×960)
     │
-    ▼ [FUSION CORE — PEs=8]
-  CBI → 9×(ResBlock L1 + L2) → GlobalAdd
+    ▼ [conv_block_init / CBI] ✅ DONE
+  Norm → Pad → Conv 3×3 → Norm
     │
-    ▼ [UPCONV CORE — PEs=8]
-  UCB_0: 16×16×960  → 32×32×480
+    ▼ [9× res_block] ✅ DONE
+  Pad→Conv3×3→Norm→ReLU→Pad→Conv3×3→Norm→Add(SC)
+    │
+    ▼ [GlobalAdd — skip từ CBI] ✅ DONE
+    │
+    ▼ [4× up_conv_block] ✅ DONE
+  UCB_0: 16×16×960  → 32×32×480   (ConvTranspose 3×3 → Norm → ReLU)
   UCB_1: 32×32×480  → 64×64×240
   UCB_2: 64×64×240  → 128×128×120
   UCB_3: 128×128×120 → 256×256×60
     │
-    ▼ Output (256×256×60)
+    ▼ [conv_block_out] ⏳ TODO
+  Pad → Conv 7×7 → Clip
+    │
+    ▼ Output (256×256×3)
 ```
 
+## Implemented IP: full_generator_top
+Bao gồm Fusion Core + UpConv Core. Output hiện tại là `256×256×60` (trước conv_block_out).
+
 **AXI Ports:** `gmem_x` (X inout), `gmem_wf` (W_fusion), `gmem_pf` (P_fusion),
-`gmem_wu` (W_upconv), `gmem_pu` (P_upconv), `gmem_y` (Y inout)
+`gmem_wu` (W_upconv), `gmem_pu` (P_upconv), `gmem_y` (Y inout — UCB_3 output, 256×256×60)
 
 ### Source Files
 | File | Mô tả |
@@ -94,6 +103,14 @@ Tương tự cho `run_upconv_block`: pass cả X lẫn Y, chọn input bằng `m
 FP16 adder có latency 3-4 cycles. Dùng `psum[PEs][4]` xoay vòng với `acc_idx = ciw & 3`
 → distance giữa RAW dependencies = 4 ≥ latency → `#pragma HLS DEPENDENCE false` hợp lệ
 → II=1 cho CI_LOOP.
+
+## Known Issues / Workarounds
+| Issue | Root Cause | Workaround / Fix |
+| :--- | :--- | :--- |
+| `x_buf` fusion phải là BRAM, không phải URAM | `ARRAY_PARTITION complete dim=2` → 16 banks → URAM cần 64 blocks, vượt limit 96 | Bind `x_buf` vào BRAM; chỉ `skip_buf`/`global_buf` mới để URAM |
+| HLS tạo 2 instances của `Universal_Engine_Kernel` | Pass `NULL` vs non-NULL cho G_IN/BE_IN → HLS thấy connectivity khác → 2 hardware instances → BRAM overflow | Pass `P_fusion` (dummy, non-NULL) cho tất cả calls → identical port connections → 1 shared instance |
+| HLS tạo 2 instances của `run_upconv_block` | UCB_0 đọc X, UCB_1-3 đọc Y → different input ports → 2 instances | Pass cả X và Y vào function, chọn input bằng `mode` bên trong → 1 shared instance |
+| Duplicate symbol khi include cả 2 `.tpp` | `half_to_bits`, `bits_to_half`, `my_sqrt_f` defined ở cả `Hls_Layers_Fusion.tpp` và `Hls_Layers_UpConv.tpp` | Guard `#ifndef HLS_HALF_HELPERS_DEFINED` quanh các helper functions |
 
 ## Data Classification
 - **Weights/Params**: `assets/test_data/model_params/` (Trọng số Generator bắt đầu bằng `Gen_...`)

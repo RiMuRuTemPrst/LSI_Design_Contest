@@ -43,6 +43,9 @@
 **/*.wdb
 **/*.protoinst
 
+# --- Claude Cowork (personal workspace, not for repo) ---
+Claude_Cowork/
+
 # --- OS / IDE ---
 .DS_Store
 .vscode/
