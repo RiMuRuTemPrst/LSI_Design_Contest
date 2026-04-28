@@ -189,7 +189,7 @@ static void Fused_Conv_CNorm_Act(
 
         int ping = 0;
         int w_init_base = w_flat_idx(0, 0, 0, 0, C_IN) / PACK_256;
-        LOAD_1_WEIGHT_PINGPONG: for (int i = 0; i < C_WORDS; i++) {
+        PRELOAD_1_WEIGHT_PINGPONG: for (int i = 0; i < C_WORDS; i++) {
 #pragma HLS PIPELINE II=1
             w_buf_256[0][i] = W_ptr[w_init_base + i];
         }
@@ -208,21 +208,28 @@ static void Fused_Conv_CNorm_Act(
                 }
             }
 
+            constexpr int8_t KH_LUT[10] = {0,0,0,1,1,1,2,2,2, 0};
+            constexpr int8_t KW_LUT[10] = {0,1,2,0,1,2,0,1,2, 0};
+            
+            // Precompute co_base ONCE before CONV_STEP_LOOP (Loop-Invariant Code Motion)
+            int co_word_base = (co * 9) * (C_IN / PACK_256);
+
             CONV_STEP_LOOP: for (int step = 0; step < 9; step++) {
-                int kh = step / 3, kw = step % 3;
-                int ns   = step + 1;
-                int n_kh = ns / 3, n_kw = ns % 3;
+                int kh = KH_LUT[step];
+                int kw = KW_LUT[step];
 
                 int h_row = r * width + (kh - 1);
                 int slot  = (h_row + 1) & 3;
 
                 int wn_base;
                 bool do_load = false;
-                if (ns < 9) {
-                    wn_base = w_flat_idx(co, n_kh, n_kw, 0, C_IN) / PACK_256;
+                
+                // wn_base prefetch cho bước tiếp theo rẽ nhánh không rườm rà
+                if (step < 8) {
+                    wn_base = co_word_base + (step + 1) * (C_IN / PACK_256);
                     do_load = true;
                 } else if (co < C_OUT - 1) { 
-                    wn_base = w_flat_idx(co + 1, 0, 0, 0, C_IN) / PACK_256;
+                    wn_base = co_word_base + 9 * (C_IN / PACK_256);
                     do_load = true;
                 }
 
@@ -230,45 +237,68 @@ static void Fused_Conv_CNorm_Act(
                 data_256_t x_word_reg[PEs];
 #pragma HLS ARRAY_PARTITION variable=x_word_reg complete
 
-                COMPUTE_LOAD_LOOP: for (int ci = 0; ci < C_IN; ci += 4) {
+                COMPUTE_LOAD_LOOP: for (int ci = 0; ci < C_IN; ci += 16) {
 #pragma HLS PIPELINE II=1
-                    int acc_idx = (ci / 4) & 7;
-                    int widx    = ci / PACK_256;   
-                    int boff    = ci % PACK_256;   
+                    int acc_idx = (ci / 16) & 7;
+                    int widx    = ci / 16;
 #pragma HLS DEPENDENCE variable=psum type=inter false
 
-                    if (boff == 0) {
-                        w_word_reg = w_buf_256[ping][widx];
-                    } else {
-                        w_word_reg >>= 64; 
-                    }
+                    w_word_reg = w_buf_256[ping][widx];
 
                     T w0 = bits_to_half<T>(w_word_reg.range(15, 0));
                     T w1 = bits_to_half<T>(w_word_reg.range(31, 16));
                     T w2 = bits_to_half<T>(w_word_reg.range(47, 32));
                     T w3 = bits_to_half<T>(w_word_reg.range(63, 48));
+                    T w4 = bits_to_half<T>(w_word_reg.range(79, 64));
+                    T w5 = bits_to_half<T>(w_word_reg.range(95, 80));
+                    T w6 = bits_to_half<T>(w_word_reg.range(111, 96));
+                    T w7 = bits_to_half<T>(w_word_reg.range(127, 112));
+                    T w8 = bits_to_half<T>(w_word_reg.range(143, 128));
+                    T w9 = bits_to_half<T>(w_word_reg.range(159, 144));
+                    T w10 = bits_to_half<T>(w_word_reg.range(175, 160));
+                    T w11 = bits_to_half<T>(w_word_reg.range(191, 176));
+                    T w12 = bits_to_half<T>(w_word_reg.range(207, 192));
+                    T w13 = bits_to_half<T>(w_word_reg.range(223, 208));
+                    T w14 = bits_to_half<T>(w_word_reg.range(239, 224));
+                    T w15 = bits_to_half<T>(w_word_reg.range(255, 240));
 
                     PE_UNROLL: for (int pe = 0; pe < PEs; pe++) {
 #pragma HLS UNROLL
-                        int wx  = pe + (kw - 1);
+                        int wx  = pe + ((int)kw - 1);
                         // --- ON-THE-FLY COLUMN REFLECT PADDING LOGIC ---
                         int wc  = (wx < 0) ? -wx : ((wx >= W) ? (W<<1)-wx-2 : wx);
                         
-                        if (boff == 0) {
-                            x_word_reg[pe] = x_buf_256[slot][wc][widx];
-                        } else {
-                            x_word_reg[pe] >>= 64; 
-                        }
+                        x_word_reg[pe] = x_buf_256[slot][wc][widx];
 
                         T x0 = bits_to_half<T>(x_word_reg[pe].range(15, 0));
                         T x1 = bits_to_half<T>(x_word_reg[pe].range(31, 16));
                         T x2 = bits_to_half<T>(x_word_reg[pe].range(47, 32));
                         T x3 = bits_to_half<T>(x_word_reg[pe].range(63, 48));
+                        T x4 = bits_to_half<T>(x_word_reg[pe].range(79, 64));
+                        T x5 = bits_to_half<T>(x_word_reg[pe].range(95, 80));
+                        T x6 = bits_to_half<T>(x_word_reg[pe].range(111, 96));
+                        T x7 = bits_to_half<T>(x_word_reg[pe].range(127, 112));
+                        T x8 = bits_to_half<T>(x_word_reg[pe].range(143, 128));
+                        T x9 = bits_to_half<T>(x_word_reg[pe].range(159, 144));
+                        T x10 = bits_to_half<T>(x_word_reg[pe].range(175, 160));
+                        T x11 = bits_to_half<T>(x_word_reg[pe].range(191, 176));
+                        T x12 = bits_to_half<T>(x_word_reg[pe].range(207, 192));
+                        T x13 = bits_to_half<T>(x_word_reg[pe].range(223, 208));
+                        T x14 = bits_to_half<T>(x_word_reg[pe].range(239, 224));
+                        T x15 = bits_to_half<T>(x_word_reg[pe].range(255, 240));
 
-                        psum[pe][acc_idx] += (x0*w0 + x1*w1) + (x2*w2 + x3*w3);
+                        T sum_16 = (
+                                       ( (x0*w0 + x1*w1) + (x2*w2 + x3*w3) ) + 
+                                       ( (x4*w4 + x5*w5) + (x6*w6 + x7*w7) )
+                                   ) + (
+                                       ( (x8*w8 + x9*w9) + (x10*w10 + x11*w11) ) + 
+                                       ( (x12*w12 + x13*w13) + (x14*w14 + x15*w15) )
+                                   );
+
+                        psum[pe][acc_idx] += sum_16;
                     }
 
-                    if (do_load && boff == 0) {
+                    if (do_load) {
                         w_buf_256[1-ping][widx] = W_ptr[wn_base + widx];
                     }
                 } 
@@ -284,8 +314,10 @@ static void Fused_Conv_CNorm_Act(
 
             FINAL_ACCUMULATION: for (int pe = 0; pe < PEs; pe++) {
 #pragma HLS PIPELINE II=1
-                T total = (T)0;
-                for (int l = 0; l < 8; l++) total += psum[pe][l];
+                T total = (
+                              ( (psum[pe][0] + psum[pe][1]) + (psum[pe][2] + psum[pe][3]) ) +
+                              ( (psum[pe][4] + psum[pe][5]) + (psum[pe][6] + psum[pe][7]) )
+                          );
 
                 T fout = total + bias;
                 y_cache_16[pe][co] = fout;
@@ -327,7 +359,7 @@ static void Fused_Conv_CNorm_Act(
             int skip_256_base = ((r * W) + pe) * (C_OUT / PACK_256);
             int out_off_256   = flat_idx(n, r*width, pe, 0, H, W, C_OUT) / PACK_256;
 
-            CHANNEL_NORM_PASS_B: for (int co = 0; co < C_OUT; co += PACK_256) {
+            CHANNEL_NORM: for (int co = 0; co < C_OUT; co += PACK_256) {
 #pragma HLS PIPELINE II=1
                 int word_idx = co / PACK_256;
 
