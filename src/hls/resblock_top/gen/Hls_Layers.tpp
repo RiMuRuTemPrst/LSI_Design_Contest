@@ -224,7 +224,7 @@ static void Fused_Conv_CNorm_Act(
                 int wn_base;
                 bool do_load = false;
                 
-                // wn_base prefetch cho bước tiếp theo rẽ nhánh không rườm rà
+                // wn_base prefetch for next step
                 if (step < 8) {
                     wn_base = co_word_base + (step + 1) * (C_IN / PACK_256);
                     do_load = true;
