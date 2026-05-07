@@ -1,5 +1,5 @@
 <root versionMajor = "1" versionMinor = "5">
-  <kernel name="universal_engine_top" language="c" vlnv="xilinx.com:hls:universal_engine_top:1.0" attributes="" hash="" preferredWorkGroupSizeMultiple="0" workGroupSize="1" debug="false" compileOptions="" profileType="none" hwControlProtocol="ap_ctrl_chain">
+  <kernel name="fusion_core_top" language="c" vlnv="xilinx.com:hls:fusion_core_top:1.0" attributes="" hash="" preferredWorkGroupSizeMultiple="0" workGroupSize="1" debug="false" compileOptions="" profileType="none" hwControlProtocol="ap_ctrl_chain">
     <ports>
       <port name="M_AXI_GMEM_DATA" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="512"/>
       <port name="M_AXI_GMEM_WEIGHT" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="256"/>

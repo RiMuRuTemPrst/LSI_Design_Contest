@@ -1,0 +1,29 @@
+{
+  "output": {
+    "filePath": "repomix-output.txt",
+    "style": "markdown",
+    "headerText": "HiFiC FPGA Generator — HLS Codebase Context",
+    "showLineNumbers": true,
+    "removeComments": false,
+    "removeEmptyLines": false
+  },
+  "include": [
+    "src/hls/fusion_core/gen/**",
+    "src/hls/upconv_core/gen/**",
+    "src/hls/full_generator/gen/**",
+    "GEMINI.md",
+    "Claude_Cowork/ABOUT_ME.md"
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "src/hls/*/prj/**",
+      "src/hls/*/_ide/**",
+      "assets/**",
+      "*.rpt",
+      "*.log",
+      "repomix-output.txt"
+    ]
+  }
+}
