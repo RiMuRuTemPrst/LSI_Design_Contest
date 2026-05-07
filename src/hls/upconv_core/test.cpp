@@ -48,7 +48,13 @@ void run_upconv_test(int mode, const char* name, int hi, int wi, int ci, int co)
     cout << "\n--- Testing " << name << " (" << hi << "x" << wi << "x" << ci << " -> " << ho << "x" << wo << "x" << co << ") ---" << endl;
 
     vector<float> x(hi * wi * ci, 0.5f);
-    vector<float> w(co * 9 * ci, 0.01f);
+    // Vary by co so per-pixel norm sees var>0 (uniform weights → var=0 → all-zero output)
+    vector<float> w(co * 9 * ci, 0.0f);
+    {
+        int chunk = 9 * ci;
+        for (int i = 0; i < (int)w.size(); i++)
+            w[i] = (i / chunk % 8 + 1) * 0.01f;
+    }
     vector<float> b_ct(co, 0.1f);
     vector<float> g(co, 1.0f);
     vector<float> be(co, 0.0f);
