@@ -47,9 +47,6 @@ static inline T bits_to_half(ap_uint<16> bits) {
 
 #endif // HLS_HALF_HELPERS_DEFINED
 
-// ============================================================
-// reflect padding: mirrors at boundaries (same as Conv77 ref)
-// ============================================================
 static inline int reflect_pad(int i, int MAX) {
 #pragma HLS INLINE
     if (i < 0)    return -i;
@@ -65,8 +62,11 @@ static inline int reflect_pad(int i, int MAX) {
 // B layout : word 0, bits [47:0] = 3 half bias values
 // Y layout : [H=256][W=256][1]  bits [47:0] = 3 half output values
 //
-// Inner CI_LOOP pipelined II=1 with rotating psum[C_OUT][4]:
-//   depth=4 >= FP16 adder latency → DEPENDENCE false valid
+// Flat loop: 196 iterations (49 kernel positions × 4 CI_WORDS) pipelined at II=1.
+// psum[co][k_ci] written exactly once per iteration → no inter-iteration RAW.
+// REDUCE: depth-4 rotating accumulator, DEPENDENCE false valid (FP16 add latency ≤ 4).
+//
+// No ARRAY_PARTITION dim=3 on line_buf → 8 URAM blocks (vs 16).
 // ============================================================
 void Conv77_Core(
     const data_256_t* X,
@@ -76,31 +76,33 @@ void Conv77_Core(
 ) {
 #pragma HLS INLINE off
 
-    const int H       = 256;
-    const int W_IN    = 256;
-    const int C_OUT   = 3;
-    const int CI_WORDS = 4;   // ceil(60/16)
-    const int KR      = 7;
-    const int PAD     = 3;
+    const int H        = 256;
+    const int W_IN     = 256;
+    const int C_OUT    = 3;
+    const int CI_WORDS = 4;
+    const int KR       = 7;
+    const int PAD      = 3;
+    const int K_TOTAL  = KR * KR;           // 49
+    const int FLAT_N   = K_TOTAL * CI_WORDS; // 196
 
-    // 7-row line buffer (URAM): slot = row_idx % 7
+    // 7-row circular line buffer: no dim=3 partition → 8 URAM (vs 16 with partition).
+    // FLAT_LOOP reads one (row_slot, abs_col, ci_w) per iteration → single port sufficient.
     static data_256_t line_buf[KR][W_IN][CI_WORDS];
 #pragma HLS BIND_STORAGE variable=line_buf type=ram_t2p impl=uram
-#pragma HLS ARRAY_PARTITION variable=line_buf complete dim=3
 
-    // Weight buffer (BRAM): fully partitioned on co and ci_w for 3 parallel reads
-    data_256_t w_buf[C_OUT][49][CI_WORDS];
+    // Weight buffer (BRAM): partitioned on co and ci_w for 3 simultaneous co reads
+    data_256_t w_buf[C_OUT][K_TOTAL][CI_WORDS];
 #pragma HLS BIND_STORAGE variable=w_buf type=ram_t2p impl=bram
 #pragma HLS ARRAY_PARTITION variable=w_buf complete dim=1
 #pragma HLS ARRAY_PARTITION variable=w_buf complete dim=3
 
     // --- Load weights ---
     LOAD_W: for (int co = 0; co < C_OUT; co++)
-        for (int k = 0; k < 49; k++)
+        for (int k = 0; k < K_TOTAL; k++)
             for (int ci_w = 0; ci_w < CI_WORDS; ci_w++) {
 #pragma HLS PIPELINE II=1
 #pragma HLS LOOP_TRIPCOUNT min=4 max=4 avg=4
-                w_buf[co][k][ci_w] = W[(co * 49 + k) * CI_WORDS + ci_w];
+                w_buf[co][k][ci_w] = W[(co * K_TOTAL + k) * CI_WORDS + ci_w];
             }
 
     // --- Load bias ---
@@ -123,7 +125,6 @@ void Conv77_Core(
     HO_LOOP: for (int ho = 0; ho < H; ho++) {
 #pragma HLS LOOP_TRIPCOUNT min=256 max=256 avg=256
 
-        // Load the new bottom row when it becomes available (rows KR..H-1)
         int new_row = ho + PAD;
         if (new_row >= KR && new_row < H) {
             int slot = new_row % KR;
@@ -139,55 +140,63 @@ void Conv77_Core(
         WO_LOOP: for (int wo = 0; wo < W_IN; wo++) {
 #pragma HLS LOOP_TRIPCOUNT min=256 max=256 avg=256
 #pragma HLS PIPELINE off
-            data_t acc[C_OUT];
-#pragma HLS ARRAY_PARTITION variable=acc complete dim=1
-            for (int co = 0; co < C_OUT; co++) acc[co] = 0;
 
-            KH_LOOP: for (int kh = 0; kh < KR; kh++) {
+            // 196 independent dot products: psum[co][k_ci] written exactly once.
+            // No inter-iteration RAW → II=1 with no DEPENDENCE pragma needed.
+            data_t psum[C_OUT][FLAT_N];
+#pragma HLS ARRAY_PARTITION variable=psum complete dim=0
+
+            FLAT_LOOP: for (int k_ci = 0; k_ci < FLAT_N; k_ci++) {
+#pragma HLS PIPELINE II=1
+#pragma HLS LOOP_TRIPCOUNT min=196 max=196 avg=196
+                int k    = k_ci >> 2;   // 0..48
+                int ci_w = k_ci  & 3;   // 0..3
+                int kh   = k / KR;
+                int kw   = k % KR;
                 int abs_row  = reflect_pad(ho - PAD + kh, H);
                 int row_slot = abs_row % KR;
+                int abs_col  = reflect_pad(wo - PAD + kw, W_IN);
 
-                KW_LOOP: for (int kw = 0; kw < KR; kw++) {
-                    int k       = kh * KR + kw;
-                    int abs_col = reflect_pad(wo - PAD + kw, W_IN);
+                data_256_t x_word = line_buf[row_slot][abs_col][ci_w];
 
-                    // Rotating psum — depth 4 >= FP16 adder latency
-                    data_t psum[C_OUT][4];
-#pragma HLS ARRAY_PARTITION variable=psum complete dim=0
-                    for (int co = 0; co < C_OUT; co++)
-                        for (int r = 0; r < 4; r++)
-                            psum[co][r] = 0;
-
-                    CI_LOOP: for (int ci_w = 0; ci_w < CI_WORDS; ci_w++) {
-#pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=4 max=4 avg=4
-#pragma HLS DEPENDENCE variable=psum type=inter false
-                        int acc_idx = ci_w & 3;
-                        data_256_t x_word = line_buf[row_slot][abs_col][ci_w];
-
-                        CO_MAC: for (int co = 0; co < C_OUT; co++) {
+                CO_MAC: for (int co = 0; co < C_OUT; co++) {
 #pragma HLS UNROLL
-                            data_256_t w_word = w_buf[co][k][ci_w];
-                            data_t dot = 0;
-                            L_MAC: for (int l = 0; l < 16; l++) {
+                    data_256_t w_word = w_buf[co][k][ci_w];
+                    data_t dot = 0;
+                    L_MAC: for (int l = 0; l < 16; l++) {
 #pragma HLS UNROLL
-                                data_t xv = bits_to_half<data_t>(x_word.range(16*l+15, 16*l));
-                                data_t wv = bits_to_half<data_t>(w_word.range(16*l+15, 16*l));
-                                dot += xv * wv;
-                            }
-                            psum[co][acc_idx] += dot;
-                        }
+                        data_t xv = bits_to_half<data_t>(x_word.range(16*l+15, 16*l));
+                        data_t wv = bits_to_half<data_t>(w_word.range(16*l+15, 16*l));
+                        dot += xv * wv;
                     }
-
-                    for (int co = 0; co < C_OUT; co++)
-                        acc[co] += psum[co][0] + psum[co][1] + psum[co][2] + psum[co][3];
+                    psum[co][k_ci] = dot; // write-once: no RAW between iterations
                 }
             }
 
-            // Apply bias and pack 3 half values into one 256-bit word
-            data_256_t out_word = 0;
+            // REDUCE: depth-4 rotating accumulator sums 196 psum values per channel.
+            // acc[co][r] accessed every 4 iters; FP16 add latency ≤ 4 → DEPENDENCE false valid.
+            data_t acc[C_OUT][4];
+#pragma HLS ARRAY_PARTITION variable=acc complete dim=0
             for (int co = 0; co < C_OUT; co++) {
-                data_t val = acc[co] + bias[co];
+                acc[co][0] = bias[co];
+                acc[co][1] = 0; acc[co][2] = 0; acc[co][3] = 0;
+            }
+
+            REDUCE: for (int i = 0; i < FLAT_N; i++) {
+#pragma HLS PIPELINE II=1
+#pragma HLS LOOP_TRIPCOUNT min=196 max=196 avg=196
+#pragma HLS DEPENDENCE variable=acc type=inter false
+                int r = i & 3;
+                REDUCE_CO: for (int co = 0; co < C_OUT; co++) {
+#pragma HLS UNROLL
+                    acc[co][r] += psum[co][i];
+                }
+            }
+
+            data_256_t out_word = 0;
+            FOLD: for (int co = 0; co < C_OUT; co++) {
+#pragma HLS UNROLL
+                data_t val = acc[co][0] + acc[co][1] + acc[co][2] + acc[co][3];
                 out_word.range(16*co+15, 16*co) = half_to_bits(val);
             }
             Y[ho * W_IN + wo] = out_word;
