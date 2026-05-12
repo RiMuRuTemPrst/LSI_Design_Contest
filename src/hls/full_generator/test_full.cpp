@@ -24,8 +24,12 @@ int main() {
     // Intermediate Tensor: 16x16x960
     vector<data_256_t> latent_960(16 * 16 * (960/16));
     
-    // UpConv buffers (pre-allocate max size for Block 3 output: 256x256x60)
+    // UpConv intermediate buffer: 256x256x60 (inout for UCB_1-3, input to Conv77)
     vector<data_256_t> final_output(256 * 256 * (60/16) + 100);
+    // Conv77 ports: W(588 words), B(1 word), Z(65536 words = 256x256x1pixel/word)
+    vector<data_256_t> w_conv77(588, 0);
+    vector<data_256_t> b_conv77(1, 0);
+    vector<data_256_t> z_out(256 * 256, 0);
 
     auto total_start = chrono::high_resolution_clock::now();
 

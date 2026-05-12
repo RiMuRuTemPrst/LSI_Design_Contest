@@ -1,1 +1,2 @@
-#include "Hard_op_3.tpp"
+#include "Core.h"
+#include "Hls_Layers_Conv77.tpp"

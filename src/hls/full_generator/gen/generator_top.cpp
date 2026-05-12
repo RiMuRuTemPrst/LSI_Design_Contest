@@ -3,6 +3,7 @@
 #include "upconv_core.h"                       // MODE_UCB_0..3
 #include "Hls_Layers_Fusion.tpp"
 #include "Hls_Layers_UpConv.tpp"
+#include "Hls_Layers_Conv77.tpp"               // Conv77_Kernel: Y(256x256x60) -> Z(256x256x3)
 
 static const int PEs_F = 8;
 static const int PEs_U = 8;
@@ -76,7 +77,10 @@ void full_generator_top(
     const data_256_t* P_fusion,   // Fusion params (B / G / BE / G_IN / BE_IN)
     const data_256_t* W_upconv,   // UpConv weights
     const data_256_t* P_upconv,   // UpConv params (B / G / BE)
-    data_256_t*       Y,          // Final output 256×256×60 (inout: UCB_1-3 read+write)
+    data_256_t*       Y,          // Intermediate 256×256×60 (inout: UCB_1-3 read+write; Conv77 reads)
+    const data_256_t* W_conv77,   // Conv77 weights: 3×7×7×4 = 588 words
+    const data_256_t* B_conv77,   // Conv77 bias: 1 word (bits[47:0] = RGB half)
+    data_256_t*       Z,          // Final output 256×256×3: 65536 words (1 pixel/word)
     data_t            epsilon
 ) {
 #pragma HLS BIND_STORAGE variable=skip_buf   type=ram_2p impl=uram
@@ -88,6 +92,9 @@ void full_generator_top(
 #pragma HLS INTERFACE m_axi port=W_upconv offset=slave bundle=gmem_wu max_read_burst_length=64
 #pragma HLS INTERFACE m_axi port=P_upconv offset=slave bundle=gmem_pu max_read_burst_length=64
 #pragma HLS INTERFACE m_axi port=Y        offset=slave bundle=gmem_y  max_read_burst_length=64 max_write_burst_length=64
+#pragma HLS INTERFACE m_axi port=W_conv77 offset=slave bundle=gmem_wc max_read_burst_length=64
+#pragma HLS INTERFACE m_axi port=B_conv77 offset=slave bundle=gmem_bc max_read_burst_length=4
+#pragma HLS INTERFACE m_axi port=Z        offset=slave bundle=gmem_z  max_write_burst_length=64
 
 #pragma HLS INTERFACE s_axilite port=X        bundle=control
 #pragma HLS INTERFACE s_axilite port=W_fusion bundle=control
@@ -95,6 +102,9 @@ void full_generator_top(
 #pragma HLS INTERFACE s_axilite port=W_upconv bundle=control
 #pragma HLS INTERFACE s_axilite port=P_upconv bundle=control
 #pragma HLS INTERFACE s_axilite port=Y        bundle=control
+#pragma HLS INTERFACE s_axilite port=W_conv77 bundle=control
+#pragma HLS INTERFACE s_axilite port=B_conv77 bundle=control
+#pragma HLS INTERFACE s_axilite port=Z        bundle=control
 #pragma HLS INTERFACE s_axilite port=epsilon  bundle=control
 #pragma HLS INTERFACE s_axilite port=return   bundle=control
 
@@ -141,6 +151,11 @@ void full_generator_top(
 
     // UCB_3: 128×128×120 -> 256×256×60
     run_upconv_block(X, Y, W_upconv, P_upconv, P_upconv, P_upconv, epsilon, MODE_UCB_3);
+
+    // =========================================================
+    // STAGE 3: CONV77 — Y(256×256×60) -> Z(256×256×3)
+    // =========================================================
+    Conv77_Kernel<8, 8, 1, 60, 3, 256, 256, 7, 7, 256, 256>(Y, W_conv77, B_conv77, Z);
 }
 
 } // extern "C"

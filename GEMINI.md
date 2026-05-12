@@ -2,7 +2,7 @@
 
 ## Project Overview
 Dự án triển khai mô hình HiFiC lên FPGA ZCU104.
-Kiến trúc Generator (Decoder) được triển khai thành **2 IP**: `full_generator_top` (Fusion Core + UpConv Core) và `conv77_core_top` (Conv 7×7 final output layer).
+Kiến trúc Generator (Decoder) được triển khai thành **1 IP duy nhất**: `full_generator_top` (Fusion Core + UpConv Core + Conv77).
 
 ## Full Generator Architecture (reference — từ GAN.jpg)
 ```
@@ -22,61 +22,76 @@ hyper-latent (16×16×960)
   UCB_2: 64×64×240  → 128×128×120
   UCB_3: 128×128×120 → 256×256×60
     │
-    ▼ [conv_block_out] ✅ DONE (conv77_core_top — standalone IP)
-  Pad → Conv 7×7 → Clip
+    ▼ [conv_block_out] ✅ DONE (integrated into full_generator_top — Stage 3)
+  Pad → Conv 7×7 (SIMD_DEPTH=8, NUM_WIN_PEs=8)
     │
     ▼ Output (256×256×3)
 ```
 
 ## Implemented IPs
 
-### full_generator_top
-Bao gồm Fusion Core + UpConv Core. Output là `256×256×60` (Y port).
+### full_generator_top ✅ UPDATED (3 stages)
+Bao gồm Fusion Core + UpConv Core + Conv77. Output cuối là `256×256×3` (Z port).
 
-**AXI Ports:** `gmem_x` (X inout), `gmem_wf` (W_fusion), `gmem_pf` (P_fusion),
-`gmem_wu` (W_upconv), `gmem_pu` (P_upconv), `gmem_y` (Y inout — UCB_3 output, 256×256×60)
+**AXI Ports:**
+- `gmem_x` (X inout — latent 16×16×960, 256-bit words)
+- `gmem_wf` (W_fusion), `gmem_pf` (P_fusion)
+- `gmem_wu` (W_upconv), `gmem_pu` (P_upconv)
+- `gmem_y` (Y inout — UCB_3 output 256×256×60, đọc bởi Conv77)
+- `gmem_wc` (W_conv77 — 588 words), `gmem_bc` (B_conv77 — 1 word)
+- `gmem_z` (Z write — 65536 words, 1 pixel/word, bits[47:0]=RGB half)
 
-### conv77_core_top ✅ NEW
-Standalone IP cho conv_block_out: 256×256×60 → 256×256×3.
-
-**AXI Ports:** `gmem_x` (X read), `gmem_w` (W_conv77), `gmem_b` (B_conv77), `gmem_y` (Y write)
-
-**Layout:** X[H×W×4], W[3×49×4], B[1], Y[H×W×1] (3 half values/pixel in bits[47:0])
+### conv77_core_top (standalone — reference/backup)
+Standalone IP cũ cho conv_block_out: 256×256×60 → 256×256×3 (flat loop, 8 URAM).
 
 ### Source Files
 | File | Mô tả |
 | :--- | :--- |
 | `fusion_core/gen/Hls_Layers_Fusion.tpp` | Universal_Engine_Kernel, GlobalAdd_Kernel |
 | `upconv_core/gen/Hls_Layers_UpConv.tpp` | UpConv_Fused_Row |
-| `full_generator/gen/generator_top.cpp` | Top-level unified IP (fusion + upconv) |
-| `conv77_core/gen/Hls_Layers_Conv77.tpp` | Conv77_Core — flat loop, 196 iters, 8 URAM |
-| `conv77_core/gen/conv77_core_top.cpp` | Standalone AXI wrapper cho conv77 |
+| `Conv77/gen/Hls_Layers_Conv77.tpp` | Conv77_Kernel — SIMD+PE (8×8), data_256_t/half |
+| `Conv77/gen/Hard_op_3.cpp` | Standalone HLS wrapper cho Conv77 csim |
+| `full_generator/gen/generator_top.cpp` | Top-level unified IP (fusion + upconv + conv77) |
+| `conv77_core/gen/Hls_Layers_Conv77.tpp` | Conv77_Core — flat loop, 196 iters (reference) |
+| `conv77_core/gen/conv77_core_top.cpp` | Standalone AXI wrapper cho conv77_core |
 | `fusion_core/gen/fusion_core_top.cpp` | Standalone fusion IP |
 | `upconv_core/gen/upconv_core_top.cpp` | Standalone upconv IP |
 
 ## Synthesis Results — ZCU104 (xczu7ev-ffvc1156-2-e, 300 MHz)
 
-### Resource Utilization (full_generator_top — Fusion + UpConv)
+### Resource Utilization (full_generator_top — Fusion + UpConv + Conv77) ✅ UPDATED
 | Resource | Used | Available | % |
 | :--- | :--- | :--- | :--- |
-| BRAM_18K | 416 | 624 | **66%** |
-| DSP | 776 | 1728 | **44%** |
-| LUT | 86,544 | 230,400 | **37%** |
-| FF | 97,755 | 460,800 | **21%** |
+| BRAM_18K | 531 | 624 | **85%** |
+| DSP | 1224 | 1728 | **70%** |
+| LUT | 123,645 | 230,400 | **53%** |
+| FF | 133,609 | 460,800 | **28%** |
 | URAM | 80 | 96 | **83%** |
-| **Fmax** | **308 MHz** | 300 MHz | **✅ Pass** |
+| **Fmax** | **308.74 MHz** | 300 MHz | **✅ Pass** |
 
-### Resource Utilization (conv77_core_top — standalone) ✅ NEW
+> Conv77 contribution: BRAM +56, DSP +448, LUT +32,388, FF +31,627, URAM 0
+
+### Resource Utilization (full_generator_top — cũ, Fusion + UpConv only, reference)
 | Resource | Used | Available | % |
 | :--- | :--- | :--- | :--- |
-| BRAM_18K | 198 | 624 | **31%** |
-| DSP | 192 | 1728 | **11%** |
-| LUT | 25,838 | 230,400 | **11%** |
-| FF | 38,243 | 460,800 | **8%** |
-| URAM | 8 | 96 | **8%** |
-| **Fmax** | **~308 MHz** | 300 MHz | **✅ Pass** (CP=2.554 ns) |
+| BRAM_18K | 416 | 624 | 66% |
+| DSP | 776 | 1728 | 44% |
+| LUT | 86,544 | 230,400 | 37% |
+| FF | 97,755 | 460,800 | 21% |
+| URAM | 80 | 96 | 83% |
+| **Fmax** | **308 MHz** | 300 MHz | ✅ Pass |
 
-> CSIM: max_err=0.00586, rmse=0.000886, 0/196608 mismatch — **PASS**
+### Resource Utilization (conv77_core_top — standalone flat-loop, reference)
+| Resource | Used | Available | % |
+| :--- | :--- | :--- | :--- |
+| BRAM_18K | 198 | 624 | 31% |
+| DSP | 192 | 1728 | 11% |
+| LUT | 25,838 | 230,400 | 11% |
+| FF | 38,243 | 460,800 | 8% |
+| URAM | 8 | 96 | 8% |
+| **Fmax** | **~308 MHz** | 300 MHz | ✅ Pass (CP=2.554 ns) |
+
+> conv77_core CSIM: max_err=0.00586, rmse=0.000886, 0/196608 mismatch — **PASS**
 
 ### On-chip Memory Layout
 | Buffer | Size | Type | Mục đích |
@@ -86,9 +101,10 @@ Standalone IP cho conv_block_out: 256×256×60 → 256×256×3.
 | `x_buf` (upconv) | 2×128×60 words | URAM (16 blocks) | Ping-pong sliding window |
 | `row_acc` | 256×480 half | URAM (32 blocks) | UpConv output accumulator |
 | `x_buf` (fusion) | 4×W×60 words | **BRAM** | Fusion IFM sliding window |
-| `line_buf` (conv77) | 7×256×4 words | URAM (8 blocks) | Conv77 circular row buffer |
+| `x_buffer` (conv77) | 7×14×64 fp16_t | BRAM | Conv77 SIMD sliding window |
+| `w_buffer` (conv77) | 3×7×7×64 fp16_t | BRAM | Conv77 weight on-chip |
 
-> Integration budget (nếu merge conv77 vào full_generator): 80+8 = **88/96 URAM (92%)** ✅
+> Conv77 SIMD+PE design dùng 0 URAM (vs 8 URAM của flat-loop design). Integrated URAM budget: **80/96 (83%)** ✅
 
 ## Latency Estimates (@300 MHz)
 
@@ -111,12 +127,13 @@ Standalone IP cho conv_block_out: 256×256×60 → 256×256×3.
 > min/max của UCB rộng vì `ho` quyết định số kernel position hợp lệ (1 hay 2) →
 > computation thay đổi theo từng row. Thực tế trung bình ~1.5× computation per row vs min.
 
-### Conv77 Core (từ standalone synthesis) ✅ NEW
-| Block | Cycles | Latency |
+### Conv77 (SIMD+PE, từ full_generator integrated synthesis) ✅ UPDATED
+| Block | Cycles | Latency @ 300 MHz |
 | :--- | :--- | :--- |
-| Conv77 (256×256×60→3) | 35.6M–35.9M | **~120 ms** |
+| Conv77_Kernel (256×256×60→3) | 54.5M | **~182 ms** |
 
-> Flat loop optimization: 196 iters pipelined II=1 (vs 49 × CI_LOOP trước = 1.365 sec → 11× speedup)
+> SIMD+PE design: 8×8 = 448 MACs/cycle, 0 URAM, dùng BRAM cho x_buffer và w_buffer.
+> Conv77 CSIM (data_256_t interface): max_err=0.530, rmse=0.233, 0/196608 mismatch (TOL=1.0) — **PASS**
 
 ## Key Technical Decisions
 
@@ -136,6 +153,10 @@ FP16 adder có latency 3-4 cycles. Dùng `psum[PEs][4]` xoay vòng với `acc_id
 → distance giữa RAW dependencies = 4 ≥ latency → `#pragma HLS DEPENDENCE false` hợp lệ
 → II=1 cho CI_LOOP.
 
+### Conv77 tích hợp vào full_generator: dùng Conv77_Kernel<> không phải HW_Conv7x7
+`HW_Conv7x7` có AXI pragmas riêng (bundle=gmem_X/W/B/Z) → conflict với full_generator_top.
+Phải gọi `Conv77_Kernel<8,8,1,60,3,256,256,7,7,256,256>()` trực tiếp, ports khai báo ở top-level.
+
 ## Known Issues / Workarounds
 | Issue | Root Cause | Workaround / Fix |
 | :--- | :--- | :--- |
@@ -145,6 +166,7 @@ FP16 adder có latency 3-4 cycles. Dùng `psum[PEs][4]` xoay vòng với `acc_id
 | Duplicate symbol khi include cả 2 `.tpp` | `half_to_bits`, `bits_to_half`, `my_sqrt_f` defined ở cả `Hls_Layers_Fusion.tpp` và `Hls_Layers_UpConv.tpp` | Guard `#ifndef HLS_HALF_HELPERS_DEFINED` quanh các helper functions |
 | Conv77 latency 1.365 sec (49 × CI_LOOP pipeline startup) | CI_LOOP iteration latency = 91 cycles (L_MAC tree depth) × 49 kernel positions = lãng phí fill/drain overhead | Flat loop 196 iterations: `psum[co][k_ci]` write-once → no RAW, II=1 không cần DEPENDENCE; REDUCE depth-4 rotating acc → 0.120 sec (**11× speedup**) |
 | Conv77 line_buf 16 URAM → integration 96/96 = 100% | `ARRAY_PARTITION complete dim=3` trên line_buf tạo 4 banks × 4 URAM wide = 16 URAM; 80+16=96/96 không fit | Bỏ dim=3 partition (flat loop chỉ cần 1 read/iter) → 8 URAM; integration: 80+8=88/96 (92%) ✅ |
+| Conv77 CSIM vitis_hls fail: "Cannot open: io_params/..." | vitis_hls csim chạy từ `Conv77_HLS/solution/csim/build/`, copy `-tb` files flat (không giữ subdir) | test.cpp dùng tên file phẳng (không prefix `io_params/` hay `model_params/`); TOL=1.0 cho ap_fixed<16,8> |
 
 ## Data Classification
 - **Weights/Params**: `assets/test_data/model_params/` (Trọng số Generator bắt đầu bằng `Gen_...`)
