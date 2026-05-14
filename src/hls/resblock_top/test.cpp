@@ -131,7 +131,7 @@ int main() {
 #else
     // FULL: load from disk
     std::cout << "[INFO] Loading tensors from disk..." << std::endl;
-    read_tensor(DATA_PATH "io_params/Gen_rb0_Add_output_0.txt",    input);
+    read_tensor(DATA_PATH "io_params/Gen_rb0_output.txt",    input);
     read_tensor(DATA_PATH "model_params/Gen_rb0_gamma_1.txt",      rb_gamma_1);
     read_tensor(DATA_PATH "model_params/Gen_rb0_beta_1.txt",       rb_beta_1);
     read_tensor(DATA_PATH "model_params/Gen_rb0_weight_1.txt",     rb_weight_1);

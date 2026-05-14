@@ -59,17 +59,27 @@ Standalone IP cũ cho conv_block_out: 256×256×60 → 256×256×3 (flat loop, 8
 
 ## Synthesis Results — ZCU104 (xczu7ev-ffvc1156-2-e, 300 MHz)
 
-### Resource Utilization (full_generator_top — Fusion + UpConv + Conv77) ✅ UPDATED
+### Resource Utilization (full_generator_top — Fusion + UpConv + Conv77) ✅ UPDATED (post Clip+WI+N_TILES fix)
 | Resource | Used | Available | % |
 | :--- | :--- | :--- | :--- |
-| BRAM_18K | 531 | 624 | **85%** |
+| BRAM_18K | 545 | 624 | **87%** |
 | DSP | 1224 | 1728 | **70%** |
-| LUT | 123,645 | 230,400 | **53%** |
-| FF | 133,609 | 460,800 | **28%** |
+| LUT | 160,811 | 230,400 | **69%** |
+| FF | 144,322 | 460,800 | **31%** |
 | URAM | 80 | 96 | **83%** |
 | **Fmax** | **308.74 MHz** | 300 MHz | **✅ Pass** |
 
-> Conv77 contribution: BRAM +56, DSP +448, LUT +32,388, FF +31,627, URAM 0
+> Cập nhật 2026-05-13: Re-synthesis sau WI_LOOP fix, N_TILES fix, và Clip(0,1) thêm vào Conv77 output.
+> LUT tăng từ 123K→160K chủ yếu do Conv77 Clip logic trên ap_fixed<32,16> (xem per-block breakdown bên dưới).
+
+### Per-Block Resource Breakdown (full_generator_top)
+| Block | BRAM_18K | DSP | FF | LUT | URAM |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Universal_Engine_Kernel (Fusion) | 152 | 174 | 33,999 | 32,102 | 16 |
+| UpConv_Fused_Row (UpConv) | 144 | 567 | 51,414 | 41,676 | 32 |
+| Conv77_Kernel (Conv77 + Clip) | 56 | 448 | 41,832 | 69,010 | 0 |
+| Other / overhead | 193 | 35 | 17,077 | 18,023 | 32 |
+| **Total** | **545** | **1224** | **144,322** | **160,811** | **80** |
 
 ### Resource Utilization (full_generator_top — cũ, Fusion + UpConv only, reference)
 | Resource | Used | Available | % |
@@ -116,16 +126,17 @@ Standalone IP cũ cho conv_block_out: 256×256×60 → 256×256×3 (flat loop, 8
 | GlobalAdd | 15,507 | **52 µs** |
 | **Fusion tổng** | **202M** | **~673 ms** |
 
-### UpConv Core (từ per-mode standalone synthesis)
-| Mode | Config | Latency min | Latency max |
-| :--- | :--- | :--- | :--- |
-| UCB_0 | 16×16×960 → 32×32×480 | **40 ms** | 366 ms |
-| UCB_1 | 32×32×480 → 64×64×240 | **40 ms** | 582 ms |
-| UCB_2 | 64×64×240 → 128×128×120 | **57 ms** | 2.21 sec |
-| UCB_3 | 128×128×120 → 256×256×60 | **133 ms** | 3.35 sec |
+### UpConv Core (từ verified standalone bench synthesis)
+| Mode | Config | Latency min | Latency max | Timing (Est) |
+| :--- | :--- | :--- | :--- | :--- |
+| UCB_0 | 16×16×960 → 32×32×480 | **39.96 ms** | 202 ms | 2.947 ns |
+| UCB_1 | 32×32×480 → 64×64×240 | **39.55 ms** | 309 ms | 2.993 ns |
+| UCB_2 | 64×64×240 → 128×128×120 | **63.24 ms** | 546 ms | 2.433 ns |
+| UCB_3 | 128×128×120 → 256×256×60 | **132 ms** | 1.75 s | 2.904 ns |
 
-> min/max của UCB rộng vì `ho` quyết định số kernel position hợp lệ (1 hay 2) →
-> computation thay đổi theo từng row. Thực tế trung bình ~1.5× computation per row vs min.
+> Kết quả từ ucbX_bench (inlined body + exact tripcounts). Khoảng min/max rộng do `KH_LOOP` (1-2 iters) và `KW_LOOP` (2-3 iters) phụ thuộc vào row index `ho`.
+> Cập nhật 2026-05-13: Verified latency range sau khi inline core function và fix tripcounts.
+> UCB_2 re-synthesis sau fix N_TILES bug (16→15): min tăng nhẹ do HLS scheduling, max giảm 52% (1.13s→546ms), timing cải thiện (2.719→2.433ns).
 
 ### Conv77 (SIMD+PE, từ full_generator integrated synthesis) ✅ UPDATED
 | Block | Cycles | Latency @ 300 MHz |
@@ -133,7 +144,7 @@ Standalone IP cũ cho conv_block_out: 256×256×60 → 256×256×3 (flat loop, 8
 | Conv77_Kernel (256×256×60→3) | 54.5M | **~182 ms** |
 
 > SIMD+PE design: 8×8 = 448 MACs/cycle, 0 URAM, dùng BRAM cho x_buffer và w_buffer.
-> Conv77 CSIM (data_256_t interface): max_err=0.530, rmse=0.233, 0/196608 mismatch (TOL=1.0) — **PASS**
+> Conv77 CSIM (data_256_t interface, post-clip golden `output_numbers.txt`): max_err=0.488, rmse=0.162, 0/196608 mismatch (TOL=1.0) — **PASS**
 
 ## Key Technical Decisions
 
@@ -167,6 +178,7 @@ Phải gọi `Conv77_Kernel<8,8,1,60,3,256,256,7,7,256,256>()` trực tiếp, po
 | Conv77 latency 1.365 sec (49 × CI_LOOP pipeline startup) | CI_LOOP iteration latency = 91 cycles (L_MAC tree depth) × 49 kernel positions = lãng phí fill/drain overhead | Flat loop 196 iterations: `psum[co][k_ci]` write-once → no RAW, II=1 không cần DEPENDENCE; REDUCE depth-4 rotating acc → 0.120 sec (**11× speedup**) |
 | Conv77 line_buf 16 URAM → integration 96/96 = 100% | `ARRAY_PARTITION complete dim=3` trên line_buf tạo 4 banks × 4 URAM wide = 16 URAM; 80+16=96/96 không fit | Bỏ dim=3 partition (flat loop chỉ cần 1 read/iter) → 8 URAM; integration: 80+8=88/96 (92%) ✅ |
 | Conv77 CSIM vitis_hls fail: "Cannot open: io_params/..." | vitis_hls csim chạy từ `Conv77_HLS/solution/csim/build/`, copy `-tb` files flat (không giữ subdir) | test.cpp dùng tên file phẳng (không prefix `io_params/` hay `model_params/`); TOL=1.0 cho ap_fixed<16,8> |
+| Conv77 Clip(0,1) thêm ~36K LUT (69K total vs 32K before) | Clip trên `fp32acc_t = ap_fixed<32,16>` bên trong pipelined unrolled loop → HLS tạo 32-bit comparator logic cho mỗi PE output | Chấp nhận: tổng LUT=160,811 (69%) vẫn trong limit; Clip bắt buộc theo HiFiC model spec |
 
 ## Data Classification
 - **Weights/Params**: `assets/test_data/model_params/` (Trọng số Generator bắt đầu bằng `Gen_...`)

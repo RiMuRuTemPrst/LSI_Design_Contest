@@ -94,10 +94,10 @@ int main() {
 
     cout << "Loading data...\n";
     // Vitis HLS csim copies tb files flat into csim/build/ — use bare filenames
-    if (!read_floats("Gen_ucb4_Relu_output_0.txt",  X_f.data(), N_PIX * C_IN))  return 1;
+    if (!read_floats("Gen_ucb4_output.txt",  X_f.data(), N_PIX * C_IN))  return 1;
     if (!read_floats("Gen_cbo_weight.txt",           W_f.data(), W_VALS))        return 1;
     if (!read_floats("Gen_cbo_bias.txt",             B_f.data(), C_OUT))         return 1;
-    if (!read_floats("Gen_cbo_Conv_output_0.txt",    gold.data(), N_PIX * C_OUT)) return 1;
+    if (!read_floats("Gen_final_output.txt",            gold.data(), N_PIX * C_OUT)) return 1;
 
     // Pack X: NHWC (H,W,C_IN) → channel-padded (N_PIX, CI_WORDS)
     pack_channel_padded(X_f.data(), X_p.data(), N_PIX, C_IN, C_PAD);

@@ -85,7 +85,7 @@ void UpConv_Fused_Row(
     const int CI_WORDS = (C_IN + 15) / 16;
     const int C_WORDS_OUT = (C_OUT + 15) / 16;
     const int C_OUT_PAD   = C_WORDS_OUT * 16;
-    const int N_TILES     = C_OUT_PAD / PEs;
+    const int N_TILES     = (C_OUT + PEs - 1) / PEs;
 
     // Line buffer for accumulating output row (URAM)
     static data_t row_acc[256][480];
@@ -138,12 +138,10 @@ void UpConv_Fused_Row(
             KW_LOOP: for (int kw = 0; kw < 3; kw++) {
                 int k = kh * 3 + kw;
 
-                WO_LOOP: for (int wo = 0; wo < W_OUT; wo++) {
-#pragma HLS LOOP_TRIPCOUNT min=32 max=256 avg=120
-                    int wpk = wo + PAD - kw;
-                    if (wpk < 0 || wpk % S != 0) continue;
-                    int wi = wpk / S;
-                    if (wi < 0 || wi >= W_IN) continue;
+                WI_LOOP: for (int wi = 0; wi < W_IN; wi++) {
+#pragma HLS LOOP_TRIPCOUNT min=16 max=128 avg=60
+                    int wo = wi * S + kw - PAD;
+                    if (wo < 0 || wo >= W_OUT) continue;
 
                     // Rotating psum: depth=4 >= FP16 add latency (=3)
                     data_t psum[PEs][4];
@@ -161,9 +159,9 @@ void UpConv_Fused_Row(
                     CI_LOOP: for (int ci_w = 0; ci_w < CI_WORDS; ci_w++) {
 #pragma HLS PIPELINE II=1
 #pragma HLS LOOP_TRIPCOUNT min=8 max=60 avg=28
-#pragma HLS DEPENDENCE variable=psum type=inter false  // KEY: no RAW hazard
+#pragma HLS DEPENDENCE variable=psum type=inter false
 
-                        int acc_idx = ci_w & 3;  // rotating 0,1,2,3
+                        int acc_idx = ci_w & 3;
                         data_256_t x_word = x_buf[(x_row * W_IN + wi) * CI_WORDS + ci_w];
 
                         TC_MAC: for (int tc = 0; tc < PEs; tc++) {

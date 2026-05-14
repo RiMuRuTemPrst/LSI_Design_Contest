@@ -47,10 +47,10 @@ int main() {
     const int N_Y  = H * W * C_OUT;      // 196,608
 
     // CWD when Vitis HLS CSIM runs = prj/solution1/csim/build/ (7 levels from project root)
-    const char* X_PATH    = "../../../../../../../assets/test_data/io_params/Gen_ucb4_Relu_output_0.txt";
+    const char* X_PATH    = "../../../../../../../assets/test_data/io_params/Gen_ucb4_output.txt";
     const char* W_PATH    = "../../../../../../../assets/test_data/model_params/Gen_cbo_weight.txt";
     const char* B_PATH    = "../../../../../../../assets/test_data/model_params/Gen_cbo_bias.txt";
-    const char* GOLD_PATH = "../../../../../../../assets/test_data/io_params/Gen_cbo_Conv_output_0.txt";
+    const char* GOLD_PATH = "../../../../../../../assets/test_data/io_params/Gen_conv77_output.txt";
 
     cout << "Loading test data...\n";
 
