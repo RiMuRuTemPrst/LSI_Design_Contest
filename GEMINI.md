@@ -57,6 +57,22 @@ Standalone IP cũ cho conv_block_out: 256×256×60 → 256×256×3 (flat loop, 8
 | `fusion_core/gen/fusion_core_top.cpp` | Standalone fusion IP |
 | `upconv_core/gen/upconv_core_top.cpp` | Standalone upconv IP |
 
+## CSIM Results — Real-Data Verification (2026-05-14) ✅ ALL PASS
+
+| Block | Config | max_err | rmse | mismatch |
+| :--- | :--- | :--- | :--- | :--- |
+| CBI | 16×16×220→960 | 0.01953 | 0.00169 | 0/245,760 |
+| ResBlock-0 | 16×16×960→960 | 0.01953 | 0.000978 | 0/245,760 |
+| GlobalAdd | 16×16×960→960 | 0.02344 | 0.00178 | 0/245,760 |
+| UCB_0 | 16×16×960→32×32×480 | 0.00781 | 0.000591 | 0/491,520 |
+| UCB_1 | 32×32×480→64×64×240 | 0.01367 | 0.001061 | 0/983,040 |
+| UCB_2 | 64×64×240→128×128×120 | 0.02148 | 0.002284 | 0/1,966,080 |
+| UCB_3 | 128×128×120→256×256×60 | 0.01563 | 0.001405 | 0/3,932,160 |
+| Conv77 | 256×256×60→3 | 0.488 (TOL=1.0) | 0.162 | 0/196,608 |
+
+> Input data: real model weights + io_params/ golden tensors. Xem `assets/test_data/DATA_README.md` để biết file mapping.
+> CBI input file: `io_params/Gen_input.txt` (= Gen_cbi_cbi0_ReduceMean_1.txt đã đổi tên).
+
 ## Synthesis Results — ZCU104 (xczu7ev-ffvc1156-2-e, 300 MHz)
 
 ### Resource Utilization (full_generator_top — Fusion + UpConv + Conv77) ✅ UPDATED (post Clip+WI+N_TILES fix)
