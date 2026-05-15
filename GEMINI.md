@@ -162,6 +162,61 @@ Standalone IP cũ cho conv_block_out: 256×256×60 → 256×256×3 (flat loop, 8
 > SIMD+PE design: 8×8 = 448 MACs/cycle, 0 URAM, dùng BRAM cho x_buffer và w_buffer.
 > Conv77 CSIM (data_256_t interface, post-clip golden `output_numbers.txt`): max_err=0.488, rmse=0.162, 0/196608 mismatch (TOL=1.0) — **PASS**
 
+## Optimization Experiments — full_generator_opt (2026-05-15)
+
+### Mục tiêu
+Maximize inference speed (minimize cycles) trong giới hạn: BRAM ≤ 624, DSP ≤ 1728, URAM ≤ 96, Fmax ≥ 300 MHz.
+
+### Kết quả csynth (HLS estimate, xczu7ev-ffvc1156-2-e)
+| Experiment | Fusion MAC | PEs_U | Total Cycles | BRAM | DSP | URAM | Timing |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| full_generator (gốc) | 8-MAC | 8 | 24.07B | 545 (87%) | 1352 (78%) | 80 (83%) | -0.81 ns |
+| full_generator_opt3 | **16-MAC** | 8 | 23.16B | 545 (87%) | 1614 (93%) | 80 (83%) | -0.81 ns |
+| full_generator_opt4 | 4-MAC | 8 | 23.64B | 545 (87%) | 1230 (71%) | 80 (83%) | -0.81 ns |
+| full_generator_opt2 | **8-MAC** | **12** | **19.67B** | **605 (96%)** | **1624 (93%)** | **80 (83%)** | -0.81 ns |
+| **full_generator_opt5 ✅ CANONICAL** | **8-MAC** | **12** | **19.67B** | **605 (96%)** | **1624 (93%)** | **80 (83%)** | **3.239 ns ✅** |
+
+### Per-block breakdown cho opt2 (BEST)
+| Block | BRAM | DSP | FF | LUT | URAM |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Universal_Engine_Kernel (8-MAC, PEs=8) | 152 | 302 | 41,432 | 36,246 | 16 |
+| run_upconv_block (PEs=12) | 204 | 842 | 77,161 | 59,751 | 48 |
+| Conv77_Kernel (8×8 SIMD+PE) | 56 | 448 | 41,832 | 69,016 | 0 |
+| Other / overhead | 193 | 32 | 15,327 | 15,411 | 16 |
+| **Total** | **605** | **1624** | **175,752** | **180,424** | **80** |
+
+### Giải thích opt2 wins
+- **BIAS_STATS fix**: rotating accumulator depth=8 → BIAS_STATS II=1 (507 cycles vs 3377 trước), PIXEL_NORM 5× faster (184K vs 910K cycles)
+- **PEs_U=12 UpConv**: N_TILES giảm 33% (480/12=40 vs 480/8=60 tiles cho UCB_0; 60/12=5 vs 60/8=8 cho UCB_3). Tất cả C_OUT sizes (480, 240, 120, 60) đều chia hết cho 12 → NO partial tiles
+- run_upconv_block cycles: 4.82B (PEs=12) vs 5.73B (PEs=8) → **16% faster UpConv**
+- Tổng opt2: 19.67B cycles vs opt3 23.16B → **15% faster overall**
+
+### Tại sao không thể cải thiện thêm (hard constraints)
+| Attempt | Result | Why Blocked |
+| :--- | :--- | :--- |
+| PEs_U=13 | ❌ | +16 BRAM/PE → total 621 BRAM (99.5%), overflow risk |
+| 16-MAC Fusion + PEs_U=12 | ❌ | DSP: 558+839+448=1845 > 1728 |
+| 16-MAC Fusion + PEs_U=9 | ~21.3B cycles | Worse than opt2 (UpConv TILE overhead >> Fusion savings) |
+| Row_acc URAM→BRAM | ❌ | +16 BRAM → 621 BRAM (99.5%), no real timing benefit |
+
+### Về timing violation -0.81 ns trong csynth
+Pre-existing trong full_generator gốc (cùng -0.81 ns tại run_upconv_block) nhưng implementation đã pass 308.74 MHz. HLS csynth timing là pessimistic estimate — **không ảnh hưởng đến implementation timing closure**.
+
+### Recommended Design
+**`full_generator_opt5`** (opt2 + UCB weight/param offset correctness fix):
+- Source: `src/hls/full_generator_opt5/`
+- Synthesis ✅ CONFIRMED (2026-05-15): 19.67B cycles, BRAM 605(96%), DSP 1624(93%), FF 176,010(38%), LUT 180,744(78%), URAM 80(83%), timing est. 3.239 ns (< 3.333 ns target)
+- **Fixes UCB_1/2/3 reading wrong weights** — opt2 had all 4 UCBs starting from W_upconv[0], thiếu offset per UCB
+- Thực tế UpConv bench estimates với PEs=12: min ~82M cycles, max ~565M cycles (tất cả UCBs cộng lại)
+- Kết hợp với Fusion (~199M) + Conv77 (~55M) → estimated total ~300-820M cycles @ 300 MHz = **1–2.7 giây inference**
+
+#### Weight/Param layout expected in W_upconv & P_upconv (opt5)
+```
+W_upconv: [UCB0: 259200 words][UCB1: 64800][UCB2: 16200][UCB3: 4320]  total=344520 words
+P_upconv: [UCB0_B:30][UCB0_G:30][UCB0_BE:30][UCB1_B:15][UCB1_G:15][UCB1_BE:15]
+          [UCB2_B:8][UCB2_G:8][UCB2_BE:8][UCB3_B:4][UCB3_G:4][UCB3_BE:4]  total=171 words
+```
+
 ## Key Technical Decisions
 
 ### Tại sao x_buf của Fusion Core phải là BRAM (không phải URAM)
@@ -195,6 +250,9 @@ Phải gọi `Conv77_Kernel<8,8,1,60,3,256,256,7,7,256,256>()` trực tiếp, po
 | Conv77 line_buf 16 URAM → integration 96/96 = 100% | `ARRAY_PARTITION complete dim=3` trên line_buf tạo 4 banks × 4 URAM wide = 16 URAM; 80+16=96/96 không fit | Bỏ dim=3 partition (flat loop chỉ cần 1 read/iter) → 8 URAM; integration: 80+8=88/96 (92%) ✅ |
 | Conv77 CSIM vitis_hls fail: "Cannot open: io_params/..." | vitis_hls csim chạy từ `Conv77_HLS/solution/csim/build/`, copy `-tb` files flat (không giữ subdir) | test.cpp dùng tên file phẳng (không prefix `io_params/` hay `model_params/`); TOL=1.0 cho ap_fixed<16,8> |
 | Conv77 Clip(0,1) thêm ~36K LUT (69K total vs 32K before) | Clip trên `fp32acc_t = ap_fixed<32,16>` bên trong pipelined unrolled loop → HLS tạo 32-bit comparator logic cho mỗi PE output | Chấp nhận: tổng LUT=160,811 (69%) vẫn trong limit; Clip bắt buộc theo HiFiC model spec |
+| csynth timing violation -0.81 ns tại run_upconv_block | URAM read-modify-write trong ACC_WRITE (TILE_LOOP) là critical path; HLS pessimistic estimate | Không cần fix: full_generator gốc có cùng violation nhưng implementation pass 308.74 MHz. csynth timing ≠ impl timing |
+| BRAM là hard constraint giới hạn PEs_U ở 12 | w_local[PEs][540] dùng 16 BRAM_18K/PE × 12 = 192 BRAM; AXI buffers thêm ~193 BRAM. Total 605/624 (96%) với PEs=12. PEs=13 → ≈621 BRAM (overflow risk) | Không thể tăng PEs_U vượt 12 với kiến trúc hiện tại mà không redesign weight storage |
+| UCB_1/2/3 đọc sai weights và params (opt2 bug) | Tất cả 4 UCBs dùng cùng `W_upconv`/`P_upconv` pointer không có offset → UCB_1 đọc từ offset 0 thay vì 259200 → sai weights hoàn toàn. Tương tự cho bias/gamma/beta | **opt5**: thêm per-UCB offsets trong `run_upconv_block`. Weight layout: [UCB0:259200][UCB1:64800][UCB2:16200][UCB3:4320]. Param layout: [UCB0_B/G/BE][UCB1_B/G/BE]... |
 
 ## Data Classification
 - **Weights/Params**: `assets/test_data/model_params/` (Trọng số Generator bắt đầu bằng `Gen_...`)
