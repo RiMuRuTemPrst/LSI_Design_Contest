@@ -73,6 +73,20 @@ Standalone IP cũ cho conv_block_out: 256×256×60 → 256×256×3 (flat loop, 8
 > Input data: real model weights + io_params/ golden tensors. Xem `assets/test_data/DATA_README.md` để biết file mapping.
 > CBI input file: `io_params/Gen_input.txt` (= Gen_cbi_cbi0_ReduceMean_1.txt đã đổi tên).
 
+## E2E CSIM — full_generator_opt5 (UCB_0→3 + Conv77 chained) ✅ ALL PASS (2026-05-16)
+
+Chạy toàn bộ UCB chain + Conv77 với real weights, bắt đầu từ GlobalAdd output, verify correctness của opt5 weight offsets.
+
+| Stage | Config | max_err | rmse | mismatch |
+| :--- | :--- | :--- | :--- | :--- |
+| UCB_0→3 chained | 16×16×960 → 256×256×60 | 0.0156 | 0.001389 | 0/3,932,160 |
+| Conv77 (on UCB output) | 256×256×60→256×256×3 | 0.4875 (TOL=1.0) | 0.159698 | 0/196,608 |
+
+> Source: `src/hls/full_generator_opt5/gen/test_e2e.cpp` + `hls_csim_e2e.tcl`
+> UCB golden: `Gen_ucb4_output.txt` (256×256×60). Conv77 golden: `Gen_conv77_output.txt` clipped to [0,1] (HLS applies Clip(0,1)).
+> Key fix in opt5 vs opt2: w_local loaded every tile every ho call (not cached on ho==0 only — that was a bug: w_local[PEs][540] holds only 1 tile at a time).
+> Ping-pong Y buffers (Y_a/Y_b alternating across UCBs) used to avoid in-place aliasing.
+
 ## Synthesis Results — ZCU104 (xczu7ev-ffvc1156-2-e, 300 MHz)
 
 ### Resource Utilization (full_generator_top — Fusion + UpConv + Conv77) ✅ UPDATED (post Clip+WI+N_TILES fix)

@@ -14,21 +14,18 @@
 // Load from data_256_t: extract IEEE FP16 bits → convert to ap_fixed<16,8>
 // Store to data_256_t Z: convert ap_fixed<32,16> → half IEEE → pack bits[47:0]
 //
-// No clip/activation — raw conv output is the final Generator output.
+// Clip(0,1) applied at output — matches HiFiC model's final activation.
 
 #pragma once
 
 #include "ap_fixed.h"
 #include "ap_int.h"
+#include <stdint.h>
 
 #if !defined(__SYNTHESIS__)
   #include <cmath>
   #include <cstring>
 #endif
-#if defined(__SYNTHESIS__)
-  #include <hls_math.h>
-#endif
-
 typedef ap_fixed<16, 8>  fp16_t;
 typedef ap_fixed<32, 16> fp32acc_t;
 
@@ -67,15 +64,6 @@ static inline T bits_to_half(ap_uint<16> bits) {
     unsigned short val = bits.to_uint();
     std::memcpy(&out, &val, sizeof(unsigned short));
     return out;
-#endif
-}
-
-static inline float my_sqrt_f(float x) {
-#pragma HLS INLINE
-#if defined(__SYNTHESIS__)
-    return hls::sqrtf(x);
-#else
-    return std::sqrt(x);
 #endif
 }
 
@@ -120,13 +108,17 @@ void Conv77_Kernel(const data_256_t* X, const data_256_t* W,
     fp16_t    b_buffer[C_OUT];
     fp32acc_t acc[C_OUT][NUM_WIN_PEs];
 
-    // Partition x_buffer: col dim completely independent, channel dim cyclic(8)
+    // Partition x_buffer: col dim completely independent, channel dim cyclic(16)
+    // cyclic(16) = 1 DDR word width → write 16 channels to 16 unique banks in 1 pipeline cycle (II=1)
+    // depth per bank = 7*4=28 elements → LUTRAM (no BRAM cost)
     #pragma HLS ARRAY_PARTITION variable=x_buffer complete dim=2
-    #pragma HLS ARRAY_PARTITION variable=x_buffer cyclic factor=SIMD_DEPTH dim=3
+    #pragma HLS ARRAY_PARTITION variable=x_buffer cyclic factor=16 dim=3
 
     // Partition w_buffer: wf dim completely independent, channel dim cyclic(8)
+    // cyclic(8) matches SIMD_DEPTH → compute loop reads 8 unique banks per tci, no conflict
+    // depth per bank = 3*7*8=168 elements → 1 BRAM each (7*8=56 BRAM total)
     #pragma HLS ARRAY_PARTITION variable=w_buffer complete dim=3
-    #pragma HLS ARRAY_PARTITION variable=w_buffer cyclic factor=SIMD_DEPTH dim=4
+    #pragma HLS ARRAY_PARTITION variable=w_buffer cyclic factor=8 dim=4
 
     #pragma HLS ARRAY_PARTITION variable=b_buffer complete dim=1
     #pragma HLS ARRAY_PARTITION variable=acc      complete dim=1
@@ -155,16 +147,21 @@ void Conv77_Kernel(const data_256_t* X, const data_256_t* W,
             Preload_wf:
             for (int wf = 0; wf < W_R; wf++) {
                 const int w_base = ((co * H_R + hf) * W_R + wf) * CI_WORDS_IN;
-                Preload_ci:
-                for (int ci = 0; ci < C_PAD; ci++) {
-                    #pragma HLS PIPELINE II=1
-                    int ciw = ci >> 4;
-                    int k   = ci & 15;
-                    fp16_t val = (ci < C_IN) ?
-                        (fp16_t)((float)bits_to_half<half>(
-                            W[w_base + ciw].range(k*16+15, k*16)))
-                        : fp16_t(0);
-                    w_buffer[co][hf][wf][ci] = val;
+                Preload_ciw:
+                for (int ciw = 0; ciw < CI_WORDS_IN; ciw++) {
+                    data_256_t word = W[w_base + ciw];  // 1 DDR read per 16ch
+                    // 2 half-passes × 8ch: each pass writes to 8 unique cyclic(8) banks (no conflict)
+                    for (int hi = 0; hi < 2; hi++) {
+                        #pragma HLS PIPELINE II=1
+                        for (int k = 0; k < 8; k++) {
+                            #pragma HLS UNROLL
+                            int ci = ciw * 16 + hi * 8 + k;
+                            w_buffer[co][hf][wf][ci] = (ci < C_IN)
+                                ? (fp16_t)((float)bits_to_half<half>(
+                                    word.range((hi*8+k)*16+15, (hi*8+k)*16)))
+                                : fp16_t(0);
+                        }
+                    }
                 }
             }
         }
@@ -206,16 +203,17 @@ void Conv77_Kernel(const data_256_t* X, const data_256_t* W,
                         for (int col = 0; col < W_BUF; col++) {
                             const int wi      = reflect77(col_start + col, W_IN);
                             const int px_base = x_row_base[hf] + wi * CI_WORDS_IN;
-                            Init_ci:
-                            for (int ci = 0; ci < C_PAD; ci++) {
+                            Init_ciw:
+                            for (int ciw = 0; ciw < CI_WORDS_IN; ciw++) {
                                 #pragma HLS PIPELINE II=1
-                                int ciw = ci >> 4;
-                                int k   = ci & 15;
-                                fp16_t val = (ci < C_IN) ?
-                                    (fp16_t)((float)bits_to_half<half>(
-                                        X[px_base + ciw].range(k*16+15, k*16)))
-                                    : fp16_t(0);
-                                x_buffer[hf][col][ci] = val;
+                                data_256_t word = X[px_base + ciw];
+                                for (int k = 0; k < 16; k++) {
+                                    #pragma HLS UNROLL
+                                    int ci = ciw * 16 + k;
+                                    x_buffer[hf][col][ci] = (ci < C_IN)
+                                        ? (fp16_t)((float)bits_to_half<half>(word.range(k*16+15, k*16)))
+                                        : fp16_t(0);
+                                }
                             }
                         }
                     }
@@ -246,16 +244,17 @@ void Conv77_Kernel(const data_256_t* X, const data_256_t* W,
                             const int col     = W_BUF - NUM_WIN_PEs + nc;
                             const int wi      = reflect77(col_start + col, W_IN);
                             const int px_base = x_row_base[hf] + wi * CI_WORDS_IN;
-                            Newcol_ci:
-                            for (int ci = 0; ci < C_PAD; ci++) {
+                            Newcol_ciw:
+                            for (int ciw = 0; ciw < CI_WORDS_IN; ciw++) {
                                 #pragma HLS PIPELINE II=1
-                                int ciw = ci >> 4;
-                                int k   = ci & 15;
-                                fp16_t val = (ci < C_IN) ?
-                                    (fp16_t)((float)bits_to_half<half>(
-                                        X[px_base + ciw].range(k*16+15, k*16)))
-                                    : fp16_t(0);
-                                x_buffer[hf][col][ci] = val;
+                                data_256_t word = X[px_base + ciw];
+                                for (int k = 0; k < 16; k++) {
+                                    #pragma HLS UNROLL
+                                    int ci = ciw * 16 + k;
+                                    x_buffer[hf][col][ci] = (ci < C_IN)
+                                        ? (fp16_t)((float)bits_to_half<half>(word.range(k*16+15, k*16)))
+                                        : fp16_t(0);
+                                }
                             }
                         }
                     }
@@ -328,6 +327,8 @@ void Conv77_Kernel(const data_256_t* X, const data_256_t* W,
                         for (int co = 0; co < C_OUT; co++) {
                             #pragma HLS UNROLL
                             fp32acc_t val  = acc[co][win] + (fp32acc_t)b_buffer[co];
+                            if (val < (fp32acc_t)0) val = (fp32acc_t)0;
+                            if (val > (fp32acc_t)1) val = (fp32acc_t)1;
                             half      out_h = (half)((float)val);
                             z_word.range(co*16+15, co*16) = half_to_bits(out_h);
                         }
@@ -349,7 +350,7 @@ void Conv77_Kernel(const data_256_t* X, const data_256_t* W,
 //   B: 1                   data_256_t word
 //   Z: 256x256   = 65536  data_256_t words (1 pixel/word, bits[47:0]=RGB)
 // ============================================================
-void HW_Conv7x7(
+inline void HW_Conv7x7(
     const data_256_t* X,
     const data_256_t* W,
     const data_256_t* B,

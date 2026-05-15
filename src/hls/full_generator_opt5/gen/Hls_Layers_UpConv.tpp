@@ -104,8 +104,7 @@ void UpConv_Fused_Row(
         }
     }
 
-    // Weight buffer — PEs=12 parallel outputs.
-    // DDR load only on first output row (ho==0); persists in BRAM between calls.
+    // Weight buffer — PEs=12 parallel outputs, reloaded from DDR every ho call.
     data_256_t w_local[PEs][540];
 #pragma HLS BIND_STORAGE variable=w_local type=ram_t2p impl=bram
 #pragma HLS ARRAY_PARTITION variable=w_local complete dim=1
@@ -114,16 +113,14 @@ void UpConv_Fused_Row(
 #pragma HLS LOOP_TRIPCOUNT min=6 max=41 avg=20
         int co_base = tile * PEs;
 
-        if (ho == 0) {
-            PRELOAD_W: for (int tc = 0; tc < PEs; tc++) {
-                int co = co_base + tc;
-                if (co < C_OUT) {
-                    for (int k = 0; k < 9; k++) {
-                        for (int ci_w = 0; ci_w < CI_WORDS; ci_w++) {
+        PRELOAD_W: for (int tc = 0; tc < PEs; tc++) {
+            int co = co_base + tc;
+            if (co < C_OUT) {
+                for (int k = 0; k < 9; k++) {
+                    for (int ci_w = 0; ci_w < CI_WORDS; ci_w++) {
 #pragma HLS PIPELINE II=1
 #pragma HLS LOOP_TRIPCOUNT min=8 max=60 avg=28
-                            w_local[tc][k * 60 + ci_w] = W_ptr[(co * 9 + k) * CI_WORDS + ci_w];
-                        }
+                        w_local[tc][k * 60 + ci_w] = W_ptr[(co * 9 + k) * CI_WORDS + ci_w];
                     }
                 }
             }
@@ -236,6 +233,7 @@ void UpConv_Fused_Row(
 
         float mean    = sum / (float)C_OUT;
         float var     = sumsq / (float)C_OUT - mean * mean;
+        if (var < 0.0f) var = 0.0f;  // clamp: E[X^2]-E[X]^2 can go slightly negative due to fp32 cancellation
         data_t inv_std = (data_t)(1.0f / my_sqrt_f(var + (float)epsilon));
 
         NORM_WRITE: for (int cw = 0; cw < C_WORDS_OUT; cw++) {

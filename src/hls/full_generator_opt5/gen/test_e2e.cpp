@@ -105,17 +105,18 @@ static CmpResult compare(const float* got, const float* ref, int n, float tol) {
     return r;
 }
 
-// ---- UCB runner (mirrors opt5's run_upconv_block with correct offsets) ----
+// ---- UCB runner — single UCB with SEPARATE in/out to avoid Y aliasing ----
+// Bug: if X_in == Y_out (same buffer), ho=2*hi writes to Y before hi+1 is loaded.
+// Fix: caller does ping-pong between two Y buffers across UCBs.
 
-static void run_all_ucb(
-    data_256_t* X,               // 16×16×60 words (global_add output)
-    DDR_PTR     Y,               // output: 256×256×4 words (after all UCBs)
-    const data_256_t* W_upconv,  // concatenated, opt5 layout
-    const data_256_t* P_upconv,  // concatenated, opt5 layout
-    data_t epsilon
+static void run_one_ucb(
+    DDR_CONST_PTR     X_in,          // input (read-only, must NOT alias Y_out)
+    DDR_PTR           Y_out,         // output (separate buffer)
+    const data_256_t* W_upconv,
+    const data_256_t* P_upconv,
+    data_t            epsilon,
+    int               m              // UCB index 0..3
 ) {
-    // Ping-pong x_buf: sized for max (UCB_3: 2×128×8=2048, but UCB_0 needs 2×16×60=1920)
-    // Use 2*128*60=15360 to be safe for any slot×w_in×ci_words combination
     static data_256_t x_buf[2 * 128 * 60];
 
     const int h_in_arr[4]  = {16,  32,  64,  128};
@@ -123,47 +124,42 @@ static void run_all_ucb(
     const int c_in_arr[4]  = {960, 480, 240, 120};
     const int c_out_arr[4] = {480, 240, 120,  60};
 
-    for (int m = 0; m < 4; m++) {
-        int h_in  = h_in_arr[m];
-        int w_in  = w_in_arr[m];
-        int c_in  = c_in_arr[m];
-        int c_out = c_out_arr[m];
-        int ci_words = (c_in + 15) / 16;
+    int h_in  = h_in_arr[m];
+    int w_in  = w_in_arr[m];
+    int c_in  = c_in_arr[m];
+    int c_out = c_out_arr[m];
+    int ci_words = (c_in + 15) / 16;
 
-        const data_256_t* W_ucb  = W_upconv + W_OFF[m];
-        const data_256_t* B_ucb  = P_upconv + B_OFF[m];
-        const data_256_t* G_ucb  = P_upconv + G_OFF[m];
-        const data_256_t* BE_ucb = P_upconv + BE_OFF[m];
+    const data_256_t* W_ucb  = W_upconv + W_OFF[m];
+    const data_256_t* B_ucb  = P_upconv + B_OFF[m];
+    const data_256_t* G_ucb  = P_upconv + G_OFF[m];
+    const data_256_t* BE_ucb = P_upconv + BE_OFF[m];
 
-        DDR_CONST_PTR X_in = (m == 0) ? (DDR_CONST_PTR)X : (DDR_CONST_PTR)Y;
+    for (int wi = 0; wi < w_in; wi++)
+        for (int ciw = 0; ciw < ci_words; ciw++)
+            x_buf[(0 * w_in + wi) * ci_words + ciw] =
+                X_in[(0 * w_in + wi) * ci_words + ciw];
 
-        // Load first input row into slot 0
+    UpConv_Fused_Row<12>(x_buf, W_ucb, B_ucb, G_ucb, BE_ucb,
+                         Y_out, epsilon, h_in, w_in, c_in, c_out, 0);
+
+    for (int hi = 1; hi < h_in; hi++) {
+        int slot = hi % 2;
         for (int wi = 0; wi < w_in; wi++)
             for (int ciw = 0; ciw < ci_words; ciw++)
-                x_buf[(0 * w_in + wi) * ci_words + ciw] =
-                    X_in[(0 * w_in + wi) * ci_words + ciw];
+                x_buf[(slot * w_in + wi) * ci_words + ciw] =
+                    X_in[(hi * w_in + wi) * ci_words + ciw];
 
         UpConv_Fused_Row<12>(x_buf, W_ucb, B_ucb, G_ucb, BE_ucb,
-                             Y, epsilon, h_in, w_in, c_in, c_out, 0);
-
-        for (int hi = 1; hi < h_in; hi++) {
-            int slot = hi % 2;
-            for (int wi = 0; wi < w_in; wi++)
-                for (int ciw = 0; ciw < ci_words; ciw++)
-                    x_buf[(slot * w_in + wi) * ci_words + ciw] =
-                        X_in[(hi * w_in + wi) * ci_words + ciw];
-
-            UpConv_Fused_Row<12>(x_buf, W_ucb, B_ucb, G_ucb, BE_ucb,
-                                 Y, epsilon, h_in, w_in, c_in, c_out, 2*hi-1);
-            UpConv_Fused_Row<12>(x_buf, W_ucb, B_ucb, G_ucb, BE_ucb,
-                                 Y, epsilon, h_in, w_in, c_in, c_out, 2*hi);
-        }
+                             Y_out, epsilon, h_in, w_in, c_in, c_out, 2*hi-1);
         UpConv_Fused_Row<12>(x_buf, W_ucb, B_ucb, G_ucb, BE_ucb,
-                             Y, epsilon, h_in, w_in, c_in, c_out, 2*h_in-1);
-
-        printf("  [UCB_%d] done  (%dx%d×%d → %dx%d×%d)\n",
-               m, h_in, w_in, c_in, 2*h_in, 2*w_in, c_out);
+                             Y_out, epsilon, h_in, w_in, c_in, c_out, 2*hi);
     }
+    UpConv_Fused_Row<12>(x_buf, W_ucb, B_ucb, G_ucb, BE_ucb,
+                         Y_out, epsilon, h_in, w_in, c_in, c_out, 2*h_in-1);
+
+    printf("  [UCB_%d] done  (%dx%d\xc3\x97%d \xe2\x86\x92 %dx%d\xc3\x97%d)\n",
+           m, h_in, w_in, c_in, 2*h_in, 2*w_in, c_out);
 }
 
 // ---- main ----
@@ -229,14 +225,20 @@ int main() {
     vector<data_256_t> X_hls(x_words);
     pack_stride(x_f.data(), X_hls.data(), 16*16, 960);
 
-    // ===== Y buffer: 256×256×4 words (holds UCB_3 output, 60 ch) =====
-    int y_words = 256 * 256 * 4;  // 4 = ceil(60/16)
-    vector<data_256_t> Y_hls(y_words, 0);
+    // ===== Two Y buffers for ping-pong (avoid in-place aliasing) =====
+    // UCB_0→Y_a, UCB_1→Y_b, UCB_2→Y_a, UCB_3→Y_b; final output in Y_b
+    int y_words = 256 * 256 * 4;  // 4 = ceil(60/16), max size for UCB_3 output
+    vector<data_256_t> Y_a(y_words, 0), Y_b(y_words, 0);
+    data_256_t* ping_pong[2] = {Y_a.data(), Y_b.data()};
 
-    // ===== Run UCB_0 through UCB_3 =====
-    printf("\n[RUN] Running all 4 UCBs with opt5 weight layout...\n");
-    run_all_ucb(X_hls.data(), (DDR_PTR)Y_hls.data(),
-                W_upconv.data(), P_upconv.data(), (data_t)1e-5f);
+    // ===== Run UCB_0 through UCB_3 with separate in/out =====
+    printf("\n[RUN] Running all 4 UCBs with opt5 weight layout (ping-pong Y)...\n");
+    run_one_ucb((DDR_CONST_PTR)X_hls.data(), (DDR_PTR)ping_pong[0],
+                W_upconv.data(), P_upconv.data(), (data_t)1e-5f, 0);
+    for (int m = 1; m < 4; m++)
+        run_one_ucb((DDR_CONST_PTR)ping_pong[(m-1)&1], (DDR_PTR)ping_pong[m&1],
+                    W_upconv.data(), P_upconv.data(), (data_t)1e-5f, m);
+    data_256_t* Y_final = ping_pong[3 & 1];  // UCB_3 writes to ping_pong[1] = Y_b
 
     // ===== Check UCB output vs Gen_ucb4_output.txt =====
     printf("\n[CHECK] UCB output vs Gen_ucb4_output.txt (256x256x60)...\n");
@@ -244,7 +246,7 @@ int main() {
     vector<float> got_ucb(ny), gold_ucb;
     sprintf(path, "%sio_params/Gen_ucb4_output.txt", DATA);
     if (!read_floats(path, gold_ucb, ny)) return 1;
-    unpack_stride(Y_hls.data(), got_ucb.data(), 256*256, 60);
+    unpack_stride(Y_final, got_ucb.data(), 256*256, 60);
     CmpResult r_ucb = compare(got_ucb.data(), gold_ucb.data(), ny, 0.5f);
     printf("  UCB: %s  max_err=%.4f  rmse=%.6f  mismatch=%d/%d\n",
            r_ucb.mismatch == 0 ? "PASS" : "FAIL",
@@ -288,7 +290,7 @@ int main() {
     // ===== Run Conv77 =====
     printf("\n[RUN] Running Conv77_Kernel<8,8,1,60,3,256,256,7,7,256,256>...\n");
     Conv77_Kernel<8, 8, 1, 60, 3, 256, 256, 7, 7, 256, 256>(
-        Y_hls.data(), W_conv77.data(), B_conv77.data(), Z_hls.data()
+        Y_final, W_conv77.data(), B_conv77.data(), Z_hls.data()
     );
 
     // ===== Check Conv77 output vs Gen_conv77_output.txt =====
@@ -301,6 +303,9 @@ int main() {
     for (int i = 0; i < 256*256; i++)
         for (int c = 0; c < 3; c++)
             got_z[i*3 + c] = h2f(Z_hls[i].range(16*c+15, 16*c).to_uint());
+    // HLS applies Clip(0,1); clip reference too before comparison
+    for (int i = 0; i < nz; i++)
+        gold_z[i] = gold_z[i] < 0.0f ? 0.0f : (gold_z[i] > 1.0f ? 1.0f : gold_z[i]);
     CmpResult r_z = compare(got_z.data(), gold_z.data(), nz, 1.0f);
     printf("  Conv77: %s  max_err=%.4f  rmse=%.6f  mismatch=%d/%d\n",
            r_z.mismatch == 0 ? "PASS" : "FAIL",
