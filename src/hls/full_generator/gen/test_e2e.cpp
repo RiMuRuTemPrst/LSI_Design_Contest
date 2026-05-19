@@ -9,6 +9,8 @@
 #include <cmath>
 #include <cstring>
 #include <cstdio>
+#include <climits>
+#include <cstdlib>
 
 #include "Core.h"           // data_256_t, data_t, DDR_PTR, DDR_CONST_PTR
 #include "upconv_core.h"    // MODE_UCB_0..3
@@ -17,7 +19,23 @@
 
 using namespace std;
 
-static const char* DATA = "/home/rimurutempest/Code/LSI_Design_Contest/assets/test_data/";
+// test_e2e.cpp lives at <repo>/src/hls/full_generator_opt5/gen/ → 4 dirs up = repo root.
+static std::string get_data_root() {
+    char resolved[PATH_MAX];
+    if (!realpath(__FILE__, resolved))
+        strncpy(resolved, __FILE__, PATH_MAX - 1);
+    std::string f(resolved);
+    size_t p = f.rfind('/');
+    if (p != std::string::npos) f = f.substr(0, p);
+    for (int i = 0; i < 4; i++) {
+        size_t q = f.rfind('/');
+        if (q == std::string::npos) break;
+        f = f.substr(0, q);
+    }
+    return f + "/assets/test_data/";
+}
+static const std::string DATA_STR = get_data_root();
+static const char* DATA = DATA_STR.c_str();
 
 // Opt5 weight layout — must match generator_top.cpp
 static const int W_OFF[4] = { 0, 259200, 324000, 340200 };

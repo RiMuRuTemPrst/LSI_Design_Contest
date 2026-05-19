@@ -32,9 +32,8 @@ void upconv_core_top(
 
     const int PEs = 8;
 
-    // x_buf: 256-bit vectorized ping-pong sliding window
-    // Block 4: 2 rows * 128 width * 60 words/row = 15,360 words
-    static data_256_t x_buf[2 * 128 * 60];
+    // x_buf: max(W_IN*CI_WORDS) = max(16*60,32*30,64*15,128*8) = 1024
+    static data_256_t x_buf[2 * 1024];
 #pragma HLS BIND_STORAGE variable=x_buf type=ram_t2p impl=uram
 
     int h_in, w_in, c_in, c_out;

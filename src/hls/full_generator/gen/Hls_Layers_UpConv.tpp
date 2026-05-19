@@ -116,12 +116,13 @@ void UpConv_Fused_Row(
         PRELOAD_W: for (int tc = 0; tc < PEs; tc++) {
             int co = co_base + tc;
             if (co < C_OUT) {
-                for (int k = 0; k < 9; k++) {
-                    for (int ci_w = 0; ci_w < CI_WORDS; ci_w++) {
+                int k_cnt = 0, ci_cnt = 0;
+                W_FLAT: for (int kci = 0; kci < 9 * CI_WORDS; kci++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=8 max=60 avg=28
-                        w_local[tc][k * 60 + ci_w] = W_ptr[(co * 9 + k) * CI_WORDS + ci_w];
-                    }
+#pragma HLS LOOP_TRIPCOUNT min=72 max=540 avg=252
+                    w_local[tc][k_cnt * 60 + ci_cnt] = W_ptr[co * 9 * CI_WORDS + kci];
+                    ci_cnt++;
+                    if (ci_cnt >= CI_WORDS) { ci_cnt = 0; k_cnt++; }
                 }
             }
         }

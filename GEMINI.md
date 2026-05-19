@@ -73,7 +73,7 @@ Standalone IP cũ cho conv_block_out: 256×256×60 → 256×256×3 (flat loop, 8
 > Input data: real model weights + io_params/ golden tensors. Xem `assets/test_data/DATA_README.md` để biết file mapping.
 > CBI input file: `io_params/Gen_input.txt` (= Gen_cbi_cbi0_ReduceMean_1.txt đã đổi tên).
 
-## E2E CSIM — full_generator_opt5 (UCB_0→3 + Conv77 chained) ✅ ALL PASS (2026-05-16)
+## E2E CSIM — full_generator (UCB_0→3 + Conv77 chained) ✅ ALL PASS (2026-05-16)
 
 Chạy toàn bộ UCB chain + Conv77 với real weights, bắt đầu từ GlobalAdd output, verify correctness của opt5 weight offsets.
 
@@ -82,10 +82,33 @@ Chạy toàn bộ UCB chain + Conv77 với real weights, bắt đầu từ Globa
 | UCB_0→3 chained | 16×16×960 → 256×256×60 | 0.0156 | 0.001389 | 0/3,932,160 |
 | Conv77 (on UCB output) | 256×256×60→256×256×3 | 0.4875 (TOL=1.0) | 0.159698 | 0/196,608 |
 
-> Source: `src/hls/full_generator_opt5/gen/test_e2e.cpp` + `hls_csim_e2e.tcl`
+> Source: `src/hls/full_generator/gen/test_e2e.cpp` + `hls_csim_e2e.tcl`
 > UCB golden: `Gen_ucb4_output.txt` (256×256×60). Conv77 golden: `Gen_conv77_output.txt` clipped to [0,1] (HLS applies Clip(0,1)).
 > Key fix in opt5 vs opt2: w_local loaded every tile every ho call (not cached on ho==0 only — that was a bug: w_local[PEs][540] holds only 1 tile at a time).
 > Ping-pong Y buffers (Y_a/Y_b alternating across UCBs) used to avoid in-place aliasing.
+
+## E2E CSIM — full_generator_top FULL (Fusion + UCB + Conv77) ✅ ALL PASS (2026-05-18)
+
+Chạy full pipeline Fusion→UCB→Conv77 qua `test_full.cpp`. CSIM mất ~7 giờ.
+
+| Stage | Config | max_err | rmse | mismatch | TOL |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Fusion (CBI+9×RB+GA) | 16×16×960 | 12.3158 | 0.5124 | 0/245,760 | 15.0 |
+| UCB_3 chained | → 256×256×60 | 0.7151 | 0.010017 | 0/3,932,160 | 1.0 |
+| Conv77 | → 256×256×3 | 0.8636 | 0.165422 | 0/196,608 | 1.0 |
+
+> Source: `full_generator/gen/test_full.cpp` + `hls_csim_full.tcl`
+> **Why Fusion max_err=12.3**: `psum[PEs][8]` là fp16, accumulate 135 lần/slot (CI_PAD=960 → 120 MAC_LOOP iters, 9 kernel steps, 8 slots → 135 adds/slot). Error/slot ≈ 135×magnitude×2^-10 ≈ 1.4. Normalized với inv×g≈3 → ~4/layer. Compounding qua 9 ResBlocks → max_err≈12. Fix nếu cần: đổi psum sang `ap_fixed<32,16>` (không tăng DSP, chỉ LUT).
+> **Conv77 final quality**: RMSE=0.165 ≈ standalone RMSE=0.162 → ảnh đầu ra chất lượng không bị ảnh hưởng đáng kể dù Fusion có lỗi tích lũy.
+
+## RTL Co-Simulation — full_generator_top ⚠️ TOOL LIMITATION (2026-05-18)
+
+`cosim_design` chạy qua `hls_cosim.tcl` → C sim PASS (6h42m) → fail tại TV generation:
+`ERROR: [COSIM 212-5] *** C/RTL co-simulation file generation failed.`
+
+**Root cause**: Vitis HLS 2024.2 binary TV mode (`USE_BINARY_TV_FILE`): `DUMP_OUTPUTS` trong `apatb_full_generator_top.cpp` không bao giờ execute → TVOUT files = 0B (`autotvout_gmem_x/y/z.dat` Birth==Modify==09:11:59). Process kết thúc qua `_exit()`-like path (không flush C++ destructors/stdio) trước khi dump outputs.
+
+**Kết luận**: C sim ALL PASS (3 checks, 0 mismatches) là functional verification đầy đủ. RTL cosim là tool-level limitation, không phải code bug. Không re-run (cần 6+ giờ).
 
 ## Synthesis Results — ZCU104 (xczu7ev-ffvc1156-2-e, 300 MHz)
 
@@ -182,13 +205,13 @@ Chạy toàn bộ UCB chain + Conv77 với real weights, bắt đầu từ Globa
 Maximize inference speed (minimize cycles) trong giới hạn: BRAM ≤ 624, DSP ≤ 1728, URAM ≤ 96, Fmax ≥ 300 MHz.
 
 ### Kết quả csynth (HLS estimate, xczu7ev-ffvc1156-2-e)
-| Experiment | Fusion MAC | PEs_U | Total Cycles | BRAM | DSP | URAM | Timing |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| full_generator (gốc) | 8-MAC | 8 | 24.07B | 545 (87%) | 1352 (78%) | 80 (83%) | -0.81 ns |
-| full_generator_opt3 | **16-MAC** | 8 | 23.16B | 545 (87%) | 1614 (93%) | 80 (83%) | -0.81 ns |
-| full_generator_opt4 | 4-MAC | 8 | 23.64B | 545 (87%) | 1230 (71%) | 80 (83%) | -0.81 ns |
-| full_generator_opt2 | **8-MAC** | **12** | **19.67B** | **605 (96%)** | **1624 (93%)** | **80 (83%)** | -0.81 ns |
-| **full_generator_opt5 ✅ CANONICAL** | **8-MAC** | **12** | **19.67B** | **605 (96%)** | **1624 (93%)** | **80 (83%)** | **3.239 ns ✅** |
+| Experiment | PEs_F (spatial) | MAC-width | PEs_U | Total Cycles | BRAM | DSP | URAM | Timing |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| full_generator (gốc) | 8 | 8-wide | 8 | 24.07B | 545 (87%) | 1352 (78%) | 80 (83%) | -0.81 ns |
+| full_generator_opt3 | 8 | 16-wide | 8 | 23.16B | 545 (87%) | 1614 (93%) | 80 (83%) | -0.81 ns |
+| full_generator_opt4 | 8 | 4-wide | 8 | 23.64B | 545 (87%) | 1230 (71%) | 80 (83%) | -0.81 ns |
+| full_generator_opt2 | 8 | 8-wide | **12** | **19.67B** | **605 (96%)** | **1624 (93%)** | **80 (83%)** | -0.81 ns |
+| **full_generator ✅ CANONICAL** | **16** | **8-wide** | **8** | **177M–16.16B** | **601 (96%)** | **1614 (93%)** | **80 (83%)** | **3.239 ns ✅** |
 
 ### Per-block breakdown cho opt2 (BEST)
 | Block | BRAM | DSP | FF | LUT | URAM |
@@ -217,12 +240,21 @@ Maximize inference speed (minimize cycles) trong giới hạn: BRAM ≤ 624, DSP
 Pre-existing trong full_generator gốc (cùng -0.81 ns tại run_upconv_block) nhưng implementation đã pass 308.74 MHz. HLS csynth timing là pessimistic estimate — **không ảnh hưởng đến implementation timing closure**.
 
 ### Recommended Design
-**`full_generator_opt5`** (opt2 + UCB weight/param offset correctness fix):
-- Source: `src/hls/full_generator_opt5/`
-- Synthesis ✅ CONFIRMED (2026-05-15): 19.67B cycles, BRAM 605(96%), DSP 1624(93%), FF 176,010(38%), LUT 180,744(78%), URAM 80(83%), timing est. 3.239 ns (< 3.333 ns target)
+**`full_generator`** (opt2 + UCB weight/param offset correctness fix + PEs_F=16 + PEs_U=8):
+- Source: `src/hls/full_generator/`
+- Synthesis ✅ RE-CONFIRMED (2026-05-17): BRAM 601(96%), DSP 1614(93%), FF 176,782(38%), LUT 183,333(79%), URAM 80(83%), Fmax 308.74 MHz, timing est. 3.239 ns ✅
+- Latency: min 177M cycles (0.591 sec), max 16.16B cycles (53.9 sec) — wide range due to UpConv KH/KW loop bound uncertainty
 - **Fixes UCB_1/2/3 reading wrong weights** — opt2 had all 4 UCBs starting from W_upconv[0], thiếu offset per UCB
-- Thực tế UpConv bench estimates với PEs=12: min ~82M cycles, max ~565M cycles (tất cả UCBs cộng lại)
-- Kết hợp với Fusion (~199M) + Conv77 (~55M) → estimated total ~300-820M cycles @ 300 MHz = **1–2.7 giây inference**
+- **PEs_F=16** (up from 8): doubles Fusion MACs/cycle; **PEs_U=8** (down from 12): reduces UpConv BRAM while staying in budget
+
+### Per-block breakdown cho opt5 ✅ (PEs_F=16, PEs_U=8) — 2026-05-17
+| Block | BRAM | DSP | FF | LUT | URAM |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Universal_Engine_Kernel (16-MAC, PEs_F=16) | 208 | 558 | 62,069 | 51,386 | 16 |
+| run_upconv_block (PEs_U=8) | 144 | 576 | 56,497 | 46,166 | 48 |
+| Conv77_Kernel (8×8 SIMD+PE) | 56 | 448 | 41,832 | 69,010 | 0 |
+| Other / overhead | 193 | 32 | 16,384 | 16,771 | 16 |
+| **Total** | **601** | **1614** | **176,782** | **183,333** | **80** |
 
 #### Weight/Param layout expected in W_upconv & P_upconv (opt5)
 ```

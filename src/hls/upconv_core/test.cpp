@@ -4,11 +4,31 @@
 #include <vector>
 #include <cmath>
 #include <cstring>
+#include <climits>
+#include <cstdlib>
 #include "gen/upconv_core.h"
 
 using namespace std;
 
-static const char* DATA = "/home/rimurutempest/Code/LSI_Design_Contest/assets/test_data/";
+// Derive data root relative to this source file — works on any machine.
+// Uses realpath() to resolve __FILE__ (may be relative) to absolute path.
+// test.cpp lives at <repo>/src/hls/upconv_core/test.cpp → 3 dirs up = repo root.
+static std::string get_data_root() {
+    char resolved[PATH_MAX];
+    if (!realpath(__FILE__, resolved))
+        strncpy(resolved, __FILE__, PATH_MAX - 1);
+    std::string f(resolved);
+    size_t p = f.rfind('/');
+    if (p != std::string::npos) f = f.substr(0, p); // strip filename
+    for (int i = 0; i < 3; i++) {                   // go up: upconv_core → hls → src → repo
+        size_t q = f.rfind('/');
+        if (q == std::string::npos) break;
+        f = f.substr(0, q);
+    }
+    return f + "/assets/test_data/";
+}
+static const std::string DATA_STR = get_data_root();
+static const char* DATA = DATA_STR.c_str();
 
 static bool read_floats(const char* path, float* dst, int N) {
     ifstream f(path);
