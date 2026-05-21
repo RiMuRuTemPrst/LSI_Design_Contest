@@ -429,7 +429,7 @@ attribute shreg_extract : string;
     signal tmp_fu_4190_p3 : STD_LOGIC_VECTOR (9 downto 0);
     signal p_shl_fu_4182_p3 : STD_LOGIC_VECTOR (12 downto 0);
     signal zext_ln91_fu_4198_p1 : STD_LOGIC_VECTOR (12 downto 0);
-    signal tmp_46_cast_fu_4228_p4 : STD_LOGIC_VECTOR (11 downto 0);
+    signal tmp_54_cast_fu_4228_p4 : STD_LOGIC_VECTOR (11 downto 0);
     signal tmp_s_fu_4238_p3 : STD_LOGIC_VECTOR (12 downto 0);
     signal add_ln91_fu_4271_p2 : STD_LOGIC_VECTOR (12 downto 0);
     signal add_ln91_28_fu_4296_p2 : STD_LOGIC_VECTOR (12 downto 0);
@@ -1658,9 +1658,9 @@ begin
 
     p_shl_fu_4182_p3 <= (trunc_ln91_fu_4178_p1 & ap_const_lv5_0);
     sub_ln91_fu_4202_p2 <= std_logic_vector(unsigned(p_shl_fu_4182_p3) - unsigned(zext_ln91_fu_4198_p1));
-    tmp_46_cast_fu_4228_p4 <= sub_ln91_fu_4202_p2(12 downto 1);
+    tmp_54_cast_fu_4228_p4 <= sub_ln91_fu_4202_p2(12 downto 1);
     tmp_fu_4190_p3 <= (wo_fu_138 & ap_const_lv1_0);
-    tmp_s_fu_4238_p3 <= (tmp_46_cast_fu_4228_p4 & ap_const_lv1_1);
+    tmp_s_fu_4238_p3 <= (tmp_54_cast_fu_4228_p4 & ap_const_lv1_1);
     trunc_ln91_fu_4178_p1 <= wo_fu_138(8 - 1 downto 0);
     void_UpConv_Fused_Row_Bench_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_1_address0 <= void_UpConv_Fused_Row_Bench_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_1_address0_local;
 

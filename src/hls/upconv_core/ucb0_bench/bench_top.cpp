@@ -196,17 +196,30 @@ void UpConv_Fused_Row_Bench(
     PIXEL_NORM: for (int wo = 0; wo < W_OUT; wo++) {
 #pragma HLS PIPELINE off
 #pragma HLS LOOP_TRIPCOUNT min=32 max=32 avg=32
-        float sum = 0, sumsq = 0;
+        float sum_rot[8]   = {0,0,0,0,0,0,0,0};
+        float sumsq_rot[8] = {0,0,0,0,0,0,0,0};
+#pragma HLS ARRAY_PARTITION variable=sum_rot   complete
+#pragma HLS ARRAY_PARTITION variable=sumsq_rot complete
 
         BIAS_STATS: for (int c = 0; c < C_OUT; c++) {
 #pragma HLS PIPELINE II=1
 #pragma HLS LOOP_TRIPCOUNT min=480 max=480 avg=480
+#pragma HLS DEPENDENCE variable=sum_rot   type=inter false
+#pragma HLS DEPENDENCE variable=sumsq_rot type=inter false
+            int acc_idx = c & 7;
             data_t bias = bits_to_half<data_t>(b_buf[c/16].range(16*(c%16)+15, 16*(c%16)));
             data_t val = row_acc[wo][c] + bias;
             row_acc[wo][c] = val;
             float fv = (float)val;
-            sum   += fv;
-            sumsq += fv * fv;
+            sum_rot[acc_idx]   += fv;
+            sumsq_rot[acc_idx] += fv * fv;
+        }
+
+        float sum = 0, sumsq = 0;
+        for (int r = 0; r < 8; r++) {
+#pragma HLS UNROLL
+            sum   += sum_rot[r];
+            sumsq += sumsq_rot[r];
         }
 
         float mean    = sum / (float)C_OUT;

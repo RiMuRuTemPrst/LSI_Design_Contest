@@ -173,7 +173,7 @@ attribute shreg_extract : string;
     signal ap_phi_reg_pp0_iter3_empty_reg_247 : STD_LOGIC_VECTOR (511 downto 0);
     signal zext_ln109_1_fu_408_p1 : STD_LOGIC_VECTOR (511 downto 0);
     signal zext_ln112_fu_413_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal shiftreg1490_fu_110 : STD_LOGIC_VECTOR (255 downto 0) := "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+    signal shiftreg1933_fu_110 : STD_LOGIC_VECTOR (255 downto 0) := "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
     signal ap_loop_init : STD_LOGIC;
     signal ci_w_fu_114 : STD_LOGIC_VECTOR (3 downto 0) := "0000";
     signal add_ln109_fu_321_p2 : STD_LOGIC_VECTOR (3 downto 0);
@@ -369,14 +369,14 @@ begin
         end if;
     end process;
 
-    shiftreg1490_fu_110_assign_proc : process (ap_clk)
+    shiftreg1933_fu_110_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_boolean_0 = ap_block_pp0_stage0_11001_grp1)) then
                 if (((ap_loop_init = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_pp0_stage0))) then 
-                    shiftreg1490_fu_110 <= ap_const_lv256_lc_1;
+                    shiftreg1933_fu_110 <= ap_const_lv256_lc_1;
                 elsif ((ap_enable_reg_pp0_iter3 = ap_const_logic_1)) then 
-                    shiftreg1490_fu_110 <= ap_phi_mux_empty_phi_fu_250_p4(511 downto 256);
+                    shiftreg1933_fu_110 <= ap_phi_mux_empty_phi_fu_250_p4(511 downto 256);
                 end if;
             end if; 
         end if;
@@ -608,7 +608,7 @@ begin
     p_shl_fu_358_p3 <= (trunc_ln109_fu_354_p1 & ap_const_lv6_0);
     select_ln108_1_fu_401_p3 <= 
         ap_const_lv256_lc_1 when (icmp_ln109_reg_492_pp0_iter2_reg(0) = '1') else 
-        shiftreg1490_fu_110;
+        shiftreg1933_fu_110;
     select_ln108_2_fu_347_p3 <= 
         add_ln108_1_fu_341_p2 when (icmp_ln109_reg_492(0) = '1') else 
         k_fu_118;

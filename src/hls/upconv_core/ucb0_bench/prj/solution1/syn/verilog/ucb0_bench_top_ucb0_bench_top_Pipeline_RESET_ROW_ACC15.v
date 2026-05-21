@@ -489,7 +489,7 @@ wire   [4:0] trunc_ln91_fu_4178_p1;
 wire   [6:0] tmp_fu_4190_p3;
 wire   [9:0] p_shl_fu_4182_p3;
 wire   [9:0] zext_ln91_fu_4198_p1;
-wire   [8:0] tmp_43_cast_fu_4228_p4;
+wire   [8:0] tmp_51_cast_fu_4228_p4;
 wire   [9:0] tmp_s_fu_4238_p3;
 wire   [9:0] add_ln91_fu_4271_p2;
 wire   [9:0] add_ln91_28_fu_4296_p2;
@@ -2844,11 +2844,11 @@ assign p_shl_fu_4182_p3 = {{trunc_ln91_fu_4178_p1}, {5'd0}};
 
 assign sub_ln91_fu_4202_p2 = (p_shl_fu_4182_p3 - zext_ln91_fu_4198_p1);
 
-assign tmp_43_cast_fu_4228_p4 = {{sub_ln91_fu_4202_p2[9:1]}};
+assign tmp_51_cast_fu_4228_p4 = {{sub_ln91_fu_4202_p2[9:1]}};
 
 assign tmp_fu_4190_p3 = {{wo_fu_138}, {1'd0}};
 
-assign tmp_s_fu_4238_p3 = {{tmp_43_cast_fu_4228_p4}, {1'd1}};
+assign tmp_s_fu_4238_p3 = {{tmp_51_cast_fu_4228_p4}, {1'd1}};
 
 assign trunc_ln91_fu_4178_p1 = wo_fu_138[4:0];
 

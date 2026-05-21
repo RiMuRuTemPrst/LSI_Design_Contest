@@ -179,17 +179,16 @@ Chạy full pipeline Fusion→UCB→Conv77 qua `test_full.cpp`. CSIM mất ~7 gi
 | GlobalAdd | 15,507 | **52 µs** |
 | **Fusion tổng** | **202M** | **~673 ms** |
 
-### UpConv Core (từ verified standalone bench synthesis)
+### UpConv Core (từ verified standalone bench synthesis, post BIAS_STATS fix 2026-05-21)
 | Mode | Config | Latency min | Latency max | Timing (Est) |
 | :--- | :--- | :--- | :--- | :--- |
-| UCB_0 | 16×16×960 → 32×32×480 | **39.96 ms** | 202 ms | 2.947 ns |
-| UCB_1 | 32×32×480 → 64×64×240 | **39.55 ms** | 309 ms | 2.993 ns |
-| UCB_2 | 64×64×240 → 128×128×120 | **63.24 ms** | 546 ms | 2.433 ns |
-| UCB_3 | 128×128×120 → 256×256×60 | **132 ms** | 1.75 s | 2.904 ns |
+| UCB_0 | 16×16×960 → 32×32×480 | **30.46 ms** | 193 ms | 3.010 ns |
+| UCB_1 | 32×32×480 → 64×64×240 | **21.21 ms** | 290 ms | 3.010 ns |
+| UCB_2 | 64×64×240 → 128×128×120 | **29.21 ms** | 512 ms | 3.010 ns |
+| UCB_3 | 128×128×120 → 256×256×60 | **75.00 ms** | 1.687 s | 3.010 ns |
 
 > Kết quả từ ucbX_bench (inlined body + exact tripcounts). Khoảng min/max rộng do `KH_LOOP` (1-2 iters) và `KW_LOOP` (2-3 iters) phụ thuộc vào row index `ho`.
-> Cập nhật 2026-05-13: Verified latency range sau khi inline core function và fix tripcounts.
-> UCB_2 re-synthesis sau fix N_TILES bug (16→15): min tăng nhẹ do HLS scheduling, max giảm 52% (1.13s→546ms), timing cải thiện (2.719→2.433ns).
+> Cập nhật 2026-05-21: Re-synthesis sau BIAS_STATS rotating accumulator fix (II: 7→1). Speedup min: UCB_0 1.31×, UCB_1 1.86×, UCB_2 2.17×, UCB_3 1.76×. UCB total min: 275ms → 156ms.
 
 ### UpConv Core — upconv_core_top (post BIAS_STATS rotating-acc fix, 2026-05-21) ✅
 | Resource | BRAM_18K | DSP | FF | LUT | URAM | Timing |

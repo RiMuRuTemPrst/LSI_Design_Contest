@@ -46,13 +46,13 @@
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>bench_top.cpp:148~bench_top.cpp:280</SourceLocation>
+<SourceLocation>bench_top.cpp:148~bench_top.cpp:293</SourceLocation>
 <SummaryOfLoopViolations>
 <CI_LOOP>
 <Name>CI_LOOP</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>bench_top.cpp:153~bench_top.cpp:280</SourceLocation>
+<SourceLocation>bench_top.cpp:153~bench_top.cpp:293</SourceLocation>
 </CI_LOOP>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -11759,8 +11759,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>mul117_i</name>
-<Object>mul117_i</Object>
+<name>mul119_i</name>
+<Object>mul119_i</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

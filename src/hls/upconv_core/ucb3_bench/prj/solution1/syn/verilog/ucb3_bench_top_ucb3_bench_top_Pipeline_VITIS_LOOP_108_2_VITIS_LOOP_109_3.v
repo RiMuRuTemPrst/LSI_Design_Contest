@@ -226,7 +226,7 @@ reg   [511:0] ap_phi_mux_empty_phi_fu_250_p4;
 wire   [511:0] ap_phi_reg_pp0_iter3_empty_reg_247;
 wire   [511:0] zext_ln109_1_fu_408_p1;
 wire   [63:0] zext_ln112_fu_413_p1;
-reg   [255:0] shiftreg1502_fu_110;
+reg   [255:0] shiftreg1945_fu_110;
 wire    ap_loop_init;
 reg   [3:0] ci_w_fu_114;
 wire   [3:0] add_ln109_fu_321_p2;
@@ -279,7 +279,7 @@ initial begin
 #0 ap_enable_reg_pp0_iter1 = 1'b0;
 #0 ap_enable_reg_pp0_iter2 = 1'b0;
 #0 ap_enable_reg_pp0_iter3 = 1'b0;
-#0 shiftreg1502_fu_110 = 256'd0;
+#0 shiftreg1945_fu_110 = 256'd0;
 #0 ci_w_fu_114 = 4'd0;
 #0 k_fu_118 = 4'd0;
 #0 indvar_flatten6_fu_122 = 7'd0;
@@ -386,9 +386,9 @@ end
 always @ (posedge ap_clk) begin
     if ((1'b0 == ap_block_pp0_stage0_11001_grp1)) begin
         if (((ap_loop_init == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
-            shiftreg1502_fu_110 <= 256'd0;
+            shiftreg1945_fu_110 <= 256'd0;
         end else if ((ap_enable_reg_pp0_iter3 == 1'b1)) begin
-            shiftreg1502_fu_110 <= {{ap_phi_mux_empty_phi_fu_250_p4[511:256]}};
+            shiftreg1945_fu_110 <= {{ap_phi_mux_empty_phi_fu_250_p4[511:256]}};
         end
     end
 end
@@ -760,7 +760,7 @@ assign m_axi_gmem_weight_0_WVALID = 1'b0;
 
 assign p_shl_fu_358_p3 = {{trunc_ln109_fu_354_p1}, {6'd0}};
 
-assign select_ln108_1_fu_401_p3 = ((icmp_ln109_reg_492_pp0_iter2_reg[0:0] == 1'b1) ? 256'd0 : shiftreg1502_fu_110);
+assign select_ln108_1_fu_401_p3 = ((icmp_ln109_reg_492_pp0_iter2_reg[0:0] == 1'b1) ? 256'd0 : shiftreg1945_fu_110);
 
 assign select_ln108_2_fu_347_p3 = ((icmp_ln109_reg_492[0:0] == 1'b1) ? add_ln108_fu_341_p2 : k_fu_118);
 

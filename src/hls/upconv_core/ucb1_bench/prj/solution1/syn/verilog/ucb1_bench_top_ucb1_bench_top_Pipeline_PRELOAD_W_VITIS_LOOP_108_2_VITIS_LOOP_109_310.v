@@ -233,7 +233,7 @@ reg   [511:0] ap_phi_mux_empty_phi_fu_260_p4;
 wire   [511:0] ap_phi_reg_pp0_iter3_empty_reg_257;
 wire   [511:0] zext_ln109_5_fu_493_p1;
 wire   [63:0] zext_ln112_fu_507_p1;
-reg   [255:0] shiftreg1417_fu_118;
+reg   [255:0] shiftreg1860_fu_118;
 wire    ap_loop_init;
 reg   [4:0] ci_w_fu_122;
 wire   [4:0] add_ln109_fu_385_p2;
@@ -273,7 +273,7 @@ wire   [3:0] add_ln108_fu_428_p2;
 wire   [5:0] tmp_fu_476_p3;
 wire   [8:0] p_shl_fu_469_p3;
 wire   [8:0] zext_ln109_fu_483_p1;
-wire   [255:0] shiftreg1417_mid2_fu_462_p3;
+wire   [255:0] shiftreg1860_mid2_fu_462_p3;
 wire   [8:0] zext_ln109_6_fu_498_p1;
 wire   [8:0] sub_ln109_fu_487_p2;
 wire   [8:0] add_ln112_fu_501_p2;
@@ -295,7 +295,7 @@ initial begin
 #0 ap_enable_reg_pp0_iter1 = 1'b0;
 #0 ap_enable_reg_pp0_iter2 = 1'b0;
 #0 ap_enable_reg_pp0_iter3 = 1'b0;
-#0 shiftreg1417_fu_118 = 256'd0;
+#0 shiftreg1860_fu_118 = 256'd0;
 #0 ci_w_fu_122 = 5'd0;
 #0 k_fu_126 = 4'd0;
 #0 indvar_flatten55_fu_130 = 9'd0;
@@ -414,9 +414,9 @@ end
 always @ (posedge ap_clk) begin
     if ((1'b0 == ap_block_pp0_stage0_11001_grp1)) begin
         if (((ap_loop_init == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
-            shiftreg1417_fu_118 <= 256'd0;
+            shiftreg1860_fu_118 <= 256'd0;
         end else if ((ap_enable_reg_pp0_iter3 == 1'b1)) begin
-            shiftreg1417_fu_118 <= {{ap_phi_mux_empty_phi_fu_260_p4[511:256]}};
+            shiftreg1860_fu_118 <= {{ap_phi_mux_empty_phi_fu_260_p4[511:256]}};
         end
     end
 end
@@ -832,7 +832,7 @@ assign select_ln108_3_fu_330_p3 = ((icmp_ln108_fu_318_p2[0:0] == 1'b1) ? 9'd1 : 
 
 assign select_ln108_fu_434_p3 = ((and_ln105_reg_605[0:0] == 1'b1) ? add_ln108_fu_428_p2 : select_ln105_fu_414_p3);
 
-assign shiftreg1417_mid2_fu_462_p3 = ((empty_51_reg_610_pp0_iter2_reg[0:0] == 1'b1) ? 256'd0 : shiftreg1417_fu_118);
+assign shiftreg1860_mid2_fu_462_p3 = ((empty_51_reg_610_pp0_iter2_reg[0:0] == 1'b1) ? 256'd0 : shiftreg1860_fu_118);
 
 assign sub_ln109_fu_487_p2 = (p_shl_fu_469_p3 - zext_ln109_fu_483_p1);
 
@@ -912,7 +912,7 @@ assign w_local_9_we0 = w_local_9_we0_local;
 
 assign xor_ln105_fu_351_p2 = (icmp_ln108_reg_597 ^ 1'd1);
 
-assign zext_ln109_5_fu_493_p1 = shiftreg1417_mid2_fu_462_p3;
+assign zext_ln109_5_fu_493_p1 = shiftreg1860_mid2_fu_462_p3;
 
 assign zext_ln109_6_fu_498_p1 = ci_w_6_mid2_reg_615_pp0_iter2_reg;
 

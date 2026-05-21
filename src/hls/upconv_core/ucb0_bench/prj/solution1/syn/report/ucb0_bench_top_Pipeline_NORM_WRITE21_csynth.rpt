@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'ucb0_bench_top_Pipeline_NORM_WRITE21'
 ================================================================
-* Date:           Wed May 13 20:35:34 2026
+* Date:           Thu May 21 22:54:35 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -85,11 +85,11 @@
     +---------------------------+----------+----+---+-----+------------+------------+
     |       Variable Name       | Operation| DSP| FF| LUT | Bitwidth P0| Bitwidth P1|
     +---------------------------+----------+----+---+-----+------------+------------+
-    |add_ln216_fu_773_p2        |         +|   0|  0|   12|           5|           1|
-    |add_ln223_fu_787_p2        |         +|   0|  0|   17|          10|          10|
+    |add_ln229_fu_773_p2        |         +|   0|  0|   12|           5|           1|
+    |add_ln236_fu_787_p2        |         +|   0|  0|   17|          10|          10|
     |ap_block_pp0_stage0_11001  |       and|   0|  0|    2|           1|           1|
     |ap_block_state24_io_grp1   |       and|   0|  0|    2|           1|           1|
-    |icmp_ln216_fu_767_p2       |      icmp|   0|  0|   12|           5|           3|
+    |icmp_ln229_fu_767_p2       |      icmp|   0|  0|   12|           5|           3|
     |select_ln18_16_fu_1209_p3  |    select|   0|  0|   16|           1|           1|
     |select_ln18_17_fu_1220_p3  |    select|   0|  0|   16|           1|           1|
     |select_ln18_18_fu_1231_p3  |    select|   0|  0|   16|           1|           1|
@@ -106,7 +106,7 @@
     |select_ln18_29_fu_1352_p3  |    select|   0|  0|   16|           1|           1|
     |select_ln18_30_fu_1363_p3  |    select|   0|  0|   16|           1|           1|
     |select_ln18_fu_1198_p3     |    select|   0|  0|   16|           1|           1|
-    |select_ln216_fu_1423_p3    |    select|   0|  0|  208|           1|           1|
+    |select_ln229_fu_1423_p3    |    select|   0|  0|  208|           1|           1|
     |ap_enable_pp0              |       xor|   0|  0|    2|           1|           2|
     +---------------------------+----------+----+---+-----+------------+------------+
     |Total                      |          |   0|  0|  511|          40|          35|
@@ -121,7 +121,7 @@
     |ap_sig_allocacmp_cw      |   9|          2|    5|         10|
     |cw_1_fu_144              |   9|          2|    5|         10|
     |gmem_out_blk_n_W         |   9|          2|    1|          2|
-    |phi_ln230_1_fu_140       |   9|          2|  256|        512|
+    |phi_ln243_1_fu_140       |   9|          2|  256|        512|
     +-------------------------+----+-----------+-----+-----------+
     |Total                    |  54|         12|  269|        538|
     +-------------------------+----+-----------+-----+-----------+
@@ -177,40 +177,56 @@
     |ap_loop_exit_ready_pp0_iter7_reg   |    1|   0|    1|          0|
     |ap_loop_exit_ready_pp0_iter8_reg   |    1|   0|    1|          0|
     |ap_loop_exit_ready_pp0_iter9_reg   |    1|   0|    1|          0|
+    |bits_16_reg_2020                   |   16|   0|   16|          0|
+    |bits_17_reg_2030                   |   16|   0|   16|          0|
+    |bits_18_reg_2040                   |   16|   0|   16|          0|
+    |bits_19_reg_2050                   |   16|   0|   16|          0|
+    |bits_20_reg_2060                   |   16|   0|   16|          0|
+    |bits_21_reg_2070                   |   16|   0|   16|          0|
+    |bits_22_reg_2080                   |   16|   0|   16|          0|
+    |bits_23_reg_2090                   |   16|   0|   16|          0|
+    |bits_24_reg_2100                   |   16|   0|   16|          0|
+    |bits_25_reg_2110                   |   16|   0|   16|          0|
+    |bits_26_reg_2120                   |   16|   0|   16|          0|
+    |bits_27_reg_2130                   |   16|   0|   16|          0|
+    |bits_28_reg_2140                   |   16|   0|   16|          0|
+    |bits_29_reg_2150                   |   16|   0|   16|          0|
+    |bits_30_reg_2160                   |   16|   0|   16|          0|
+    |bits_reg_2010                      |   16|   0|   16|          0|
     |cw_1_fu_144                        |    5|   0|    5|          0|
     |cw_reg_1499                        |    5|   0|    5|          0|
-    |mul320_i1266_10_reg_1880           |   16|   0|   16|          0|
-    |mul320_i1266_11_reg_1890           |   16|   0|   16|          0|
-    |mul320_i1266_12_reg_1900           |   16|   0|   16|          0|
-    |mul320_i1266_13_reg_1910           |   16|   0|   16|          0|
-    |mul320_i1266_14_reg_1920           |   16|   0|   16|          0|
-    |mul320_i1266_1_reg_1780            |   16|   0|   16|          0|
-    |mul320_i1266_2_reg_1790            |   16|   0|   16|          0|
-    |mul320_i1266_3_reg_1800            |   16|   0|   16|          0|
-    |mul320_i1266_4_reg_1810            |   16|   0|   16|          0|
-    |mul320_i1266_5_reg_1820            |   16|   0|   16|          0|
-    |mul320_i1266_6_reg_1830            |   16|   0|   16|          0|
-    |mul320_i1266_7_reg_1840            |   16|   0|   16|          0|
-    |mul320_i1266_8_reg_1850            |   16|   0|   16|          0|
-    |mul320_i1266_9_reg_1860            |   16|   0|   16|          0|
-    |mul320_i1266_s_reg_1870            |   16|   0|   16|          0|
-    |mul320_i1_reg_1770                 |   16|   0|   16|          0|
-    |mul321_i1267_10_reg_2125           |   16|   0|   16|          0|
-    |mul321_i1267_11_reg_2135           |   16|   0|   16|          0|
-    |mul321_i1267_12_reg_2145           |   16|   0|   16|          0|
-    |mul321_i1267_13_reg_2155           |   16|   0|   16|          0|
-    |mul321_i1267_14_reg_2165           |   16|   0|   16|          0|
-    |mul321_i1267_1_reg_2025            |   16|   0|   16|          0|
-    |mul321_i1267_2_reg_2035            |   16|   0|   16|          0|
-    |mul321_i1267_3_reg_2045            |   16|   0|   16|          0|
-    |mul321_i1267_4_reg_2055            |   16|   0|   16|          0|
-    |mul321_i1267_5_reg_2065            |   16|   0|   16|          0|
-    |mul321_i1267_6_reg_2075            |   16|   0|   16|          0|
-    |mul321_i1267_7_reg_2085            |   16|   0|   16|          0|
-    |mul321_i1267_8_reg_2095            |   16|   0|   16|          0|
-    |mul321_i1267_9_reg_2105            |   16|   0|   16|          0|
-    |mul321_i1267_s_reg_2115            |   16|   0|   16|          0|
-    |mul321_i1_reg_2015                 |   16|   0|   16|          0|
+    |mul343_i1323_10_reg_1880           |   16|   0|   16|          0|
+    |mul343_i1323_11_reg_1890           |   16|   0|   16|          0|
+    |mul343_i1323_12_reg_1900           |   16|   0|   16|          0|
+    |mul343_i1323_13_reg_1910           |   16|   0|   16|          0|
+    |mul343_i1323_14_reg_1920           |   16|   0|   16|          0|
+    |mul343_i1323_1_reg_1780            |   16|   0|   16|          0|
+    |mul343_i1323_2_reg_1790            |   16|   0|   16|          0|
+    |mul343_i1323_3_reg_1800            |   16|   0|   16|          0|
+    |mul343_i1323_4_reg_1810            |   16|   0|   16|          0|
+    |mul343_i1323_5_reg_1820            |   16|   0|   16|          0|
+    |mul343_i1323_6_reg_1830            |   16|   0|   16|          0|
+    |mul343_i1323_7_reg_1840            |   16|   0|   16|          0|
+    |mul343_i1323_8_reg_1850            |   16|   0|   16|          0|
+    |mul343_i1323_9_reg_1860            |   16|   0|   16|          0|
+    |mul343_i1323_s_reg_1870            |   16|   0|   16|          0|
+    |mul343_i1_reg_1770                 |   16|   0|   16|          0|
+    |mul344_i1324_10_reg_2125           |   16|   0|   16|          0|
+    |mul344_i1324_11_reg_2135           |   16|   0|   16|          0|
+    |mul344_i1324_12_reg_2145           |   16|   0|   16|          0|
+    |mul344_i1324_13_reg_2155           |   16|   0|   16|          0|
+    |mul344_i1324_14_reg_2165           |   16|   0|   16|          0|
+    |mul344_i1324_1_reg_2025            |   16|   0|   16|          0|
+    |mul344_i1324_2_reg_2035            |   16|   0|   16|          0|
+    |mul344_i1324_3_reg_2045            |   16|   0|   16|          0|
+    |mul344_i1324_4_reg_2055            |   16|   0|   16|          0|
+    |mul344_i1324_5_reg_2065            |   16|   0|   16|          0|
+    |mul344_i1324_6_reg_2075            |   16|   0|   16|          0|
+    |mul344_i1324_7_reg_2085            |   16|   0|   16|          0|
+    |mul344_i1324_8_reg_2095            |   16|   0|   16|          0|
+    |mul344_i1324_9_reg_2105            |   16|   0|   16|          0|
+    |mul344_i1324_s_reg_2115            |   16|   0|   16|          0|
+    |mul344_i1_reg_2015                 |   16|   0|   16|          0|
     |norm_16_reg_2256                   |   16|   0|   16|          0|
     |norm_16_reg_2256_pp0_iter21_reg    |   16|   0|   16|          0|
     |norm_17_reg_2262                   |   16|   0|   16|          0|
@@ -243,7 +259,7 @@
     |norm_30_reg_2340_pp0_iter21_reg    |   16|   0|   16|          0|
     |norm_reg_2250                      |   16|   0|   16|          0|
     |norm_reg_2250_pp0_iter21_reg       |   16|   0|   16|          0|
-    |phi_ln230_1_fu_140                 |  256|   0|  256|          0|
+    |phi_ln243_1_fu_140                 |  256|   0|  256|          0|
     |select_ln18_16_reg_2352            |   16|   0|   16|          0|
     |select_ln18_17_reg_2358            |   16|   0|   16|          0|
     |select_ln18_18_reg_2364            |   16|   0|   16|          0|
@@ -260,54 +276,38 @@
     |select_ln18_29_reg_2430            |   16|   0|   16|          0|
     |select_ln18_30_reg_2436            |   16|   0|   16|          0|
     |select_ln18_reg_2346               |   16|   0|   16|          0|
-    |sub319_i1265_10_reg_1725           |   16|   0|   16|          0|
-    |sub319_i1265_11_reg_1730           |   16|   0|   16|          0|
-    |sub319_i1265_12_reg_1735           |   16|   0|   16|          0|
-    |sub319_i1265_13_reg_1740           |   16|   0|   16|          0|
-    |sub319_i1265_14_reg_1745           |   16|   0|   16|          0|
-    |sub319_i1265_1_reg_1675            |   16|   0|   16|          0|
-    |sub319_i1265_2_reg_1680            |   16|   0|   16|          0|
-    |sub319_i1265_3_reg_1685            |   16|   0|   16|          0|
-    |sub319_i1265_4_reg_1690            |   16|   0|   16|          0|
-    |sub319_i1265_5_reg_1695            |   16|   0|   16|          0|
-    |sub319_i1265_6_reg_1700            |   16|   0|   16|          0|
-    |sub319_i1265_7_reg_1705            |   16|   0|   16|          0|
-    |sub319_i1265_8_reg_1710            |   16|   0|   16|          0|
-    |sub319_i1265_9_reg_1715            |   16|   0|   16|          0|
-    |sub319_i1265_s_reg_1720            |   16|   0|   16|          0|
-    |sub319_i1_reg_1670                 |   16|   0|   16|          0|
-    |trunc_ln216_reg_1755               |    1|   0|    1|          0|
-    |u_32_reg_2010                      |   16|   0|   16|          0|
+    |sub342_i1322_10_reg_1725           |   16|   0|   16|          0|
+    |sub342_i1322_11_reg_1730           |   16|   0|   16|          0|
+    |sub342_i1322_12_reg_1735           |   16|   0|   16|          0|
+    |sub342_i1322_13_reg_1740           |   16|   0|   16|          0|
+    |sub342_i1322_14_reg_1745           |   16|   0|   16|          0|
+    |sub342_i1322_1_reg_1675            |   16|   0|   16|          0|
+    |sub342_i1322_2_reg_1680            |   16|   0|   16|          0|
+    |sub342_i1322_3_reg_1685            |   16|   0|   16|          0|
+    |sub342_i1322_4_reg_1690            |   16|   0|   16|          0|
+    |sub342_i1322_5_reg_1695            |   16|   0|   16|          0|
+    |sub342_i1322_6_reg_1700            |   16|   0|   16|          0|
+    |sub342_i1322_7_reg_1705            |   16|   0|   16|          0|
+    |sub342_i1322_8_reg_1710            |   16|   0|   16|          0|
+    |sub342_i1322_9_reg_1715            |   16|   0|   16|          0|
+    |sub342_i1322_s_reg_1720            |   16|   0|   16|          0|
+    |sub342_i1_reg_1670                 |   16|   0|   16|          0|
+    |trunc_ln229_reg_1755               |    1|   0|    1|          0|
     |u_33_reg_1775                      |   16|   0|   16|          0|
-    |u_34_reg_2020                      |   16|   0|   16|          0|
     |u_35_reg_1785                      |   16|   0|   16|          0|
-    |u_36_reg_2030                      |   16|   0|   16|          0|
     |u_37_reg_1795                      |   16|   0|   16|          0|
-    |u_38_reg_2040                      |   16|   0|   16|          0|
     |u_39_reg_1805                      |   16|   0|   16|          0|
-    |u_40_reg_2050                      |   16|   0|   16|          0|
     |u_41_reg_1815                      |   16|   0|   16|          0|
-    |u_42_reg_2060                      |   16|   0|   16|          0|
     |u_43_reg_1825                      |   16|   0|   16|          0|
-    |u_44_reg_2070                      |   16|   0|   16|          0|
     |u_45_reg_1835                      |   16|   0|   16|          0|
-    |u_46_reg_2080                      |   16|   0|   16|          0|
     |u_47_reg_1845                      |   16|   0|   16|          0|
-    |u_48_reg_2090                      |   16|   0|   16|          0|
     |u_49_reg_1855                      |   16|   0|   16|          0|
-    |u_50_reg_2100                      |   16|   0|   16|          0|
     |u_51_reg_1865                      |   16|   0|   16|          0|
-    |u_52_reg_2110                      |   16|   0|   16|          0|
     |u_53_reg_1875                      |   16|   0|   16|          0|
-    |u_54_reg_2120                      |   16|   0|   16|          0|
     |u_55_reg_1885                      |   16|   0|   16|          0|
-    |u_56_reg_2130                      |   16|   0|   16|          0|
     |u_57_reg_1895                      |   16|   0|   16|          0|
-    |u_58_reg_2140                      |   16|   0|   16|          0|
     |u_59_reg_1905                      |   16|   0|   16|          0|
-    |u_60_reg_2150                      |   16|   0|   16|          0|
     |u_61_reg_1915                      |   16|   0|   16|          0|
-    |u_62_reg_2160                      |   16|   0|   16|          0|
     |u_reg_1765                         |   16|   0|   16|          0|
     |val_16_reg_1595                    |   16|   0|   16|          0|
     |val_17_reg_1600                    |   16|   0|   16|          0|
@@ -325,10 +325,10 @@
     |val_29_reg_1660                    |   16|   0|   16|          0|
     |val_30_reg_1665                    |   16|   0|   16|          0|
     |val_reg_1590                       |   16|   0|   16|          0|
-    |zext_ln216_reg_1750                |    5|   0|   64|         59|
+    |zext_ln229_reg_1750                |    5|   0|   64|         59|
     |cw_reg_1499                        |   64|  32|    5|          0|
-    |trunc_ln216_reg_1755               |   64|  32|    1|          0|
-    |zext_ln216_reg_1750                |   64|  32|   64|         59|
+    |trunc_ln229_reg_1755               |   64|  32|    1|          0|
+    |zext_ln229_reg_1750                |   64|  32|   64|         59|
     +-----------------------------------+-----+----+-----+-----------+
     |Total                              | 2815|  96| 2752|        118|
     +-----------------------------------+-----+----+-----+-----------+
@@ -348,342 +348,342 @@
 |ap_done                                                                                       |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
 |ap_idle                                                                                       |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
 |ap_ready                                                                                      |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2970_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2970_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2970_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2970_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2974_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2974_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2974_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2974_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2978_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2978_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2978_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2978_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2982_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2982_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2982_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2982_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2986_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2986_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2986_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2986_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2990_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2990_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2990_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2990_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2994_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2994_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2994_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2994_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2998_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2998_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2998_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2998_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1946_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1946_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1946_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1946_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1950_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1950_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1950_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1950_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1954_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1954_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1954_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1954_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1958_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1958_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1958_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1958_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1962_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1962_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1962_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1962_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1966_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1966_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1966_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1966_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1970_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1970_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1970_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1970_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1974_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1974_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1974_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_1974_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3006_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3006_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3006_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3006_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3010_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3010_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3010_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3010_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3014_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3014_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3014_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3014_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3018_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3018_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3018_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3018_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3022_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3022_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3022_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3022_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3026_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3026_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3026_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3026_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3030_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3030_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3030_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3030_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3034_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3034_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3034_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3034_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3038_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3038_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3038_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3038_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3042_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3042_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3042_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3042_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3046_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3046_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3046_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3046_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3050_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3050_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3050_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3050_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3054_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3054_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3054_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3054_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3058_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3058_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3058_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3058_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3062_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3062_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3062_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3062_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3066_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3066_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3066_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3066_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2122_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2122_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2122_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2122_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2126_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2126_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2126_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2126_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2130_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2130_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2130_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2130_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2134_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2134_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2134_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2134_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2138_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2138_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2138_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2138_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2142_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2142_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2142_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2142_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2146_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2146_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2146_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2146_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2150_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2150_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2150_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2150_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2154_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2154_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2154_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2154_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2158_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2158_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2158_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2158_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2162_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2162_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2162_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2162_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2166_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2166_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2166_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2166_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2170_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2170_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2170_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2170_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2174_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2174_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2174_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2174_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2178_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2178_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2178_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2178_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2182_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2182_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2182_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2182_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2186_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2186_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2186_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2186_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2190_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2190_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2190_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2190_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2194_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2194_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2194_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2194_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2198_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2198_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2198_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2198_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2202_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2202_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2202_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2202_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2206_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2206_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2206_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2206_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2210_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2210_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2210_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2210_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2214_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2214_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2214_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2214_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2218_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2218_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2218_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2218_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2222_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2222_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2222_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2222_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2226_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2226_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2226_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2226_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2230_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2230_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2230_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2230_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2234_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2234_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2234_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2234_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2238_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2238_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2238_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2238_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2242_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2242_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2242_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2242_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2246_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2246_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2246_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_2246_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3070_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3070_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3070_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3070_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3070_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3074_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3074_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3074_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3074_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3074_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3078_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3078_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3078_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3078_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3078_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3082_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3082_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3082_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3082_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3082_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3086_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3086_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3086_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3086_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3086_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3090_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3090_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3090_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3090_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3090_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3094_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3094_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3094_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3094_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3094_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3098_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3098_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3098_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3098_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3098_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3102_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3102_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3102_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3102_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3102_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3106_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3106_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3106_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3106_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3106_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3110_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3110_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3110_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3110_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3110_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3114_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3114_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3114_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3114_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3114_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3118_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3118_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3118_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3118_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3118_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3122_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3122_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3122_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3122_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3122_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3126_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3126_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3126_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3126_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3126_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3130_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3130_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3130_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3130_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
-|grp_fu_3130_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3739_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3739_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3739_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3739_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3743_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3743_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3743_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3743_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3747_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3747_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3747_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3747_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3751_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3751_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3751_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3751_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3755_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3755_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3755_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3755_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3759_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3759_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3759_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3759_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3763_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3763_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3763_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3763_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3767_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3767_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3767_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3767_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2715_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2715_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2715_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2715_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2719_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2719_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2719_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2719_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2723_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2723_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2723_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2723_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2727_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2727_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2727_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2727_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2731_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2731_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2731_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2731_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2735_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2735_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2735_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2735_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2739_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2739_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2739_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2739_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2743_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2743_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2743_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2743_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3775_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3775_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3775_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3775_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3779_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3779_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3779_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3779_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3783_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3783_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3783_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3783_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3787_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3787_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3787_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3787_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3791_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3791_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3791_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3791_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3795_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3795_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3795_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3795_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3799_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3799_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3799_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3799_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3803_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3803_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3803_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3803_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3807_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3807_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3807_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3807_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3811_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3811_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3811_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3811_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3815_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3815_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3815_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3815_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3819_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3819_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3819_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3819_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3823_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3823_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3823_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3823_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3827_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3827_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3827_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3827_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3831_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3831_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3831_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3831_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3835_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3835_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3835_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3835_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2891_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2891_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2891_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2891_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2895_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2895_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2895_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2895_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2899_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2899_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2899_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2899_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2903_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2903_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2903_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2903_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2907_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2907_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2907_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2907_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2911_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2911_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2911_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2911_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2915_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2915_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2915_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2915_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2919_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2919_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2919_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2919_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2923_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2923_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2923_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2923_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2927_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2927_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2927_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2927_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2931_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2931_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2931_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2931_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2935_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2935_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2935_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2935_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2939_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2939_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2939_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2939_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2943_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2943_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2943_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2943_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2947_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2947_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2947_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2947_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2951_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2951_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2951_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2951_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2955_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2955_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2955_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2955_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2959_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2959_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2959_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2959_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2963_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2963_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2963_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2963_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2967_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2967_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2967_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2967_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2971_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2971_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2971_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2971_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2975_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2975_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2975_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2975_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2979_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2979_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2979_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2979_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2983_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2983_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2983_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2983_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2987_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2987_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2987_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2987_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2991_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2991_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2991_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2991_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2995_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2995_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2995_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2995_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2999_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2999_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2999_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_2999_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3003_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3003_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3003_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3003_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3007_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3007_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3007_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3007_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3011_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3011_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3011_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3011_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3015_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3015_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3015_p_dout0                                                                           |   in|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3015_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3839_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3839_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3839_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3839_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3839_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3843_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3843_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3843_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3843_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3843_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3847_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3847_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3847_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3847_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3847_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3851_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3851_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3851_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3851_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3851_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3855_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3855_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3855_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3855_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3855_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3859_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3859_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3859_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3859_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3859_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3863_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3863_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3863_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3863_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3863_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3867_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3867_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3867_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3867_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3867_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3871_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3871_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3871_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3871_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3871_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3875_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3875_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3875_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3875_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3875_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3879_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3879_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3879_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3879_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3879_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3883_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3883_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3883_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3883_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3883_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3887_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3887_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3887_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3887_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3887_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3891_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3891_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3891_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3891_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3891_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3895_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3895_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3895_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3895_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3895_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3899_p_din0                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3899_p_din1                                                                            |  out|   16|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3899_p_opcode                                                                          |  out|    5|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3899_p_dout0                                                                           |   in|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
+|grp_fu_3899_p_ce                                                                              |  out|    1|  ap_ctrl_hs|                                                 ucb0_bench_top_Pipeline_NORM_WRITE21|  return value|
 |m_axi_gmem_out_0_AWVALID                                                                      |  out|    1|       m_axi|                                                                             gmem_out|       pointer|
 |m_axi_gmem_out_0_AWREADY                                                                      |   in|    1|       m_axi|                                                                             gmem_out|       pointer|
 |m_axi_gmem_out_0_AWADDR                                                                       |  out|   64|       m_axi|                                                                             gmem_out|       pointer|
@@ -731,14 +731,14 @@
 |m_axi_gmem_out_0_BID                                                                          |   in|    1|       m_axi|                                                                             gmem_out|       pointer|
 |m_axi_gmem_out_0_BUSER                                                                        |   in|    1|       m_axi|                                                                             gmem_out|       pointer|
 |sext_ln196_1                                                                                  |   in|   58|     ap_none|                                                                         sext_ln196_1|        scalar|
-|mul_ln205_1                                                                                   |   in|   10|     ap_none|                                                                          mul_ln205_1|        scalar|
+|mul_ln211_1                                                                                   |   in|   10|     ap_none|                                                                          mul_ln211_1|        scalar|
 |g_buf_address0                                                                                |  out|    5|   ap_memory|                                                                                g_buf|         array|
 |g_buf_ce0                                                                                     |  out|    1|   ap_memory|                                                                                g_buf|         array|
 |g_buf_q0                                                                                      |   in|  256|   ap_memory|                                                                                g_buf|         array|
 |be_buf_address0                                                                               |  out|    5|   ap_memory|                                                                               be_buf|         array|
 |be_buf_ce0                                                                                    |  out|    1|   ap_memory|                                                                               be_buf|         array|
 |be_buf_q0                                                                                     |   in|  256|   ap_memory|                                                                               be_buf|         array|
-|conv318_i1                                                                                    |   in|   16|     ap_none|                                                                           conv318_i1|        scalar|
+|conv341_i1                                                                                    |   in|   16|     ap_none|                                                                           conv341_i1|        scalar|
 |inv_std_1                                                                                     |   in|   16|     ap_none|                                                                            inv_std_1|        scalar|
 |void_UpConv_Fused_Row_Bench_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_9_address0      |  out|   13|   ap_memory|      void_UpConv_Fused_Row_Bench_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_9|         array|
 |void_UpConv_Fused_Row_Bench_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_9_ce0           |  out|    1|   ap_memory|      void_UpConv_Fused_Row_Bench_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_9|         array|
