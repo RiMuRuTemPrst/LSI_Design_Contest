@@ -1,0 +1,70 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             |  30,151      | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  |  78,335      | user unroll pragmas are applied                                                        |
+|               | (2) simplification          |  52,402      | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  |  49,222      | user inline pragmas are applied                                                        |
+|               | (4) simplification          |  48,882      | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         | 262,936 *    | user array partition pragmas are applied                                               |
+|               | (2) simplification          |  68,986      | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  |  69,034      | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           |  69,033      | apply array reshape pragmas                                                            |
+|               | (5) access patterns         |  73,008      | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     |  71,467      | loop and instruction simplification                                                    |
+|               | (2) parallelization         |  70,556      | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         |  70,396      | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          |  70,396      | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                |  70,798      | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           |  66,822      | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+    * - Exceeded design size warning message threshold
+
+* Instructions per Function for each Compilation Phase
++------------------------------------+---------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| Function                           | Location                  | Compile/Link      | Unroll/Inline     | Array/Struct      | Performance       | HW Transforms     |
++------------------------------------+---------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| + full_generator_top               | generator_top.cpp:124     | 30,151            | 48,882            | 73,008            | 70,396            | 66,822            |
+|  + Universal_Engine_Kernel<16, ... | Hls_Layers_Fusion.tpp:107 | 9,228 (3 calls)   | 5,715 (3 calls)   | 14,463 (3 calls)  | 12,306 (3 calls)  | 11,157 (3 calls)  |
+|   + my_sqrt_f                      | Hls_Layers_Fusion.tpp:62  |    36 (9 calls)   |                   |                   |                   |                   |
+|      sqrtf                         | sqrtfloat.cpp:11          |    18 (9 calls)   |                   |                   |                   |                   |
+|     flat_idx                       | Hls_Layers_Fusion.tpp:52  |    21 (3 calls)   |                   |                   |                   |                   |
+|     bits_to_half<__fp16>           | Hls_Layers_Fusion.tpp:38  | 1,296 (72 calls)  |                   |                   |                   |                   |
+|     half_to_bits<__fp16>           | Hls_Layers_Fusion.tpp:22  |   156 (6 calls)   |                   |                   |                   |                   |
+|     w_flat_idx                     | Hls_Layers_Fusion.tpp:57  |    63 (9 calls)   |                   |                   |                   |                   |
+|  + GlobalAdd_Kernel<16>            | Hls_Layers_Fusion.tpp:78  |   282             |   109             |   113             |   109             |   119             |
+|     bits_to_half<__fp16>           | Hls_Layers_Fusion.tpp:38  |    36 (2 calls)   |                   |                   |                   |                   |
+|     half_to_bits<__fp16>           | Hls_Layers_Fusion.tpp:22  |    26             |                   |                   |                   |                   |
+|  + run_upconv_block                | generator_top.cpp:49      | 16,432 (4 calls)  | 38,724 (4 calls)  | 49,044 (4 calls)  | 48,604 (4 calls)  | 46,092 (4 calls)  |
+|   + UpConv_Fused_Row<8>            | Hls_Layers_UpConv.tpp:68  | 15,872 (16 calls) | 38,352 (16 calls) | 48,528 (16 calls) | 48,128 (16 calls) | 45,552 (16 calls) |
+|      bits_to_half<__fp16>          | Hls_Layers_Fusion.tpp:38  | 1,440 (80 calls)  |                   |                   |                   |                   |
+|    + my_sqrt_f                     | Hls_Layers_Fusion.tpp:62  |    64 (16 calls)  |                   |                   |                   |                   |
+|       sqrtf                        | sqrtfloat.cpp:11          |    32 (16 calls)  |                   |                   |                   |                   |
+|      half_to_bits<__fp16>          | Hls_Layers_Fusion.tpp:22  |   416 (16 calls)  |                   |                   |                   |                   |
+|  + Conv77_Kernel<8, 8, 1, 60, 3... | Hls_Layers_Conv77.tpp:89  | 4,109             | 4,268             | 9,327             | 9,315             | 9,376             |
+|     bits_to_half<__fp16>           | Hls_Layers_Fusion.tpp:38  |    72 (4 calls)   |                   |                   |                   |                   |
+|     reflect77                      | Hls_Layers_Conv77.tpp:75  |    39 (3 calls)   |                   |                   |                   |                   |
+|     half_to_bits<__fp16>           | Hls_Layers_Fusion.tpp:22  |    26             |                   |                   |                   |                   |
++------------------------------------+---------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+

@@ -1,0 +1,211 @@
+
+
+================================================================
+== Vitis HLS Report for 'init_rows_16_960_true_half_Pipeline_SAVE_1_SKIP_ROW'
+================================================================
+* Date:           Thu May 14 22:48:48 2026
+
+* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Project:        prj
+* Solution:       solution1 (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.429 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
+    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |      963|      963|  3.210 us|  3.210 us|  961|  961|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- SAVE_1_SKIP_ROW  |      961|      961|         3|          1|          1|   960|       yes|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|     141|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       0|      65|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|      63|    -|
+|Register         |        -|     -|     324|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|     324|     269|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------+------------------------+---------+----+---+----+-----+
+    |          Instance          |         Module         | BRAM_18K| DSP| FF| LUT| URAM|
+    +----------------------------+------------------------+---------+----+---+----+-----+
+    |sparsemux_33_4_256_1_1_U36  |sparsemux_33_4_256_1_1  |        0|   0|  0|  65|    0|
+    +----------------------------+------------------------+---------+----+---+----+-----+
+    |Total                       |                        |        0|   0|  0|  65|    0|
+    +----------------------------+------------------------+---------+----+---+----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +------------------------+----------+----+---+----+------------+------------+
+    |      Variable Name     | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------------+----------+----+---+----+------------+------------+
+    |add_ln136_1_fu_414_p2   |         +|   0|  0|  17|          10|           1|
+    |add_ln136_fu_405_p2     |         +|   0|  0|  17|          10|           1|
+    |add_ln138_1_fu_442_p2   |         +|   0|  0|  15|           8|           8|
+    |add_ln138_2_fu_487_p2   |         +|   0|  0|  28|          21|          11|
+    |add_ln138_fu_468_p2     |         +|   0|  0|  18|          11|          11|
+    |icmp_ln136_1_fu_420_p2  |      icmp|   0|  0|  17|          10|           6|
+    |icmp_ln136_fu_399_p2    |      icmp|   0|  0|  17|          10|           8|
+    |select_ln136_fu_426_p3  |    select|   0|  0|  10|           1|           1|
+    |ap_enable_pp0           |       xor|   0|  0|   2|           1|           2|
+    +------------------------+----------+----+---+----+------------+------------+
+    |Total                   |          |   0|  0| 141|          82|          49|
+    +------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------------------+----+-----------+-----+-----------+
+    |                Name               | LUT| Input Size| Bits| Total Bits|
+    +-----------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                        |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1            |   9|          2|    1|          2|
+    |ap_sig_allocacmp_i_3               |   9|          2|   10|         20|
+    |ap_sig_allocacmp_phi_urem202_load  |   9|          2|   10|         20|
+    |i_fu_132                           |   9|          2|   10|         20|
+    |phi_mul200_fu_128                  |   9|          2|   21|         42|
+    |phi_urem202_fu_124                 |   9|          2|   10|         20|
+    +-----------------------------------+----+-----------+-----+-----------+
+    |Total                              |  63|         14|   63|        126|
+    +-----------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------+-----+----+-----+-----------+
+    |               Name               |  FF | LUT| Bits| Const Bits|
+    +----------------------------------+-----+----+-----+-----------+
+    |add_ln138_reg_689                 |   11|   0|   11|          0|
+    |add_ln138_reg_689_pp0_iter1_reg   |   11|   0|   11|          0|
+    |ap_CS_fsm                         |    1|   0|    1|          0|
+    |ap_done_reg                       |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2           |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter1_reg  |    1|   0|    1|          0|
+    |i_fu_132                          |   10|   0|   10|          0|
+    |phi_mul200_fu_128                 |   21|   0|   21|          0|
+    |phi_urem202_fu_124                |   10|   0|   10|          0|
+    |tmp_reg_694                       |  256|   0|  256|          0|
+    +----------------------------------+-----+----+-----+-----------+
+    |Total                             |  324|   0|  324|          0|
+    +----------------------------------+-----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+---------------------------------------------------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  |                      Source Object                      |    C Type    |
++-----------------------+-----+-----+------------+---------------------------------------------------------+--------------+
+|ap_clk                 |   in|    1|  ap_ctrl_hs|  init_rows<16, 960, true, half>_Pipeline_SAVE_1_SKIP_ROW|  return value|
+|ap_rst                 |   in|    1|  ap_ctrl_hs|  init_rows<16, 960, true, half>_Pipeline_SAVE_1_SKIP_ROW|  return value|
+|ap_start               |   in|    1|  ap_ctrl_hs|  init_rows<16, 960, true, half>_Pipeline_SAVE_1_SKIP_ROW|  return value|
+|ap_done                |  out|    1|  ap_ctrl_hs|  init_rows<16, 960, true, half>_Pipeline_SAVE_1_SKIP_ROW|  return value|
+|ap_idle                |  out|    1|  ap_ctrl_hs|  init_rows<16, 960, true, half>_Pipeline_SAVE_1_SKIP_ROW|  return value|
+|ap_ready               |  out|    1|  ap_ctrl_hs|  init_rows<16, 960, true, half>_Pipeline_SAVE_1_SKIP_ROW|  return value|
+|mul_ln131              |   in|    7|     ap_none|                                                mul_ln131|        scalar|
+|x_buf_256_0_address0   |  out|    8|   ap_memory|                                              x_buf_256_0|         array|
+|x_buf_256_0_ce0        |  out|    1|   ap_memory|                                              x_buf_256_0|         array|
+|x_buf_256_0_q0         |   in|  256|   ap_memory|                                              x_buf_256_0|         array|
+|x_buf_256_1_address0   |  out|    8|   ap_memory|                                              x_buf_256_1|         array|
+|x_buf_256_1_ce0        |  out|    1|   ap_memory|                                              x_buf_256_1|         array|
+|x_buf_256_1_q0         |   in|  256|   ap_memory|                                              x_buf_256_1|         array|
+|x_buf_256_2_address0   |  out|    8|   ap_memory|                                              x_buf_256_2|         array|
+|x_buf_256_2_ce0        |  out|    1|   ap_memory|                                              x_buf_256_2|         array|
+|x_buf_256_2_q0         |   in|  256|   ap_memory|                                              x_buf_256_2|         array|
+|x_buf_256_3_address0   |  out|    8|   ap_memory|                                              x_buf_256_3|         array|
+|x_buf_256_3_ce0        |  out|    1|   ap_memory|                                              x_buf_256_3|         array|
+|x_buf_256_3_q0         |   in|  256|   ap_memory|                                              x_buf_256_3|         array|
+|x_buf_256_4_address0   |  out|    8|   ap_memory|                                              x_buf_256_4|         array|
+|x_buf_256_4_ce0        |  out|    1|   ap_memory|                                              x_buf_256_4|         array|
+|x_buf_256_4_q0         |   in|  256|   ap_memory|                                              x_buf_256_4|         array|
+|x_buf_256_5_address0   |  out|    8|   ap_memory|                                              x_buf_256_5|         array|
+|x_buf_256_5_ce0        |  out|    1|   ap_memory|                                              x_buf_256_5|         array|
+|x_buf_256_5_q0         |   in|  256|   ap_memory|                                              x_buf_256_5|         array|
+|x_buf_256_6_address0   |  out|    8|   ap_memory|                                              x_buf_256_6|         array|
+|x_buf_256_6_ce0        |  out|    1|   ap_memory|                                              x_buf_256_6|         array|
+|x_buf_256_6_q0         |   in|  256|   ap_memory|                                              x_buf_256_6|         array|
+|x_buf_256_7_address0   |  out|    8|   ap_memory|                                              x_buf_256_7|         array|
+|x_buf_256_7_ce0        |  out|    1|   ap_memory|                                              x_buf_256_7|         array|
+|x_buf_256_7_q0         |   in|  256|   ap_memory|                                              x_buf_256_7|         array|
+|x_buf_256_8_address0   |  out|    8|   ap_memory|                                              x_buf_256_8|         array|
+|x_buf_256_8_ce0        |  out|    1|   ap_memory|                                              x_buf_256_8|         array|
+|x_buf_256_8_q0         |   in|  256|   ap_memory|                                              x_buf_256_8|         array|
+|x_buf_256_9_address0   |  out|    8|   ap_memory|                                              x_buf_256_9|         array|
+|x_buf_256_9_ce0        |  out|    1|   ap_memory|                                              x_buf_256_9|         array|
+|x_buf_256_9_q0         |   in|  256|   ap_memory|                                              x_buf_256_9|         array|
+|x_buf_256_10_address0  |  out|    8|   ap_memory|                                             x_buf_256_10|         array|
+|x_buf_256_10_ce0       |  out|    1|   ap_memory|                                             x_buf_256_10|         array|
+|x_buf_256_10_q0        |   in|  256|   ap_memory|                                             x_buf_256_10|         array|
+|x_buf_256_11_address0  |  out|    8|   ap_memory|                                             x_buf_256_11|         array|
+|x_buf_256_11_ce0       |  out|    1|   ap_memory|                                             x_buf_256_11|         array|
+|x_buf_256_11_q0        |   in|  256|   ap_memory|                                             x_buf_256_11|         array|
+|x_buf_256_12_address0  |  out|    8|   ap_memory|                                             x_buf_256_12|         array|
+|x_buf_256_12_ce0       |  out|    1|   ap_memory|                                             x_buf_256_12|         array|
+|x_buf_256_12_q0        |   in|  256|   ap_memory|                                             x_buf_256_12|         array|
+|x_buf_256_13_address0  |  out|    8|   ap_memory|                                             x_buf_256_13|         array|
+|x_buf_256_13_ce0       |  out|    1|   ap_memory|                                             x_buf_256_13|         array|
+|x_buf_256_13_q0        |   in|  256|   ap_memory|                                             x_buf_256_13|         array|
+|x_buf_256_14_address0  |  out|    8|   ap_memory|                                             x_buf_256_14|         array|
+|x_buf_256_14_ce0       |  out|    1|   ap_memory|                                             x_buf_256_14|         array|
+|x_buf_256_14_q0        |   in|  256|   ap_memory|                                             x_buf_256_14|         array|
+|x_buf_256_15_address0  |  out|    8|   ap_memory|                                             x_buf_256_15|         array|
+|x_buf_256_15_ce0       |  out|    1|   ap_memory|                                             x_buf_256_15|         array|
+|x_buf_256_15_q0        |   in|  256|   ap_memory|                                             x_buf_256_15|         array|
+|zext_ln136             |   in|   10|     ap_none|                                               zext_ln136|        scalar|
+|skip_buf_256_address1  |  out|   14|   ap_memory|                                             skip_buf_256|         array|
+|skip_buf_256_ce1       |  out|    1|   ap_memory|                                             skip_buf_256|         array|
+|skip_buf_256_we1       |  out|    1|   ap_memory|                                             skip_buf_256|         array|
+|skip_buf_256_d1        |  out|  256|   ap_memory|                                             skip_buf_256|         array|
++-----------------------+-----+-----+------------+---------------------------------------------------------+--------------+
+

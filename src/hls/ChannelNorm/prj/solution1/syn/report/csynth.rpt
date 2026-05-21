@@ -1,0 +1,395 @@
+
+
+================================================================
+== Synthesis Summary Report of 'ChannelNorm_IP'
+================================================================
++ General Information: 
+    * Date:           Tue Apr 14 09:38:39 2026
+    * Version:        2024.2 (Build 5238294 on Nov  8 2024)
+    * Project:        prj
+    * Solution:       solution1 (Vitis Kernel Flow Target)
+    * Product family: zynquplus
+    * Target device:  xczu7ev-ffvc1156-2-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------------------------------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+-----------+-----------+------------+-------------+-----+
+    |                                    Modules                                   |  Issue |       | Latency |  Latency  | Iteration|         | Trip |          |           |           |            |             |     |
+    |                                    & Loops                                   |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined|   BRAM    |    DSP    |     FF     |     LUT     | URAM|
+    +------------------------------------------------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+-----------+-----------+------------+-------------+-----+
+    |+ ChannelNorm_IP                                                              |  Timing|  -0.00|      775|  2.583e+03|         -|      776|     -|        no|  259 (41%)|  288 (16%)|  41196 (8%)|  25874 (11%)|    -|
+    | + ChannelNorm_Kernel_16_1_16_16_half_s                                       |  Timing|  -0.00|      701|  2.336e+03|         -|      701|     -|        no|          -|  288 (16%)|  34762 (7%)|   19273 (8%)|    -|
+    |  + ChannelNorm_Kernel_16_1_16_16_half_Pipeline_Spatial_loop_VITIS_LOOP_37_1  |  Timing|  -0.00|      561|  1.870e+03|         -|      561|     -|        no|          -|  288 (16%)|  33960 (7%)|   18192 (7%)|    -|
+    |   o Spatial_loop_VITIS_LOOP_37_1                                             |       -|   2.43|      559|  1.863e+03|       305|        1|   256|       yes|          -|          -|           -|            -|    -|
+    +------------------------------------------------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+-----------+-----------+------------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface   | Read/Write | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|             |            | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++-------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_gmem0 | READ_ONLY  | 256 -> 512 | 64            | 64      | slave  | 0        | 512       | 256          | 16           | 16          | 16          | BRAM=114          |
+| m_axi_gmem1 | READ_ONLY  | 256 -> 256 | 64            | 64      | slave  | 0        | 512       | 256          | 16           | 16          | 16          | BRAM=58           |
+| m_axi_gmem2 | READ_ONLY  | 256 -> 256 | 64            | 64      | slave  | 0        | 512       | 256          | 16           | 16          | 16          | BRAM=58           |
+| m_axi_gmem3 | WRITE_ONLY | 256 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 256          | 16          | 16          | BRAM=29           |
++-------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| Interface     | Register | Offset | Width | Access | Description                      | Bit Fields                                                                         |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| s_axi_control | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 4=AP_CONTINUE 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                                           |
+| s_axi_control | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                                      |
+| s_axi_control | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                                      |
+| s_axi_control | X_1      | 0x10   | 32    | W      | Data signal of X                 |                                                                                    |
+| s_axi_control | X_2      | 0x14   | 32    | W      | Data signal of X                 |                                                                                    |
+| s_axi_control | G_1      | 0x1c   | 32    | W      | Data signal of G                 |                                                                                    |
+| s_axi_control | G_2      | 0x20   | 32    | W      | Data signal of G                 |                                                                                    |
+| s_axi_control | B_1      | 0x28   | 32    | W      | Data signal of B                 |                                                                                    |
+| s_axi_control | B_2      | 0x2c   | 32    | W      | Data signal of B                 |                                                                                    |
+| s_axi_control | epsilon  | 0x34   | 32    | W      | Data signal of epsilon           |                                                                                    |
+| s_axi_control | Y_1      | 0x3c   | 32    | W      | Data signal of Y                 |                                                                                    |
+| s_axi_control | Y_2      | 0x40   | 32    | W      | Data signal of Y                 |                                                                                    |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+---------------+-----------+
+| Interface | Type          | Ports     |
++-----------+---------------+-----------+
+| ap_clk    | clock         | ap_clk    |
+| ap_rst_n  | reset         | ap_rst_n  |
+| interrupt | interrupt     | interrupt |
+| ap_ctrl   | ap_ctrl_chain |           |
++-----------+---------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------------------+
+| Argument | Direction | Datatype             |
++----------+-----------+----------------------+
+| X        | in        | ap_uint<256>*        |
+| G        | in        | ap_uint<256> const * |
+| B        | in        | ap_uint<256> const * |
+| epsilon  | in        | __fp16               |
+| Y        | out       | ap_uint<256>*        |
++----------+-----------+----------------------+
+
+* SW-to-HW Mapping
++----------+---------------+-----------+----------+-----------------------------------+
+| Argument | HW Interface  | HW Type   | HW Usage | HW Info                           |
++----------+---------------+-----------+----------+-----------------------------------+
+| X        | m_axi_gmem0   | interface |          | channel=0                         |
+| X        | s_axi_control | register  | offset   | name=X_1 offset=0x10 range=32     |
+| X        | s_axi_control | register  | offset   | name=X_2 offset=0x14 range=32     |
+| G        | m_axi_gmem1   | interface |          | channel=0                         |
+| G        | s_axi_control | register  | offset   | name=G_1 offset=0x1c range=32     |
+| G        | s_axi_control | register  | offset   | name=G_2 offset=0x20 range=32     |
+| B        | m_axi_gmem2   | interface |          | channel=0                         |
+| B        | s_axi_control | register  | offset   | name=B_1 offset=0x28 range=32     |
+| B        | s_axi_control | register  | offset   | name=B_2 offset=0x2c range=32     |
+| epsilon  | s_axi_control | register  |          | name=epsilon offset=0x34 range=32 |
+| Y        | m_axi_gmem3   | interface |          | channel=0                         |
+| Y        | s_axi_control | register  | offset   | name=Y_1 offset=0x3c range=32     |
+| Y        | s_axi_control | register  | offset   | name=Y_2 offset=0x40 range=32     |
++----------+---------------+-----------+----------+-----------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------+--------+-------+
+| HW Interface | Direction | Length | Width |
++--------------+-----------+--------+-------+
+| m_axi_gmem0  | read      | 128    | 512   |
+| m_axi_gmem3  | write     | 128    | 512   |
++--------------+-----------+--------+-------+
+
+* All M_AXI Variable Accesses
++--------------+----------+---------------------------+-----------+--------------+--------+-----------------+---------------------------+
+| HW Interface | Variable | Access Location           | Direction | Burst Status | Length | Loop            | Loop Location             |
++--------------+----------+---------------------------+-----------+--------------+--------+-----------------+---------------------------+
+| m_axi_gmem0  | X_ptr    | gen/ChannelNorm.cpp:46:20 | read      | Widened      | 128    | VITIS_LOOP_37_1 | gen/ChannelNorm.cpp:37:30 |
+| m_axi_gmem0  | X_ptr    | gen/ChannelNorm.cpp:46:20 | read      | Inferred     | 256    | Spatial_loop    | gen/ChannelNorm.cpp:36:23 |
+| m_axi_gmem3  | Y_ptr    | gen/ChannelNorm.cpp:84:41 | write     | Widened      | 128    | VITIS_LOOP_37_1 | gen/ChannelNorm.cpp:37:30 |
+| m_axi_gmem3  | Y_ptr    | gen/ChannelNorm.cpp:84:41 | write     | Inferred     | 256    | Spatial_loop    | gen/ChannelNorm.cpp:36:23 |
++--------------+----------+---------------------------+-----------+--------------+--------+-----------------+---------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++------------------------------------------------------------------------------+-----+--------+---------------+--------+----------+---------+
+| Name                                                                         | DSP | Pragma | Variable      | Op     | Impl     | Latency |
++------------------------------------------------------------------------------+-----+--------+---------------+--------+----------+---------+
+| + ChannelNorm_IP                                                             | 288 |        |               |        |          |         |
+|  + ChannelNorm_Kernel_16_1_16_16_half_s                                      | 288 |        |               |        |          |         |
+|    hptosp_16ns_32_2_no_dsp_1_U202                                            |     |        | conv1         | hptosp | auto     | 1       |
+|   + ChannelNorm_Kernel_16_1_16_16_half_Pipeline_Spatial_loop_VITIS_LOOP_37_1 | 288 |        |               |        |          |         |
+|     icmp_ln36_fu_1096_p2                                                     |     |        | icmp_ln36     | seteq  | auto     | 0       |
+|     add_ln36_fu_1102_p2                                                      |     |        | add_ln36      | add    | fabric   | 0       |
+|     icmp_ln37_fu_1116_p2                                                     |     |        | icmp_ln37     | seteq  | auto     | 0       |
+|     select_ln36_fu_1122_p3                                                   |     |        | select_ln36   | select | auto_sel | 0       |
+|     select_ln36_1_fu_1154_p3                                                 |     |        | select_ln36_1 | select | auto_sel | 0       |
+|     select_ln36_2_fu_1402_p3                                                 |     |        | select_ln36_2 | select | auto_sel | 0       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U1                                       | 2   |        | sum_acc       | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U35                                        | 3   |        | mul           | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U2                                       | 2   |        | sumsq_acc     | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U60                                            |     |        | f_val_1       | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U3                                       | 2   |        | sum_acc_1     | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U36                                        | 3   |        | mul47_1       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U4                                       | 2   |        | sumsq_acc_1   | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U61                                            |     |        | f_val_2       | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U5                                       | 2   |        | sum_acc_2     | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U37                                        | 3   |        | mul47_2       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U6                                       | 2   |        | sumsq_acc_2   | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U62                                            |     |        | f_val_3       | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U7                                       | 2   |        | sum_acc_3     | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U38                                        | 3   |        | mul47_3       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U8                                       | 2   |        | sumsq_acc_3   | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U63                                            |     |        | f_val_4       | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U9                                       | 2   |        | sum_acc_4     | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U39                                        | 3   |        | mul47_4       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U10                                      | 2   |        | sumsq_acc_4   | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U64                                            |     |        | f_val_5       | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U11                                      | 2   |        | sum_acc_5     | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U40                                        | 3   |        | mul47_5       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U12                                      | 2   |        | sumsq_acc_5   | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U65                                            |     |        | f_val_6       | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U13                                      | 2   |        | sum_acc_6     | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U41                                        | 3   |        | mul47_6       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U14                                      | 2   |        | sumsq_acc_6   | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U66                                            |     |        | f_val_7       | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U15                                      | 2   |        | sum_acc_7     | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U42                                        | 3   |        | mul47_7       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U16                                      | 2   |        | sumsq_acc_7   | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U67                                            |     |        | f_val_8       | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U17                                      | 2   |        | sum_acc_8     | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U43                                        | 3   |        | mul47_8       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U18                                      | 2   |        | sumsq_acc_8   | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U68                                            |     |        | f_val_9       | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U19                                      | 2   |        | sum_acc_9     | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U44                                        | 3   |        | mul47_9       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U20                                      | 2   |        | sumsq_acc_9   | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U69                                            |     |        | f_val_10      | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U21                                      | 2   |        | sum_acc_10    | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U45                                        | 3   |        | mul47_s       | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U22                                      | 2   |        | sumsq_acc_10  | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U70                                            |     |        | f_val_11      | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U23                                      | 2   |        | sum_acc_11    | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U46                                        | 3   |        | mul47_10      | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U24                                      | 2   |        | sumsq_acc_11  | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U71                                            |     |        | f_val_12      | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U25                                      | 2   |        | sum_acc_12    | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U47                                        | 3   |        | mul47_11      | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U26                                      | 2   |        | sumsq_acc_12  | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U72                                            |     |        | f_val_13      | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U27                                      | 2   |        | sum_acc_13    | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U48                                        | 3   |        | mul47_12      | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U28                                      | 2   |        | sumsq_acc_13  | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U73                                            |     |        | f_val_14      | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U29                                      | 2   |        | sum_acc_14    | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U49                                        | 3   |        | mul47_13      | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U30                                      | 2   |        | sumsq_acc_14  | fadd   | fulldsp  | 10      |
+|     hptosp_16ns_32_2_no_dsp_1_U74                                            |     |        | f_val_15      | hptosp | auto     | 1       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U31                                      | 2   |        | sum_acc_15    | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U50                                        | 3   |        | mul47_14      | fmul   | maxdsp   | 6       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U32                                      | 2   |        | sumsq_acc_15  | fadd   | fulldsp  | 10      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U51                                        | 3   |        | mean_f        | fmul   | maxdsp   | 6       |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U53                                        | 3   |        | var_f         | fmul   | maxdsp   | 6       |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U52                                        | 3   |        | mul2          | fmul   | maxdsp   | 6       |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U54                                        | 3   |        | mul3          | fmul   | maxdsp   | 6       |
+|     fsub_32ns_32ns_32_11_full_dsp_1_U33                                      | 2   |        | sub           | fsub   | fulldsp  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U34                                      | 2   |        | denom_f       | fadd   | fulldsp  | 10      |
+|     fsqrt_32ns_32ns_32_28_no_dsp_1_U56                                       |     |        | tmp_s         | fsqrt  | fabric   | 27      |
+|     fdiv_32ns_32ns_32_30_no_dsp_1_U55                                        |     |        | div           | fdiv   | fabric   | 29      |
+|     sptohp_32ns_16_2_no_dsp_1_U58                                            |     |        | inv_std       | sptohp | auto     | 1       |
+|     sptohp_32ns_16_2_no_dsp_1_U57                                            |     |        | mean_t        | sptohp | auto     | 1       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U107                                       | 2   |        | weight        | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U123                                       | 2   |        | mul5          | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U91                                       | 2   |        | bias_v        | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U124                                       | 2   |        | mul6          | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U75                                       | 2   |        | norm_out      | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U108                                       | 2   |        | weight_1      | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U125                                       | 2   |        | mul101_1      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U92                                       | 2   |        | bias_v_1      | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U126                                       | 2   |        | mul103_1      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U76                                       | 2   |        | norm_out_1    | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U109                                       | 2   |        | weight_2      | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U127                                       | 2   |        | mul101_2      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U93                                       | 2   |        | bias_v_2      | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U128                                       | 2   |        | mul103_2      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U77                                       | 2   |        | norm_out_2    | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U110                                       | 2   |        | weight_3      | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U129                                       | 2   |        | mul101_3      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U94                                       | 2   |        | bias_v_3      | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U130                                       | 2   |        | mul103_3      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U78                                       | 2   |        | norm_out_3    | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U111                                       | 2   |        | weight_4      | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U131                                       | 2   |        | mul101_4      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U95                                       | 2   |        | bias_v_4      | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U132                                       | 2   |        | mul103_4      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U79                                       | 2   |        | norm_out_4    | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U112                                       | 2   |        | weight_5      | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U133                                       | 2   |        | mul101_5      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U96                                       | 2   |        | bias_v_5      | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U134                                       | 2   |        | mul103_5      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U80                                       | 2   |        | norm_out_5    | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U113                                       | 2   |        | weight_6      | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U135                                       | 2   |        | mul101_6      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U97                                       | 2   |        | bias_v_6      | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U136                                       | 2   |        | mul103_6      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U81                                       | 2   |        | norm_out_6    | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U114                                       | 2   |        | weight_7      | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U137                                       | 2   |        | mul101_7      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U98                                       | 2   |        | bias_v_7      | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U138                                       | 2   |        | mul103_7      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U82                                       | 2   |        | norm_out_7    | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U115                                       | 2   |        | weight_8      | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U139                                       | 2   |        | mul101_8      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U99                                       | 2   |        | bias_v_8      | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U140                                       | 2   |        | mul103_8      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U83                                       | 2   |        | norm_out_8    | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U116                                       | 2   |        | weight_9      | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U141                                       | 2   |        | mul101_9      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U100                                      | 2   |        | bias_v_9      | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U142                                       | 2   |        | mul103_9      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U84                                       | 2   |        | norm_out_9    | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U117                                       | 2   |        | weight_10     | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U143                                       | 2   |        | mul101_s      | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U101                                      | 2   |        | bias_v_10     | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U144                                       | 2   |        | mul103_s      | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U85                                       | 2   |        | norm_out_10   | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U118                                       | 2   |        | weight_11     | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U145                                       | 2   |        | mul101_10     | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U102                                      | 2   |        | bias_v_11     | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U146                                       | 2   |        | mul103_10     | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U86                                       | 2   |        | norm_out_11   | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U119                                       | 2   |        | weight_12     | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U147                                       | 2   |        | mul101_11     | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U103                                      | 2   |        | bias_v_12     | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U148                                       | 2   |        | mul103_11     | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U87                                       | 2   |        | norm_out_12   | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U120                                       | 2   |        | weight_13     | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U149                                       | 2   |        | mul101_12     | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U104                                      | 2   |        | bias_v_13     | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U150                                       | 2   |        | mul103_12     | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U88                                       | 2   |        | norm_out_13   | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U121                                       | 2   |        | weight_14     | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U151                                       | 2   |        | mul101_13     | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U105                                      | 2   |        | bias_v_14     | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U152                                       | 2   |        | mul103_13     | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U89                                       | 2   |        | norm_out_14   | hadd   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U122                                       | 2   |        | weight_15     | hmul   | maxdsp   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U153                                       | 2   |        | mul101_14     | hmul   | maxdsp   | 3       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U106                                      | 2   |        | bias_v_15     | hsub   | fulldsp  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U154                                       | 2   |        | mul103_14     | hmul   | maxdsp   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U90                                       | 2   |        | norm_out_15   | hadd   | fulldsp  | 4       |
+|     add_ln37_fu_1134_p2                                                      |     |        | add_ln37      | add    | fabric   | 0       |
+|     select_ln37_fu_1531_p3                                                   |     |        | select_ln37   | select | auto_sel | 0       |
++------------------------------------------------------------------------------+-----+--------+---------------+--------+----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-------------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name              | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                   |           |           |      |      |        |          |      |         | Banks            |
++-------------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + ChannelNorm_IP  |           |           | 259  | 0    |        |          |      |         |                  |
+|   control_s_axi_U | interface | s_axilite |      |      |        |          |      |         |                  |
+|   gmem0_m_axi_U   | interface | m_axi     | 114  |      |        |          |      |         |                  |
+|   gmem1_m_axi_U   | interface | m_axi     | 58   |      |        |          |      |         |                  |
+|   gmem2_m_axi_U   | interface | m_axi     | 58   |      |        |          |      |         |                  |
+|   gmem3_m_axi_U   | interface | m_axi     | 29   |      |        |          |      |         |                  |
++-------------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+-------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+| Type            | Options                                                           | Location                                                                            |
++-----------------+-------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+| inline          |                                                                   | gen/../../resblock_top/gen/Core.h:98 in index                                       |
+| inline          |                                                                   | gen/../../resblock_top/gen/Core.h:106 in tensormem<t>                               |
+| inline          |                                                                   | gen/../../resblock_top/gen/Core.h:112 in tensormem<t>                               |
+| inline          |                                                                   | gen/../../resblock_top/gen/Core.h:136 in raw_at                                     |
+| inline          |                                                                   | gen/../../resblock_top/gen/Core.h:142 in raw                                        |
+| inline          |                                                                   | gen/../../resblock_top/gen/Core.h:148 in raw                                        |
+| inline          |                                                                   | gen/../../resblock_top/gen/Core.h:154 in get                                        |
+| inline          |                                                                   | gen/../../resblock_top/gen/Core.h:160 in at                                         |
+| inline          |                                                                   | gen/../../resblock_top/gen/Hls_Layers.tpp:21 in half_to_bits                        |
+| inline          |                                                                   | gen/../../resblock_top/gen/Hls_Layers.tpp:37 in bits_to_half                        |
+| inline          |                                                                   | gen/../../resblock_top/gen/Hls_Layers.tpp:52 in flat_idx                            |
+| inline          |                                                                   | gen/../../resblock_top/gen/Hls_Layers.tpp:58 in w_flat_idx                          |
+| inline          |                                                                   | gen/../../resblock_top/gen/Hls_Layers.tpp:64 in my_sqrt_f                           |
+| inline          | off                                                               | gen/../../resblock_top/gen/Hls_Layers.tpp:87 in load_params                         |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:89 in load_params                         |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:93 in load_params                         |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:97 in load_params                         |
+| inline          | off                                                               | gen/../../resblock_top/gen/Hls_Layers.tpp:116 in init_rows                          |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:130 in init_rows                          |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:137 in init_rows                          |
+| inline          | off                                                               | gen/../../resblock_top/gen/Hls_Layers.tpp:168 in fused_conv_cnorm_act               |
+| array_partition | variable=sum_acc complete                                         | gen/../../resblock_top/gen/Hls_Layers.tpp:186 in fused_conv_cnorm_act, sum_acc      |
+| array_partition | variable=sumsq_acc complete                                       | gen/../../resblock_top/gen/Hls_Layers.tpp:187 in fused_conv_cnorm_act, sumsq_acc    |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:193 in fused_conv_cnorm_act               |
+| array_partition | variable=psum complete dim=0                                      | gen/../../resblock_top/gen/Hls_Layers.tpp:202 in fused_conv_cnorm_act, psum         |
+| unroll          |                                                                   | gen/../../resblock_top/gen/Hls_Layers.tpp:204 in fused_conv_cnorm_act               |
+| unroll          |                                                                   | gen/../../resblock_top/gen/Hls_Layers.tpp:206 in fused_conv_cnorm_act               |
+| array_partition | variable=x_word_reg complete                                      | gen/../../resblock_top/gen/Hls_Layers.tpp:231 in fused_conv_cnorm_act, x_word_reg   |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:234 in fused_conv_cnorm_act               |
+| dependence      | variable=psum type=inter false                                    | gen/../../resblock_top/gen/Hls_Layers.tpp:238 in fused_conv_cnorm_act, psum         |
+| unroll          |                                                                   | gen/../../resblock_top/gen/Hls_Layers.tpp:252 in fused_conv_cnorm_act               |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:286 in fused_conv_cnorm_act               |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:307 in fused_conv_cnorm_act               |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:314 in fused_conv_cnorm_act               |
+| pipeline        | II=1                                                              | gen/../../resblock_top/gen/Hls_Layers.tpp:331 in fused_conv_cnorm_act               |
+| unroll          |                                                                   | gen/../../resblock_top/gen/Hls_Layers.tpp:343 in fused_conv_cnorm_act               |
+| bind_storage    | variable=x_buf_256 type=ram_2p impl=bram                          | gen/../../resblock_top/gen/Hls_Layers.tpp:382 in residualblock_kernel, x_buf_256    |
+| array_partition | variable=x_buf_256 complete dim=2                                 | gen/../../resblock_top/gen/Hls_Layers.tpp:383 in residualblock_kernel, x_buf_256    |
+| bind_storage    | variable=skip_buf_256 type=ram_2p impl=uram                       | gen/../../resblock_top/gen/Hls_Layers.tpp:386 in residualblock_kernel, skip_buf_256 |
+| bind_storage    | variable=y_cache_16 type=ram_2p impl=bram                         | gen/../../resblock_top/gen/Hls_Layers.tpp:389 in residualblock_kernel, y_cache_16   |
+| array_partition | variable=y_cache_16 cyclic factor=16 dim=2                        | gen/../../resblock_top/gen/Hls_Layers.tpp:390 in residualblock_kernel, y_cache_16   |
+| array_partition | variable=w_buf_256 complete dim=1                                 | gen/../../resblock_top/gen/Hls_Layers.tpp:397 in residualblock_kernel, w_buf_256    |
+| pipeline        | II=1                                                              | gen/ChannelNorm.cpp:19 in channelnorm_kernel                                        |
+| pipeline        | II=1                                                              | gen/ChannelNorm.cpp:23 in channelnorm_kernel                                        |
+| pipeline        | II=1                                                              | gen/ChannelNorm.cpp:45 in channelnorm_kernel                                        |
+| unroll          |                                                                   | gen/ChannelNorm.cpp:50 in channelnorm_kernel                                        |
+| pipeline        | II=1                                                              | gen/ChannelNorm.cpp:66 in channelnorm_kernel                                        |
+| unroll          |                                                                   | gen/ChannelNorm.cpp:73 in channelnorm_kernel                                        |
+| interface       | m_axi port=X offset=slave bundle=gmem0 max_read_burst_length=256  | gen/ChannelNorm.cpp:99 in channelnorm_ip, X                                         |
+| interface       | m_axi port=G offset=slave bundle=gmem1 max_read_burst_length=256  | gen/ChannelNorm.cpp:100 in channelnorm_ip, G                                        |
+| interface       | m_axi port=B offset=slave bundle=gmem2 max_read_burst_length=256  | gen/ChannelNorm.cpp:101 in channelnorm_ip, B                                        |
+| interface       | m_axi port=Y offset=slave bundle=gmem3 max_write_burst_length=256 | gen/ChannelNorm.cpp:102 in channelnorm_ip, Y                                        |
+| interface       | s_axilite port=X bundle=control                                   | gen/ChannelNorm.cpp:103 in channelnorm_ip, X                                        |
+| interface       | s_axilite port=G bundle=control                                   | gen/ChannelNorm.cpp:104 in channelnorm_ip, G                                        |
+| interface       | s_axilite port=B bundle=control                                   | gen/ChannelNorm.cpp:105 in channelnorm_ip, B                                        |
+| interface       | s_axilite port=Y bundle=control                                   | gen/ChannelNorm.cpp:106 in channelnorm_ip, Y                                        |
+| interface       | s_axilite port=epsilon bundle=control                             | gen/ChannelNorm.cpp:107 in channelnorm_ip, epsilon                                  |
+| interface       | s_axilite port=return bundle=control                              | gen/ChannelNorm.cpp:108 in channelnorm_ip, return                                   |
++-----------------+-------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+
+

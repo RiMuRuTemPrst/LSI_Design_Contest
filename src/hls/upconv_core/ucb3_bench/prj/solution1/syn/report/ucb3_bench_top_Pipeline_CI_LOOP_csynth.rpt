@@ -1,0 +1,2118 @@
+
+
+================================================================
+== Vitis HLS Report for 'ucb3_bench_top_Pipeline_CI_LOOP'
+================================================================
+* Date:           Wed May 13 20:35:15 2026
+
+* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Project:        prj
+* Solution:       solution1 (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.333 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
+    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |      101|      101|  0.337 us|  0.337 us|    9|    9|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-----------+---------+---------+----------+-----------+-----------+------+----------+
+        |           |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-----------+---------+---------+----------+-----------+-----------+------+----------+
+        |- CI_LOOP  |       99|       99|        93|          1|          1|     8|       yes|
+        +-----------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      59|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       0|     160|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|     612|    -|
+|Register         |        -|     -|   15172|    3904|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|   15172|    4735|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|       3|       2|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +---------------------------+----------------------+---------+----+---+----+-----+
+    |          Instance         |        Module        | BRAM_18K| DSP| FF| LUT| URAM|
+    +---------------------------+----------------------+---------+----+---+----+-----+
+    |sparsemux_9_2_16_1_1_U295  |sparsemux_9_2_16_1_1  |        0|   0|  0|  20|    0|
+    |sparsemux_9_2_16_1_1_U296  |sparsemux_9_2_16_1_1  |        0|   0|  0|  20|    0|
+    |sparsemux_9_2_16_1_1_U297  |sparsemux_9_2_16_1_1  |        0|   0|  0|  20|    0|
+    |sparsemux_9_2_16_1_1_U298  |sparsemux_9_2_16_1_1  |        0|   0|  0|  20|    0|
+    |sparsemux_9_2_16_1_1_U299  |sparsemux_9_2_16_1_1  |        0|   0|  0|  20|    0|
+    |sparsemux_9_2_16_1_1_U300  |sparsemux_9_2_16_1_1  |        0|   0|  0|  20|    0|
+    |sparsemux_9_2_16_1_1_U301  |sparsemux_9_2_16_1_1  |        0|   0|  0|  20|    0|
+    |sparsemux_9_2_16_1_1_U302  |sparsemux_9_2_16_1_1  |        0|   0|  0|  20|    0|
+    +---------------------------+----------------------+---------+----+---+----+-----+
+    |Total                      |                      |        0|   0|  0| 160|    0|
+    +---------------------------+----------------------+---------+----+---+----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------+----------+----+---+----+------------+------------+
+    |     Variable Name     | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------+----------+----+---+----+------------+------------+
+    |add_ln148_fu_1897_p2   |         +|   0|  0|  12|           4|           1|
+    |add_ln154_fu_1917_p2   |         +|   0|  0|  17|          10|          10|
+    |empty_fu_1927_p2       |         +|   0|  0|  16|           9|           9|
+    |icmp_ln148_fu_1891_p2  |      icmp|   0|  0|  12|           4|           5|
+    |ap_enable_pp0          |       xor|   0|  0|   2|           1|           2|
+    +-----------------------+----------+----+---+----+------------+------------+
+    |Total                  |          |   0|  0|  59|          28|          27|
+    +-----------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------+----+-----------+-----+-----------+
+    |               Name               | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                       |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1           |   9|          2|    1|          2|
+    |ap_sig_allocacmp_ci_w             |   9|          2|    4|          8|
+    |ap_sig_allocacmp_psum_100_load_1  |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_101_load_1  |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_71_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_72_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_73_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_74_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_75_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_76_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_77_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_78_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_79_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_80_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_81_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_82_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_83_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_84_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_85_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_86_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_87_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_88_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_89_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_90_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_91_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_92_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_93_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_94_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_95_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_96_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_97_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_98_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_99_load_1   |   9|          2|   16|         32|
+    |ap_sig_allocacmp_psum_load_3      |   9|          2|   16|         32|
+    |ci_w_1_fu_174                     |   9|          2|    4|          8|
+    |psum_100_fu_194                   |   9|          2|   16|         32|
+    |psum_101_fu_198                   |   9|          2|   16|         32|
+    |psum_71_fu_298                    |   9|          2|   16|         32|
+    |psum_72_fu_294                    |   9|          2|   16|         32|
+    |psum_73_fu_290                    |   9|          2|   16|         32|
+    |psum_74_fu_286                    |   9|          2|   16|         32|
+    |psum_75_fu_282                    |   9|          2|   16|         32|
+    |psum_76_fu_278                    |   9|          2|   16|         32|
+    |psum_77_fu_274                    |   9|          2|   16|         32|
+    |psum_78_fu_270                    |   9|          2|   16|         32|
+    |psum_79_fu_266                    |   9|          2|   16|         32|
+    |psum_80_fu_262                    |   9|          2|   16|         32|
+    |psum_81_fu_258                    |   9|          2|   16|         32|
+    |psum_82_fu_254                    |   9|          2|   16|         32|
+    |psum_83_fu_250                    |   9|          2|   16|         32|
+    |psum_84_fu_246                    |   9|          2|   16|         32|
+    |psum_85_fu_242                    |   9|          2|   16|         32|
+    |psum_86_fu_238                    |   9|          2|   16|         32|
+    |psum_87_fu_234                    |   9|          2|   16|         32|
+    |psum_88_fu_230                    |   9|          2|   16|         32|
+    |psum_89_fu_226                    |   9|          2|   16|         32|
+    |psum_90_fu_222                    |   9|          2|   16|         32|
+    |psum_91_fu_218                    |   9|          2|   16|         32|
+    |psum_92_fu_214                    |   9|          2|   16|         32|
+    |psum_93_fu_210                    |   9|          2|   16|         32|
+    |psum_94_fu_206                    |   9|          2|   16|         32|
+    |psum_95_fu_202                    |   9|          2|   16|         32|
+    |psum_96_fu_178                    |   9|          2|   16|         32|
+    |psum_97_fu_182                    |   9|          2|   16|         32|
+    |psum_98_fu_186                    |   9|          2|   16|         32|
+    |psum_99_fu_190                    |   9|          2|   16|         32|
+    |psum_fu_302                       |   9|          2|   16|         32|
+    +----------------------------------+----+-----------+-----+-----------+
+    |Total                             | 612|        136| 1034|       2068|
+    +----------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------+-----+----+-----+-----------+
+    |                Name               |  FF | LUT| Bits| Const Bits|
+    +-----------------------------------+-----+----+-----+-----------+
+    |ap_CS_fsm                          |    1|   0|    1|          0|
+    |ap_done_reg                        |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter10           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter11           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter12           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter13           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter14           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter15           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter16           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter17           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter18           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter19           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter20           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter21           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter22           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter23           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter24           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter25           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter26           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter27           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter28           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter29           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter30           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter31           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter32           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter33           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter34           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter35           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter36           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter37           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter38           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter39           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter4            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter40           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter41           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter42           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter43           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter44           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter45           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter46           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter47           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter48           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter49           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter5            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter50           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter51           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter52           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter53           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter54           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter55           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter56           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter57           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter58           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter59           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter6            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter60           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter61           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter62           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter63           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter64           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter65           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter66           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter67           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter68           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter69           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter7            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter70           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter71           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter72           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter73           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter74           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter75           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter76           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter77           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter78           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter79           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter8            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter80           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter81           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter82           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter83           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter84           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter85           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter86           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter87           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter88           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter89           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter9            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter90           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter91           |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter92           |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter10_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter11_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter12_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter13_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter14_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter15_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter16_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter17_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter18_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter19_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter1_reg   |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter20_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter21_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter22_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter23_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter24_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter25_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter26_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter27_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter28_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter29_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter2_reg   |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter30_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter31_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter32_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter33_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter34_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter35_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter36_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter37_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter38_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter39_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter3_reg   |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter40_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter41_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter42_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter43_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter44_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter45_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter46_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter47_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter48_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter49_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter4_reg   |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter50_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter51_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter52_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter53_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter54_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter55_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter56_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter57_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter58_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter59_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter5_reg   |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter60_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter61_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter62_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter63_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter64_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter65_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter66_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter67_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter68_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter69_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter6_reg   |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter70_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter71_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter72_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter73_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter74_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter75_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter76_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter77_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter78_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter79_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter7_reg   |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter80_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter81_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter82_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter83_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter84_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter85_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter86_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter87_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter88_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter89_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter8_reg   |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter90_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter91_reg  |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter9_reg   |    1|   0|    1|          0|
+    |ci_w_1_fu_174                      |    4|   0|    4|          0|
+    |ci_w_reg_4557                      |    4|   0|    4|          0|
+    |dot_100_reg_7047                   |   16|   0|   16|          0|
+    |dot_101_reg_7087                   |   16|   0|   16|          0|
+    |dot_102_reg_7127                   |   16|   0|   16|          0|
+    |dot_103_reg_7167                   |   16|   0|   16|          0|
+    |dot_104_reg_7207                   |   16|   0|   16|          0|
+    |dot_105_reg_7247                   |   16|   0|   16|          0|
+    |dot_106_reg_7287                   |   16|   0|   16|          0|
+    |dot_107_reg_7327                   |   16|   0|   16|          0|
+    |dot_108_reg_7367                   |   16|   0|   16|          0|
+    |dot_109_reg_7407                   |   16|   0|   16|          0|
+    |dot_10_reg_7217                    |   16|   0|   16|          0|
+    |dot_110_reg_7452                   |   16|   0|   16|          0|
+    |dot_112_reg_6852                   |   16|   0|   16|          0|
+    |dot_113_reg_6892                   |   16|   0|   16|          0|
+    |dot_114_reg_6932                   |   16|   0|   16|          0|
+    |dot_115_reg_6972                   |   16|   0|   16|          0|
+    |dot_116_reg_7012                   |   16|   0|   16|          0|
+    |dot_117_reg_7052                   |   16|   0|   16|          0|
+    |dot_118_reg_7092                   |   16|   0|   16|          0|
+    |dot_119_reg_7132                   |   16|   0|   16|          0|
+    |dot_11_reg_7257                    |   16|   0|   16|          0|
+    |dot_120_reg_7172                   |   16|   0|   16|          0|
+    |dot_121_reg_7212                   |   16|   0|   16|          0|
+    |dot_122_reg_7252                   |   16|   0|   16|          0|
+    |dot_123_reg_7292                   |   16|   0|   16|          0|
+    |dot_124_reg_7332                   |   16|   0|   16|          0|
+    |dot_125_reg_7372                   |   16|   0|   16|          0|
+    |dot_126_reg_7412                   |   16|   0|   16|          0|
+    |dot_127_reg_7457                   |   16|   0|   16|          0|
+    |dot_12_reg_7297                    |   16|   0|   16|          0|
+    |dot_13_reg_7337                    |   16|   0|   16|          0|
+    |dot_14_reg_7377                    |   16|   0|   16|          0|
+    |dot_15_reg_7417                    |   16|   0|   16|          0|
+    |dot_16_reg_6862                    |   16|   0|   16|          0|
+    |dot_17_reg_6902                    |   16|   0|   16|          0|
+    |dot_18_reg_6942                    |   16|   0|   16|          0|
+    |dot_19_reg_6982                    |   16|   0|   16|          0|
+    |dot_1_reg_6857                     |   16|   0|   16|          0|
+    |dot_20_reg_7022                    |   16|   0|   16|          0|
+    |dot_21_reg_7062                    |   16|   0|   16|          0|
+    |dot_22_reg_7102                    |   16|   0|   16|          0|
+    |dot_23_reg_7142                    |   16|   0|   16|          0|
+    |dot_24_reg_7182                    |   16|   0|   16|          0|
+    |dot_25_reg_7222                    |   16|   0|   16|          0|
+    |dot_26_reg_7262                    |   16|   0|   16|          0|
+    |dot_27_reg_7302                    |   16|   0|   16|          0|
+    |dot_28_reg_7342                    |   16|   0|   16|          0|
+    |dot_29_reg_7382                    |   16|   0|   16|          0|
+    |dot_2_reg_6897                     |   16|   0|   16|          0|
+    |dot_30_reg_7427                    |   16|   0|   16|          0|
+    |dot_31_reg_6827                    |   16|   0|   16|          0|
+    |dot_32_reg_6867                    |   16|   0|   16|          0|
+    |dot_33_reg_6907                    |   16|   0|   16|          0|
+    |dot_34_reg_6947                    |   16|   0|   16|          0|
+    |dot_35_reg_6987                    |   16|   0|   16|          0|
+    |dot_36_reg_7027                    |   16|   0|   16|          0|
+    |dot_37_reg_7067                    |   16|   0|   16|          0|
+    |dot_380_reg_6822                   |   16|   0|   16|          0|
+    |dot_38_reg_7107                    |   16|   0|   16|          0|
+    |dot_39_reg_7147                    |   16|   0|   16|          0|
+    |dot_3_reg_6937                     |   16|   0|   16|          0|
+    |dot_40_reg_7187                    |   16|   0|   16|          0|
+    |dot_41_reg_7227                    |   16|   0|   16|          0|
+    |dot_42_reg_7267                    |   16|   0|   16|          0|
+    |dot_43_reg_7307                    |   16|   0|   16|          0|
+    |dot_44_reg_7347                    |   16|   0|   16|          0|
+    |dot_45_reg_7387                    |   16|   0|   16|          0|
+    |dot_46_reg_7432                    |   16|   0|   16|          0|
+    |dot_47_reg_6832                    |   16|   0|   16|          0|
+    |dot_48_reg_6872                    |   16|   0|   16|          0|
+    |dot_49_reg_6912                    |   16|   0|   16|          0|
+    |dot_4_reg_6977                     |   16|   0|   16|          0|
+    |dot_50_reg_6952                    |   16|   0|   16|          0|
+    |dot_51_reg_6992                    |   16|   0|   16|          0|
+    |dot_52_reg_7032                    |   16|   0|   16|          0|
+    |dot_53_reg_7072                    |   16|   0|   16|          0|
+    |dot_54_reg_7112                    |   16|   0|   16|          0|
+    |dot_55_reg_7152                    |   16|   0|   16|          0|
+    |dot_56_reg_7192                    |   16|   0|   16|          0|
+    |dot_57_reg_7232                    |   16|   0|   16|          0|
+    |dot_58_reg_7272                    |   16|   0|   16|          0|
+    |dot_59_reg_7312                    |   16|   0|   16|          0|
+    |dot_5_reg_7017                     |   16|   0|   16|          0|
+    |dot_60_reg_7352                    |   16|   0|   16|          0|
+    |dot_61_reg_7392                    |   16|   0|   16|          0|
+    |dot_62_reg_7437                    |   16|   0|   16|          0|
+    |dot_63_reg_6837                    |   16|   0|   16|          0|
+    |dot_64_reg_6877                    |   16|   0|   16|          0|
+    |dot_65_reg_6917                    |   16|   0|   16|          0|
+    |dot_66_reg_6957                    |   16|   0|   16|          0|
+    |dot_67_reg_6997                    |   16|   0|   16|          0|
+    |dot_68_reg_7037                    |   16|   0|   16|          0|
+    |dot_69_reg_7077                    |   16|   0|   16|          0|
+    |dot_6_reg_7057                     |   16|   0|   16|          0|
+    |dot_70_reg_7117                    |   16|   0|   16|          0|
+    |dot_71_reg_7157                    |   16|   0|   16|          0|
+    |dot_72_reg_7197                    |   16|   0|   16|          0|
+    |dot_73_reg_7237                    |   16|   0|   16|          0|
+    |dot_74_reg_7277                    |   16|   0|   16|          0|
+    |dot_75_reg_7317                    |   16|   0|   16|          0|
+    |dot_76_reg_7357                    |   16|   0|   16|          0|
+    |dot_77_reg_7397                    |   16|   0|   16|          0|
+    |dot_78_reg_7442                    |   16|   0|   16|          0|
+    |dot_79_reg_6842                    |   16|   0|   16|          0|
+    |dot_7_reg_7097                     |   16|   0|   16|          0|
+    |dot_80_reg_6882                    |   16|   0|   16|          0|
+    |dot_81_reg_6922                    |   16|   0|   16|          0|
+    |dot_82_reg_6962                    |   16|   0|   16|          0|
+    |dot_83_reg_7002                    |   16|   0|   16|          0|
+    |dot_84_reg_7042                    |   16|   0|   16|          0|
+    |dot_85_reg_7082                    |   16|   0|   16|          0|
+    |dot_86_reg_7122                    |   16|   0|   16|          0|
+    |dot_87_reg_7162                    |   16|   0|   16|          0|
+    |dot_88_reg_7202                    |   16|   0|   16|          0|
+    |dot_89_reg_7242                    |   16|   0|   16|          0|
+    |dot_8_reg_7137                     |   16|   0|   16|          0|
+    |dot_90_reg_7282                    |   16|   0|   16|          0|
+    |dot_91_reg_7322                    |   16|   0|   16|          0|
+    |dot_92_reg_7362                    |   16|   0|   16|          0|
+    |dot_93_reg_7402                    |   16|   0|   16|          0|
+    |dot_94_reg_7447                    |   16|   0|   16|          0|
+    |dot_95_reg_6847                    |   16|   0|   16|          0|
+    |dot_96_reg_6887                    |   16|   0|   16|          0|
+    |dot_97_reg_6927                    |   16|   0|   16|          0|
+    |dot_98_reg_6967                    |   16|   0|   16|          0|
+    |dot_99_reg_7007                    |   16|   0|   16|          0|
+    |dot_9_reg_7177                     |   16|   0|   16|          0|
+    |dot_reg_6817                       |   16|   0|   16|          0|
+    |icmp_ln148_reg_4564                |    1|   0|    1|          0|
+    |mul145_i_10_reg_6227               |   16|   0|   16|          0|
+    |mul145_i_11_reg_6232               |   16|   0|   16|          0|
+    |mul145_i_12_reg_6237               |   16|   0|   16|          0|
+    |mul145_i_13_reg_6242               |   16|   0|   16|          0|
+    |mul145_i_14_reg_6247               |   16|   0|   16|          0|
+    |mul145_i_15_reg_6252               |   16|   0|   16|          0|
+    |mul145_i_16_reg_6187               |   16|   0|   16|          0|
+    |mul145_i_17_reg_6192               |   16|   0|   16|          0|
+    |mul145_i_18_reg_6197               |   16|   0|   16|          0|
+    |mul145_i_19_reg_6202               |   16|   0|   16|          0|
+    |mul145_i_1_10_reg_6312             |   16|   0|   16|          0|
+    |mul145_i_1_11_reg_6317             |   16|   0|   16|          0|
+    |mul145_i_1_12_reg_6322             |   16|   0|   16|          0|
+    |mul145_i_1_13_reg_6327             |   16|   0|   16|          0|
+    |mul145_i_1_14_reg_6332             |   16|   0|   16|          0|
+    |mul145_i_1_1_reg_6262              |   16|   0|   16|          0|
+    |mul145_i_1_2_reg_6267              |   16|   0|   16|          0|
+    |mul145_i_1_3_reg_6272              |   16|   0|   16|          0|
+    |mul145_i_1_4_reg_6277              |   16|   0|   16|          0|
+    |mul145_i_1_5_reg_6282              |   16|   0|   16|          0|
+    |mul145_i_1_6_reg_6287              |   16|   0|   16|          0|
+    |mul145_i_1_7_reg_6292              |   16|   0|   16|          0|
+    |mul145_i_1_8_reg_6297              |   16|   0|   16|          0|
+    |mul145_i_1_9_reg_6302              |   16|   0|   16|          0|
+    |mul145_i_1_reg_6257                |   16|   0|   16|          0|
+    |mul145_i_1_s_reg_6307              |   16|   0|   16|          0|
+    |mul145_i_20_reg_6207               |   16|   0|   16|          0|
+    |mul145_i_21_reg_6212               |   16|   0|   16|          0|
+    |mul145_i_2_10_reg_6392             |   16|   0|   16|          0|
+    |mul145_i_2_11_reg_6397             |   16|   0|   16|          0|
+    |mul145_i_2_12_reg_6402             |   16|   0|   16|          0|
+    |mul145_i_2_13_reg_6407             |   16|   0|   16|          0|
+    |mul145_i_2_14_reg_6412             |   16|   0|   16|          0|
+    |mul145_i_2_1_reg_6342              |   16|   0|   16|          0|
+    |mul145_i_2_2_reg_6347              |   16|   0|   16|          0|
+    |mul145_i_2_3_reg_6352              |   16|   0|   16|          0|
+    |mul145_i_2_4_reg_6357              |   16|   0|   16|          0|
+    |mul145_i_2_5_reg_6362              |   16|   0|   16|          0|
+    |mul145_i_2_6_reg_6367              |   16|   0|   16|          0|
+    |mul145_i_2_7_reg_6372              |   16|   0|   16|          0|
+    |mul145_i_2_8_reg_6377              |   16|   0|   16|          0|
+    |mul145_i_2_9_reg_6382              |   16|   0|   16|          0|
+    |mul145_i_2_reg_6337                |   16|   0|   16|          0|
+    |mul145_i_2_s_reg_6387              |   16|   0|   16|          0|
+    |mul145_i_3_10_reg_6472             |   16|   0|   16|          0|
+    |mul145_i_3_11_reg_6477             |   16|   0|   16|          0|
+    |mul145_i_3_12_reg_6482             |   16|   0|   16|          0|
+    |mul145_i_3_13_reg_6487             |   16|   0|   16|          0|
+    |mul145_i_3_14_reg_6492             |   16|   0|   16|          0|
+    |mul145_i_3_1_reg_6422              |   16|   0|   16|          0|
+    |mul145_i_3_2_reg_6427              |   16|   0|   16|          0|
+    |mul145_i_3_3_reg_6432              |   16|   0|   16|          0|
+    |mul145_i_3_4_reg_6437              |   16|   0|   16|          0|
+    |mul145_i_3_5_reg_6442              |   16|   0|   16|          0|
+    |mul145_i_3_6_reg_6447              |   16|   0|   16|          0|
+    |mul145_i_3_7_reg_6452              |   16|   0|   16|          0|
+    |mul145_i_3_8_reg_6457              |   16|   0|   16|          0|
+    |mul145_i_3_9_reg_6462              |   16|   0|   16|          0|
+    |mul145_i_3_reg_6417                |   16|   0|   16|          0|
+    |mul145_i_3_s_reg_6467              |   16|   0|   16|          0|
+    |mul145_i_4_10_reg_6552             |   16|   0|   16|          0|
+    |mul145_i_4_11_reg_6557             |   16|   0|   16|          0|
+    |mul145_i_4_12_reg_6562             |   16|   0|   16|          0|
+    |mul145_i_4_13_reg_6567             |   16|   0|   16|          0|
+    |mul145_i_4_14_reg_6572             |   16|   0|   16|          0|
+    |mul145_i_4_1_reg_6502              |   16|   0|   16|          0|
+    |mul145_i_4_2_reg_6507              |   16|   0|   16|          0|
+    |mul145_i_4_3_reg_6512              |   16|   0|   16|          0|
+    |mul145_i_4_4_reg_6517              |   16|   0|   16|          0|
+    |mul145_i_4_5_reg_6522              |   16|   0|   16|          0|
+    |mul145_i_4_6_reg_6527              |   16|   0|   16|          0|
+    |mul145_i_4_7_reg_6532              |   16|   0|   16|          0|
+    |mul145_i_4_8_reg_6537              |   16|   0|   16|          0|
+    |mul145_i_4_9_reg_6542              |   16|   0|   16|          0|
+    |mul145_i_4_reg_6497                |   16|   0|   16|          0|
+    |mul145_i_4_s_reg_6547              |   16|   0|   16|          0|
+    |mul145_i_5_10_reg_6632             |   16|   0|   16|          0|
+    |mul145_i_5_11_reg_6637             |   16|   0|   16|          0|
+    |mul145_i_5_12_reg_6642             |   16|   0|   16|          0|
+    |mul145_i_5_13_reg_6647             |   16|   0|   16|          0|
+    |mul145_i_5_14_reg_6652             |   16|   0|   16|          0|
+    |mul145_i_5_1_reg_6582              |   16|   0|   16|          0|
+    |mul145_i_5_2_reg_6587              |   16|   0|   16|          0|
+    |mul145_i_5_3_reg_6592              |   16|   0|   16|          0|
+    |mul145_i_5_4_reg_6597              |   16|   0|   16|          0|
+    |mul145_i_5_5_reg_6602              |   16|   0|   16|          0|
+    |mul145_i_5_6_reg_6607              |   16|   0|   16|          0|
+    |mul145_i_5_7_reg_6612              |   16|   0|   16|          0|
+    |mul145_i_5_8_reg_6617              |   16|   0|   16|          0|
+    |mul145_i_5_9_reg_6622              |   16|   0|   16|          0|
+    |mul145_i_5_reg_6577                |   16|   0|   16|          0|
+    |mul145_i_5_s_reg_6627              |   16|   0|   16|          0|
+    |mul145_i_6_10_reg_6712             |   16|   0|   16|          0|
+    |mul145_i_6_11_reg_6717             |   16|   0|   16|          0|
+    |mul145_i_6_12_reg_6722             |   16|   0|   16|          0|
+    |mul145_i_6_13_reg_6727             |   16|   0|   16|          0|
+    |mul145_i_6_14_reg_6732             |   16|   0|   16|          0|
+    |mul145_i_6_1_reg_6662              |   16|   0|   16|          0|
+    |mul145_i_6_2_reg_6667              |   16|   0|   16|          0|
+    |mul145_i_6_3_reg_6672              |   16|   0|   16|          0|
+    |mul145_i_6_4_reg_6677              |   16|   0|   16|          0|
+    |mul145_i_6_5_reg_6682              |   16|   0|   16|          0|
+    |mul145_i_6_6_reg_6687              |   16|   0|   16|          0|
+    |mul145_i_6_7_reg_6692              |   16|   0|   16|          0|
+    |mul145_i_6_8_reg_6697              |   16|   0|   16|          0|
+    |mul145_i_6_9_reg_6702              |   16|   0|   16|          0|
+    |mul145_i_6_reg_6657                |   16|   0|   16|          0|
+    |mul145_i_6_s_reg_6707              |   16|   0|   16|          0|
+    |mul145_i_7_10_reg_6792             |   16|   0|   16|          0|
+    |mul145_i_7_11_reg_6797             |   16|   0|   16|          0|
+    |mul145_i_7_12_reg_6802             |   16|   0|   16|          0|
+    |mul145_i_7_13_reg_6807             |   16|   0|   16|          0|
+    |mul145_i_7_14_reg_6812             |   16|   0|   16|          0|
+    |mul145_i_7_1_reg_6742              |   16|   0|   16|          0|
+    |mul145_i_7_2_reg_6747              |   16|   0|   16|          0|
+    |mul145_i_7_3_reg_6752              |   16|   0|   16|          0|
+    |mul145_i_7_4_reg_6757              |   16|   0|   16|          0|
+    |mul145_i_7_5_reg_6762              |   16|   0|   16|          0|
+    |mul145_i_7_6_reg_6767              |   16|   0|   16|          0|
+    |mul145_i_7_7_reg_6772              |   16|   0|   16|          0|
+    |mul145_i_7_8_reg_6777              |   16|   0|   16|          0|
+    |mul145_i_7_9_reg_6782              |   16|   0|   16|          0|
+    |mul145_i_7_reg_6737                |   16|   0|   16|          0|
+    |mul145_i_7_s_reg_6787              |   16|   0|   16|          0|
+    |mul145_i_8_reg_6217                |   16|   0|   16|          0|
+    |mul145_i_9_reg_6222                |   16|   0|   16|          0|
+    |mul145_i_reg_6177                  |   16|   0|   16|          0|
+    |mul145_i_s_reg_6182                |   16|   0|   16|          0|
+    |psum_100_fu_194                    |   16|   0|   16|          0|
+    |psum_101_fu_198                    |   16|   0|   16|          0|
+    |psum_102_reg_7513                  |   16|   0|   16|          0|
+    |psum_103_reg_7521                  |   16|   0|   16|          0|
+    |psum_104_reg_7529                  |   16|   0|   16|          0|
+    |psum_105_reg_7537                  |   16|   0|   16|          0|
+    |psum_106_reg_7545                  |   16|   0|   16|          0|
+    |psum_107_reg_7553                  |   16|   0|   16|          0|
+    |psum_108_reg_7497                  |   16|   0|   16|          0|
+    |psum_70_reg_7505                   |   16|   0|   16|          0|
+    |psum_71_fu_298                     |   16|   0|   16|          0|
+    |psum_72_fu_294                     |   16|   0|   16|          0|
+    |psum_73_fu_290                     |   16|   0|   16|          0|
+    |psum_74_fu_286                     |   16|   0|   16|          0|
+    |psum_75_fu_282                     |   16|   0|   16|          0|
+    |psum_76_fu_278                     |   16|   0|   16|          0|
+    |psum_77_fu_274                     |   16|   0|   16|          0|
+    |psum_78_fu_270                     |   16|   0|   16|          0|
+    |psum_79_fu_266                     |   16|   0|   16|          0|
+    |psum_80_fu_262                     |   16|   0|   16|          0|
+    |psum_81_fu_258                     |   16|   0|   16|          0|
+    |psum_82_fu_254                     |   16|   0|   16|          0|
+    |psum_83_fu_250                     |   16|   0|   16|          0|
+    |psum_84_fu_246                     |   16|   0|   16|          0|
+    |psum_85_fu_242                     |   16|   0|   16|          0|
+    |psum_86_fu_238                     |   16|   0|   16|          0|
+    |psum_87_fu_234                     |   16|   0|   16|          0|
+    |psum_88_fu_230                     |   16|   0|   16|          0|
+    |psum_89_fu_226                     |   16|   0|   16|          0|
+    |psum_90_fu_222                     |   16|   0|   16|          0|
+    |psum_91_fu_218                     |   16|   0|   16|          0|
+    |psum_92_fu_214                     |   16|   0|   16|          0|
+    |psum_93_fu_210                     |   16|   0|   16|          0|
+    |psum_94_fu_206                     |   16|   0|   16|          0|
+    |psum_95_fu_202                     |   16|   0|   16|          0|
+    |psum_96_fu_178                     |   16|   0|   16|          0|
+    |psum_97_fu_182                     |   16|   0|   16|          0|
+    |psum_98_fu_186                     |   16|   0|   16|          0|
+    |psum_99_fu_190                     |   16|   0|   16|          0|
+    |psum_fu_302                        |   16|   0|   16|          0|
+    |tmp_1_reg_7487                     |   16|   0|   16|          0|
+    |tmp_3_reg_7492                     |   16|   0|   16|          0|
+    |tmp_5_reg_7422                     |   16|   0|   16|          0|
+    |tmp_6_reg_7462                     |   16|   0|   16|          0|
+    |tmp_7_reg_7467                     |   16|   0|   16|          0|
+    |tmp_8_reg_7472                     |   16|   0|   16|          0|
+    |tmp_9_reg_7477                     |   16|   0|   16|          0|
+    |tmp_s_reg_7482                     |   16|   0|   16|          0|
+    |trunc_ln153_reg_4568               |    2|   0|    2|          0|
+    |trunc_ln163_19_reg_4865            |   16|   0|   16|          0|
+    |trunc_ln163_20_reg_4945            |   16|   0|   16|          0|
+    |trunc_ln163_21_reg_5025            |   16|   0|   16|          0|
+    |trunc_ln163_22_reg_5105            |   16|   0|   16|          0|
+    |trunc_ln163_23_reg_5185            |   16|   0|   16|          0|
+    |trunc_ln163_reg_4785               |   16|   0|   16|          0|
+    |u_100_reg_4965                     |   16|   0|   16|          0|
+    |u_101_reg_4970                     |   16|   0|   16|          0|
+    |u_102_reg_4975                     |   16|   0|   16|          0|
+    |u_103_reg_4980                     |   16|   0|   16|          0|
+    |u_104_reg_4985                     |   16|   0|   16|          0|
+    |u_105_reg_4990                     |   16|   0|   16|          0|
+    |u_106_reg_4995                     |   16|   0|   16|          0|
+    |u_107_reg_5000                     |   16|   0|   16|          0|
+    |u_108_reg_5005                     |   16|   0|   16|          0|
+    |u_109_reg_5010                     |   16|   0|   16|          0|
+    |u_110_reg_5015                     |   16|   0|   16|          0|
+    |u_111_reg_5020                     |   16|   0|   16|          0|
+    |u_113_reg_5030                     |   16|   0|   16|          0|
+    |u_114_reg_5035                     |   16|   0|   16|          0|
+    |u_115_reg_5040                     |   16|   0|   16|          0|
+    |u_116_reg_5045                     |   16|   0|   16|          0|
+    |u_117_reg_5050                     |   16|   0|   16|          0|
+    |u_118_reg_5055                     |   16|   0|   16|          0|
+    |u_119_reg_5060                     |   16|   0|   16|          0|
+    |u_120_reg_5065                     |   16|   0|   16|          0|
+    |u_121_reg_5070                     |   16|   0|   16|          0|
+    |u_122_reg_5075                     |   16|   0|   16|          0|
+    |u_123_reg_5080                     |   16|   0|   16|          0|
+    |u_124_reg_5085                     |   16|   0|   16|          0|
+    |u_125_reg_5090                     |   16|   0|   16|          0|
+    |u_126_reg_5095                     |   16|   0|   16|          0|
+    |u_127_reg_5100                     |   16|   0|   16|          0|
+    |u_129_reg_5110                     |   16|   0|   16|          0|
+    |u_130_reg_5115                     |   16|   0|   16|          0|
+    |u_131_reg_5120                     |   16|   0|   16|          0|
+    |u_132_reg_5125                     |   16|   0|   16|          0|
+    |u_133_reg_5130                     |   16|   0|   16|          0|
+    |u_134_reg_5135                     |   16|   0|   16|          0|
+    |u_135_reg_5140                     |   16|   0|   16|          0|
+    |u_136_reg_5145                     |   16|   0|   16|          0|
+    |u_137_reg_5150                     |   16|   0|   16|          0|
+    |u_138_reg_5155                     |   16|   0|   16|          0|
+    |u_139_reg_5160                     |   16|   0|   16|          0|
+    |u_140_reg_5165                     |   16|   0|   16|          0|
+    |u_141_reg_5170                     |   16|   0|   16|          0|
+    |u_142_reg_5175                     |   16|   0|   16|          0|
+    |u_143_reg_5180                     |   16|   0|   16|          0|
+    |u_145_reg_5190                     |   16|   0|   16|          0|
+    |u_146_reg_5195                     |   16|   0|   16|          0|
+    |u_147_reg_5200                     |   16|   0|   16|          0|
+    |u_148_reg_5205                     |   16|   0|   16|          0|
+    |u_149_reg_5210                     |   16|   0|   16|          0|
+    |u_150_reg_5215                     |   16|   0|   16|          0|
+    |u_151_reg_5220                     |   16|   0|   16|          0|
+    |u_152_reg_5225                     |   16|   0|   16|          0|
+    |u_153_reg_5230                     |   16|   0|   16|          0|
+    |u_154_reg_5235                     |   16|   0|   16|          0|
+    |u_155_reg_5240                     |   16|   0|   16|          0|
+    |u_156_reg_5245                     |   16|   0|   16|          0|
+    |u_157_reg_5250                     |   16|   0|   16|          0|
+    |u_158_reg_5255                     |   16|   0|   16|          0|
+    |u_159_reg_5260                     |   16|   0|   16|          0|
+    |u_162_reg_5270                     |   16|   0|   16|          0|
+    |u_163_reg_5275                     |   16|   0|   16|          0|
+    |u_164_reg_5280                     |   16|   0|   16|          0|
+    |u_165_reg_5285                     |   16|   0|   16|          0|
+    |u_166_reg_5290                     |   16|   0|   16|          0|
+    |u_167_reg_5295                     |   16|   0|   16|          0|
+    |u_168_reg_5300                     |   16|   0|   16|          0|
+    |u_169_reg_5305                     |   16|   0|   16|          0|
+    |u_170_reg_5310                     |   16|   0|   16|          0|
+    |u_171_reg_5315                     |   16|   0|   16|          0|
+    |u_172_reg_5320                     |   16|   0|   16|          0|
+    |u_173_reg_5325                     |   16|   0|   16|          0|
+    |u_174_reg_5330                     |   16|   0|   16|          0|
+    |u_175_reg_5335                     |   16|   0|   16|          0|
+    |u_176_reg_5340                     |   16|   0|   16|          0|
+    |u_35_reg_4635                      |   16|   0|   16|          0|
+    |u_36_reg_4640                      |   16|   0|   16|          0|
+    |u_37_reg_4645                      |   16|   0|   16|          0|
+    |u_38_reg_4650                      |   16|   0|   16|          0|
+    |u_39_reg_4655                      |   16|   0|   16|          0|
+    |u_40_reg_4660                      |   16|   0|   16|          0|
+    |u_41_reg_4665                      |   16|   0|   16|          0|
+    |u_42_reg_4670                      |   16|   0|   16|          0|
+    |u_43_reg_4675                      |   16|   0|   16|          0|
+    |u_44_reg_4680                      |   16|   0|   16|          0|
+    |u_45_reg_4685                      |   16|   0|   16|          0|
+    |u_46_reg_4690                      |   16|   0|   16|          0|
+    |u_47_reg_4695                      |   16|   0|   16|          0|
+    |u_48_reg_4700                      |   16|   0|   16|          0|
+    |u_493_reg_4630                     |   16|   0|   16|          0|
+    |u_49_reg_4705                      |   16|   0|   16|          0|
+    |u_500_reg_5265                     |   16|   0|   16|          0|
+    |u_50_reg_4710                      |   16|   0|   16|          0|
+    |u_51_reg_4715                      |   16|   0|   16|          0|
+    |u_52_reg_4720                      |   16|   0|   16|          0|
+    |u_53_reg_4725                      |   16|   0|   16|          0|
+    |u_54_reg_4730                      |   16|   0|   16|          0|
+    |u_55_reg_4735                      |   16|   0|   16|          0|
+    |u_56_reg_4740                      |   16|   0|   16|          0|
+    |u_57_reg_4745                      |   16|   0|   16|          0|
+    |u_58_reg_4750                      |   16|   0|   16|          0|
+    |u_59_reg_4755                      |   16|   0|   16|          0|
+    |u_60_reg_4760                      |   16|   0|   16|          0|
+    |u_61_reg_4765                      |   16|   0|   16|          0|
+    |u_62_reg_4770                      |   16|   0|   16|          0|
+    |u_63_reg_4775                      |   16|   0|   16|          0|
+    |u_64_reg_4780                      |   16|   0|   16|          0|
+    |u_65_reg_4790                      |   16|   0|   16|          0|
+    |u_66_reg_4795                      |   16|   0|   16|          0|
+    |u_67_reg_4800                      |   16|   0|   16|          0|
+    |u_68_reg_4805                      |   16|   0|   16|          0|
+    |u_69_reg_4810                      |   16|   0|   16|          0|
+    |u_70_reg_4815                      |   16|   0|   16|          0|
+    |u_71_reg_4820                      |   16|   0|   16|          0|
+    |u_72_reg_4825                      |   16|   0|   16|          0|
+    |u_73_reg_4830                      |   16|   0|   16|          0|
+    |u_74_reg_4835                      |   16|   0|   16|          0|
+    |u_75_reg_4840                      |   16|   0|   16|          0|
+    |u_76_reg_4845                      |   16|   0|   16|          0|
+    |u_77_reg_4850                      |   16|   0|   16|          0|
+    |u_78_reg_4855                      |   16|   0|   16|          0|
+    |u_79_reg_4860                      |   16|   0|   16|          0|
+    |u_81_reg_4870                      |   16|   0|   16|          0|
+    |u_82_reg_4875                      |   16|   0|   16|          0|
+    |u_83_reg_4880                      |   16|   0|   16|          0|
+    |u_84_reg_4885                      |   16|   0|   16|          0|
+    |u_85_reg_4890                      |   16|   0|   16|          0|
+    |u_86_reg_4895                      |   16|   0|   16|          0|
+    |u_87_reg_4900                      |   16|   0|   16|          0|
+    |u_88_reg_4905                      |   16|   0|   16|          0|
+    |u_89_reg_4910                      |   16|   0|   16|          0|
+    |u_90_reg_4915                      |   16|   0|   16|          0|
+    |u_91_reg_4920                      |   16|   0|   16|          0|
+    |u_92_reg_4925                      |   16|   0|   16|          0|
+    |u_93_reg_4930                      |   16|   0|   16|          0|
+    |u_94_reg_4935                      |   16|   0|   16|          0|
+    |u_95_reg_4940                      |   16|   0|   16|          0|
+    |u_97_reg_4950                      |   16|   0|   16|          0|
+    |u_98_reg_4955                      |   16|   0|   16|          0|
+    |u_99_reg_4960                      |   16|   0|   16|          0|
+    |u_reg_4625                         |   16|   0|   16|          0|
+    |icmp_ln148_reg_4564                |   64|  32|    1|          0|
+    |mul145_i_10_reg_6227               |   64|  32|   16|          0|
+    |mul145_i_11_reg_6232               |   64|  32|   16|          0|
+    |mul145_i_12_reg_6237               |   64|  32|   16|          0|
+    |mul145_i_13_reg_6242               |   64|  32|   16|          0|
+    |mul145_i_14_reg_6247               |   64|  32|   16|          0|
+    |mul145_i_15_reg_6252               |   64|  32|   16|          0|
+    |mul145_i_16_reg_6187               |   64|  32|   16|          0|
+    |mul145_i_17_reg_6192               |   64|  32|   16|          0|
+    |mul145_i_18_reg_6197               |   64|  32|   16|          0|
+    |mul145_i_19_reg_6202               |   64|  32|   16|          0|
+    |mul145_i_1_10_reg_6312             |   64|  32|   16|          0|
+    |mul145_i_1_11_reg_6317             |   64|  32|   16|          0|
+    |mul145_i_1_12_reg_6322             |   64|  32|   16|          0|
+    |mul145_i_1_13_reg_6327             |   64|  32|   16|          0|
+    |mul145_i_1_14_reg_6332             |   64|  32|   16|          0|
+    |mul145_i_1_1_reg_6262              |   64|  32|   16|          0|
+    |mul145_i_1_2_reg_6267              |   64|  32|   16|          0|
+    |mul145_i_1_3_reg_6272              |   64|  32|   16|          0|
+    |mul145_i_1_4_reg_6277              |   64|  32|   16|          0|
+    |mul145_i_1_5_reg_6282              |   64|  32|   16|          0|
+    |mul145_i_1_6_reg_6287              |   64|  32|   16|          0|
+    |mul145_i_1_7_reg_6292              |   64|  32|   16|          0|
+    |mul145_i_1_8_reg_6297              |   64|  32|   16|          0|
+    |mul145_i_1_9_reg_6302              |   64|  32|   16|          0|
+    |mul145_i_1_s_reg_6307              |   64|  32|   16|          0|
+    |mul145_i_20_reg_6207               |   64|  32|   16|          0|
+    |mul145_i_21_reg_6212               |   64|  32|   16|          0|
+    |mul145_i_2_10_reg_6392             |   64|  32|   16|          0|
+    |mul145_i_2_11_reg_6397             |   64|  32|   16|          0|
+    |mul145_i_2_12_reg_6402             |   64|  32|   16|          0|
+    |mul145_i_2_13_reg_6407             |   64|  32|   16|          0|
+    |mul145_i_2_14_reg_6412             |   64|  32|   16|          0|
+    |mul145_i_2_1_reg_6342              |   64|  32|   16|          0|
+    |mul145_i_2_2_reg_6347              |   64|  32|   16|          0|
+    |mul145_i_2_3_reg_6352              |   64|  32|   16|          0|
+    |mul145_i_2_4_reg_6357              |   64|  32|   16|          0|
+    |mul145_i_2_5_reg_6362              |   64|  32|   16|          0|
+    |mul145_i_2_6_reg_6367              |   64|  32|   16|          0|
+    |mul145_i_2_7_reg_6372              |   64|  32|   16|          0|
+    |mul145_i_2_8_reg_6377              |   64|  32|   16|          0|
+    |mul145_i_2_9_reg_6382              |   64|  32|   16|          0|
+    |mul145_i_2_s_reg_6387              |   64|  32|   16|          0|
+    |mul145_i_3_10_reg_6472             |   64|  32|   16|          0|
+    |mul145_i_3_11_reg_6477             |   64|  32|   16|          0|
+    |mul145_i_3_12_reg_6482             |   64|  32|   16|          0|
+    |mul145_i_3_13_reg_6487             |   64|  32|   16|          0|
+    |mul145_i_3_14_reg_6492             |   64|  32|   16|          0|
+    |mul145_i_3_1_reg_6422              |   64|  32|   16|          0|
+    |mul145_i_3_2_reg_6427              |   64|  32|   16|          0|
+    |mul145_i_3_3_reg_6432              |   64|  32|   16|          0|
+    |mul145_i_3_4_reg_6437              |   64|  32|   16|          0|
+    |mul145_i_3_5_reg_6442              |   64|  32|   16|          0|
+    |mul145_i_3_6_reg_6447              |   64|  32|   16|          0|
+    |mul145_i_3_7_reg_6452              |   64|  32|   16|          0|
+    |mul145_i_3_8_reg_6457              |   64|  32|   16|          0|
+    |mul145_i_3_9_reg_6462              |   64|  32|   16|          0|
+    |mul145_i_3_s_reg_6467              |   64|  32|   16|          0|
+    |mul145_i_4_10_reg_6552             |   64|  32|   16|          0|
+    |mul145_i_4_11_reg_6557             |   64|  32|   16|          0|
+    |mul145_i_4_12_reg_6562             |   64|  32|   16|          0|
+    |mul145_i_4_13_reg_6567             |   64|  32|   16|          0|
+    |mul145_i_4_14_reg_6572             |   64|  32|   16|          0|
+    |mul145_i_4_1_reg_6502              |   64|  32|   16|          0|
+    |mul145_i_4_2_reg_6507              |   64|  32|   16|          0|
+    |mul145_i_4_3_reg_6512              |   64|  32|   16|          0|
+    |mul145_i_4_4_reg_6517              |   64|  32|   16|          0|
+    |mul145_i_4_5_reg_6522              |   64|  32|   16|          0|
+    |mul145_i_4_6_reg_6527              |   64|  32|   16|          0|
+    |mul145_i_4_7_reg_6532              |   64|  32|   16|          0|
+    |mul145_i_4_8_reg_6537              |   64|  32|   16|          0|
+    |mul145_i_4_9_reg_6542              |   64|  32|   16|          0|
+    |mul145_i_4_s_reg_6547              |   64|  32|   16|          0|
+    |mul145_i_5_10_reg_6632             |   64|  32|   16|          0|
+    |mul145_i_5_11_reg_6637             |   64|  32|   16|          0|
+    |mul145_i_5_12_reg_6642             |   64|  32|   16|          0|
+    |mul145_i_5_13_reg_6647             |   64|  32|   16|          0|
+    |mul145_i_5_14_reg_6652             |   64|  32|   16|          0|
+    |mul145_i_5_1_reg_6582              |   64|  32|   16|          0|
+    |mul145_i_5_2_reg_6587              |   64|  32|   16|          0|
+    |mul145_i_5_3_reg_6592              |   64|  32|   16|          0|
+    |mul145_i_5_4_reg_6597              |   64|  32|   16|          0|
+    |mul145_i_5_5_reg_6602              |   64|  32|   16|          0|
+    |mul145_i_5_6_reg_6607              |   64|  32|   16|          0|
+    |mul145_i_5_7_reg_6612              |   64|  32|   16|          0|
+    |mul145_i_5_8_reg_6617              |   64|  32|   16|          0|
+    |mul145_i_5_9_reg_6622              |   64|  32|   16|          0|
+    |mul145_i_5_s_reg_6627              |   64|  32|   16|          0|
+    |mul145_i_6_10_reg_6712             |   64|  32|   16|          0|
+    |mul145_i_6_11_reg_6717             |   64|  32|   16|          0|
+    |mul145_i_6_12_reg_6722             |   64|  32|   16|          0|
+    |mul145_i_6_13_reg_6727             |   64|  32|   16|          0|
+    |mul145_i_6_14_reg_6732             |   64|  32|   16|          0|
+    |mul145_i_6_1_reg_6662              |   64|  32|   16|          0|
+    |mul145_i_6_2_reg_6667              |   64|  32|   16|          0|
+    |mul145_i_6_3_reg_6672              |   64|  32|   16|          0|
+    |mul145_i_6_4_reg_6677              |   64|  32|   16|          0|
+    |mul145_i_6_5_reg_6682              |   64|  32|   16|          0|
+    |mul145_i_6_6_reg_6687              |   64|  32|   16|          0|
+    |mul145_i_6_7_reg_6692              |   64|  32|   16|          0|
+    |mul145_i_6_8_reg_6697              |   64|  32|   16|          0|
+    |mul145_i_6_9_reg_6702              |   64|  32|   16|          0|
+    |mul145_i_6_s_reg_6707              |   64|  32|   16|          0|
+    |mul145_i_7_10_reg_6792             |   64|  32|   16|          0|
+    |mul145_i_7_11_reg_6797             |   64|  32|   16|          0|
+    |mul145_i_7_12_reg_6802             |   64|  32|   16|          0|
+    |mul145_i_7_13_reg_6807             |   64|  32|   16|          0|
+    |mul145_i_7_14_reg_6812             |   64|  32|   16|          0|
+    |mul145_i_7_1_reg_6742              |   64|  32|   16|          0|
+    |mul145_i_7_2_reg_6747              |   64|  32|   16|          0|
+    |mul145_i_7_3_reg_6752              |   64|  32|   16|          0|
+    |mul145_i_7_4_reg_6757              |   64|  32|   16|          0|
+    |mul145_i_7_5_reg_6762              |   64|  32|   16|          0|
+    |mul145_i_7_6_reg_6767              |   64|  32|   16|          0|
+    |mul145_i_7_7_reg_6772              |   64|  32|   16|          0|
+    |mul145_i_7_8_reg_6777              |   64|  32|   16|          0|
+    |mul145_i_7_9_reg_6782              |   64|  32|   16|          0|
+    |mul145_i_7_s_reg_6787              |   64|  32|   16|          0|
+    |mul145_i_8_reg_6217                |   64|  32|   16|          0|
+    |mul145_i_9_reg_6222                |   64|  32|   16|          0|
+    |mul145_i_s_reg_6182                |   64|  32|   16|          0|
+    |trunc_ln153_reg_4568               |   64|  32|    2|          0|
+    +-----------------------------------+-----+----+-----+-----------+
+    |Total                              |15172|3904| 9287|          0|
+    +-----------------------------------+-----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------------+-----+-----+------------+---------------------------------+--------------+
+|          RTL Ports         | Dir | Bits|  Protocol  |          Source Object          |    C Type    |
++----------------------------+-----+-----+------------+---------------------------------+--------------+
+|ap_clk                      |   in|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|ap_rst                      |   in|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|ap_start                    |   in|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|ap_done                     |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|ap_idle                     |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|ap_ready                    |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_653_p_din0           |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_653_p_din1           |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_653_p_dout0          |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_653_p_ce             |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_657_p_din0           |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_657_p_din1           |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_657_p_dout0          |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_657_p_ce             |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_661_p_din0           |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_661_p_din1           |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_661_p_dout0          |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_661_p_ce             |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_665_p_din0           |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_665_p_din1           |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_665_p_dout0          |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_665_p_ce             |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1873_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1873_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1873_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1873_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1877_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1877_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1877_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1877_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1881_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1881_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1881_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1881_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1885_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1885_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1885_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1885_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1889_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1889_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1889_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1889_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1893_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1893_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1893_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1893_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1897_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1897_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1897_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1897_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1901_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1901_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1901_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1901_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1905_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1905_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1905_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1905_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1909_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1909_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1909_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1909_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1913_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1913_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1913_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1913_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1917_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1917_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1917_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1917_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1921_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1921_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1921_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1921_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1925_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1925_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1925_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1925_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1929_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1929_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1929_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1929_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1933_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1933_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1933_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1933_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1937_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1937_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1937_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1937_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1941_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1941_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1941_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1941_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1945_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1945_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1945_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1945_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1949_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1949_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1949_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1949_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1953_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1953_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1953_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1953_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1957_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1957_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1957_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1957_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1961_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1961_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1961_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1961_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1965_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1965_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1965_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1965_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1969_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1969_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1969_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1969_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1973_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1973_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1973_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1973_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1977_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1977_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1977_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1977_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1981_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1981_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1981_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1981_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1985_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1985_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1985_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1985_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1989_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1989_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1989_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1989_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1993_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1993_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1993_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1993_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1997_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1997_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1997_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_1997_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2001_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2001_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2001_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2001_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2005_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2005_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2005_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2005_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2009_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2009_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2009_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2009_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2013_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2013_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2013_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2013_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2017_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2017_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2017_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2017_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2021_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2021_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2021_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2021_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2025_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2025_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2025_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2025_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2029_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2029_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2029_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2029_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2033_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2033_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2033_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2033_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2037_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2037_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2037_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2037_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2041_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2041_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2041_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2041_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2045_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2045_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2045_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2045_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2049_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2049_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2049_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2049_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2053_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2053_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2053_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2053_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2057_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2057_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2057_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2057_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2061_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2061_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2061_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2061_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2065_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2065_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2065_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2065_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2069_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2069_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2069_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2069_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2073_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2073_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2073_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2073_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2077_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2077_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2077_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2077_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2081_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2081_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2081_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2081_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2085_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2085_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2085_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2085_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2089_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2089_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2089_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2089_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2093_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2093_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2093_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2093_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2097_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2097_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2097_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2097_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2101_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2101_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2101_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2101_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2105_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2105_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2105_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2105_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2109_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2109_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2109_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2109_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2113_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2113_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2113_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2113_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2117_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2117_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2117_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2117_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2121_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2121_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2121_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2121_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2125_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2125_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2125_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2125_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2129_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2129_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2129_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2129_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2133_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2133_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2133_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2133_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2137_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2137_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2137_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2137_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2141_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2141_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2141_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2141_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2145_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2145_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2145_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2145_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2149_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2149_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2149_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2149_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2153_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2153_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2153_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2153_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2157_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2157_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2157_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2157_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2161_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2161_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2161_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2161_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2165_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2165_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2165_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2165_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2169_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2169_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2169_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2169_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2173_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2173_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2173_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2173_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2177_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2177_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2177_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2177_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2181_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2181_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2181_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2181_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2185_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2185_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2185_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2185_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2189_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2189_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2189_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2189_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2193_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2193_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2193_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2193_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2197_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2197_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2197_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2197_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2201_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2201_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2201_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2201_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2205_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2205_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2205_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2205_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2209_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2209_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2209_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2209_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2213_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2213_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2213_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2213_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2217_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2217_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2217_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2217_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2221_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2221_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2221_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2221_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2225_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2225_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2225_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2225_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2229_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2229_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2229_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2229_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2233_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2233_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2233_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2233_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2237_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2237_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2237_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2237_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2241_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2241_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2241_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2241_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2245_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2245_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2245_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2245_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2249_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2249_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2249_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2249_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2253_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2253_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2253_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2253_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2257_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2257_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2257_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2257_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2261_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2261_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2261_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2261_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2265_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2265_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2265_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2265_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2269_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2269_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2269_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2269_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2273_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2273_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2273_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2273_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2277_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2277_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2277_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2277_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2281_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2281_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2281_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2281_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2285_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2285_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2285_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2285_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2289_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2289_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2289_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2289_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2293_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2293_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2293_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2293_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2297_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2297_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2297_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2297_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2301_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2301_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2301_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2301_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2305_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2305_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2305_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2305_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2309_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2309_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2309_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2309_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2313_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2313_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2313_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2313_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2317_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2317_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2317_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2317_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2321_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2321_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2321_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2321_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2325_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2325_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2325_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2325_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2329_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2329_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2329_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2329_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2333_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2333_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2333_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2333_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2337_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2337_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2337_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2337_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2341_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2341_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2341_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2341_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2345_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2345_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2345_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2345_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2349_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2349_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2349_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2349_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2353_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2353_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2353_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2353_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2357_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2357_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2357_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2357_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2361_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2361_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2361_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2361_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2365_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2365_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2365_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2365_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2369_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2369_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2369_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2369_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2373_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2373_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2373_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2373_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2377_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2377_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2377_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2377_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2381_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2381_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2381_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2381_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2385_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2385_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2385_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2385_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2389_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2389_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2389_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2389_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2393_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2393_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2393_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2393_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2397_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2397_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2397_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2397_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2401_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2401_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2401_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2401_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2405_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2405_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2405_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2405_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2409_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2409_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2409_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2409_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2413_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2413_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2413_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2413_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2417_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2417_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2417_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2417_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2421_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2421_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2421_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2421_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2425_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2425_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2425_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2425_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2429_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2429_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2429_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2429_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2433_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2433_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2433_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2433_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2437_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2437_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2437_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2437_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2441_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2441_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2441_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2441_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2445_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2445_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2445_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2445_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2449_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2449_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2449_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2449_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2453_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2453_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2453_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2453_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2457_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2457_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2457_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2457_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2461_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2461_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2461_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2461_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2465_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2465_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2465_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2465_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2469_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2469_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2469_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2469_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2473_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2473_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2473_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2473_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2477_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2477_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2477_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2477_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2481_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2481_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2481_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2481_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2485_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2485_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2485_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2485_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2489_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2489_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2489_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2489_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2493_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2493_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2493_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2493_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2497_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2497_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2497_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2497_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2501_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2501_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2501_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2501_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2505_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2505_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2505_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2505_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2509_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2509_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2509_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2509_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2513_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2513_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2513_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2513_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2517_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2517_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2517_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2517_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2521_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2521_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2521_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2521_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2525_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2525_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2525_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2525_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2529_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2529_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2529_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2529_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2533_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2533_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2533_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2533_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2537_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2537_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2537_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2537_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2541_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2541_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2541_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2541_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2545_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2545_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2545_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2545_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2549_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2549_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2549_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2549_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2553_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2553_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2553_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2553_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2557_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2557_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2557_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2557_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2561_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2561_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2561_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2561_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2565_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2565_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2565_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2565_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2569_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2569_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2569_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2569_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2573_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2573_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2573_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2573_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2577_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2577_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2577_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2577_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2581_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2581_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2581_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2581_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2585_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2585_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2585_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2585_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2589_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2589_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2589_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2589_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2593_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2593_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2593_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2593_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2597_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2597_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2597_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2597_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2601_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2601_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2601_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2601_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2605_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2605_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2605_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2605_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2609_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2609_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2609_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2609_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2613_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2613_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2613_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2613_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2617_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2617_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2617_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2617_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2621_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2621_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2621_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2621_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2625_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2625_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2625_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2625_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2629_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2629_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2629_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2629_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2633_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2633_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2633_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2633_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2637_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2637_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2637_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2637_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2641_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2641_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2641_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2641_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2645_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2645_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2645_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2645_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2649_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2649_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2649_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2649_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2653_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2653_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2653_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2653_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2657_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2657_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2657_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2657_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2661_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2661_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2661_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2661_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2665_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2665_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2665_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2665_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2669_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2669_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2669_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2669_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2673_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2673_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2673_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2673_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2677_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2677_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2677_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2677_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2681_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2681_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2681_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2681_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2685_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2685_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2685_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2685_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2689_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2689_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2689_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2689_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2693_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2693_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2693_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2693_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2697_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2697_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2697_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2697_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2701_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2701_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2701_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2701_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2705_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2705_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2705_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2705_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2709_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2709_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2709_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2709_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2713_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2713_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2713_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2713_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2717_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2717_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2717_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2717_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2721_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2721_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2721_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2721_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2725_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2725_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2725_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2725_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2729_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2729_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2729_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2729_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2733_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2733_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2733_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2733_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2737_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2737_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2737_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2737_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2741_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2741_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2741_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2741_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2745_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2745_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2745_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2745_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2749_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2749_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2749_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2749_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2753_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2753_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2753_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2753_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2757_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2757_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2757_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2757_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2761_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2761_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2761_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2761_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2765_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2765_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2765_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2765_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2769_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2769_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2769_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2769_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2773_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2773_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2773_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2773_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2777_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2777_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2777_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2777_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2781_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2781_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2781_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2781_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2785_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2785_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2785_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2785_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2789_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2789_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2789_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2789_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2793_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2793_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2793_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2793_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2797_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2797_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2797_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2797_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2801_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2801_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2801_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2801_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2805_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2805_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2805_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2805_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2809_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2809_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2809_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2809_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2813_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2813_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2813_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2813_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2817_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2817_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2817_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2817_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2821_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2821_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2821_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2821_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2825_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2825_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2825_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2825_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2829_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2829_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2829_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2829_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2833_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2833_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2833_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2833_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2837_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2837_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2837_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2837_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2841_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2841_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2841_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2841_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2845_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2845_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2845_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2845_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2849_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2849_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2849_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2849_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2853_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2853_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2853_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2853_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2857_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2857_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2857_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2857_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2861_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2861_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2861_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2861_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2865_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2865_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2865_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2865_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2869_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2869_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2869_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2869_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2873_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2873_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2873_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2873_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2877_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2877_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2877_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2877_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2881_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2881_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2881_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2881_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2885_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2885_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2885_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2885_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2889_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2889_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2889_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2889_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2893_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2893_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2893_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2893_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2897_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2897_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2897_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2897_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2901_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2901_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2901_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2901_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2905_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2905_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2905_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2905_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2909_p_din0          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2909_p_din1          |  out|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2909_p_dout0         |   in|   16|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|grp_fu_2909_p_ce            |  out|    1|  ap_ctrl_hs|  ucb3_bench_top_Pipeline_CI_LOOP|  return value|
+|mul117_i                    |   in|   10|     ap_none|                         mul117_i|        scalar|
+|mul_ln130                   |   in|    9|     ap_none|                        mul_ln130|        scalar|
+|w_local_24_address0         |  out|   10|   ap_memory|                       w_local_24|         array|
+|w_local_24_ce0              |  out|    1|   ap_memory|                       w_local_24|         array|
+|w_local_24_q0               |   in|  256|   ap_memory|                       w_local_24|         array|
+|w_local_25_address0         |  out|   10|   ap_memory|                       w_local_25|         array|
+|w_local_25_ce0              |  out|    1|   ap_memory|                       w_local_25|         array|
+|w_local_25_q0               |   in|  256|   ap_memory|                       w_local_25|         array|
+|w_local_26_address0         |  out|   10|   ap_memory|                       w_local_26|         array|
+|w_local_26_ce0              |  out|    1|   ap_memory|                       w_local_26|         array|
+|w_local_26_q0               |   in|  256|   ap_memory|                       w_local_26|         array|
+|w_local_27_address0         |  out|   10|   ap_memory|                       w_local_27|         array|
+|w_local_27_ce0              |  out|    1|   ap_memory|                       w_local_27|         array|
+|w_local_27_q0               |   in|  256|   ap_memory|                       w_local_27|         array|
+|w_local_28_address0         |  out|   10|   ap_memory|                       w_local_28|         array|
+|w_local_28_ce0              |  out|    1|   ap_memory|                       w_local_28|         array|
+|w_local_28_q0               |   in|  256|   ap_memory|                       w_local_28|         array|
+|w_local_29_address0         |  out|   10|   ap_memory|                       w_local_29|         array|
+|w_local_29_ce0              |  out|    1|   ap_memory|                       w_local_29|         array|
+|w_local_29_q0               |   in|  256|   ap_memory|                       w_local_29|         array|
+|w_local_30_address0         |  out|   10|   ap_memory|                       w_local_30|         array|
+|w_local_30_ce0              |  out|    1|   ap_memory|                       w_local_30|         array|
+|w_local_30_q0               |   in|  256|   ap_memory|                       w_local_30|         array|
+|w_local_31_address0         |  out|   10|   ap_memory|                       w_local_31|         array|
+|w_local_31_ce0              |  out|    1|   ap_memory|                       w_local_31|         array|
+|w_local_31_q0               |   in|  256|   ap_memory|                       w_local_31|         array|
+|psum_127_load_1_out         |  out|   16|      ap_vld|              psum_127_load_1_out|       pointer|
+|psum_127_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_127_load_1_out|       pointer|
+|psum_126_load_1_out         |  out|   16|      ap_vld|              psum_126_load_1_out|       pointer|
+|psum_126_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_126_load_1_out|       pointer|
+|psum_125_load_1_out         |  out|   16|      ap_vld|              psum_125_load_1_out|       pointer|
+|psum_125_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_125_load_1_out|       pointer|
+|psum_124_load_1_out         |  out|   16|      ap_vld|              psum_124_load_1_out|       pointer|
+|psum_124_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_124_load_1_out|       pointer|
+|psum_123_load_1_out         |  out|   16|      ap_vld|              psum_123_load_1_out|       pointer|
+|psum_123_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_123_load_1_out|       pointer|
+|psum_122_load_1_out         |  out|   16|      ap_vld|              psum_122_load_1_out|       pointer|
+|psum_122_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_122_load_1_out|       pointer|
+|psum_121_load_1_out         |  out|   16|      ap_vld|              psum_121_load_1_out|       pointer|
+|psum_121_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_121_load_1_out|       pointer|
+|psum_120_load_1_out         |  out|   16|      ap_vld|              psum_120_load_1_out|       pointer|
+|psum_120_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_120_load_1_out|       pointer|
+|psum_119_load_1_out         |  out|   16|      ap_vld|              psum_119_load_1_out|       pointer|
+|psum_119_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_119_load_1_out|       pointer|
+|psum_118_load_1_out         |  out|   16|      ap_vld|              psum_118_load_1_out|       pointer|
+|psum_118_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_118_load_1_out|       pointer|
+|psum_117_load_1_out         |  out|   16|      ap_vld|              psum_117_load_1_out|       pointer|
+|psum_117_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_117_load_1_out|       pointer|
+|psum_116_load_1_out         |  out|   16|      ap_vld|              psum_116_load_1_out|       pointer|
+|psum_116_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_116_load_1_out|       pointer|
+|psum_115_load_1_out         |  out|   16|      ap_vld|              psum_115_load_1_out|       pointer|
+|psum_115_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_115_load_1_out|       pointer|
+|psum_114_load_1_out         |  out|   16|      ap_vld|              psum_114_load_1_out|       pointer|
+|psum_114_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_114_load_1_out|       pointer|
+|psum_113_load_1_out         |  out|   16|      ap_vld|              psum_113_load_1_out|       pointer|
+|psum_113_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_113_load_1_out|       pointer|
+|psum_112_load_1_out         |  out|   16|      ap_vld|              psum_112_load_1_out|       pointer|
+|psum_112_load_1_out_ap_vld  |  out|    1|      ap_vld|              psum_112_load_1_out|       pointer|
+|psum_111_load_out           |  out|   16|      ap_vld|                psum_111_load_out|       pointer|
+|psum_111_load_out_ap_vld    |  out|    1|      ap_vld|                psum_111_load_out|       pointer|
+|psum_110_load_out           |  out|   16|      ap_vld|                psum_110_load_out|       pointer|
+|psum_110_load_out_ap_vld    |  out|    1|      ap_vld|                psum_110_load_out|       pointer|
+|psum_109_load_out           |  out|   16|      ap_vld|                psum_109_load_out|       pointer|
+|psum_109_load_out_ap_vld    |  out|    1|      ap_vld|                psum_109_load_out|       pointer|
+|psum_108_load_out           |  out|   16|      ap_vld|                psum_108_load_out|       pointer|
+|psum_108_load_out_ap_vld    |  out|    1|      ap_vld|                psum_108_load_out|       pointer|
+|psum_107_load_out           |  out|   16|      ap_vld|                psum_107_load_out|       pointer|
+|psum_107_load_out_ap_vld    |  out|    1|      ap_vld|                psum_107_load_out|       pointer|
+|psum_106_load_out           |  out|   16|      ap_vld|                psum_106_load_out|       pointer|
+|psum_106_load_out_ap_vld    |  out|    1|      ap_vld|                psum_106_load_out|       pointer|
+|psum_105_load_out           |  out|   16|      ap_vld|                psum_105_load_out|       pointer|
+|psum_105_load_out_ap_vld    |  out|    1|      ap_vld|                psum_105_load_out|       pointer|
+|psum_104_load_out           |  out|   16|      ap_vld|                psum_104_load_out|       pointer|
+|psum_104_load_out_ap_vld    |  out|    1|      ap_vld|                psum_104_load_out|       pointer|
+|psum_103_load_out           |  out|   16|      ap_vld|                psum_103_load_out|       pointer|
+|psum_103_load_out_ap_vld    |  out|    1|      ap_vld|                psum_103_load_out|       pointer|
+|psum_102_load_out           |  out|   16|      ap_vld|                psum_102_load_out|       pointer|
+|psum_102_load_out_ap_vld    |  out|    1|      ap_vld|                psum_102_load_out|       pointer|
+|psum_101_load_out           |  out|   16|      ap_vld|                psum_101_load_out|       pointer|
+|psum_101_load_out_ap_vld    |  out|    1|      ap_vld|                psum_101_load_out|       pointer|
+|psum_100_load_out           |  out|   16|      ap_vld|                psum_100_load_out|       pointer|
+|psum_100_load_out_ap_vld    |  out|    1|      ap_vld|                psum_100_load_out|       pointer|
+|psum_99_load_out            |  out|   16|      ap_vld|                 psum_99_load_out|       pointer|
+|psum_99_load_out_ap_vld     |  out|    1|      ap_vld|                 psum_99_load_out|       pointer|
+|psum_98_load_out            |  out|   16|      ap_vld|                 psum_98_load_out|       pointer|
+|psum_98_load_out_ap_vld     |  out|    1|      ap_vld|                 psum_98_load_out|       pointer|
+|psum_97_load_out            |  out|   16|      ap_vld|                 psum_97_load_out|       pointer|
+|psum_97_load_out_ap_vld     |  out|    1|      ap_vld|                 psum_97_load_out|       pointer|
+|psum_96_load_out            |  out|   16|      ap_vld|                 psum_96_load_out|       pointer|
+|psum_96_load_out_ap_vld     |  out|    1|      ap_vld|                 psum_96_load_out|       pointer|
+|x_buf_address0              |  out|   11|   ap_memory|                            x_buf|         array|
+|x_buf_ce0                   |  out|    1|   ap_memory|                            x_buf|         array|
+|x_buf_q0                    |   in|  256|   ap_memory|                            x_buf|         array|
++----------------------------+-----+-----+------------+---------------------------------+--------------+
+

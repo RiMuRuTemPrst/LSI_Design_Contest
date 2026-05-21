@@ -1,0 +1,120 @@
+
+
+================================================================
+== Synthesis Summary Report of 'adder32'
+================================================================
++ General Information: 
+    * Date:           Sun Jan 11 15:44:11 2026
+    * Version:        2024.2 (Build 5238294 on Nov  8 2024)
+    * Project:        adder32
+    * Solution:       hls (Vivado IP Flow Target)
+    * Product family: zynquplus
+    * Target device:  xczu7ev-ffvc1156-2-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-----------+------+------+---------+--------+----------+---------+------+----------+------+----+-----------+-----------+-----+
+    |  Modules  | Issue|      | Latency | Latency| Iteration|         | Trip |          |      |    |           |           |     |
+    |  & Loops  | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined| BRAM | DSP|     FF    |    LUT    | URAM|
+    +-----------+------+------+---------+--------+----------+---------+------+----------+------+----+-----------+-----------+-----+
+    |+ adder32  |     -|  4.28|        0|   0.000|         -|        1|     -|        no|     -|   -|  150 (~0%)|  271 (~0%)|    -|
+    +-----------+------+------+---------+--------+----------+---------+------+----------+------+----+-----------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++------------+------------+---------------+--------+----------+
+| Interface  | Data Width | Address Width | Offset | Register |
++------------+------------+---------------+--------+----------+
+| s_axi_CTRL | 32         | 6             | 16     | 0        |
++------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface  | Register | Offset | Width | Access | Description                      | Bit Fields                                                           |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_CTRL | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_CTRL | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_CTRL | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_CTRL | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_CTRL | a        | 0x10   | 32    | W      | Data signal of a                 |                                                                      |
+| s_axi_CTRL | b        | 0x18   | 32    | W      | Data signal of b                 |                                                                      |
+| s_axi_CTRL | sum      | 0x20   | 32    | R      | Data signal of sum               |                                                                      |
+| s_axi_CTRL | sum_ctrl | 0x24   | 32    | R      | Control signal of sum            | 0=sum_ap_vld                                                         |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+--------------+
+| Argument | Direction | Datatype     |
++----------+-----------+--------------+
+| a        | in        | ap_uint<32>  |
+| b        | in        | ap_uint<32>  |
+| sum      | out       | ap_uint<32>* |
++----------+-----------+--------------+
+
+* SW-to-HW Mapping
++----------+--------------+----------+------------------------------------+
+| Argument | HW Interface | HW Type  | HW Info                            |
++----------+--------------+----------+------------------------------------+
+| a        | s_axi_CTRL   | register | name=a offset=0x10 range=32        |
+| b        | s_axi_CTRL   | register | name=b offset=0x18 range=32        |
+| sum      | s_axi_CTRL   | register | name=sum offset=0x20 range=32      |
+| sum      | s_axi_CTRL   | register | name=sum_ctrl offset=0x24 range=32 |
++----------+--------------+----------+------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++-----------+-----+--------+----------+-----+--------+---------+
+| Name      | DSP | Pragma | Variable | Op  | Impl   | Latency |
++-----------+-----+--------+----------+-----+--------+---------+
+| + adder32 | 0   |        |          |     |        |         |
+|   sum     |     |        | add_ln16 | add | fabric | 0       |
++-----------+-----+--------+----------+-----+--------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name           | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                |           |           |      |      |        |          |      |         | Banks            |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + adder32      |           |           | 0    | 0    |        |          |      |         |                  |
+|   CTRL_s_axi_U | interface | s_axilite |      |      |        |          |      |         |                  |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------+-----------------------------------+----------------------------------------------------+
+| Type      | Options                           | Location                                           |
++-----------+-----------------------------------+----------------------------------------------------+
+| interface | s_axilite port=a bundle=CTRL      | ../Adder32bit/PL/adder32.cpp:11 in adder32, a      |
+| interface | s_axilite port=b bundle=CTRL      | ../Adder32bit/PL/adder32.cpp:12 in adder32, b      |
+| interface | s_axilite port=sum bundle=CTRL    | ../Adder32bit/PL/adder32.cpp:13 in adder32, sum    |
+| interface | s_axilite port=return bundle=CTRL | ../Adder32bit/PL/adder32.cpp:14 in adder32, return |
++-----------+-----------------------------------+----------------------------------------------------+
+
+

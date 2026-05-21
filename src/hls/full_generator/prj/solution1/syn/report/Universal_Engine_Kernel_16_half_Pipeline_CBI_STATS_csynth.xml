@@ -1,0 +1,3436 @@
+<profile>
+
+<ReportVersion>
+<Version>2024.2</Version>
+</ReportVersion>
+
+<UserAssignments>
+<unit>ns</unit>
+<ProductFamily>zynquplus</ProductFamily>
+<Part>xczu7ev-ffvc1156-2-e</Part>
+<TopModelName>Universal_Engine_Kernel_16_half_Pipeline_CBI_STATS</TopModelName>
+<TargetClockPeriod>3.33</TargetClockPeriod>
+<ClockUncertainty>0.90</ClockUncertainty>
+<FlowTarget>vitis</FlowTarget>
+</UserAssignments>
+
+<PerformanceEstimates>
+<PipelineType>loop auto-rewind stp (delay=0 cycles)</PipelineType>
+<SummaryOfTimingAnalysis>
+<unit>ns</unit>
+<EstimatedClockPeriod>2.433</EstimatedClockPeriod>
+</SummaryOfTimingAnalysis>
+<SummaryOfOverallLatency>
+<unit>clock cycles</unit>
+<Best-caseLatency>104</Best-caseLatency>
+<Average-caseLatency>104</Average-caseLatency>
+<Worst-caseLatency>104</Worst-caseLatency>
+<Best-caseRealTimeLatency>0.347 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>0.347 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>0.347 us</Worst-caseRealTimeLatency>
+<Interval-min>15</Interval-min>
+<Interval-max>15</Interval-max>
+</SummaryOfOverallLatency>
+<SummaryOfLoopLatency>
+<CBI_STATS>
+<Slack>2.43</Slack>
+<TripCount>14</TripCount>
+<Latency>102</Latency>
+<AbsoluteTimeLatency>339</AbsoluteTimeLatency>
+<PipelineII>1</PipelineII>
+<PipelineDepth>90</PipelineDepth>
+<InstanceList>
+</InstanceList>
+</CBI_STATS>
+</SummaryOfLoopLatency>
+<SummaryOfViolations>
+<IssueType>-</IssueType>
+<ViolationType>-</ViolationType>
+<SourceLocation>../fusion_core/gen/Hls_Layers_Fusion.tpp:192</SourceLocation>
+<SummaryOfLoopViolations>
+<CBI_STATS>
+<Name>CBI_STATS</Name>
+<IssueType>-</IssueType>
+<ViolationType>-</ViolationType>
+<SourceLocation>../fusion_core/gen/Hls_Layers_Fusion.tpp:192</SourceLocation>
+</CBI_STATS>
+</SummaryOfLoopViolations>
+</SummaryOfViolations>
+</PerformanceEstimates>
+
+<AreaEstimates>
+<Resources>
+<FF>3294</FF>
+<LUT>856</LUT>
+<BRAM_18K>0</BRAM_18K>
+<DSP>0</DSP>
+<URAM>0</URAM>
+</Resources>
+<AvailableResources>
+<BRAM_18K>624</BRAM_18K>
+<DSP>1728</DSP>
+<FF>460800</FF>
+<LUT>230400</LUT>
+<URAM>96</URAM>
+</AvailableResources>
+</AreaEstimates>
+
+<InterfaceSummary>
+<RtlPorts>
+<name>ap_clk</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_rst</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_start</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_done</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_idle</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_ready</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1454_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1454_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1454_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1454_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1458_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1458_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1458_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1458_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1462_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1462_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1462_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1462_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1466_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1466_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1466_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1466_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1470_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1470_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1470_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1470_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1474_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1474_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1474_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1474_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1478_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1478_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1478_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1478_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1482_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1482_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1482_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1482_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1486_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1486_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1486_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1486_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1490_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1490_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1490_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1490_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1494_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1494_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1494_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1494_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1498_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1498_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1498_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1498_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1502_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1502_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1502_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1502_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1506_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1506_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1506_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1506_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1510_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1510_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1510_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1510_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1514_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1514_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1514_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1514_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1518_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1518_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1518_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1518_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1522_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1522_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1522_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1522_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1526_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1526_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1526_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1526_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1530_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1530_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1530_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1530_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1534_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1534_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1534_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1534_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1538_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1538_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1538_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1538_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1542_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1542_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1542_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1542_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1546_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1546_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1546_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1546_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1550_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1550_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1550_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1550_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1554_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1554_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1554_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1554_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1558_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1558_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1558_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1558_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1562_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1562_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1562_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1562_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1566_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1566_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1566_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1566_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1570_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1570_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1570_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1570_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1574_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1574_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1574_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1574_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1578_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1578_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1578_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1578_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1582_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1582_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1582_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1582_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1586_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1586_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1586_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1586_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1590_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1590_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1590_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1590_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1594_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1594_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1594_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1594_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1598_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1598_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1598_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1598_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1602_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1602_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1602_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1602_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1606_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1606_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1606_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1606_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1610_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1610_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1610_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1610_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1614_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1614_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1614_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1614_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1618_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1618_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1618_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1618_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1622_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1622_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1622_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1622_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1626_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1626_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1626_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1626_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1630_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1630_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1630_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1630_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1634_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1634_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1634_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1634_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1638_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1638_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1638_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1638_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1642_p_din0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1642_p_din1</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1642_p_dout0</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_1642_p_ce</name>
+<Object>Universal_Engine_Kernel&lt;16, half&gt;_Pipeline_CBI_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWVALID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWREADY</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWADDR</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>64</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWLEN</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>32</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWSIZE</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>3</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWBURST</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>2</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWLOCK</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>2</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWCACHE</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWPROT</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>3</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWQOS</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWREGION</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_AWUSER</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_WVALID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_WREADY</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_WDATA</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>256</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_WSTRB</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>32</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_WLAST</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_WID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_WUSER</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARVALID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARREADY</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARADDR</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>64</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARLEN</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>32</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARSIZE</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>3</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARBURST</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>2</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARLOCK</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>2</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARCACHE</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARPROT</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>3</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARQOS</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARREGION</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_ARUSER</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_RVALID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_RREADY</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_RDATA</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>256</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_RLAST</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_RID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_RFIFONUM</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>11</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_RUSER</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_RRESP</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>2</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_BVALID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_BREADY</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_BRESP</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>2</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_BID</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>m_axi_gmem_x_0_BUSER</name>
+<Object>gmem_x</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>m_axi</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>unknown</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>sext_ln192</name>
+<Object>sext_ln192</Object>
+<Type>scalar</Type>
+<Scope></Scope>
+<IOProtocol>ap_none</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>59</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>pix_address0</name>
+<Object>pix</Object>
+<Type>array</Type>
+<Scope></Scope>
+<IOProtocol>ap_memory</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>address</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>pix_ce0</name>
+<Object>pix</Object>
+<Type>array</Type>
+<Scope></Scope>
+<IOProtocol>ap_memory</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>pix_we0</name>
+<Object>pix</Object>
+<Type>array</Type>
+<Scope></Scope>
+<IOProtocol>ap_memory</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>pix_d0</name>
+<Object>pix</Object>
+<Type>array</Type>
+<Scope></Scope>
+<IOProtocol>ap_memory</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>256</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_13901248_out</name>
+<Object>mux_case_13901248_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_13901248_out_ap_vld</name>
+<Object>mux_case_13901248_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_12881245_out</name>
+<Object>mux_case_12881245_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_12881245_out_ap_vld</name>
+<Object>mux_case_12881245_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_11861242_out</name>
+<Object>mux_case_11861242_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_11861242_out_ap_vld</name>
+<Object>mux_case_11861242_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_10841239_out</name>
+<Object>mux_case_10841239_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_10841239_out_ap_vld</name>
+<Object>mux_case_10841239_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_9821236_out</name>
+<Object>mux_case_9821236_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_9821236_out_ap_vld</name>
+<Object>mux_case_9821236_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_8801233_out</name>
+<Object>mux_case_8801233_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_8801233_out_ap_vld</name>
+<Object>mux_case_8801233_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_7781230_out</name>
+<Object>mux_case_7781230_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_7781230_out_ap_vld</name>
+<Object>mux_case_7781230_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_6761227_out</name>
+<Object>mux_case_6761227_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_6761227_out_ap_vld</name>
+<Object>mux_case_6761227_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_5741224_out</name>
+<Object>mux_case_5741224_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_5741224_out_ap_vld</name>
+<Object>mux_case_5741224_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_4721221_out</name>
+<Object>mux_case_4721221_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_4721221_out_ap_vld</name>
+<Object>mux_case_4721221_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_3701218_out</name>
+<Object>mux_case_3701218_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_3701218_out_ap_vld</name>
+<Object>mux_case_3701218_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_2681215_out</name>
+<Object>mux_case_2681215_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_2681215_out_ap_vld</name>
+<Object>mux_case_2681215_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_1661212_out</name>
+<Object>mux_case_1661212_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_1661212_out_ap_vld</name>
+<Object>mux_case_1661212_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_0641209_out</name>
+<Object>mux_case_0641209_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_0641209_out_ap_vld</name>
+<Object>mux_case_0641209_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_131206_out</name>
+<Object>mux_case_131206_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_131206_out_ap_vld</name>
+<Object>mux_case_131206_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_121203_out</name>
+<Object>mux_case_121203_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_121203_out_ap_vld</name>
+<Object>mux_case_121203_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_111200_out</name>
+<Object>mux_case_111200_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_111200_out_ap_vld</name>
+<Object>mux_case_111200_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_101197_out</name>
+<Object>mux_case_101197_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_101197_out_ap_vld</name>
+<Object>mux_case_101197_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_91194_out</name>
+<Object>mux_case_91194_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_91194_out_ap_vld</name>
+<Object>mux_case_91194_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_81191_out</name>
+<Object>mux_case_81191_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_81191_out_ap_vld</name>
+<Object>mux_case_81191_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_71188_out</name>
+<Object>mux_case_71188_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_71188_out_ap_vld</name>
+<Object>mux_case_71188_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_61185_out</name>
+<Object>mux_case_61185_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_61185_out_ap_vld</name>
+<Object>mux_case_61185_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_51182_out</name>
+<Object>mux_case_51182_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_51182_out_ap_vld</name>
+<Object>mux_case_51182_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_41179_out</name>
+<Object>mux_case_41179_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_41179_out_ap_vld</name>
+<Object>mux_case_41179_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_31176_out</name>
+<Object>mux_case_31176_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_31176_out_ap_vld</name>
+<Object>mux_case_31176_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_21173_out</name>
+<Object>mux_case_21173_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_21173_out_ap_vld</name>
+<Object>mux_case_21173_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_11170_out</name>
+<Object>mux_case_11170_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_11170_out_ap_vld</name>
+<Object>mux_case_11170_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_01167_out</name>
+<Object>mux_case_01167_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>mux_case_01167_out_ap_vld</name>
+<Object>mux_case_01167_out</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+</InterfaceSummary>
+
+</profile>
