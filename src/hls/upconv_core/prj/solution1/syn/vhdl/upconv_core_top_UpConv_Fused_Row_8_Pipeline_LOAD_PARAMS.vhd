@@ -62,7 +62,7 @@ port (
     m_axi_gmem_param_0_BRESP : IN STD_LOGIC_VECTOR (1 downto 0);
     m_axi_gmem_param_0_BID : IN STD_LOGIC_VECTOR (0 downto 0);
     m_axi_gmem_param_0_BUSER : IN STD_LOGIC_VECTOR (0 downto 0);
-    trunc_ln2 : IN STD_LOGIC_VECTOR (4 downto 0);
+    trunc_ln : IN STD_LOGIC_VECTOR (4 downto 0);
     b_buf_address0 : OUT STD_LOGIC_VECTOR (4 downto 0);
     b_buf_ce0 : OUT STD_LOGIC;
     b_buf_we0 : OUT STD_LOGIC;
@@ -1659,7 +1659,7 @@ begin
         end if; 
     end process;
 
-    icmp_ln199_fu_195_p2 <= "1" when (ap_sig_allocacmp_i_1 = trunc_ln2) else "0";
+    icmp_ln199_fu_195_p2 <= "1" when (ap_sig_allocacmp_i_1 = trunc_ln) else "0";
 
     m_axi_gmem_param_0_ARADDR_assign_proc : process(ap_CS_fsm_pp0_stage0, ap_enable_reg_pp0_iter1, ap_CS_fsm_pp0_stage2, icmp_ln199_reg_286, ap_block_pp0_stage2_subdone_grp2_done_reg, ap_enable_reg_pp0_iter0_reg, ap_CS_fsm_pp0_stage1, ap_block_pp0_stage1_subdone_grp1_done_reg, ap_block_pp0_stage0_subdone_grp3_done_reg, ap_block_pp0_stage1_11001_grp1, ap_block_pp0_stage2_11001_grp2, ap_block_pp0_stage0_11001_grp3, sext_ln202_fu_222_p1, sext_ln203_fu_240_p1, sext_ln204_fu_250_p1)
     begin

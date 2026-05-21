@@ -191,6 +191,25 @@ Chạy full pipeline Fusion→UCB→Conv77 qua `test_full.cpp`. CSIM mất ~7 gi
 > Cập nhật 2026-05-13: Verified latency range sau khi inline core function và fix tripcounts.
 > UCB_2 re-synthesis sau fix N_TILES bug (16→15): min tăng nhẹ do HLS scheduling, max giảm 52% (1.13s→546ms), timing cải thiện (2.719→2.433ns).
 
+### UpConv Core — upconv_core_top (post BIAS_STATS rotating-acc fix, 2026-05-21) ✅
+| Resource | BRAM_18K | DSP | FF | LUT | URAM | Timing |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| upconv_core_top (PEs=8) | 204 | 572 | 59,848 | 50,112 | 36 | **3.239 ns ✅** |
+
+**Latency (all 4 UCBs chained):** min=367,693 cy (1.226 ms), max=5,738,425,982 cy (19.1 sec)
+
+**PIXEL_NORM per UpConv_Fused_Row call:** min=10,496 cy, max=198,144 cy (iter_lat=328~774, trip=32~256)
+
+| Loop | Before fix (II≈7) | After fix (II=1) | Speedup |
+| :--- | :--- | :--- | :--- |
+| BIAS_STATS UCB_0 (C_OUT=480) | 3,379 cy | 507 cy | **6.7×** |
+| BIAS_STATS UCB_3 (C_OUT=60)  | 439 cy   | 87 cy  | **5.0×** |
+| PIXEL_NORM UCB_0 (W_OUT=32)  | 113,792 cy | ~24,768 cy | **4.6×** |
+| PIXEL_NORM UCB_3 (W_OUT=256) | 151,040 cy | ~83,968 cy | **1.8×** |
+
+> CSIM ALL PASS sau fix: UCB_0 max_err=0.00781, UCB_1 0.01367, UCB_2 0.02148, UCB_3 0.01563 (0 mismatch)
+> Fix: `sum_rot[8]`/`sumsq_rot[8]` rotating accumulator, `acc_idx = c & 7`, depth=8 ≥ FP32 adder latency → II=1.
+
 ### Conv77 (SIMD+PE, từ full_generator integrated synthesis) ✅ UPDATED
 | Block | Cycles | Latency @ 300 MHz |
 | :--- | :--- | :--- |

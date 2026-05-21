@@ -22,14 +22,14 @@
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>634957</Best-caseLatency>
-<Average-caseLatency>97970577</Average-caseLatency>
-<Worst-caseLatency>5920689789</Worst-caseLatency>
-<Best-caseRealTimeLatency>2.116 ms</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>0.327 sec</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>19.734 sec</Worst-caseRealTimeLatency>
-<Interval-min>634958</Interval-min>
-<Interval-max>5920689790</Interval-max>
+<Best-caseLatency>367693</Best-caseLatency>
+<Average-caseLatency>79955217</Average-caseLatency>
+<Worst-caseLatency>5738425981</Worst-caseLatency>
+<Best-caseRealTimeLatency>1.226 ms</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>0.266 sec</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>19.126 sec</Worst-caseRealTimeLatency>
+<Interval-min>367694</Interval-min>
+<Interval-max>5738425982</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <ROW_LOOP>
@@ -42,20 +42,20 @@
 </TripCount>
 <Latency>
 <range>
-<min>595275</min>
-<max>5874434403</max>
+<min>344715</min>
+<max>5693594531</max>
 </range>
 </Latency>
 <AbsoluteTimeLatency>
 <range>
-<min>1984051</min>
-<max>19579489540</max>
+<min>1148935</min>
+<max>18976750256</max>
 </range>
 </AbsoluteTimeLatency>
 <IterationLatency>
 <range>
-<min>39685</min>
-<max>46255389</max>
+<min>22981</min>
+<max>44831453</max>
 </range>
 </IterationLatency>
 <InstanceList>
@@ -65,13 +65,13 @@
 <SummaryOfViolations>
 <IssueType>Timing Violation</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/upconv_core_top.cpp:68</SourceLocation>
+<SourceLocation>gen/upconv_core_top.cpp:67</SourceLocation>
 <SummaryOfLoopViolations>
 <ROW_LOOP>
 <Name>ROW_LOOP</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/upconv_core_top.cpp:79</SourceLocation>
+<SourceLocation>gen/upconv_core_top.cpp:78</SourceLocation>
 </ROW_LOOP>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -80,10 +80,10 @@
 <AreaEstimates>
 <Resources>
 <BRAM_18K>204</BRAM_18K>
-<DSP>570</DSP>
-<FF>57917</FF>
-<LUT>48761</LUT>
-<URAM>48</URAM>
+<DSP>572</DSP>
+<FF>59848</FF>
+<LUT>50112</LUT>
+<URAM>36</URAM>
 </Resources>
 <AvailableResources>
 <BRAM_18K>624</BRAM_18K>

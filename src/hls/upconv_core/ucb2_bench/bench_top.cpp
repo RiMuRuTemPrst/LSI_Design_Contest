@@ -1,15 +1,6 @@
-#pragma once
+#include "upconv_core.h"
 #include "Core.h"
-
-#if !defined(__SYNTHESIS__)
-  #include <cassert>
-  #include <cmath>
-  #include <cstdio>
-#endif
-#if defined(__SYNTHESIS__)
-  #include <hls_math.h>
-#endif
-#include <cstring>
+#include <hls_math.h>
 
 // ============================================================
 // SHARED HELPER FUNCTIONS
@@ -60,12 +51,8 @@ static inline float my_sqrt_f(float x) {
 
 #endif // HLS_HALF_HELPERS_DEFINED
 
-// ============================================================
-// UPCONV FUSED ROW (Iteration 11 - Rotating Psum for II=1)
-// ============================================================
-
 template<int PEs>
-void UpConv_Fused_Row(
+void UpConv_Fused_Row_Bench(
     data_256_t*       x_buf,    // Ping-pong [2][W_IN][CI_WORDS]
     const data_256_t* W_ptr,
     const data_256_t* B_ptr,
@@ -76,7 +63,7 @@ void UpConv_Fused_Row(
     int H_IN, int W_IN, int C_IN, int C_OUT,
     int ho
 ) {
-#pragma HLS INLINE off
+#pragma HLS INLINE
 
     const int S        = 2;
     const int PAD      = 1;
@@ -98,7 +85,7 @@ void UpConv_Fused_Row(
 
     RESET_ROW_ACC: for (int wo = 0; wo < W_OUT; wo++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=32 max=256 avg=120
+#pragma HLS LOOP_TRIPCOUNT min=128 max=128 avg=128
         for (int c = 0; c < 480; c++) {
 #pragma HLS UNROLL
             row_acc[wo][c] = 0;
@@ -111,24 +98,25 @@ void UpConv_Fused_Row(
 #pragma HLS ARRAY_PARTITION variable=w_local complete dim=1
 
     TILE_LOOP: for (int tile = 0; tile < N_TILES; tile++) {
-#pragma HLS LOOP_TRIPCOUNT min=8 max=60 avg=29
+#pragma HLS LOOP_TRIPCOUNT min=15 max=15 avg=15
         int co_base = tile * PEs;
 
+        // Preload weights for 16 PEs and all 9 kernel positions for this tile
         PRELOAD_W: for (int tc = 0; tc < PEs; tc++) {
             int co = co_base + tc;
             if (co < C_OUT) {
-                int k_cnt = 0, ci_cnt = 0;
-                W_FLAT: for (int kci = 0; kci < 9 * CI_WORDS; kci++) {
+                for (int k = 0; k < 9; k++) {
+                    for (int ci_w = 0; ci_w < CI_WORDS; ci_w++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=72 max=540 avg=252
-                    w_local[tc][k_cnt * 60 + ci_cnt] = W_ptr[co * 9 * CI_WORDS + kci];
-                    ci_cnt++;
-                    if (ci_cnt >= CI_WORDS) { ci_cnt = 0; k_cnt++; }
+#pragma HLS LOOP_TRIPCOUNT min=15 max=15 avg=15
+                        w_local[tc][k * 60 + ci_w] = W_ptr[(co * 9 + k) * CI_WORDS + ci_w];
+                    }
                 }
             }
         }
 
         KH_LOOP: for (int kh = 0; kh < 3; kh++) {
+#pragma HLS LOOP_TRIPCOUNT min=1 max=2
             int hpk = ho + PAD - kh;
             if (hpk < 0 || hpk % S != 0) continue;
             int hi = hpk / S;
@@ -136,10 +124,11 @@ void UpConv_Fused_Row(
             int x_row = hi % 2;
 
             KW_LOOP: for (int kw = 0; kw < 3; kw++) {
+#pragma HLS LOOP_TRIPCOUNT min=2 max=3
                 int k = kh * 3 + kw;
 
                 WI_LOOP: for (int wi = 0; wi < W_IN; wi++) {
-#pragma HLS LOOP_TRIPCOUNT min=16 max=128 avg=60
+#pragma HLS LOOP_TRIPCOUNT min=64 max=64 avg=64
                     int wo = wi * S + kw - PAD;
                     if (wo < 0 || wo >= W_OUT) continue;
 
@@ -158,7 +147,7 @@ void UpConv_Fused_Row(
 
                     CI_LOOP: for (int ci_w = 0; ci_w < CI_WORDS; ci_w++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=8 max=60 avg=28
+#pragma HLS LOOP_TRIPCOUNT min=15 max=15 avg=15
 #pragma HLS DEPENDENCE variable=psum type=inter false
 
                         int acc_idx = ci_w & 3;
@@ -198,7 +187,7 @@ void UpConv_Fused_Row(
 
     LOAD_PARAMS: for (int i = 0; i < C_WORDS_OUT; i++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=4 max=30 avg=14
+#pragma HLS LOOP_TRIPCOUNT min=8 max=8 avg=8
         b_buf[i]  = B_ptr[i];
         g_buf[i]  = G_ptr[i];
         be_buf[i] = BE_ptr[i];
@@ -206,32 +195,18 @@ void UpConv_Fused_Row(
 
     PIXEL_NORM: for (int wo = 0; wo < W_OUT; wo++) {
 #pragma HLS PIPELINE off
-#pragma HLS LOOP_TRIPCOUNT min=32 max=256 avg=120
-        // Rotating accumulator depth=8 >= FP32 adder latency → II=1
-        float sum_rot[8]   = {0,0,0,0,0,0,0,0};
-        float sumsq_rot[8] = {0,0,0,0,0,0,0,0};
-#pragma HLS ARRAY_PARTITION variable=sum_rot   complete
-#pragma HLS ARRAY_PARTITION variable=sumsq_rot complete
+#pragma HLS LOOP_TRIPCOUNT min=128 max=128 avg=128
+        float sum = 0, sumsq = 0;
 
         BIAS_STATS: for (int c = 0; c < C_OUT; c++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=60 max=480 avg=225
-#pragma HLS DEPENDENCE variable=sum_rot   type=inter false
-#pragma HLS DEPENDENCE variable=sumsq_rot type=inter false
-            int acc_idx = c & 7;
+#pragma HLS LOOP_TRIPCOUNT min=120 max=120 avg=120
             data_t bias = bits_to_half<data_t>(b_buf[c/16].range(16*(c%16)+15, 16*(c%16)));
             data_t val = row_acc[wo][c] + bias;
             row_acc[wo][c] = val;
             float fv = (float)val;
-            sum_rot[acc_idx]   += fv;
-            sumsq_rot[acc_idx] += fv * fv;
-        }
-
-        float sum = 0, sumsq = 0;
-        for (int r = 0; r < 8; r++) {
-#pragma HLS UNROLL
-            sum   += sum_rot[r];
-            sumsq += sumsq_rot[r];
+            sum   += fv;
+            sumsq += fv * fv;
         }
 
         float mean    = sum / (float)C_OUT;
@@ -240,7 +215,7 @@ void UpConv_Fused_Row(
 
         NORM_WRITE: for (int cw = 0; cw < C_WORDS_OUT; cw++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=4 max=30 avg=14
+#pragma HLS LOOP_TRIPCOUNT min=8 max=8 avg=8
             data_256_t out_word;
             for (int l = 0; l < 16; l++) {
 #pragma HLS UNROLL
@@ -256,3 +231,69 @@ void UpConv_Fused_Row(
         }
     }
 }
+
+extern "C" {
+
+void ucb2_bench_top(
+    const data_256_t* X,
+    const data_256_t* W,
+    const data_256_t* B,
+    const data_256_t* G,
+    const data_256_t* BE,
+    data_256_t*       Y,
+    data_t            epsilon
+) {
+#pragma HLS INTERFACE m_axi port=X   offset=slave bundle=gmem_in    max_read_burst_length=64
+#pragma HLS INTERFACE m_axi port=W   offset=slave bundle=gmem_weight max_read_burst_length=64
+#pragma HLS INTERFACE m_axi port=B   offset=slave bundle=gmem_param  max_read_burst_length=64
+#pragma HLS INTERFACE m_axi port=G   offset=slave bundle=gmem_param  max_read_burst_length=64
+#pragma HLS INTERFACE m_axi port=BE  offset=slave bundle=gmem_param  max_read_burst_length=64
+#pragma HLS INTERFACE m_axi port=Y   offset=slave bundle=gmem_out    max_write_burst_length=64
+#pragma HLS INTERFACE s_axilite port=X       bundle=control
+#pragma HLS INTERFACE s_axilite port=W       bundle=control
+#pragma HLS INTERFACE s_axilite port=B       bundle=control
+#pragma HLS INTERFACE s_axilite port=G       bundle=control
+#pragma HLS INTERFACE s_axilite port=BE      bundle=control
+#pragma HLS INTERFACE s_axilite port=Y       bundle=control
+#pragma HLS INTERFACE s_axilite port=epsilon bundle=control
+#pragma HLS INTERFACE s_axilite port=return  bundle=control
+
+    const int PEs      = 8;
+    const int H_IN     = 64;
+    const int W_IN     = 64;
+    const int C_IN     = 240;
+    const int C_OUT    = 120;
+    const int CI_WORDS = 15;  // (C_IN + 15) / 16
+
+    static data_256_t x_buf[2 * 64 * 15];  // 1920 elements
+#pragma HLS BIND_STORAGE variable=x_buf type=ram_t2p impl=uram
+
+    // Load row 0
+    LOAD_ROW0: for (int wi = 0; wi < W_IN; wi++) {
+#pragma HLS LOOP_TRIPCOUNT min=64 max=64 avg=64
+        for (int ciw = 0; ciw < CI_WORDS; ciw++) {
+#pragma HLS PIPELINE II=1
+#pragma HLS LOOP_TRIPCOUNT min=15 max=15 avg=15
+            x_buf[(0 * W_IN + wi) * CI_WORDS + ciw] = X[(0 * W_IN + wi) * CI_WORDS + ciw];
+        }
+    }
+    UpConv_Fused_Row_Bench<PEs>(x_buf, W, B, G, BE, Y, epsilon, H_IN, W_IN, C_IN, C_OUT, 0);
+
+    ROW_LOOP: for (int hi = 1; hi < H_IN; hi++) {
+#pragma HLS LOOP_TRIPCOUNT min=63 max=63 avg=63
+        int slot = hi % 2;
+        LOAD_ROW: for (int wi = 0; wi < W_IN; wi++) {
+#pragma HLS LOOP_TRIPCOUNT min=64 max=64 avg=64
+            for (int ciw = 0; ciw < CI_WORDS; ciw++) {
+#pragma HLS PIPELINE II=1
+#pragma HLS LOOP_TRIPCOUNT min=15 max=15 avg=15
+                x_buf[(slot * W_IN + wi) * CI_WORDS + ciw] = X[(hi * W_IN + wi) * CI_WORDS + ciw];
+            }
+        }
+        UpConv_Fused_Row_Bench<PEs>(x_buf, W, B, G, BE, Y, epsilon, H_IN, W_IN, C_IN, C_OUT, 2*hi-1);
+        UpConv_Fused_Row_Bench<PEs>(x_buf, W, B, G, BE, Y, epsilon, H_IN, W_IN, C_IN, C_OUT, 2*hi);
+    }
+    UpConv_Fused_Row_Bench<PEs>(x_buf, W, B, G, BE, Y, epsilon, H_IN, W_IN, C_IN, C_OUT, 2*H_IN-1);
+}
+
+} // extern "C"

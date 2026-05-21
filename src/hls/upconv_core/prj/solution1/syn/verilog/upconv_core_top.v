@@ -6,7 +6,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="upconv_core_top_upconv_core_top,hls_ip_2024_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=3.333000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.239000,HLS_SYN_LAT=97970577,HLS_SYN_TPT=none,HLS_SYN_MEM=204,HLS_SYN_DSP=0,HLS_SYN_FF=57917,HLS_SYN_LUT=48761,HLS_VERSION=2024_2}" *)
+(* CORE_GENERATION_INFO="upconv_core_top_upconv_core_top,hls_ip_2024_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=3.333000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.239000,HLS_SYN_LAT=79955217,HLS_SYN_TPT=none,HLS_SYN_MEM=204,HLS_SYN_DSP=0,HLS_SYN_FF=59848,HLS_SYN_LUT=50112,HLS_VERSION=2024_2}" *)
 
 module upconv_core_top (
         ap_clk,
@@ -648,7 +648,7 @@ wire   [63:0] BE;
 wire   [63:0] Y;
 wire   [15:0] epsilon;
 wire   [31:0] mode;
-reg   [13:0] x_buf_address0;
+reg   [10:0] x_buf_address0;
 reg    x_buf_ce0;
 reg    x_buf_we0;
 reg   [255:0] x_buf_d0;
@@ -671,13 +671,13 @@ reg   [63:0] G_read_reg_682;
 reg   [63:0] B_read_reg_687;
 reg   [63:0] W_read_reg_692;
 reg   [63:0] X_read_reg_697;
-wire   [13:0] mul_ln57_fu_473_p2;
-reg   [13:0] mul_ln57_reg_702;
-wire   [12:0] trunc_ln57_fu_479_p1;
-reg   [12:0] trunc_ln57_reg_708;
+wire   [13:0] mul_ln56_fu_473_p2;
+reg   [13:0] mul_ln56_reg_702;
+wire   [12:0] trunc_ln56_fu_479_p1;
+reg   [12:0] trunc_ln56_reg_708;
 reg   [58:0] trunc_ln_reg_714;
-wire   [63:0] zext_ln57_2_fu_493_p1;
-reg   [63:0] zext_ln57_2_reg_720;
+wire   [63:0] zext_ln56_2_fu_493_p1;
+reg   [63:0] zext_ln56_2_reg_720;
 wire    gmem_in_0_AWREADY;
 wire    gmem_in_0_WREADY;
 reg    gmem_in_0_ARVALID;
@@ -691,65 +691,65 @@ wire   [10:0] gmem_in_0_RFIFONUM;
 wire    gmem_in_0_BVALID;
 reg   [15:0] epsilon_read_reg_731;
 wire    ap_CS_fsm_state75;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_done;
-wire   [19:0] zext_ln57_3_fu_507_p1;
-reg   [19:0] zext_ln57_3_reg_736;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_done;
+wire   [19:0] zext_ln56_3_fu_507_p1;
+reg   [19:0] zext_ln56_3_reg_736;
 wire    ap_CS_fsm_state77;
 wire    grp_UpConv_Fused_Row_8_s_fu_300_ap_done;
 reg   [7:0] hi_1_reg_741;
 wire    ap_CS_fsm_state78;
-wire   [7:0] add_ln84_fu_552_p2;
-reg   [7:0] add_ln84_reg_755;
+wire   [7:0] add_ln83_fu_552_p2;
+reg   [7:0] add_ln83_reg_755;
 reg   [58:0] trunc_ln1_reg_760;
 wire    ap_CS_fsm_state81;
 wire   [7:0] mul50_fu_605_p2;
 reg   [7:0] mul50_reg_771;
 wire    ap_CS_fsm_state153;
-wire   [7:0] shl_ln79_fu_611_p2;
-reg   [7:0] shl_ln79_reg_776;
+wire   [7:0] shl_ln78_fu_611_p2;
+reg   [7:0] shl_ln78_reg_776;
 wire    ap_CS_fsm_state154;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_done;
-wire   [7:0] add_ln79_fu_616_p2;
-reg   [7:0] add_ln79_reg_781;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_start;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_idle;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_ready;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWVALID;
-wire   [63:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWADDR;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWID;
-wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWLEN;
-wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWSIZE;
-wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWBURST;
-wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWLOCK;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWCACHE;
-wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWPROT;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWQOS;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWREGION;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWUSER;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WVALID;
-wire   [255:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WDATA;
-wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WSTRB;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WLAST;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WID;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WUSER;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARVALID;
-wire   [63:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARADDR;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARID;
-wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARLEN;
-wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARSIZE;
-wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARBURST;
-wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARLOCK;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARCACHE;
-wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARPROT;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARQOS;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARREGION;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARUSER;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_RREADY;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_BREADY;
-wire   [13:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_address0;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_ce0;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_we0;
-wire   [255:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_d0;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_done;
+wire   [7:0] add_ln78_fu_616_p2;
+reg   [7:0] add_ln78_reg_781;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_start;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_idle;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_ready;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWVALID;
+wire   [63:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWADDR;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWID;
+wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWLEN;
+wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWSIZE;
+wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWBURST;
+wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWLOCK;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWCACHE;
+wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWPROT;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWQOS;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWREGION;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWUSER;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WVALID;
+wire   [255:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WDATA;
+wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WSTRB;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WLAST;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WID;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WUSER;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARVALID;
+wire   [63:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARADDR;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARID;
+wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARLEN;
+wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARSIZE;
+wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARBURST;
+wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARLOCK;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARCACHE;
+wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARPROT;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARQOS;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARREGION;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARUSER;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_RREADY;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_BREADY;
+wire   [10:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_address0;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_ce0;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_we0;
+wire   [255:0] grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_d0;
 wire    grp_UpConv_Fused_Row_8_s_fu_300_ap_start;
 wire    grp_UpConv_Fused_Row_8_s_fu_300_ap_idle;
 wire    grp_UpConv_Fused_Row_8_s_fu_300_ap_ready;
@@ -850,47 +850,47 @@ wire   [0:0] grp_UpConv_Fused_Row_8_s_fu_300_m_axi_gmem_out_0_ARUSER;
 wire    grp_UpConv_Fused_Row_8_s_fu_300_m_axi_gmem_out_0_RREADY;
 wire    grp_UpConv_Fused_Row_8_s_fu_300_m_axi_gmem_out_0_BREADY;
 reg   [7:0] grp_UpConv_Fused_Row_8_s_fu_300_ho;
-wire   [13:0] grp_UpConv_Fused_Row_8_s_fu_300_x_buf_address0;
+wire   [10:0] grp_UpConv_Fused_Row_8_s_fu_300_x_buf_address0;
 wire    grp_UpConv_Fused_Row_8_s_fu_300_x_buf_ce0;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_start;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_idle;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_ready;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWVALID;
-wire   [63:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWADDR;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWID;
-wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWLEN;
-wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWSIZE;
-wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWBURST;
-wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWLOCK;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWCACHE;
-wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWPROT;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWQOS;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWREGION;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWUSER;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WVALID;
-wire   [255:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WDATA;
-wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WSTRB;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WLAST;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WID;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WUSER;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARVALID;
-wire   [63:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARADDR;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARID;
-wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARLEN;
-wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARSIZE;
-wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARBURST;
-wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARLOCK;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARCACHE;
-wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARPROT;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARQOS;
-wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARREGION;
-wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARUSER;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_RREADY;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_BREADY;
-wire   [13:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_address0;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_ce0;
-wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_we0;
-wire   [255:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_d0;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_start;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_idle;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_ready;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWVALID;
+wire   [63:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWADDR;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWID;
+wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWLEN;
+wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWSIZE;
+wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWBURST;
+wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWLOCK;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWCACHE;
+wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWPROT;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWQOS;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWREGION;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWUSER;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WVALID;
+wire   [255:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WDATA;
+wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WSTRB;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WLAST;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WID;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WUSER;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARVALID;
+wire   [63:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARADDR;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARID;
+wire   [31:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARLEN;
+wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARSIZE;
+wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARBURST;
+wire   [1:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARLOCK;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARCACHE;
+wire   [2:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARPROT;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARQOS;
+wire   [3:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARREGION;
+wire   [0:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARUSER;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_RREADY;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_BREADY;
+wire   [10:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_address0;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_ce0;
+wire    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_we0;
+wire   [255:0] grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_d0;
 reg    gmem_out_0_AWVALID;
 wire    gmem_out_0_AWREADY;
 reg    gmem_out_0_WVALID;
@@ -919,7 +919,7 @@ reg    gmem_weight_0_RREADY;
 wire   [255:0] gmem_weight_0_RDATA;
 wire   [10:0] gmem_weight_0_RFIFONUM;
 wire    gmem_weight_0_BVALID;
-reg    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_start_reg;
+reg    grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_start_reg;
 wire    ap_CS_fsm_state74;
 reg    grp_UpConv_Fused_Row_8_s_fu_300_ap_start_reg;
 wire    ap_CS_fsm_state76;
@@ -929,22 +929,22 @@ wire    ap_CS_fsm_state159;
 wire    ap_CS_fsm_state156;
 wire    ap_CS_fsm_state158;
 wire    ap_CS_fsm_state160;
-reg    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_start_reg;
-wire  signed [63:0] sext_ln57_fu_497_p1;
-wire  signed [63:0] sext_ln71_fu_584_p1;
+reg    grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_start_reg;
+wire  signed [63:0] sext_ln56_fu_497_p1;
+wire  signed [63:0] sext_ln70_fu_584_p1;
 reg   [7:0] hi_fu_220;
-wire   [7:0] add_ln68_fu_531_p2;
-wire   [0:0] icmp_ln68_fu_516_p2;
+wire   [7:0] add_ln67_fu_531_p2;
+wire   [0:0] icmp_ln67_fu_516_p2;
 reg   [6:0] indvar_fu_224;
-wire   [6:0] add_ln68_1_fu_521_p2;
-wire   [9:0] add_ln54_fu_441_p2;
-wire   [5:0] mul_ln57_fu_473_p0;
-wire   [7:0] mul_ln57_fu_473_p1;
-wire   [7:0] shl_ln84_fu_547_p2;
+wire   [6:0] add_ln67_1_fu_521_p2;
+wire   [9:0] add_ln53_fu_441_p2;
+wire   [5:0] mul_ln56_fu_473_p0;
+wire   [7:0] mul_ln56_fu_473_p1;
+wire   [7:0] shl_ln83_fu_547_p2;
 wire   [19:0] grp_fu_622_p3;
 wire   [24:0] shl_ln_fu_558_p3;
-wire   [63:0] zext_ln70_fu_565_p1;
-wire   [63:0] add_ln70_1_fu_569_p2;
+wire   [63:0] zext_ln69_fu_565_p1;
+wire   [63:0] add_ln69_1_fu_569_p2;
 wire   [0:0] slot_fu_594_p1;
 wire   [7:0] p_cast_fu_597_p3;
 wire   [13:0] grp_fu_622_p0;
@@ -1113,8 +1113,8 @@ reg    ap_ST_fsm_state158_blk;
 wire    ap_ST_fsm_state159_blk;
 reg    ap_ST_fsm_state160_blk;
 wire   [19:0] grp_fu_622_p10;
-wire   [13:0] mul_ln57_fu_473_p00;
-wire   [13:0] mul_ln57_fu_473_p10;
+wire   [13:0] mul_ln56_fu_473_p00;
+wire   [13:0] mul_ln56_fu_473_p10;
 wire   [31:0] c_out_fu_369_p1;
 wire   [31:0] c_out_fu_369_p3;
 wire   [31:0] c_out_fu_369_p5;
@@ -1136,17 +1136,17 @@ initial begin
 #0 ap_rst_n_inv = 1'b1;
 #0 ap_done_reg = 1'b0;
 #0 ap_CS_fsm = 160'd1;
-#0 grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_start_reg = 1'b0;
+#0 grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_start_reg = 1'b0;
 #0 grp_UpConv_Fused_Row_8_s_fu_300_ap_start_reg = 1'b0;
-#0 grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_start_reg = 1'b0;
+#0 grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_start_reg = 1'b0;
 #0 hi_fu_220 = 8'd0;
 #0 indvar_fu_224 = 7'd0;
 end
 
 upconv_core_top_x_buf_RAM_T2P_URAM_1R1W #(
     .DataWidth( 256 ),
-    .AddressRange( 15360 ),
-    .AddressWidth( 14 ))
+    .AddressRange( 2048 ),
+    .AddressWidth( 11 ))
 x_buf_U(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
@@ -1157,48 +1157,48 @@ x_buf_U(
     .q0(x_buf_q0)
 );
 
-upconv_core_top_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1 grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288(
+upconv_core_top_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1 grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst_n_inv),
-    .ap_start(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_start),
-    .ap_done(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_done),
-    .ap_idle(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_idle),
-    .ap_ready(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_ready),
-    .m_axi_gmem_in_0_AWVALID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWVALID),
+    .ap_start(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_start),
+    .ap_done(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_done),
+    .ap_idle(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_idle),
+    .ap_ready(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_ready),
+    .m_axi_gmem_in_0_AWVALID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWVALID),
     .m_axi_gmem_in_0_AWREADY(1'b0),
-    .m_axi_gmem_in_0_AWADDR(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWADDR),
-    .m_axi_gmem_in_0_AWID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWID),
-    .m_axi_gmem_in_0_AWLEN(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWLEN),
-    .m_axi_gmem_in_0_AWSIZE(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWSIZE),
-    .m_axi_gmem_in_0_AWBURST(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWBURST),
-    .m_axi_gmem_in_0_AWLOCK(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWLOCK),
-    .m_axi_gmem_in_0_AWCACHE(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWCACHE),
-    .m_axi_gmem_in_0_AWPROT(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWPROT),
-    .m_axi_gmem_in_0_AWQOS(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWQOS),
-    .m_axi_gmem_in_0_AWREGION(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWREGION),
-    .m_axi_gmem_in_0_AWUSER(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_AWUSER),
-    .m_axi_gmem_in_0_WVALID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WVALID),
+    .m_axi_gmem_in_0_AWADDR(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWADDR),
+    .m_axi_gmem_in_0_AWID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWID),
+    .m_axi_gmem_in_0_AWLEN(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWLEN),
+    .m_axi_gmem_in_0_AWSIZE(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWSIZE),
+    .m_axi_gmem_in_0_AWBURST(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWBURST),
+    .m_axi_gmem_in_0_AWLOCK(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWLOCK),
+    .m_axi_gmem_in_0_AWCACHE(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWCACHE),
+    .m_axi_gmem_in_0_AWPROT(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWPROT),
+    .m_axi_gmem_in_0_AWQOS(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWQOS),
+    .m_axi_gmem_in_0_AWREGION(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWREGION),
+    .m_axi_gmem_in_0_AWUSER(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_AWUSER),
+    .m_axi_gmem_in_0_WVALID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WVALID),
     .m_axi_gmem_in_0_WREADY(1'b0),
-    .m_axi_gmem_in_0_WDATA(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WDATA),
-    .m_axi_gmem_in_0_WSTRB(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WSTRB),
-    .m_axi_gmem_in_0_WLAST(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WLAST),
-    .m_axi_gmem_in_0_WID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WID),
-    .m_axi_gmem_in_0_WUSER(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_WUSER),
-    .m_axi_gmem_in_0_ARVALID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARVALID),
+    .m_axi_gmem_in_0_WDATA(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WDATA),
+    .m_axi_gmem_in_0_WSTRB(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WSTRB),
+    .m_axi_gmem_in_0_WLAST(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WLAST),
+    .m_axi_gmem_in_0_WID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WID),
+    .m_axi_gmem_in_0_WUSER(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_WUSER),
+    .m_axi_gmem_in_0_ARVALID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARVALID),
     .m_axi_gmem_in_0_ARREADY(gmem_in_0_ARREADY),
-    .m_axi_gmem_in_0_ARADDR(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARADDR),
-    .m_axi_gmem_in_0_ARID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARID),
-    .m_axi_gmem_in_0_ARLEN(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARLEN),
-    .m_axi_gmem_in_0_ARSIZE(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARSIZE),
-    .m_axi_gmem_in_0_ARBURST(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARBURST),
-    .m_axi_gmem_in_0_ARLOCK(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARLOCK),
-    .m_axi_gmem_in_0_ARCACHE(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARCACHE),
-    .m_axi_gmem_in_0_ARPROT(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARPROT),
-    .m_axi_gmem_in_0_ARQOS(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARQOS),
-    .m_axi_gmem_in_0_ARREGION(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARREGION),
-    .m_axi_gmem_in_0_ARUSER(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARUSER),
+    .m_axi_gmem_in_0_ARADDR(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARADDR),
+    .m_axi_gmem_in_0_ARID(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARID),
+    .m_axi_gmem_in_0_ARLEN(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARLEN),
+    .m_axi_gmem_in_0_ARSIZE(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARSIZE),
+    .m_axi_gmem_in_0_ARBURST(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARBURST),
+    .m_axi_gmem_in_0_ARLOCK(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARLOCK),
+    .m_axi_gmem_in_0_ARCACHE(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARCACHE),
+    .m_axi_gmem_in_0_ARPROT(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARPROT),
+    .m_axi_gmem_in_0_ARQOS(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARQOS),
+    .m_axi_gmem_in_0_ARREGION(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARREGION),
+    .m_axi_gmem_in_0_ARUSER(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARUSER),
     .m_axi_gmem_in_0_RVALID(gmem_in_0_RVALID),
-    .m_axi_gmem_in_0_RREADY(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_RREADY),
+    .m_axi_gmem_in_0_RREADY(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_RREADY),
     .m_axi_gmem_in_0_RDATA(gmem_in_0_RDATA),
     .m_axi_gmem_in_0_RLAST(1'b0),
     .m_axi_gmem_in_0_RID(1'd0),
@@ -1206,18 +1206,18 @@ upconv_core_top_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1 grp_upconv_co
     .m_axi_gmem_in_0_RUSER(1'd0),
     .m_axi_gmem_in_0_RRESP(2'd0),
     .m_axi_gmem_in_0_BVALID(1'b0),
-    .m_axi_gmem_in_0_BREADY(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_BREADY),
+    .m_axi_gmem_in_0_BREADY(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_BREADY),
     .m_axi_gmem_in_0_BRESP(2'd0),
     .m_axi_gmem_in_0_BID(1'd0),
     .m_axi_gmem_in_0_BUSER(1'd0),
-    .mul_ln57(trunc_ln57_reg_708),
-    .sext_ln57(trunc_ln_reg_714),
+    .mul_ln56(trunc_ln56_reg_708),
+    .sext_ln56(trunc_ln_reg_714),
     .ci_words(ci_words_reg_663),
     .empty(ci_words_reg_663),
-    .x_buf_address0(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_address0),
-    .x_buf_ce0(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_ce0),
-    .x_buf_we0(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_we0),
-    .x_buf_d0(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_d0)
+    .x_buf_address0(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_address0),
+    .x_buf_ce0(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_ce0),
+    .x_buf_we0(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_we0),
+    .x_buf_d0(grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_d0)
 );
 
 upconv_core_top_UpConv_Fused_Row_8_s grp_UpConv_Fused_Row_8_s_fu_300(
@@ -1381,48 +1381,48 @@ upconv_core_top_UpConv_Fused_Row_8_s grp_UpConv_Fused_Row_8_s_fu_300(
     .x_buf_q0(x_buf_q0)
 );
 
-upconv_core_top_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2 grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356(
+upconv_core_top_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2 grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst_n_inv),
-    .ap_start(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_start),
-    .ap_done(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_done),
-    .ap_idle(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_idle),
-    .ap_ready(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_ready),
-    .m_axi_gmem_in_0_AWVALID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWVALID),
+    .ap_start(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_start),
+    .ap_done(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_done),
+    .ap_idle(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_idle),
+    .ap_ready(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_ready),
+    .m_axi_gmem_in_0_AWVALID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWVALID),
     .m_axi_gmem_in_0_AWREADY(1'b0),
-    .m_axi_gmem_in_0_AWADDR(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWADDR),
-    .m_axi_gmem_in_0_AWID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWID),
-    .m_axi_gmem_in_0_AWLEN(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWLEN),
-    .m_axi_gmem_in_0_AWSIZE(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWSIZE),
-    .m_axi_gmem_in_0_AWBURST(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWBURST),
-    .m_axi_gmem_in_0_AWLOCK(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWLOCK),
-    .m_axi_gmem_in_0_AWCACHE(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWCACHE),
-    .m_axi_gmem_in_0_AWPROT(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWPROT),
-    .m_axi_gmem_in_0_AWQOS(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWQOS),
-    .m_axi_gmem_in_0_AWREGION(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWREGION),
-    .m_axi_gmem_in_0_AWUSER(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_AWUSER),
-    .m_axi_gmem_in_0_WVALID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WVALID),
+    .m_axi_gmem_in_0_AWADDR(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWADDR),
+    .m_axi_gmem_in_0_AWID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWID),
+    .m_axi_gmem_in_0_AWLEN(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWLEN),
+    .m_axi_gmem_in_0_AWSIZE(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWSIZE),
+    .m_axi_gmem_in_0_AWBURST(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWBURST),
+    .m_axi_gmem_in_0_AWLOCK(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWLOCK),
+    .m_axi_gmem_in_0_AWCACHE(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWCACHE),
+    .m_axi_gmem_in_0_AWPROT(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWPROT),
+    .m_axi_gmem_in_0_AWQOS(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWQOS),
+    .m_axi_gmem_in_0_AWREGION(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWREGION),
+    .m_axi_gmem_in_0_AWUSER(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_AWUSER),
+    .m_axi_gmem_in_0_WVALID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WVALID),
     .m_axi_gmem_in_0_WREADY(1'b0),
-    .m_axi_gmem_in_0_WDATA(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WDATA),
-    .m_axi_gmem_in_0_WSTRB(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WSTRB),
-    .m_axi_gmem_in_0_WLAST(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WLAST),
-    .m_axi_gmem_in_0_WID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WID),
-    .m_axi_gmem_in_0_WUSER(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_WUSER),
-    .m_axi_gmem_in_0_ARVALID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARVALID),
+    .m_axi_gmem_in_0_WDATA(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WDATA),
+    .m_axi_gmem_in_0_WSTRB(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WSTRB),
+    .m_axi_gmem_in_0_WLAST(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WLAST),
+    .m_axi_gmem_in_0_WID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WID),
+    .m_axi_gmem_in_0_WUSER(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_WUSER),
+    .m_axi_gmem_in_0_ARVALID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARVALID),
     .m_axi_gmem_in_0_ARREADY(gmem_in_0_ARREADY),
-    .m_axi_gmem_in_0_ARADDR(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARADDR),
-    .m_axi_gmem_in_0_ARID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARID),
-    .m_axi_gmem_in_0_ARLEN(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARLEN),
-    .m_axi_gmem_in_0_ARSIZE(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARSIZE),
-    .m_axi_gmem_in_0_ARBURST(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARBURST),
-    .m_axi_gmem_in_0_ARLOCK(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARLOCK),
-    .m_axi_gmem_in_0_ARCACHE(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARCACHE),
-    .m_axi_gmem_in_0_ARPROT(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARPROT),
-    .m_axi_gmem_in_0_ARQOS(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARQOS),
-    .m_axi_gmem_in_0_ARREGION(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARREGION),
-    .m_axi_gmem_in_0_ARUSER(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARUSER),
+    .m_axi_gmem_in_0_ARADDR(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARADDR),
+    .m_axi_gmem_in_0_ARID(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARID),
+    .m_axi_gmem_in_0_ARLEN(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARLEN),
+    .m_axi_gmem_in_0_ARSIZE(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARSIZE),
+    .m_axi_gmem_in_0_ARBURST(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARBURST),
+    .m_axi_gmem_in_0_ARLOCK(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARLOCK),
+    .m_axi_gmem_in_0_ARCACHE(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARCACHE),
+    .m_axi_gmem_in_0_ARPROT(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARPROT),
+    .m_axi_gmem_in_0_ARQOS(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARQOS),
+    .m_axi_gmem_in_0_ARREGION(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARREGION),
+    .m_axi_gmem_in_0_ARUSER(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARUSER),
     .m_axi_gmem_in_0_RVALID(gmem_in_0_RVALID),
-    .m_axi_gmem_in_0_RREADY(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_RREADY),
+    .m_axi_gmem_in_0_RREADY(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_RREADY),
     .m_axi_gmem_in_0_RDATA(gmem_in_0_RDATA),
     .m_axi_gmem_in_0_RLAST(1'b0),
     .m_axi_gmem_in_0_RID(1'd0),
@@ -1430,19 +1430,19 @@ upconv_core_top_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2 grp_upconv_cor
     .m_axi_gmem_in_0_RUSER(1'd0),
     .m_axi_gmem_in_0_RRESP(2'd0),
     .m_axi_gmem_in_0_BVALID(1'b0),
-    .m_axi_gmem_in_0_BREADY(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_BREADY),
+    .m_axi_gmem_in_0_BREADY(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_BREADY),
     .m_axi_gmem_in_0_BRESP(2'd0),
     .m_axi_gmem_in_0_BID(1'd0),
     .m_axi_gmem_in_0_BUSER(1'd0),
-    .mul_ln57(trunc_ln57_reg_708),
-    .sext_ln71(trunc_ln1_reg_760),
+    .mul_ln56(trunc_ln56_reg_708),
+    .sext_ln70(trunc_ln1_reg_760),
     .ci_words(ci_words_reg_663),
     .mul50(mul50_reg_771),
-    .zext_ln57(ci_words_reg_663),
-    .x_buf_address0(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_address0),
-    .x_buf_ce0(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_ce0),
-    .x_buf_we0(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_we0),
-    .x_buf_d0(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_d0)
+    .empty(ci_words_reg_663),
+    .x_buf_address0(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_address0),
+    .x_buf_ce0(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_ce0),
+    .x_buf_we0(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_we0),
+    .x_buf_d0(grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_d0)
 );
 
 upconv_core_top_control_s_axi #(
@@ -1859,7 +1859,7 @@ gmem_weight_m_axi_U(
     .def_WIDTH( 9 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 9 ))
-sparsemux_9_32_9_1_1_U715(
+sparsemux_9_32_9_1_1_U731(
     .din0(9'd480),
     .din1(9'd240),
     .din2(9'd120),
@@ -1883,7 +1883,7 @@ sparsemux_9_32_9_1_1_U715(
     .def_WIDTH( 10 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 10 ))
-sparsemux_9_32_10_1_1_U716(
+sparsemux_9_32_10_1_1_U732(
     .din0(10'd960),
     .din1(10'd480),
     .din2(10'd240),
@@ -1907,7 +1907,7 @@ sparsemux_9_32_10_1_1_U716(
     .def_WIDTH( 8 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 8 ))
-sparsemux_9_32_8_1_1_U717(
+sparsemux_9_32_8_1_1_U733(
     .din0(8'd16),
     .din1(8'd32),
     .din2(8'd64),
@@ -1923,10 +1923,10 @@ upconv_core_top_mul_6ns_8ns_14_1_1 #(
     .din0_WIDTH( 6 ),
     .din1_WIDTH( 8 ),
     .dout_WIDTH( 14 ))
-mul_6ns_8ns_14_1_1_U718(
-    .din0(mul_ln57_fu_473_p0),
-    .din1(mul_ln57_fu_473_p1),
-    .dout(mul_ln57_fu_473_p2)
+mul_6ns_8ns_14_1_1_U734(
+    .din0(mul_ln56_fu_473_p0),
+    .din1(mul_ln56_fu_473_p1),
+    .dout(mul_ln56_fu_473_p2)
 );
 
 upconv_core_top_mac_muladd_14ns_7ns_14ns_20_4_1 #(
@@ -1936,7 +1936,7 @@ upconv_core_top_mac_muladd_14ns_7ns_14ns_20_4_1 #(
     .din1_WIDTH( 7 ),
     .din2_WIDTH( 14 ),
     .dout_WIDTH( 20 ))
-mac_muladd_14ns_7ns_14ns_20_4_1_U719(
+mac_muladd_14ns_7ns_14ns_20_4_1_U735(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
     .din0(grp_fu_622_p0),
@@ -1980,24 +1980,24 @@ end
 
 always @ (posedge ap_clk) begin
     if (ap_rst_n_inv == 1'b1) begin
-        grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_start_reg <= 1'b0;
+        grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_start_reg <= 1'b0;
     end else begin
         if ((1'b1 == ap_CS_fsm_state74)) begin
-            grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_start_reg <= 1'b1;
-        end else if ((grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_ready == 1'b1)) begin
-            grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_start_reg <= 1'b0;
+            grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_start_reg <= 1'b1;
+        end else if ((grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_ready == 1'b1)) begin
+            grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
     if (ap_rst_n_inv == 1'b1) begin
-        grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_start_reg <= 1'b0;
+        grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_start_reg <= 1'b0;
     end else begin
         if ((1'b1 == ap_CS_fsm_state153)) begin
-            grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_start_reg <= 1'b1;
-        end else if ((grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_ready == 1'b1)) begin
-            grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_start_reg <= 1'b0;
+            grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_start_reg <= 1'b1;
+        end else if ((grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_ready == 1'b1)) begin
+            grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_start_reg <= 1'b0;
         end
     end
 end
@@ -2017,16 +2017,16 @@ end
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_state1) & (1'b1 == ap_CS_fsm_state1))) begin
         hi_fu_220 <= 8'd1;
-    end else if (((1'b1 == ap_CS_fsm_state78) & (icmp_ln68_fu_516_p2 == 1'd1))) begin
-        hi_fu_220 <= add_ln68_fu_531_p2;
+    end else if (((1'b1 == ap_CS_fsm_state78) & (icmp_ln67_fu_516_p2 == 1'd1))) begin
+        hi_fu_220 <= add_ln67_fu_531_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_state1) & (1'b1 == ap_CS_fsm_state1))) begin
         indvar_fu_224 <= 7'd0;
-    end else if (((1'b1 == ap_CS_fsm_state78) & (icmp_ln68_fu_516_p2 == 1'd1))) begin
-        indvar_fu_224 <= add_ln68_1_fu_521_p2;
+    end else if (((1'b1 == ap_CS_fsm_state78) & (icmp_ln67_fu_516_p2 == 1'd1))) begin
+        indvar_fu_224 <= add_ln67_1_fu_521_p2;
     end
 end
 
@@ -2038,22 +2038,22 @@ always @ (posedge ap_clk) begin
         W_read_reg_692 <= W;
         X_read_reg_697 <= X;
         Y_read_reg_672 <= Y;
-        mul_ln57_reg_702 <= mul_ln57_fu_473_p2;
-        trunc_ln57_reg_708 <= trunc_ln57_fu_479_p1;
+        mul_ln56_reg_702 <= mul_ln56_fu_473_p2;
+        trunc_ln56_reg_708 <= trunc_ln56_fu_479_p1;
         trunc_ln_reg_714 <= {{X[63:5]}};
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state154))) begin
-        add_ln79_reg_781 <= add_ln79_fu_616_p2;
-        shl_ln79_reg_776 <= shl_ln79_fu_611_p2;
+    if (((grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state154))) begin
+        add_ln78_reg_781 <= add_ln78_fu_616_p2;
+        shl_ln78_reg_776 <= shl_ln78_fu_611_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state78)) begin
-        add_ln84_reg_755 <= add_ln84_fu_552_p2;
+        add_ln83_reg_755 <= add_ln83_fu_552_p2;
         hi_1_reg_741 <= hi_fu_220;
     end
 end
@@ -2062,13 +2062,13 @@ always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_state1) & (1'b1 == ap_CS_fsm_state1))) begin
         c_in_reg_648 <= c_in_fu_393_p11;
         c_out_reg_643 <= c_out_fu_369_p11;
-        ci_words_reg_663 <= {{add_ln54_fu_441_p2[9:4]}};
+        ci_words_reg_663 <= {{add_ln53_fu_441_p2[9:4]}};
         w_in_reg_653 <= w_in_fu_417_p11;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state75))) begin
+    if (((grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state75))) begin
         epsilon_read_reg_731 <= epsilon;
     end
 end
@@ -2081,19 +2081,19 @@ end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state81)) begin
-        trunc_ln1_reg_760 <= {{add_ln70_1_fu_569_p2[63:5]}};
+        trunc_ln1_reg_760 <= {{add_ln69_1_fu_569_p2[63:5]}};
     end
 end
 
 always @ (posedge ap_clk) begin
     if (((gmem_in_0_ARREADY == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
-        zext_ln57_2_reg_720[13 : 0] <= zext_ln57_2_fu_493_p1[13 : 0];
+        zext_ln56_2_reg_720[13 : 0] <= zext_ln56_2_fu_493_p1[13 : 0];
     end
 end
 
 always @ (posedge ap_clk) begin
     if (((grp_UpConv_Fused_Row_8_s_fu_300_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state77))) begin
-        zext_ln57_3_reg_736[13 : 0] <= zext_ln57_3_fu_507_p1[13 : 0];
+        zext_ln56_3_reg_736[13 : 0] <= zext_ln56_3_fu_507_p1[13 : 0];
     end
 end
 
@@ -2216,7 +2216,7 @@ assign ap_ST_fsm_state152_blk = 1'b0;
 assign ap_ST_fsm_state153_blk = 1'b0;
 
 always @ (*) begin
-    if ((grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_done == 1'b0)) begin
+    if ((grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_done == 1'b0)) begin
         ap_ST_fsm_state154_blk = 1'b1;
     end else begin
         ap_ST_fsm_state154_blk = 1'b0;
@@ -2398,7 +2398,7 @@ assign ap_ST_fsm_state73_blk = 1'b0;
 assign ap_ST_fsm_state74_blk = 1'b0;
 
 always @ (*) begin
-    if ((grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_done == 1'b0)) begin
+    if ((grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_done == 1'b0)) begin
         ap_ST_fsm_state75_blk = 1'b1;
     end else begin
         ap_ST_fsm_state75_blk = 1'b0;
@@ -2497,13 +2497,13 @@ end
 
 always @ (*) begin
     if (((gmem_in_0_ARREADY == 1'b1) & (1'b1 == ap_CS_fsm_state82))) begin
-        gmem_in_0_ARADDR = sext_ln71_fu_584_p1;
+        gmem_in_0_ARADDR = sext_ln70_fu_584_p1;
     end else if (((gmem_in_0_ARREADY == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
-        gmem_in_0_ARADDR = sext_ln57_fu_497_p1;
+        gmem_in_0_ARADDR = sext_ln56_fu_497_p1;
     end else if (((1'b1 == ap_CS_fsm_state154) | (1'b1 == ap_CS_fsm_state153))) begin
-        gmem_in_0_ARADDR = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARADDR;
+        gmem_in_0_ARADDR = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARADDR;
     end else if (((1'b1 == ap_CS_fsm_state75) | (1'b1 == ap_CS_fsm_state74))) begin
-        gmem_in_0_ARADDR = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARADDR;
+        gmem_in_0_ARADDR = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARADDR;
     end else begin
         gmem_in_0_ARADDR = 'bx;
     end
@@ -2511,13 +2511,13 @@ end
 
 always @ (*) begin
     if (((gmem_in_0_ARREADY == 1'b1) & (1'b1 == ap_CS_fsm_state82))) begin
-        gmem_in_0_ARLEN = zext_ln57_2_reg_720;
+        gmem_in_0_ARLEN = zext_ln56_2_reg_720;
     end else if (((gmem_in_0_ARREADY == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
-        gmem_in_0_ARLEN = zext_ln57_2_fu_493_p1;
+        gmem_in_0_ARLEN = zext_ln56_2_fu_493_p1;
     end else if (((1'b1 == ap_CS_fsm_state154) | (1'b1 == ap_CS_fsm_state153))) begin
-        gmem_in_0_ARLEN = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARLEN;
+        gmem_in_0_ARLEN = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARLEN;
     end else if (((1'b1 == ap_CS_fsm_state75) | (1'b1 == ap_CS_fsm_state74))) begin
-        gmem_in_0_ARLEN = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARLEN;
+        gmem_in_0_ARLEN = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARLEN;
     end else begin
         gmem_in_0_ARLEN = 'bx;
     end
@@ -2527,9 +2527,9 @@ always @ (*) begin
     if ((((gmem_in_0_ARREADY == 1'b1) & (1'b1 == ap_CS_fsm_state82)) | ((gmem_in_0_ARREADY == 1'b1) & (1'b1 == ap_CS_fsm_state3)))) begin
         gmem_in_0_ARVALID = 1'b1;
     end else if (((1'b1 == ap_CS_fsm_state154) | (1'b1 == ap_CS_fsm_state153))) begin
-        gmem_in_0_ARVALID = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_ARVALID;
+        gmem_in_0_ARVALID = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_ARVALID;
     end else if (((1'b1 == ap_CS_fsm_state75) | (1'b1 == ap_CS_fsm_state74))) begin
-        gmem_in_0_ARVALID = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_ARVALID;
+        gmem_in_0_ARVALID = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_ARVALID;
     end else begin
         gmem_in_0_ARVALID = 1'b0;
     end
@@ -2537,9 +2537,9 @@ end
 
 always @ (*) begin
     if (((1'b1 == ap_CS_fsm_state154) | (1'b1 == ap_CS_fsm_state153))) begin
-        gmem_in_0_RREADY = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_m_axi_gmem_in_0_RREADY;
+        gmem_in_0_RREADY = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_m_axi_gmem_in_0_RREADY;
     end else if (((1'b1 == ap_CS_fsm_state75) | (1'b1 == ap_CS_fsm_state74))) begin
-        gmem_in_0_RREADY = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_m_axi_gmem_in_0_RREADY;
+        gmem_in_0_RREADY = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_m_axi_gmem_in_0_RREADY;
     end else begin
         gmem_in_0_RREADY = 1'b0;
     end
@@ -2611,11 +2611,11 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state160)) begin
-        grp_UpConv_Fused_Row_8_s_fu_300_ho = add_ln84_reg_755;
+        grp_UpConv_Fused_Row_8_s_fu_300_ho = add_ln83_reg_755;
     end else if ((1'b1 == ap_CS_fsm_state158)) begin
-        grp_UpConv_Fused_Row_8_s_fu_300_ho = shl_ln79_reg_776;
+        grp_UpConv_Fused_Row_8_s_fu_300_ho = shl_ln78_reg_776;
     end else if ((1'b1 == ap_CS_fsm_state156)) begin
-        grp_UpConv_Fused_Row_8_s_fu_300_ho = add_ln79_reg_781;
+        grp_UpConv_Fused_Row_8_s_fu_300_ho = add_ln78_reg_781;
     end else if ((1'b1 == ap_CS_fsm_state77)) begin
         grp_UpConv_Fused_Row_8_s_fu_300_ho = 8'd0;
     end else begin
@@ -2625,11 +2625,11 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state154)) begin
-        x_buf_address0 = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_address0;
+        x_buf_address0 = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_address0;
     end else if (((1'b1 == ap_CS_fsm_state77) | (1'b1 == ap_CS_fsm_state160) | (1'b1 == ap_CS_fsm_state158) | (1'b1 == ap_CS_fsm_state156))) begin
         x_buf_address0 = grp_UpConv_Fused_Row_8_s_fu_300_x_buf_address0;
     end else if ((1'b1 == ap_CS_fsm_state75)) begin
-        x_buf_address0 = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_address0;
+        x_buf_address0 = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_address0;
     end else begin
         x_buf_address0 = 'bx;
     end
@@ -2637,11 +2637,11 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state154)) begin
-        x_buf_ce0 = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_ce0;
+        x_buf_ce0 = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_ce0;
     end else if (((1'b1 == ap_CS_fsm_state77) | (1'b1 == ap_CS_fsm_state160) | (1'b1 == ap_CS_fsm_state158) | (1'b1 == ap_CS_fsm_state156))) begin
         x_buf_ce0 = grp_UpConv_Fused_Row_8_s_fu_300_x_buf_ce0;
     end else if ((1'b1 == ap_CS_fsm_state75)) begin
-        x_buf_ce0 = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_ce0;
+        x_buf_ce0 = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_ce0;
     end else begin
         x_buf_ce0 = 1'b0;
     end
@@ -2649,9 +2649,9 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state154)) begin
-        x_buf_d0 = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_d0;
+        x_buf_d0 = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_d0;
     end else if ((1'b1 == ap_CS_fsm_state75)) begin
-        x_buf_d0 = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_d0;
+        x_buf_d0 = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_d0;
     end else begin
         x_buf_d0 = 'bx;
     end
@@ -2659,9 +2659,9 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state154)) begin
-        x_buf_we0 = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_x_buf_we0;
+        x_buf_we0 = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_x_buf_we0;
     end else if ((1'b1 == ap_CS_fsm_state75)) begin
-        x_buf_we0 = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_x_buf_we0;
+        x_buf_we0 = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_x_buf_we0;
     end else begin
         x_buf_we0 = 1'b0;
     end
@@ -2900,7 +2900,7 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state75;
         end
         ap_ST_fsm_state75 : begin
-            if (((grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state75))) begin
+            if (((grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state75))) begin
                 ap_NS_fsm = ap_ST_fsm_state76;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state75;
@@ -2917,7 +2917,7 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state78 : begin
-            if (((1'b1 == ap_CS_fsm_state78) & (icmp_ln68_fu_516_p2 == 1'd0))) begin
+            if (((1'b1 == ap_CS_fsm_state78) & (icmp_ln67_fu_516_p2 == 1'd0))) begin
                 ap_NS_fsm = ap_ST_fsm_state159;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state79;
@@ -3153,7 +3153,7 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state154;
         end
         ap_ST_fsm_state154 : begin
-            if (((grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state154))) begin
+            if (((grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state154))) begin
                 ap_NS_fsm = ap_ST_fsm_state155;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state154;
@@ -3195,17 +3195,17 @@ always @ (*) begin
     endcase
 end
 
-assign add_ln54_fu_441_p2 = (c_in_fu_393_p11 + 10'd15);
+assign add_ln53_fu_441_p2 = (c_in_fu_393_p11 + 10'd15);
 
-assign add_ln68_1_fu_521_p2 = (indvar_fu_224 + 7'd1);
+assign add_ln67_1_fu_521_p2 = (indvar_fu_224 + 7'd1);
 
-assign add_ln68_fu_531_p2 = (hi_fu_220 + 8'd1);
+assign add_ln67_fu_531_p2 = (hi_fu_220 + 8'd1);
 
-assign add_ln70_1_fu_569_p2 = (zext_ln70_fu_565_p1 + X_read_reg_697);
+assign add_ln69_1_fu_569_p2 = (zext_ln69_fu_565_p1 + X_read_reg_697);
 
-assign add_ln79_fu_616_p2 = ($signed(shl_ln79_fu_611_p2) + $signed(8'd255));
+assign add_ln78_fu_616_p2 = ($signed(shl_ln78_fu_611_p2) + $signed(8'd255));
 
-assign add_ln84_fu_552_p2 = ($signed(shl_ln84_fu_547_p2) + $signed(8'd255));
+assign add_ln83_fu_552_p2 = ($signed(shl_ln83_fu_547_p2) + $signed(8'd255));
 
 assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
 
@@ -3251,55 +3251,55 @@ end
 
 assign grp_UpConv_Fused_Row_8_s_fu_300_ap_start = grp_UpConv_Fused_Row_8_s_fu_300_ap_start_reg;
 
-assign grp_fu_622_p0 = zext_ln57_3_reg_736;
+assign grp_fu_622_p0 = zext_ln56_3_reg_736;
 
 assign grp_fu_622_p1 = grp_fu_622_p10;
 
 assign grp_fu_622_p10 = indvar_fu_224;
 
-assign grp_fu_622_p2 = zext_ln57_3_reg_736;
+assign grp_fu_622_p2 = zext_ln56_3_reg_736;
 
-assign grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_start = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1_fu_288_ap_start_reg;
+assign grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_start = grp_upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1_fu_288_ap_start_reg;
 
-assign grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_start = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2_fu_356_ap_start_reg;
+assign grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_start = grp_upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2_fu_356_ap_start_reg;
 
-assign icmp_ln68_fu_516_p2 = ((hi_fu_220 < w_in_reg_653) ? 1'b1 : 1'b0);
+assign icmp_ln67_fu_516_p2 = ((hi_fu_220 < w_in_reg_653) ? 1'b1 : 1'b0);
 
 assign mul50_fu_605_p2 = (w_in_reg_653 & p_cast_fu_597_p3);
 
-assign mul_ln57_fu_473_p0 = mul_ln57_fu_473_p00;
+assign mul_ln56_fu_473_p0 = mul_ln56_fu_473_p00;
 
-assign mul_ln57_fu_473_p00 = ci_words_reg_663;
+assign mul_ln56_fu_473_p00 = ci_words_reg_663;
 
-assign mul_ln57_fu_473_p1 = mul_ln57_fu_473_p10;
+assign mul_ln56_fu_473_p1 = mul_ln56_fu_473_p10;
 
-assign mul_ln57_fu_473_p10 = w_in_reg_653;
+assign mul_ln56_fu_473_p10 = w_in_reg_653;
 
 assign p_cast_fu_597_p3 = ((slot_fu_594_p1[0:0] == 1'b1) ? 8'd255 : 8'd0);
 
-assign sext_ln57_fu_497_p1 = $signed(trunc_ln_reg_714);
+assign sext_ln56_fu_497_p1 = $signed(trunc_ln_reg_714);
 
-assign sext_ln71_fu_584_p1 = $signed(trunc_ln1_reg_760);
+assign sext_ln70_fu_584_p1 = $signed(trunc_ln1_reg_760);
 
-assign shl_ln79_fu_611_p2 = hi_1_reg_741 << 8'd1;
+assign shl_ln78_fu_611_p2 = hi_1_reg_741 << 8'd1;
 
-assign shl_ln84_fu_547_p2 = w_in_reg_653 << 8'd1;
+assign shl_ln83_fu_547_p2 = w_in_reg_653 << 8'd1;
 
 assign shl_ln_fu_558_p3 = {{grp_fu_622_p3}, {5'd0}};
 
 assign slot_fu_594_p1 = hi_1_reg_741[0:0];
 
-assign trunc_ln57_fu_479_p1 = mul_ln57_fu_473_p2[12:0];
+assign trunc_ln56_fu_479_p1 = mul_ln56_fu_473_p2[12:0];
 
-assign zext_ln57_2_fu_493_p1 = mul_ln57_reg_702;
+assign zext_ln56_2_fu_493_p1 = mul_ln56_reg_702;
 
-assign zext_ln57_3_fu_507_p1 = mul_ln57_reg_702;
+assign zext_ln56_3_fu_507_p1 = mul_ln56_reg_702;
 
-assign zext_ln70_fu_565_p1 = shl_ln_fu_558_p3;
+assign zext_ln69_fu_565_p1 = shl_ln_fu_558_p3;
 
 always @ (posedge ap_clk) begin
-    zext_ln57_2_reg_720[63:14] <= 50'b00000000000000000000000000000000000000000000000000;
-    zext_ln57_3_reg_736[19:14] <= 6'b000000;
+    zext_ln56_2_reg_720[63:14] <= 50'b00000000000000000000000000000000000000000000000000;
+    zext_ln56_3_reg_736[19:14] <= 6'b000000;
 end
 
 endmodule //upconv_core_top

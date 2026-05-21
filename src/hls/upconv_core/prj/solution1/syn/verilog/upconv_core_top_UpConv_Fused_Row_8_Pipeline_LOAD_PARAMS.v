@@ -59,7 +59,7 @@ module upconv_core_top_UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS (
         m_axi_gmem_param_0_BRESP,
         m_axi_gmem_param_0_BID,
         m_axi_gmem_param_0_BUSER,
-        trunc_ln2,
+        trunc_ln,
         b_buf_address0,
         b_buf_ce0,
         b_buf_we0,
@@ -133,7 +133,7 @@ output   m_axi_gmem_param_0_BREADY;
 input  [1:0] m_axi_gmem_param_0_BRESP;
 input  [0:0] m_axi_gmem_param_0_BID;
 input  [0:0] m_axi_gmem_param_0_BUSER;
-input  [4:0] trunc_ln2;
+input  [4:0] trunc_ln;
 output  [4:0] b_buf_address0;
 output   b_buf_ce0;
 output   b_buf_we0;
@@ -1479,7 +1479,7 @@ assign g_buf_d0 = gmem_param_addr_1_read_reg_340;
 
 assign g_buf_we0 = g_buf_we0_local;
 
-assign icmp_ln199_fu_195_p2 = ((ap_sig_allocacmp_i_1 == trunc_ln2) ? 1'b1 : 1'b0);
+assign icmp_ln199_fu_195_p2 = ((ap_sig_allocacmp_i_1 == trunc_ln) ? 1'b1 : 1'b0);
 
 assign m_axi_gmem_param_0_ARBURST = 2'd0;
 

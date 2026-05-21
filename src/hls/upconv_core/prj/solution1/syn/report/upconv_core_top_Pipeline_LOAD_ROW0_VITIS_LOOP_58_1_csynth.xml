@@ -8,7 +8,7 @@
 <unit>ns</unit>
 <ProductFamily>zynquplus</ProductFamily>
 <Part>xczu7ev-ffvc1156-2-e</Part>
-<TopModelName>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1</TopModelName>
+<TopModelName>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1</TopModelName>
 <TargetClockPeriod>3.33</TargetClockPeriod>
 <ClockUncertainty>0.90</ClockUncertainty>
 <FlowTarget>vitis</FlowTarget>
@@ -32,7 +32,7 @@
 <Interval-max>7681</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
-<LOAD_ROW0_VITIS_LOOP_59_1>
+<LOAD_ROW0_VITIS_LOOP_58_1>
 <Slack>2.43</Slack>
 <TripCount>
 <range>
@@ -56,19 +56,19 @@
 <PipelineDepth>5</PipelineDepth>
 <InstanceList>
 </InstanceList>
-</LOAD_ROW0_VITIS_LOOP_59_1>
+</LOAD_ROW0_VITIS_LOOP_58_1>
 </SummaryOfLoopLatency>
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/upconv_core_top.cpp:59</SourceLocation>
+<SourceLocation>gen/upconv_core_top.cpp:58</SourceLocation>
 <SummaryOfLoopViolations>
-<LOAD_ROW0_VITIS_LOOP_59_1>
-<Name>LOAD_ROW0_VITIS_LOOP_59_1</Name>
+<LOAD_ROW0_VITIS_LOOP_58_1>
+<Name>LOAD_ROW0_VITIS_LOOP_58_1</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/upconv_core_top.cpp:57</SourceLocation>
-</LOAD_ROW0_VITIS_LOOP_59_1>
+<SourceLocation>gen/upconv_core_top.cpp:56</SourceLocation>
+</LOAD_ROW0_VITIS_LOOP_58_1>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
 </PerformanceEstimates>
@@ -93,7 +93,7 @@
 <InterfaceSummary>
 <RtlPorts>
 <name>ap_clk</name>
-<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1</Object>
+<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -104,7 +104,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_rst</name>
-<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1</Object>
+<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -115,7 +115,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_start</name>
-<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1</Object>
+<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -126,7 +126,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_done</name>
-<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1</Object>
+<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -137,7 +137,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_idle</name>
-<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1</Object>
+<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -148,7 +148,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_ready</name>
-<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1</Object>
+<Object>upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -664,8 +664,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>mul_ln57</name>
-<Object>mul_ln57</Object>
+<name>mul_ln56</name>
+<Object>mul_ln56</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -675,8 +675,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sext_ln57</name>
-<Object>sext_ln57</Object>
+<name>sext_ln56</name>
+<Object>sext_ln56</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -715,7 +715,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>14</Bits>
+<Bits>11</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>

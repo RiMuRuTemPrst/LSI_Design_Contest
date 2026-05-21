@@ -1,9 +1,9 @@
 
 
 ================================================================
-== Vitis HLS Report for 'upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1'
+== Vitis HLS Report for 'upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1'
 ================================================================
-* Date:           Wed May 13 11:32:01 2026
+* Date:           Thu May 21 19:10:49 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -41,7 +41,7 @@
         |                             |  Latency (cycles) | Iteration|  Initiation Interval  |    Trip    |          |
         |          Loop Name          |   min   |   max   |  Latency |  achieved |   target  |    Count   | Pipelined|
         +-----------------------------+---------+---------+----------+-----------+-----------+------------+----------+
-        |- LOAD_ROW0_VITIS_LOOP_59_1  |      131|     7683|         5|          1|          1|  128 ~ 7680|       yes|
+        |- LOAD_ROW0_VITIS_LOOP_58_1  |      131|     7683|         5|          1|          1|  128 ~ 7680|       yes|
         +-----------------------------+---------+---------+----------+-----------+-----------+------------+----------+
 
 
@@ -76,7 +76,7 @@
     +----------------------------------+-------------------------------+--------------+
     |             Instance             |             Module            |  Expression  |
     +----------------------------------+-------------------------------+--------------+
-    |mac_muladd_8ns_6ns_6ns_13_4_1_U1  |mac_muladd_8ns_6ns_6ns_13_4_1  |  i0 + i1 * i2|
+    |mac_muladd_8ns_6ns_6ns_11_4_1_U1  |mac_muladd_8ns_6ns_6ns_11_4_1  |  i0 + i1 * i2|
     +----------------------------------+-------------------------------+--------------+
 
     * Memory: 
@@ -89,15 +89,15 @@
     +---------------------------+----------+----+---+----+------------+------------+
     |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------------+----------+----+---+----+------------+------------+
-    |add_ln57_1_fu_164_p2       |         +|   0|  0|  20|          13|           1|
-    |add_ln57_fu_181_p2         |         +|   0|  0|  15|           8|           1|
-    |add_ln59_fu_212_p2         |         +|   0|  0|  13|           6|           1|
+    |add_ln56_1_fu_164_p2       |         +|   0|  0|  20|          13|           1|
+    |add_ln56_fu_181_p2         |         +|   0|  0|  15|           8|           1|
+    |add_ln58_fu_212_p2         |         +|   0|  0|  13|           6|           1|
     |ap_block_pp0_stage0_11001  |       and|   0|  0|   2|           1|           1|
     |ap_condition_139           |       and|   0|  0|   2|           1|           1|
-    |icmp_ln57_fu_158_p2        |      icmp|   0|  0|  20|          13|          13|
-    |icmp_ln59_fu_187_p2        |      icmp|   0|  0|  13|           6|           6|
-    |select_ln57_1_fu_200_p3    |    select|   0|  0|   8|           1|           8|
-    |select_ln57_fu_192_p3      |    select|   0|  0|   6|           1|           1|
+    |icmp_ln56_fu_158_p2        |      icmp|   0|  0|  20|          13|          13|
+    |icmp_ln58_fu_187_p2        |      icmp|   0|  0|  13|           6|           6|
+    |select_ln56_1_fu_200_p3    |    select|   0|  0|   8|           1|           8|
+    |select_ln56_fu_192_p3      |    select|   0|  0|   6|           1|           1|
     |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
     +---------------------------+----------+----+---+----+------------+------------+
     |Total                      |          |   0|  0| 101|          51|          35|
@@ -135,12 +135,12 @@
     |ciw_fu_78                                  |    6|   0|    6|          0|
     |gmem_in_addr_read_reg_304                  |  256|   0|  256|          0|
     |indvar_flatten_fu_86                       |   13|   0|   13|          0|
-    |p_cast_reg_275                             |    6|   0|   13|          7|
-    |select_ln57_reg_289                        |    6|   0|    6|          0|
-    |select_ln57_reg_289_pp0_iter2_reg          |    6|   0|    6|          0|
+    |p_cast_reg_275                             |    6|   0|   11|          5|
+    |select_ln56_reg_289                        |    6|   0|    6|          0|
+    |select_ln56_reg_289_pp0_iter2_reg          |    6|   0|    6|          0|
     |wi_fu_82                                   |    8|   0|    8|          0|
     +-------------------------------------------+-----+----+-----+-----------+
-    |Total                                      |  311|   0|  318|          7|
+    |Total                                      |  311|   0|  316|          5|
     +-------------------------------------------+-----+----+-----+-----------+
 
 
@@ -152,12 +152,12 @@
 +--------------------------+-----+-----+------------+----------------------------------------------------+--------------+
 |         RTL Ports        | Dir | Bits|  Protocol  |                    Source Object                   |    C Type    |
 +--------------------------+-----+-----+------------+----------------------------------------------------+--------------+
-|ap_clk                    |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1|  return value|
-|ap_rst                    |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1|  return value|
-|ap_start                  |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1|  return value|
-|ap_done                   |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1|  return value|
-|ap_idle                   |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1|  return value|
-|ap_ready                  |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_59_1|  return value|
+|ap_clk                    |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1|  return value|
+|ap_rst                    |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1|  return value|
+|ap_start                  |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1|  return value|
+|ap_done                   |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1|  return value|
+|ap_idle                   |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1|  return value|
+|ap_ready                  |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1|  return value|
 |m_axi_gmem_in_0_AWVALID   |  out|    1|       m_axi|                                             gmem_in|       pointer|
 |m_axi_gmem_in_0_AWREADY   |   in|    1|       m_axi|                                             gmem_in|       pointer|
 |m_axi_gmem_in_0_AWADDR    |  out|   64|       m_axi|                                             gmem_in|       pointer|
@@ -204,11 +204,11 @@
 |m_axi_gmem_in_0_BRESP     |   in|    2|       m_axi|                                             gmem_in|       pointer|
 |m_axi_gmem_in_0_BID       |   in|    1|       m_axi|                                             gmem_in|       pointer|
 |m_axi_gmem_in_0_BUSER     |   in|    1|       m_axi|                                             gmem_in|       pointer|
-|mul_ln57                  |   in|   13|     ap_none|                                            mul_ln57|        scalar|
-|sext_ln57                 |   in|   59|     ap_none|                                           sext_ln57|        scalar|
+|mul_ln56                  |   in|   13|     ap_none|                                            mul_ln56|        scalar|
+|sext_ln56                 |   in|   59|     ap_none|                                           sext_ln56|        scalar|
 |ci_words                  |   in|    6|     ap_none|                                            ci_words|        scalar|
 |empty                     |   in|    6|     ap_none|                                               empty|        scalar|
-|x_buf_address0            |  out|   14|   ap_memory|                                               x_buf|         array|
+|x_buf_address0            |  out|   11|   ap_memory|                                               x_buf|         array|
 |x_buf_ce0                 |  out|    1|   ap_memory|                                               x_buf|         array|
 |x_buf_we0                 |  out|    1|   ap_memory|                                               x_buf|         array|
 |x_buf_d0                  |  out|  256|   ap_memory|                                               x_buf|         array|

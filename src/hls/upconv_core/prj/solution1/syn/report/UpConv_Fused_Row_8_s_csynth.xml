@@ -22,14 +22,14 @@
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>19735</Best-caseLatency>
-<Average-caseLatency>815538</Average-caseLatency>
-<Worst-caseLatency>23123811</Worst-caseLatency>
-<Best-caseRealTimeLatency>65.777 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>2.718 ms</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>77.072 ms</Worst-caseRealTimeLatency>
-<Interval-min>19735</Interval-min>
-<Interval-max>23123811</Interval-max>
+<Best-caseLatency>11383</Best-caseLatency>
+<Average-caseLatency>665410</Average-caseLatency>
+<Worst-caseLatency>22411843</Worst-caseLatency>
+<Best-caseRealTimeLatency>37.940 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>2.218 ms</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>74.699 ms</Worst-caseRealTimeLatency>
+<Interval-min>11383</Interval-min>
+<Interval-max>22411843</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <PIXEL_NORM>
@@ -42,20 +42,20 @@
 </TripCount>
 <Latency>
 <range>
-<min>18912</min>
-<max>910592</max>
+<min>10496</min>
+<max>198144</max>
 </range>
 </Latency>
 <AbsoluteTimeLatency>
 <range>
-<min>63033</min>
-<max>3035003</max>
+<min>34983</min>
+<max>660413</max>
 </range>
 </AbsoluteTimeLatency>
 <IterationLatency>
 <range>
-<min>591</min>
-<max>3557</max>
+<min>328</min>
+<max>774</max>
 </range>
 </IterationLatency>
 <InstanceList>
@@ -71,7 +71,7 @@
 <Name>PIXEL_NORM</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:216</SourceLocation>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:223</SourceLocation>
 </PIXEL_NORM>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -80,9 +80,9 @@
 <AreaEstimates>
 <Resources>
 <BRAM_18K>144</BRAM_18K>
-<DSP>567</DSP>
-<FF>51713</FF>
-<LUT>41648</LUT>
+<DSP>569</DSP>
+<FF>53644</FF>
+<LUT>42999</LUT>
 <URAM>32</URAM>
 </Resources>
 <AvailableResources>
@@ -1808,7 +1808,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>14</Bits>
+<Bits>11</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>

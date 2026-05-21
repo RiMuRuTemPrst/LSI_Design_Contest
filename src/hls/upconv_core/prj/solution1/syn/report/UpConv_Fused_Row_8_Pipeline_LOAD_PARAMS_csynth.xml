@@ -664,8 +664,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>trunc_ln2</name>
-<Object>trunc_ln2</Object>
+<name>trunc_ln</name>
+<Object>trunc_ln</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

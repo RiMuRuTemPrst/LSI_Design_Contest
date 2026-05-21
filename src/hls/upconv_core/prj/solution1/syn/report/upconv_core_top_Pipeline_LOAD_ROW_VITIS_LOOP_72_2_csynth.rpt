@@ -1,9 +1,9 @@
 
 
 ================================================================
-== Vitis HLS Report for 'upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2'
+== Vitis HLS Report for 'upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2'
 ================================================================
-* Date:           Wed May 13 11:32:04 2026
+* Date:           Thu May 21 19:10:53 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -41,7 +41,7 @@
         |                            |  Latency (cycles) | Iteration|  Initiation Interval  |    Trip    |          |
         |          Loop Name         |   min   |   max   |  Latency |  achieved |   target  |    Count   | Pipelined|
         +----------------------------+---------+---------+----------+-----------+-----------+------------+----------+
-        |- LOAD_ROW_VITIS_LOOP_73_2  |      132|     7684|         6|          1|          1|  128 ~ 7680|       yes|
+        |- LOAD_ROW_VITIS_LOOP_72_2  |      132|     7684|         6|          1|          1|  128 ~ 7680|       yes|
         +----------------------------+---------+---------+----------+-----------+-----------+------------+----------+
 
 
@@ -76,7 +76,7 @@
     +-------------------------------------------+--------------------------------------+---------------------+
     |                  Instance                 |                Module                |      Expression     |
     +-------------------------------------------+--------------------------------------+---------------------+
-    |ama_addmuladd_8ns_8ns_6ns_6ns_14_4_1_U706  |ama_addmuladd_8ns_8ns_6ns_6ns_14_4_1  |  i0 + (i1 + i2) * i3|
+    |ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U722  |ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1  |  i0 + (i1 + i2) * i3|
     +-------------------------------------------+--------------------------------------+---------------------+
 
     * Memory: 
@@ -89,15 +89,15 @@
     +---------------------------+----------+----+---+----+------------+------------+
     |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------------+----------+----+---+----+------------+------------+
-    |add_ln71_1_fu_174_p2       |         +|   0|  0|  20|          13|           1|
-    |add_ln71_fu_191_p2         |         +|   0|  0|  15|           8|           1|
-    |add_ln73_fu_218_p2         |         +|   0|  0|  13|           6|           1|
+    |add_ln70_1_fu_174_p2       |         +|   0|  0|  20|          13|           1|
+    |add_ln70_fu_191_p2         |         +|   0|  0|  15|           8|           1|
+    |add_ln72_fu_218_p2         |         +|   0|  0|  13|           6|           1|
     |ap_block_pp0_stage0_11001  |       and|   0|  0|   2|           1|           1|
     |ap_condition_143           |       and|   0|  0|   2|           1|           1|
-    |icmp_ln71_fu_168_p2        |      icmp|   0|  0|  20|          13|          13|
-    |icmp_ln73_fu_197_p2        |      icmp|   0|  0|  13|           6|           6|
-    |select_ln71_1_fu_210_p3    |    select|   0|  0|   8|           1|           8|
-    |select_ln71_fu_202_p3      |    select|   0|  0|   6|           1|           1|
+    |icmp_ln70_fu_168_p2        |      icmp|   0|  0|  20|          13|          13|
+    |icmp_ln72_fu_197_p2        |      icmp|   0|  0|  13|           6|           6|
+    |select_ln70_1_fu_210_p3    |    select|   0|  0|   8|           1|           8|
+    |select_ln70_fu_202_p3      |    select|   0|  0|   6|           1|           1|
     |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
     +---------------------------+----------+----+---+----+------------+------------+
     |Total                      |          |   0|  0| 101|          51|          35|
@@ -137,13 +137,13 @@
     |ciw_fu_82                                  |    6|   0|    6|          0|
     |gmem_in_addr_read_reg_315                  |  256|   0|  256|          0|
     |indvar_flatten6_fu_90                      |   13|   0|   13|          0|
-    |select_ln71_1_reg_305                      |    8|   0|    8|          0|
-    |select_ln71_reg_300                        |    6|   0|    6|          0|
+    |p_cast_reg_286                             |    6|   0|   11|          5|
+    |select_ln70_1_reg_305                      |    8|   0|    8|          0|
+    |select_ln70_reg_300                        |    6|   0|    6|          0|
     |wi_fu_86                                   |    8|   0|    8|          0|
-    |zext_ln57_cast_reg_286                     |    6|   0|   14|          8|
-    |select_ln71_reg_300                        |   64|  32|    6|          0|
+    |select_ln70_reg_300                        |   64|  32|    6|          0|
     +-------------------------------------------+-----+----+-----+-----------+
-    |Total                                      |  379|  32|  329|          8|
+    |Total                                      |  379|  32|  326|          5|
     +-------------------------------------------+-----+----+-----+-----------+
 
 
@@ -155,12 +155,12 @@
 +--------------------------+-----+-----+------------+---------------------------------------------------+--------------+
 |         RTL Ports        | Dir | Bits|  Protocol  |                   Source Object                   |    C Type    |
 +--------------------------+-----+-----+------------+---------------------------------------------------+--------------+
-|ap_clk                    |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2|  return value|
-|ap_rst                    |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2|  return value|
-|ap_start                  |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2|  return value|
-|ap_done                   |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2|  return value|
-|ap_idle                   |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2|  return value|
-|ap_ready                  |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_73_2|  return value|
+|ap_clk                    |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2|  return value|
+|ap_rst                    |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2|  return value|
+|ap_start                  |   in|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2|  return value|
+|ap_done                   |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2|  return value|
+|ap_idle                   |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2|  return value|
+|ap_ready                  |  out|    1|  ap_ctrl_hs|  upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2|  return value|
 |m_axi_gmem_in_0_AWVALID   |  out|    1|       m_axi|                                            gmem_in|       pointer|
 |m_axi_gmem_in_0_AWREADY   |   in|    1|       m_axi|                                            gmem_in|       pointer|
 |m_axi_gmem_in_0_AWADDR    |  out|   64|       m_axi|                                            gmem_in|       pointer|
@@ -207,12 +207,12 @@
 |m_axi_gmem_in_0_BRESP     |   in|    2|       m_axi|                                            gmem_in|       pointer|
 |m_axi_gmem_in_0_BID       |   in|    1|       m_axi|                                            gmem_in|       pointer|
 |m_axi_gmem_in_0_BUSER     |   in|    1|       m_axi|                                            gmem_in|       pointer|
-|mul_ln57                  |   in|   13|     ap_none|                                           mul_ln57|        scalar|
-|sext_ln71                 |   in|   59|     ap_none|                                          sext_ln71|        scalar|
+|mul_ln56                  |   in|   13|     ap_none|                                           mul_ln56|        scalar|
+|sext_ln70                 |   in|   59|     ap_none|                                          sext_ln70|        scalar|
 |ci_words                  |   in|    6|     ap_none|                                           ci_words|        scalar|
 |mul50                     |   in|    8|     ap_none|                                              mul50|        scalar|
-|zext_ln57                 |   in|    6|     ap_none|                                          zext_ln57|        scalar|
-|x_buf_address0            |  out|   14|   ap_memory|                                              x_buf|         array|
+|empty                     |   in|    6|     ap_none|                                              empty|        scalar|
+|x_buf_address0            |  out|   11|   ap_memory|                                              x_buf|         array|
 |x_buf_ce0                 |  out|    1|   ap_memory|                                              x_buf|         array|
 |x_buf_we0                 |  out|    1|   ap_memory|                                              x_buf|         array|
 |x_buf_d0                  |  out|  256|   ap_memory|                                              x_buf|         array|
