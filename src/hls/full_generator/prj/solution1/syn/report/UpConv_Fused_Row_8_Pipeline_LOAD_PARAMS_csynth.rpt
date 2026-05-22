@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS'
 ================================================================
-* Date:           Mon May 18 07:09:40 2026
+* Date:           Fri May 22 08:50:30 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -85,13 +85,13 @@
     +--------------------------------+----------+----+---+----+------------+------------+
     |          Variable Name         | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +--------------------------------+----------+----+---+----+------------+------------+
-    |add_ln196_fu_225_p2             |         +|   0|  0|  12|           5|           1|
-    |add_ln199_1_fu_253_p2           |         +|   0|  0|  71|          64|          64|
-    |add_ln199_fu_235_p2             |         +|   0|  0|  15|           8|           8|
-    |add_ln200_1_fu_300_p2           |         +|   0|  0|  71|          64|          64|
-    |add_ln200_fu_284_p2             |         +|   0|  0|  15|           8|           8|
-    |add_ln201_1_fu_340_p2           |         +|   0|  0|  71|          64|          64|
-    |add_ln201_fu_315_p2             |         +|   0|  0|  15|           8|           8|
+    |add_ln197_fu_225_p2             |         +|   0|  0|  12|           5|           1|
+    |add_ln200_1_fu_253_p2           |         +|   0|  0|  71|          64|          64|
+    |add_ln200_fu_235_p2             |         +|   0|  0|  15|           8|           8|
+    |add_ln201_1_fu_300_p2           |         +|   0|  0|  71|          64|          64|
+    |add_ln201_fu_284_p2             |         +|   0|  0|  15|           8|           8|
+    |add_ln202_1_fu_340_p2           |         +|   0|  0|  71|          64|          64|
+    |add_ln202_fu_315_p2             |         +|   0|  0|  15|           8|           8|
     |ap_block_pp0_stage0_11001_grp3  |       and|   0|  0|   2|           1|           1|
     |ap_block_pp0_stage0_11001_grp4  |       and|   0|  0|   2|           1|           1|
     |ap_block_pp0_stage1_11001_grp1  |       and|   0|  0|   2|           1|           1|
@@ -99,7 +99,7 @@
     |ap_block_pp0_stage2_11001_grp2  |       and|   0|  0|   2|           1|           1|
     |ap_block_pp0_stage2_11001_grp6  |       and|   0|  0|   2|           1|           1|
     |ap_block_state2_io_grp1         |       and|   0|  0|   2|           1|           1|
-    |icmp_ln196_fu_219_p2            |      icmp|   0|  0|  12|           5|           5|
+    |icmp_ln197_fu_219_p2            |      icmp|   0|  0|  12|           5|           5|
     |ap_block_pp0_stage0_11001       |        or|   0|  0|   2|           1|           1|
     |ap_block_pp0_stage1_subdone     |        or|   0|  0|   2|           1|           1|
     |ap_block_pp0_stage2_11001       |        or|   0|  0|   2|           1|           1|
@@ -154,7 +154,7 @@
     +-------------------------------------------+-----+----+-----+-----------+
     |                    Name                   |  FF | LUT| Bits| Const Bits|
     +-------------------------------------------+-----+----+-----+-----------+
-    |add_ln201_reg_427                          |    8|   0|    8|          0|
+    |add_ln202_reg_427                          |    8|   0|    8|          0|
     |ap_CS_fsm                                  |    3|   0|    3|          0|
     |ap_block_pp0_stage0_subdone_grp0_done_reg  |    1|   0|    1|          0|
     |ap_block_pp0_stage0_subdone_grp3_done_reg  |    1|   0|    1|          0|
@@ -221,14 +221,14 @@
     |gmem_pu_addr_read_reg_449                  |  256|   0|  256|          0|
     |i_2_reg_396                                |    5|   0|    5|          0|
     |i_fu_90                                    |    5|   0|    5|          0|
-    |icmp_ln196_reg_401                         |    1|   0|    1|          0|
-    |trunc_ln6_reg_411                          |   59|   0|   59|          0|
-    |trunc_ln7_reg_422                          |   59|   0|   59|          0|
-    |trunc_ln8_reg_438                          |   59|   0|   59|          0|
-    |zext_ln196_reg_454                         |    5|   0|   64|         59|
-    |zext_ln199_reg_405                         |    5|   0|    8|          3|
+    |icmp_ln197_reg_401                         |    1|   0|    1|          0|
+    |trunc_ln5_reg_411                          |   59|   0|   59|          0|
+    |trunc_ln6_reg_422                          |   59|   0|   59|          0|
+    |trunc_ln7_reg_438                          |   59|   0|   59|          0|
+    |zext_ln197_reg_454                         |    5|   0|   64|         59|
+    |zext_ln200_reg_405                         |    5|   0|    8|          3|
     |i_2_reg_396                                |   64|  32|    5|          0|
-    |icmp_ln196_reg_401                         |   64|  32|    1|          0|
+    |icmp_ln197_reg_401                         |   64|  32|    1|          0|
     +-------------------------------------------+-----+----+-----+-----------+
     |Total                                      | 1165|  64| 1105|         62|
     +-------------------------------------------+-----+----+-----+-----------+
@@ -294,7 +294,7 @@
 |m_axi_gmem_pu_0_BRESP     |   in|    2|       m_axi|                                   gmem_pu|       pointer|
 |m_axi_gmem_pu_0_BID       |   in|    1|       m_axi|                                   gmem_pu|       pointer|
 |m_axi_gmem_pu_0_BUSER     |   in|    1|       m_axi|                                   gmem_pu|       pointer|
-|trunc_ln2                 |   in|    5|     ap_none|                                 trunc_ln2|        scalar|
+|trunc_ln                  |   in|    5|     ap_none|                                  trunc_ln|        scalar|
 |idx1                      |   in|    8|     ap_none|                                      idx1|        scalar|
 |B_ptr                     |   in|   64|     ap_none|                                     B_ptr|        scalar|
 |b_buf_address0            |  out|    5|   ap_memory|                                     b_buf|         array|

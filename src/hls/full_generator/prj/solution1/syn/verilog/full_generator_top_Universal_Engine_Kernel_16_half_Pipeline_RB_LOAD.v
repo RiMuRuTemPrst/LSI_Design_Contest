@@ -362,8 +362,8 @@ reg    ap_block_pp0_stage0_11001;
 wire    ap_block_pp0_stage0_11001_grp0;
 reg    ap_block_pp0_stage0_subdone_grp0_done_reg;
 wire    ap_block_pp0_stage0_subdone_grp0;
-wire   [0:0] empty_829_fu_523_p2;
-reg   [0:0] empty_829_reg_664;
+wire   [0:0] empty_831_fu_523_p2;
+reg   [0:0] empty_831_reg_664;
 reg   [5:0] j_reg_668;
 reg   [5:0] j_reg_668_pp0_iter1_reg;
 reg   [5:0] j_reg_668_pp0_iter2_reg;
@@ -1604,7 +1604,7 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_subdone_grp0_done_reg) & (1'b0 == ap_block_pp0_stage0_11001_grp0) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
-        empty_829_reg_664 <= empty_829_fu_523_p2;
+        empty_831_reg_664 <= empty_831_fu_523_p2;
     end
 end
 
@@ -1801,7 +1801,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((empty_829_reg_664 == 1'd0) & (1'b0 == ap_block_pp0_stage0_subdone_grp0_done_reg) & (1'b0 == ap_block_pp0_stage0_11001_grp0) & (ap_enable_reg_pp0_iter73 == 1'b1))) begin
+    if (((empty_831_reg_664 == 1'd0) & (1'b0 == ap_block_pp0_stage0_subdone_grp0_done_reg) & (1'b0 == ap_block_pp0_stage0_11001_grp0) & (ap_enable_reg_pp0_iter73 == 1'b1))) begin
         skip_buf_we1_local = 1'b1;
     end else begin
         skip_buf_we1_local = 1'b0;
@@ -2023,7 +2023,7 @@ assign ap_loop_exit_ready = ap_condition_exit_pp0_iter0_stage0;
 
 assign ap_ready = ap_ready_sig;
 
-assign empty_829_fu_523_p2 = (icmp805 | cmp1_not);
+assign empty_831_fu_523_p2 = (icmp805 | cmp1_not);
 
 assign icmp_ln226_fu_537_p2 = ((ap_sig_allocacmp_j == 6'd60) ? 1'b1 : 1'b0);
 

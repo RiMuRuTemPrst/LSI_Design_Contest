@@ -223,7 +223,7 @@ input  [58:0] sext_ln95_1;
 input  [5:0] ci_words;
 input  [5:0] empty;
 input  [1:0] mode;
-output  [13:0] x_buf_address0;
+output  [10:0] x_buf_address0;
 output   x_buf_ce0;
 output   x_buf_we0;
 output  [255:0] x_buf_d0;
@@ -255,8 +255,8 @@ reg    gmem_y_blk_n_R;
 wire    ap_block_pp0_stage0_grp1;
 reg    gmem_x_blk_n_R;
 reg    ap_block_pp0_stage0_11001_grp1;
-wire   [12:0] p_cast_fu_173_p1;
-reg   [12:0] p_cast_reg_332;
+wire   [10:0] p_cast_fu_173_p1;
+reg   [10:0] p_cast_reg_332;
 wire   [0:0] icmp_ln92_fu_185_p2;
 reg    ap_block_pp0_stage0_11001;
 reg   [0:0] icmp_ln95_reg_351_pp0_iter1_reg;
@@ -282,7 +282,7 @@ reg    x_buf_we0_local;
 reg    x_buf_ce0_local;
 wire   [0:0] icmp_ln97_fu_238_p2;
 wire   [7:0] add_ln95_1_fu_232_p2;
-wire   [12:0] grp_fu_298_p3;
+wire   [10:0] grp_fu_298_p3;
 wire   [7:0] grp_fu_298_p0;
 wire   [5:0] grp_fu_298_p1;
 wire   [5:0] grp_fu_298_p2;
@@ -298,8 +298,8 @@ wire    ap_enable_pp0;
 wire    ap_start_int;
 wire    ap_ready_sig;
 wire    ap_done_sig;
-wire   [12:0] grp_fu_298_p00;
-wire   [12:0] grp_fu_298_p20;
+wire   [10:0] grp_fu_298_p00;
+wire   [10:0] grp_fu_298_p20;
 wire    ap_ce_reg;
 
 // power-on initialization
@@ -315,14 +315,14 @@ initial begin
 #0 ap_done_reg = 1'b0;
 end
 
-full_generator_top_mac_muladd_8ns_6ns_6ns_13_4_1 #(
+full_generator_top_mac_muladd_8ns_6ns_6ns_11_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 8 ),
     .din1_WIDTH( 6 ),
     .din2_WIDTH( 6 ),
-    .dout_WIDTH( 13 ))
-mac_muladd_8ns_6ns_6ns_13_4_1_U1676(
+    .dout_WIDTH( 11 ))
+mac_muladd_8ns_6ns_6ns_11_4_1_U1676(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(grp_fu_298_p0),
@@ -806,7 +806,7 @@ assign x_buf_we0 = x_buf_we0_local;
 assign zext_ln100_fu_294_p1 = grp_fu_298_p3;
 
 always @ (posedge ap_clk) begin
-    p_cast_reg_332[12:6] <= 7'b0000000;
+    p_cast_reg_332[10:6] <= 5'b00000;
 end
 
 endmodule //full_generator_top_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1

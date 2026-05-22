@@ -112,27 +112,27 @@ Chạy full pipeline Fusion→UCB→Conv77 qua `test_full.cpp`. CSIM mất ~7 gi
 
 ## Synthesis Results — ZCU104 (xczu7ev-ffvc1156-2-e, 300 MHz)
 
-### Resource Utilization (full_generator_top — Fusion + UpConv + Conv77) ✅ UPDATED (post Clip+WI+N_TILES fix)
+### Resource Utilization (full_generator_top — Fusion + UpConv + Conv77) ✅ UPDATED (post BIAS_STATS rotating-acc fix)
 | Resource | Used | Available | % |
 | :--- | :--- | :--- | :--- |
-| BRAM_18K | 545 | 624 | **87%** |
-| DSP | 1224 | 1728 | **70%** |
-| LUT | 160,811 | 230,400 | **69%** |
-| FF | 144,322 | 460,800 | **31%** |
-| URAM | 80 | 96 | **83%** |
+| BRAM_18K | 601 | 624 | **96%** |
+| DSP | 1614 | 1728 | **93%** |
+| LUT | 182,374 | 230,400 | **79%** |
+| FF | 175,744 | 460,800 | **38%** |
+| URAM | 68 | 96 | **70%** |
 | **Fmax** | **308.74 MHz** | 300 MHz | **✅ Pass** |
 
-> Cập nhật 2026-05-13: Re-synthesis sau WI_LOOP fix, N_TILES fix, và Clip(0,1) thêm vào Conv77 output.
-> LUT tăng từ 123K→160K chủ yếu do Conv77 Clip logic trên ap_fixed<32,16> (xem per-block breakdown bên dưới).
+> Cập nhật 2026-05-22: Re-synthesis sau BIAS_STATS rotating-acc fix (PEs_F=16, PEs_U=8).
+> URAM giảm từ 80→68 (run_upconv_block 48→36 URAM, rotating acc sum_rot/sumsq_rot mapped thành registers).
 
-### Per-Block Resource Breakdown (full_generator_top)
+### Per-Block Resource Breakdown (full_generator_top — PEs_F=16, PEs_U=8, post BIAS_STATS fix)
 | Block | BRAM_18K | DSP | FF | LUT | URAM |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Universal_Engine_Kernel (Fusion) | 152 | 174 | 33,999 | 32,102 | 16 |
-| UpConv_Fused_Row (UpConv) | 144 | 567 | 51,414 | 41,676 | 32 |
-| Conv77_Kernel (Conv77 + Clip) | 56 | 448 | 41,832 | 69,010 | 0 |
-| Other / overhead | 193 | 35 | 17,077 | 18,023 | 32 |
-| **Total** | **545** | **1224** | **144,322** | **160,811** | **80** |
+| Universal_Engine_Kernel (16-MAC, PEs_F=16) | 208 | 558 | 62,081 | 51,574 | 16 |
+| run_upconv_block (PEs_U=8) | 144 | 576 | 56,246 | 45,921 | 36 |
+| Conv77_Kernel (8×8 SIMD+PE + Clip) | 56 | 448 | 41,896 | 69,081 | 0 |
+| Other / overhead | 193 | 32 | 15,521 | 15,798 | 16 |
+| **Total** | **601** | **1614** | **175,744** | **182,374** | **68** |
 
 ### Resource Utilization (full_generator_top — cũ, Fusion + UpConv only, reference)
 | Resource | Used | Available | % |
@@ -212,9 +212,10 @@ Chạy full pipeline Fusion→UCB→Conv77 qua `test_full.cpp`. CSIM mất ~7 gi
 ### Conv77 (SIMD+PE, từ full_generator integrated synthesis) ✅ UPDATED
 | Block | Cycles | Latency @ 300 MHz |
 | :--- | :--- | :--- |
-| Conv77_Kernel (256×256×60→3) | 54.5M | **~182 ms** |
+| Conv77_Kernel (256×256×60→3) | 5.3M–6.2M | **17.8–20.7 ms** |
 
 > SIMD+PE design: 8×8 = 448 MACs/cycle, 0 URAM, dùng BRAM cho x_buffer và w_buffer.
+> Cập nhật 2026-05-22: HLS estimate từ re-synthesis post BIAS_STATS fix (min=5,326,641 cy, max=6,219,569 cy).
 > Conv77 CSIM (data_256_t interface, post-clip golden `output_numbers.txt`): max_err=0.488, rmse=0.162, 0/196608 mismatch (TOL=1.0) — **PASS**
 
 ## Optimization Experiments — full_generator_opt (2026-05-15)
@@ -229,7 +230,7 @@ Maximize inference speed (minimize cycles) trong giới hạn: BRAM ≤ 624, DSP
 | full_generator_opt3 | 8 | 16-wide | 8 | 23.16B | 545 (87%) | 1614 (93%) | 80 (83%) | -0.81 ns |
 | full_generator_opt4 | 8 | 4-wide | 8 | 23.64B | 545 (87%) | 1230 (71%) | 80 (83%) | -0.81 ns |
 | full_generator_opt2 | 8 | 8-wide | **12** | **19.67B** | **605 (96%)** | **1624 (93%)** | **80 (83%)** | -0.81 ns |
-| **full_generator ✅ CANONICAL** | **16** | **8-wide** | **8** | **177M–16.16B** | **601 (96%)** | **1614 (93%)** | **80 (83%)** | **3.239 ns ✅** |
+| **full_generator ✅ CANONICAL** | **16** | **8-wide** | **8** | **177M–16.16B** | **601 (96%)** | **1614 (93%)** | **68 (70%)** | **3.239 ns ✅** |
 
 ### Per-block breakdown cho opt2 (BEST)
 | Block | BRAM | DSP | FF | LUT | URAM |
@@ -260,19 +261,19 @@ Pre-existing trong full_generator gốc (cùng -0.81 ns tại run_upconv_block) 
 ### Recommended Design
 **`full_generator`** (opt2 + UCB weight/param offset correctness fix + PEs_F=16 + PEs_U=8):
 - Source: `src/hls/full_generator/`
-- Synthesis ✅ RE-CONFIRMED (2026-05-17): BRAM 601(96%), DSP 1614(93%), FF 176,782(38%), LUT 183,333(79%), URAM 80(83%), Fmax 308.74 MHz, timing est. 3.239 ns ✅
+- Synthesis ✅ RE-CONFIRMED (2026-05-22): BRAM 601(96%), DSP 1614(93%), FF 175,744(38%), LUT 182,374(79%), URAM 68(70%), Fmax 308.74 MHz, timing est. 3.239 ns ✅
 - Latency: min 177M cycles (0.591 sec), max 16.16B cycles (53.9 sec) — wide range due to UpConv KH/KW loop bound uncertainty
 - **Fixes UCB_1/2/3 reading wrong weights** — opt2 had all 4 UCBs starting from W_upconv[0], thiếu offset per UCB
 - **PEs_F=16** (up from 8): doubles Fusion MACs/cycle; **PEs_U=8** (down from 12): reduces UpConv BRAM while staying in budget
 
-### Per-block breakdown cho opt5 ✅ (PEs_F=16, PEs_U=8) — 2026-05-17
+### Per-block breakdown cho opt5 ✅ (PEs_F=16, PEs_U=8) — 2026-05-22 (post BIAS_STATS fix)
 | Block | BRAM | DSP | FF | LUT | URAM |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Universal_Engine_Kernel (16-MAC, PEs_F=16) | 208 | 558 | 62,069 | 51,386 | 16 |
-| run_upconv_block (PEs_U=8) | 144 | 576 | 56,497 | 46,166 | 48 |
-| Conv77_Kernel (8×8 SIMD+PE) | 56 | 448 | 41,832 | 69,010 | 0 |
-| Other / overhead | 193 | 32 | 16,384 | 16,771 | 16 |
-| **Total** | **601** | **1614** | **176,782** | **183,333** | **80** |
+| Universal_Engine_Kernel (16-MAC, PEs_F=16) | 208 | 558 | 62,081 | 51,574 | 16 |
+| run_upconv_block (PEs_U=8) | 144 | 576 | 56,246 | 45,921 | 36 |
+| Conv77_Kernel (8×8 SIMD+PE) | 56 | 448 | 41,896 | 69,081 | 0 |
+| Other / overhead | 193 | 32 | 15,521 | 15,798 | 16 |
+| **Total** | **601** | **1614** | **175,744** | **182,374** | **68** |
 
 #### Weight/Param layout expected in W_upconv & P_upconv (opt5)
 ```

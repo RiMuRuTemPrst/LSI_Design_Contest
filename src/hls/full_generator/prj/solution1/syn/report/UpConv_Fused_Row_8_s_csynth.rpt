@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'UpConv_Fused_Row_8_s'
 ================================================================
-* Date:           Mon May 18 07:09:41 2026
+* Date:           Fri May 22 08:50:32 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -29,7 +29,7 @@
     |  Latency (cycles)  |   Latency (absolute)  |     Interval    | Pipeline|
     |   min   |    max   |    min    |    max    |  min |    max   |   Type  |
     +---------+----------+-----------+-----------+------+----------+---------+
-    |     9751|  15365690|  32.500 us|  51.214 ms|  9751|  15365690|       no|
+    |     9879|  15366346|  32.927 us|  51.216 ms|  9879|  15366346|       no|
     +---------+----------+-----------+-----------+------+----------+---------+
 
     + Detail: 
@@ -38,11 +38,11 @@
         |                                                      |                                           |  Latency (cycles)  |   Latency (absolute)  |    Interval    |                    Pipeline                    |
         |                       Instance                       |                   Module                  |   min   |    max   |    min    |    max    | min |    max   |                      Type                      |
         +------------------------------------------------------+-------------------------------------------+---------+----------+-----------+-----------+-----+----------+------------------------------------------------+
-        |grp_UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC_fu_405  |UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC  |      483|      3843|   1.610 us|  12.809 us|  482|      3842|  loop auto-rewind stp (delay=0 clock cycles(s))|
-        |grp_UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS_fu_442    |UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS    |       86|       164|   0.287 us|   0.547 us|   15|        93|  loop auto-rewind stp (delay=0 clock cycles(s))|
-        |grp_UpConv_Fused_Row_8_Outline_TILE_LOOP_fu_464       |UpConv_Fused_Row_8_Outline_TILE_LOOP       |      329|  15176684|   1.097 us|  50.584 ms|  329|  15176684|                                              no|
-        |grp_UpConv_Fused_Row_8_Pipeline_BIAS_STATS_fu_521     |UpConv_Fused_Row_8_Pipeline_BIAS_STATS     |       89|       509|   0.297 us|   1.696 us|   61|       481|  loop auto-rewind stp (delay=0 clock cycles(s))|
-        |grp_UpConv_Fused_Row_8_Pipeline_NORM_WRITE_fu_576     |UpConv_Fused_Row_8_Pipeline_NORM_WRITE     |       28|        54|  93.324 ns|   0.180 us|    5|        31|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |grp_UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC_fu_401  |UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC  |      483|      3843|   1.610 us|  12.809 us|  482|      3842|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |grp_UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS_fu_438    |UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS    |       86|       164|   0.287 us|   0.547 us|   15|        93|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |grp_UpConv_Fused_Row_8_Outline_TILE_LOOP_fu_460       |UpConv_Fused_Row_8_Outline_TILE_LOOP       |      457|  15177340|   1.523 us|  50.586 ms|  457|  15177340|                                              no|
+        |grp_UpConv_Fused_Row_8_Pipeline_BIAS_STATS_fu_517     |UpConv_Fused_Row_8_Pipeline_BIAS_STATS     |       89|       509|   0.297 us|   1.696 us|   61|       481|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |grp_UpConv_Fused_Row_8_Pipeline_NORM_WRITE_fu_572     |UpConv_Fused_Row_8_Pipeline_NORM_WRITE     |       28|        54|  93.324 ns|   0.180 us|    5|        31|  loop auto-rewind stp (delay=0 clock cycles(s))|
         +------------------------------------------------------+-------------------------------------------+---------+----------+-----------+-----------+-----+----------+------------------------------------------------+
 
         * Loop: 
@@ -63,14 +63,14 @@
 |       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
 +-----------------+---------+------+--------+--------+-----+
 |DSP              |        -|     1|       -|       -|    -|
-|Expression       |        -|     -|       0|     308|    -|
+|Expression       |        -|     -|       0|     288|    -|
 |FIFO             |        -|     -|       -|       -|    -|
-|Instance         |      120|   572|   53339|   37078|    -|
+|Instance         |      120|   572|   53366|   37135|    -|
 |Memory           |       24|     -|       0|       0|   32|
 |Multiplexer      |        -|     -|       0|    5977|    -|
-|Register         |        -|     -|     884|       -|    -|
+|Register         |        -|     -|     874|       -|    -|
 +-----------------+---------+------+--------+--------+-----+
-|Total            |      144|   573|   54223|   43363|   32|
+|Total            |      144|   573|   54240|   43400|   32|
 +-----------------+---------+------+--------+--------+-----+
 |Available        |      624|  1728|  460800|  230400|   96|
 +-----------------+---------+------+--------+--------+-----+
@@ -82,19 +82,21 @@
     +------------------------------------------------------+-------------------------------------------+---------+-----+-------+-------+-----+
     |                       Instance                       |                   Module                  | BRAM_18K| DSP |   FF  |  LUT  | URAM|
     +------------------------------------------------------+-------------------------------------------+---------+-----+-------+-------+-----+
-    |grp_UpConv_Fused_Row_8_Outline_TILE_LOOP_fu_464       |UpConv_Fused_Row_8_Outline_TILE_LOOP       |      120|  433|  38268|  25074|    0|
-    |grp_UpConv_Fused_Row_8_Pipeline_BIAS_STATS_fu_521     |UpConv_Fused_Row_8_Pipeline_BIAS_STATS     |        0|    0|   2259|   1205|    0|
-    |grp_UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS_fu_442    |UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS    |        0|    0|   1165|    696|    0|
-    |grp_UpConv_Fused_Row_8_Pipeline_NORM_WRITE_fu_576     |UpConv_Fused_Row_8_Pipeline_NORM_WRITE     |        0|   32|   5278|   3245|    0|
-    |grp_UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC_fu_405  |UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC  |        0|    0|     40|   2805|    0|
+    |grp_UpConv_Fused_Row_8_Outline_TILE_LOOP_fu_460       |UpConv_Fused_Row_8_Outline_TILE_LOOP       |      120|  433|  38295|  25131|    0|
+    |grp_UpConv_Fused_Row_8_Pipeline_BIAS_STATS_fu_517     |UpConv_Fused_Row_8_Pipeline_BIAS_STATS     |        0|    0|   2259|   1205|    0|
+    |grp_UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS_fu_438    |UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS    |        0|    0|   1165|    696|    0|
+    |grp_UpConv_Fused_Row_8_Pipeline_NORM_WRITE_fu_572     |UpConv_Fused_Row_8_Pipeline_NORM_WRITE     |        0|   32|   5278|   3245|    0|
+    |grp_UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC_fu_401  |UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC  |        0|    0|     40|   2805|    0|
+    |fadd_32ns_32ns_32_11_full_dsp_1_U2281                 |fadd_32ns_32ns_32_11_full_dsp_1            |        0|    2|    369|    236|    0|
+    |fadd_32ns_32ns_32_11_full_dsp_1_U2282                 |fadd_32ns_32ns_32_11_full_dsp_1            |        0|    2|    369|    236|    0|
     |fadd_32ns_32ns_32_11_full_dsp_1_U2283                 |fadd_32ns_32ns_32_11_full_dsp_1            |        0|    2|    369|    236|    0|
-    |fadd_32ns_32ns_32_11_full_dsp_1_U2284                 |fadd_32ns_32ns_32_11_full_dsp_1            |        0|    2|    369|    236|    0|
-    |fadd_32ns_32ns_32_11_full_dsp_1_U2285                 |fadd_32ns_32ns_32_11_full_dsp_1            |        0|    2|    369|    236|    0|
-    |faddfsub_32ns_32ns_32_11_full_dsp_1_U2282             |faddfsub_32ns_32ns_32_11_full_dsp_1        |        0|    2|    369|    236|    0|
-    |fcmp_32ns_32ns_1_3_no_dsp_1_U2289                     |fcmp_32ns_32ns_1_3_no_dsp_1                |        0|    0|      0|      0|    0|
-    |fdiv_32ns_32ns_32_30_no_dsp_1_U2287                   |fdiv_32ns_32ns_32_30_no_dsp_1              |        0|    0|      0|      0|    0|
-    |fmul_32ns_32ns_32_7_max_dsp_1_U2286                   |fmul_32ns_32ns_32_7_max_dsp_1              |        0|    3|    197|    123|    0|
-    |fsqrt_32ns_32ns_32_28_no_dsp_1_U2290                  |fsqrt_32ns_32ns_32_28_no_dsp_1             |        0|    0|      0|      0|    0|
+    |faddfsub_32ns_32ns_32_11_full_dsp_1_U2280             |faddfsub_32ns_32ns_32_11_full_dsp_1        |        0|    2|    369|    236|    0|
+    |fcmp_32ns_32ns_1_3_no_dsp_1_U2287                     |fcmp_32ns_32ns_1_3_no_dsp_1                |        0|    0|      0|      0|    0|
+    |fdiv_32ns_32ns_32_30_no_dsp_1_U2285                   |fdiv_32ns_32ns_32_30_no_dsp_1              |        0|    0|      0|      0|    0|
+    |fmul_32ns_32ns_32_7_max_dsp_1_U2284                   |fmul_32ns_32ns_32_7_max_dsp_1              |        0|    3|    197|    123|    0|
+    |fsqrt_32ns_32ns_32_28_no_dsp_1_U2288                  |fsqrt_32ns_32ns_32_28_no_dsp_1             |        0|    0|      0|      0|    0|
+    |hadd_16ns_16ns_16_5_full_dsp_1_U2294                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
+    |hadd_16ns_16ns_16_5_full_dsp_1_U2295                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
     |hadd_16ns_16ns_16_5_full_dsp_1_U2296                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
     |hadd_16ns_16ns_16_5_full_dsp_1_U2297                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
     |hadd_16ns_16ns_16_5_full_dsp_1_U2298                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
@@ -108,9 +110,9 @@
     |hadd_16ns_16ns_16_5_full_dsp_1_U2306                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
     |hadd_16ns_16ns_16_5_full_dsp_1_U2307                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
     |hadd_16ns_16ns_16_5_full_dsp_1_U2308                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
-    |hadd_16ns_16ns_16_5_full_dsp_1_U2309                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
-    |hadd_16ns_16ns_16_5_full_dsp_1_U2310                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
-    |hadd_16ns_16ns_16_5_full_dsp_1_U2343                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
+    |hadd_16ns_16ns_16_5_full_dsp_1_U2341                  |hadd_16ns_16ns_16_5_full_dsp_1             |        0|    2|    109|    113|    0|
+    |hmul_16ns_16ns_16_4_max_dsp_1_U2309                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
+    |hmul_16ns_16ns_16_4_max_dsp_1_U2310                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
     |hmul_16ns_16ns_16_4_max_dsp_1_U2311                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
     |hmul_16ns_16ns_16_4_max_dsp_1_U2312                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
     |hmul_16ns_16ns_16_4_max_dsp_1_U2313                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
@@ -141,22 +143,20 @@
     |hmul_16ns_16ns_16_4_max_dsp_1_U2338                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
     |hmul_16ns_16ns_16_4_max_dsp_1_U2339                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
     |hmul_16ns_16ns_16_4_max_dsp_1_U2340                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
-    |hmul_16ns_16ns_16_4_max_dsp_1_U2341                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
-    |hmul_16ns_16ns_16_4_max_dsp_1_U2342                   |hmul_16ns_16ns_16_4_max_dsp_1              |        0|    2|     91|     34|    0|
-    |hptosp_16ns_32_2_no_dsp_1_U2292                       |hptosp_16ns_32_2_no_dsp_1                  |        0|    0|      0|      0|    0|
-    |mul_8ns_8ns_15_1_1_U2293                              |mul_8ns_8ns_15_1_1                         |        0|    0|      0|     40|    0|
-    |mul_9ns_5ns_14_1_1_U2294                              |mul_9ns_5ns_14_1_1                         |        0|    0|      0|     50|    0|
-    |sitofp_32ns_32_7_no_dsp_1_U2288                       |sitofp_32ns_32_7_no_dsp_1                  |        0|    0|      0|      0|    0|
-    |sptohp_32ns_16_2_no_dsp_1_U2291                       |sptohp_32ns_16_2_no_dsp_1                  |        0|    0|      0|      0|    0|
+    |hptosp_16ns_32_2_no_dsp_1_U2290                       |hptosp_16ns_32_2_no_dsp_1                  |        0|    0|      0|      0|    0|
+    |mul_8ns_8ns_15_1_1_U2291                              |mul_8ns_8ns_15_1_1                         |        0|    0|      0|     40|    0|
+    |mul_9ns_5ns_14_1_1_U2292                              |mul_9ns_5ns_14_1_1                         |        0|    0|      0|     50|    0|
+    |sitofp_32ns_32_7_no_dsp_1_U2286                       |sitofp_32ns_32_7_no_dsp_1                  |        0|    0|      0|      0|    0|
+    |sptohp_32ns_16_2_no_dsp_1_U2289                       |sptohp_32ns_16_2_no_dsp_1                  |        0|    0|      0|      0|    0|
     +------------------------------------------------------+-------------------------------------------+---------+-----+-------+-------+-----+
-    |Total                                                 |                                           |      120|  572|  53339|  37078|    0|
+    |Total                                                 |                                           |      120|  572|  53366|  37135|    0|
     +------------------------------------------------------+-------------------------------------------+---------+-----+-------+-------+-----+
 
     * DSP: 
     +---------------------------------------+---------------------------------+--------------+
     |                Instance               |              Module             |  Expression  |
     +---------------------------------------+---------------------------------+--------------+
-    |mac_muladd_16ns_5ns_19ns_22_4_1_U2295  |mac_muladd_16ns_5ns_19ns_22_4_1  |  i0 * i1 + i2|
+    |mac_muladd_16ns_5ns_19ns_22_4_1_U2293  |mac_muladd_16ns_5ns_19ns_22_4_1  |  i0 * i1 + i2|
     +---------------------------------------+---------------------------------+--------------+
 
     * Memory: 
@@ -193,24 +193,23 @@
     +---------------------------------+----------+----+---+----+------------+------------+
     |          Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------------------+----------+----+---+----+------------+------------+
-    |add60_fu_799_p2                  |         +|   0|  0|  16|           9|           1|
-    |add_ln112_1_fu_847_p2            |         +|   0|  0|  20|          13|          13|
-    |add_ln112_fu_822_p2              |         +|   0|  0|  17|          10|          10|
-    |add_ln204_1_fu_881_p2            |         +|   0|  0|  71|          64|          64|
-    |add_ln204_2_fu_919_p2            |         +|   0|  0|  16|           9|           1|
-    |add_ln85_fu_765_p2               |         +|   0|  0|  17|          10|           4|
-    |add_ln86_fu_704_p2               |         +|   0|  0|  16|           9|           4|
-    |add_ln88_fu_783_p2               |         +|   0|  0|  16|           9|           3|
-    |sub_ln224_fu_949_p2              |         -|   0|  0|  20|          13|          13|
-    |and_ln236_fu_1061_p2             |       and|   0|  0|   2|           1|           1|
-    |icmp_ln204_fu_914_p2             |      icmp|   0|  0|  16|           9|           9|
-    |icmp_ln236_1_fu_1049_p2          |      icmp|   0|  0|  30|          23|           1|
-    |icmp_ln236_fu_1043_p2            |      icmp|   0|  0|  15|           8|           2|
+    |add58_fu_821_p2                  |         +|   0|  0|  16|           9|           1|
+    |add_ln205_1_fu_855_p2            |         +|   0|  0|  71|          64|          64|
+    |add_ln205_2_fu_893_p2            |         +|   0|  0|  16|           9|           1|
+    |add_ln85_fu_761_p2               |         +|   0|  0|  17|          10|           4|
+    |add_ln86_fu_700_p2               |         +|   0|  0|  16|           9|           4|
+    |add_ln88_fu_785_p2               |         +|   0|  0|  16|           9|           3|
+    |mul28_fu_813_p2                  |         +|   0|  0|  17|          10|          10|
+    |sub_ln225_fu_923_p2              |         -|   0|  0|  20|          13|          13|
+    |and_ln237_fu_1035_p2             |       and|   0|  0|   2|           1|           1|
+    |icmp_ln205_fu_888_p2             |      icmp|   0|  0|  16|           9|           9|
+    |icmp_ln237_1_fu_1023_p2          |      icmp|   0|  0|  30|          23|           1|
+    |icmp_ln237_fu_1017_p2            |      icmp|   0|  0|  15|           8|           2|
     |ap_block_state3_on_subcall_done  |        or|   0|  0|   2|           1|           1|
-    |or_ln236_fu_1055_p2              |        or|   0|  0|   2|           1|           1|
-    |var_1_fu_1066_p3                 |    select|   0|  0|  32|           1|           1|
+    |or_ln237_fu_1029_p2              |        or|   0|  0|   2|           1|           1|
+    |var_1_fu_1040_p3                 |    select|   0|  0|  32|           1|           1|
     +---------------------------------+----------+----+---+----+------------+------------+
-    |Total                            |          |   0|  0| 308|         190|         129|
+    |Total                            |          |   0|  0| 288|         177|         116|
     +---------------------------------+----------+----+---+----+------------+------------+
 
     * Multiplexer: 
@@ -229,168 +228,168 @@
     |g_buf_we0                                                                                                                                                                 |     9|          2|    1|          2|
     |gmem_y_blk_n_AW                                                                                                                                                           |     9|          2|    1|          2|
     |gmem_y_blk_n_B                                                                                                                                                            |     9|          2|    1|          2|
-    |grp_fu_1456_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1456_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1456_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1460_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1460_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1460_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1464_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1464_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1464_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1468_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1468_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1468_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1472_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1472_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1472_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1476_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1476_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1476_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1480_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1480_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1480_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1484_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1484_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1484_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1488_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1488_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1488_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1492_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1492_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1492_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1496_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1496_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1496_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1500_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1500_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1500_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1504_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1504_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1504_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1508_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1508_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1508_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1512_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1512_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1512_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1516_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1516_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1516_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1520_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1520_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1520_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1524_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1524_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1524_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1528_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1528_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1528_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1532_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1532_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1532_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1536_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1536_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1536_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1540_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1540_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1540_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1544_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1544_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1544_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1548_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1548_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1548_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1552_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1552_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1552_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1556_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1556_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1556_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1560_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1560_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1560_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1564_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1564_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1564_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1568_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1568_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1568_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1572_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1572_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1572_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1576_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1576_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1576_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1580_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1580_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1580_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1584_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1584_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1584_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1588_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1588_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1588_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1592_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1592_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1592_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1596_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1596_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1596_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1600_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1600_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1600_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1604_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1604_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1604_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1608_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1608_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1608_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1612_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1612_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1612_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1616_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1616_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1616_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1620_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1620_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1620_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1624_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1624_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1624_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1628_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1628_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1628_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1632_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1632_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1632_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1636_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1636_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1636_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1640_ce                                                                                                                                                            |    14|          3|    1|          3|
-    |grp_fu_1640_p0                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1640_p1                                                                                                                                                            |    14|          3|   16|         48|
-    |grp_fu_1644_ce                                                                                                                                                            |    20|          4|    1|          4|
-    |grp_fu_1644_p0                                                                                                                                                            |    20|          4|   16|         64|
-    |grp_fu_1644_p1                                                                                                                                                            |    20|          4|   16|         64|
+    |grp_fu_1426_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1426_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1426_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1430_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1430_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1430_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1434_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1434_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1434_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1438_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1438_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1438_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1442_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1442_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1442_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1446_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1446_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1446_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1450_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1450_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1450_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1454_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1454_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1454_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1458_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1458_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1458_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1462_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1462_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1462_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1466_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1466_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1466_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1470_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1470_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1470_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1474_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1474_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1474_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1478_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1478_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1478_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1482_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1482_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1482_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1486_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1486_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1486_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1490_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1490_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1490_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1494_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1494_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1494_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1498_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1498_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1498_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1502_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1502_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1502_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1506_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1506_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1506_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1510_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1510_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1510_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1514_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1514_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1514_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1518_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1518_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1518_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1522_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1522_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1522_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1526_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1526_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1526_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1530_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1530_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1530_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1534_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1534_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1534_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1538_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1538_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1538_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1542_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1542_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1542_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1546_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1546_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1546_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1550_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1550_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1550_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1554_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1554_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1554_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1558_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1558_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1558_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1562_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1562_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1562_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1566_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1566_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1566_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1570_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1570_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1570_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1574_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1574_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1574_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1578_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1578_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1578_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1582_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1582_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1582_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1586_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1586_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1586_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1590_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1590_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1590_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1594_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1594_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1594_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1598_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1598_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1598_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1602_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1602_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1602_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1606_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1606_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1606_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1610_ce                                                                                                                                                            |    14|          3|    1|          3|
+    |grp_fu_1610_p0                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1610_p1                                                                                                                                                            |    14|          3|   16|         48|
+    |grp_fu_1614_ce                                                                                                                                                            |    20|          4|    1|          4|
+    |grp_fu_1614_p0                                                                                                                                                            |    20|          4|   16|         64|
+    |grp_fu_1614_p1                                                                                                                                                            |    20|          4|   16|         64|
+    |grp_fu_618_ce                                                                                                                                                             |     9|          2|    1|          2|
+    |grp_fu_618_opcode                                                                                                                                                         |    20|          4|    2|          8|
+    |grp_fu_618_p0                                                                                                                                                             |    43|          8|   32|        256|
+    |grp_fu_618_p1                                                                                                                                                             |    43|          8|   32|        256|
     |grp_fu_622_ce                                                                                                                                                             |     9|          2|    1|          2|
-    |grp_fu_622_opcode                                                                                                                                                         |    20|          4|    2|          8|
-    |grp_fu_622_p0                                                                                                                                                             |    43|          8|   32|        256|
-    |grp_fu_622_p1                                                                                                                                                             |    43|          8|   32|        256|
-    |grp_fu_626_ce                                                                                                                                                             |     9|          2|    1|          2|
-    |grp_fu_626_p0                                                                                                                                                             |    31|          6|   32|        192|
-    |grp_fu_626_p1                                                                                                                                                             |    31|          6|   32|        192|
+    |grp_fu_622_p0                                                                                                                                                             |    31|          6|   32|        192|
+    |grp_fu_622_p1                                                                                                                                                             |    31|          6|   32|        192|
+    |grp_fu_626_p0                                                                                                                                                             |    14|          3|   32|         96|
+    |grp_fu_626_p1                                                                                                                                                             |    14|          3|   32|         96|
     |grp_fu_630_p0                                                                                                                                                             |    14|          3|   32|         96|
     |grp_fu_630_p1                                                                                                                                                             |    14|          3|   32|         96|
+    |grp_fu_634_ce                                                                                                                                                             |     9|          2|    1|          2|
     |grp_fu_634_p0                                                                                                                                                             |    14|          3|   32|         96|
     |grp_fu_634_p1                                                                                                                                                             |    14|          3|   32|         96|
-    |grp_fu_638_ce                                                                                                                                                             |     9|          2|    1|          2|
-    |grp_fu_638_p0                                                                                                                                                             |    14|          3|   32|         96|
+    |grp_fu_638_p0                                                                                                                                                             |    20|          4|   32|        128|
     |grp_fu_638_p1                                                                                                                                                             |    14|          3|   32|         96|
-    |grp_fu_642_p0                                                                                                                                                             |    20|          4|   32|        128|
-    |grp_fu_642_p1                                                                                                                                                             |    14|          3|   32|         96|
-    |grp_fu_663_ce                                                                                                                                                             |    14|          3|    1|          3|
-    |grp_fu_663_p0                                                                                                                                                             |    14|          3|   16|         48|
+    |grp_fu_659_ce                                                                                                                                                             |    14|          3|    1|          3|
+    |grp_fu_659_p0                                                                                                                                                             |    14|          3|   16|         48|
     |m_axi_gmem_y_0_AWADDR                                                                                                                                                     |    14|          3|   64|        192|
     |m_axi_gmem_y_0_AWBURST                                                                                                                                                    |     9|          2|    2|          4|
     |m_axi_gmem_y_0_AWCACHE                                                                                                                                                    |     9|          2|    4|          8|
@@ -517,7 +516,7 @@
     |void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_d0                                                                                           |    20|          4|   16|         64|
     |void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_we0                                                                                          |    20|          4|    1|          4|
     |void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_we1                                                                                          |     9|          2|    1|          2|
-    |wo_1_fu_222                                                                                                                                                               |     9|          2|    9|         18|
+    |wo_1_fu_218                                                                                                                                                               |     9|          2|    9|         18|
     +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+-----------+-----+-----------+
     |Total                                                                                                                                                                     |  5977|       1218| 2882|      10120|
     +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+-----------+-----+-----------+
@@ -526,43 +525,42 @@
     +-------------------------------------------------------------------+-----+----+-----+-----------+
     |                                Name                               |  FF | LUT| Bits| Const Bits|
     +-------------------------------------------------------------------+-----+----+-----+-----------+
-    |W_OUT_reg_1247                                                     |    8|   0|    9|          1|
-    |add10_reg_1421                                                     |   32|   0|   32|          0|
-    |add3_reg_1406                                                      |   32|   0|   32|          0|
-    |add4_reg_1411                                                      |   32|   0|   32|          0|
-    |add60_reg_1296                                                     |    9|   0|    9|          0|
-    |add6_reg_1416                                                      |   32|   0|   32|          0|
-    |add_ln112_1_reg_1308                                               |   10|   0|   13|          3|
-    |add_ln112_reg_1301                                                 |   10|   0|   10|          0|
+    |CI_WORDS_reg_1259                                                  |    6|   0|    6|          0|
+    |W_OUT_reg_1221                                                     |    8|   0|    9|          1|
+    |add10_reg_1391                                                     |   32|   0|   32|          0|
+    |add3_reg_1376                                                      |   32|   0|   32|          0|
+    |add4_reg_1381                                                      |   32|   0|   32|          0|
+    |add58_reg_1278                                                     |    9|   0|    9|          0|
+    |add6_reg_1386                                                      |   32|   0|   32|          0|
     |ap_CS_fsm                                                          |  235|   0|  235|          0|
-    |conv1_reg_1334                                                     |   32|   0|   32|          0|
-    |conv2_reg_1339                                                     |   32|   0|   32|          0|
-    |conv4_reg_1426                                                     |   16|   0|   16|          0|
-    |grp_UpConv_Fused_Row_8_Outline_TILE_LOOP_fu_464_ap_start_reg       |    1|   0|    1|          0|
-    |grp_UpConv_Fused_Row_8_Pipeline_BIAS_STATS_fu_521_ap_start_reg     |    1|   0|    1|          0|
-    |grp_UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS_fu_442_ap_start_reg    |    1|   0|    1|          0|
-    |grp_UpConv_Fused_Row_8_Pipeline_NORM_WRITE_fu_576_ap_start_reg     |    1|   0|    1|          0|
-    |grp_UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC_fu_405_ap_start_reg  |    1|   0|    1|          0|
-    |inv_std_reg_1451                                                   |   16|   0|   16|          0|
-    |mul39325_reg_1255                                                  |   15|   0|   15|          0|
-    |mul_ln204_reg_1323                                                 |   14|   0|   14|          0|
-    |mul_reg_1431                                                       |   32|   0|   32|          0|
-    |reg_667                                                            |   32|   0|   32|          0|
-    |reg_675                                                            |   32|   0|   32|          0|
-    |reg_680                                                            |   32|   0|   32|          0|
-    |reg_686                                                            |   32|   0|   32|          0|
-    |reg_691                                                            |   32|   0|   32|          0|
-    |sub_ln224_reg_1352                                                 |   12|   0|   13|          1|
-    |tmp_1_reg_1446                                                     |   32|   0|   32|          0|
-    |tmp_9_reg_1436                                                     |    1|   0|    1|          0|
-    |trunc_ln2_reg_1199                                                 |    5|   0|    5|          0|
-    |trunc_ln3_reg_1291                                                 |    6|   0|    6|          0|
-    |trunc_ln5_reg_1328                                                 |   59|   0|   59|          0|
-    |trunc_ln_reg_1285                                                  |    6|   0|    6|          0|
-    |var_1_reg_1441                                                     |   32|   0|   32|          0|
-    |wo_1_fu_222                                                        |    9|   0|    9|          0|
+    |conv1_reg_1304                                                     |   32|   0|   32|          0|
+    |conv2_reg_1309                                                     |   32|   0|   32|          0|
+    |conv4_reg_1396                                                     |   16|   0|   16|          0|
+    |grp_UpConv_Fused_Row_8_Outline_TILE_LOOP_fu_460_ap_start_reg       |    1|   0|    1|          0|
+    |grp_UpConv_Fused_Row_8_Pipeline_BIAS_STATS_fu_517_ap_start_reg     |    1|   0|    1|          0|
+    |grp_UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS_fu_438_ap_start_reg    |    1|   0|    1|          0|
+    |grp_UpConv_Fused_Row_8_Pipeline_NORM_WRITE_fu_572_ap_start_reg     |    1|   0|    1|          0|
+    |grp_UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC_fu_401_ap_start_reg  |    1|   0|    1|          0|
+    |inv_std_reg_1421                                                   |   16|   0|   16|          0|
+    |mul28_reg_1272                                                     |   10|   0|   10|          0|
+    |mul38925_reg_1229                                                  |   15|   0|   15|          0|
+    |mul_ln205_reg_1293                                                 |   14|   0|   14|          0|
+    |mul_reg_1401                                                       |   32|   0|   32|          0|
+    |reg_663                                                            |   32|   0|   32|          0|
+    |reg_671                                                            |   32|   0|   32|          0|
+    |reg_676                                                            |   32|   0|   32|          0|
+    |reg_682                                                            |   32|   0|   32|          0|
+    |reg_687                                                            |   32|   0|   32|          0|
+    |sub_ln225_reg_1322                                                 |   12|   0|   13|          1|
+    |tmp_10_reg_1406                                                    |    1|   0|    1|          0|
+    |tmp_3_reg_1416                                                     |   32|   0|   32|          0|
+    |trunc_ln2_reg_1267                                                 |    6|   0|    6|          0|
+    |trunc_ln4_reg_1298                                                 |   59|   0|   59|          0|
+    |trunc_ln_reg_1173                                                  |    5|   0|    5|          0|
+    |var_1_reg_1411                                                     |   32|   0|   32|          0|
+    |wo_1_fu_218                                                        |    9|   0|    9|          0|
     +-------------------------------------------------------------------+-----+----+-----+-----------+
-    |Total                                                              |  884|   0|  889|          5|
+    |Total                                                              |  874|   0|  876|          2|
     +-------------------------------------------------------------------+-----+----+-----+-----------+
 
 
@@ -734,7 +732,7 @@
 |idx2                      |   in|    8|     ap_none|                 idx2|        scalar|
 |idx3                      |   in|    8|     ap_none|                 idx3|        scalar|
 |idx4                      |   in|   19|     ap_none|                 idx4|        scalar|
-|x_buf_address0            |  out|   14|   ap_memory|                x_buf|         array|
+|x_buf_address0            |  out|   11|   ap_memory|                x_buf|         array|
 |x_buf_ce0                 |  out|    1|   ap_memory|                x_buf|         array|
 |x_buf_q0                  |   in|  256|   ap_memory|                x_buf|         array|
 +--------------------------+-----+-----+------------+---------------------+--------------+

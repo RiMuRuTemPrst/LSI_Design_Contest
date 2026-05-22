@@ -391,6 +391,7 @@ architecture behav of full_generator_top_run_upconv_block is
     constant ap_const_lv32_96 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000010010110";
     constant ap_const_lv32_97 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000010010111";
     constant ap_const_lv32_49 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000001001001";
+    constant ap_const_lv11_0 : STD_LOGIC_VECTOR (10 downto 0) := "00000000000";
     constant ap_const_lv32_98 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000010011000";
     constant ap_const_lv32_9A : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000010011010";
     constant ap_const_lv32_9C : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000010011100";
@@ -439,7 +440,6 @@ architecture behav of full_generator_top_run_upconv_block is
     constant ap_const_lv8_9F : STD_LOGIC_VECTOR (7 downto 0) := "10011111";
     constant ap_const_lv7_1 : STD_LOGIC_VECTOR (6 downto 0) := "0000001";
     constant ap_const_lv8_FF : STD_LOGIC_VECTOR (7 downto 0) := "11111111";
-    constant ap_const_lv11_0 : STD_LOGIC_VECTOR (10 downto 0) := "00000000000";
 
 attribute shreg_extract : string;
     signal ap_CS_fsm : STD_LOGIC_VECTOR (157 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001";
@@ -447,7 +447,7 @@ attribute shreg_extract : string;
     attribute fsm_encoding of ap_CS_fsm : signal is "none";
     signal ap_CS_fsm_state1 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state1 : signal is "none";
-    signal x_buf_address0 : STD_LOGIC_VECTOR (13 downto 0);
+    signal x_buf_address0 : STD_LOGIC_VECTOR (10 downto 0);
     signal x_buf_ce0 : STD_LOGIC;
     signal x_buf_we0 : STD_LOGIC;
     signal x_buf_d0 : STD_LOGIC_VECTOR (255 downto 0);
@@ -458,8 +458,8 @@ attribute shreg_extract : string;
     signal ap_CS_fsm_state80 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state80 : signal is "none";
     signal gmem_y_blk_n_AR : STD_LOGIC;
-    signal mode_cast9_fu_410_p1 : STD_LOGIC_VECTOR (31 downto 0);
-    signal mode_cast9_reg_891 : STD_LOGIC_VECTOR (31 downto 0);
+    signal mode_cast10_fu_410_p1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal mode_cast10_reg_891 : STD_LOGIC_VECTOR (31 downto 0);
     signal h_in_fu_414_p9 : STD_LOGIC_VECTOR (7 downto 0);
     signal h_in_reg_900 : STD_LOGIC_VECTOR (7 downto 0);
     signal c_in_fu_434_p9 : STD_LOGIC_VECTOR (9 downto 0);
@@ -593,7 +593,7 @@ attribute shreg_extract : string;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_m_axi_gmem_x_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
     signal grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_m_axi_gmem_x_0_RREADY : STD_LOGIC;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_m_axi_gmem_x_0_BREADY : STD_LOGIC;
-    signal grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_address0 : STD_LOGIC_VECTOR (13 downto 0);
+    signal grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_address0 : STD_LOGIC_VECTOR (10 downto 0);
     signal grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_ce0 : STD_LOGIC;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_we0 : STD_LOGIC;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_d0 : STD_LOGIC_VECTOR (255 downto 0);
@@ -698,7 +698,7 @@ attribute shreg_extract : string;
     signal grp_UpConv_Fused_Row_8_s_fu_326_m_axi_gmem_y_0_RREADY : STD_LOGIC;
     signal grp_UpConv_Fused_Row_8_s_fu_326_m_axi_gmem_y_0_BREADY : STD_LOGIC;
     signal grp_UpConv_Fused_Row_8_s_fu_326_ho : STD_LOGIC_VECTOR (7 downto 0);
-    signal grp_UpConv_Fused_Row_8_s_fu_326_x_buf_address0 : STD_LOGIC_VECTOR (13 downto 0);
+    signal grp_UpConv_Fused_Row_8_s_fu_326_x_buf_address0 : STD_LOGIC_VECTOR (10 downto 0);
     signal grp_UpConv_Fused_Row_8_s_fu_326_x_buf_ce0 : STD_LOGIC;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_ap_start : STD_LOGIC;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_ap_done : STD_LOGIC;
@@ -768,7 +768,7 @@ attribute shreg_extract : string;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_m_axi_gmem_x_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
     signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_m_axi_gmem_x_0_RREADY : STD_LOGIC;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_m_axi_gmem_x_0_BREADY : STD_LOGIC;
-    signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_address0 : STD_LOGIC_VECTOR (13 downto 0);
+    signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_address0 : STD_LOGIC_VECTOR (10 downto 0);
     signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_ce0 : STD_LOGIC;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_we0 : STD_LOGIC;
     signal grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_d0 : STD_LOGIC_VECTOR (255 downto 0);
@@ -1115,7 +1115,7 @@ attribute shreg_extract : string;
         ci_words : IN STD_LOGIC_VECTOR (5 downto 0);
         empty : IN STD_LOGIC_VECTOR (5 downto 0);
         mode : IN STD_LOGIC_VECTOR (1 downto 0);
-        x_buf_address0 : OUT STD_LOGIC_VECTOR (13 downto 0);
+        x_buf_address0 : OUT STD_LOGIC_VECTOR (10 downto 0);
         x_buf_ce0 : OUT STD_LOGIC;
         x_buf_we0 : OUT STD_LOGIC;
         x_buf_d0 : OUT STD_LOGIC_VECTOR (255 downto 0) );
@@ -1284,7 +1284,7 @@ attribute shreg_extract : string;
         idx2 : IN STD_LOGIC_VECTOR (7 downto 0);
         idx3 : IN STD_LOGIC_VECTOR (7 downto 0);
         idx4 : IN STD_LOGIC_VECTOR (18 downto 0);
-        x_buf_address0 : OUT STD_LOGIC_VECTOR (13 downto 0);
+        x_buf_address0 : OUT STD_LOGIC_VECTOR (10 downto 0);
         x_buf_ce0 : OUT STD_LOGIC;
         x_buf_q0 : IN STD_LOGIC_VECTOR (255 downto 0) );
     end component;
@@ -1395,9 +1395,9 @@ attribute shreg_extract : string;
         sext_ln108_1 : IN STD_LOGIC_VECTOR (58 downto 0);
         ci_words : IN STD_LOGIC_VECTOR (5 downto 0);
         mul57 : IN STD_LOGIC_VECTOR (7 downto 0);
-        zext_ln95_2 : IN STD_LOGIC_VECTOR (5 downto 0);
+        empty : IN STD_LOGIC_VECTOR (5 downto 0);
         mode : IN STD_LOGIC_VECTOR (1 downto 0);
-        x_buf_address0 : OUT STD_LOGIC_VECTOR (13 downto 0);
+        x_buf_address0 : OUT STD_LOGIC_VECTOR (10 downto 0);
         x_buf_ce0 : OUT STD_LOGIC;
         x_buf_we0 : OUT STD_LOGIC;
         x_buf_d0 : OUT STD_LOGIC_VECTOR (255 downto 0) );
@@ -1532,7 +1532,7 @@ attribute shreg_extract : string;
     port (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
-        address0 : IN STD_LOGIC_VECTOR (13 downto 0);
+        address0 : IN STD_LOGIC_VECTOR (10 downto 0);
         ce0 : IN STD_LOGIC;
         we0 : IN STD_LOGIC;
         d0 : IN STD_LOGIC_VECTOR (255 downto 0);
@@ -1545,8 +1545,8 @@ begin
     x_buf_U : component full_generator_top_run_upconv_block_x_buf_RAM_T2P_URAM_1R1W
     generic map (
         DataWidth => 256,
-        AddressRange => 15360,
-        AddressWidth => 14)
+        AddressRange => 2048,
+        AddressWidth => 11)
     port map (
         clk => ap_clk,
         reset => ap_rst,
@@ -1938,14 +1938,14 @@ begin
         sext_ln108_1 => trunc_ln108_1_reg_1084,
         ci_words => ci_words_reg_915,
         mul57 => mul57_reg_1100,
-        zext_ln95_2 => ci_words_reg_915,
+        empty => ci_words_reg_915,
         mode => mode,
         x_buf_address0 => grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_address0,
         x_buf_ce0 => grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_ce0,
         x_buf_we0 => grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_we0,
         x_buf_d0 => grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_d0);
 
-    sparsemux_7_32_8_1_1_U2383 : component full_generator_top_sparsemux_7_32_8_1_1
+    sparsemux_7_32_8_1_1_U2381 : component full_generator_top_sparsemux_7_32_8_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -1963,10 +1963,10 @@ begin
         din1 => ap_const_lv8_20,
         din2 => ap_const_lv8_40,
         def => ap_const_lv8_80,
-        sel => mode_cast9_fu_410_p1,
+        sel => mode_cast10_fu_410_p1,
         dout => h_in_fu_414_p9);
 
-    sparsemux_7_32_10_1_1_U2384 : component full_generator_top_sparsemux_7_32_10_1_1
+    sparsemux_7_32_10_1_1_U2382 : component full_generator_top_sparsemux_7_32_10_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -1984,10 +1984,10 @@ begin
         din1 => ap_const_lv10_1E0,
         din2 => ap_const_lv10_F0,
         def => ap_const_lv10_78,
-        sel => mode_cast9_fu_410_p1,
+        sel => mode_cast10_fu_410_p1,
         dout => c_in_fu_434_p9);
 
-    mul_6ns_8ns_14_1_1_U2385 : component full_generator_top_mul_6ns_8ns_14_1_1
+    mul_6ns_8ns_14_1_1_U2383 : component full_generator_top_mul_6ns_8ns_14_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -1999,7 +1999,7 @@ begin
         din1 => mul_ln95_fu_491_p1,
         dout => mul_ln95_fu_491_p2);
 
-    sparsemux_7_32_8_1_1_U2386 : component full_generator_top_sparsemux_7_32_8_1_1
+    sparsemux_7_32_8_1_1_U2384 : component full_generator_top_sparsemux_7_32_8_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -2017,10 +2017,10 @@ begin
         din1 => ap_const_lv8_78,
         din2 => ap_const_lv8_97,
         def => ap_const_lv8_A7,
-        sel => mode_cast9_reg_891,
+        sel => mode_cast10_reg_891,
         dout => be_off_fu_593_p9);
 
-    sparsemux_7_32_8_1_1_U2387 : component full_generator_top_sparsemux_7_32_8_1_1
+    sparsemux_7_32_8_1_1_U2385 : component full_generator_top_sparsemux_7_32_8_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -2038,10 +2038,10 @@ begin
         din1 => ap_const_lv8_69,
         din2 => ap_const_lv8_8F,
         def => ap_const_lv8_A3,
-        sel => mode_cast9_reg_891,
+        sel => mode_cast10_reg_891,
         dout => g_off_fu_612_p9);
 
-    sparsemux_7_32_9_1_1_U2388 : component full_generator_top_sparsemux_7_32_9_1_1
+    sparsemux_7_32_9_1_1_U2386 : component full_generator_top_sparsemux_7_32_9_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -2059,10 +2059,10 @@ begin
         din1 => ap_const_lv9_F0,
         din2 => ap_const_lv9_78,
         def => ap_const_lv9_3C,
-        sel => mode_cast9_reg_891,
+        sel => mode_cast10_reg_891,
         dout => c_out_fu_631_p9);
 
-    sparsemux_7_32_19_1_1_U2389 : component full_generator_top_sparsemux_7_32_19_1_1
+    sparsemux_7_32_19_1_1_U2387 : component full_generator_top_sparsemux_7_32_19_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -2080,10 +2080,10 @@ begin
         din1 => ap_const_lv19_3F480,
         din2 => ap_const_lv19_4F1A0,
         def => ap_const_lv19_530E8,
-        sel => mode_cast9_reg_891,
+        sel => mode_cast10_reg_891,
         dout => w_off_fu_650_p9);
 
-    sparsemux_7_32_8_1_1_U2390 : component full_generator_top_sparsemux_7_32_8_1_1
+    sparsemux_7_32_8_1_1_U2388 : component full_generator_top_sparsemux_7_32_8_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -2101,10 +2101,10 @@ begin
         din1 => ap_const_lv8_5A,
         din2 => ap_const_lv8_87,
         def => ap_const_lv8_9F,
-        sel => mode_cast9_reg_891,
+        sel => mode_cast10_reg_891,
         dout => b_off_fu_669_p9);
 
-    mul_7ns_14ns_20_1_1_U2391 : component full_generator_top_mul_7ns_14ns_20_1_1
+    mul_7ns_14ns_20_1_1_U2389 : component full_generator_top_mul_7ns_14ns_20_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -2239,7 +2239,7 @@ begin
                 c_in_reg_910 <= c_in_fu_434_p9;
                 ci_words_reg_915 <= add_ln91_fu_454_p2(9 downto 4);
                 h_in_reg_900 <= h_in_fu_414_p9;
-                    mode_cast9_reg_891(1 downto 0) <= mode_cast9_fu_410_p1(1 downto 0);
+                    mode_cast10_reg_891(1 downto 0) <= mode_cast10_fu_410_p1(1 downto 0);
             end if;
         end if;
     end process;
@@ -2292,7 +2292,7 @@ begin
             end if;
         end if;
     end process;
-    mode_cast9_reg_891(31 downto 2) <= "000000000000000000000000000000";
+    mode_cast10_reg_891(31 downto 2) <= "000000000000000000000000000000";
     zext_ln95_6_reg_968(63 downto 12) <= "0000000000000000000000000000000000000000000000000000";
     zext_ln95_7_reg_979(63 downto 13) <= "000000000000000000000000000000000000000000000000000";
     zext_ln95_reg_1042(20 downto 19) <= "00";
@@ -3511,7 +3511,7 @@ begin
         end if; 
     end process;
 
-    mode_cast9_fu_410_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(mode),32));
+    mode_cast10_fu_410_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(mode),32));
     mul57_fu_852_p2 <= (p_cast_fu_844_p3 and h_in_reg_900);
     mul_ln107_fu_718_p0 <= mul_ln107_fu_718_p00(7 - 1 downto 0);
     mul_ln107_fu_718_p00 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(indvar_fu_234),20));
@@ -3556,7 +3556,7 @@ begin
         elsif ((ap_const_logic_1 = ap_CS_fsm_state75)) then 
             x_buf_address0 <= grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_address0;
         else 
-            x_buf_address0 <= "XXXXXXXXXXXXXX";
+            x_buf_address0 <= "XXXXXXXXXXX";
         end if; 
     end process;
 

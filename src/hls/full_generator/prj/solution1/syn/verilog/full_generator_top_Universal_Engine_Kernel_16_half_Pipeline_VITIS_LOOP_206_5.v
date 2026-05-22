@@ -142,8 +142,8 @@ wire    ap_block_pp0_stage0_11001;
 wire   [0:0] icmp_ln206_fu_341_p2;
 wire   [15:0] tmp_s_fu_353_p31;
 reg   [15:0] tmp_s_reg_539;
-wire   [15:0] tmp_10_fu_417_p31;
-reg   [15:0] tmp_10_reg_544;
+wire   [15:0] tmp_11_fu_417_p31;
+reg   [15:0] tmp_11_reg_544;
 reg   [31:0] conv_reg_549;
 wire    ap_block_pp0_stage3_11001;
 reg   [31:0] conv1_reg_559;
@@ -165,7 +165,7 @@ reg   [15:0] grp_fu_316_p0;
 wire    ap_block_pp0_stage1;
 wire    ap_block_pp0_stage2;
 wire   [15:0] tmp_s_fu_353_p29;
-wire   [15:0] tmp_10_fu_417_p29;
+wire   [15:0] tmp_11_fu_417_p29;
 wire    ap_block_pp0_stage3_00001;
 wire    ap_block_pp0_stage4_00001;
 reg    ap_done_reg;
@@ -201,20 +201,20 @@ wire  signed [3:0] tmp_s_fu_353_p21;
 wire  signed [3:0] tmp_s_fu_353_p23;
 wire  signed [3:0] tmp_s_fu_353_p25;
 wire  signed [3:0] tmp_s_fu_353_p27;
-wire   [3:0] tmp_10_fu_417_p1;
-wire   [3:0] tmp_10_fu_417_p3;
-wire   [3:0] tmp_10_fu_417_p5;
-wire   [3:0] tmp_10_fu_417_p7;
-wire   [3:0] tmp_10_fu_417_p9;
-wire   [3:0] tmp_10_fu_417_p11;
-wire   [3:0] tmp_10_fu_417_p13;
-wire   [3:0] tmp_10_fu_417_p15;
-wire  signed [3:0] tmp_10_fu_417_p17;
-wire  signed [3:0] tmp_10_fu_417_p19;
-wire  signed [3:0] tmp_10_fu_417_p21;
-wire  signed [3:0] tmp_10_fu_417_p23;
-wire  signed [3:0] tmp_10_fu_417_p25;
-wire  signed [3:0] tmp_10_fu_417_p27;
+wire   [3:0] tmp_11_fu_417_p1;
+wire   [3:0] tmp_11_fu_417_p3;
+wire   [3:0] tmp_11_fu_417_p5;
+wire   [3:0] tmp_11_fu_417_p7;
+wire   [3:0] tmp_11_fu_417_p9;
+wire   [3:0] tmp_11_fu_417_p11;
+wire   [3:0] tmp_11_fu_417_p13;
+wire   [3:0] tmp_11_fu_417_p15;
+wire  signed [3:0] tmp_11_fu_417_p17;
+wire  signed [3:0] tmp_11_fu_417_p19;
+wire  signed [3:0] tmp_11_fu_417_p21;
+wire  signed [3:0] tmp_11_fu_417_p23;
+wire  signed [3:0] tmp_11_fu_417_p25;
+wire  signed [3:0] tmp_11_fu_417_p27;
 wire    ap_ce_reg;
 
 // power-on initialization
@@ -331,9 +331,9 @@ sparsemux_29_4_16_1_1_U126(
     .din11(mux_case_11861242_reload),
     .din12(mux_case_12881245_reload),
     .din13(mux_case_13901248_reload),
-    .def(tmp_10_fu_417_p29),
+    .def(tmp_11_fu_417_p29),
     .sel(ap_sig_allocacmp_j_2),
-    .dout(tmp_10_fu_417_p31)
+    .dout(tmp_11_fu_417_p31)
 );
 
 full_generator_top_flow_control_loop_pipe_sequential_init flow_control_loop_pipe_sequential_init_U(
@@ -436,7 +436,7 @@ end
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         icmp_ln206_reg_535 <= icmp_ln206_fu_341_p2;
-        tmp_10_reg_544 <= tmp_10_fu_417_p31;
+        tmp_11_reg_544 <= tmp_11_fu_417_p31;
         tmp_s_reg_539 <= tmp_s_fu_353_p31;
     end
 end
@@ -542,7 +542,7 @@ end
 always @ (*) begin
     if ((ap_enable_reg_pp0_iter0_reg == 1'b1)) begin
         if (((1'b0 == ap_block_pp0_stage2) & (1'b1 == ap_CS_fsm_pp0_stage2))) begin
-            grp_fu_316_p0 = tmp_10_reg_544;
+            grp_fu_316_p0 = tmp_11_reg_544;
         end else if (((1'b0 == ap_block_pp0_stage1) & (1'b1 == ap_CS_fsm_pp0_stage1))) begin
             grp_fu_316_p0 = tmp_s_reg_539;
         end else begin
@@ -753,7 +753,7 @@ assign sum_out = sum_fu_118;
 
 assign sumsq_out = sumsq_fu_122;
 
-assign tmp_10_fu_417_p29 = 'bx;
+assign tmp_11_fu_417_p29 = 'bx;
 
 assign tmp_s_fu_353_p29 = 'bx;
 

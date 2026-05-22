@@ -604,7 +604,7 @@ reg m_axi_gmem_pu_0_RREADY;
 
 (* fsm_encoding = "none" *) reg   [157:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
-reg   [13:0] x_buf_address0;
+reg   [10:0] x_buf_address0;
 reg    x_buf_ce0;
 reg    x_buf_we0;
 reg   [255:0] x_buf_d0;
@@ -613,8 +613,8 @@ reg    gmem_x_blk_n_AR;
 wire    ap_CS_fsm_state3;
 wire    ap_CS_fsm_state80;
 reg    gmem_y_blk_n_AR;
-wire   [31:0] mode_cast9_fu_410_p1;
-reg   [31:0] mode_cast9_reg_891;
+wire   [31:0] mode_cast10_fu_410_p1;
+reg   [31:0] mode_cast10_reg_891;
 wire   [7:0] h_in_fu_414_p9;
 reg   [7:0] h_in_reg_900;
 wire   [9:0] c_in_fu_434_p9;
@@ -740,7 +740,7 @@ wire   [3:0] grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_m_ax
 wire   [0:0] grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_m_axi_gmem_x_0_ARUSER;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_m_axi_gmem_x_0_RREADY;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_m_axi_gmem_x_0_BREADY;
-wire   [13:0] grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_address0;
+wire   [10:0] grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_address0;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_ce0;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_we0;
 wire   [255:0] grp_run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1_fu_310_x_buf_d0;
@@ -845,7 +845,7 @@ wire   [0:0] grp_UpConv_Fused_Row_8_s_fu_326_m_axi_gmem_y_0_ARUSER;
 wire    grp_UpConv_Fused_Row_8_s_fu_326_m_axi_gmem_y_0_RREADY;
 wire    grp_UpConv_Fused_Row_8_s_fu_326_m_axi_gmem_y_0_BREADY;
 reg   [7:0] grp_UpConv_Fused_Row_8_s_fu_326_ho;
-wire   [13:0] grp_UpConv_Fused_Row_8_s_fu_326_x_buf_address0;
+wire   [10:0] grp_UpConv_Fused_Row_8_s_fu_326_x_buf_address0;
 wire    grp_UpConv_Fused_Row_8_s_fu_326_x_buf_ce0;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_ap_start;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_ap_done;
@@ -915,7 +915,7 @@ wire   [3:0] grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_m_ax
 wire   [0:0] grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_m_axi_gmem_x_0_ARUSER;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_m_axi_gmem_x_0_RREADY;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_m_axi_gmem_x_0_BREADY;
-wire   [13:0] grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_address0;
+wire   [10:0] grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_address0;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_ce0;
 wire    grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_we0;
 wire   [255:0] grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_d0;
@@ -1161,8 +1161,8 @@ end
 
 full_generator_top_run_upconv_block_x_buf_RAM_T2P_URAM_1R1W #(
     .DataWidth( 256 ),
-    .AddressRange( 15360 ),
-    .AddressWidth( 14 ))
+    .AddressRange( 2048 ),
+    .AddressWidth( 11 ))
 x_buf_U(
     .clk(ap_clk),
     .reset(ap_rst),
@@ -1554,7 +1554,7 @@ full_generator_top_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2 grp_run_u
     .sext_ln108_1(trunc_ln108_1_reg_1084),
     .ci_words(ci_words_reg_915),
     .mul57(mul57_reg_1100),
-    .zext_ln95_2(ci_words_reg_915),
+    .empty(ci_words_reg_915),
     .mode(mode),
     .x_buf_address0(grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_address0),
     .x_buf_ce0(grp_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2_fu_393_x_buf_ce0),
@@ -1574,12 +1574,12 @@ full_generator_top_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2 grp_run_u
     .def_WIDTH( 8 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 8 ))
-sparsemux_7_32_8_1_1_U2383(
+sparsemux_7_32_8_1_1_U2381(
     .din0(8'd16),
     .din1(8'd32),
     .din2(8'd64),
     .def(8'd128),
-    .sel(mode_cast9_fu_410_p1),
+    .sel(mode_cast10_fu_410_p1),
     .dout(h_in_fu_414_p9)
 );
 
@@ -1595,12 +1595,12 @@ sparsemux_7_32_8_1_1_U2383(
     .def_WIDTH( 10 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 10 ))
-sparsemux_7_32_10_1_1_U2384(
+sparsemux_7_32_10_1_1_U2382(
     .din0(10'd960),
     .din1(10'd480),
     .din2(10'd240),
     .def(10'd120),
-    .sel(mode_cast9_fu_410_p1),
+    .sel(mode_cast10_fu_410_p1),
     .dout(c_in_fu_434_p9)
 );
 
@@ -1610,7 +1610,7 @@ full_generator_top_mul_6ns_8ns_14_1_1 #(
     .din0_WIDTH( 6 ),
     .din1_WIDTH( 8 ),
     .dout_WIDTH( 14 ))
-mul_6ns_8ns_14_1_1_U2385(
+mul_6ns_8ns_14_1_1_U2383(
     .din0(mul_ln95_fu_491_p0),
     .din1(mul_ln95_fu_491_p1),
     .dout(mul_ln95_fu_491_p2)
@@ -1628,12 +1628,12 @@ mul_6ns_8ns_14_1_1_U2385(
     .def_WIDTH( 8 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 8 ))
-sparsemux_7_32_8_1_1_U2386(
+sparsemux_7_32_8_1_1_U2384(
     .din0(8'd60),
     .din1(8'd120),
     .din2(8'd151),
     .def(8'd167),
-    .sel(mode_cast9_reg_891),
+    .sel(mode_cast10_reg_891),
     .dout(be_off_fu_593_p9)
 );
 
@@ -1649,12 +1649,12 @@ sparsemux_7_32_8_1_1_U2386(
     .def_WIDTH( 8 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 8 ))
-sparsemux_7_32_8_1_1_U2387(
+sparsemux_7_32_8_1_1_U2385(
     .din0(8'd30),
     .din1(8'd105),
     .din2(8'd143),
     .def(8'd163),
-    .sel(mode_cast9_reg_891),
+    .sel(mode_cast10_reg_891),
     .dout(g_off_fu_612_p9)
 );
 
@@ -1670,12 +1670,12 @@ sparsemux_7_32_8_1_1_U2387(
     .def_WIDTH( 9 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 9 ))
-sparsemux_7_32_9_1_1_U2388(
+sparsemux_7_32_9_1_1_U2386(
     .din0(9'd480),
     .din1(9'd240),
     .din2(9'd120),
     .def(9'd60),
-    .sel(mode_cast9_reg_891),
+    .sel(mode_cast10_reg_891),
     .dout(c_out_fu_631_p9)
 );
 
@@ -1691,12 +1691,12 @@ sparsemux_7_32_9_1_1_U2388(
     .def_WIDTH( 19 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 19 ))
-sparsemux_7_32_19_1_1_U2389(
+sparsemux_7_32_19_1_1_U2387(
     .din0(19'd0),
     .din1(19'd259200),
     .din2(19'd324000),
     .def(19'd340200),
-    .sel(mode_cast9_reg_891),
+    .sel(mode_cast10_reg_891),
     .dout(w_off_fu_650_p9)
 );
 
@@ -1712,12 +1712,12 @@ sparsemux_7_32_19_1_1_U2389(
     .def_WIDTH( 8 ),
     .sel_WIDTH( 32 ),
     .dout_WIDTH( 8 ))
-sparsemux_7_32_8_1_1_U2390(
+sparsemux_7_32_8_1_1_U2388(
     .din0(8'd0),
     .din1(8'd90),
     .din2(8'd135),
     .def(8'd159),
-    .sel(mode_cast9_reg_891),
+    .sel(mode_cast10_reg_891),
     .dout(b_off_fu_669_p9)
 );
 
@@ -1727,7 +1727,7 @@ full_generator_top_mul_7ns_14ns_20_1_1 #(
     .din0_WIDTH( 7 ),
     .din1_WIDTH( 14 ),
     .dout_WIDTH( 20 ))
-mul_7ns_14ns_20_1_1_U2391(
+mul_7ns_14ns_20_1_1_U2389(
     .din0(mul_ln107_fu_718_p0),
     .din1(mul_ln107_fu_718_p1),
     .dout(mul_ln107_fu_718_p2)
@@ -1823,7 +1823,7 @@ always @ (posedge ap_clk) begin
         c_in_reg_910 <= c_in_fu_434_p9;
         ci_words_reg_915 <= {{add_ln91_fu_454_p2[9:4]}};
         h_in_reg_900 <= h_in_fu_414_p9;
-        mode_cast9_reg_891[1 : 0] <= mode_cast9_fu_410_p1[1 : 0];
+        mode_cast10_reg_891[1 : 0] <= mode_cast10_fu_410_p1[1 : 0];
     end
 end
 
@@ -3460,7 +3460,7 @@ assign m_axi_gmem_y_0_WSTRB = grp_UpConv_Fused_Row_8_s_fu_326_m_axi_gmem_y_0_WST
 
 assign m_axi_gmem_y_0_WUSER = grp_UpConv_Fused_Row_8_s_fu_326_m_axi_gmem_y_0_WUSER;
 
-assign mode_cast9_fu_410_p1 = mode;
+assign mode_cast10_fu_410_p1 = mode;
 
 assign mul57_fu_852_p2 = (p_cast_fu_844_p3 & h_in_reg_900);
 
@@ -3529,7 +3529,7 @@ assign zext_ln95_7_fu_568_p1 = select_ln95_1_reg_958;
 assign zext_ln95_fu_688_p1 = slot_in_off;
 
 always @ (posedge ap_clk) begin
-    mode_cast9_reg_891[31:2] <= 30'b000000000000000000000000000000;
+    mode_cast10_reg_891[31:2] <= 30'b000000000000000000000000000000;
     zext_ln95_6_reg_968[63:12] <= 52'b0000000000000000000000000000000000000000000000000000;
     zext_ln95_7_reg_979[63:13] <= 51'b000000000000000000000000000000000000000000000000000;
     zext_ln95_reg_1042[20:19] <= 2'b00;

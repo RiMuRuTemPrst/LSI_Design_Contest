@@ -22,14 +22,14 @@
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>9751</Best-caseLatency>
-<Average-caseLatency>472099</Average-caseLatency>
-<Worst-caseLatency>15365690</Worst-caseLatency>
-<Best-caseRealTimeLatency>32.500 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>1.574 ms</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>51.214 ms</Worst-caseRealTimeLatency>
-<Interval-min>9751</Interval-min>
-<Interval-max>15365690</Interval-max>
+<Best-caseLatency>9879</Best-caseLatency>
+<Average-caseLatency>472419</Average-caseLatency>
+<Worst-caseLatency>15366346</Worst-caseLatency>
+<Best-caseRealTimeLatency>32.927 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>1.575 ms</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>51.216 ms</Worst-caseRealTimeLatency>
+<Interval-min>9879</Interval-min>
+<Interval-max>15366346</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <PIXEL_NORM>
@@ -65,13 +65,13 @@
 <SummaryOfViolations>
 <IssueType>Timing Violation</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:204</SourceLocation>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:205</SourceLocation>
 <SummaryOfLoopViolations>
 <PIXEL_NORM>
 <Name>PIXEL_NORM</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:224</SourceLocation>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:225</SourceLocation>
 </PIXEL_NORM>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -81,8 +81,8 @@
 <Resources>
 <BRAM_18K>144</BRAM_18K>
 <DSP>573</DSP>
-<FF>54223</FF>
-<LUT>43363</LUT>
+<FF>54240</FF>
+<LUT>43400</LUT>
 <URAM>32</URAM>
 </Resources>
 <AvailableResources>
@@ -1863,7 +1863,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>14</Bits>
+<Bits>11</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>

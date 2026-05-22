@@ -7,7 +7,10 @@
       <port name="M_AXI_GMEM_WU" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="256"/>
       <port name="M_AXI_GMEM_PU" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="256"/>
       <port name="M_AXI_GMEM_Y" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="256"/>
-      <port name="S_AXI_CONTROL" portType="addressable" mode="slave" base="0x0" range="0x60" dataWidth="32"/>
+      <port name="M_AXI_GMEM_WC" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="512"/>
+      <port name="M_AXI_GMEM_BC" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="256"/>
+      <port name="M_AXI_GMEM_Z" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="512"/>
+      <port name="S_AXI_CONTROL" portType="addressable" mode="slave" base="0x0" range="0x84" dataWidth="32"/>
     </ports>
     <args>
       <arg id="0" name="X" addressQualifier="1" port="M_AXI_GMEM_X" hostOffset="0x0" hostSize="0x8" offset="0x10" size="0x8" type="void*"/>
@@ -16,7 +19,10 @@
       <arg id="3" name="W_upconv" addressQualifier="1" port="M_AXI_GMEM_WU" hostOffset="0x0" hostSize="0x8" offset="0x34" size="0x8" type="void*"/>
       <arg id="4" name="P_upconv" addressQualifier="1" port="M_AXI_GMEM_PU" hostOffset="0x0" hostSize="0x8" offset="0x40" size="0x8" type="void*"/>
       <arg id="5" name="Y" addressQualifier="1" port="M_AXI_GMEM_Y" hostOffset="0x0" hostSize="0x8" offset="0x4C" size="0x8" type="void*"/>
-      <arg id="6" name="epsilon" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x2" offset="0x58" size="0x4" type="unsigned int"/>
+      <arg id="6" name="W_conv77" addressQualifier="1" port="M_AXI_GMEM_WC" hostOffset="0x0" hostSize="0x8" offset="0x58" size="0x8" type="void*"/>
+      <arg id="7" name="B_conv77" addressQualifier="1" port="M_AXI_GMEM_BC" hostOffset="0x0" hostSize="0x8" offset="0x64" size="0x8" type="void*"/>
+      <arg id="8" name="Z" addressQualifier="1" port="M_AXI_GMEM_Z" hostOffset="0x0" hostSize="0x8" offset="0x70" size="0x8" type="void*"/>
+      <arg id="9" name="epsilon" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x2" offset="0x7C" size="0x4" type="unsigned int"/>
     </args>
     <compileWorkGroupSize x="1" y="1" z="1"/>
     <maxWorkGroupSize x="1" y="1" z="1"/>

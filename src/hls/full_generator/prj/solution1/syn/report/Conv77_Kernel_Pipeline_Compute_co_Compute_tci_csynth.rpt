@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'Conv77_Kernel_Pipeline_Compute_co_Compute_tci'
 ================================================================
-* Date:           Mon May 18 07:09:46 2026
+* Date:           Fri May 22 08:50:37 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -73,6 +73,8 @@
     +----------------------------+----------------------+---------+----+---+----+-----+
     |          Instance          |        Module        | BRAM_18K| DSP| FF| LUT| URAM|
     +----------------------------+----------------------+---------+----+---+----+-----+
+    |mul_16s_16s_32_1_1_U3133    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
+    |mul_16s_16s_32_1_1_U3134    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
     |mul_16s_16s_32_1_1_U3135    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
     |mul_16s_16s_32_1_1_U3136    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
     |mul_16s_16s_32_1_1_U3137    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
@@ -262,16 +264,14 @@
     |mul_16s_16s_32_1_1_U3321    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
     |mul_16s_16s_32_1_1_U3322    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
     |mul_16s_16s_32_1_1_U3323    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
-    |mul_16s_16s_32_1_1_U3324    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
-    |mul_16s_16s_32_1_1_U3325    |mul_16s_16s_32_1_1    |        0|   1|  0|   5|    0|
+    |sparsemux_7_2_32_1_1_U3125  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
+    |sparsemux_7_2_32_1_1_U3126  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
     |sparsemux_7_2_32_1_1_U3127  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
     |sparsemux_7_2_32_1_1_U3128  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
     |sparsemux_7_2_32_1_1_U3129  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
     |sparsemux_7_2_32_1_1_U3130  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
     |sparsemux_7_2_32_1_1_U3131  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
     |sparsemux_7_2_32_1_1_U3132  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
-    |sparsemux_7_2_32_1_1_U3133  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
-    |sparsemux_7_2_32_1_1_U3134  |sparsemux_7_2_32_1_1  |        0|   0|  0|   9|    0|
     +----------------------------+----------------------+---------+----+---+----+-----+
     |Total                       |                      |        0| 191|  0|1027|    0|
     +----------------------------+----------------------+---------+----+---+----+-----+
@@ -280,74 +280,76 @@
     +--------------------------------------+--------------------------------+--------------+
     |               Instance               |             Module             |  Expression  |
     +--------------------------------------+--------------------------------+--------------+
+    |mac_muladd_16s_16s_32ns_32_4_1_U3325  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 * i1 + i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3327  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 * i1 + i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3329  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 * i1 + i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3340  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3338  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3432  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3434  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3435  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3436  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3437  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3438  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3443  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3444  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3448  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3441  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3442  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3446  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3449  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3451  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3452  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3453  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3454  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3455  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3456  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3460  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3461  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3467  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3458  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3459  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3465  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3469  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3471  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3472  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3473  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3474  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3475  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3476  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3480  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3481  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3487  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3478  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3479  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3485  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3488  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3490  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3491  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3492  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3493  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3494  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3495  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3499  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3500  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3505  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3497  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3498  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3503  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3507  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3509  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3510  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3511  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3512  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3513  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3514  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3518  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3519  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3524  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3516  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3517  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3522  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3526  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3528  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3529  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3530  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3531  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3532  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3533  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3537  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3538  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3543  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3535  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3536  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3541  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3545  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3547  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3548  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3549  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3550  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3551  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3552  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3556  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3557  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3562  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3554  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3555  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3560  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3563  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3565  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3566  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3567  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32ns_32_4_1_U3568  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3569  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3570  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3574  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3575  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32ns_32_4_1_U3580  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3572  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3573  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32ns_32_4_1_U3578  |mac_muladd_16s_16s_32ns_32_4_1  |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3324   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3326   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3328   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3329   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3330   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3331   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3332   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
@@ -356,8 +358,8 @@
     |mac_muladd_16s_16s_32s_32_4_1_U3335   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3336   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3337   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3338   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3339   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3340   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3341   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3342   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3343   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
@@ -449,94 +451,92 @@
     |mac_muladd_16s_16s_32s_32_4_1_U3429   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3430   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3431   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3432   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3433   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3435   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3437   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3438   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3439   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3440   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3441   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3442   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3443   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3444   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3445   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3446   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3447   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3449   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3448   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3450   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3452   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3455   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3456   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3457   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3458   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3459   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3460   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3461   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3462   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3463   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3464   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3465   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3466   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3467   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3468   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3469   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3470   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3472   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3475   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3476   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3477   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3478   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3479   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3480   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3481   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3482   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3483   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3484   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3485   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3486   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3488   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3487   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3489   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3491   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3494   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3495   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3496   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3497   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3498   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3499   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3500   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3501   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3502   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3503   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3504   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3505   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3506   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3507   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3508   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3510   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3513   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3514   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3515   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3516   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3517   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3518   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3519   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3520   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3521   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3522   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3523   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3524   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3525   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3526   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3527   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3529   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3532   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3533   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3534   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3535   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3536   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3537   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3538   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3539   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3540   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3541   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3542   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3543   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3544   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3545   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3546   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3548   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3551   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3552   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3553   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3554   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3555   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3556   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3557   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3558   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3559   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3560   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3561   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3563   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3562   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3564   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3566   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3569   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3570   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3571   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3572   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3573   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3574   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3575   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3576   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3577   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3578   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     |mac_muladd_16s_16s_32s_32_4_1_U3579   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3581   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
-    |mac_muladd_16s_16s_32s_32_4_1_U3582   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
+    |mac_muladd_16s_16s_32s_32_4_1_U3580   |mac_muladd_16s_16s_32s_32_4_1   |  i0 + i1 * i2|
     +--------------------------------------+--------------------------------+--------------+
 
     * Memory: 

@@ -4488,8 +4488,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>tmp_63</name>
-<Object>tmp_63</Object>
+<name>tmp_64</name>
+<Object>tmp_64</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

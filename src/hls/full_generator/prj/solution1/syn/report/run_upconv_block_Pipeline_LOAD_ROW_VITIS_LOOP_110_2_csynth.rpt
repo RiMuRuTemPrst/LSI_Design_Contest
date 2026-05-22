@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2'
 ================================================================
-* Date:           Mon May 18 07:09:42 2026
+* Date:           Fri May 22 08:50:32 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -76,7 +76,7 @@
     +--------------------------------------------+--------------------------------------+---------------------+
     |                  Instance                  |                Module                |      Expression     |
     +--------------------------------------------+--------------------------------------+---------------------+
-    |ama_addmuladd_8ns_8ns_6ns_6ns_14_4_1_U2371  |ama_addmuladd_8ns_8ns_6ns_6ns_14_4_1  |  i0 + (i1 + i2) * i3|
+    |ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U2369  |ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1  |  i0 + (i1 + i2) * i3|
     +--------------------------------------------+--------------------------------------+---------------------+
 
     * Memory: 
@@ -112,7 +112,7 @@
     +---------------------------------------+----+-----------+-----+-----------+
     |ap_done_int                            |   9|          2|    1|          2|
     |ap_enable_reg_pp0_iter1                |   9|          2|    1|          2|
-    |ap_phi_mux_empty_phi_fu_176_p4         |  14|          3|  256|        768|
+    |ap_phi_mux_empty_107_phi_fu_176_p4     |  14|          3|  256|        768|
     |ap_sig_allocacmp_indvar_flatten6_load  |   9|          2|   13|         26|
     |ciw_fu_96                              |   9|          2|    6|         12|
     |gmem_x_blk_n_R                         |   9|          2|    1|          2|
@@ -144,14 +144,14 @@
     |icmp_ln108_reg_362                |    1|   0|    1|          0|
     |icmp_ln92_reg_358                 |    1|   0|    1|          0|
     |indvar_flatten6_fu_104            |   13|   0|   13|          0|
+    |p_cast_reg_343                    |    6|   0|   11|          5|
     |select_ln108_1_reg_371            |    8|   0|    8|          0|
     |select_ln108_reg_366              |    6|   0|    6|          0|
     |wi_fu_100                         |    8|   0|    8|          0|
-    |zext_ln95_2_cast_reg_343          |    6|   0|   14|          8|
     |icmp_ln108_reg_362                |   64|  32|    1|          0|
     |select_ln108_reg_366              |   64|  32|    6|          0|
     +----------------------------------+-----+----+-----+-----------+
-    |Total                             |  700|  64|  587|          8|
+    |Total                             |  700|  64|  584|          5|
     +----------------------------------+-----+----+-----+-----------+
 
 
@@ -266,9 +266,9 @@
 |sext_ln108_1             |   in|   59|     ap_none|                                         sext_ln108_1|        scalar|
 |ci_words                 |   in|    6|     ap_none|                                             ci_words|        scalar|
 |mul57                    |   in|    8|     ap_none|                                                mul57|        scalar|
-|zext_ln95_2              |   in|    6|     ap_none|                                          zext_ln95_2|        scalar|
+|empty                    |   in|    6|     ap_none|                                                empty|        scalar|
 |mode                     |   in|    2|     ap_none|                                                 mode|        scalar|
-|x_buf_address0           |  out|   14|   ap_memory|                                                x_buf|         array|
+|x_buf_address0           |  out|   11|   ap_memory|                                                x_buf|         array|
 |x_buf_ce0                |  out|    1|   ap_memory|                                                x_buf|         array|
 |x_buf_we0                |  out|    1|   ap_memory|                                                x_buf|         array|
 |x_buf_d0                 |  out|  256|   ap_memory|                                                x_buf|         array|

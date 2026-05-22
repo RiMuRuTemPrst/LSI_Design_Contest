@@ -61,13 +61,13 @@
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:217</SourceLocation>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:218</SourceLocation>
 <SummaryOfLoopViolations>
 <BIAS_STATS>
 <Name>BIAS_STATS</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:222</SourceLocation>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:223</SourceLocation>
 </BIAS_STATS>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -158,6 +158,61 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
+<name>grp_fu_618_p_din0</name>
+<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>32</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_618_p_din1</name>
+<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>32</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_618_p_opcode</name>
+<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_618_p_dout0</name>
+<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>32</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_618_p_ce</name>
+<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
 <name>grp_fu_622_p_din0</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
@@ -187,7 +242,7 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>1</Bits>
+<Bits>2</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -213,7 +268,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_626_p_din0</name>
+<name>grp_fu_634_p_din0</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -224,7 +279,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_626_p_din1</name>
+<name>grp_fu_634_p_din1</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -235,18 +290,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_626_p_opcode</name>
-<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>2</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_626_p_dout0</name>
+<name>grp_fu_634_p_dout0</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -257,7 +301,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_626_p_ce</name>
+<name>grp_fu_634_p_ce</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -268,29 +312,18 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_638_p_din0</name>
+<name>grp_fu_659_p_din0</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_638_p_din1</name>
-<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>32</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_638_p_dout0</name>
+<name>grp_fu_659_p_dout0</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -301,7 +334,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_638_p_ce</name>
+<name>grp_fu_659_p_ce</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -312,7 +345,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_663_p_din0</name>
+<name>grp_fu_1614_p_din0</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -323,29 +356,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_663_p_dout0</name>
-<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>32</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_663_p_ce</name>
-<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_1644_p_din0</name>
+<name>grp_fu_1614_p_din1</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -356,18 +367,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_1644_p_din1</name>
-<Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_1644_p_dout0</name>
+<name>grp_fu_1614_p_dout0</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -378,7 +378,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_1644_p_ce</name>
+<name>grp_fu_1614_p_ce</name>
 <Object>UpConv_Fused_Row&lt;8&gt;_Pipeline_BIAS_STATS</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -400,8 +400,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>mul_ln224</name>
-<Object>mul_ln224</Object>
+<name>mul_ln225</name>
+<Object>mul_ln225</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

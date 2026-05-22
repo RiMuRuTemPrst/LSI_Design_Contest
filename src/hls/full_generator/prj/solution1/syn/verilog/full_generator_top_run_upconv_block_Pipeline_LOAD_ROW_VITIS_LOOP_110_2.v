@@ -110,7 +110,7 @@ module full_generator_top_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2 (
         sext_ln108_1,
         ci_words,
         mul57,
-        zext_ln95_2,
+        empty,
         mode,
         x_buf_address0,
         x_buf_ce0,
@@ -223,9 +223,9 @@ input  [58:0] sext_ln108;
 input  [58:0] sext_ln108_1;
 input  [5:0] ci_words;
 input  [7:0] mul57;
-input  [5:0] zext_ln95_2;
+input  [5:0] empty;
 input  [1:0] mode;
-output  [13:0] x_buf_address0;
+output  [10:0] x_buf_address0;
 output   x_buf_ce0;
 output   x_buf_we0;
 output  [255:0] x_buf_d0;
@@ -258,8 +258,8 @@ reg    gmem_y_blk_n_R;
 wire    ap_block_pp0_stage0_grp1;
 reg    gmem_x_blk_n_R;
 reg    ap_block_pp0_stage0_11001_grp1;
-wire   [13:0] zext_ln95_2_cast_fu_183_p1;
-reg   [13:0] zext_ln95_2_cast_reg_343;
+wire   [10:0] p_cast_fu_183_p1;
+reg   [10:0] p_cast_reg_343;
 wire   [0:0] icmp_ln92_fu_195_p2;
 reg    ap_block_pp0_stage0_11001;
 reg   [0:0] icmp_ln108_reg_362_pp0_iter1_reg;
@@ -273,8 +273,8 @@ wire   [7:0] select_ln108_1_fu_261_p3;
 reg   [7:0] select_ln108_1_reg_371;
 reg   [255:0] gmem_y_addr_read_reg_381;
 reg   [255:0] gmem_x_addr_read_reg_386;
-reg   [255:0] ap_phi_mux_empty_phi_fu_176_p4;
-wire   [255:0] ap_phi_reg_pp0_iter5_empty_reg_173;
+reg   [255:0] ap_phi_mux_empty_107_phi_fu_176_p4;
+wire   [255:0] ap_phi_reg_pp0_iter5_empty_107_reg_173;
 wire   [63:0] zext_ln113_fu_300_p1;
 reg   [5:0] ciw_fu_96;
 wire   [5:0] add_ln110_fu_269_p2;
@@ -288,7 +288,7 @@ reg    x_buf_we0_local;
 reg    x_buf_ce0_local;
 wire   [0:0] icmp_ln110_fu_248_p2;
 wire   [7:0] add_ln108_fu_242_p2;
-wire   [13:0] grp_fu_304_p4;
+wire   [10:0] grp_fu_304_p4;
 wire   [5:0] grp_fu_304_p2;
 wire   [5:0] grp_fu_304_p3;
 reg    grp_fu_304_ce;
@@ -304,7 +304,7 @@ wire    ap_enable_pp0;
 wire    ap_start_int;
 wire    ap_ready_sig;
 wire    ap_done_sig;
-wire   [13:0] grp_fu_304_p30;
+wire   [10:0] grp_fu_304_p30;
 wire    ap_ce_reg;
 
 // power-on initialization
@@ -321,15 +321,15 @@ initial begin
 #0 ap_done_reg = 1'b0;
 end
 
-full_generator_top_ama_addmuladd_8ns_8ns_6ns_6ns_14_4_1 #(
+full_generator_top_ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 8 ),
     .din1_WIDTH( 8 ),
     .din2_WIDTH( 6 ),
     .din3_WIDTH( 6 ),
-    .dout_WIDTH( 14 ))
-ama_addmuladd_8ns_8ns_6ns_6ns_14_4_1_U2371(
+    .dout_WIDTH( 11 ))
+ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U2369(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(select_ln108_1_reg_371),
@@ -488,9 +488,9 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b1 == ap_CS_fsm_pp0_stage0) & (1'b0 == ap_block_pp0_stage0_11001_grp1))) begin
+        p_cast_reg_343[5 : 0] <= p_cast_fu_183_p1[5 : 0];
         select_ln108_1_reg_371 <= select_ln108_1_fu_261_p3;
         select_ln108_reg_366 <= select_ln108_fu_253_p3;
-        zext_ln95_2_cast_reg_343[5 : 0] <= zext_ln95_2_cast_fu_183_p1[5 : 0];
     end
 end
 
@@ -529,14 +529,14 @@ end
 always @ (*) begin
     if ((icmp_ln108_reg_362_pp0_iter4_reg == 1'd0)) begin
         if ((icmp_ln92_reg_358 == 1'd0)) begin
-            ap_phi_mux_empty_phi_fu_176_p4 = gmem_y_addr_read_reg_381;
+            ap_phi_mux_empty_107_phi_fu_176_p4 = gmem_y_addr_read_reg_381;
         end else if ((icmp_ln92_reg_358 == 1'd1)) begin
-            ap_phi_mux_empty_phi_fu_176_p4 = gmem_x_addr_read_reg_386;
+            ap_phi_mux_empty_107_phi_fu_176_p4 = gmem_x_addr_read_reg_386;
         end else begin
-            ap_phi_mux_empty_phi_fu_176_p4 = ap_phi_reg_pp0_iter5_empty_reg_173;
+            ap_phi_mux_empty_107_phi_fu_176_p4 = ap_phi_reg_pp0_iter5_empty_107_reg_173;
         end
     end else begin
-        ap_phi_mux_empty_phi_fu_176_p4 = ap_phi_reg_pp0_iter5_empty_reg_173;
+        ap_phi_mux_empty_107_phi_fu_176_p4 = ap_phi_reg_pp0_iter5_empty_107_reg_173;
     end
 end
 
@@ -659,7 +659,7 @@ assign ap_enable_reg_pp0_iter0 = ap_start_int;
 
 assign ap_loop_exit_ready = ap_condition_exit_pp0_iter0_stage0;
 
-assign ap_phi_reg_pp0_iter5_empty_reg_173 = 'bx;
+assign ap_phi_reg_pp0_iter5_empty_107_reg_173 = 'bx;
 
 always @ (*) begin
     ap_predicate_op54_read_state5 = ((icmp_ln92_reg_358 == 1'd0) & (icmp_ln108_reg_362_pp0_iter3_reg == 1'd0));
@@ -671,7 +671,7 @@ end
 
 assign ap_ready = ap_ready_sig;
 
-assign grp_fu_304_p2 = zext_ln95_2_cast_reg_343;
+assign grp_fu_304_p2 = p_cast_reg_343;
 
 assign grp_fu_304_p3 = grp_fu_304_p30;
 
@@ -807,6 +807,8 @@ assign m_axi_gmem_y_0_WUSER = 1'd0;
 
 assign m_axi_gmem_y_0_WVALID = 1'b0;
 
+assign p_cast_fu_183_p1 = empty;
+
 assign select_ln108_1_fu_261_p3 = ((icmp_ln110_fu_248_p2[0:0] == 1'b1) ? add_ln108_fu_242_p2 : wi_fu_100);
 
 assign select_ln108_fu_253_p3 = ((icmp_ln110_fu_248_p2[0:0] == 1'b1) ? 6'd0 : ciw_fu_96);
@@ -815,16 +817,14 @@ assign x_buf_address0 = zext_ln113_fu_300_p1;
 
 assign x_buf_ce0 = x_buf_ce0_local;
 
-assign x_buf_d0 = ap_phi_mux_empty_phi_fu_176_p4;
+assign x_buf_d0 = ap_phi_mux_empty_107_phi_fu_176_p4;
 
 assign x_buf_we0 = x_buf_we0_local;
 
 assign zext_ln113_fu_300_p1 = grp_fu_304_p4;
 
-assign zext_ln95_2_cast_fu_183_p1 = zext_ln95_2;
-
 always @ (posedge ap_clk) begin
-    zext_ln95_2_cast_reg_343[13:6] <= 8'b00000000;
+    p_cast_reg_343[10:6] <= 5'b00000;
 end
 
 endmodule //full_generator_top_run_upconv_block_Pipeline_LOAD_ROW_VITIS_LOOP_110_2

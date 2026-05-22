@@ -13,8 +13,8 @@ module full_generator_top_run_upconv_block_x_buf_RAM_T2P_URAM_1R1W (
     reset, clk);
 
 parameter DataWidth = 256;
-parameter AddressWidth = 14;
-parameter AddressRange = 15360;
+parameter AddressWidth = 11;
+parameter AddressRange = 2048;
  
 input[AddressWidth-1:0] address0;
 input ce0;

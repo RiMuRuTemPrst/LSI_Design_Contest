@@ -12,8 +12,8 @@ entity full_generator_top_run_upconv_block_x_buf_RAM_T2P_URAM_1R1W is
     generic(
         MEM_TYPE        : string    := "hls_ultra"; 
         DataWidth       : integer   := 256; 
-        AddressWidth    : integer   := 14;
-        AddressRange    : integer   := 15360
+        AddressWidth    : integer   := 11;
+        AddressRange    : integer   := 2048
     ); 
     port (
         address0    : in std_logic_vector(AddressWidth-1 downto 0); 

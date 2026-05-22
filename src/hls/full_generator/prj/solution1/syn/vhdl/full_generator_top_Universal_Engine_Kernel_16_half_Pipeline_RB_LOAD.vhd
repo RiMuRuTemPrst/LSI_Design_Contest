@@ -272,8 +272,8 @@ attribute shreg_extract : string;
     signal ap_block_pp0_stage0_11001_grp0 : BOOLEAN;
     signal ap_block_pp0_stage0_subdone_grp0_done_reg : BOOLEAN := false;
     signal ap_block_pp0_stage0_subdone_grp0 : BOOLEAN;
-    signal empty_829_fu_523_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal empty_829_reg_664 : STD_LOGIC_VECTOR (0 downto 0);
+    signal empty_831_fu_523_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal empty_831_reg_664 : STD_LOGIC_VECTOR (0 downto 0);
     signal j_reg_668 : STD_LOGIC_VECTOR (5 downto 0);
     signal j_reg_668_pp0_iter1_reg : STD_LOGIC_VECTOR (5 downto 0);
     signal j_reg_668_pp0_iter2_reg : STD_LOGIC_VECTOR (5 downto 0);
@@ -1768,7 +1768,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_const_boolean_0 = ap_block_pp0_stage0_subdone_grp0_done_reg) and (ap_const_boolean_0 = ap_block_pp0_stage0_11001_grp0) and (ap_const_logic_1 = ap_CS_fsm_pp0_stage0))) then
-                empty_829_reg_664 <= empty_829_fu_523_p2;
+                empty_831_reg_664 <= empty_831_fu_523_p2;
             end if;
         end if;
     end process;
@@ -1887,7 +1887,7 @@ begin
         end if; 
     end process;
 
-    empty_829_fu_523_p2 <= (icmp805 or cmp1_not);
+    empty_831_fu_523_p2 <= (icmp805 or cmp1_not);
 
     gmem_x_blk_n_AR_assign_proc : process(ap_CS_fsm_pp0_stage0, ap_enable_reg_pp0_iter1, m_axi_gmem_x_0_ARREADY, ap_block_pp0_stage0_grp1)
     begin
@@ -2121,9 +2121,9 @@ begin
     skip_buf_d1 <= gmem_x_addr_read_reg_689;
     skip_buf_we1 <= skip_buf_we1_local;
 
-    skip_buf_we1_local_assign_proc : process(ap_enable_reg_pp0_iter73, ap_block_pp0_stage0_11001_grp0, ap_block_pp0_stage0_subdone_grp0_done_reg, empty_829_reg_664)
+    skip_buf_we1_local_assign_proc : process(ap_enable_reg_pp0_iter73, ap_block_pp0_stage0_11001_grp0, ap_block_pp0_stage0_subdone_grp0_done_reg, empty_831_reg_664)
     begin
-        if (((empty_829_reg_664 = ap_const_lv1_0) and (ap_const_boolean_0 = ap_block_pp0_stage0_subdone_grp0_done_reg) and (ap_const_boolean_0 = ap_block_pp0_stage0_11001_grp0) and (ap_enable_reg_pp0_iter73 = ap_const_logic_1))) then 
+        if (((empty_831_reg_664 = ap_const_lv1_0) and (ap_const_boolean_0 = ap_block_pp0_stage0_subdone_grp0_done_reg) and (ap_const_boolean_0 = ap_block_pp0_stage0_11001_grp0) and (ap_enable_reg_pp0_iter73 = ap_const_logic_1))) then 
             skip_buf_we1_local <= ap_const_logic_1;
         else 
             skip_buf_we1_local <= ap_const_logic_0;

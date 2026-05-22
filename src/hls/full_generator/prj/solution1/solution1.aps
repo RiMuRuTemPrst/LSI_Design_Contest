@@ -2,10 +2,17 @@
     <config>
         <config_interface m_axi_latency="64" m_axi_alignment_byte_size="64" m_axi_max_widen_bitwidth="512" default_interface="kernel"/>
         <config_rtl register_reset_num="3"/>
+        <config_cosim disable_binary_tv="1"/>
     </config>
     <clockList>
         <clock name="default" period="3.333" default="false"/>
     </clockList>
+    <Simulation argv="">
+        <SimFlow name="cosim" setup="false" dumpTrace="none" optimizeCompile="false" ldflags="" mflags="" compiledLibrary="" toolName="xsim">
+            <Rtl name="verilog" active="true"/>
+            <Rtl name="vhdl" active="false"/>
+        </SimFlow>
+    </Simulation>
     <name>
         <value string="solution1"/>
     </name>
