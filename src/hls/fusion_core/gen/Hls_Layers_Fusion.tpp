@@ -182,7 +182,7 @@ static void Universal_Engine_Kernel(
             int h_c = (h < 0) ? -h : ((h >= H) ? (H<<1)-h-2 : h);
             int slot = (h + 1) & 3;
             for (int w = 0; w < W; w++) {
-                int ddr_base = flat_idx(0, h_c, w, 0, H, W, CI_PAD) / 16;
+                int ddr_base = flat_idx(0, h_c, w, 0, H, W, MODEL_C) / 16;
                 if (is_cbi) {
                     T partial_sum[14], partial_sumsq[14];
                     data_256_t pix[14];
@@ -256,19 +256,25 @@ static void Universal_Engine_Kernel(
                 data_256_t w_reg; data_256_t x_regs[PEs];
 #pragma HLS ARRAY_PARTITION variable=x_regs complete
 
-                MAC_LOOP: for (int ci = 0; ci < CI_PAD; ci += 4) {
+                MAC_LOOP: for (int ci = 0; ci < CI_PAD; ci += 8) {
 #pragma HLS PIPELINE II=1
 #pragma HLS DEPENDENCE variable=psum type=inter false
-                    int acc_idx=(ci/4)&7, widx=ci/16, boff=ci%16;
-                    if (boff==0) w_reg=w_buf[ping][widx]; else w_reg>>=64;
-                    T w0=bits_to_half<T>(w_reg.range(15,0)), w1=bits_to_half<T>(w_reg.range(31,16)), w2=bits_to_half<T>(w_reg.range(47,32)), w3=bits_to_half<T>(w_reg.range(63,48));
+                    int acc_idx=(ci/8)&7, widx=ci/16, boff=ci%16;
+                    if (boff==0) w_reg=w_buf[ping][widx]; else w_reg>>=128;
+                    T w0=bits_to_half<T>(w_reg.range(15,0)),  w1=bits_to_half<T>(w_reg.range(31,16)),
+                      w2=bits_to_half<T>(w_reg.range(47,32)), w3=bits_to_half<T>(w_reg.range(63,48)),
+                      w4=bits_to_half<T>(w_reg.range(79,64)), w5=bits_to_half<T>(w_reg.range(95,80)),
+                      w6=bits_to_half<T>(w_reg.range(111,96)),w7=bits_to_half<T>(w_reg.range(127,112));
                     for (int p=0; p<PEs; p++) {
 #pragma HLS UNROLL
                         int wx = p + (kw - 1);
                         int wc = (wx < 0) ? -wx : ((wx >= W) ? (W<<1)-wx-2 : wx);
-                        if (boff==0) x_regs[p]=x_buf[slot][wc][widx]; else x_regs[p]>>=64;
-                        T x0=bits_to_half<T>(x_regs[p].range(15,0)), x1=bits_to_half<T>(x_regs[p].range(31,16)), x2=bits_to_half<T>(x_regs[p].range(47,32)), x3=bits_to_half<T>(x_regs[p].range(63,48));
-                        psum[p][acc_idx] += (x0*w0 + x1*w1) + (x2*w2 + x3*w3);
+                        if (boff==0) x_regs[p]=x_buf[slot][wc][widx]; else x_regs[p]>>=128;
+                        T x0=bits_to_half<T>(x_regs[p].range(15,0)),  x1=bits_to_half<T>(x_regs[p].range(31,16)),
+                          x2=bits_to_half<T>(x_regs[p].range(47,32)), x3=bits_to_half<T>(x_regs[p].range(63,48)),
+                          x4=bits_to_half<T>(x_regs[p].range(79,64)), x5=bits_to_half<T>(x_regs[p].range(95,80)),
+                          x6=bits_to_half<T>(x_regs[p].range(111,96)),x7=bits_to_half<T>(x_regs[p].range(127,112));
+                        psum[p][acc_idx] += ((x0*w0+x1*w1) + (x2*w2+x3*w3)) + ((x4*w4+x5*w5) + (x6*w6+x7*w7));
                     }
                     if (do_load && boff==0) w_buf[1-ping][widx] = W_ptr[wn_base+widx];
                 }

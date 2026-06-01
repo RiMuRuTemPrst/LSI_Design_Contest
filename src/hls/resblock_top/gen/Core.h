@@ -6,12 +6,14 @@
 // =========================================================================
 // Uncomment the line below to run MINI TEST (16 channels)
 // Comment it out to run FULL SIZE (960 channels)
+#ifndef ENABLE_MINI_TEST
 #define ENABLE_MINI_TEST  1
+#endif
 
 // =========================================================================
 // AUTOMATIC PARAMETER DEFINITIONS
 // =========================================================================
-#ifdef ENABLE_MINI_TEST
+#if ENABLE_MINI_TEST
     #define MODEL_H      16
     #define MODEL_W      16
     #define MODEL_C      16
