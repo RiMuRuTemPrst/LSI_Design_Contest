@@ -83,13 +83,15 @@ void UpConv_Fused_Row_Bench(
     std::memset(row_acc, 0, sizeof(row_acc));
 #endif
 
-    RESET_ROW_ACC: for (int wo = 0; wo < W_OUT; wo++) {
+    int rw = 0, rcw = 0;
+    RESET_ROW_ACC: for (int m = 0; m < W_OUT * C_WORDS_OUT; m++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=32 max=32 avg=32
-        for (int c = 0; c < 480; c++) {
+#pragma HLS LOOP_TRIPCOUNT min=960 max=960 avg=960
+        for (int l = 0; l < 16; l++) {
 #pragma HLS UNROLL
-            row_acc[wo][c] = 0;
+            row_acc[rw][rcw * 16 + l] = 0;
         }
+        if (rcw == C_WORDS_OUT - 1) { rcw = 0; rw++; } else { rcw++; }
     }
 
     // Weight buffer (PEs=16 parallel reads)
@@ -127,53 +129,51 @@ void UpConv_Fused_Row_Bench(
 #pragma HLS LOOP_TRIPCOUNT min=2 max=3
                 int k = kh * 3 + kw;
 
-                WI_LOOP: for (int wi = 0; wi < W_IN; wi++) {
-#pragma HLS LOOP_TRIPCOUNT min=16 max=16 avg=16
-                    int wo = wi * S + kw - PAD;
-                    if (wo < 0 || wo >= W_OUT) continue;
+                // [A] Flatten WI x CI into one II=1 pipeline (bench mirror of canonical .tpp).
+                const int M_TOTAL = W_IN * CI_WORDS;
+                const int x_base  = x_row * W_IN * CI_WORDS;
+                const int w_off   = k * 60;
 
-                    // Rotating psum: depth=4 >= FP16 add latency (=3)
-                    data_t psum[PEs][4];
+                data_t psum[PEs][4];
 #pragma HLS ARRAY_PARTITION variable=psum complete dim=0
 
-                    // Reset rotating slots
-                    RESET_PSUM: for (int tc = 0; tc < PEs; tc++) {
-#pragma HLS UNROLL
-                        for (int r = 0; r < 4; r++) {
-#pragma HLS UNROLL
-                            psum[tc][r] = 0;
-                        }
-                    }
-
-                    CI_LOOP: for (int ci_w = 0; ci_w < CI_WORDS; ci_w++) {
+                int wi = 0, ci_w = 0;
+                FLAT_LOOP: for (int m = 0; m < M_TOTAL; m++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=60 max=60 avg=60
-#pragma HLS DEPENDENCE variable=psum type=inter false
+#pragma HLS LOOP_TRIPCOUNT min=960 max=960 avg=960
+#pragma HLS DEPENDENCE variable=psum    type=inter false
+#pragma HLS DEPENDENCE variable=row_acc type=inter false
+                    int acc_idx = ci_w & 3;
+                    data_256_t x_word = x_buf[x_base + m];
 
-                        int acc_idx = ci_w & 3;
-                        data_256_t x_word = x_buf[(x_row * W_IN + wi) * CI_WORDS + ci_w];
-
-                        TC_MAC: for (int tc = 0; tc < PEs; tc++) {
+                    TC_MAC: for (int tc = 0; tc < PEs; tc++) {
 #pragma HLS UNROLL
-                            data_256_t w_word = w_local[tc][k * 60 + ci_w];
-                            data_t dot = 0;
-                            for (int l = 0; l < 16; l++) {
+                        data_256_t w_word = w_local[tc][w_off + ci_w];
+                        data_t dot = 0;
+                        for (int l = 0; l < 16; l++) {
 #pragma HLS UNROLL
-                                data_t xv = bits_to_half<data_t>(x_word.range(16*l+15, 16*l));
-                                data_t wv = bits_to_half<data_t>(w_word.range(16*l+15, 16*l));
-                                dot += xv * wv;
-                            }
-                            psum[tc][acc_idx] += dot;
+                            data_t xv = bits_to_half<data_t>(x_word.range(16*l+15, 16*l));
+                            data_t wv = bits_to_half<data_t>(w_word.range(16*l+15, 16*l));
+                            dot += xv * wv;
                         }
+                        if (ci_w < 4) psum[tc][acc_idx]  = dot;
+                        else          psum[tc][acc_idx] += dot;
                     }
 
-                    // Reduce 4 rotating slots -> single value per PE
-                    ACC_WRITE: for (int tc = 0; tc < PEs; tc++) {
+                    if (ci_w == CI_WORDS - 1) {
+                        int wo = wi * S + kw - PAD;
+                        if (wo >= 0 && wo < W_OUT) {
+                            ACC_WRITE: for (int tc = 0; tc < PEs; tc++) {
 #pragma HLS UNROLL
-                        if (co_base + tc < C_OUT) {
-                            data_t total = psum[tc][0] + psum[tc][1] + psum[tc][2] + psum[tc][3];
-                            row_acc[wo][co_base + tc] += total;
+                                if (co_base + tc < C_OUT) {
+                                    data_t total = psum[tc][0] + psum[tc][1] + psum[tc][2] + psum[tc][3];
+                                    row_acc[wo][co_base + tc] += total;
+                                }
+                            }
                         }
+                        ci_w = 0; wi++;
+                    } else {
+                        ci_w++;
                     }
                 }
             }
@@ -193,55 +193,67 @@ void UpConv_Fused_Row_Bench(
         be_buf[i] = BE_ptr[i];
     }
 
-    PIXEL_NORM: for (int wo = 0; wo < W_OUT; wo++) {
-#pragma HLS PIPELINE off
-#pragma HLS LOOP_TRIPCOUNT min=32 max=32 avg=32
-        float sum_rot[8]   = {0,0,0,0,0,0,0,0};
-        float sumsq_rot[8] = {0,0,0,0,0,0,0,0};
+    // [B] PIXEL_NORM 2-pass (bench mirror of canonical Variant A: seq reduce, no clamp).
+    static float  mean_buf[256];
+    static data_t inv_buf [256];
+#pragma HLS BIND_STORAGE variable=mean_buf type=ram_2p impl=lutram
+#pragma HLS BIND_STORAGE variable=inv_buf  type=ram_2p impl=lutram
+
+    float sum_rot[8], sumsq_rot[8];
 #pragma HLS ARRAY_PARTITION variable=sum_rot   complete
 #pragma HLS ARRAY_PARTITION variable=sumsq_rot complete
 
-        BIAS_STATS: for (int c = 0; c < C_OUT; c++) {
+    int ws = 0, cs = 0;
+    PIXEL_STATS: for (int m = 0; m < W_OUT * C_OUT; m++) {
 #pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=480 max=480 avg=480
+#pragma HLS LOOP_TRIPCOUNT min=15360 max=15360 avg=15360
 #pragma HLS DEPENDENCE variable=sum_rot   type=inter false
 #pragma HLS DEPENDENCE variable=sumsq_rot type=inter false
-            int acc_idx = c & 7;
-            data_t bias = bits_to_half<data_t>(b_buf[c/16].range(16*(c%16)+15, 16*(c%16)));
-            data_t val = row_acc[wo][c] + bias;
-            row_acc[wo][c] = val;
-            float fv = (float)val;
-            sum_rot[acc_idx]   += fv;
-            sumsq_rot[acc_idx] += fv * fv;
-        }
+#pragma HLS DEPENDENCE variable=row_acc   type=inter false
+        int acc_idx = cs & 7;
+        data_t bias = bits_to_half<data_t>(b_buf[cs/16].range(16*(cs%16)+15, 16*(cs%16)));
+        data_t val = row_acc[ws][cs] + bias;
+        row_acc[ws][cs] = val;
+        float fv = (float)val;
+        if (cs < 8) { sum_rot[acc_idx]  = fv; sumsq_rot[acc_idx]  = fv * fv; }
+        else        { sum_rot[acc_idx] += fv; sumsq_rot[acc_idx] += fv * fv; }
 
-        float sum = 0, sumsq = 0;
-        for (int r = 0; r < 8; r++) {
+        if (cs == C_OUT - 1) {
+            float sum = 0, sumsq = 0;
+            for (int r = 0; r < 8; r++) {
 #pragma HLS UNROLL
-            sum   += sum_rot[r];
-            sumsq += sumsq_rot[r];
-        }
-
-        float mean    = sum / (float)C_OUT;
-        float var     = sumsq / (float)C_OUT - mean * mean;
-        data_t inv_std = (data_t)(1.0f / my_sqrt_f(var + (float)epsilon));
-
-        NORM_WRITE: for (int cw = 0; cw < C_WORDS_OUT; cw++) {
-#pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=30 max=30 avg=30
-            data_256_t out_word;
-            for (int l = 0; l < 16; l++) {
-#pragma HLS UNROLL
-                int c = cw * 16 + l;
-                data_t val  = (c < C_OUT) ? row_acc[wo][c] : (data_t)0;
-                data_t g    = bits_to_half<data_t>(g_buf[cw].range(16*l+15, 16*l));
-                data_t be   = bits_to_half<data_t>(be_buf[cw].range(16*l+15, 16*l));
-                data_t norm = (c < C_OUT) ? ((val - (data_t)mean) * inv_std * g + be) : (data_t)0;
-                data_t relu = (norm < (data_t)0) ? (data_t)0 : norm;
-                out_word.range(16*l+15, 16*l) = half_to_bits(relu);
+                sum   += sum_rot[r];
+                sumsq += sumsq_rot[r];
             }
-            Y[(ho * W_OUT + wo) * C_WORDS_OUT + cw] = out_word;
+            float mean = sum / (float)C_OUT;
+            float var  = sumsq / (float)C_OUT - mean * mean;
+            mean_buf[ws] = mean;
+            inv_buf[ws]  = (data_t)(1.0f / my_sqrt_f(var + (float)epsilon));
+            cs = 0; ws++;
+        } else {
+            cs++;
         }
+    }
+
+    int wn = 0, cwn = 0;
+    PIXEL_NORM: for (int m = 0; m < W_OUT * C_WORDS_OUT; m++) {
+#pragma HLS PIPELINE II=1
+#pragma HLS LOOP_TRIPCOUNT min=960 max=960 avg=960
+        data_t mean_w = (data_t)mean_buf[wn];
+        data_t inv_w  = inv_buf[wn];
+        data_256_t out_word;
+        for (int l = 0; l < 16; l++) {
+#pragma HLS UNROLL
+            int c = cwn * 16 + l;
+            data_t val  = (c < C_OUT) ? row_acc[wn][c] : (data_t)0;
+            data_t g    = bits_to_half<data_t>(g_buf[cwn].range(16*l+15, 16*l));
+            data_t be   = bits_to_half<data_t>(be_buf[cwn].range(16*l+15, 16*l));
+            data_t norm = (c < C_OUT) ? ((val - mean_w) * inv_w * g + be) : (data_t)0;
+            data_t relu = (norm < (data_t)0) ? (data_t)0 : norm;
+            out_word.range(16*l+15, 16*l) = half_to_bits(relu);
+        }
+        Y[(ho * W_OUT + wn) * C_WORDS_OUT + cwn] = out_word;
+        if (cwn == C_WORDS_OUT - 1) { cwn = 0; wn++; } else { cwn++; }
     }
 }
 
