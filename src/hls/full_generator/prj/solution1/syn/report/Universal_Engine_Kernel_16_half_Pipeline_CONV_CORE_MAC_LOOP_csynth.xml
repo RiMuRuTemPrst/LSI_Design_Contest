@@ -3502,8 +3502,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>empty_105</name>
-<Object>empty_105</Object>
+<name>empty_99</name>
+<Object>empty_99</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -3634,8 +3634,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>empty_106</name>
-<Object>empty_106</Object>
+<name>empty_100</name>
+<Object>empty_100</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

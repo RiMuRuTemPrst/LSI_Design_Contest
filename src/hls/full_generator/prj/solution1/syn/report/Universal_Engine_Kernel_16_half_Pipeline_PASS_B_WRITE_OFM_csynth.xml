@@ -5456,8 +5456,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>conv5</name>
-<Object>conv5</Object>
+<name>conv3</name>
+<Object>conv3</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

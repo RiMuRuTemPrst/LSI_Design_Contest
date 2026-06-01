@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'run_upconv_block_Pipeline_LOAD_ROW0_VITIS_LOOP_97_1'
 ================================================================
-* Date:           Fri May 22 08:50:27 2026
+* Date:           Mon Jun  1 15:35:22 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -112,7 +112,7 @@
     +--------------------------------------+----+-----------+-----+-----------+
     |ap_done_int                           |   9|          2|    1|          2|
     |ap_enable_reg_pp0_iter1               |   9|          2|    1|          2|
-    |ap_phi_mux_empty_109_phi_fu_166_p4    |  14|          3|  256|        768|
+    |ap_phi_mux_empty_103_phi_fu_166_p4    |  14|          3|  256|        768|
     |ap_sig_allocacmp_indvar_flatten_load  |   9|          2|   13|         26|
     |ciw_fu_92                             |   9|          2|    6|         12|
     |gmem_x_blk_n_R                        |   9|          2|    1|          2|

@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'Universal_Engine_Kernel_16_half_Pipeline_CBI_NORM'
 ================================================================
-* Date:           Fri May 22 08:50:20 2026
+* Date:           Mon Jun  1 15:35:15 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -209,7 +209,7 @@
     |sub177_8_reg_1845                  |   16|   0|   16|          0|
     |sub177_9_reg_1850                  |   16|   0|   16|          0|
     |sub177_s_reg_1855                  |   16|   0|   16|          0|
-    |sub3_reg_1805                      |   16|   0|   16|          0|
+    |sub4_reg_1805                      |   16|   0|   16|          0|
     |u_246_reg_2375                     |   16|   0|   16|          0|
     |u_247_reg_1642                     |   16|   0|   16|          0|
     |u_248_reg_1900                     |   16|   0|   16|          0|
@@ -266,9 +266,9 @@
     |u_299_reg_1715                     |   16|   0|   16|          0|
     |u_300_reg_2030                     |   16|   0|   16|          0|
     |u_301_reg_2275                     |   16|   0|   16|          0|
-    |u_302_reg_2445                     |   16|   0|   16|          0|
-    |u_345_reg_1890                     |   16|   0|   16|          0|
-    |u_346_reg_2135                     |   16|   0|   16|          0|
+    |u_344_reg_1890                     |   16|   0|   16|          0|
+    |u_345_reg_2135                     |   16|   0|   16|          0|
+    |u_346_reg_2445                     |   16|   0|   16|          0|
     |u_347_reg_1720                     |   16|   0|   16|          0|
     |u_348_reg_2040                     |   16|   0|   16|          0|
     |u_349_reg_2285                     |   16|   0|   16|          0|
@@ -563,7 +563,7 @@
 |be_in_buf_address0                                                                            |  out|    4|   ap_memory|                                                                            be_in_buf|         array|
 |be_in_buf_ce0                                                                                 |  out|    1|   ap_memory|                                                                            be_in_buf|         array|
 |be_in_buf_q0                                                                                  |   in|  256|   ap_memory|                                                                            be_in_buf|         array|
-|conv9                                                                                         |   in|   16|     ap_none|                                                                                conv9|        scalar|
+|conv7                                                                                         |   in|   16|     ap_none|                                                                                conv7|        scalar|
 |inv_std                                                                                       |   in|   16|     ap_none|                                                                              inv_std|        scalar|
 |w                                                                                             |   in|    4|     ap_none|                                                                                    w|        scalar|
 |void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_9_address1      |  out|    8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_9|         array|

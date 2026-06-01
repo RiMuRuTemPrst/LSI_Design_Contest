@@ -682,8 +682,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>empty_104</name>
-<Object>empty_104</Object>
+<name>empty_98</name>
+<Object>empty_98</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

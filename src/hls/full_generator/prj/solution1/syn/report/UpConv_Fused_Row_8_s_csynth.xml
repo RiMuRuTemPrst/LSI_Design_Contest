@@ -22,67 +22,28 @@
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>9879</Best-caseLatency>
-<Average-caseLatency>472419</Average-caseLatency>
-<Worst-caseLatency>15366346</Worst-caseLatency>
-<Best-caseRealTimeLatency>32.927 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>1.575 ms</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>51.216 ms</Worst-caseRealTimeLatency>
-<Interval-min>9879</Interval-min>
-<Interval-max>15366346</Interval-max>
+<Best-caseLatency>2916</Best-caseLatency>
+<Average-caseLatency>140104</Average-caseLatency>
+<Worst-caseLatency>3076839</Worst-caseLatency>
+<Best-caseRealTimeLatency>9.719 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>0.467 ms</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>10.255 ms</Worst-caseRealTimeLatency>
+<Interval-min>2916</Interval-min>
+<Interval-max>3076839</Interval-max>
 </SummaryOfOverallLatency>
-<SummaryOfLoopLatency>
-<PIXEL_NORM>
-<Slack>2.43</Slack>
-<TripCount>
-<range>
-<min>32</min>
-<max>256</max>
-</range>
-</TripCount>
-<Latency>
-<range>
-<min>8864</min>
-<max>185088</max>
-</range>
-</Latency>
-<AbsoluteTimeLatency>
-<range>
-<min>29543</min>
-<max>616898</max>
-</range>
-</AbsoluteTimeLatency>
-<IterationLatency>
-<range>
-<min>277</min>
-<max>723</max>
-</range>
-</IterationLatency>
-<InstanceList>
-</InstanceList>
-</PIXEL_NORM>
-</SummaryOfLoopLatency>
 <SummaryOfViolations>
 <IssueType>Timing Violation</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:205</SourceLocation>
-<SummaryOfLoopViolations>
-<PIXEL_NORM>
-<Name>PIXEL_NORM</Name>
-<IssueType>-</IssueType>
-<ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:225</SourceLocation>
-</PIXEL_NORM>
-</SummaryOfLoopViolations>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:230</SourceLocation>
 </SummaryOfViolations>
 </PerformanceEstimates>
 
 <AreaEstimates>
 <Resources>
 <BRAM_18K>144</BRAM_18K>
-<DSP>573</DSP>
-<FF>54240</FF>
-<LUT>43400</LUT>
+<DSP>669</DSP>
+<FF>68259</FF>
+<LUT>47507</LUT>
 <URAM>32</URAM>
 </Resources>
 <AvailableResources>

@@ -61,13 +61,13 @@
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:199</SourceLocation>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:207</SourceLocation>
 <SummaryOfLoopViolations>
 <LOAD_PARAMS>
 <Name>LOAD_PARAMS</Name>
 <IssueType>II Violation</IssueType>
 <ViolationType>Resource Limitation</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:199</SourceLocation>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:207</SourceLocation>
 </LOAD_PARAMS>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -664,8 +664,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>trunc_ln</name>
-<Object>trunc_ln</Object>
+<name>C_WORDS_OUT</name>
+<Object>C_WORDS_OUT</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -719,8 +719,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sext_ln199</name>
-<Object>sext_ln199</Object>
+<name>sext_ln207</name>
+<Object>sext_ln207</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -774,8 +774,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sext_ln199_1</name>
-<Object>sext_ln199_1</Object>
+<name>sext_ln207_1</name>
+<Object>sext_ln207_1</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -829,8 +829,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>trunc_ln199_2_cast</name>
-<Object>trunc_ln199_2_cast</Object>
+<name>trunc_ln207_2_cast</name>
+<Object>trunc_ln207_2_cast</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

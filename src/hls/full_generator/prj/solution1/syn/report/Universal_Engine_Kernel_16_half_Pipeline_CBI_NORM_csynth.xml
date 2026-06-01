@@ -3069,8 +3069,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>conv9</name>
-<Object>conv9</Object>
+<name>conv7</name>
+<Object>conv7</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

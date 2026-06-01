@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'Universal_Engine_Kernel_16_half_s'
 ================================================================
-* Date:           Fri May 22 08:50:26 2026
+* Date:           Mon Jun  1 15:35:21 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -246,10 +246,10 @@
     |          Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------------------+----------+----+---+----+------------+------------+
     |add_ln168_fu_2460_p2             |         +|   0|  0|  71|          64|          64|
-    |empty_838_fu_3381_p2             |         +|   0|  0|  21|          14|          14|
+    |empty_671_fu_3381_p2             |         +|   0|  0|  21|          14|          14|
     |indvars_iv_next111_fu_2698_p2    |         +|   0|  0|  17|          10|           1|
     |indvars_iv_next144_fu_2501_p2    |         +|   0|  0|  12|           5|           1|
-    |empty_839_fu_3400_p2             |         -|   0|  0|  19|          12|          12|
+    |empty_672_fu_3400_p2             |         -|   0|  0|  19|          12|          12|
     |ap_block_state4_on_subcall_done  |       and|   0|  0|   2|           1|           1|
     |cmp1_not_fu_2430_p2              |      icmp|   0|  0|   9|           2|           1|
     |cmp288_fu_3360_p2                |      icmp|   0|  0|  17|          10|           8|
@@ -734,10 +734,10 @@
     |cmp1_not_reg_5868                                                                                    |   1|   0|    1|          0|
     |cmp288_reg_6489                                                                                      |   1|   0|    1|          0|
     |co_reg_1602                                                                                          |  10|   0|   10|          0|
-    |conv5_reg_5862                                                                                       |  32|   0|   32|          0|
-    |empty_837_reg_5919                                                                                   |   2|   0|    2|          0|
-    |empty_838_reg_6494                                                                                   |  14|   0|   14|          0|
-    |empty_839_reg_6499                                                                                   |  12|   0|   12|          0|
+    |conv3_reg_5862                                                                                       |  32|   0|   32|          0|
+    |empty_670_reg_5919                                                                                   |   2|   0|    2|          0|
+    |empty_671_reg_6494                                                                                   |  14|   0|   14|          0|
+    |empty_672_reg_6499                                                                                   |  12|   0|   12|          0|
     |gmem_wf_addr_reg_5889                                                                                |  64|   0|   64|          0|
     |grp_Universal_Engine_Kernel_16_half_Outline_VITIS_LOOP_180_2_fu_1662_ap_start_reg                    |   1|   0|    1|          0|
     |grp_Universal_Engine_Kernel_16_half_Pipeline_CONV_CORE_MAC_LOOP_fu_1916_ap_start_reg                 |   1|   0|    1|          0|

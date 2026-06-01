@@ -61,13 +61,13 @@
 <SummaryOfViolations>
 <IssueType>Timing Violation</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:119</SourceLocation>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:123</SourceLocation>
 <SummaryOfLoopViolations>
 <W_FLAT>
 <Name>W_FLAT</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_UpConv.tpp:120</SourceLocation>
+<SourceLocation>gen/Hls_Layers_UpConv.tpp:124</SourceLocation>
 </W_FLAT>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -664,8 +664,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>mul28</name>
-<Object>mul28</Object>
+<name>mul36</name>
+<Object>mul36</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -686,8 +686,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sext_ln120</name>
-<Object>sext_ln120</Object>
+<name>sext_ln124</name>
+<Object>sext_ln124</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

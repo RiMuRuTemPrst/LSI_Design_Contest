@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'UpConv_Fused_Row_8_Pipeline_W_FLAT'
 ================================================================
-* Date:           Fri May 22 08:50:28 2026
+* Date:           Mon Jun  1 15:35:22 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj
@@ -85,19 +85,19 @@
     +---------------------------+----------+----+---+----+------------+------------+
     |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------------+----------+----+---+----+------------+------------+
-    |add_ln120_fu_287_p2        |         +|   0|  0|  17|          10|           1|
-    |add_ln123_fu_377_p2        |         +|   0|  0|  18|          10|          10|
-    |add_ln125_fu_397_p2        |         +|   0|  0|  39|          32|           1|
+    |add_ln124_fu_287_p2        |         +|   0|  0|  17|          10|           1|
+    |add_ln127_fu_377_p2        |         +|   0|  0|  18|          10|          10|
+    |add_ln129_fu_397_p2        |         +|   0|  0|  39|          32|           1|
     |ci_cnt_1_fu_314_p2         |         +|   0|  0|  39|          32|           1|
-    |sub_ln123_fu_371_p2        |         -|   0|  0|  18|          10|          10|
+    |sub_ln127_fu_371_p2        |         -|   0|  0|  18|          10|          10|
     |ap_block_pp0_stage0_11001  |       and|   0|  0|   2|           1|           1|
     |ap_condition_184           |       and|   0|  0|   2|           1|           1|
-    |icmp_ln120_fu_281_p2       |      icmp|   0|  0|  17|          10|          10|
-    |icmp_ln125_fu_320_p2       |      icmp|   0|  0|  39|          32|          32|
+    |icmp_ln124_fu_281_p2       |      icmp|   0|  0|  17|          10|          10|
+    |icmp_ln129_fu_320_p2       |      icmp|   0|  0|  39|          32|          32|
     |ci_cnt_2_fu_331_p3         |    select|   0|  0|  32|           1|           1|
     |k_cnt_1_fu_403_p3          |    select|   0|  0|  32|           1|          32|
     |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
-    |xor_ln125_fu_325_p2        |       xor|   0|  0|   2|           1|           2|
+    |xor_ln129_fu_325_p2        |       xor|   0|  0|   2|           1|           2|
     +---------------------------+----------+----+---+----+------------+------------+
     |Total                      |          |   0|  0| 259|         142|         104|
     +---------------------------+----------+----+---+----+------------+------------+
@@ -131,8 +131,8 @@
     |gmem_wu_addr_read_reg_461                  |  256|   0|  256|          0|
     |k_cnt_fu_110                               |   32|   0|   32|          0|
     |kci_fu_118                                 |   10|   0|   10|          0|
-    |trunc_ln120_reg_456                        |   10|   0|   10|          0|
-    |xor_ln125_reg_473                          |    1|   0|    1|          0|
+    |trunc_ln124_reg_456                        |   10|   0|   10|          0|
+    |xor_ln129_reg_473                          |    1|   0|    1|          0|
     |zext_ln85_cast_reg_447                     |    6|   0|   32|         26|
     +-------------------------------------------+-----+----+-----+-----------+
     |Total                                      |  353|   0|  379|         26|
@@ -199,9 +199,9 @@
 |m_axi_gmem_wu_0_BRESP     |   in|    2|       m_axi|                              gmem_wu|       pointer|
 |m_axi_gmem_wu_0_BID       |   in|    1|       m_axi|                              gmem_wu|       pointer|
 |m_axi_gmem_wu_0_BUSER     |   in|    1|       m_axi|                              gmem_wu|       pointer|
-|mul28                     |   in|   10|     ap_none|                                mul28|        scalar|
+|mul36                     |   in|   10|     ap_none|                                mul36|        scalar|
 |zext_ln85                 |   in|    6|     ap_none|                            zext_ln85|        scalar|
-|sext_ln120                |   in|   59|     ap_none|                           sext_ln120|        scalar|
+|sext_ln124                |   in|   59|     ap_none|                           sext_ln124|        scalar|
 |w_local_7_address0        |  out|   10|   ap_memory|                            w_local_7|         array|
 |w_local_7_ce0             |  out|    1|   ap_memory|                            w_local_7|         array|
 |w_local_7_we0             |  out|    1|   ap_memory|                            w_local_7|         array|
