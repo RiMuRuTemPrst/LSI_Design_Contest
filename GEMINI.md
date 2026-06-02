@@ -101,14 +101,20 @@ Chạy full pipeline Fusion→UCB→Conv77 qua `test_full.cpp`. CSIM mất ~7 gi
 > **Why Fusion max_err=12.3**: `psum[PEs][8]` là fp16, accumulate 135 lần/slot (CI_PAD=960 → 120 MAC_LOOP iters, 9 kernel steps, 8 slots → 135 adds/slot). Error/slot ≈ 135×magnitude×2^-10 ≈ 1.4. Normalized với inv×g≈3 → ~4/layer. Compounding qua 9 ResBlocks → max_err≈12. Fix nếu cần: đổi psum sang `ap_fixed<32,16>` (không tăng DSP, chỉ LUT).
 > **Conv77 final quality**: RMSE=0.165 ≈ standalone RMSE=0.162 → ảnh đầu ra chất lượng không bị ảnh hưởng đáng kể dù Fusion có lỗi tích lũy.
 
-## RTL Co-Simulation — full_generator_top ⚠️ TOOL LIMITATION (2026-05-18)
+## RTL Co-Simulation — full_generator_top + UpConv probe (2026-05-18, REVISED 2026-06-02)
 
-`cosim_design` chạy qua `hls_cosim.tcl` → C sim PASS (6h42m) → fail tại TV generation:
+`cosim_design` trên full_generator_top: C sim PASS (6h42m) → fail tại TV generation:
 `ERROR: [COSIM 212-5] *** C/RTL co-simulation file generation failed.`
+Chẩn đoán ban đầu (2026-05-18): nghi Vitis 2024.2 binary-TV `DUMP_OUTPUTS`/`_exit()` skip dump → gán nhãn "tool limitation".
 
-**Root cause**: Vitis HLS 2024.2 binary TV mode (`USE_BINARY_TV_FILE`): `DUMP_OUTPUTS` trong `apatb_full_generator_top.cpp` không bao giờ execute → TVOUT files = 0B (`autotvout_gmem_x/y/z.dat` Birth==Modify==09:11:59). Process kết thúc qua `_exit()`-like path (không flush C++ destructors/stdio) trước khi dump outputs.
+**REVISED 2026-06-02 — nhãn "tool limitation" SAI.** Probe cosim trên `upconv_core` (UCB3 datapath, H reduced, C full — `src/hls/upconv_core/probe_cosim/`) cho thấy `[COSIM 212-5]` thực ra do **thiếu `depth=` trên m_axi port** (cosim cần port depth để cấp test vector; csim không cần nên trước giờ thiếu vẫn chạy). Thêm `depth=` → `[212-1] file generation COMPLETED` → `[212-1000] *** finished: PASS ***` (RTL khớp C bit-exact). Bug **FIX ĐƯỢC**, không phải lỗi cấp tool. (full_generator_top muốn cosim lại chỉ cần thêm `depth=` cho mọi m_axi port.)
 
-**Kết luận**: C sim ALL PASS (3 checks, 0 mismatches) là functional verification đầy đủ. RTL cosim là tool-level limitation, không phải code bug. Không re-run (cần 6+ giờ).
+**Rào THẬT của cosim = throughput xsim, không phải bug.** Đo trên probe no-trace: **~50 cycle/giây** cho datapath fp16×128 + fp32 + sqrt.
+- Tiny probe (23.7k cy, sim-time 79.029µs): cosim wall **11m27s** → PASS.
+- Suy ra: reduced UCB3 H=8 (~0.55M cy) ≈ **3h**; `upconv_core` full (61M cy) ≈ **2 tuần**; full_generator (≥177M cy) → bất khả thi.
+- Waveform trace ON (`-wdb`) là đòn chí mạng phụ: run 0.55M cy **có trace** sau 2h vẫn kẹt ở init (`@119000ps` ≈ 36 cycle). BẮT BUỘC `cosim_design -trace_level none`.
+
+**Kết luận**: cosim đúng chức năng (PASS scope nhỏ, RTL==C bit-exact) nhưng bất khả thi về thời gian ở size thật. Verification stack: (1) **C sim full pipeline** = functional sign-off (ALL PASS, 0 mismatch); (2) **deterministic latency** (per-loop csynth × trip-count thật, bench tables) = latency; (3) **cosim PASS scope nhỏ** = RTL-vs-C spot check. KHÔNG cosim full size (cần ngày→tuần).
 
 ## Synthesis Results — ZCU104 (xczu7ev-ffvc1156-2-e, 300 MHz)
 
