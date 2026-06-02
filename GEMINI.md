@@ -112,7 +112,7 @@ Chạy full pipeline Fusion→UCB→Conv77 qua `test_full.cpp`. CSIM mất ~7 gi
 
 ## Synthesis Results — ZCU104 (xczu7ev-ffvc1156-2-e, 300 MHz)
 
-### Resource Utilization (full_generator_top — Fusion + UpConv + Conv77) ✅ UPDATED (post [A]+[B]+[C-pipe] UpConv opt, 2026-05-31)
+### Resource Utilization (full_generator_top — Fusion + UpConv + Conv77) ✅ UPDATED (post [A]+[B]+[C-pipe] UpConv opt, 2026-06-02)
 | Resource | Used | Available | % |
 | :--- | :--- | :--- | :--- |
 | BRAM_18K | 601 | 624 | **96%** |
@@ -226,7 +226,7 @@ Chạy full pipeline Fusion→UCB→Conv77 qua `test_full.cpp`. CSIM mất ~7 gi
 > Cập nhật 2026-05-22: HLS estimate từ re-synthesis post BIAS_STATS fix (min=5,326,641 cy, max=6,219,569 cy).
 > Conv77 CSIM (data_256_t interface, post-clip golden `output_numbers.txt`): max_err=0.488, rmse=0.162, 0/196608 mismatch (TOL=1.0) — **PASS**
 
-## UpConv Optimization [A] — Flatten WI×CI (2026-05-31) ✅ VERIFIED
+## UpConv Optimization [A] — Flatten WI×CI (2026-06-02) ✅ VERIFIED
 
 ### Deterministic real-latency baseline (tính từ per-loop latency thật, validate <0.03% vs bench TOP)
 HLS min/max bounds quá rộng (UCB tổng min 156ms ↔ max ~19s) nên vô dụng để so. Tính deterministic bằng đếm chính xác `valid_kh(ho)`, Σ over ho = `3·H_IN−1`:
@@ -254,7 +254,7 @@ Cả 2 bản `Hls_Layers_UpConv.tpp` (`upconv_core/gen` + `full_generator/gen`, 
 ### Còn lại sau [A] (đã được [B] xử lý PIXEL_NORM)
 post-[A]: MAC 42% · PIXEL_NORM 36% ← [B] · PRELOAD_W 20% ← finding.
 
-## UpConv Optimization [B] — PIXEL_NORM 2-pass flatten (2026-05-31) ✅ VERIFIED
+## UpConv Optimization [B] — PIXEL_NORM 2-pass flatten (2026-06-02) ✅ VERIFIED
 
 ### Latency (deterministic, kèm [A])
 | UCB | Baseline | [A] | [A]+[B] | vs base |
@@ -275,14 +275,14 @@ PIXEL_NORM cũ `PIPELINE off` → mỗi wo trả fill 29 của BIAS_STATS + seri
 - **Synth**: core_top Fmax 308.74 / bench 334–411 MHz (ucb2/3 tăng do bỏ serial div/sqrt). Integration: DSP 1678→1710 (98%, +32, fits), BRAM 601(=), URAM 68(=), Fmax 308.74. `mean_buf`/`inv_buf` → **LUTRAM (0 BRAM thêm)**.
 - Áp dụng: 2 bản `.tpp` (upconv_core seq-reduce no-clamp / full_generator balanced-tree+var-clamp — GIỮ divergence) + 4 bench.
 
-## UpConv [C-pipe] — RESET_ROW_ACC II=15 → II=1 (2026-05-31) ✅ VERIFIED
+## UpConv [C-pipe] — RESET_ROW_ACC II=15 → II=1 (2026-06-02) ✅ VERIFIED
 Audit toàn bộ loop UCB (report): chỉ `RESET_ROW_ACC` còn II=15 (mọi loop khác đã II=1). Nó zero cứng 480 cột/wo (16 bank×2 port = 32 ghi/cy → 480/32 = II=15). Cột ≥ C_OUT KHÔNG bao giờ đọc/ghi → chỉ cần reset C_OUT_PAD. Restructure: flatten (wo×channel-word), ghi 1 word 16-ch/cycle → **II=1**, chỉ `C_WORDS_OUT` word/wo. ucb3: RESET 3841 → 1024 cy/call.
 - **Verify**: csim **memset OFF** (`-DRESET_VERIFY` — memset chỉ tồn tại trong csim, hardware chỉ có RESET_ROW_ACC, nên tắt memset mới test đúng path hardware) → ALL PASS, numerically-identical. Synth: II 15→1, **0 DSP thêm**, LUT 189,333→186,503 (giảm), Fmax 308.74 held.
 - UpConv: 206.4 → **203.7 ms** (**6.96×** vs baseline 1417.6). Hệ thống ~1.565s.
 - `LOAD_PARAMS` II=3 GIỮ NGUYÊN: 3 reads (B/G/BE) trên 1 AXI bundle = 1 word/cy×3 → tối ưu cho 1 port, không phải lỗi pipeline.
 - Áp dụng: 2 bản `.tpp` + 4 bench.
 
-### Còn lại sau [A]+[B]+[C-pipe] — đã điều tra, KHÔNG khả thi (2026-05-31)
+### Còn lại sau [A]+[B]+[C-pipe] — đã điều tra, KHÔNG khả thi (2026-06-02)
 Breakdown: MAC 117.7ms (57%) · PRELOAD_W 56.7ms (27.5%) · PIXEL 26.7ms (12.9%).
 
 - **PRELOAD_W (reload weight mỗi row)** — ❌ memory wall. Cache weight on-chip: UCB0 cần **66.4 Mbit** > **38.9 Mbit TỔNG** (BRAM 11.2 + URAM 27.6) của ZCU104 → vật lý không thể. UCB1 16.6 Mbit = 58 URAM > 28 spare. Chỉ UCB2+UCB3 (19 URAM) cache được → save ~15ms (1% hệ thống). 2-row/call cần +32 URAM > 28 spare (không giảm được row_acc partition vì phá II=1 của [A]).
