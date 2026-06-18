@@ -80,6 +80,9 @@ repomix-output.txt
 **/io_params_q/*.txt
 /test.txt
 
+# --- HLS probe build dirs (giữ source mac_probe.cpp/run_probe.tcl, bỏ build) ---
+**/mac_probe/prj_*/
+
 # --- Large / local-only (không đẩy lên repo) ---
 /assets.zip
 /HLS/
