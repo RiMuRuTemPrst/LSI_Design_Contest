@@ -1,0 +1,963 @@
+
+
+================================================================
+== Synthesis Summary Report of 'upconv_core_top'
+================================================================
++ General Information: 
+    * Date:           Fri Jun 12 12:44:04 2026
+    * Version:        2024.2 (Build 5238294 on Nov  8 2024)
+    * Project:        prj_syn_dbuf
+    * Solution:       solution1 (Vitis Kernel Flow Target)
+    * Product family: zynquplus
+    * Target device:  xczu7ev-ffvc1156-2-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +---------------------------------------------------------+--------+-------+-----------+-----------+----------+-----------+-------+----------+----------+-----------+-------------+-------------+----------+
+    |                         Modules                         |  Issue |       |  Latency  |  Latency  | Iteration|           |  Trip |          |          |           |             |             |          |
+    |                         & Loops                         |  Type  | Slack |  (cycles) |    (ns)   |  Latency |  Interval | Count | Pipelined|   BRAM   |    DSP    |      FF     |     LUT     |   URAM   |
+    +---------------------------------------------------------+--------+-------+-----------+-----------+----------+-----------+-------+----------+----------+-----------+-------------+-------------+----------+
+    |+ upconv_core_top                                        |  Timing|  -0.81|  737812605|  2.459e+09|         -|  737812606|      -|        no|  84 (13%)|  516 (29%)|  83106 (18%)|  73714 (31%)|  68 (70%)|
+    | + upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1    |  Timing|  -0.00|       7685|  2.561e+04|         -|       7685|      -|        no|         -|    1 (~0%)|    311 (~0%)|    164 (~0%)|         -|
+    |  o LOAD_ROW0_VITIS_LOOP_58_1                            |       -|   2.43|       7683|  2.561e+04|         5|          1|   7680|       yes|         -|          -|            -|            -|         -|
+    | + UpConv_Fused_Row_8_s                                  |  Timing|  -0.81|    2878197|  9.593e+06|         -|    2878197|      -|        no|   24 (3%)|  513 (29%)|  76902 (16%)|  66601 (28%)|  64 (66%)|
+    |  + UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC            |       -|   0.37|       1026|  3.420e+03|         -|       1026|      -|        no|         -|          -|     85 (~0%)|    311 (~0%)|         -|
+    |   o RESET_ROW_ACC                                       |       -|   2.43|       1024|  3.413e+03|         2|          1|   1024|       yes|         -|          -|            -|            -|         -|
+    |  + UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS              |  Timing|  -0.00|        164|    546.612|         -|        164|      -|        no|         -|          -|   1280 (~0%)|    641 (~0%)|         -|
+    |   o LOAD_PARAMS                                         |      II|   2.43|        162|    539.946|        76|          3|     30|       yes|         -|          -|            -|            -|         -|
+    |  + dataflow_parent_loop_proc                            |  Timing|  -0.76|    2853799|  9.512e+06|         -|    2853799|      -|        no|         -|  337 (19%)|  51732 (11%)|  49531 (21%)|  32 (33%)|
+    |   o TILE_LOOP                                           |       -|   2.43|    2853798|  9.512e+06|     74439|          -|     41|        no|         -|          -|            -|            -|         -|
+    |    + dataflow_in_loop_TILE_LOOP_1*                      |  Timing|  -0.76|      74437|  2.481e+05|         -|      69484|      -|  dataflow|         -|  337 (19%)|  51720 (11%)|  49474 (21%)|  32 (33%)|
+    |     + uc_load_tile_8_2                                  |  Timing|  -0.76|       4953|  1.651e+04|         -|       4953|      -|        no|         -|    1 (~0%)|    667 (~0%)|   1087 (~0%)|         -|
+    |      o PRELOAD_W                                        |       -|   2.43|       4952|  1.651e+04|       619|          -|      8|        no|         -|          -|            -|            -|         -|
+    |       + uc_load_tile_8_2_Pipeline_W_FLAT                |  Timing|  -0.76|        543|  1.810e+03|         -|        543|      -|        no|         -|          -|    353 (~0%)|    322 (~0%)|         -|
+    |        o W_FLAT                                         |       -|   2.43|        541|  1.803e+03|         3|          1|    540|       yes|         -|          -|            -|            -|         -|
+    |     + entry_proc                                        |       -|   1.21|          0|      0.000|         -|          0|      -|        no|         -|          -|      2 (~0%)|     38 (~0%)|         -|
+    |     + uc_compute_tile_8_3                               |       -|   0.06|      69483|  2.316e+05|         -|      69483|      -|        no|         -|  336 (19%)|  50452 (10%)|  47878 (20%)|         -|
+    |      o KH_LOOP                                          |       -|   2.43|      69480|  2.316e+05|     23160|          -|      3|        no|         -|          -|            -|            -|         -|
+    |       + uc_compute_tile_8_3_Pipeline_KW_LOOP_FLAT_LOOP  |       -|   0.06|      23156|  7.718e+04|         -|      23156|      -|        no|         -|  336 (19%)|  50257 (10%)|  47526 (20%)|         -|
+    |        o KW_LOOP_FLAT_LOOP                              |       -|   2.43|      23154|  7.717e+04|       116|          1|  23040|       yes|         -|          -|            -|            -|         -|
+    |  + UpConv_Fused_Row_8_Pipeline_PIXEL_STATS              |       -|   0.01|      15590|  5.196e+04|         -|      15590|      -|        no|         -|    46 (2%)|   12552 (2%)|    6468 (2%)|         -|
+    |   o PIXEL_STATS                                         |       -|   2.43|      15588|  5.195e+04|       230|          1|  15360|       yes|         -|          -|            -|            -|         -|
+    |  + UpConv_Fused_Row_8_Pipeline_PIXEL_NORM               |  Timing|  -0.00|       7773|  2.591e+04|         -|       7773|      -|        no|         -|   128 (7%)|   10695 (2%)|    6909 (2%)|         -|
+    |   o PIXEL_NORM                                          |       -|   2.43|       7771|  2.590e+04|        93|          1|   7680|       yes|         -|          -|            -|            -|         -|
+    | o ROW_LOOP                                              |       -|   2.43|  732048447|  2.440e+09|   5764161|          -|    127|        no|         -|          -|            -|            -|         -|
+    |  + upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2    |  Timing|  -0.26|       7686|  2.562e+04|         -|       7686|      -|        no|         -|    1 (~0%)|    379 (~0%)|    196 (~0%)|         -|
+    |   o LOAD_ROW_VITIS_LOOP_72_2                            |       -|   2.43|       7684|  2.561e+04|         6|          1|   7680|       yes|         -|          -|            -|            -|         -|
+    +---------------------------------------------------------+--------+-------+-----------+-----------+----------+-----------+-------+----------+----------+-----------+-------------+-------------+----------+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-------------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface         | Read/Write | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|                   |            | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++-------------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_gmem_in     | READ_ONLY  | 256 -> 256 | 64            | 64      | slave  | 0        | 512       | 64           | 16           | 16          | 16          | BRAM=15           |
+| m_axi_gmem_out    | WRITE_ONLY | 256 -> 256 | 64            | 64      | slave  | 0        | 512       | 16           | 64           | 16          | 16          | BRAM=15           |
+| m_axi_gmem_param  | READ_ONLY  | 256 -> 256 | 64            | 64      | slave  | 0        | 512       | 64           | 16           | 16          | 16          | BRAM=15           |
+| m_axi_gmem_weight | READ_ONLY  | 256 -> 256 | 64            | 64      | slave  | 0        | 512       | 64           | 16           | 16          | 16          | BRAM=15           |
++-------------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| Interface     | Register | Offset | Width | Access | Description                      | Bit Fields                                                                         |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| s_axi_control | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 4=AP_CONTINUE 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                                           |
+| s_axi_control | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                                      |
+| s_axi_control | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                                      |
+| s_axi_control | X_1      | 0x10   | 32    | W      | Data signal of X                 |                                                                                    |
+| s_axi_control | X_2      | 0x14   | 32    | W      | Data signal of X                 |                                                                                    |
+| s_axi_control | W_1      | 0x1c   | 32    | W      | Data signal of W                 |                                                                                    |
+| s_axi_control | W_2      | 0x20   | 32    | W      | Data signal of W                 |                                                                                    |
+| s_axi_control | B_1      | 0x28   | 32    | W      | Data signal of B                 |                                                                                    |
+| s_axi_control | B_2      | 0x2c   | 32    | W      | Data signal of B                 |                                                                                    |
+| s_axi_control | G_1      | 0x34   | 32    | W      | Data signal of G                 |                                                                                    |
+| s_axi_control | G_2      | 0x38   | 32    | W      | Data signal of G                 |                                                                                    |
+| s_axi_control | BE_1     | 0x40   | 32    | W      | Data signal of BE                |                                                                                    |
+| s_axi_control | BE_2     | 0x44   | 32    | W      | Data signal of BE                |                                                                                    |
+| s_axi_control | Y_1      | 0x4c   | 32    | W      | Data signal of Y                 |                                                                                    |
+| s_axi_control | Y_2      | 0x50   | 32    | W      | Data signal of Y                 |                                                                                    |
+| s_axi_control | epsilon  | 0x58   | 32    | W      | Data signal of epsilon           |                                                                                    |
+| s_axi_control | mode     | 0x60   | 32    | W      | Data signal of mode              |                                                                                    |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+---------------+-----------+
+| Interface | Type          | Ports     |
++-----------+---------------+-----------+
+| ap_clk    | clock         | ap_clk    |
+| ap_rst_n  | reset         | ap_rst_n  |
+| interrupt | interrupt     | interrupt |
+| ap_ctrl   | ap_ctrl_chain |           |
++-----------+---------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------------------+
+| Argument | Direction | Datatype             |
++----------+-----------+----------------------+
+| X        | in        | ap_uint<256> const * |
+| W        | in        | ap_uint<256> const * |
+| B        | in        | ap_uint<256> const * |
+| G        | in        | ap_uint<256> const * |
+| BE       | in        | ap_uint<256> const * |
+| Y        | out       | ap_uint<256>*        |
+| epsilon  | in        | __fp16               |
+| mode     | in        | int                  |
++----------+-----------+----------------------+
+
+* SW-to-HW Mapping
++----------+-------------------+-----------+----------+-----------------------------------+
+| Argument | HW Interface      | HW Type   | HW Usage | HW Info                           |
++----------+-------------------+-----------+----------+-----------------------------------+
+| X        | m_axi_gmem_in     | interface |          | channel=0                         |
+| X        | s_axi_control     | register  | offset   | name=X_1 offset=0x10 range=32     |
+| X        | s_axi_control     | register  | offset   | name=X_2 offset=0x14 range=32     |
+| W        | m_axi_gmem_weight | interface |          | channel=0                         |
+| W        | s_axi_control     | register  | offset   | name=W_1 offset=0x1c range=32     |
+| W        | s_axi_control     | register  | offset   | name=W_2 offset=0x20 range=32     |
+| B        | m_axi_gmem_param  | interface |          | channel=0                         |
+| B        | s_axi_control     | register  | offset   | name=B_1 offset=0x28 range=32     |
+| B        | s_axi_control     | register  | offset   | name=B_2 offset=0x2c range=32     |
+| G        | m_axi_gmem_param  | interface |          | channel=0                         |
+| G        | s_axi_control     | register  | offset   | name=G_1 offset=0x34 range=32     |
+| G        | s_axi_control     | register  | offset   | name=G_2 offset=0x38 range=32     |
+| BE       | m_axi_gmem_param  | interface |          | channel=0                         |
+| BE       | s_axi_control     | register  | offset   | name=BE_1 offset=0x40 range=32    |
+| BE       | s_axi_control     | register  | offset   | name=BE_2 offset=0x44 range=32    |
+| Y        | m_axi_gmem_out    | interface |          | channel=0                         |
+| Y        | s_axi_control     | register  | offset   | name=Y_1 offset=0x4c range=32     |
+| Y        | s_axi_control     | register  | offset   | name=Y_2 offset=0x50 range=32     |
+| epsilon  | s_axi_control     | register  |          | name=epsilon offset=0x58 range=32 |
+| mode     | s_axi_control     | register  |          | name=mode offset=0x60 range=32    |
++----------+-------------------+-----------+----------+-----------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++-------------------+-----------+----------+-------+-----------------+---------------------------------+
+| HW Interface      | Direction | Length   | Width | Loop            | Loop Location                   |
++-------------------+-----------+----------+-------+-----------------+---------------------------------+
+| m_axi_gmem_in     | read      | variable | 256   | VITIS_LOOP_58_1 | gen/upconv_core_top.cpp:58:19   |
+| m_axi_gmem_in     | read      | variable | 256   | VITIS_LOOP_72_2 | gen/upconv_core_top.cpp:72:19   |
+| m_axi_gmem_weight | read      | variable | 256   | W_FLAT          | gen/Hls_Layers_UpConv.tpp:83:21 |
++-------------------+-----------+----------+-------+-----------------+---------------------------------+
+
+* All M_AXI Variable Accesses
++-------------------+----------+----------------------------------+-----------+--------------+----------+-----------------+----------------------------------+------------+----------------------------------------------------------------------------------------+
+| HW Interface      | Variable | Access Location                  | Direction | Burst Status | Length   | Loop            | Loop Location                    | Resolution | Problem                                                                                |
++-------------------+----------+----------------------------------+-----------+--------------+----------+-----------------+----------------------------------+------------+----------------------------------------------------------------------------------------+
+| m_axi_gmem_in     | X        | gen/upconv_core_top.cpp:61:42    | read      | Widen Fail   |          | VITIS_LOOP_58_1 | gen/upconv_core_top.cpp:58:19    | 214-235    | Start index of the access is unaligned                                                 |
+| m_axi_gmem_in     | X        | gen/upconv_core_top.cpp:61:42    | read      | Widen Fail   |          | VITIS_LOOP_58_1 | gen/upconv_core_top.cpp:58:19    | 214-234    | Sequential access length is not divisible by 2                                         |
+| m_axi_gmem_in     | X        | gen/upconv_core_top.cpp:61:42    | read      | Inferred     | variable | LOAD_ROW0       | gen/upconv_core_top.cpp:56:16    |            |                                                                                        |
+| m_axi_gmem_in     | X        | gen/upconv_core_top.cpp:75:45    | read      | Widen Fail   |          | VITIS_LOOP_72_2 | gen/upconv_core_top.cpp:72:19    | 214-235    | Start index of the access is unaligned                                                 |
+| m_axi_gmem_in     | X        | gen/upconv_core_top.cpp:75:45    | read      | Widen Fail   |          | VITIS_LOOP_72_2 | gen/upconv_core_top.cpp:72:19    | 214-234    | Sequential access length is not divisible by 2                                         |
+| m_axi_gmem_in     | X        | gen/upconv_core_top.cpp:75:45    | read      | Fail         |          | ROW_LOOP        | gen/upconv_core_top.cpp:67:15    | 214-230    | Stride is incompatible                                                                 |
+| m_axi_gmem_in     | X        | gen/upconv_core_top.cpp:75:45    | read      | Inferred     | variable | LOAD_ROW        | gen/upconv_core_top.cpp:70:19    |            |                                                                                        |
+| m_axi_gmem_out    | Y        | gen/Hls_Layers_UpConv.tpp:297:50 | write     | Fail         |          | PIXEL_NORM      | gen/Hls_Layers_UpConv.tpp:281:17 | 214-229    | Could not analyze pattern                                                              |
+| m_axi_gmem_param  |          | gen/Hls_Layers_UpConv.tpp:228:15 | read      | Fail         |          |                 |                                  | 214-224    | Could not burst due to multiple potential reads to the same bundle in the same region. |
+| m_axi_gmem_param  | B_ptr    | gen/Hls_Layers_UpConv.tpp:231:11 | read      | Widen Fail   |          | LOAD_PARAMS     | gen/Hls_Layers_UpConv.tpp:228:15 | 214-234    | Sequential access length is not divisible by 2                                         |
+| m_axi_gmem_param  | B_ptr    | gen/Hls_Layers_UpConv.tpp:231:11 | read      | Inferred     | variable | LOAD_PARAMS     | gen/Hls_Layers_UpConv.tpp:228:15 |            |                                                                                        |
+| m_axi_gmem_param  | G_ptr    | gen/Hls_Layers_UpConv.tpp:232:18 | read      | Widen Fail   |          | LOAD_PARAMS     | gen/Hls_Layers_UpConv.tpp:228:15 | 214-234    | Sequential access length is not divisible by 2                                         |
+| m_axi_gmem_param  | G_ptr    | gen/Hls_Layers_UpConv.tpp:232:18 | read      | Inferred     | variable | LOAD_PARAMS     | gen/Hls_Layers_UpConv.tpp:228:15 |            |                                                                                        |
+| m_axi_gmem_param  | BE_ptr   | gen/Hls_Layers_UpConv.tpp:233:19 | read      | Widen Fail   |          | LOAD_PARAMS     | gen/Hls_Layers_UpConv.tpp:228:15 | 214-234    | Sequential access length is not divisible by 2                                         |
+| m_axi_gmem_param  | BE_ptr   | gen/Hls_Layers_UpConv.tpp:233:19 | read      | Inferred     | variable | LOAD_PARAMS     | gen/Hls_Layers_UpConv.tpp:228:15 |            |                                                                                        |
+| m_axi_gmem_weight | W_ptr    | gen/Hls_Layers_UpConv.tpp:86:32  | read      | Inferred     | variable | W_FLAT          | gen/Hls_Layers_UpConv.tpp:83:21  |            |                                                                                        |
+| m_axi_gmem_weight | W_ptr    | gen/upconv_core_top.cpp:75:45    | read      | Widen Fail   |          | W_FLAT          | gen/Hls_Layers_UpConv.tpp:83:21  | 214-307    | Could not widen since type i256 size is greater than or equal to alignment 32(bytes)   |
+| m_axi_gmem_weight | W_ptr    | gen/upconv_core_top.cpp:75:45    | read      | Fail         |          | PRELOAD_W       | gen/Hls_Layers_UpConv.tpp:79:16  | 214-232    | Access call is in the conditional branch                                               |
++-------------------+----------+----------------------------------+-----------+--------------+----------+-----------------+----------------------------------+------------+----------------------------------------------------------------------------------------+
+
+    * Resolution URL: docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++-------------------------------------------------------+-----+--------+----------------+------------+--------------------------+---------+
+| Name                                                  | DSP | Pragma | Variable       | Op         | Impl                     | Latency |
++-------------------------------------------------------+-----+--------+----------------+------------+--------------------------+---------+
+| + upconv_core_top                                     | 516 |        |                |            |                          |         |
+|   sparsemux_9_32_9_1_1_U728                           |     |        | c_out          | sparsemux  | compactencoding_realdef  | 0       |
+|   sparsemux_9_32_10_1_1_U729                          |     |        | c_in           | sparsemux  | compactencoding_realdef  | 0       |
+|   sparsemux_9_32_8_1_1_U730                           |     |        | w_in           | sparsemux  | compactencoding_realdef  | 0       |
+|   add_ln53_fu_449_p2                                  |     |        | add_ln53       | add        | fabric                   | 0       |
+|   mul_6ns_8ns_14_1_1_U731                             |     |        | mul_ln56       | mul        | auto                     | 0       |
+|   icmp_ln67_fu_524_p2                                 |     |        | icmp_ln67      | setlt      | auto                     | 0       |
+|   add_ln67_1_fu_529_p2                                |     |        | add_ln67_1     | add        | fabric                   | 0       |
+|   mac_muladd_14ns_7ns_14ns_20_4_1_U732                | 1   |        | mul_ln69       | mul        | dsp_slice                | 3       |
+|   mac_muladd_14ns_7ns_14ns_20_4_1_U732                | 1   |        | add_ln69       | add        | dsp_slice                | 3       |
+|   add_ln69_1_fu_577_p2                                |     |        | add_ln69_1     | add        | fabric                   | 0       |
+|   p_cast_fu_605_p3                                    |     |        | p_cast         | select     | auto_sel                 | 0       |
+|   mul50_fu_613_p2                                     |     |        | mul50          | and        | auto                     | 0       |
+|   add_ln78_fu_624_p2                                  |     |        | add_ln78       | add        | fabric                   | 0       |
+|   add_ln67_fu_539_p2                                  |     |        | add_ln67       | add        | fabric                   | 0       |
+|   add_ln83_fu_560_p2                                  |     |        | add_ln83       | add        | fabric                   | 0       |
+|  + upconv_core_top_Pipeline_LOAD_ROW0_VITIS_LOOP_58_1 | 1   |        |                |            |                          |         |
+|    icmp_ln56_fu_158_p2                                |     |        | icmp_ln56      | seteq      | auto                     | 0       |
+|    add_ln56_1_fu_164_p2                               |     |        | add_ln56_1     | add        | fabric                   | 0       |
+|    add_ln56_fu_181_p2                                 |     |        | add_ln56       | add        | fabric                   | 0       |
+|    icmp_ln58_fu_187_p2                                |     |        | icmp_ln58      | seteq      | auto                     | 0       |
+|    select_ln56_fu_192_p3                              |     |        | select_ln56    | select     | auto_sel                 | 0       |
+|    select_ln56_1_fu_200_p3                            |     |        | select_ln56_1  | select     | auto_sel                 | 0       |
+|    mac_muladd_8ns_6ns_6ns_11_4_1_U1                   | 1   |        | mul_ln58       | mul        | dsp_slice                | 3       |
+|    mac_muladd_8ns_6ns_6ns_11_4_1_U1                   | 1   |        | add_ln61       | add        | dsp_slice                | 3       |
+|    add_ln58_fu_212_p2                                 |     |        | add_ln58       | add        | fabric                   | 0       |
+|  + UpConv_Fused_Row_8_s                               | 513 |        |                |            |                          |         |
+|    add_ln184_fu_443_p2                                |     |        | add_ln184      | add        | fabric                   | 0       |
+|    add_ln186_fu_519_p2                                |     |        | add_ln186      | add        | fabric                   | 0       |
+|    sub16_fu_472_p2                                    |     |        | sub16          | add        | fabric                   | 0       |
+|    mul_8ns_5ns_12_1_1_U689                            |     |        | mul_ln200      | mul        | auto                     | 0       |
+|    sub88_fu_547_p2                                    |     |        | sub88          | add        | fabric                   | 0       |
+|    sitofp_32ns_32_7_no_dsp_1_U687                     |     |        | conv1          | sitofp     | auto                     | 6       |
+|    hptosp_16ns_32_2_no_dsp_1_U688                     |     |        | conv2          | hptosp     | auto                     | 1       |
+|    mul_9ns_8ns_16_1_1_U690                            |     |        | mul_ln249      | mul        | auto                     | 0       |
+|    mul_8ns_8ns_15_1_1_U691                            |     |        | mul18829       | mul        | auto                     | 0       |
+|   + UpConv_Fused_Row_8_Pipeline_RESET_ROW_ACC         | 0   |        |                |            |                          |         |
+|     icmp_ln200_fu_354_p2                              |     |        | icmp_ln200     | seteq      | auto                     | 0       |
+|     m_2_fu_360_p2                                     |     |        | m_2            | add        | fabric                   | 0       |
+|     icmp_ln207_fu_437_p2                              |     |        | icmp_ln207     | seteq      | auto                     | 0       |
+|     rw_1_fu_442_p2                                    |     |        | rw_1           | add        | fabric                   | 0       |
+|     rcw_1_fu_448_p2                                   |     |        | rcw_1          | add        | fabric                   | 0       |
+|     rw_2_fu_454_p3                                    |     |        | rw_2           | select     | auto_sel                 | 0       |
+|     rcw_2_fu_462_p3                                   |     |        | rcw_2          | select     | auto_sel                 | 0       |
+|   + UpConv_Fused_Row_8_Pipeline_LOAD_PARAMS           | 0   |        |                |            |                          |         |
+|     icmp_ln228_fu_195_p2                              |     |        | icmp_ln228     | seteq      | auto                     | 0       |
+|     add_ln228_fu_201_p2                               |     |        | add_ln228      | add        | fabric                   | 0       |
+|     add_ln231_fu_211_p2                               |     |        | add_ln231      | add        | fabric                   | 0       |
+|     add_ln232_fu_232_p2                               |     |        | add_ln232      | add        | fabric                   | 0       |
+|     add_ln233_fu_236_p2                               |     |        | add_ln233      | add        | fabric                   | 0       |
+|   + dataflow_parent_loop_proc                         | 337 |        |                |            |                          |         |
+|    + dataflow_in_loop_TILE_LOOP_1                     | 337 |        |                |            |                          |         |
+|     + uc_load_tile_8_2                                | 1   |        |                |            |                          |         |
+|       add_ln183_fu_168_p2                             |     |        | add_ln183      | add        | fabric                   | 0       |
+|       mul3_i_fu_208_p2                                |     |        | mul3_i         | add        | fabric                   | 0       |
+|       add_ln79_2_fu_242_p2                            |     |        | add_ln79_2     | add        | fabric                   | 0       |
+|       icmp_ln79_fu_260_p2                             |     |        | icmp_ln79      | seteq      | auto                     | 0       |
+|       add_ln79_1_fu_266_p2                            |     |        | add_ln79_1     | add        | fabric                   | 0       |
+|       empty_fu_280_p2                                 |     |        | empty          | add        | fabric                   | 0       |
+|       mul_15ns_9ns_24_1_1_U46                         | 1   |        | mul_ln79       | mul        | auto                     | 0       |
+|       add_ln79_fu_316_p2                              |     |        | add_ln79       | add        | fabric                   | 0       |
+|       icmp_ln81_fu_285_p2                             |     |        | icmp_ln81      | setlt      | auto                     | 0       |
+|      + uc_load_tile_8_2_Pipeline_W_FLAT               | 0   |        |                |            |                          |         |
+|        icmp_ln83_fu_279_p2                            |     |        | icmp_ln83      | seteq      | auto                     | 0       |
+|        add_ln83_fu_285_p2                             |     |        | add_ln83       | add        | fabric                   | 0       |
+|        ci_cnt_1_fu_312_p2                             |     |        | ci_cnt_1       | add        | fabric                   | 0       |
+|        icmp_ln88_fu_318_p2                            |     |        | icmp_ln88      | setlt      | auto                     | 0       |
+|        xor_ln88_fu_323_p2                             |     |        | xor_ln88       | xor        | auto                     | 0       |
+|        add_ln88_fu_395_p2                             |     |        | add_ln88       | add        | fabric                   | 0       |
+|        k_cnt_1_fu_401_p3                              |     |        | k_cnt_1        | select     | auto_sel                 | 0       |
+|        ci_cnt_2_fu_329_p3                             |     |        | ci_cnt_2       | select     | auto_sel                 | 0       |
+|     + uc_compute_tile_8_3                             | 336 |        |                |            |                          |         |
+|       add_ln183_fu_277_p2                             |     |        | add_ln183      | add        | fabric                   | 0       |
+|       add_i_fu_345_p2                                 |     |        | add_i          | add        | fabric                   | 0       |
+|       sub63_i_fu_355_p2                               |     |        | sub63_i        | add        | fabric                   | 0       |
+|       mul_8ns_6ns_13_1_1_U410                         |     |        | mul_ln101      | mul        | auto                     | 0       |
+|       bound_fu_429_p2                                 |     |        | bound          | sub        | fabric                   | 0       |
+|       icmp_ln101_fu_438_p2                            |     |        | icmp_ln101     | seteq      | auto                     | 0       |
+|       kh_2_fu_444_p2                                  |     |        | kh_2           | add        | fabric                   | 0       |
+|       hpk_fu_454_p2                                   |     |        | hpk            | sub        | fabric                   | 0       |
+|       icmp_ln104_fu_481_p2                            |     |        | icmp_ln104     | seteq      | auto                     | 0       |
+|       icmp_ln106_fu_505_p2                            |     |        | icmp_ln106     | setlt      | auto                     | 0       |
+|       empty_216_fu_545_p2                             |     |        | empty_216      | sub        | fabric                   | 0       |
+|       p_cast_i_fu_510_p3                              |     |        | p_cast_i       | select     | auto_sel                 | 0       |
+|       mul16_i_fu_518_p2                               |     |        | mul16_i        | and        | auto                     | 0       |
+|       mul_8ns_6ns_11_1_1_U411                         |     |        | mul_ln109      | mul        | auto                     | 0       |
+|      + uc_compute_tile_8_3_Pipeline_KW_LOOP_FLAT_LOOP | 336 |        |                |            |                          |         |
+|        cmp78_i_fu_2323_p2                             |     |        | cmp78_i        | setlt      | auto                     | 0       |
+|        cmp78_1_i_fu_2329_p2                           |     |        | cmp78_1_i      | setlt      | auto                     | 0       |
+|        cmp78_2_i_fu_2335_p2                           |     |        | cmp78_2_i      | setlt      | auto                     | 0       |
+|        cmp78_3_i_fu_2341_p2                           |     |        | cmp78_3_i      | setlt      | auto                     | 0       |
+|        cmp78_4_i_fu_2347_p2                           |     |        | cmp78_4_i      | setlt      | auto                     | 0       |
+|        cmp78_5_i_fu_2353_p2                           |     |        | cmp78_5_i      | setlt      | auto                     | 0       |
+|        cmp78_6_i_fu_2359_p2                           |     |        | cmp78_6_i      | setlt      | auto                     | 0       |
+|        cmp78_7_i_fu_2365_p2                           |     |        | cmp78_7_i      | setlt      | auto                     | 0       |
+|        icmp_ln109_fu_2399_p2                          |     |        | icmp_ln109     | seteq      | auto                     | 0       |
+|        add_ln109_fu_2405_p2                           |     |        | add_ln109      | add        | fabric                   | 0       |
+|        kw_2_fu_2458_p2                                |     |        | kw_2           | add        | fabric                   | 0       |
+|        icmp_ln120_fu_2419_p2                          |     |        | icmp_ln120     | seteq      | auto                     | 0       |
+|        select_ln109_fu_2424_p3                        |     |        | select_ln109   | select     | auto_sel                 | 0       |
+|        select_ln109_1_fu_2464_p3                      |     |        | select_ln109_1 | select     | auto_sel                 | 0       |
+|        select_ln109_2_fu_4671_p3                      |     |        | select_ln109_2 | select     | auto_sel                 | 0       |
+|        select_ln109_3_fu_2471_p3                      |     |        | select_ln109_3 | select     | auto_sel                 | 0       |
+|        k_fu_2482_p2                                   |     |        | k              | add        | fabric                   | 0       |
+|        add_ln126_fu_2436_p2                           |     |        | add_ln126      | add        | fabric                   | 0       |
+|        icmp163_fu_2537_p2                             |     |        | icmp163        | setlt      | auto                     | 0       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U229              |     | yes    | prod           | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U61             | 2   |        | dot            | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U230              |     | yes    | prod_1         | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U69             | 2   |        | dot_1          | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U231              |     | yes    | prod_2         | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U77             | 2   |        | dot_2          | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U232              |     | yes    | prod_3         | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U85             | 2   |        | dot_3          | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U233              |     | yes    | prod_4         | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U93             | 2   |        | dot_4          | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U234              |     | yes    | prod_5         | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U101            | 2   |        | dot_5          | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U235              |     | yes    | prod_6         | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U109            | 2   |        | dot_6          | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U236              |     | yes    | prod_7         | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U117            | 2   |        | dot_7          | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U237              |     | yes    | prod_8         | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U125            | 2   |        | dot_8          | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U238              |     | yes    | prod_9         | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U133            | 2   |        | dot_9          | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U239              |     | yes    | prod_10        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U141            | 2   |        | dot_10         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U240              |     | yes    | prod_11        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U149            | 2   |        | dot_11         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U241              |     | yes    | prod_12        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U157            | 2   |        | dot_12         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U242              |     | yes    | prod_13        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U165            | 2   |        | dot_13         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U243              |     | yes    | prod_14        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U173            | 2   |        | dot_14         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U244              |     | yes    | prod_15        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U181            | 2   |        | dot_15         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U245              |     | yes    | prod_127       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U62             | 2   |        | dot_127        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U246              |     | yes    | prod_16        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U70             | 2   |        | dot_16         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U247              |     | yes    | prod_17        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U78             | 2   |        | dot_17         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U248              |     | yes    | prod_18        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U86             | 2   |        | dot_18         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U249              |     | yes    | prod_19        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U94             | 2   |        | dot_19         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U250              |     | yes    | prod_20        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U102            | 2   |        | dot_20         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U251              |     | yes    | prod_21        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U110            | 2   |        | dot_21         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U252              |     | yes    | prod_22        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U118            | 2   |        | dot_22         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U253              |     | yes    | prod_23        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U126            | 2   |        | dot_23         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U254              |     | yes    | prod_24        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U134            | 2   |        | dot_24         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U255              |     | yes    | prod_25        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U142            | 2   |        | dot_25         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U256              |     | yes    | prod_26        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U150            | 2   |        | dot_26         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U257              |     | yes    | prod_27        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U158            | 2   |        | dot_27         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U258              |     | yes    | prod_28        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U166            | 2   |        | dot_28         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U259              |     | yes    | prod_29        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U174            | 2   |        | dot_29         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U260              |     | yes    | prod_30        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U182            | 2   |        | dot_30         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U261              |     | yes    | prod_31        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U63             | 2   |        | dot_31         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U262              |     | yes    | prod_32        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U71             | 2   |        | dot_32         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U263              |     | yes    | prod_33        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U79             | 2   |        | dot_33         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U264              |     | yes    | prod_34        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U87             | 2   |        | dot_34         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U265              |     | yes    | prod_35        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U95             | 2   |        | dot_35         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U266              |     | yes    | prod_36        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U103            | 2   |        | dot_36         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U267              |     | yes    | prod_37        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U111            | 2   |        | dot_37         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U268              |     | yes    | prod_38        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U119            | 2   |        | dot_38         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U269              |     | yes    | prod_39        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U127            | 2   |        | dot_39         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U270              |     | yes    | prod_40        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U135            | 2   |        | dot_40         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U271              |     | yes    | prod_41        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U143            | 2   |        | dot_41         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U272              |     | yes    | prod_42        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U151            | 2   |        | dot_42         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U273              |     | yes    | prod_43        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U159            | 2   |        | dot_43         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U274              |     | yes    | prod_44        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U167            | 2   |        | dot_44         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U275              |     | yes    | prod_45        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U175            | 2   |        | dot_45         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U276              |     | yes    | prod_46        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U183            | 2   |        | dot_46         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U277              |     | yes    | prod_47        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U64             | 2   |        | dot_47         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U278              |     | yes    | prod_48        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U72             | 2   |        | dot_48         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U279              |     | yes    | prod_49        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U80             | 2   |        | dot_49         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U280              |     | yes    | prod_50        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U88             | 2   |        | dot_50         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U281              |     | yes    | prod_51        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U96             | 2   |        | dot_51         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U282              |     | yes    | prod_52        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U104            | 2   |        | dot_52         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U283              |     | yes    | prod_53        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U112            | 2   |        | dot_53         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U284              |     | yes    | prod_54        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U120            | 2   |        | dot_54         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U285              |     | yes    | prod_55        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U128            | 2   |        | dot_55         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U286              |     | yes    | prod_56        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U136            | 2   |        | dot_56         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U287              |     | yes    | prod_57        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U144            | 2   |        | dot_57         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U288              |     | yes    | prod_58        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U152            | 2   |        | dot_58         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U289              |     | yes    | prod_59        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U160            | 2   |        | dot_59         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U290              |     | yes    | prod_60        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U168            | 2   |        | dot_60         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U291              |     | yes    | prod_61        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U176            | 2   |        | dot_61         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U292              |     | yes    | prod_62        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U184            | 2   |        | dot_62         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U293              |     | yes    | prod_63        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U65             | 2   |        | dot_63         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U294              |     | yes    | prod_64        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U73             | 2   |        | dot_64         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U295              |     | yes    | prod_65        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U81             | 2   |        | dot_65         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U296              |     | yes    | prod_66        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U89             | 2   |        | dot_66         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U297              |     | yes    | prod_67        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U97             | 2   |        | dot_67         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U298              |     | yes    | prod_68        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U105            | 2   |        | dot_68         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U299              |     | yes    | prod_69        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U113            | 2   |        | dot_69         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U300              |     | yes    | prod_70        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U121            | 2   |        | dot_70         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U301              |     | yes    | prod_71        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U129            | 2   |        | dot_71         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U302              |     | yes    | prod_72        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U137            | 2   |        | dot_72         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U303              |     | yes    | prod_73        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U145            | 2   |        | dot_73         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U304              |     | yes    | prod_74        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U153            | 2   |        | dot_74         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U305              |     | yes    | prod_75        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U161            | 2   |        | dot_75         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U306              |     | yes    | prod_76        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U169            | 2   |        | dot_76         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U307              |     | yes    | prod_77        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U177            | 2   |        | dot_77         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U308              |     | yes    | prod_78        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U185            | 2   |        | dot_78         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U309              |     | yes    | prod_79        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U66             | 2   |        | dot_79         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U310              |     | yes    | prod_80        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U74             | 2   |        | dot_80         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U311              |     | yes    | prod_81        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U82             | 2   |        | dot_81         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U312              |     | yes    | prod_82        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U90             | 2   |        | dot_82         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U313              |     | yes    | prod_83        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U98             | 2   |        | dot_83         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U314              |     | yes    | prod_84        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U106            | 2   |        | dot_84         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U315              |     | yes    | prod_85        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U114            | 2   |        | dot_85         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U316              |     | yes    | prod_86        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U122            | 2   |        | dot_86         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U317              |     | yes    | prod_87        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U130            | 2   |        | dot_87         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U318              |     | yes    | prod_88        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U138            | 2   |        | dot_88         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U319              |     | yes    | prod_89        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U146            | 2   |        | dot_89         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U320              |     | yes    | prod_90        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U154            | 2   |        | dot_90         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U321              |     | yes    | prod_91        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U162            | 2   |        | dot_91         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U322              |     | yes    | prod_92        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U170            | 2   |        | dot_92         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U323              |     | yes    | prod_93        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U178            | 2   |        | dot_93         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U324              |     | yes    | prod_94        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U186            | 2   |        | dot_94         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U325              |     | yes    | prod_95        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U67             | 2   |        | dot_95         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U326              |     | yes    | prod_96        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U75             | 2   |        | dot_96         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U327              |     | yes    | prod_97        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U83             | 2   |        | dot_97         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U328              |     | yes    | prod_98        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U91             | 2   |        | dot_98         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U329              |     | yes    | prod_99        | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U99             | 2   |        | dot_99         | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U330              |     | yes    | prod_100       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U107            | 2   |        | dot_100        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U331              |     | yes    | prod_101       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U115            | 2   |        | dot_101        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U332              |     | yes    | prod_102       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U123            | 2   |        | dot_102        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U333              |     | yes    | prod_103       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U131            | 2   |        | dot_103        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U334              |     | yes    | prod_104       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U139            | 2   |        | dot_104        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U335              |     | yes    | prod_105       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U147            | 2   |        | dot_105        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U336              |     | yes    | prod_106       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U155            | 2   |        | dot_106        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U337              |     | yes    | prod_107       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U163            | 2   |        | dot_107        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U338              |     | yes    | prod_108       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U171            | 2   |        | dot_108        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U339              |     | yes    | prod_109       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U179            | 2   |        | dot_109        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U340              |     | yes    | prod_110       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U187            | 2   |        | dot_110        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U341              |     | yes    | prod_111       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U68             | 2   |        | dot_111        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U342              |     | yes    | prod_112       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U76             | 2   |        | dot_112        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U343              |     | yes    | prod_113       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U84             | 2   |        | dot_113        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U344              |     | yes    | prod_114       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U92             | 2   |        | dot_114        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U345              |     | yes    | prod_115       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U100            | 2   |        | dot_115        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U346              |     | yes    | prod_116       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U108            | 2   |        | dot_116        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U347              |     | yes    | prod_117       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U116            | 2   |        | dot_117        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U348              |     | yes    | prod_118       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U124            | 2   |        | dot_118        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U349              |     | yes    | prod_119       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U132            | 2   |        | dot_119        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U350              |     | yes    | prod_120       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U140            | 2   |        | dot_120        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U351              |     | yes    | prod_121       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U148            | 2   |        | dot_121        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U352              |     | yes    | prod_122       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U156            | 2   |        | dot_122        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U353              |     | yes    | prod_123       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U164            | 2   |        | dot_123        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U354              |     | yes    | prod_124       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U172            | 2   |        | dot_124        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U355              |     | yes    | prod_125       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U180            | 2   |        | dot_125        | hadd       | fulldsp                  | 4       |
+|        hmul_16ns_16ns_16_4_no_dsp_1_U356              |     | yes    | prod_126       | hmul       | fabric                   | 3       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U188            | 2   |        | dot_126        | hadd       | fulldsp                  | 4       |
+|        sparsemux_9_2_16_1_1_U357                      |     |        | tmp_i          | sparsemux  | compactencoding_dontcare | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U189            | 2   |        | add2_i         | hadd       | fulldsp                  | 4       |
+|        sparsemux_9_2_16_1_1_U358                      |     |        | tmp_i_202      | sparsemux  | compactencoding_dontcare | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U190            | 2   |        | add58_1_i      | hadd       | fulldsp                  | 4       |
+|        sparsemux_9_2_16_1_1_U359                      |     |        | tmp_1_i        | sparsemux  | compactencoding_dontcare | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U191            | 2   |        | add58_2_i      | hadd       | fulldsp                  | 4       |
+|        sparsemux_9_2_16_1_1_U360                      |     |        | tmp_2_i        | sparsemux  | compactencoding_dontcare | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U192            | 2   |        | add58_3_i      | hadd       | fulldsp                  | 4       |
+|        sparsemux_9_2_16_1_1_U361                      |     |        | tmp_3_i        | sparsemux  | compactencoding_dontcare | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U193            | 2   |        | add58_4_i      | hadd       | fulldsp                  | 4       |
+|        sparsemux_9_2_16_1_1_U362                      |     |        | tmp_4_i        | sparsemux  | compactencoding_dontcare | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U194            | 2   |        | add58_5_i      | hadd       | fulldsp                  | 4       |
+|        sparsemux_9_2_16_1_1_U363                      |     |        | tmp_5_i        | sparsemux  | compactencoding_dontcare | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U195            | 2   |        | add58_6_i      | hadd       | fulldsp                  | 4       |
+|        sparsemux_9_2_16_1_1_U364                      |     |        | tmp_6_i        | sparsemux  | compactencoding_dontcare | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U196            | 2   |        | add58_7_i      | hadd       | fulldsp                  | 4       |
+|        psum_38_fu_4681_p3                             |     |        | psum_38        | select     | auto_sel                 | 0       |
+|        psum_36_fu_4686_p3                             |     |        | psum_36        | select     | auto_sel                 | 0       |
+|        psum_34_fu_4691_p3                             |     |        | psum_34        | select     | auto_sel                 | 0       |
+|        psum_32_fu_4696_p3                             |     |        | psum_32        | select     | auto_sel                 | 0       |
+|        psum_33_fu_4701_p3                             |     |        | psum_33        | select     | auto_sel                 | 0       |
+|        psum_35_fu_4706_p3                             |     |        | psum_35        | select     | auto_sel                 | 0       |
+|        psum_37_fu_4711_p3                             |     |        | psum_37        | select     | auto_sel                 | 0       |
+|        psum_39_fu_4716_p3                             |     |        | psum_39        | select     | auto_sel                 | 0       |
+|        icmp_ln145_fu_2543_p2                          |     |        | icmp_ln145     | seteq      | auto                     | 0       |
+|        ci_w_1_fu_2548_p2                              |     |        | ci_w_1         | add        | fabric                   | 0       |
+|        add_ln146_fu_4892_p2                           |     |        | add_ln146      | add        | fabric                   | 0       |
+|        wo_fu_4909_p2                                  |     |        | wo             | add        | fabric                   | 0       |
+|        icmp_ln147_fu_4914_p2                          |     |        | icmp_ln147     | setgt      | auto                     | 0       |
+|        icmp_ln147_1_fu_4919_p2                        |     |        | icmp_ln147_1   | setlt      | auto                     | 0       |
+|        and_ln147_fu_4924_p2                           |     |        | and_ln147      | and        | auto                     | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U197            | 2   |        | add3_i         | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U205            | 2   |        | add4_i         | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U213            | 2   |        | total          | hadd       | fulldsp                  | 4       |
+|        select_ln152_fu_5112_p3                        |     |        | select_ln152   | select     | auto_sel                 | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U221            | 2   |        | add6_i         | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U198            | 2   |        | add86_1_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U206            | 2   |        | add90_1_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U214            | 2   |        | total_1        | hadd       | fulldsp                  | 4       |
+|        select_ln152_1_fu_5119_p3                      |     |        | select_ln152_1 | select     | auto_sel                 | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U222            | 2   |        | add100_1_i     | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U199            | 2   |        | add86_2_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U207            | 2   |        | add90_2_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U215            | 2   |        | total_2        | hadd       | fulldsp                  | 4       |
+|        select_ln152_2_fu_5126_p3                      |     |        | select_ln152_2 | select     | auto_sel                 | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U223            | 2   |        | add100_2_i     | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U200            | 2   |        | add86_3_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U208            | 2   |        | add90_3_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U216            | 2   |        | total_3        | hadd       | fulldsp                  | 4       |
+|        select_ln152_3_fu_5133_p3                      |     |        | select_ln152_3 | select     | auto_sel                 | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U224            | 2   |        | add100_3_i     | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U201            | 2   |        | add86_4_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U209            | 2   |        | add90_4_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U217            | 2   |        | total_4        | hadd       | fulldsp                  | 4       |
+|        select_ln152_4_fu_5140_p3                      |     |        | select_ln152_4 | select     | auto_sel                 | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U225            | 2   |        | add100_4_i     | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U202            | 2   |        | add86_5_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U210            | 2   |        | add90_5_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U218            | 2   |        | total_5        | hadd       | fulldsp                  | 4       |
+|        select_ln152_5_fu_5147_p3                      |     |        | select_ln152_5 | select     | auto_sel                 | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U226            | 2   |        | add100_5_i     | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U203            | 2   |        | add86_6_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U211            | 2   |        | add90_6_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U219            | 2   |        | total_6        | hadd       | fulldsp                  | 4       |
+|        select_ln152_6_fu_5154_p3                      |     |        | select_ln152_6 | select     | auto_sel                 | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U227            | 2   |        | add100_6_i     | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U204            | 2   |        | add86_7_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U212            | 2   |        | add90_7_i      | hadd       | fulldsp                  | 4       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U220            | 2   |        | total_7        | hadd       | fulldsp                  | 4       |
+|        select_ln152_7_fu_5161_p3                      |     |        | select_ln152_7 | select     | auto_sel                 | 0       |
+|        hadd_16ns_16ns_16_5_full_dsp_1_U228            | 2   |        | add100_7_i     | hadd       | fulldsp                  | 4       |
+|        wi_1_fu_4898_p2                                |     |        | wi_1           | add        | fabric                   | 0       |
+|        add_ln120_fu_2441_p2                           |     |        | add_ln120      | add        | fabric                   | 0       |
+|   + UpConv_Fused_Row_8_Pipeline_PIXEL_STATS           | 46  |        |                |            |                          |         |
+|     icmp_ln249_fu_761_p2                              |     |        | icmp_ln249     | seteq      | auto                     | 0       |
+|     m_3_fu_766_p2                                     |     |        | m_3            | add        | fabric                   | 0       |
+|     sub_ln256_fu_780_p2                               |     |        | sub_ln256      | sub        | fabric                   | 0       |
+|     sub_ln256_1_fu_796_p2                             |     |        | sub_ln256_1    | sub        | fabric                   | 0       |
+|     select_ln256_fu_859_p3                            |     |        | select_ln256   | select     | auto_sel                 | 0       |
+|     sub_ln256_2_fu_871_p2                             |     |        | sub_ln256_2    | sub        | fabric                   | 0       |
+|     sub_ln256_3_fu_964_p2                             |     |        | sub_ln256_3    | sub        | fabric                   | 0       |
+|     select_ln256_1_fu_973_p3                          |     |        | select_ln256_1 | select     | auto_sel                 | 0       |
+|     partselect_16ns_256ns_32s_16_1_1_U539             |     |        | u              | partselect | auto                     | 0       |
+|     sparsemux_33_4_16_1_1_U540                        |     |        | tmp            | sparsemux  | compactencoding_dontcare | 0       |
+|     icmp_ln260_fu_941_p2                              |     |        | icmp_ln260     | setlt      | auto                     | 0       |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U530                | 3   |        | mul            | fmul       | maxdsp                   | 6       |
+|     sparsemux_17_3_32_1_1_U541                        |     |        | tmp_s          | sparsemux  | compactencoding_dontcare | 0       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U510              | 2   |        | sum_rot_9      | fadd       | fulldsp                  | 10      |
+|     sparsemux_17_3_32_1_1_U542                        |     |        | tmp_1          | sparsemux  | compactencoding_dontcare | 0       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U511              | 2   |        | add            | fadd       | fulldsp                  | 10      |
+|     icmp_ln263_fu_802_p2                              |     |        | icmp_ln263     | seteq      | auto                     | 0       |
+|     cs_2_fu_807_p2                                    |     |        | cs_2           | add        | fabric                   | 0       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U512              | 2   |        | sum            | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U513              | 2   |        | sumsq          | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U514              | 2   |        | sum_1          | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U515              | 2   |        | sumsq_1        | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U516              | 2   |        | sum_2          | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U517              | 2   |        | sumsq_2        | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U518              | 2   |        | sum_3          | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U519              | 2   |        | sumsq_3        | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U520              | 2   |        | sum_4          | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U521              | 2   |        | sumsq_4        | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U522              | 2   |        | sum_5          | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U523              | 2   |        | sumsq_5        | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U524              | 2   |        | sum_6          | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U525              | 2   |        | sumsq_6        | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U526              | 2   |        | sum_7          | fadd       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U527              | 2   |        | sumsq_7        | fadd       | fulldsp                  | 10      |
+|     fdiv_32ns_32ns_32_30_no_dsp_1_U532                |     |        | mean           | fdiv       | fabric                   | 29      |
+|     fdiv_32ns_32ns_32_30_no_dsp_1_U533                |     |        | div            | fdiv       | fabric                   | 29      |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U531                | 3   |        | mul3           | fmul       | maxdsp                   | 6       |
+|     fsub_32ns_32ns_32_11_full_dsp_1_U528              | 2   |        | var            | fsub       | fulldsp                  | 10      |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U529              | 2   |        | x_assign       | fadd       | fulldsp                  | 10      |
+|     fsqrt_32ns_32ns_32_28_no_dsp_1_U535               |     |        | tmp_2          | fsqrt      | fabric                   | 27      |
+|     fdiv_32ns_32ns_32_30_no_dsp_1_U534                |     |        | div1           | fdiv       | fabric                   | 29      |
+|     ws_1_fu_950_p2                                    |     |        | ws_1           | add        | fabric                   | 0       |
+|   + UpConv_Fused_Row_8_Pipeline_PIXEL_NORM            | 128 |        |                |            |                          |         |
+|     icmp_ln281_fu_905_p2                              |     |        | icmp_ln281     | seteq      | auto                     | 0       |
+|     m_4_fu_910_p2                                     |     |        | m_4            | add        | fabric                   | 0       |
+|     icmp_ln290_fu_1247_p2                             |     |        | icmp_ln290     | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U591               | 2   |        | sub            | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U607                | 2   |        | mul1           | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U623                | 2   |        | mul2           | hmul       | maxdsp                   | 3       |
+|     norm_fu_1636_p3                                   |     |        | norm           | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U639                  |     |        | cmp            | hcmp       | auto                     | 1       |
+|     select_ln27_fu_1777_p3                            |     |        | select_ln27    | select     | auto_sel                 | 0       |
+|     icmp_ln290_1_fu_979_p2                            |     |        | icmp_ln290_1   | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U592               | 2   |        | sub168_1       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U608                | 2   |        | mul169_1       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U624                | 2   |        | mul170_1       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U576               | 2   |        | add171_1       | hadd       | fulldsp                  | 4       |
+|     norm_1_fu_1643_p3                                 |     |        | norm_1         | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U640                  |     |        | cmp175_1       | hcmp       | auto                     | 1       |
+|     select_ln27_1_fu_1788_p3                          |     |        | select_ln27_1  | select     | auto_sel                 | 0       |
+|     icmp_ln290_2_fu_992_p2                            |     |        | icmp_ln290_2   | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U593               | 2   |        | sub168_2       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U609                | 2   |        | mul169_2       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U625                | 2   |        | mul170_2       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U577               | 2   |        | add171_2       | hadd       | fulldsp                  | 4       |
+|     norm_2_fu_1650_p3                                 |     |        | norm_2         | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U641                  |     |        | cmp175_2       | hcmp       | auto                     | 1       |
+|     select_ln27_2_fu_1799_p3                          |     |        | select_ln27_2  | select     | auto_sel                 | 0       |
+|     icmp_ln290_3_fu_1005_p2                           |     |        | icmp_ln290_3   | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U594               | 2   |        | sub168_3       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U610                | 2   |        | mul169_3       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U626                | 2   |        | mul170_3       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U578               | 2   |        | add171_3       | hadd       | fulldsp                  | 4       |
+|     norm_3_fu_1657_p3                                 |     |        | norm_3         | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U642                  |     |        | cmp175_3       | hcmp       | auto                     | 1       |
+|     select_ln27_3_fu_1810_p3                          |     |        | select_ln27_3  | select     | auto_sel                 | 0       |
+|     icmp_ln290_4_fu_1018_p2                           |     |        | icmp_ln290_4   | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U595               | 2   |        | sub168_4       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U611                | 2   |        | mul169_4       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U627                | 2   |        | mul170_4       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U579               | 2   |        | add171_4       | hadd       | fulldsp                  | 4       |
+|     norm_4_fu_1664_p3                                 |     |        | norm_4         | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U643                  |     |        | cmp175_4       | hcmp       | auto                     | 1       |
+|     select_ln27_4_fu_1821_p3                          |     |        | select_ln27_4  | select     | auto_sel                 | 0       |
+|     icmp_ln290_5_fu_1031_p2                           |     |        | icmp_ln290_5   | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U596               | 2   |        | sub168_5       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U612                | 2   |        | mul169_5       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U628                | 2   |        | mul170_5       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U580               | 2   |        | add171_5       | hadd       | fulldsp                  | 4       |
+|     norm_5_fu_1671_p3                                 |     |        | norm_5         | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U644                  |     |        | cmp175_5       | hcmp       | auto                     | 1       |
+|     select_ln27_5_fu_1832_p3                          |     |        | select_ln27_5  | select     | auto_sel                 | 0       |
+|     icmp_ln290_6_fu_1044_p2                           |     |        | icmp_ln290_6   | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U597               | 2   |        | sub168_6       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U613                | 2   |        | mul169_6       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U629                | 2   |        | mul170_6       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U581               | 2   |        | add171_6       | hadd       | fulldsp                  | 4       |
+|     norm_6_fu_1678_p3                                 |     |        | norm_6         | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U645                  |     |        | cmp175_6       | hcmp       | auto                     | 1       |
+|     select_ln27_6_fu_1843_p3                          |     |        | select_ln27_6  | select     | auto_sel                 | 0       |
+|     icmp_ln290_7_fu_1057_p2                           |     |        | icmp_ln290_7   | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U598               | 2   |        | sub168_7       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U614                | 2   |        | mul169_7       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U630                | 2   |        | mul170_7       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U582               | 2   |        | add171_7       | hadd       | fulldsp                  | 4       |
+|     norm_7_fu_1685_p3                                 |     |        | norm_7         | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U646                  |     |        | cmp175_7       | hcmp       | auto                     | 1       |
+|     select_ln27_7_fu_1854_p3                          |     |        | select_ln27_7  | select     | auto_sel                 | 0       |
+|     icmp_ln290_8_fu_1070_p2                           |     |        | icmp_ln290_8   | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U599               | 2   |        | sub168_8       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U615                | 2   |        | mul169_8       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U631                | 2   |        | mul170_8       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U583               | 2   |        | add171_8       | hadd       | fulldsp                  | 4       |
+|     norm_8_fu_1692_p3                                 |     |        | norm_8         | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U647                  |     |        | cmp175_8       | hcmp       | auto                     | 1       |
+|     select_ln27_8_fu_1865_p3                          |     |        | select_ln27_8  | select     | auto_sel                 | 0       |
+|     icmp_ln290_9_fu_1083_p2                           |     |        | icmp_ln290_9   | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U600               | 2   |        | sub168_9       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U616                | 2   |        | mul169_9       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U632                | 2   |        | mul170_9       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U584               | 2   |        | add171_9       | hadd       | fulldsp                  | 4       |
+|     norm_9_fu_1699_p3                                 |     |        | norm_9         | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U648                  |     |        | cmp175_9       | hcmp       | auto                     | 1       |
+|     select_ln27_9_fu_1876_p3                          |     |        | select_ln27_9  | select     | auto_sel                 | 0       |
+|     icmp_ln290_10_fu_1096_p2                          |     |        | icmp_ln290_10  | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U601               | 2   |        | sub168_s       | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U617                | 2   |        | mul169_s       | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U633                | 2   |        | mul170_s       | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U585               | 2   |        | add171_s       | hadd       | fulldsp                  | 4       |
+|     norm_10_fu_1706_p3                                |     |        | norm_10        | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U649                  |     |        | cmp175_s       | hcmp       | auto                     | 1       |
+|     select_ln27_10_fu_1887_p3                         |     |        | select_ln27_10 | select     | auto_sel                 | 0       |
+|     icmp_ln290_11_fu_1109_p2                          |     |        | icmp_ln290_11  | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U602               | 2   |        | sub168_10      | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U618                | 2   |        | mul169_10      | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U634                | 2   |        | mul170_10      | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U586               | 2   |        | add171_10      | hadd       | fulldsp                  | 4       |
+|     norm_11_fu_1713_p3                                |     |        | norm_11        | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U650                  |     |        | cmp175_10      | hcmp       | auto                     | 1       |
+|     select_ln27_11_fu_1898_p3                         |     |        | select_ln27_11 | select     | auto_sel                 | 0       |
+|     icmp_ln290_12_fu_1122_p2                          |     |        | icmp_ln290_12  | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U603               | 2   |        | sub168_11      | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U619                | 2   |        | mul169_11      | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U635                | 2   |        | mul170_11      | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U587               | 2   |        | add171_11      | hadd       | fulldsp                  | 4       |
+|     norm_12_fu_1720_p3                                |     |        | norm_12        | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U651                  |     |        | cmp175_11      | hcmp       | auto                     | 1       |
+|     select_ln27_12_fu_1909_p3                         |     |        | select_ln27_12 | select     | auto_sel                 | 0       |
+|     icmp_ln290_13_fu_1135_p2                          |     |        | icmp_ln290_13  | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U604               | 2   |        | sub168_12      | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U620                | 2   |        | mul169_12      | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U636                | 2   |        | mul170_12      | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U588               | 2   |        | add171_12      | hadd       | fulldsp                  | 4       |
+|     norm_13_fu_1727_p3                                |     |        | norm_13        | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U652                  |     |        | cmp175_12      | hcmp       | auto                     | 1       |
+|     select_ln27_13_fu_1920_p3                         |     |        | select_ln27_13 | select     | auto_sel                 | 0       |
+|     icmp_ln290_14_fu_1148_p2                          |     |        | icmp_ln290_14  | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U605               | 2   |        | sub168_13      | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U621                | 2   |        | mul169_13      | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U637                | 2   |        | mul170_13      | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U589               | 2   |        | add171_13      | hadd       | fulldsp                  | 4       |
+|     norm_14_fu_1734_p3                                |     |        | norm_14        | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U653                  |     |        | cmp175_13      | hcmp       | auto                     | 1       |
+|     select_ln27_14_fu_1931_p3                         |     |        | select_ln27_14 | select     | auto_sel                 | 0       |
+|     icmp_ln290_15_fu_1161_p2                          |     |        | icmp_ln290_15  | setlt      | auto                     | 0       |
+|     hsub_16ns_16ns_16_5_full_dsp_1_U606               | 2   |        | sub168_14      | hsub       | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U622                | 2   |        | mul169_14      | hmul       | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U638                | 2   |        | mul170_14      | hmul       | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U590               | 2   |        | add171_14      | hadd       | fulldsp                  | 4       |
+|     norm_15_fu_1741_p3                                |     |        | norm_15        | select     | auto_sel                 | 0       |
+|     hcmp_16ns_16ns_1_2_no_dsp_1_U654                  |     |        | cmp175_14      | hcmp       | auto                     | 1       |
+|     select_ln27_15_fu_1942_p3                         |     |        | select_ln27_15 | select     | auto_sel                 | 0       |
+|     add_ln297_fu_1166_p2                              |     |        | add_ln297      | add        | fabric                   | 0       |
+|     mul_32s_5ns_32_2_1_U655                           | 2   |        | mul_ln297      | mul        | auto                     | 1       |
+|     add_ln297_1_fu_1252_p2                            |     |        | add_ln297_1    | add        | fabric                   | 0       |
+|     add_ln297_2_fu_1759_p2                            |     |        | add_ln297_2    | add        | fabric                   | 0       |
+|     icmp_ln298_fu_1171_p2                             |     |        | icmp_ln298     | seteq      | auto                     | 0       |
+|     wn_1_fu_1176_p2                                   |     |        | wn_1           | add        | fabric                   | 0       |
+|     cwn_1_fu_1182_p2                                  |     |        | cwn_1          | add        | fabric                   | 0       |
+|     wn_2_fu_1188_p3                                   |     |        | wn_2           | select     | auto_sel                 | 0       |
+|     cwn_2_fu_1196_p3                                  |     |        | cwn_2          | select     | auto_sel                 | 0       |
+|  + upconv_core_top_Pipeline_LOAD_ROW_VITIS_LOOP_72_2  | 1   |        |                |            |                          |         |
+|    icmp_ln70_fu_168_p2                                |     |        | icmp_ln70      | seteq      | auto                     | 0       |
+|    add_ln70_1_fu_174_p2                               |     |        | add_ln70_1     | add        | fabric                   | 0       |
+|    add_ln70_fu_191_p2                                 |     |        | add_ln70       | add        | fabric                   | 0       |
+|    icmp_ln72_fu_197_p2                                |     |        | icmp_ln72      | seteq      | auto                     | 0       |
+|    select_ln70_fu_202_p3                              |     |        | select_ln70    | select     | auto_sel                 | 0       |
+|    select_ln70_1_fu_210_p3                            |     |        | select_ln70_1  | select     | auto_sel                 | 0       |
+|    ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U719          | 1   |        | empty          | add        | dsp_slice                | 3       |
+|    ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U719          | 1   |        | p_cast1        | zext       | dsp_slice                | 3       |
+|    ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U719          | 1   |        | mul_ln72       | mul        | dsp_slice                | 3       |
+|    ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U719          | 1   |        | add_ln75       | add        | dsp_slice                | 3       |
+|    add_ln72_fu_218_p2                                 |     |        | add_ln72       | add        | fabric                   | 0       |
++-------------------------------------------------------+-----+--------+----------------+------------+--------------------------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+-------------+------+------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------+------------------+
+| Name                                                                                                                                                                 | Usage           | Type        | BRAM | URAM | Pragma | Variable                                                                                                                                                        | Impl   | Latency | Bitwidth, Depth, |
+|                                                                                                                                                                      |                 |             |      |      |        |                                                                                                                                                                 |        |         | Banks            |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+-------------+------+------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------+------------------+
+| + upconv_core_top                                                                                                                                                    |                 |             | 84   | 68   |        |                                                                                                                                                                 |        |         |                  |
+|   control_s_axi_U                                                                                                                                                    | interface       | s_axilite   |      |      |        |                                                                                                                                                                 |        |         |                  |
+|   gmem_in_m_axi_U                                                                                                                                                    | interface       | m_axi       | 15   |      |        |                                                                                                                                                                 |        |         |                  |
+|   gmem_out_m_axi_U                                                                                                                                                   | interface       | m_axi       | 15   |      |        |                                                                                                                                                                 |        |         |                  |
+|   gmem_param_m_axi_U                                                                                                                                                 | interface       | m_axi       | 15   |      |        |                                                                                                                                                                 |        |         |                  |
+|   gmem_weight_m_axi_U                                                                                                                                                | interface       | m_axi       | 15   |      |        |                                                                                                                                                                 |        |         |                  |
+|   x_buf_U                                                                                                                                                            | ram_t2p         |             |      | 4    | pragma | x_buf                                                                                                                                                           | uram   | 1       | 256, 2048, 1     |
+|  + UpConv_Fused_Row_8_s                                                                                                                                              |                 |             | 24   | 64   |        |                                                                                                                                                                 |        |         |                  |
+|    b_buf_U                                                                                                                                                           | ram_t2p array   |             | 8    |      | yes    | b_buf                                                                                                                                                           | bram   | 1       | 256, 30, 1       |
+|    g_buf_U                                                                                                                                                           | ram_t2p array   |             | 8    |      | yes    | g_buf                                                                                                                                                           | bram   | 1       | 256, 30, 1       |
+|    be_buf_U                                                                                                                                                          | ram_t2p array   |             | 8    |      | yes    | be_buf                                                                                                                                                          | bram   | 1       | 256, 30, 1       |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_9_U                                                                                  | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_9                                                                                  | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_8_U                                                                                  | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_8                                                                                  | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_7_U                                                                                  | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_7                                                                                  | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_6_U                                                                                  | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_6                                                                                  | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_5_U                                                                                  | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_5                                                                                  | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_4_U                                                                                  | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_4                                                                                  | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_3_U                                                                                  | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_3                                                                                  | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_2_U                                                                                  | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_2                                                                                  | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_1_U                                                                                  | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_1                                                                                  | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u_U                                                                                    | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_ap_uint_ap_uint_const_ap_uint_const_ap_uint_const_ap_u                                                                                    | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_U   | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc   | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_0_U | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_0 | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_1_U | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_1 | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_2_U | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_2 | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_3_U | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_3 | uram   | 1       | 16, 7680, 1      |
+|    void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_4_U | ram_t2p         |             |      | 2    | pragma | void_UpConv_Fused_Row_8_ap_uint_256_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_const_ap_uint_256_decimal16_int_int_int_int_int_row_acc_4 | uram   | 1       | 16, 7680, 1      |
+|    mean_buf_U                                                                                                                                                        | ram_2p          |             |      |      | pragma | mean_buf                                                                                                                                                        | lutram | 1       | 32, 256, 1       |
+|    inv_buf_U                                                                                                                                                         | ram_2p          |             |      |      | pragma | inv_buf                                                                                                                                                         | lutram | 1       | 16, 256, 1       |
+|   + dataflow_parent_loop_proc                                                                                                                                        |                 |             | 0    | 32   |        |                                                                                                                                                                 |        |         |                  |
+|    + dataflow_in_loop_TILE_LOOP_1                                                                                                                                    |                 |             | 0    | 32   |        |                                                                                                                                                                 |        |         |                  |
+|      ho_c_U                                                                                                                                                          | fifo channel    | scalar prop |      |      |        | ho_c                                                                                                                                                            | srl    | 0       | 8, 3, 1          |
+|      H_IN_c_U                                                                                                                                                        | fifo channel    | scalar prop |      |      |        | H_IN_c                                                                                                                                                          | srl    | 0       | 8, 3, 1          |
+|      W_IN_c_U                                                                                                                                                        | fifo channel    | scalar prop |      |      |        | W_IN_c                                                                                                                                                          | srl    | 0       | 8, 3, 1          |
+|      wbuf_7_U                                                                                                                                                        | ram_t2p channel | pipo        |      | 4    |        | wbuf_7                                                                                                                                                          | uram   | 1       | 256, 540, 2      |
+|      wbuf_6_U                                                                                                                                                        | ram_t2p channel | pipo        |      | 4    |        | wbuf_6                                                                                                                                                          | uram   | 1       | 256, 540, 2      |
+|      wbuf_5_U                                                                                                                                                        | ram_t2p channel | pipo        |      | 4    |        | wbuf_5                                                                                                                                                          | uram   | 1       | 256, 540, 2      |
+|      wbuf_4_U                                                                                                                                                        | ram_t2p channel | pipo        |      | 4    |        | wbuf_4                                                                                                                                                          | uram   | 1       | 256, 540, 2      |
+|      wbuf_3_U                                                                                                                                                        | ram_t2p channel | pipo        |      | 4    |        | wbuf_3                                                                                                                                                          | uram   | 1       | 256, 540, 2      |
+|      wbuf_2_U                                                                                                                                                        | ram_t2p channel | pipo        |      | 4    |        | wbuf_2                                                                                                                                                          | uram   | 1       | 256, 540, 2      |
+|      wbuf_1_U                                                                                                                                                        | ram_t2p channel | pipo        |      | 4    |        | wbuf_1                                                                                                                                                          | uram   | 1       | 256, 540, 2      |
+|      wbuf_U                                                                                                                                                          | ram_t2p channel | pipo        |      | 4    |        | wbuf                                                                                                                                                            | uram   | 1       | 256, 540, 2      |
+|      tile_c_channel_U                                                                                                                                                | fifo channel    | task level  |      |      |        | tile_c_channel                                                                                                                                                  | srl    | 0       | 6, 2, 1          |
+|      C_OUT_c_channel_U                                                                                                                                               | fifo channel    | task level  |      |      |        | C_OUT_c_channel                                                                                                                                                 | srl    | 0       | 9, 2, 1          |
+|      C_IN_c_channel_U                                                                                                                                                | fifo channel    | task level  |      |      |        | C_IN_c_channel                                                                                                                                                  | srl    | 0       | 10, 2, 1         |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+-------------+------+------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+-----------------------------------------------------------------------+--------------------------------------------------------------+
+| Type            | Options                                                               | Location                                                     |
++-----------------+-----------------------------------------------------------------------+--------------------------------------------------------------+
+| inline          |                                                                       | gen/Hls_Layers_UpConv.tpp:23 in half_to_bits                 |
+| inline          |                                                                       | gen/Hls_Layers_UpConv.tpp:39 in bits_to_half                 |
+| inline          |                                                                       | gen/Hls_Layers_UpConv.tpp:53 in my_sqrt_f                    |
+| inline          | off                                                                   | gen/Hls_Layers_UpConv.tpp:77 in uc_load_tile                 |
+| pipeline        | II=1                                                                  | gen/Hls_Layers_UpConv.tpp:84 in uc_load_tile                 |
+| loop_tripcount  | min=72 max=540 avg=252                                                | gen/Hls_Layers_UpConv.tpp:85 in uc_load_tile                 |
+| inline          | off                                                                   | gen/Hls_Layers_UpConv.tpp:98 in uc_compute_tile              |
+| loop_tripcount  | min=1 max=2                                                           | gen/Hls_Layers_UpConv.tpp:102 in uc_compute_tile             |
+| loop_tripcount  | min=2 max=3                                                           | gen/Hls_Layers_UpConv.tpp:110 in uc_compute_tile             |
+| array_partition | variable=psum complete dim=0                                          | gen/Hls_Layers_UpConv.tpp:117 in uc_compute_tile, psum       |
+| pipeline        | II=1                                                                  | gen/Hls_Layers_UpConv.tpp:121 in uc_compute_tile             |
+| loop_tripcount  | min=128 max=7680 avg=1680                                             | gen/Hls_Layers_UpConv.tpp:122 in uc_compute_tile             |
+| dependence      | variable=psum type=inter false                                        | gen/Hls_Layers_UpConv.tpp:123 in uc_compute_tile, psum       |
+| dependence      | variable=row_acc type=inter false                                     | gen/Hls_Layers_UpConv.tpp:124 in uc_compute_tile, row_acc    |
+| unroll          |                                                                       | gen/Hls_Layers_UpConv.tpp:129 in uc_compute_tile             |
+| unroll          |                                                                       | gen/Hls_Layers_UpConv.tpp:133 in uc_compute_tile             |
+| bind_op         | variable=prod op=hmul impl=fabric                                     | gen/Hls_Layers_UpConv.tpp:137 in uc_compute_tile, prod       |
+| unroll          |                                                                       | gen/Hls_Layers_UpConv.tpp:149 in uc_compute_tile             |
+| inline          | off                                                                   | gen/Hls_Layers_UpConv.tpp:177 in upconv_fused_row            |
+| bind_storage    | variable=row_acc type=ram_t2p impl=uram                               | gen/Hls_Layers_UpConv.tpp:190 in upconv_fused_row, row_acc   |
+| array_partition | variable=row_acc cyclic factor=16 dim=2                               | gen/Hls_Layers_UpConv.tpp:191 in upconv_fused_row, row_acc   |
+| pipeline        | II=1                                                                  | gen/Hls_Layers_UpConv.tpp:201 in upconv_fused_row            |
+| loop_tripcount  | min=128 max=1024 avg=420                                              | gen/Hls_Layers_UpConv.tpp:202 in upconv_fused_row            |
+| unroll          |                                                                       | gen/Hls_Layers_UpConv.tpp:204 in upconv_fused_row            |
+| loop_tripcount  | min=6 max=41 avg=20                                                   | gen/Hls_Layers_UpConv.tpp:214 in upconv_fused_row            |
+| dataflow        |                                                                       | gen/Hls_Layers_UpConv.tpp:215 in upconv_fused_row            |
+| bind_storage    | variable=wbuf type=ram_t2p impl=uram                                  | gen/Hls_Layers_UpConv.tpp:217 in upconv_fused_row, wbuf      |
+| array_partition | variable=wbuf complete dim=1                                          | gen/Hls_Layers_UpConv.tpp:218 in upconv_fused_row, wbuf      |
+| bind_storage    | variable=b_buf type=ram_t2p impl=bram                                 | gen/Hls_Layers_UpConv.tpp:224 in upconv_fused_row, b_buf     |
+| bind_storage    | variable=g_buf type=ram_t2p impl=bram                                 | gen/Hls_Layers_UpConv.tpp:225 in upconv_fused_row, g_buf     |
+| bind_storage    | variable=be_buf type=ram_t2p impl=bram                                | gen/Hls_Layers_UpConv.tpp:226 in upconv_fused_row, be_buf    |
+| pipeline        | II=1                                                                  | gen/Hls_Layers_UpConv.tpp:229 in upconv_fused_row            |
+| loop_tripcount  | min=4 max=30 avg=14                                                   | gen/Hls_Layers_UpConv.tpp:230 in upconv_fused_row            |
+| bind_storage    | variable=mean_buf type=ram_2p impl=lutram                             | gen/Hls_Layers_UpConv.tpp:241 in upconv_fused_row, mean_buf  |
+| bind_storage    | variable=inv_buf type=ram_2p impl=lutram                              | gen/Hls_Layers_UpConv.tpp:242 in upconv_fused_row, inv_buf   |
+| array_partition | variable=sum_rot complete                                             | gen/Hls_Layers_UpConv.tpp:245 in upconv_fused_row, sum_rot   |
+| array_partition | variable=sumsq_rot complete                                           | gen/Hls_Layers_UpConv.tpp:246 in upconv_fused_row, sumsq_rot |
+| pipeline        | II=1                                                                  | gen/Hls_Layers_UpConv.tpp:250 in upconv_fused_row            |
+| loop_tripcount  | min=1920 max=15360 avg=7200                                           | gen/Hls_Layers_UpConv.tpp:251 in upconv_fused_row            |
+| dependence      | variable=sum_rot type=inter false                                     | gen/Hls_Layers_UpConv.tpp:252 in upconv_fused_row, sum_rot   |
+| dependence      | variable=sumsq_rot type=inter false                                   | gen/Hls_Layers_UpConv.tpp:253 in upconv_fused_row, sumsq_rot |
+| dependence      | variable=row_acc type=inter false                                     | gen/Hls_Layers_UpConv.tpp:254 in upconv_fused_row, row_acc   |
+| unroll          |                                                                       | gen/Hls_Layers_UpConv.tpp:266 in upconv_fused_row            |
+| pipeline        | II=1                                                                  | gen/Hls_Layers_UpConv.tpp:282 in upconv_fused_row            |
+| loop_tripcount  | min=128 max=7680 avg=1680                                             | gen/Hls_Layers_UpConv.tpp:283 in upconv_fused_row            |
+| unroll          |                                                                       | gen/Hls_Layers_UpConv.tpp:288 in upconv_fused_row            |
+| interface       | m_axi port=X offset=slave bundle=gmem_in max_read_burst_length=64     | gen/upconv_core_top.cpp:16 in upconv_core_top, X             |
+| interface       | m_axi port=W offset=slave bundle=gmem_weight max_read_burst_length=64 | gen/upconv_core_top.cpp:17 in upconv_core_top, W             |
+| interface       | m_axi port=B offset=slave bundle=gmem_param max_read_burst_length=64  | gen/upconv_core_top.cpp:18 in upconv_core_top, B             |
+| interface       | m_axi port=G offset=slave bundle=gmem_param max_read_burst_length=64  | gen/upconv_core_top.cpp:19 in upconv_core_top, G             |
+| interface       | m_axi port=BE offset=slave bundle=gmem_param max_read_burst_length=64 | gen/upconv_core_top.cpp:20 in upconv_core_top, BE            |
+| interface       | m_axi port=Y offset=slave bundle=gmem_out max_write_burst_length=64   | gen/upconv_core_top.cpp:21 in upconv_core_top, Y             |
+| interface       | s_axilite port=X bundle=control                                       | gen/upconv_core_top.cpp:23 in upconv_core_top, X             |
+| interface       | s_axilite port=W bundle=control                                       | gen/upconv_core_top.cpp:24 in upconv_core_top, W             |
+| interface       | s_axilite port=B bundle=control                                       | gen/upconv_core_top.cpp:25 in upconv_core_top, B             |
+| interface       | s_axilite port=G bundle=control                                       | gen/upconv_core_top.cpp:26 in upconv_core_top, G             |
+| interface       | s_axilite port=BE bundle=control                                      | gen/upconv_core_top.cpp:27 in upconv_core_top, BE            |
+| interface       | s_axilite port=Y bundle=control                                       | gen/upconv_core_top.cpp:28 in upconv_core_top, Y             |
+| interface       | s_axilite port=epsilon bundle=control                                 | gen/upconv_core_top.cpp:29 in upconv_core_top, epsilon       |
+| interface       | s_axilite port=mode bundle=control                                    | gen/upconv_core_top.cpp:30 in upconv_core_top, mode          |
+| interface       | s_axilite port=return bundle=control                                  | gen/upconv_core_top.cpp:31 in upconv_core_top, return        |
+| bind_storage    | variable=x_buf type=ram_t2p impl=uram                                 | gen/upconv_core_top.cpp:37 in upconv_core_top, x_buf         |
+| loop_tripcount  | min=16 max=128 avg=60                                                 | gen/upconv_core_top.cpp:57 in upconv_core_top                |
+| pipeline        | II=1                                                                  | gen/upconv_core_top.cpp:59 in upconv_core_top                |
+| loop_tripcount  | min=8 max=60 avg=28                                                   | gen/upconv_core_top.cpp:60 in upconv_core_top                |
+| loop_tripcount  | min=15 max=127 avg=59                                                 | gen/upconv_core_top.cpp:68 in upconv_core_top                |
+| loop_tripcount  | min=16 max=128 avg=60                                                 | gen/upconv_core_top.cpp:71 in upconv_core_top                |
+| pipeline        | II=1                                                                  | gen/upconv_core_top.cpp:73 in upconv_core_top                |
+| loop_tripcount  | min=8 max=60 avg=28                                                   | gen/upconv_core_top.cpp:74 in upconv_core_top                |
++-----------------+-----------------------------------------------------------------------+--------------------------------------------------------------+
+
+

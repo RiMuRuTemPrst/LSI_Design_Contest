@@ -1,0 +1,273 @@
+
+
+================================================================
+== Vitis HLS Report for 'uek_reduce_consumer_16_half_Pipeline_VITIS_LOOP_236_1_VITIS_LOOP_237_2'
+================================================================
+* Date:           Tue Jun 16 03:16:49 2026
+
+* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Project:        prj_rp
+* Solution:       solution1 (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.419 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
+    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |       34|       34|  0.113 us|  0.113 us|   33|   33|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                                     |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |              Loop Name              |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_236_1_VITIS_LOOP_237_2  |       32|       32|         2|          1|          1|    32|       yes|
+        +-------------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      79|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       -|       -|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|      54|    -|
+|Register         |        -|     -|      16|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|      16|     133|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name      | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------------+----------+----+---+----+------------+------------+
+    |add_ln236_1_fu_744_p2     |         +|   0|  0|  13|           6|           1|
+    |add_ln236_fu_761_p2       |         +|   0|  0|   9|           2|           1|
+    |add_ln237_fu_799_p2       |         +|   0|  0|  12|           5|           1|
+    |cond_fu_789_p2            |      icmp|   0|  0|   9|           2|           1|
+    |icmp_ln236_fu_738_p2      |      icmp|   0|  0|  14|           6|           7|
+    |icmp_ln237_fu_767_p2      |      icmp|   0|  0|  13|           5|           6|
+    |select_ln236_1_fu_781_p3  |    select|   0|  0|   2|           1|           2|
+    |select_ln236_fu_773_p3    |    select|   0|  0|   5|           1|           1|
+    |ap_enable_pp0             |       xor|   0|  0|   2|           1|           2|
+    +--------------------------+----------+----+---+----+------------+------------+
+    |Total                     |          |   0|  0|  79|          29|          22|
+    +--------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------------------+----+-----------+-----+-----------+
+    |                 Name                 | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                           |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1               |   9|          2|    1|          2|
+    |ap_sig_allocacmp_indvar_flatten_load  |   9|          2|    6|         12|
+    |indvar_flatten_fu_204                 |   9|          2|    6|         12|
+    |p_fu_196                              |   9|          2|    5|         10|
+    |rr_fu_200                             |   9|          2|    2|          4|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |Total                                 |  54|         12|   21|         42|
+    +--------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+---+----+-----+-----------+
+    |           Name          | FF| LUT| Bits| Const Bits|
+    +-------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                |  1|   0|    1|          0|
+    |ap_done_reg              |  1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |  1|   0|    1|          0|
+    |indvar_flatten_fu_204    |  6|   0|    6|          0|
+    |p_fu_196                 |  5|   0|    5|          0|
+    |rr_fu_200                |  2|   0|    2|          0|
+    +-------------------------+---+----+-----+-----------+
+    |Total                    | 16|   0|   16|          0|
+    +-------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+--------------------------------------------------------------------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  |                               Source Object                              |    C Type    |
++-----------------------+-----+-----+------------+--------------------------------------------------------------------------+--------------+
+|ap_clk                 |   in|    1|  ap_ctrl_hs|  uek_reduce_consumer<16, half>_Pipeline_VITIS_LOOP_236_1_VITIS_LOOP_237_2|  return value|
+|ap_rst                 |   in|    1|  ap_ctrl_hs|  uek_reduce_consumer<16, half>_Pipeline_VITIS_LOOP_236_1_VITIS_LOOP_237_2|  return value|
+|ap_start               |   in|    1|  ap_ctrl_hs|  uek_reduce_consumer<16, half>_Pipeline_VITIS_LOOP_236_1_VITIS_LOOP_237_2|  return value|
+|ap_done                |  out|    1|  ap_ctrl_hs|  uek_reduce_consumer<16, half>_Pipeline_VITIS_LOOP_236_1_VITIS_LOOP_237_2|  return value|
+|ap_idle                |  out|    1|  ap_ctrl_hs|  uek_reduce_consumer<16, half>_Pipeline_VITIS_LOOP_236_1_VITIS_LOOP_237_2|  return value|
+|ap_ready               |  out|    1|  ap_ctrl_hs|  uek_reduce_consumer<16, half>_Pipeline_VITIS_LOOP_236_1_VITIS_LOOP_237_2|  return value|
+|sum_acc_0_0            |  out|   32|      ap_vld|                                                               sum_acc_0_0|       pointer|
+|sum_acc_0_0_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_0|       pointer|
+|sumsq_acc_0_0          |  out|   32|      ap_vld|                                                             sumsq_acc_0_0|       pointer|
+|sumsq_acc_0_0_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_0|       pointer|
+|sumsq_acc_1_15         |  out|   32|      ap_vld|                                                            sumsq_acc_1_15|       pointer|
+|sumsq_acc_1_15_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_1_15|       pointer|
+|sumsq_acc_1_14         |  out|   32|      ap_vld|                                                            sumsq_acc_1_14|       pointer|
+|sumsq_acc_1_14_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_1_14|       pointer|
+|sumsq_acc_1_13         |  out|   32|      ap_vld|                                                            sumsq_acc_1_13|       pointer|
+|sumsq_acc_1_13_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_1_13|       pointer|
+|sumsq_acc_1_12         |  out|   32|      ap_vld|                                                            sumsq_acc_1_12|       pointer|
+|sumsq_acc_1_12_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_1_12|       pointer|
+|sumsq_acc_1_11         |  out|   32|      ap_vld|                                                            sumsq_acc_1_11|       pointer|
+|sumsq_acc_1_11_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_1_11|       pointer|
+|sumsq_acc_1_10         |  out|   32|      ap_vld|                                                            sumsq_acc_1_10|       pointer|
+|sumsq_acc_1_10_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_1_10|       pointer|
+|sumsq_acc_1_9          |  out|   32|      ap_vld|                                                             sumsq_acc_1_9|       pointer|
+|sumsq_acc_1_9_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_9|       pointer|
+|sumsq_acc_1_8          |  out|   32|      ap_vld|                                                             sumsq_acc_1_8|       pointer|
+|sumsq_acc_1_8_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_8|       pointer|
+|sumsq_acc_1_7          |  out|   32|      ap_vld|                                                             sumsq_acc_1_7|       pointer|
+|sumsq_acc_1_7_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_7|       pointer|
+|sumsq_acc_1_6          |  out|   32|      ap_vld|                                                             sumsq_acc_1_6|       pointer|
+|sumsq_acc_1_6_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_6|       pointer|
+|sumsq_acc_1_5          |  out|   32|      ap_vld|                                                             sumsq_acc_1_5|       pointer|
+|sumsq_acc_1_5_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_5|       pointer|
+|sumsq_acc_1_4          |  out|   32|      ap_vld|                                                             sumsq_acc_1_4|       pointer|
+|sumsq_acc_1_4_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_4|       pointer|
+|sumsq_acc_1_3          |  out|   32|      ap_vld|                                                             sumsq_acc_1_3|       pointer|
+|sumsq_acc_1_3_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_3|       pointer|
+|sumsq_acc_1_2          |  out|   32|      ap_vld|                                                             sumsq_acc_1_2|       pointer|
+|sumsq_acc_1_2_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_2|       pointer|
+|sumsq_acc_1_1          |  out|   32|      ap_vld|                                                             sumsq_acc_1_1|       pointer|
+|sumsq_acc_1_1_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_1|       pointer|
+|sumsq_acc_1_0          |  out|   32|      ap_vld|                                                             sumsq_acc_1_0|       pointer|
+|sumsq_acc_1_0_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_1_0|       pointer|
+|sumsq_acc_0_15         |  out|   32|      ap_vld|                                                            sumsq_acc_0_15|       pointer|
+|sumsq_acc_0_15_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_0_15|       pointer|
+|sumsq_acc_0_14         |  out|   32|      ap_vld|                                                            sumsq_acc_0_14|       pointer|
+|sumsq_acc_0_14_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_0_14|       pointer|
+|sumsq_acc_0_13         |  out|   32|      ap_vld|                                                            sumsq_acc_0_13|       pointer|
+|sumsq_acc_0_13_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_0_13|       pointer|
+|sumsq_acc_0_12         |  out|   32|      ap_vld|                                                            sumsq_acc_0_12|       pointer|
+|sumsq_acc_0_12_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_0_12|       pointer|
+|sumsq_acc_0_11         |  out|   32|      ap_vld|                                                            sumsq_acc_0_11|       pointer|
+|sumsq_acc_0_11_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_0_11|       pointer|
+|sumsq_acc_0_10         |  out|   32|      ap_vld|                                                            sumsq_acc_0_10|       pointer|
+|sumsq_acc_0_10_ap_vld  |  out|    1|      ap_vld|                                                            sumsq_acc_0_10|       pointer|
+|sumsq_acc_0_9          |  out|   32|      ap_vld|                                                             sumsq_acc_0_9|       pointer|
+|sumsq_acc_0_9_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_9|       pointer|
+|sumsq_acc_0_8          |  out|   32|      ap_vld|                                                             sumsq_acc_0_8|       pointer|
+|sumsq_acc_0_8_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_8|       pointer|
+|sumsq_acc_0_7          |  out|   32|      ap_vld|                                                             sumsq_acc_0_7|       pointer|
+|sumsq_acc_0_7_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_7|       pointer|
+|sumsq_acc_0_6          |  out|   32|      ap_vld|                                                             sumsq_acc_0_6|       pointer|
+|sumsq_acc_0_6_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_6|       pointer|
+|sumsq_acc_0_5          |  out|   32|      ap_vld|                                                             sumsq_acc_0_5|       pointer|
+|sumsq_acc_0_5_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_5|       pointer|
+|sumsq_acc_0_4          |  out|   32|      ap_vld|                                                             sumsq_acc_0_4|       pointer|
+|sumsq_acc_0_4_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_4|       pointer|
+|sumsq_acc_0_3          |  out|   32|      ap_vld|                                                             sumsq_acc_0_3|       pointer|
+|sumsq_acc_0_3_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_3|       pointer|
+|sumsq_acc_0_2          |  out|   32|      ap_vld|                                                             sumsq_acc_0_2|       pointer|
+|sumsq_acc_0_2_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_2|       pointer|
+|sumsq_acc_0_1          |  out|   32|      ap_vld|                                                             sumsq_acc_0_1|       pointer|
+|sumsq_acc_0_1_ap_vld   |  out|    1|      ap_vld|                                                             sumsq_acc_0_1|       pointer|
+|sum_acc_1_15           |  out|   32|      ap_vld|                                                              sum_acc_1_15|       pointer|
+|sum_acc_1_15_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_1_15|       pointer|
+|sum_acc_1_14           |  out|   32|      ap_vld|                                                              sum_acc_1_14|       pointer|
+|sum_acc_1_14_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_1_14|       pointer|
+|sum_acc_1_13           |  out|   32|      ap_vld|                                                              sum_acc_1_13|       pointer|
+|sum_acc_1_13_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_1_13|       pointer|
+|sum_acc_1_12           |  out|   32|      ap_vld|                                                              sum_acc_1_12|       pointer|
+|sum_acc_1_12_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_1_12|       pointer|
+|sum_acc_1_11           |  out|   32|      ap_vld|                                                              sum_acc_1_11|       pointer|
+|sum_acc_1_11_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_1_11|       pointer|
+|sum_acc_1_10           |  out|   32|      ap_vld|                                                              sum_acc_1_10|       pointer|
+|sum_acc_1_10_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_1_10|       pointer|
+|sum_acc_1_9            |  out|   32|      ap_vld|                                                               sum_acc_1_9|       pointer|
+|sum_acc_1_9_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_9|       pointer|
+|sum_acc_1_8            |  out|   32|      ap_vld|                                                               sum_acc_1_8|       pointer|
+|sum_acc_1_8_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_8|       pointer|
+|sum_acc_1_7            |  out|   32|      ap_vld|                                                               sum_acc_1_7|       pointer|
+|sum_acc_1_7_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_7|       pointer|
+|sum_acc_1_6            |  out|   32|      ap_vld|                                                               sum_acc_1_6|       pointer|
+|sum_acc_1_6_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_6|       pointer|
+|sum_acc_1_5            |  out|   32|      ap_vld|                                                               sum_acc_1_5|       pointer|
+|sum_acc_1_5_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_5|       pointer|
+|sum_acc_1_4            |  out|   32|      ap_vld|                                                               sum_acc_1_4|       pointer|
+|sum_acc_1_4_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_4|       pointer|
+|sum_acc_1_3            |  out|   32|      ap_vld|                                                               sum_acc_1_3|       pointer|
+|sum_acc_1_3_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_3|       pointer|
+|sum_acc_1_2            |  out|   32|      ap_vld|                                                               sum_acc_1_2|       pointer|
+|sum_acc_1_2_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_2|       pointer|
+|sum_acc_1_1            |  out|   32|      ap_vld|                                                               sum_acc_1_1|       pointer|
+|sum_acc_1_1_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_1|       pointer|
+|sum_acc_1_0            |  out|   32|      ap_vld|                                                               sum_acc_1_0|       pointer|
+|sum_acc_1_0_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_1_0|       pointer|
+|sum_acc_0_15           |  out|   32|      ap_vld|                                                              sum_acc_0_15|       pointer|
+|sum_acc_0_15_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_0_15|       pointer|
+|sum_acc_0_14           |  out|   32|      ap_vld|                                                              sum_acc_0_14|       pointer|
+|sum_acc_0_14_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_0_14|       pointer|
+|sum_acc_0_13           |  out|   32|      ap_vld|                                                              sum_acc_0_13|       pointer|
+|sum_acc_0_13_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_0_13|       pointer|
+|sum_acc_0_12           |  out|   32|      ap_vld|                                                              sum_acc_0_12|       pointer|
+|sum_acc_0_12_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_0_12|       pointer|
+|sum_acc_0_11           |  out|   32|      ap_vld|                                                              sum_acc_0_11|       pointer|
+|sum_acc_0_11_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_0_11|       pointer|
+|sum_acc_0_10           |  out|   32|      ap_vld|                                                              sum_acc_0_10|       pointer|
+|sum_acc_0_10_ap_vld    |  out|    1|      ap_vld|                                                              sum_acc_0_10|       pointer|
+|sum_acc_0_9            |  out|   32|      ap_vld|                                                               sum_acc_0_9|       pointer|
+|sum_acc_0_9_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_9|       pointer|
+|sum_acc_0_8            |  out|   32|      ap_vld|                                                               sum_acc_0_8|       pointer|
+|sum_acc_0_8_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_8|       pointer|
+|sum_acc_0_7            |  out|   32|      ap_vld|                                                               sum_acc_0_7|       pointer|
+|sum_acc_0_7_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_7|       pointer|
+|sum_acc_0_6            |  out|   32|      ap_vld|                                                               sum_acc_0_6|       pointer|
+|sum_acc_0_6_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_6|       pointer|
+|sum_acc_0_5            |  out|   32|      ap_vld|                                                               sum_acc_0_5|       pointer|
+|sum_acc_0_5_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_5|       pointer|
+|sum_acc_0_4            |  out|   32|      ap_vld|                                                               sum_acc_0_4|       pointer|
+|sum_acc_0_4_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_4|       pointer|
+|sum_acc_0_3            |  out|   32|      ap_vld|                                                               sum_acc_0_3|       pointer|
+|sum_acc_0_3_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_3|       pointer|
+|sum_acc_0_2            |  out|   32|      ap_vld|                                                               sum_acc_0_2|       pointer|
+|sum_acc_0_2_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_2|       pointer|
+|sum_acc_0_1            |  out|   32|      ap_vld|                                                               sum_acc_0_1|       pointer|
+|sum_acc_0_1_ap_vld     |  out|    1|      ap_vld|                                                               sum_acc_0_1|       pointer|
++-----------------------+-----+-----+------------+--------------------------------------------------------------------------+--------------+
+

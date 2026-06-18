@@ -1,0 +1,335 @@
+
+
+================================================================
+== Vitis HLS Report for 'fp8_mac_producer_16_s'
+================================================================
+* Date:           Tue Jun 16 09:50:48 2026
+
+* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Project:        prj_fp8
+* Solution:       solution1 (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.433 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+--------+--------+---------+
+    |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline|
+    |   min   |   max   |    min   |    max   |   min  |   max  |   Type  |
+    +---------+---------+----------+----------+--------+--------+---------+
+    |   259456|   259456|  0.865 ms|  0.865 ms|  259456|  259456|       no|
+    +---------+---------+----------+----------+--------+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------------------------------------------+-----------------------------------------------+---------+---------+----------+----------+--------+--------+------------------------------------------------+
+        |                                                          |                                               |  Latency (cycles) |  Latency (absolute) |     Interval    |                    Pipeline                    |
+        |                         Instance                         |                     Module                    |   min   |   max   |    min   |    max   |   min  |   max  |                      Type                      |
+        +----------------------------------------------------------+-----------------------------------------------+---------+---------+----------+----------+--------+--------+------------------------------------------------+
+        |grp_fp8_mac_producer_16_Pipeline_VITIS_LOOP_131_1_fu_113  |fp8_mac_producer_16_Pipeline_VITIS_LOOP_131_1  |       33|       33|  0.110 us|  0.110 us|      31|      31|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |grp_fp8_mac_producer_16_Pipeline_PASS_A_FLAT_fu_121       |fp8_mac_producer_16_Pipeline_PASS_A_FLAT       |   259349|   259349|  0.864 ms|  0.864 ms|  259201|  259201|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        +----------------------------------------------------------+-----------------------------------------------+---------+---------+----------+----------+--------+--------+------------------------------------------------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       -|       -|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        8|  1000|  198041|  166872|    0|
+|Memory           |        8|     -|       0|       0|    0|
+|Multiplexer      |        -|     -|       0|     814|    -|
+|Register         |        -|     -|     135|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |       16|  1000|  198176|  167686|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        2|    57|      43|      72|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------------------------------------+-----------------------------------------------+---------+------+--------+--------+-----+
+    |                         Instance                         |                     Module                    | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
+    +----------------------------------------------------------+-----------------------------------------------+---------+------+--------+--------+-----+
+    |grp_fp8_mac_producer_16_Pipeline_PASS_A_FLAT_fu_121       |fp8_mac_producer_16_Pipeline_PASS_A_FLAT       |        8|  1000|  197249|  166772|    0|
+    |grp_fp8_mac_producer_16_Pipeline_VITIS_LOOP_131_1_fu_113  |fp8_mac_producer_16_Pipeline_VITIS_LOOP_131_1  |        0|     0|     792|     100|    0|
+    +----------------------------------------------------------+-----------------------------------------------+---------+------+--------+--------+-----+
+    |Total                                                     |                                               |        8|  1000|  198041|  166872|    0|
+    +----------------------------------------------------------+-----------------------------------------------+---------+------+--------+--------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    +---------+----------------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |  Memory |                                Module                                | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +---------+----------------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |w_buf_U  |fp8_mac_producer_16_Pipeline_PASS_A_FLAT_w_buf_1_local_RAM_AUTO_1R1W  |        8|  0|   0|    0|    30|  256|     1|         7680|
+    +---------+----------------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |Total    |                                                                      |        8|  0|   0|    0|    30|  256|     1|         7680|
+    +---------+----------------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    +------------------------------+-----+-----------+-----+-----------+
+    |             Name             | LUT | Input Size| Bits| Total Bits|
+    +------------------------------+-----+-----------+-----+-----------+
+    |ap_NS_fsm                     |  405|         76|    1|         76|
+    |gmem_weight_blk_n_AR          |    9|          2|    1|          2|
+    |grp_fu_206_ce                 |    9|          2|    1|          2|
+    |grp_fu_210_ce                 |    9|          2|    1|          2|
+    |grp_fu_214_ce                 |    9|          2|    1|          2|
+    |grp_fu_218_ce                 |    9|          2|    1|          2|
+    |grp_fu_222_ce                 |    9|          2|    1|          2|
+    |grp_fu_226_ce                 |    9|          2|    1|          2|
+    |grp_fu_230_ce                 |    9|          2|    1|          2|
+    |grp_fu_234_ce                 |    9|          2|    1|          2|
+    |grp_fu_238_ce                 |    9|          2|    1|          2|
+    |grp_fu_242_ce                 |    9|          2|    1|          2|
+    |grp_fu_246_ce                 |    9|          2|    1|          2|
+    |grp_fu_250_ce                 |    9|          2|    1|          2|
+    |grp_fu_254_ce                 |    9|          2|    1|          2|
+    |grp_fu_258_ce                 |    9|          2|    1|          2|
+    |grp_fu_262_ce                 |    9|          2|    1|          2|
+    |grp_fu_266_ce                 |    9|          2|    1|          2|
+    |m_axi_gmem_weight_0_ARADDR    |   20|          4|   64|        256|
+    |m_axi_gmem_weight_0_ARBURST   |   14|          3|    2|          6|
+    |m_axi_gmem_weight_0_ARCACHE   |   14|          3|    4|         12|
+    |m_axi_gmem_weight_0_ARID      |   14|          3|    1|          3|
+    |m_axi_gmem_weight_0_ARLEN     |   20|          4|   32|        128|
+    |m_axi_gmem_weight_0_ARLOCK    |   14|          3|    2|          6|
+    |m_axi_gmem_weight_0_ARPROT    |   14|          3|    3|          9|
+    |m_axi_gmem_weight_0_ARQOS     |   14|          3|    4|         12|
+    |m_axi_gmem_weight_0_ARREGION  |   14|          3|    4|         12|
+    |m_axi_gmem_weight_0_ARSIZE    |   14|          3|    3|          9|
+    |m_axi_gmem_weight_0_ARUSER    |   14|          3|    1|          3|
+    |m_axi_gmem_weight_0_ARVALID   |   20|          4|    1|          4|
+    |m_axi_gmem_weight_0_RREADY    |   14|          3|    1|          3|
+    |w_buf_address0                |   14|          3|    5|         15|
+    |w_buf_ce0                     |   14|          3|    1|          3|
+    |w_buf_d0                      |   14|          3|  256|        768|
+    |w_buf_we0                     |   14|          3|    1|          3|
+    +------------------------------+-----+-----------+-----+-----------+
+    |Total                         |  814|        164|  403|       1362|
+    +------------------------------+-----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------------------------------------------+----+----+-----+-----------+
+    |                                  Name                                 | FF | LUT| Bits| Const Bits|
+    +-----------------------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                                              |  75|   0|   75|          0|
+    |grp_fp8_mac_producer_16_Pipeline_PASS_A_FLAT_fu_121_ap_start_reg       |   1|   0|    1|          0|
+    |grp_fp8_mac_producer_16_Pipeline_VITIS_LOOP_131_1_fu_113_ap_start_reg  |   1|   0|    1|          0|
+    |trunc_ln_reg_191                                                       |  58|   0|   58|          0|
+    +-----------------------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                                  | 135|   0|  135|          0|
+    +-----------------------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------------------------------------------------------------------------------------+-----+------+------------+------------------------------------------------------------------------------------------+--------------+
+|                                             RTL Ports                                             | Dir | Bits |  Protocol  |                                       Source Object                                      |    C Type    |
++---------------------------------------------------------------------------------------------------+-----+------+------------+------------------------------------------------------------------------------------------+--------------+
+|ap_clk                                                                                             |   in|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|ap_rst                                                                                             |   in|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|ap_start                                                                                           |   in|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|ap_done                                                                                            |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|ap_idle                                                                                            |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|ap_ready                                                                                           |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1269_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1269_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1269_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1269_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1273_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1273_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1273_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1273_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1277_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1277_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1277_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1277_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1281_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1281_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1281_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1281_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1285_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1285_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1285_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1285_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1289_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1289_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1289_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1289_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1293_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1293_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1293_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1293_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1297_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1297_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1297_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1297_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1301_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1301_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1301_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1301_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1305_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1305_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1305_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1305_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1309_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1309_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1309_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1309_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1313_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1313_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1313_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1313_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1317_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1317_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1317_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1317_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1321_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1321_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1321_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1321_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1325_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1325_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1325_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1325_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1329_p_din0                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1329_p_din1                                                                                 |  out|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1329_p_dout0                                                                                |   in|    16|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|grp_fu_1329_p_ce                                                                                   |  out|     1|  ap_ctrl_hs|                                                                      fp8_mac_producer<16>|  return value|
+|m_axi_gmem_weight_0_AWVALID                                                                        |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWREADY                                                                        |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWADDR                                                                         |  out|    64|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWID                                                                           |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWLEN                                                                          |  out|    32|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWSIZE                                                                         |  out|     3|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWBURST                                                                        |  out|     2|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWLOCK                                                                         |  out|     2|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWCACHE                                                                        |  out|     4|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWPROT                                                                         |  out|     3|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWQOS                                                                          |  out|     4|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWREGION                                                                       |  out|     4|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWUSER                                                                         |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WVALID                                                                         |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WREADY                                                                         |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WDATA                                                                          |  out|   512|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WSTRB                                                                          |  out|    64|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WLAST                                                                          |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WID                                                                            |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WUSER                                                                          |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARVALID                                                                        |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARREADY                                                                        |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARADDR                                                                         |  out|    64|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARID                                                                           |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARLEN                                                                          |  out|    32|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARSIZE                                                                         |  out|     3|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARBURST                                                                        |  out|     2|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARLOCK                                                                         |  out|     2|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARCACHE                                                                        |  out|     4|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARPROT                                                                         |  out|     3|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARQOS                                                                          |  out|     4|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARREGION                                                                       |  out|     4|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARUSER                                                                         |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RVALID                                                                         |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RREADY                                                                         |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RDATA                                                                          |   in|   512|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RLAST                                                                          |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RID                                                                            |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RFIFONUM                                                                       |   in|    11|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RUSER                                                                          |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RRESP                                                                          |   in|     2|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BVALID                                                                         |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BREADY                                                                         |  out|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BRESP                                                                          |   in|     2|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BID                                                                            |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BUSER                                                                          |   in|     1|       m_axi|                                                                               gmem_weight|       pointer|
+|W_ptr                                                                                              |   in|    64|     ap_none|                                                                                     W_ptr|        scalar|
+|r                                                                                                  |   in|     2|     ap_none|                                                                                         r|        scalar|
+|pstrm_din                                                                                          |  out|  2048|     ap_fifo|                                                                                     pstrm|       pointer|
+|pstrm_full_n                                                                                       |   in|     1|     ap_fifo|                                                                                     pstrm|       pointer|
+|pstrm_write                                                                                        |  out|     1|     ap_fifo|                                                                                     pstrm|       pointer|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_9_address0            |  out|     7|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_9|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_9_ce0                 |  out|     1|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_9|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_9_q0                  |   in|   256|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_9|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_8_address0            |  out|     7|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_8|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_8_ce0                 |  out|     1|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_8|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_8_q0                  |   in|   256|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_8|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_7_address0            |  out|     7|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_7|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_7_ce0                 |  out|     1|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_7|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_7_q0                  |   in|   256|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_7|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_6_address0            |  out|     7|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_6|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_6_ce0                 |  out|     1|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_6|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_6_q0                  |   in|   256|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_6|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_5_address0            |  out|     7|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_5|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_5_ce0                 |  out|     1|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_5|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_5_q0                  |   in|   256|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_5|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_4_address0            |  out|     7|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_4|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_4_ce0                 |  out|     1|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_4|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_4_q0                  |   in|   256|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_4|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_3_address0            |  out|     7|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_3|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_3_ce0                 |  out|     1|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_3|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_3_q0                  |   in|   256|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_3|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_2_address0            |  out|     7|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_2|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_2_ce0                 |  out|     1|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_2|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_2_q0                  |   in|   256|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_2|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_1_address0            |  out|     7|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_1|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_1_ce0                 |  out|     1|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_1|         array|
+|void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_1_q0                  |   in|   256|   ap_memory|            void_Fp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_1|         array|
+|void_mulmulmulmulFp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_address0  |  out|     7|   ap_memory|  void_mulmulmulmulFp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const|         array|
+|void_mulmulmulmulFp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_ce0       |  out|     1|   ap_memory|  void_mulmulmulmulFp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const|         array|
+|void_mulmulmulmulFp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const_q0        |   in|   256|   ap_memory|  void_mulmulmulmulFp8_Conv_Engine_ap_uint_const_ap_uint_const_ap_uint_const_ap_uint_const|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_address0               |  out|     7|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_ce0                    |  out|     1|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_q0                     |   in|   256|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_address0               |  out|     7|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_ce0                    |  out|     1|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_q0                     |   in|   256|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_address0               |  out|     7|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_ce0                    |  out|     1|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_q0                     |   in|   256|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_address0               |  out|     7|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_ce0                    |  out|     1|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_q0                     |   in|   256|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_address0               |  out|     7|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_ce0                    |  out|     1|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_q0                     |   in|   256|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_address0               |  out|     7|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_ce0                    |  out|     1|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15|         array|
+|p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_q0                     |   in|   256|   ap_memory|               p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15|         array|
++---------------------------------------------------------------------------------------------------+-----+------+------------+------------------------------------------------------------------------------------------+--------------+
+

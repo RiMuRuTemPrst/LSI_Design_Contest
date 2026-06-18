@@ -1,0 +1,59 @@
+"Config (fixed): PEs=8, 16 MACs/PE/cycle, CLK=300MHz, Stride=2, Kernel=3x3"
+Peak throughput:,76.8 GOPS
+
+Metric,UCB_0,UCB_1,UCB_2,UCB_3
+=== Block Config ===
+C_IN → C_OUT,960→480,480→240,240→120,120→60
+H_IN × W_IN,16×16,32×32,64×64,128×128
+H_OUT × W_OUT,32×32,64×64,128×128,256×256
+CI_WORDS,60,30,15,8
+N_TILES (= C_OUT/PE),60,30,15,8
+MACs,1061683200,1061683200,1061683200,1061683200
+
+=== Lý thuyết (avg: 1.5 valid kh/row) ===
+PRELOAD cycles (H_OUT×N_T×PE×9×CI_W),8294400,4147200,2073600,1179648
+COMPUTE cycles avg (H_OUT×N_T×1.5×(3W-1)×CI_W),8121600,8208000,8252160,9412608
+"PIXEL_NORM cycles (real, H_OUT×per_call)",3641344,7622656,16613376,38666240
+"RESET cycles (real, H_OUT×per_call)",15456,61632,246144,983808
+IFM load cycles (H_IN×per_row),15424,30848,61632,131584
+LOAD_PARAMS cycles (real),5248,7616,12544,22016
+TOTAL cycles (lý thuyết avg),20093472,20077952,27259456,50395904
+Time (s) lý thuyết avg,0.067,0.0669,0.0909,0.168
+GOPS lý thuyết avg,31.7,31.73,23.37,12.64
+Efficiency% vs peak,41.3,41.3,30.4,16.5
+PRELOAD % of total avg,41.3,20.7,7.6,2.3
+COMPUTE % of total avg,40.4,40.9,30.3,18.7
+PIXEL_NORM % of total avg,18.1,38.0,60.9,76.7
+
+"=== Thực tế Synthesis (PEs=8, ucbX_bench csynth.rpt) ==="
+[NOTE] syn_min ≈ PRELOAD+overhead only (HLS min: 0 valid kh)
+[NOTE] syn_max = HLS pessimistic upper bound (all loop iterations counted)
+
+Min cycles (syn),11988025,11864745,18971657,39736525
+Max cycles (syn),60683065,92631465,163881737,523494605
+Min latency (s),0.04,0.0395,0.0632,0.1325
+Max latency (s),0.2023,0.3088,0.5463,1.745
+MACs,1061683200,1061683200,1061683200,1061683200
+GOPS (syn min latency),53.14,53.69,33.58,16.03
+GOPS (syn max latency),10.5,6.88,3.89,1.22
+Peak GOPS (PEs=8),76.8,76.8,76.8,76.8
+Efficiency% (syn min),69.2,69.9,43.7,20.9
+Efficiency% (syn max),13.7,9.0,5.1,1.6
+
+=== So sánh lý thuyết avg vs synthesis ===
+Lý thuyết avg cycles,20093472,20077952,27259456,50395904
+Syn min cycles,11988025,11864745,18971657,39736525
+Syn max cycles,60683065,92631465,163881737,523494605
+Lý thuyết avg time(s),0.067,0.0669,0.0909,0.168
+Syn min time(s),0.04,0.0395,0.0632,0.1325
+Syn max time(s),0.2023,0.3088,0.5463,1.745
+GOPS lý thuyết avg,31.7,31.73,23.37,12.64
+GOPS syn min,53.14,53.69,33.58,16.03
+GOPS syn max,10.5,6.88,3.89,1.22
+
+=== PIXEL_NORM Overhead Detail ===
+PIXEL_NORM / call (cy),113792,119104,129792,151040
+PIXEL_NORM total (cy),3641344,7622656,16613376,38666240
+PIXEL_NORM % of syn_min,30.4,64.2,87.6,97.3
+PIXEL_NORM % of th_avg,18.1,38.0,60.9,76.7
+"Root cause: BIAS_STATS II≈7 (float32 sum/sumsq accumulation, no rotating acc)"

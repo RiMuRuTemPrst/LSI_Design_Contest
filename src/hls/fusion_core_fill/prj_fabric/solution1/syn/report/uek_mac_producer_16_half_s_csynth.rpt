@@ -1,0 +1,587 @@
+
+
+================================================================
+== Vitis HLS Report for 'uek_mac_producer_16_half_s'
+================================================================
+* Date:           Mon Jun 15 09:41:47 2026
+
+* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Project:        prj_fabric
+* Solution:       solution1 (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.433 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+--------+--------+---------+
+    |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline|
+    |   min   |   max   |    min   |    max   |   min  |   max  |   Type  |
+    +---------+---------+----------+----------+--------+--------+---------+
+    |   121197|   518683|  0.404 ms|  1.729 ms|  121197|  518683|       no|
+    +---------+---------+----------+----------+--------+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        +---------------------------------------------------------------+----------------------------------------------------+---------+---------+-----------+----------+--------+--------+------------------------------------------------+
+        |                                                               |                                                    |  Latency (cycles) |  Latency (absolute)  |     Interval    |                    Pipeline                    |
+        |                            Instance                           |                       Module                       |   min   |   max   |    min    |    max   |   min  |   max  |                      Type                      |
+        +---------------------------------------------------------------+----------------------------------------------------+---------+---------+-----------+----------+--------+--------+------------------------------------------------+
+        |grp_uek_mac_producer_16_half_Pipeline_VITIS_LOOP_127_1_fu_134  |uek_mac_producer_16_half_Pipeline_VITIS_LOOP_127_1  |       17|       63|  56.661 ns|  0.210 us|      15|      61|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |grp_uek_mac_producer_16_half_Pipeline_PASS_A_FLAT_fu_143       |uek_mac_producer_16_half_Pipeline_PASS_A_FLAT       |   121106|   518546|   0.404 ms|  1.728 ms|  120961|  518401|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        +---------------------------------------------------------------+----------------------------------------------------+---------+---------+-----------+----------+--------+--------+------------------------------------------------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      12|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        8|   461|   96029|   84271|    0|
+|Memory           |        8|     -|       0|       0|    0|
+|Multiplexer      |        -|     -|       0|    1246|    -|
+|Register         |        -|     -|     167|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |       16|   461|   96196|   85529|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        2|    26|      20|      37|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +---------------------------------------------------------------+----------------------------------------------------+---------+-----+-------+-------+-----+
+    |                            Instance                           |                       Module                       | BRAM_18K| DSP |   FF  |  LUT  | URAM|
+    +---------------------------------------------------------------+----------------------------------------------------+---------+-----+-------+-------+-----+
+    |mul_6ns_15ns_20_1_1_U857                                       |mul_6ns_15ns_20_1_1                                 |        0|    1|      0|      5|    0|
+    |grp_uek_mac_producer_16_half_Pipeline_PASS_A_FLAT_fu_143       |uek_mac_producer_16_half_Pipeline_PASS_A_FLAT       |        8|  460|  95749|  84191|    0|
+    |grp_uek_mac_producer_16_half_Pipeline_VITIS_LOOP_127_1_fu_134  |uek_mac_producer_16_half_Pipeline_VITIS_LOOP_127_1  |        0|    0|    280|     75|    0|
+    +---------------------------------------------------------------+----------------------------------------------------+---------+-----+-------+-------+-----+
+    |Total                                                          |                                                    |        8|  461|  96029|  84271|    0|
+    +---------------------------------------------------------------+----------------------------------------------------+---------+-----+-------+-------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    +---------+---------------------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |  Memory |                                   Module                                  | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +---------+---------------------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |w_buf_U  |uek_mac_producer_16_half_Pipeline_PASS_A_FLAT_w_buf_1_local_RAM_AUTO_1R1W  |        8|  0|   0|    0|    60|  256|     1|        15360|
+    +---------+---------------------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |Total    |                                                                           |        8|  0|   0|    0|    60|  256|     1|        15360|
+    +---------+---------------------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+----+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |sub96_fu_230_p2  |         +|   0|  0|  12|           5|           2|
+    +-----------------+----------+----+---+----+------------+------------+
+    |Total            |          |   0|  0|  12|           5|           2|
+    +-----------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------------------------+-----+-----------+-----+-----------+
+    |             Name             | LUT | Input Size| Bits| Total Bits|
+    +------------------------------+-----+-----------+-----+-----------+
+    |ap_NS_fsm                     |  405|         76|    1|         76|
+    |gmem_weight_blk_n_AR          |    9|          2|    1|          2|
+    |grp_fu_287_ce                 |    9|          2|    1|          2|
+    |grp_fu_291_ce                 |    9|          2|    1|          2|
+    |grp_fu_295_ce                 |    9|          2|    1|          2|
+    |grp_fu_299_ce                 |    9|          2|    1|          2|
+    |grp_fu_303_ce                 |    9|          2|    1|          2|
+    |grp_fu_307_ce                 |    9|          2|    1|          2|
+    |grp_fu_311_ce                 |    9|          2|    1|          2|
+    |grp_fu_315_ce                 |    9|          2|    1|          2|
+    |grp_fu_319_ce                 |    9|          2|    1|          2|
+    |grp_fu_323_ce                 |    9|          2|    1|          2|
+    |grp_fu_327_ce                 |    9|          2|    1|          2|
+    |grp_fu_331_ce                 |    9|          2|    1|          2|
+    |grp_fu_335_ce                 |    9|          2|    1|          2|
+    |grp_fu_339_ce                 |    9|          2|    1|          2|
+    |grp_fu_343_ce                 |    9|          2|    1|          2|
+    |grp_fu_347_ce                 |    9|          2|    1|          2|
+    |grp_fu_351_ce                 |    9|          2|    1|          2|
+    |grp_fu_355_ce                 |    9|          2|    1|          2|
+    |grp_fu_359_ce                 |    9|          2|    1|          2|
+    |grp_fu_363_ce                 |    9|          2|    1|          2|
+    |grp_fu_367_ce                 |    9|          2|    1|          2|
+    |grp_fu_371_ce                 |    9|          2|    1|          2|
+    |grp_fu_375_ce                 |    9|          2|    1|          2|
+    |grp_fu_379_ce                 |    9|          2|    1|          2|
+    |grp_fu_383_ce                 |    9|          2|    1|          2|
+    |grp_fu_387_ce                 |    9|          2|    1|          2|
+    |grp_fu_391_ce                 |    9|          2|    1|          2|
+    |grp_fu_395_ce                 |    9|          2|    1|          2|
+    |grp_fu_399_ce                 |    9|          2|    1|          2|
+    |grp_fu_403_ce                 |    9|          2|    1|          2|
+    |grp_fu_407_ce                 |    9|          2|    1|          2|
+    |grp_fu_411_ce                 |    9|          2|    1|          2|
+    |grp_fu_415_ce                 |    9|          2|    1|          2|
+    |grp_fu_419_ce                 |    9|          2|    1|          2|
+    |grp_fu_423_ce                 |    9|          2|    1|          2|
+    |grp_fu_427_ce                 |    9|          2|    1|          2|
+    |grp_fu_431_ce                 |    9|          2|    1|          2|
+    |grp_fu_435_ce                 |    9|          2|    1|          2|
+    |grp_fu_439_ce                 |    9|          2|    1|          2|
+    |grp_fu_443_ce                 |    9|          2|    1|          2|
+    |grp_fu_447_ce                 |    9|          2|    1|          2|
+    |grp_fu_451_ce                 |    9|          2|    1|          2|
+    |grp_fu_455_ce                 |    9|          2|    1|          2|
+    |grp_fu_459_ce                 |    9|          2|    1|          2|
+    |grp_fu_463_ce                 |    9|          2|    1|          2|
+    |grp_fu_467_ce                 |    9|          2|    1|          2|
+    |grp_fu_471_ce                 |    9|          2|    1|          2|
+    |grp_fu_475_ce                 |    9|          2|    1|          2|
+    |grp_fu_479_ce                 |    9|          2|    1|          2|
+    |grp_fu_483_ce                 |    9|          2|    1|          2|
+    |grp_fu_487_ce                 |    9|          2|    1|          2|
+    |grp_fu_491_ce                 |    9|          2|    1|          2|
+    |grp_fu_495_ce                 |    9|          2|    1|          2|
+    |grp_fu_499_ce                 |    9|          2|    1|          2|
+    |grp_fu_503_ce                 |    9|          2|    1|          2|
+    |grp_fu_507_ce                 |    9|          2|    1|          2|
+    |grp_fu_511_ce                 |    9|          2|    1|          2|
+    |grp_fu_515_ce                 |    9|          2|    1|          2|
+    |grp_fu_519_ce                 |    9|          2|    1|          2|
+    |grp_fu_523_ce                 |    9|          2|    1|          2|
+    |grp_fu_527_ce                 |    9|          2|    1|          2|
+    |grp_fu_531_ce                 |    9|          2|    1|          2|
+    |grp_fu_535_ce                 |    9|          2|    1|          2|
+    |grp_fu_539_ce                 |    9|          2|    1|          2|
+    |m_axi_gmem_weight_0_ARADDR    |   20|          4|   64|        256|
+    |m_axi_gmem_weight_0_ARBURST   |   14|          3|    2|          6|
+    |m_axi_gmem_weight_0_ARCACHE   |   14|          3|    4|         12|
+    |m_axi_gmem_weight_0_ARID      |   14|          3|    1|          3|
+    |m_axi_gmem_weight_0_ARLEN     |   20|          4|   32|        128|
+    |m_axi_gmem_weight_0_ARLOCK    |   14|          3|    2|          6|
+    |m_axi_gmem_weight_0_ARPROT    |   14|          3|    3|          9|
+    |m_axi_gmem_weight_0_ARQOS     |   14|          3|    4|         12|
+    |m_axi_gmem_weight_0_ARREGION  |   14|          3|    4|         12|
+    |m_axi_gmem_weight_0_ARSIZE    |   14|          3|    3|          9|
+    |m_axi_gmem_weight_0_ARUSER    |   14|          3|    1|          3|
+    |m_axi_gmem_weight_0_ARVALID   |   20|          4|    1|          4|
+    |m_axi_gmem_weight_0_RREADY    |   14|          3|    1|          3|
+    |w_buf_address0                |   14|          3|    6|         18|
+    |w_buf_ce0                     |   14|          3|    1|          3|
+    |w_buf_d0                      |   14|          3|  256|        768|
+    |w_buf_we0                     |   14|          3|    1|          3|
+    +------------------------------+-----+-----------+-----+-----------+
+    |Total                         | 1246|        260|  452|       1461|
+    +------------------------------+-----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------------------------------------------------+----+----+-----+-----------+
+    |                                    Name                                    | FF | LUT| Bits| Const Bits|
+    +----------------------------------------------------------------------------+----+----+-----+-----------+
+    |CI_W_cast_cast_cast_reg_247                                                 |   6|   0|    6|          0|
+    |ap_CS_fsm                                                                   |  75|   0|   75|          0|
+    |grp_uek_mac_producer_16_half_Pipeline_PASS_A_FLAT_fu_143_ap_start_reg       |   1|   0|    1|          0|
+    |grp_uek_mac_producer_16_half_Pipeline_VITIS_LOOP_127_1_fu_134_ap_start_reg  |   1|   0|    1|          0|
+    |mul_ln138_reg_267                                                           |  20|   0|   20|          0|
+    |sub96_reg_282                                                               |   5|   0|    5|          0|
+    |trunc_ln_reg_257                                                            |  59|   0|   59|          0|
+    +----------------------------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                                       | 167|   0|  167|          0|
+    +----------------------------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------------------------------------------------------------------------------+-----+------+------------+-------------------------------------------------------------------------------------+--------------+
+|                                           RTL Ports                                          | Dir | Bits |  Protocol  |                                    Source Object                                    |    C Type    |
++----------------------------------------------------------------------------------------------+-----+------+------------+-------------------------------------------------------------------------------------+--------------+
+|ap_clk                                                                                        |   in|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|ap_rst                                                                                        |   in|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|ap_start                                                                                      |   in|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|ap_done                                                                                       |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|ap_idle                                                                                       |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|ap_ready                                                                                      |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2613_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2613_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2613_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2613_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2617_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2617_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2617_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2617_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2621_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2621_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2621_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2621_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2625_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2625_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2625_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2625_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2629_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2629_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2629_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2629_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2633_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2633_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2633_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2633_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2637_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2637_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2637_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2637_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2641_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2641_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2641_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2641_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2645_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2645_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2645_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2645_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2649_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2649_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2649_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2649_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2653_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2653_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2653_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2653_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2657_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2657_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2657_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2657_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2661_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2661_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2661_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2661_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2665_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2665_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2665_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2665_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2669_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2669_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2669_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2669_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2673_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2673_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2673_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2673_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2677_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2677_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2677_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2677_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2681_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2681_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2681_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2681_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2685_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2685_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2685_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2685_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2689_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2689_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2689_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2689_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2693_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2693_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2693_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2693_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2697_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2697_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2697_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2697_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2701_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2701_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2701_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2701_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2705_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2705_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2705_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2705_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2709_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2709_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2709_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2709_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2713_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2713_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2713_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2713_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2717_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2717_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2717_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2717_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2721_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2721_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2721_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2721_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2725_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2725_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2725_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2725_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2729_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2729_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2729_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2729_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2733_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2733_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2733_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2733_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2737_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2737_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2737_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2737_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2741_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2741_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2741_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2741_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2745_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2745_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2745_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2745_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2749_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2749_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2749_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2749_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2753_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2753_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2753_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2753_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2757_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2757_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2757_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2757_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2761_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2761_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2761_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2761_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2765_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2765_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2765_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2765_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2769_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2769_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2769_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2769_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2773_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2773_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2773_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2773_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2777_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2777_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2777_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2777_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2781_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2781_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2781_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2781_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2785_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2785_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2785_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2785_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2789_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2789_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2789_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2789_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2793_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2793_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2793_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2793_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2797_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2797_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2797_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2797_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2801_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2801_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2801_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2801_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2869_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2869_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2869_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2869_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2873_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2873_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2873_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2873_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2877_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2877_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2877_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2877_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2881_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2881_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2881_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2881_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2885_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2885_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2885_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2885_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2889_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2889_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2889_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2889_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2893_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2893_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2893_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2893_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2897_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2897_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2897_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2897_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2901_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2901_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2901_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2901_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2905_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2905_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2905_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2905_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2909_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2909_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2909_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2909_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2913_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2913_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2913_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2913_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2917_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2917_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2917_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2917_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2921_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2921_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2921_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2921_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2925_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2925_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2925_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2925_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2929_p_din0                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2929_p_din1                                                                            |  out|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2929_p_dout0                                                                           |   in|    16|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|grp_fu_2929_p_ce                                                                              |  out|     1|  ap_ctrl_hs|                                                           uek_mac_producer<16, half>|  return value|
+|m_axi_gmem_weight_0_AWVALID                                                                   |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWREADY                                                                   |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWADDR                                                                    |  out|    64|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWID                                                                      |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWLEN                                                                     |  out|    32|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWSIZE                                                                    |  out|     3|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWBURST                                                                   |  out|     2|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWLOCK                                                                    |  out|     2|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWCACHE                                                                   |  out|     4|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWPROT                                                                    |  out|     3|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWQOS                                                                     |  out|     4|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWREGION                                                                  |  out|     4|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_AWUSER                                                                    |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WVALID                                                                    |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WREADY                                                                    |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WDATA                                                                     |  out|   256|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WSTRB                                                                     |  out|    32|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WLAST                                                                     |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WID                                                                       |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_WUSER                                                                     |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARVALID                                                                   |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARREADY                                                                   |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARADDR                                                                    |  out|    64|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARID                                                                      |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARLEN                                                                     |  out|    32|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARSIZE                                                                    |  out|     3|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARBURST                                                                   |  out|     2|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARLOCK                                                                    |  out|     2|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARCACHE                                                                   |  out|     4|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARPROT                                                                    |  out|     3|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARQOS                                                                     |  out|     4|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARREGION                                                                  |  out|     4|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_ARUSER                                                                    |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RVALID                                                                    |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RREADY                                                                    |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RDATA                                                                     |   in|   256|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RLAST                                                                     |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RID                                                                       |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RFIFONUM                                                                  |   in|    11|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RUSER                                                                     |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_RRESP                                                                     |   in|     2|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BVALID                                                                    |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BREADY                                                                    |  out|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BRESP                                                                     |   in|     2|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BID                                                                       |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|m_axi_gmem_weight_0_BUSER                                                                     |   in|     1|       m_axi|                                                                          gmem_weight|       pointer|
+|W_ptr                                                                                         |   in|    64|     ap_none|                                                                                W_ptr|        scalar|
+|CI_PAD                                                                                        |   in|     9|     ap_none|                                                                               CI_PAD|        scalar|
+|CI_W                                                                                          |   in|     5|     ap_none|                                                                                 CI_W|        scalar|
+|r                                                                                             |   in|     2|     ap_none|                                                                                    r|        scalar|
+|pstrm_din                                                                                     |  out|  2048|     ap_fifo|                                                                                pstrm|       pointer|
+|pstrm_full_n                                                                                  |   in|     1|     ap_fifo|                                                                                pstrm|       pointer|
+|pstrm_write                                                                                   |  out|     1|     ap_fifo|                                                                                pstrm|       pointer|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_9_address0      |  out|     8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_9|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_9_ce0           |  out|     1|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_9|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_9_q0            |   in|   256|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_9|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_8_address0      |  out|     8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_8|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_8_ce0           |  out|     1|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_8|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_8_q0            |   in|   256|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_8|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_7_address0      |  out|     8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_7|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_7_ce0           |  out|     1|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_7|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_7_q0            |   in|   256|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_7|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_6_address0      |  out|     8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_6|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_6_ce0           |  out|     1|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_6|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_6_q0            |   in|   256|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_6|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_5_address0      |  out|     8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_5|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_5_ce0           |  out|     1|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_5|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_5_q0            |   in|   256|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_5|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_4_address0      |  out|     8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_4|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_4_ce0           |  out|     1|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_4|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_4_q0            |   in|   256|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_4|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_3_address0      |  out|     8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_3|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_3_ce0           |  out|     1|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_3|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_3_q0            |   in|   256|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_3|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_2_address0      |  out|     8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_2|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_2_ce0           |  out|     1|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_2|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_2_q0            |   in|   256|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_2|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_1_address0      |  out|     8|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_1|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_1_ce0           |  out|     1|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_1|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_1_q0            |   in|   256|   ap_memory|      void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_1|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_address0        |  out|     8|   ap_memory|        void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_ce0             |  out|     1|   ap_memory|        void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin|         array|
+|void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin_q0              |   in|   256|   ap_memory|        void_Universal_Engine_Kernel_ap_uint_const_ap_uint_const_ap_uint_const_ap_uin|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_5_address0  |  out|     8|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_5|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_5_ce0       |  out|     1|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_5|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_5_q0        |   in|   256|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_5|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_4_address0  |  out|     8|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_4|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_4_ce0       |  out|     1|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_4|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_4_q0        |   in|   256|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_4|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_3_address0  |  out|     8|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_3|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_3_ce0       |  out|     1|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_3|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_3_q0        |   in|   256|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_3|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_2_address0  |  out|     8|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_2|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_2_ce0       |  out|     1|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_2|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_2_q0        |   in|   256|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_2|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_1_address0  |  out|     8|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_1|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_1_ce0       |  out|     1|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_1|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_1_q0        |   in|   256|   ap_memory|  p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_1|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_address0    |  out|     8|   ap_memory|    p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_ce0         |  out|     1|   ap_memory|    p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S|         array|
+|p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S_q0          |   in|   256|   ap_memory|    p_ZZL23Universal_Engine_KernelILi16EDhEvPK7ap_uintILi256EES3_S3_S3_S3_S3_S3_PS1_S|         array|
++----------------------------------------------------------------------------------------------+-----+------+------------+-------------------------------------------------------------------------------------+--------------+
+

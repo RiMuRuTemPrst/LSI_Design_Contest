@@ -1,0 +1,59 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             | 2,710        | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  | 4,511        | user unroll pragmas are applied                                                        |
+|               | (2) simplification          | 3,610        | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  | 3,534        | user inline pragmas are applied                                                        |
+|               | (4) simplification          | 3,473        | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         | 8,808        | user array partition pragmas are applied                                               |
+|               | (2) simplification          | 6,965        | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  | 6,965        | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           | 6,921        | apply array reshape pragmas                                                            |
+|               | (5) access patterns         | 7,104        | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     | 6,986        | loop and instruction simplification                                                    |
+|               | (2) parallelization         | 6,972        | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         | 6,972        | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          | 6,968        | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                | 7,010        | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           | 6,170        | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+
+* Instructions per Function for each Compilation Phase
++-------------------------------+------------------------------+-----------------+---------------+--------------+-------------+---------------+
+| Function                      | Location                     | Compile/Link    | Unroll/Inline | Array/Struct | Performance | HW Transforms |
++-------------------------------+------------------------------+-----------------+---------------+--------------+-------------+---------------+
+| + resblock_q_top              | resblock_q_top.cpp:12        | 2,710           | 3,473         | 7,104        | 6,968       | 6,170         |
+|  + Resblock_Engine_Kernel<16> | Hls_Layers_ResblockQ.tpp:153 | 2,679           | 3,428         | 7,059        | 6,923       | 6,103         |
+|     flatq_idx                 | Hls_Layers_ResblockQ.tpp:41  |    5            |               |              |             |               |
+|     wq_flat_idx               | Hls_Layers_ResblockQ.tpp:37  |   21 (3 calls)  |               |              |             |               |
+|     s16                       | Hls_Layers_ResblockQ.tpp:23  |  180 (18 calls) |               |              |             |               |
+|     mulq                      | Hls_Layers_ResblockQ.tpp:46  |   60 (3 calls)  |               |              |             |               |
+|     sat16                     | Hls_Layers_ResblockQ.tpp:31  |   30 (3 calls)  |               |              |             |               |
+|     u16                       | Hls_Layers_ResblockQ.tpp:27  |   36 (2 calls)  |               |              |             |               |
+|   + rb_norm_finalize          | Hls_Layers_ResblockQ.tpp:133 |  138            |               |              |             |               |
+|    + reci_sqrt_q              | Hls_Layers_ResblockQ.tpp:109 |  119            |               |              |             |               |
+|       differentiate           | Hls_Layers_ResblockQ.tpp:89  |   51            |               |              |             |               |
++-------------------------------+------------------------------+-----------------+---------------+--------------+-------------+---------------+
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+

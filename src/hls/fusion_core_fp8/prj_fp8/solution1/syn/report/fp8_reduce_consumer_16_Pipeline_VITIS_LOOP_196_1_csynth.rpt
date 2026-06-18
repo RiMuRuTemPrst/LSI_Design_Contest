@@ -1,0 +1,196 @@
+
+
+================================================================
+== Vitis HLS Report for 'fp8_reduce_consumer_16_Pipeline_VITIS_LOOP_196_1'
+================================================================
+* Date:           Tue Jun 16 09:50:48 2026
+
+* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Project:        prj_fp8
+* Solution:       solution1 (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  1.643 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+-----+------------------------------------------------+
+    |  Latency (cycles) |   Latency (absolute)  |  Interval |                    Pipeline                    |
+    |   min   |   max   |    min    |    max    | min | max |                      Type                      |
+    +---------+---------+-----------+-----------+-----+-----+------------------------------------------------+
+    |       18|       18|  59.994 ns|  59.994 ns|   17|   17|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+-----------+-----------+-----+-----+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_196_1  |       16|       16|         1|          1|          1|    16|       yes|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      25|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       -|       -|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|      27|    -|
+|Register         |        -|     -|       7|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|       7|      52|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------+----------+----+---+----+------------+------------+
+    |     Variable Name    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------+----------+----+---+----+------------+------------+
+    |add_ln196_fu_396_p2   |         +|   0|  0|  12|           5|           1|
+    |icmp_ln196_fu_390_p2  |      icmp|   0|  0|  13|           5|           6|
+    +----------------------+----------+----+---+----+------------+------------+
+    |Total                 |          |   0|  0|  25|          10|           7|
+    +----------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------+----+-----------+-----+-----------+
+    |         Name         | LUT| Input Size| Bits| Total Bits|
+    +----------------------+----+-----------+-----+-----------+
+    |ap_done_int           |   9|          2|    1|          2|
+    |ap_sig_allocacmp_p_1  |   9|          2|    5|         10|
+    |p_fu_122              |   9|          2|    5|         10|
+    +----------------------+----+-----------+-----+-----------+
+    |Total                 |  27|          6|   11|         22|
+    +----------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------+---+----+-----+-----------+
+    |     Name    | FF| LUT| Bits| Const Bits|
+    +-------------+---+----+-----+-----------+
+    |ap_CS_fsm    |  1|   0|    1|          0|
+    |ap_done_reg  |  1|   0|    1|          0|
+    |p_fu_122     |  5|   0|    5|          0|
+    +-------------+---+----+-----+-----------+
+    |Total        |  7|   0|    7|          0|
+    +-------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+------------+---------------------------------------------------+--------------+
+|      RTL Ports      | Dir | Bits|  Protocol  |                   Source Object                   |    C Type    |
++---------------------+-----+-----+------------+---------------------------------------------------+--------------+
+|ap_clk               |   in|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
+|ap_rst               |   in|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
+|ap_start             |   in|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
+|ap_done              |  out|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
+|ap_idle              |  out|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
+|ap_ready             |  out|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
+|sum_acc_0            |  out|   32|      ap_vld|                                          sum_acc_0|       pointer|
+|sum_acc_0_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_0|       pointer|
+|sumsq_acc_0          |  out|   32|      ap_vld|                                        sumsq_acc_0|       pointer|
+|sumsq_acc_0_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_0|       pointer|
+|sumsq_acc_15         |  out|   32|      ap_vld|                                       sumsq_acc_15|       pointer|
+|sumsq_acc_15_ap_vld  |  out|    1|      ap_vld|                                       sumsq_acc_15|       pointer|
+|sumsq_acc_14         |  out|   32|      ap_vld|                                       sumsq_acc_14|       pointer|
+|sumsq_acc_14_ap_vld  |  out|    1|      ap_vld|                                       sumsq_acc_14|       pointer|
+|sumsq_acc_13         |  out|   32|      ap_vld|                                       sumsq_acc_13|       pointer|
+|sumsq_acc_13_ap_vld  |  out|    1|      ap_vld|                                       sumsq_acc_13|       pointer|
+|sumsq_acc_12         |  out|   32|      ap_vld|                                       sumsq_acc_12|       pointer|
+|sumsq_acc_12_ap_vld  |  out|    1|      ap_vld|                                       sumsq_acc_12|       pointer|
+|sumsq_acc_11         |  out|   32|      ap_vld|                                       sumsq_acc_11|       pointer|
+|sumsq_acc_11_ap_vld  |  out|    1|      ap_vld|                                       sumsq_acc_11|       pointer|
+|sumsq_acc_10         |  out|   32|      ap_vld|                                       sumsq_acc_10|       pointer|
+|sumsq_acc_10_ap_vld  |  out|    1|      ap_vld|                                       sumsq_acc_10|       pointer|
+|sumsq_acc_9          |  out|   32|      ap_vld|                                        sumsq_acc_9|       pointer|
+|sumsq_acc_9_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_9|       pointer|
+|sumsq_acc_8          |  out|   32|      ap_vld|                                        sumsq_acc_8|       pointer|
+|sumsq_acc_8_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_8|       pointer|
+|sumsq_acc_7          |  out|   32|      ap_vld|                                        sumsq_acc_7|       pointer|
+|sumsq_acc_7_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_7|       pointer|
+|sumsq_acc_6          |  out|   32|      ap_vld|                                        sumsq_acc_6|       pointer|
+|sumsq_acc_6_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_6|       pointer|
+|sumsq_acc_5          |  out|   32|      ap_vld|                                        sumsq_acc_5|       pointer|
+|sumsq_acc_5_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_5|       pointer|
+|sumsq_acc_4          |  out|   32|      ap_vld|                                        sumsq_acc_4|       pointer|
+|sumsq_acc_4_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_4|       pointer|
+|sumsq_acc_3          |  out|   32|      ap_vld|                                        sumsq_acc_3|       pointer|
+|sumsq_acc_3_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_3|       pointer|
+|sumsq_acc_2          |  out|   32|      ap_vld|                                        sumsq_acc_2|       pointer|
+|sumsq_acc_2_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_2|       pointer|
+|sumsq_acc_1          |  out|   32|      ap_vld|                                        sumsq_acc_1|       pointer|
+|sumsq_acc_1_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_1|       pointer|
+|sum_acc_15           |  out|   32|      ap_vld|                                         sum_acc_15|       pointer|
+|sum_acc_15_ap_vld    |  out|    1|      ap_vld|                                         sum_acc_15|       pointer|
+|sum_acc_14           |  out|   32|      ap_vld|                                         sum_acc_14|       pointer|
+|sum_acc_14_ap_vld    |  out|    1|      ap_vld|                                         sum_acc_14|       pointer|
+|sum_acc_13           |  out|   32|      ap_vld|                                         sum_acc_13|       pointer|
+|sum_acc_13_ap_vld    |  out|    1|      ap_vld|                                         sum_acc_13|       pointer|
+|sum_acc_12           |  out|   32|      ap_vld|                                         sum_acc_12|       pointer|
+|sum_acc_12_ap_vld    |  out|    1|      ap_vld|                                         sum_acc_12|       pointer|
+|sum_acc_11           |  out|   32|      ap_vld|                                         sum_acc_11|       pointer|
+|sum_acc_11_ap_vld    |  out|    1|      ap_vld|                                         sum_acc_11|       pointer|
+|sum_acc_10           |  out|   32|      ap_vld|                                         sum_acc_10|       pointer|
+|sum_acc_10_ap_vld    |  out|    1|      ap_vld|                                         sum_acc_10|       pointer|
+|sum_acc_9            |  out|   32|      ap_vld|                                          sum_acc_9|       pointer|
+|sum_acc_9_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_9|       pointer|
+|sum_acc_8            |  out|   32|      ap_vld|                                          sum_acc_8|       pointer|
+|sum_acc_8_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_8|       pointer|
+|sum_acc_7            |  out|   32|      ap_vld|                                          sum_acc_7|       pointer|
+|sum_acc_7_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_7|       pointer|
+|sum_acc_6            |  out|   32|      ap_vld|                                          sum_acc_6|       pointer|
+|sum_acc_6_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_6|       pointer|
+|sum_acc_5            |  out|   32|      ap_vld|                                          sum_acc_5|       pointer|
+|sum_acc_5_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_5|       pointer|
+|sum_acc_4            |  out|   32|      ap_vld|                                          sum_acc_4|       pointer|
+|sum_acc_4_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_4|       pointer|
+|sum_acc_3            |  out|   32|      ap_vld|                                          sum_acc_3|       pointer|
+|sum_acc_3_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_3|       pointer|
+|sum_acc_2            |  out|   32|      ap_vld|                                          sum_acc_2|       pointer|
+|sum_acc_2_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_2|       pointer|
+|sum_acc_1            |  out|   32|      ap_vld|                                          sum_acc_1|       pointer|
+|sum_acc_1_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_1|       pointer|
++---------------------+-----+-----+------------+---------------------------------------------------+--------------+
+

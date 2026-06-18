@@ -54,3 +54,33 @@ Claude_Cowork/
 IDE.log
 .analytics
 repomix-output.txt
+
+# --- HLS synthesis: commit ONLY csynth reports (**/syn/report/), bỏ RTL sinh ra & file build ---
+**/syn/verilog/
+**/syn/vhdl/
+**/syn/systemc/
+**/solution1/*.aps
+**/solution1/*.directive
+**/sol/*.aps
+**/sol/*.directive
+**/*.pid
+**/.cosim_pid
+**/.csim_pid
+**/.cosim_textmode_pid
+**/hls_*.tcl
+
+# --- HLS build metadata (không phải report, không cần repo) ---
+**/kernel.xml
+**/*_data.json
+**/*.aps
+**/prj_csim*/
+
+# --- Quant test data dump (giống convention model_params/io_params) ---
+**/model_params_q/*.txt
+**/io_params_q/*.txt
+/test.txt
+
+# --- Large / local-only (không đẩy lên repo) ---
+/assets.zip
+/HLS/
+/data/
