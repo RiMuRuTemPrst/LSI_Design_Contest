@@ -543,7 +543,7 @@ end;
 architecture behav of full_generator_top is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "full_generator_top_full_generator_top,hls_ip_2024_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=3.333000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.239000,HLS_SYN_LAT=527105260,HLS_SYN_TPT=none,HLS_SYN_MEM=601,HLS_SYN_DSP=0,HLS_SYN_FF=175744,HLS_SYN_LUT=182374,HLS_VERSION=2024_2}";
+    "full_generator_top_full_generator_top,hls_ip_2024_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=3.333000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.239000,HLS_SYN_LAT=367594060,HLS_SYN_TPT=none,HLS_SYN_MEM=601,HLS_SYN_DSP=0,HLS_SYN_FF=189763,HLS_SYN_LUT=186481,HLS_VERSION=2024_2}";
     constant ap_const_logic_1 : STD_LOGIC := '1';
     constant ap_const_logic_0 : STD_LOGIC := '0';
     constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (81 downto 0) := "0000000000000000000000000000000000000000000000000000000000000000000000000000000001";
@@ -726,41 +726,41 @@ attribute shreg_extract of ap_rst_n_inv : signal is "no";
     signal gmem_bc_blk_n_R : STD_LOGIC;
     signal ap_CS_fsm_state80 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state80 : signal is "none";
-    signal epsilon_read_reg_691 : STD_LOGIC_VECTOR (15 downto 0);
+    signal epsilon_read_reg_699 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_block_state1 : BOOLEAN;
-    signal Z_read_reg_697 : STD_LOGIC_VECTOR (63 downto 0);
-    signal B_conv77_read_reg_702 : STD_LOGIC_VECTOR (63 downto 0);
-    signal W_conv77_read_reg_707 : STD_LOGIC_VECTOR (63 downto 0);
-    signal Y_read_reg_712 : STD_LOGIC_VECTOR (63 downto 0);
-    signal P_upconv_read_reg_718 : STD_LOGIC_VECTOR (63 downto 0);
-    signal W_upconv_read_reg_723 : STD_LOGIC_VECTOR (63 downto 0);
-    signal P_fusion_read_reg_728 : STD_LOGIC_VECTOR (63 downto 0);
-    signal W_fusion_read_reg_737 : STD_LOGIC_VECTOR (63 downto 0);
-    signal X_read_reg_742 : STD_LOGIC_VECTOR (63 downto 0);
-    signal phi_mul1_load_reg_753 : STD_LOGIC_VECTOR (11 downto 0);
+    signal Z_read_reg_705 : STD_LOGIC_VECTOR (63 downto 0);
+    signal B_conv77_read_reg_710 : STD_LOGIC_VECTOR (63 downto 0);
+    signal W_conv77_read_reg_715 : STD_LOGIC_VECTOR (63 downto 0);
+    signal Y_read_reg_720 : STD_LOGIC_VECTOR (63 downto 0);
+    signal P_upconv_read_reg_726 : STD_LOGIC_VECTOR (63 downto 0);
+    signal W_upconv_read_reg_731 : STD_LOGIC_VECTOR (63 downto 0);
+    signal P_fusion_read_reg_736 : STD_LOGIC_VECTOR (63 downto 0);
+    signal W_fusion_read_reg_745 : STD_LOGIC_VECTOR (63 downto 0);
+    signal X_read_reg_750 : STD_LOGIC_VECTOR (63 downto 0);
+    signal phi_mul1_load_reg_761 : STD_LOGIC_VECTOR (11 downto 0);
     signal ap_CS_fsm_state4 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state4 : signal is "none";
-    signal phi_mul_load_reg_760 : STD_LOGIC_VECTOR (23 downto 0);
-    signal add_ln178_fu_582_p2 : STD_LOGIC_VECTOR (23 downto 0);
-    signal add_ln178_reg_765 : STD_LOGIC_VECTOR (23 downto 0);
-    signal add_ln179_fu_594_p2 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln179_reg_770 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln180_fu_600_p2 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln180_reg_775 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln181_fu_606_p2 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln181_reg_780 : STD_LOGIC_VECTOR (11 downto 0);
-    signal p_cast_reg_785 : STD_LOGIC_VECTOR (58 downto 0);
-    signal add_ln187_fu_636_p2 : STD_LOGIC_VECTOR (23 downto 0);
-    signal add_ln187_reg_790 : STD_LOGIC_VECTOR (23 downto 0);
+    signal phi_mul_load_reg_768 : STD_LOGIC_VECTOR (23 downto 0);
+    signal add_ln178_fu_590_p2 : STD_LOGIC_VECTOR (23 downto 0);
+    signal add_ln178_reg_773 : STD_LOGIC_VECTOR (23 downto 0);
+    signal add_ln179_fu_602_p2 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln179_reg_778 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln180_fu_608_p2 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln180_reg_783 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln181_fu_614_p2 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln181_reg_788 : STD_LOGIC_VECTOR (11 downto 0);
+    signal p_cast_reg_793 : STD_LOGIC_VECTOR (58 downto 0);
+    signal add_ln187_fu_644_p2 : STD_LOGIC_VECTOR (23 downto 0);
+    signal add_ln187_reg_798 : STD_LOGIC_VECTOR (23 downto 0);
     signal ap_CS_fsm_state6 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state6 : signal is "none";
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done : STD_LOGIC;
-    signal add_ln188_fu_641_p2 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln188_reg_795 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln189_fu_646_p2 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln189_reg_800 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln190_fu_651_p2 : STD_LOGIC_VECTOR (11 downto 0);
-    signal add_ln190_reg_805 : STD_LOGIC_VECTOR (11 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done : STD_LOGIC;
+    signal add_ln188_fu_649_p2 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln188_reg_803 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln189_fu_654_p2 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln189_reg_808 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln190_fu_659_p2 : STD_LOGIC_VECTOR (11 downto 0);
+    signal add_ln190_reg_813 : STD_LOGIC_VECTOR (11 downto 0);
     signal gmem_bc_0_AWREADY : STD_LOGIC;
     signal gmem_bc_0_WREADY : STD_LOGIC;
     signal gmem_bc_0_ARVALID : STD_LOGIC;
@@ -771,391 +771,391 @@ attribute shreg_extract of ap_rst_n_inv : signal is "no";
     signal gmem_bc_0_RDATA : STD_LOGIC_VECTOR (255 downto 0);
     signal gmem_bc_0_RFIFONUM : STD_LOGIC_VECTOR (6 downto 0);
     signal gmem_bc_0_BVALID : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_ap_done : STD_LOGIC;
-    signal trunc_ln205_fu_666_p1 : STD_LOGIC_VECTOR (47 downto 0);
-    signal trunc_ln205_reg_816 : STD_LOGIC_VECTOR (47 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_start : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_idle : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_ready : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWVALID : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WVALID : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WLAST : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARVALID : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_RREADY : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_BREADY : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWVALID : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WVALID : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WLAST : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARVALID : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_RREADY : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_BREADY : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWVALID : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WVALID : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WLAST : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARVALID : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_RREADY : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_BREADY : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_mode : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_idx1 : STD_LOGIC_VECTOR (23 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_idx2 : STD_LOGIC_VECTOR (11 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_idx3 : STD_LOGIC_VECTOR (11 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_idx4 : STD_LOGIC_VECTOR (11 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_idx5 : STD_LOGIC_VECTOR (7 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_idx6 : STD_LOGIC_VECTOR (6 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_address1 : STD_LOGIC_VECTOR (13 downto 0);
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_ce1 : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_we1 : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_d1 : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_ap_start : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_ap_idle : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_ap_ready : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWVALID : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WVALID : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WLAST : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARVALID : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_RREADY : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_BREADY : STD_LOGIC;
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_global_buf_address0 : STD_LOGIC_VECTOR (13 downto 0);
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_global_buf_ce0 : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_ap_start : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_ap_done : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_ap_idle : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_ap_ready : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WLAST : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_RREADY : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_x_0_BREADY : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WLAST : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_RREADY : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_y_0_BREADY : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WLAST : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_RREADY : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_BREADY : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WLAST : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARVALID : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_RREADY : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_BREADY : STD_LOGIC;
-    signal grp_run_upconv_block_fu_464_mode : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_run_upconv_block_fu_464_slot_in_off : STD_LOGIC_VECTOR (18 downto 0);
-    signal grp_run_upconv_block_fu_464_slot_out_off : STD_LOGIC_VECTOR (18 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_start : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_idle : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_ready : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWVALID : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WVALID : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WLAST : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARVALID : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_RREADY : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_BREADY : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWVALID : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WVALID : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WDATA : STD_LOGIC_VECTOR (511 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WSTRB : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WLAST : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARVALID : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_RREADY : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_BREADY : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWVALID : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WVALID : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WDATA : STD_LOGIC_VECTOR (511 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WSTRB : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WLAST : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARVALID : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_RREADY : STD_LOGIC;
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_BREADY : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_ap_done : STD_LOGIC;
+    signal trunc_ln205_fu_674_p1 : STD_LOGIC_VECTOR (47 downto 0);
+    signal trunc_ln205_reg_824 : STD_LOGIC_VECTOR (47 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_start : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_idle : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_ready : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWVALID : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WVALID : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WLAST : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARVALID : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_RREADY : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_BREADY : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWVALID : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WVALID : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WLAST : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARVALID : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_RREADY : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_BREADY : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWVALID : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WVALID : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WLAST : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARVALID : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_RREADY : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_BREADY : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_mode : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_idx1 : STD_LOGIC_VECTOR (23 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_idx2 : STD_LOGIC_VECTOR (11 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_idx3 : STD_LOGIC_VECTOR (11 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_idx4 : STD_LOGIC_VECTOR (11 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_idx5 : STD_LOGIC_VECTOR (7 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_idx6 : STD_LOGIC_VECTOR (6 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_address1 : STD_LOGIC_VECTOR (13 downto 0);
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_ce1 : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_we1 : STD_LOGIC;
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_d1 : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_ap_start : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_ap_idle : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_ap_ready : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWVALID : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WVALID : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WLAST : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARVALID : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_RREADY : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_BREADY : STD_LOGIC;
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_global_buf_address0 : STD_LOGIC_VECTOR (13 downto 0);
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_global_buf_ce0 : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_ap_start : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_ap_done : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_ap_idle : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_ap_ready : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WLAST : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_RREADY : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_x_0_BREADY : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WLAST : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_RREADY : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_y_0_BREADY : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WLAST : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_RREADY : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_BREADY : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WLAST : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARVALID : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_RREADY : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_BREADY : STD_LOGIC;
+    signal grp_run_upconv_block_fu_468_mode : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_run_upconv_block_fu_468_slot_in_off : STD_LOGIC_VECTOR (18 downto 0);
+    signal grp_run_upconv_block_fu_468_slot_out_off : STD_LOGIC_VECTOR (18 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_start : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_idle : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_ready : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWVALID : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WVALID : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WDATA : STD_LOGIC_VECTOR (255 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WSTRB : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WLAST : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARVALID : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_RREADY : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_BREADY : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWVALID : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WVALID : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WDATA : STD_LOGIC_VECTOR (511 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WSTRB : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WLAST : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARVALID : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_RREADY : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_BREADY : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWVALID : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WVALID : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WDATA : STD_LOGIC_VECTOR (511 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WSTRB : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WLAST : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARVALID : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARADDR : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARID : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARLEN : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARSIZE : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARBURST : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARLOCK : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARCACHE : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARPROT : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARQOS : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARREGION : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARUSER : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_RREADY : STD_LOGIC;
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_BREADY : STD_LOGIC;
     signal gmem_pf_0_AWREADY : STD_LOGIC;
     signal gmem_pf_0_WREADY : STD_LOGIC;
     signal gmem_pf_0_ARVALID : STD_LOGIC;
@@ -1243,7 +1243,7 @@ attribute shreg_extract of ap_rst_n_inv : signal is "no";
     signal gmem_z_0_RFIFONUM : STD_LOGIC_VECTOR (8 downto 0);
     signal gmem_z_0_BVALID : STD_LOGIC;
     signal gmem_z_0_BREADY : STD_LOGIC;
-    signal grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_start_reg : STD_LOGIC := '0';
+    signal grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
     signal ap_CS_fsm_state5 : STD_LOGIC;
@@ -1254,9 +1254,9 @@ attribute shreg_extract of ap_rst_n_inv : signal is "no";
     attribute fsm_encoding of ap_CS_fsm_state3 : signal is "none";
     signal ap_CS_fsm_state8 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state8 : signal is "none";
-    signal grp_GlobalAdd_Kernel_16_s_fu_455_ap_start_reg : STD_LOGIC := '0';
-    signal icmp_ln174_fu_558_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_run_upconv_block_fu_464_ap_start_reg : STD_LOGIC := '0';
+    signal grp_GlobalAdd_Kernel_16_s_fu_459_ap_start_reg : STD_LOGIC := '0';
+    signal icmp_ln174_fu_566_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_run_upconv_block_fu_468_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state10 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state10 : signal is "none";
     signal ap_CS_fsm_state12 : STD_LOGIC;
@@ -1273,18 +1273,18 @@ attribute shreg_extract of ap_rst_n_inv : signal is "no";
     attribute fsm_encoding of ap_CS_fsm_state15 : signal is "none";
     signal ap_CS_fsm_state17 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state17 : signal is "none";
-    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_start_reg : STD_LOGIC := '0';
+    signal grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state81 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state81 : signal is "none";
     signal ap_CS_fsm_state82 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state82 : signal is "none";
-    signal p_cast_cast_fu_656_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal phi_mul1_fu_298 : STD_LOGIC_VECTOR (11 downto 0) := "000000000000";
-    signal add_ln179_1_fu_588_p2 : STD_LOGIC_VECTOR (11 downto 0);
-    signal phi_mul_fu_302 : STD_LOGIC_VECTOR (23 downto 0) := "000000000000000000000000";
-    signal add_ln178_1_fu_576_p2 : STD_LOGIC_VECTOR (23 downto 0);
-    signal i_fu_306 : STD_LOGIC_VECTOR (3 downto 0) := "0000";
-    signal add_ln174_fu_564_p2 : STD_LOGIC_VECTOR (3 downto 0);
+    signal p_cast_cast_fu_664_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal phi_mul1_fu_302 : STD_LOGIC_VECTOR (11 downto 0) := "000000000000";
+    signal add_ln179_1_fu_596_p2 : STD_LOGIC_VECTOR (11 downto 0);
+    signal phi_mul_fu_306 : STD_LOGIC_VECTOR (23 downto 0) := "000000000000000000000000";
+    signal add_ln178_1_fu_584_p2 : STD_LOGIC_VECTOR (23 downto 0);
+    signal i_fu_310 : STD_LOGIC_VECTOR (3 downto 0) := "0000";
+    signal add_ln174_fu_572_p2 : STD_LOGIC_VECTOR (3 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (81 downto 0);
     signal ap_ST_fsm_state1_blk : STD_LOGIC;
     signal ap_ST_fsm_state2_blk : STD_LOGIC;
@@ -2856,57 +2856,57 @@ begin
     port map (
         clk => ap_clk,
         reset => ap_rst_n_inv,
-        address0 => grp_GlobalAdd_Kernel_16_s_fu_455_global_buf_address0,
+        address0 => grp_GlobalAdd_Kernel_16_s_fu_459_global_buf_address0,
         ce0 => global_buf_ce0,
         q0 => global_buf_q0,
-        address1 => grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_address1,
+        address1 => grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_address1,
         ce1 => global_buf_ce1,
         we1 => global_buf_we1,
-        d1 => grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_d1);
+        d1 => grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_d1);
 
-    grp_Universal_Engine_Kernel_16_half_s_fu_382 : component full_generator_top_Universal_Engine_Kernel_16_half_s
+    grp_Universal_Engine_Kernel_16_half_s_fu_386 : component full_generator_top_Universal_Engine_Kernel_16_half_s
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_start,
-        ap_done => grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done,
-        ap_idle => grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_idle,
-        ap_ready => grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_ready,
-        m_axi_gmem_x_0_AWVALID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWVALID,
+        ap_start => grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_start,
+        ap_done => grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done,
+        ap_idle => grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_idle,
+        ap_ready => grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_ready,
+        m_axi_gmem_x_0_AWVALID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWVALID,
         m_axi_gmem_x_0_AWREADY => gmem_x_0_AWREADY,
-        m_axi_gmem_x_0_AWADDR => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWADDR,
-        m_axi_gmem_x_0_AWID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWID,
-        m_axi_gmem_x_0_AWLEN => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWLEN,
-        m_axi_gmem_x_0_AWSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWSIZE,
-        m_axi_gmem_x_0_AWBURST => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWBURST,
-        m_axi_gmem_x_0_AWLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWLOCK,
-        m_axi_gmem_x_0_AWCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWCACHE,
-        m_axi_gmem_x_0_AWPROT => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWPROT,
-        m_axi_gmem_x_0_AWQOS => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWQOS,
-        m_axi_gmem_x_0_AWREGION => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWREGION,
-        m_axi_gmem_x_0_AWUSER => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWUSER,
-        m_axi_gmem_x_0_WVALID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WVALID,
+        m_axi_gmem_x_0_AWADDR => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWADDR,
+        m_axi_gmem_x_0_AWID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWID,
+        m_axi_gmem_x_0_AWLEN => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWLEN,
+        m_axi_gmem_x_0_AWSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWSIZE,
+        m_axi_gmem_x_0_AWBURST => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWBURST,
+        m_axi_gmem_x_0_AWLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWLOCK,
+        m_axi_gmem_x_0_AWCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWCACHE,
+        m_axi_gmem_x_0_AWPROT => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWPROT,
+        m_axi_gmem_x_0_AWQOS => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWQOS,
+        m_axi_gmem_x_0_AWREGION => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWREGION,
+        m_axi_gmem_x_0_AWUSER => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWUSER,
+        m_axi_gmem_x_0_WVALID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WVALID,
         m_axi_gmem_x_0_WREADY => gmem_x_0_WREADY,
-        m_axi_gmem_x_0_WDATA => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WDATA,
-        m_axi_gmem_x_0_WSTRB => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WSTRB,
-        m_axi_gmem_x_0_WLAST => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WLAST,
-        m_axi_gmem_x_0_WID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WID,
-        m_axi_gmem_x_0_WUSER => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WUSER,
-        m_axi_gmem_x_0_ARVALID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARVALID,
+        m_axi_gmem_x_0_WDATA => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WDATA,
+        m_axi_gmem_x_0_WSTRB => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WSTRB,
+        m_axi_gmem_x_0_WLAST => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WLAST,
+        m_axi_gmem_x_0_WID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WID,
+        m_axi_gmem_x_0_WUSER => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WUSER,
+        m_axi_gmem_x_0_ARVALID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARVALID,
         m_axi_gmem_x_0_ARREADY => gmem_x_0_ARREADY,
-        m_axi_gmem_x_0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARADDR,
-        m_axi_gmem_x_0_ARID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARID,
-        m_axi_gmem_x_0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARLEN,
-        m_axi_gmem_x_0_ARSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARSIZE,
-        m_axi_gmem_x_0_ARBURST => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARBURST,
-        m_axi_gmem_x_0_ARLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARLOCK,
-        m_axi_gmem_x_0_ARCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARCACHE,
-        m_axi_gmem_x_0_ARPROT => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARPROT,
-        m_axi_gmem_x_0_ARQOS => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARQOS,
-        m_axi_gmem_x_0_ARREGION => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARREGION,
-        m_axi_gmem_x_0_ARUSER => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARUSER,
+        m_axi_gmem_x_0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARADDR,
+        m_axi_gmem_x_0_ARID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARID,
+        m_axi_gmem_x_0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARLEN,
+        m_axi_gmem_x_0_ARSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARSIZE,
+        m_axi_gmem_x_0_ARBURST => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARBURST,
+        m_axi_gmem_x_0_ARLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARLOCK,
+        m_axi_gmem_x_0_ARCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARCACHE,
+        m_axi_gmem_x_0_ARPROT => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARPROT,
+        m_axi_gmem_x_0_ARQOS => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARQOS,
+        m_axi_gmem_x_0_ARREGION => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARREGION,
+        m_axi_gmem_x_0_ARUSER => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARUSER,
         m_axi_gmem_x_0_RVALID => gmem_x_0_RVALID,
-        m_axi_gmem_x_0_RREADY => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_RREADY,
+        m_axi_gmem_x_0_RREADY => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_RREADY,
         m_axi_gmem_x_0_RDATA => gmem_x_0_RDATA,
         m_axi_gmem_x_0_RLAST => ap_const_logic_0,
         m_axi_gmem_x_0_RID => ap_const_lv1_0,
@@ -2914,46 +2914,46 @@ begin
         m_axi_gmem_x_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_x_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_x_0_BVALID => gmem_x_0_BVALID,
-        m_axi_gmem_x_0_BREADY => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_BREADY,
+        m_axi_gmem_x_0_BREADY => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_BREADY,
         m_axi_gmem_x_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_x_0_BID => ap_const_lv1_0,
         m_axi_gmem_x_0_BUSER => ap_const_lv1_0,
-        X_ptr => X_read_reg_742,
-        m_axi_gmem_wf_0_AWVALID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWVALID,
+        X_ptr => X_read_reg_750,
+        m_axi_gmem_wf_0_AWVALID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWVALID,
         m_axi_gmem_wf_0_AWREADY => ap_const_logic_0,
-        m_axi_gmem_wf_0_AWADDR => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWADDR,
-        m_axi_gmem_wf_0_AWID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWID,
-        m_axi_gmem_wf_0_AWLEN => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWLEN,
-        m_axi_gmem_wf_0_AWSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWSIZE,
-        m_axi_gmem_wf_0_AWBURST => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWBURST,
-        m_axi_gmem_wf_0_AWLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWLOCK,
-        m_axi_gmem_wf_0_AWCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWCACHE,
-        m_axi_gmem_wf_0_AWPROT => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWPROT,
-        m_axi_gmem_wf_0_AWQOS => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWQOS,
-        m_axi_gmem_wf_0_AWREGION => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWREGION,
-        m_axi_gmem_wf_0_AWUSER => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_AWUSER,
-        m_axi_gmem_wf_0_WVALID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WVALID,
+        m_axi_gmem_wf_0_AWADDR => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWADDR,
+        m_axi_gmem_wf_0_AWID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWID,
+        m_axi_gmem_wf_0_AWLEN => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWLEN,
+        m_axi_gmem_wf_0_AWSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWSIZE,
+        m_axi_gmem_wf_0_AWBURST => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWBURST,
+        m_axi_gmem_wf_0_AWLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWLOCK,
+        m_axi_gmem_wf_0_AWCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWCACHE,
+        m_axi_gmem_wf_0_AWPROT => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWPROT,
+        m_axi_gmem_wf_0_AWQOS => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWQOS,
+        m_axi_gmem_wf_0_AWREGION => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWREGION,
+        m_axi_gmem_wf_0_AWUSER => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_AWUSER,
+        m_axi_gmem_wf_0_WVALID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WVALID,
         m_axi_gmem_wf_0_WREADY => ap_const_logic_0,
-        m_axi_gmem_wf_0_WDATA => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WDATA,
-        m_axi_gmem_wf_0_WSTRB => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WSTRB,
-        m_axi_gmem_wf_0_WLAST => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WLAST,
-        m_axi_gmem_wf_0_WID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WID,
-        m_axi_gmem_wf_0_WUSER => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_WUSER,
-        m_axi_gmem_wf_0_ARVALID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARVALID,
+        m_axi_gmem_wf_0_WDATA => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WDATA,
+        m_axi_gmem_wf_0_WSTRB => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WSTRB,
+        m_axi_gmem_wf_0_WLAST => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WLAST,
+        m_axi_gmem_wf_0_WID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WID,
+        m_axi_gmem_wf_0_WUSER => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_WUSER,
+        m_axi_gmem_wf_0_ARVALID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARVALID,
         m_axi_gmem_wf_0_ARREADY => gmem_wf_0_ARREADY,
-        m_axi_gmem_wf_0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARADDR,
-        m_axi_gmem_wf_0_ARID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARID,
-        m_axi_gmem_wf_0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARLEN,
-        m_axi_gmem_wf_0_ARSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARSIZE,
-        m_axi_gmem_wf_0_ARBURST => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARBURST,
-        m_axi_gmem_wf_0_ARLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARLOCK,
-        m_axi_gmem_wf_0_ARCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARCACHE,
-        m_axi_gmem_wf_0_ARPROT => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARPROT,
-        m_axi_gmem_wf_0_ARQOS => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARQOS,
-        m_axi_gmem_wf_0_ARREGION => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARREGION,
-        m_axi_gmem_wf_0_ARUSER => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARUSER,
+        m_axi_gmem_wf_0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARADDR,
+        m_axi_gmem_wf_0_ARID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARID,
+        m_axi_gmem_wf_0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARLEN,
+        m_axi_gmem_wf_0_ARSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARSIZE,
+        m_axi_gmem_wf_0_ARBURST => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARBURST,
+        m_axi_gmem_wf_0_ARLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARLOCK,
+        m_axi_gmem_wf_0_ARCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARCACHE,
+        m_axi_gmem_wf_0_ARPROT => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARPROT,
+        m_axi_gmem_wf_0_ARQOS => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARQOS,
+        m_axi_gmem_wf_0_ARREGION => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARREGION,
+        m_axi_gmem_wf_0_ARUSER => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARUSER,
         m_axi_gmem_wf_0_RVALID => gmem_wf_0_RVALID,
-        m_axi_gmem_wf_0_RREADY => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_RREADY,
+        m_axi_gmem_wf_0_RREADY => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_RREADY,
         m_axi_gmem_wf_0_RDATA => gmem_wf_0_RDATA,
         m_axi_gmem_wf_0_RLAST => ap_const_logic_0,
         m_axi_gmem_wf_0_RID => ap_const_lv1_0,
@@ -2961,46 +2961,46 @@ begin
         m_axi_gmem_wf_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_wf_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_wf_0_BVALID => ap_const_logic_0,
-        m_axi_gmem_wf_0_BREADY => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_BREADY,
+        m_axi_gmem_wf_0_BREADY => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_BREADY,
         m_axi_gmem_wf_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_wf_0_BID => ap_const_lv1_0,
         m_axi_gmem_wf_0_BUSER => ap_const_lv1_0,
-        W_ptr => W_fusion_read_reg_737,
-        m_axi_gmem_pf_0_AWVALID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWVALID,
+        W_ptr => W_fusion_read_reg_745,
+        m_axi_gmem_pf_0_AWVALID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWVALID,
         m_axi_gmem_pf_0_AWREADY => ap_const_logic_0,
-        m_axi_gmem_pf_0_AWADDR => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWADDR,
-        m_axi_gmem_pf_0_AWID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWID,
-        m_axi_gmem_pf_0_AWLEN => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWLEN,
-        m_axi_gmem_pf_0_AWSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWSIZE,
-        m_axi_gmem_pf_0_AWBURST => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWBURST,
-        m_axi_gmem_pf_0_AWLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWLOCK,
-        m_axi_gmem_pf_0_AWCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWCACHE,
-        m_axi_gmem_pf_0_AWPROT => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWPROT,
-        m_axi_gmem_pf_0_AWQOS => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWQOS,
-        m_axi_gmem_pf_0_AWREGION => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWREGION,
-        m_axi_gmem_pf_0_AWUSER => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_AWUSER,
-        m_axi_gmem_pf_0_WVALID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WVALID,
+        m_axi_gmem_pf_0_AWADDR => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWADDR,
+        m_axi_gmem_pf_0_AWID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWID,
+        m_axi_gmem_pf_0_AWLEN => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWLEN,
+        m_axi_gmem_pf_0_AWSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWSIZE,
+        m_axi_gmem_pf_0_AWBURST => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWBURST,
+        m_axi_gmem_pf_0_AWLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWLOCK,
+        m_axi_gmem_pf_0_AWCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWCACHE,
+        m_axi_gmem_pf_0_AWPROT => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWPROT,
+        m_axi_gmem_pf_0_AWQOS => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWQOS,
+        m_axi_gmem_pf_0_AWREGION => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWREGION,
+        m_axi_gmem_pf_0_AWUSER => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_AWUSER,
+        m_axi_gmem_pf_0_WVALID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WVALID,
         m_axi_gmem_pf_0_WREADY => ap_const_logic_0,
-        m_axi_gmem_pf_0_WDATA => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WDATA,
-        m_axi_gmem_pf_0_WSTRB => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WSTRB,
-        m_axi_gmem_pf_0_WLAST => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WLAST,
-        m_axi_gmem_pf_0_WID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WID,
-        m_axi_gmem_pf_0_WUSER => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_WUSER,
-        m_axi_gmem_pf_0_ARVALID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARVALID,
+        m_axi_gmem_pf_0_WDATA => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WDATA,
+        m_axi_gmem_pf_0_WSTRB => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WSTRB,
+        m_axi_gmem_pf_0_WLAST => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WLAST,
+        m_axi_gmem_pf_0_WID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WID,
+        m_axi_gmem_pf_0_WUSER => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_WUSER,
+        m_axi_gmem_pf_0_ARVALID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARVALID,
         m_axi_gmem_pf_0_ARREADY => gmem_pf_0_ARREADY,
-        m_axi_gmem_pf_0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARADDR,
-        m_axi_gmem_pf_0_ARID => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARID,
-        m_axi_gmem_pf_0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARLEN,
-        m_axi_gmem_pf_0_ARSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARSIZE,
-        m_axi_gmem_pf_0_ARBURST => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARBURST,
-        m_axi_gmem_pf_0_ARLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARLOCK,
-        m_axi_gmem_pf_0_ARCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARCACHE,
-        m_axi_gmem_pf_0_ARPROT => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARPROT,
-        m_axi_gmem_pf_0_ARQOS => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARQOS,
-        m_axi_gmem_pf_0_ARREGION => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARREGION,
-        m_axi_gmem_pf_0_ARUSER => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARUSER,
+        m_axi_gmem_pf_0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARADDR,
+        m_axi_gmem_pf_0_ARID => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARID,
+        m_axi_gmem_pf_0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARLEN,
+        m_axi_gmem_pf_0_ARSIZE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARSIZE,
+        m_axi_gmem_pf_0_ARBURST => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARBURST,
+        m_axi_gmem_pf_0_ARLOCK => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARLOCK,
+        m_axi_gmem_pf_0_ARCACHE => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARCACHE,
+        m_axi_gmem_pf_0_ARPROT => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARPROT,
+        m_axi_gmem_pf_0_ARQOS => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARQOS,
+        m_axi_gmem_pf_0_ARREGION => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARREGION,
+        m_axi_gmem_pf_0_ARUSER => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARUSER,
         m_axi_gmem_pf_0_RVALID => gmem_pf_0_RVALID,
-        m_axi_gmem_pf_0_RREADY => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_RREADY,
+        m_axi_gmem_pf_0_RREADY => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_RREADY,
         m_axi_gmem_pf_0_RDATA => gmem_pf_0_RDATA,
         m_axi_gmem_pf_0_RLAST => ap_const_logic_0,
         m_axi_gmem_pf_0_RID => ap_const_lv1_0,
@@ -3008,72 +3008,72 @@ begin
         m_axi_gmem_pf_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_pf_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_pf_0_BVALID => ap_const_logic_0,
-        m_axi_gmem_pf_0_BREADY => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_BREADY,
+        m_axi_gmem_pf_0_BREADY => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_BREADY,
         m_axi_gmem_pf_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_pf_0_BID => ap_const_lv1_0,
         m_axi_gmem_pf_0_BUSER => ap_const_lv1_0,
-        B_ptr => P_fusion_read_reg_728,
-        G_ptr => P_fusion_read_reg_728,
-        BE_ptr => P_fusion_read_reg_728,
-        G_IN_ptr => P_fusion_read_reg_728,
-        BE_IN_ptr => P_fusion_read_reg_728,
-        Out_ptr => X_read_reg_742,
-        epsilon => epsilon_read_reg_691,
-        mode => grp_Universal_Engine_Kernel_16_half_s_fu_382_mode,
-        idx1 => grp_Universal_Engine_Kernel_16_half_s_fu_382_idx1,
-        idx2 => grp_Universal_Engine_Kernel_16_half_s_fu_382_idx2,
-        idx3 => grp_Universal_Engine_Kernel_16_half_s_fu_382_idx3,
-        idx4 => grp_Universal_Engine_Kernel_16_half_s_fu_382_idx4,
-        idx5 => grp_Universal_Engine_Kernel_16_half_s_fu_382_idx5,
-        idx6 => grp_Universal_Engine_Kernel_16_half_s_fu_382_idx6,
-        global_buf_address1 => grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_address1,
-        global_buf_ce1 => grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_ce1,
-        global_buf_we1 => grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_we1,
-        global_buf_d1 => grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_d1);
+        B_ptr => P_fusion_read_reg_736,
+        G_ptr => P_fusion_read_reg_736,
+        BE_ptr => P_fusion_read_reg_736,
+        G_IN_ptr => P_fusion_read_reg_736,
+        BE_IN_ptr => P_fusion_read_reg_736,
+        Out_ptr => X_read_reg_750,
+        epsilon => epsilon_read_reg_699,
+        mode => grp_Universal_Engine_Kernel_16_half_s_fu_386_mode,
+        idx1 => grp_Universal_Engine_Kernel_16_half_s_fu_386_idx1,
+        idx2 => grp_Universal_Engine_Kernel_16_half_s_fu_386_idx2,
+        idx3 => grp_Universal_Engine_Kernel_16_half_s_fu_386_idx3,
+        idx4 => grp_Universal_Engine_Kernel_16_half_s_fu_386_idx4,
+        idx5 => grp_Universal_Engine_Kernel_16_half_s_fu_386_idx5,
+        idx6 => grp_Universal_Engine_Kernel_16_half_s_fu_386_idx6,
+        global_buf_address1 => grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_address1,
+        global_buf_ce1 => grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_ce1,
+        global_buf_we1 => grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_we1,
+        global_buf_d1 => grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_d1);
 
-    grp_GlobalAdd_Kernel_16_s_fu_455 : component full_generator_top_GlobalAdd_Kernel_16_s
+    grp_GlobalAdd_Kernel_16_s_fu_459 : component full_generator_top_GlobalAdd_Kernel_16_s
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_GlobalAdd_Kernel_16_s_fu_455_ap_start,
-        ap_done => grp_GlobalAdd_Kernel_16_s_fu_455_ap_done,
-        ap_idle => grp_GlobalAdd_Kernel_16_s_fu_455_ap_idle,
-        ap_ready => grp_GlobalAdd_Kernel_16_s_fu_455_ap_ready,
-        m_axi_gmem_x_0_AWVALID => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWVALID,
+        ap_start => grp_GlobalAdd_Kernel_16_s_fu_459_ap_start,
+        ap_done => grp_GlobalAdd_Kernel_16_s_fu_459_ap_done,
+        ap_idle => grp_GlobalAdd_Kernel_16_s_fu_459_ap_idle,
+        ap_ready => grp_GlobalAdd_Kernel_16_s_fu_459_ap_ready,
+        m_axi_gmem_x_0_AWVALID => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWVALID,
         m_axi_gmem_x_0_AWREADY => gmem_x_0_AWREADY,
-        m_axi_gmem_x_0_AWADDR => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWADDR,
-        m_axi_gmem_x_0_AWID => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWID,
-        m_axi_gmem_x_0_AWLEN => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWLEN,
-        m_axi_gmem_x_0_AWSIZE => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWSIZE,
-        m_axi_gmem_x_0_AWBURST => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWBURST,
-        m_axi_gmem_x_0_AWLOCK => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWLOCK,
-        m_axi_gmem_x_0_AWCACHE => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWCACHE,
-        m_axi_gmem_x_0_AWPROT => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWPROT,
-        m_axi_gmem_x_0_AWQOS => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWQOS,
-        m_axi_gmem_x_0_AWREGION => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWREGION,
-        m_axi_gmem_x_0_AWUSER => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWUSER,
-        m_axi_gmem_x_0_WVALID => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WVALID,
+        m_axi_gmem_x_0_AWADDR => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWADDR,
+        m_axi_gmem_x_0_AWID => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWID,
+        m_axi_gmem_x_0_AWLEN => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWLEN,
+        m_axi_gmem_x_0_AWSIZE => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWSIZE,
+        m_axi_gmem_x_0_AWBURST => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWBURST,
+        m_axi_gmem_x_0_AWLOCK => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWLOCK,
+        m_axi_gmem_x_0_AWCACHE => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWCACHE,
+        m_axi_gmem_x_0_AWPROT => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWPROT,
+        m_axi_gmem_x_0_AWQOS => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWQOS,
+        m_axi_gmem_x_0_AWREGION => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWREGION,
+        m_axi_gmem_x_0_AWUSER => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWUSER,
+        m_axi_gmem_x_0_WVALID => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WVALID,
         m_axi_gmem_x_0_WREADY => gmem_x_0_WREADY,
-        m_axi_gmem_x_0_WDATA => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WDATA,
-        m_axi_gmem_x_0_WSTRB => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WSTRB,
-        m_axi_gmem_x_0_WLAST => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WLAST,
-        m_axi_gmem_x_0_WID => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WID,
-        m_axi_gmem_x_0_WUSER => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WUSER,
-        m_axi_gmem_x_0_ARVALID => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARVALID,
+        m_axi_gmem_x_0_WDATA => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WDATA,
+        m_axi_gmem_x_0_WSTRB => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WSTRB,
+        m_axi_gmem_x_0_WLAST => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WLAST,
+        m_axi_gmem_x_0_WID => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WID,
+        m_axi_gmem_x_0_WUSER => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WUSER,
+        m_axi_gmem_x_0_ARVALID => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARVALID,
         m_axi_gmem_x_0_ARREADY => gmem_x_0_ARREADY,
-        m_axi_gmem_x_0_ARADDR => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARADDR,
-        m_axi_gmem_x_0_ARID => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARID,
-        m_axi_gmem_x_0_ARLEN => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARLEN,
-        m_axi_gmem_x_0_ARSIZE => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARSIZE,
-        m_axi_gmem_x_0_ARBURST => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARBURST,
-        m_axi_gmem_x_0_ARLOCK => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARLOCK,
-        m_axi_gmem_x_0_ARCACHE => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARCACHE,
-        m_axi_gmem_x_0_ARPROT => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARPROT,
-        m_axi_gmem_x_0_ARQOS => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARQOS,
-        m_axi_gmem_x_0_ARREGION => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARREGION,
-        m_axi_gmem_x_0_ARUSER => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARUSER,
+        m_axi_gmem_x_0_ARADDR => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARADDR,
+        m_axi_gmem_x_0_ARID => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARID,
+        m_axi_gmem_x_0_ARLEN => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARLEN,
+        m_axi_gmem_x_0_ARSIZE => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARSIZE,
+        m_axi_gmem_x_0_ARBURST => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARBURST,
+        m_axi_gmem_x_0_ARLOCK => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARLOCK,
+        m_axi_gmem_x_0_ARCACHE => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARCACHE,
+        m_axi_gmem_x_0_ARPROT => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARPROT,
+        m_axi_gmem_x_0_ARQOS => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARQOS,
+        m_axi_gmem_x_0_ARREGION => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARREGION,
+        m_axi_gmem_x_0_ARUSER => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARUSER,
         m_axi_gmem_x_0_RVALID => gmem_x_0_RVALID,
-        m_axi_gmem_x_0_RREADY => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_RREADY,
+        m_axi_gmem_x_0_RREADY => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_RREADY,
         m_axi_gmem_x_0_RDATA => gmem_x_0_RDATA,
         m_axi_gmem_x_0_RLAST => ap_const_logic_0,
         m_axi_gmem_x_0_RID => ap_const_lv1_0,
@@ -3081,58 +3081,58 @@ begin
         m_axi_gmem_x_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_x_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_x_0_BVALID => gmem_x_0_BVALID,
-        m_axi_gmem_x_0_BREADY => grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_BREADY,
+        m_axi_gmem_x_0_BREADY => grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_BREADY,
         m_axi_gmem_x_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_x_0_BID => ap_const_lv1_0,
         m_axi_gmem_x_0_BUSER => ap_const_lv1_0,
-        X => X_read_reg_742,
-        global_buf_address0 => grp_GlobalAdd_Kernel_16_s_fu_455_global_buf_address0,
-        global_buf_ce0 => grp_GlobalAdd_Kernel_16_s_fu_455_global_buf_ce0,
+        X => X_read_reg_750,
+        global_buf_address0 => grp_GlobalAdd_Kernel_16_s_fu_459_global_buf_address0,
+        global_buf_ce0 => grp_GlobalAdd_Kernel_16_s_fu_459_global_buf_ce0,
         global_buf_q0 => global_buf_q0);
 
-    grp_run_upconv_block_fu_464 : component full_generator_top_run_upconv_block
+    grp_run_upconv_block_fu_468 : component full_generator_top_run_upconv_block
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_run_upconv_block_fu_464_ap_start,
-        ap_done => grp_run_upconv_block_fu_464_ap_done,
-        ap_idle => grp_run_upconv_block_fu_464_ap_idle,
-        ap_ready => grp_run_upconv_block_fu_464_ap_ready,
-        m_axi_gmem_x_0_AWVALID => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWVALID,
+        ap_start => grp_run_upconv_block_fu_468_ap_start,
+        ap_done => grp_run_upconv_block_fu_468_ap_done,
+        ap_idle => grp_run_upconv_block_fu_468_ap_idle,
+        ap_ready => grp_run_upconv_block_fu_468_ap_ready,
+        m_axi_gmem_x_0_AWVALID => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWVALID,
         m_axi_gmem_x_0_AWREADY => ap_const_logic_0,
-        m_axi_gmem_x_0_AWADDR => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWADDR,
-        m_axi_gmem_x_0_AWID => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWID,
-        m_axi_gmem_x_0_AWLEN => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWLEN,
-        m_axi_gmem_x_0_AWSIZE => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWSIZE,
-        m_axi_gmem_x_0_AWBURST => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWBURST,
-        m_axi_gmem_x_0_AWLOCK => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWLOCK,
-        m_axi_gmem_x_0_AWCACHE => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWCACHE,
-        m_axi_gmem_x_0_AWPROT => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWPROT,
-        m_axi_gmem_x_0_AWQOS => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWQOS,
-        m_axi_gmem_x_0_AWREGION => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWREGION,
-        m_axi_gmem_x_0_AWUSER => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_AWUSER,
-        m_axi_gmem_x_0_WVALID => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WVALID,
+        m_axi_gmem_x_0_AWADDR => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWADDR,
+        m_axi_gmem_x_0_AWID => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWID,
+        m_axi_gmem_x_0_AWLEN => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWLEN,
+        m_axi_gmem_x_0_AWSIZE => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWSIZE,
+        m_axi_gmem_x_0_AWBURST => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWBURST,
+        m_axi_gmem_x_0_AWLOCK => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWLOCK,
+        m_axi_gmem_x_0_AWCACHE => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWCACHE,
+        m_axi_gmem_x_0_AWPROT => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWPROT,
+        m_axi_gmem_x_0_AWQOS => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWQOS,
+        m_axi_gmem_x_0_AWREGION => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWREGION,
+        m_axi_gmem_x_0_AWUSER => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_AWUSER,
+        m_axi_gmem_x_0_WVALID => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WVALID,
         m_axi_gmem_x_0_WREADY => ap_const_logic_0,
-        m_axi_gmem_x_0_WDATA => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WDATA,
-        m_axi_gmem_x_0_WSTRB => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WSTRB,
-        m_axi_gmem_x_0_WLAST => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WLAST,
-        m_axi_gmem_x_0_WID => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WID,
-        m_axi_gmem_x_0_WUSER => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_WUSER,
-        m_axi_gmem_x_0_ARVALID => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARVALID,
+        m_axi_gmem_x_0_WDATA => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WDATA,
+        m_axi_gmem_x_0_WSTRB => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WSTRB,
+        m_axi_gmem_x_0_WLAST => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WLAST,
+        m_axi_gmem_x_0_WID => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WID,
+        m_axi_gmem_x_0_WUSER => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_WUSER,
+        m_axi_gmem_x_0_ARVALID => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARVALID,
         m_axi_gmem_x_0_ARREADY => gmem_x_0_ARREADY,
-        m_axi_gmem_x_0_ARADDR => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARADDR,
-        m_axi_gmem_x_0_ARID => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARID,
-        m_axi_gmem_x_0_ARLEN => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARLEN,
-        m_axi_gmem_x_0_ARSIZE => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARSIZE,
-        m_axi_gmem_x_0_ARBURST => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARBURST,
-        m_axi_gmem_x_0_ARLOCK => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARLOCK,
-        m_axi_gmem_x_0_ARCACHE => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARCACHE,
-        m_axi_gmem_x_0_ARPROT => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARPROT,
-        m_axi_gmem_x_0_ARQOS => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARQOS,
-        m_axi_gmem_x_0_ARREGION => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARREGION,
-        m_axi_gmem_x_0_ARUSER => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARUSER,
+        m_axi_gmem_x_0_ARADDR => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARADDR,
+        m_axi_gmem_x_0_ARID => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARID,
+        m_axi_gmem_x_0_ARLEN => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARLEN,
+        m_axi_gmem_x_0_ARSIZE => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARSIZE,
+        m_axi_gmem_x_0_ARBURST => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARBURST,
+        m_axi_gmem_x_0_ARLOCK => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARLOCK,
+        m_axi_gmem_x_0_ARCACHE => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARCACHE,
+        m_axi_gmem_x_0_ARPROT => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARPROT,
+        m_axi_gmem_x_0_ARQOS => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARQOS,
+        m_axi_gmem_x_0_ARREGION => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARREGION,
+        m_axi_gmem_x_0_ARUSER => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARUSER,
         m_axi_gmem_x_0_RVALID => gmem_x_0_RVALID,
-        m_axi_gmem_x_0_RREADY => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_RREADY,
+        m_axi_gmem_x_0_RREADY => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_RREADY,
         m_axi_gmem_x_0_RDATA => gmem_x_0_RDATA,
         m_axi_gmem_x_0_RLAST => ap_const_logic_0,
         m_axi_gmem_x_0_RID => ap_const_lv1_0,
@@ -3140,46 +3140,46 @@ begin
         m_axi_gmem_x_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_x_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_x_0_BVALID => ap_const_logic_0,
-        m_axi_gmem_x_0_BREADY => grp_run_upconv_block_fu_464_m_axi_gmem_x_0_BREADY,
+        m_axi_gmem_x_0_BREADY => grp_run_upconv_block_fu_468_m_axi_gmem_x_0_BREADY,
         m_axi_gmem_x_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_x_0_BID => ap_const_lv1_0,
         m_axi_gmem_x_0_BUSER => ap_const_lv1_0,
-        X => X_read_reg_742,
-        m_axi_gmem_y_0_AWVALID => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWVALID,
+        X => X_read_reg_750,
+        m_axi_gmem_y_0_AWVALID => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWVALID,
         m_axi_gmem_y_0_AWREADY => gmem_y_0_AWREADY,
-        m_axi_gmem_y_0_AWADDR => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWADDR,
-        m_axi_gmem_y_0_AWID => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWID,
-        m_axi_gmem_y_0_AWLEN => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWLEN,
-        m_axi_gmem_y_0_AWSIZE => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWSIZE,
-        m_axi_gmem_y_0_AWBURST => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWBURST,
-        m_axi_gmem_y_0_AWLOCK => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWLOCK,
-        m_axi_gmem_y_0_AWCACHE => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWCACHE,
-        m_axi_gmem_y_0_AWPROT => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWPROT,
-        m_axi_gmem_y_0_AWQOS => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWQOS,
-        m_axi_gmem_y_0_AWREGION => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWREGION,
-        m_axi_gmem_y_0_AWUSER => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWUSER,
-        m_axi_gmem_y_0_WVALID => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WVALID,
+        m_axi_gmem_y_0_AWADDR => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWADDR,
+        m_axi_gmem_y_0_AWID => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWID,
+        m_axi_gmem_y_0_AWLEN => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWLEN,
+        m_axi_gmem_y_0_AWSIZE => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWSIZE,
+        m_axi_gmem_y_0_AWBURST => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWBURST,
+        m_axi_gmem_y_0_AWLOCK => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWLOCK,
+        m_axi_gmem_y_0_AWCACHE => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWCACHE,
+        m_axi_gmem_y_0_AWPROT => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWPROT,
+        m_axi_gmem_y_0_AWQOS => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWQOS,
+        m_axi_gmem_y_0_AWREGION => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWREGION,
+        m_axi_gmem_y_0_AWUSER => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWUSER,
+        m_axi_gmem_y_0_WVALID => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WVALID,
         m_axi_gmem_y_0_WREADY => gmem_y_0_WREADY,
-        m_axi_gmem_y_0_WDATA => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WDATA,
-        m_axi_gmem_y_0_WSTRB => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WSTRB,
-        m_axi_gmem_y_0_WLAST => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WLAST,
-        m_axi_gmem_y_0_WID => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WID,
-        m_axi_gmem_y_0_WUSER => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WUSER,
-        m_axi_gmem_y_0_ARVALID => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARVALID,
+        m_axi_gmem_y_0_WDATA => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WDATA,
+        m_axi_gmem_y_0_WSTRB => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WSTRB,
+        m_axi_gmem_y_0_WLAST => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WLAST,
+        m_axi_gmem_y_0_WID => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WID,
+        m_axi_gmem_y_0_WUSER => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WUSER,
+        m_axi_gmem_y_0_ARVALID => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARVALID,
         m_axi_gmem_y_0_ARREADY => gmem_y_0_ARREADY,
-        m_axi_gmem_y_0_ARADDR => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARADDR,
-        m_axi_gmem_y_0_ARID => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARID,
-        m_axi_gmem_y_0_ARLEN => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARLEN,
-        m_axi_gmem_y_0_ARSIZE => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARSIZE,
-        m_axi_gmem_y_0_ARBURST => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARBURST,
-        m_axi_gmem_y_0_ARLOCK => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARLOCK,
-        m_axi_gmem_y_0_ARCACHE => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARCACHE,
-        m_axi_gmem_y_0_ARPROT => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARPROT,
-        m_axi_gmem_y_0_ARQOS => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARQOS,
-        m_axi_gmem_y_0_ARREGION => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARREGION,
-        m_axi_gmem_y_0_ARUSER => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARUSER,
+        m_axi_gmem_y_0_ARADDR => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARADDR,
+        m_axi_gmem_y_0_ARID => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARID,
+        m_axi_gmem_y_0_ARLEN => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARLEN,
+        m_axi_gmem_y_0_ARSIZE => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARSIZE,
+        m_axi_gmem_y_0_ARBURST => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARBURST,
+        m_axi_gmem_y_0_ARLOCK => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARLOCK,
+        m_axi_gmem_y_0_ARCACHE => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARCACHE,
+        m_axi_gmem_y_0_ARPROT => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARPROT,
+        m_axi_gmem_y_0_ARQOS => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARQOS,
+        m_axi_gmem_y_0_ARREGION => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARREGION,
+        m_axi_gmem_y_0_ARUSER => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARUSER,
         m_axi_gmem_y_0_RVALID => gmem_y_0_RVALID,
-        m_axi_gmem_y_0_RREADY => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_RREADY,
+        m_axi_gmem_y_0_RREADY => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_RREADY,
         m_axi_gmem_y_0_RDATA => gmem_y_0_RDATA,
         m_axi_gmem_y_0_RLAST => ap_const_logic_0,
         m_axi_gmem_y_0_RID => ap_const_lv1_0,
@@ -3187,46 +3187,46 @@ begin
         m_axi_gmem_y_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_y_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_y_0_BVALID => gmem_y_0_BVALID,
-        m_axi_gmem_y_0_BREADY => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_BREADY,
+        m_axi_gmem_y_0_BREADY => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_BREADY,
         m_axi_gmem_y_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_y_0_BID => ap_const_lv1_0,
         m_axi_gmem_y_0_BUSER => ap_const_lv1_0,
-        Y => Y_read_reg_712,
-        m_axi_gmem_wu_0_AWVALID => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWVALID,
+        Y => Y_read_reg_720,
+        m_axi_gmem_wu_0_AWVALID => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWVALID,
         m_axi_gmem_wu_0_AWREADY => ap_const_logic_0,
-        m_axi_gmem_wu_0_AWADDR => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWADDR,
-        m_axi_gmem_wu_0_AWID => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWID,
-        m_axi_gmem_wu_0_AWLEN => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWLEN,
-        m_axi_gmem_wu_0_AWSIZE => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWSIZE,
-        m_axi_gmem_wu_0_AWBURST => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWBURST,
-        m_axi_gmem_wu_0_AWLOCK => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWLOCK,
-        m_axi_gmem_wu_0_AWCACHE => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWCACHE,
-        m_axi_gmem_wu_0_AWPROT => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWPROT,
-        m_axi_gmem_wu_0_AWQOS => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWQOS,
-        m_axi_gmem_wu_0_AWREGION => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWREGION,
-        m_axi_gmem_wu_0_AWUSER => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_AWUSER,
-        m_axi_gmem_wu_0_WVALID => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WVALID,
+        m_axi_gmem_wu_0_AWADDR => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWADDR,
+        m_axi_gmem_wu_0_AWID => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWID,
+        m_axi_gmem_wu_0_AWLEN => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWLEN,
+        m_axi_gmem_wu_0_AWSIZE => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWSIZE,
+        m_axi_gmem_wu_0_AWBURST => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWBURST,
+        m_axi_gmem_wu_0_AWLOCK => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWLOCK,
+        m_axi_gmem_wu_0_AWCACHE => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWCACHE,
+        m_axi_gmem_wu_0_AWPROT => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWPROT,
+        m_axi_gmem_wu_0_AWQOS => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWQOS,
+        m_axi_gmem_wu_0_AWREGION => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWREGION,
+        m_axi_gmem_wu_0_AWUSER => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_AWUSER,
+        m_axi_gmem_wu_0_WVALID => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WVALID,
         m_axi_gmem_wu_0_WREADY => ap_const_logic_0,
-        m_axi_gmem_wu_0_WDATA => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WDATA,
-        m_axi_gmem_wu_0_WSTRB => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WSTRB,
-        m_axi_gmem_wu_0_WLAST => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WLAST,
-        m_axi_gmem_wu_0_WID => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WID,
-        m_axi_gmem_wu_0_WUSER => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_WUSER,
-        m_axi_gmem_wu_0_ARVALID => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARVALID,
+        m_axi_gmem_wu_0_WDATA => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WDATA,
+        m_axi_gmem_wu_0_WSTRB => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WSTRB,
+        m_axi_gmem_wu_0_WLAST => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WLAST,
+        m_axi_gmem_wu_0_WID => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WID,
+        m_axi_gmem_wu_0_WUSER => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_WUSER,
+        m_axi_gmem_wu_0_ARVALID => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARVALID,
         m_axi_gmem_wu_0_ARREADY => gmem_wu_0_ARREADY,
-        m_axi_gmem_wu_0_ARADDR => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARADDR,
-        m_axi_gmem_wu_0_ARID => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARID,
-        m_axi_gmem_wu_0_ARLEN => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARLEN,
-        m_axi_gmem_wu_0_ARSIZE => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARSIZE,
-        m_axi_gmem_wu_0_ARBURST => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARBURST,
-        m_axi_gmem_wu_0_ARLOCK => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARLOCK,
-        m_axi_gmem_wu_0_ARCACHE => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARCACHE,
-        m_axi_gmem_wu_0_ARPROT => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARPROT,
-        m_axi_gmem_wu_0_ARQOS => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARQOS,
-        m_axi_gmem_wu_0_ARREGION => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARREGION,
-        m_axi_gmem_wu_0_ARUSER => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARUSER,
+        m_axi_gmem_wu_0_ARADDR => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARADDR,
+        m_axi_gmem_wu_0_ARID => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARID,
+        m_axi_gmem_wu_0_ARLEN => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARLEN,
+        m_axi_gmem_wu_0_ARSIZE => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARSIZE,
+        m_axi_gmem_wu_0_ARBURST => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARBURST,
+        m_axi_gmem_wu_0_ARLOCK => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARLOCK,
+        m_axi_gmem_wu_0_ARCACHE => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARCACHE,
+        m_axi_gmem_wu_0_ARPROT => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARPROT,
+        m_axi_gmem_wu_0_ARQOS => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARQOS,
+        m_axi_gmem_wu_0_ARREGION => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARREGION,
+        m_axi_gmem_wu_0_ARUSER => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARUSER,
         m_axi_gmem_wu_0_RVALID => gmem_wu_0_RVALID,
-        m_axi_gmem_wu_0_RREADY => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_RREADY,
+        m_axi_gmem_wu_0_RREADY => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_RREADY,
         m_axi_gmem_wu_0_RDATA => gmem_wu_0_RDATA,
         m_axi_gmem_wu_0_RLAST => ap_const_logic_0,
         m_axi_gmem_wu_0_RID => ap_const_lv1_0,
@@ -3234,46 +3234,46 @@ begin
         m_axi_gmem_wu_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_wu_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_wu_0_BVALID => ap_const_logic_0,
-        m_axi_gmem_wu_0_BREADY => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_BREADY,
+        m_axi_gmem_wu_0_BREADY => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_BREADY,
         m_axi_gmem_wu_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_wu_0_BID => ap_const_lv1_0,
         m_axi_gmem_wu_0_BUSER => ap_const_lv1_0,
-        W => W_upconv_read_reg_723,
-        m_axi_gmem_pu_0_AWVALID => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWVALID,
+        W => W_upconv_read_reg_731,
+        m_axi_gmem_pu_0_AWVALID => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWVALID,
         m_axi_gmem_pu_0_AWREADY => ap_const_logic_0,
-        m_axi_gmem_pu_0_AWADDR => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWADDR,
-        m_axi_gmem_pu_0_AWID => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWID,
-        m_axi_gmem_pu_0_AWLEN => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWLEN,
-        m_axi_gmem_pu_0_AWSIZE => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWSIZE,
-        m_axi_gmem_pu_0_AWBURST => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWBURST,
-        m_axi_gmem_pu_0_AWLOCK => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWLOCK,
-        m_axi_gmem_pu_0_AWCACHE => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWCACHE,
-        m_axi_gmem_pu_0_AWPROT => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWPROT,
-        m_axi_gmem_pu_0_AWQOS => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWQOS,
-        m_axi_gmem_pu_0_AWREGION => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWREGION,
-        m_axi_gmem_pu_0_AWUSER => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_AWUSER,
-        m_axi_gmem_pu_0_WVALID => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WVALID,
+        m_axi_gmem_pu_0_AWADDR => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWADDR,
+        m_axi_gmem_pu_0_AWID => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWID,
+        m_axi_gmem_pu_0_AWLEN => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWLEN,
+        m_axi_gmem_pu_0_AWSIZE => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWSIZE,
+        m_axi_gmem_pu_0_AWBURST => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWBURST,
+        m_axi_gmem_pu_0_AWLOCK => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWLOCK,
+        m_axi_gmem_pu_0_AWCACHE => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWCACHE,
+        m_axi_gmem_pu_0_AWPROT => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWPROT,
+        m_axi_gmem_pu_0_AWQOS => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWQOS,
+        m_axi_gmem_pu_0_AWREGION => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWREGION,
+        m_axi_gmem_pu_0_AWUSER => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_AWUSER,
+        m_axi_gmem_pu_0_WVALID => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WVALID,
         m_axi_gmem_pu_0_WREADY => ap_const_logic_0,
-        m_axi_gmem_pu_0_WDATA => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WDATA,
-        m_axi_gmem_pu_0_WSTRB => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WSTRB,
-        m_axi_gmem_pu_0_WLAST => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WLAST,
-        m_axi_gmem_pu_0_WID => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WID,
-        m_axi_gmem_pu_0_WUSER => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_WUSER,
-        m_axi_gmem_pu_0_ARVALID => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARVALID,
+        m_axi_gmem_pu_0_WDATA => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WDATA,
+        m_axi_gmem_pu_0_WSTRB => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WSTRB,
+        m_axi_gmem_pu_0_WLAST => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WLAST,
+        m_axi_gmem_pu_0_WID => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WID,
+        m_axi_gmem_pu_0_WUSER => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_WUSER,
+        m_axi_gmem_pu_0_ARVALID => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARVALID,
         m_axi_gmem_pu_0_ARREADY => gmem_pu_0_ARREADY,
-        m_axi_gmem_pu_0_ARADDR => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARADDR,
-        m_axi_gmem_pu_0_ARID => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARID,
-        m_axi_gmem_pu_0_ARLEN => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARLEN,
-        m_axi_gmem_pu_0_ARSIZE => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARSIZE,
-        m_axi_gmem_pu_0_ARBURST => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARBURST,
-        m_axi_gmem_pu_0_ARLOCK => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARLOCK,
-        m_axi_gmem_pu_0_ARCACHE => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARCACHE,
-        m_axi_gmem_pu_0_ARPROT => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARPROT,
-        m_axi_gmem_pu_0_ARQOS => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARQOS,
-        m_axi_gmem_pu_0_ARREGION => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARREGION,
-        m_axi_gmem_pu_0_ARUSER => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARUSER,
+        m_axi_gmem_pu_0_ARADDR => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARADDR,
+        m_axi_gmem_pu_0_ARID => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARID,
+        m_axi_gmem_pu_0_ARLEN => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARLEN,
+        m_axi_gmem_pu_0_ARSIZE => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARSIZE,
+        m_axi_gmem_pu_0_ARBURST => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARBURST,
+        m_axi_gmem_pu_0_ARLOCK => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARLOCK,
+        m_axi_gmem_pu_0_ARCACHE => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARCACHE,
+        m_axi_gmem_pu_0_ARPROT => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARPROT,
+        m_axi_gmem_pu_0_ARQOS => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARQOS,
+        m_axi_gmem_pu_0_ARREGION => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARREGION,
+        m_axi_gmem_pu_0_ARUSER => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARUSER,
         m_axi_gmem_pu_0_RVALID => gmem_pu_0_RVALID,
-        m_axi_gmem_pu_0_RREADY => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_RREADY,
+        m_axi_gmem_pu_0_RREADY => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_RREADY,
         m_axi_gmem_pu_0_RDATA => gmem_pu_0_RDATA,
         m_axi_gmem_pu_0_RLAST => ap_const_logic_0,
         m_axi_gmem_pu_0_RID => ap_const_lv1_0,
@@ -3281,59 +3281,59 @@ begin
         m_axi_gmem_pu_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_pu_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_pu_0_BVALID => ap_const_logic_0,
-        m_axi_gmem_pu_0_BREADY => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_BREADY,
+        m_axi_gmem_pu_0_BREADY => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_BREADY,
         m_axi_gmem_pu_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_pu_0_BID => ap_const_lv1_0,
         m_axi_gmem_pu_0_BUSER => ap_const_lv1_0,
-        P => P_upconv_read_reg_718,
-        epsilon => epsilon_read_reg_691,
-        mode => grp_run_upconv_block_fu_464_mode,
-        slot_in_off => grp_run_upconv_block_fu_464_slot_in_off,
-        slot_out_off => grp_run_upconv_block_fu_464_slot_out_off);
+        P => P_upconv_read_reg_726,
+        epsilon => epsilon_read_reg_699,
+        mode => grp_run_upconv_block_fu_468_mode,
+        slot_in_off => grp_run_upconv_block_fu_468_slot_in_off,
+        slot_out_off => grp_run_upconv_block_fu_468_slot_out_off);
 
-    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526 : component full_generator_top_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s
+    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534 : component full_generator_top_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_start,
-        ap_done => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done,
-        ap_idle => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_idle,
-        ap_ready => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_ready,
-        m_axi_gmem_y_0_AWVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWVALID,
+        ap_start => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_start,
+        ap_done => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done,
+        ap_idle => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_idle,
+        ap_ready => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_ready,
+        m_axi_gmem_y_0_AWVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWVALID,
         m_axi_gmem_y_0_AWREADY => ap_const_logic_0,
-        m_axi_gmem_y_0_AWADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWADDR,
-        m_axi_gmem_y_0_AWID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWID,
-        m_axi_gmem_y_0_AWLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWLEN,
-        m_axi_gmem_y_0_AWSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWSIZE,
-        m_axi_gmem_y_0_AWBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWBURST,
-        m_axi_gmem_y_0_AWLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWLOCK,
-        m_axi_gmem_y_0_AWCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWCACHE,
-        m_axi_gmem_y_0_AWPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWPROT,
-        m_axi_gmem_y_0_AWQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWQOS,
-        m_axi_gmem_y_0_AWREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWREGION,
-        m_axi_gmem_y_0_AWUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_AWUSER,
-        m_axi_gmem_y_0_WVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WVALID,
+        m_axi_gmem_y_0_AWADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWADDR,
+        m_axi_gmem_y_0_AWID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWID,
+        m_axi_gmem_y_0_AWLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWLEN,
+        m_axi_gmem_y_0_AWSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWSIZE,
+        m_axi_gmem_y_0_AWBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWBURST,
+        m_axi_gmem_y_0_AWLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWLOCK,
+        m_axi_gmem_y_0_AWCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWCACHE,
+        m_axi_gmem_y_0_AWPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWPROT,
+        m_axi_gmem_y_0_AWQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWQOS,
+        m_axi_gmem_y_0_AWREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWREGION,
+        m_axi_gmem_y_0_AWUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_AWUSER,
+        m_axi_gmem_y_0_WVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WVALID,
         m_axi_gmem_y_0_WREADY => ap_const_logic_0,
-        m_axi_gmem_y_0_WDATA => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WDATA,
-        m_axi_gmem_y_0_WSTRB => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WSTRB,
-        m_axi_gmem_y_0_WLAST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WLAST,
-        m_axi_gmem_y_0_WID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WID,
-        m_axi_gmem_y_0_WUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_WUSER,
-        m_axi_gmem_y_0_ARVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARVALID,
+        m_axi_gmem_y_0_WDATA => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WDATA,
+        m_axi_gmem_y_0_WSTRB => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WSTRB,
+        m_axi_gmem_y_0_WLAST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WLAST,
+        m_axi_gmem_y_0_WID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WID,
+        m_axi_gmem_y_0_WUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_WUSER,
+        m_axi_gmem_y_0_ARVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARVALID,
         m_axi_gmem_y_0_ARREADY => gmem_y_0_ARREADY,
-        m_axi_gmem_y_0_ARADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARADDR,
-        m_axi_gmem_y_0_ARID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARID,
-        m_axi_gmem_y_0_ARLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARLEN,
-        m_axi_gmem_y_0_ARSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARSIZE,
-        m_axi_gmem_y_0_ARBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARBURST,
-        m_axi_gmem_y_0_ARLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARLOCK,
-        m_axi_gmem_y_0_ARCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARCACHE,
-        m_axi_gmem_y_0_ARPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARPROT,
-        m_axi_gmem_y_0_ARQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARQOS,
-        m_axi_gmem_y_0_ARREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARREGION,
-        m_axi_gmem_y_0_ARUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARUSER,
+        m_axi_gmem_y_0_ARADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARADDR,
+        m_axi_gmem_y_0_ARID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARID,
+        m_axi_gmem_y_0_ARLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARLEN,
+        m_axi_gmem_y_0_ARSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARSIZE,
+        m_axi_gmem_y_0_ARBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARBURST,
+        m_axi_gmem_y_0_ARLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARLOCK,
+        m_axi_gmem_y_0_ARCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARCACHE,
+        m_axi_gmem_y_0_ARPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARPROT,
+        m_axi_gmem_y_0_ARQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARQOS,
+        m_axi_gmem_y_0_ARREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARREGION,
+        m_axi_gmem_y_0_ARUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARUSER,
         m_axi_gmem_y_0_RVALID => gmem_y_0_RVALID,
-        m_axi_gmem_y_0_RREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_RREADY,
+        m_axi_gmem_y_0_RREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_RREADY,
         m_axi_gmem_y_0_RDATA => gmem_y_0_RDATA,
         m_axi_gmem_y_0_RLAST => ap_const_logic_0,
         m_axi_gmem_y_0_RID => ap_const_lv1_0,
@@ -3341,46 +3341,46 @@ begin
         m_axi_gmem_y_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_y_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_y_0_BVALID => ap_const_logic_0,
-        m_axi_gmem_y_0_BREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_BREADY,
+        m_axi_gmem_y_0_BREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_BREADY,
         m_axi_gmem_y_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_y_0_BID => ap_const_lv1_0,
         m_axi_gmem_y_0_BUSER => ap_const_lv1_0,
-        X => Y_read_reg_712,
-        m_axi_gmem_wc_0_AWVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWVALID,
+        X => Y_read_reg_720,
+        m_axi_gmem_wc_0_AWVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWVALID,
         m_axi_gmem_wc_0_AWREADY => ap_const_logic_0,
-        m_axi_gmem_wc_0_AWADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWADDR,
-        m_axi_gmem_wc_0_AWID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWID,
-        m_axi_gmem_wc_0_AWLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWLEN,
-        m_axi_gmem_wc_0_AWSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWSIZE,
-        m_axi_gmem_wc_0_AWBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWBURST,
-        m_axi_gmem_wc_0_AWLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWLOCK,
-        m_axi_gmem_wc_0_AWCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWCACHE,
-        m_axi_gmem_wc_0_AWPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWPROT,
-        m_axi_gmem_wc_0_AWQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWQOS,
-        m_axi_gmem_wc_0_AWREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWREGION,
-        m_axi_gmem_wc_0_AWUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_AWUSER,
-        m_axi_gmem_wc_0_WVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WVALID,
+        m_axi_gmem_wc_0_AWADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWADDR,
+        m_axi_gmem_wc_0_AWID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWID,
+        m_axi_gmem_wc_0_AWLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWLEN,
+        m_axi_gmem_wc_0_AWSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWSIZE,
+        m_axi_gmem_wc_0_AWBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWBURST,
+        m_axi_gmem_wc_0_AWLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWLOCK,
+        m_axi_gmem_wc_0_AWCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWCACHE,
+        m_axi_gmem_wc_0_AWPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWPROT,
+        m_axi_gmem_wc_0_AWQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWQOS,
+        m_axi_gmem_wc_0_AWREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWREGION,
+        m_axi_gmem_wc_0_AWUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_AWUSER,
+        m_axi_gmem_wc_0_WVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WVALID,
         m_axi_gmem_wc_0_WREADY => ap_const_logic_0,
-        m_axi_gmem_wc_0_WDATA => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WDATA,
-        m_axi_gmem_wc_0_WSTRB => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WSTRB,
-        m_axi_gmem_wc_0_WLAST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WLAST,
-        m_axi_gmem_wc_0_WID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WID,
-        m_axi_gmem_wc_0_WUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_WUSER,
-        m_axi_gmem_wc_0_ARVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARVALID,
+        m_axi_gmem_wc_0_WDATA => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WDATA,
+        m_axi_gmem_wc_0_WSTRB => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WSTRB,
+        m_axi_gmem_wc_0_WLAST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WLAST,
+        m_axi_gmem_wc_0_WID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WID,
+        m_axi_gmem_wc_0_WUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_WUSER,
+        m_axi_gmem_wc_0_ARVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARVALID,
         m_axi_gmem_wc_0_ARREADY => gmem_wc_0_ARREADY,
-        m_axi_gmem_wc_0_ARADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARADDR,
-        m_axi_gmem_wc_0_ARID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARID,
-        m_axi_gmem_wc_0_ARLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARLEN,
-        m_axi_gmem_wc_0_ARSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARSIZE,
-        m_axi_gmem_wc_0_ARBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARBURST,
-        m_axi_gmem_wc_0_ARLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARLOCK,
-        m_axi_gmem_wc_0_ARCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARCACHE,
-        m_axi_gmem_wc_0_ARPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARPROT,
-        m_axi_gmem_wc_0_ARQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARQOS,
-        m_axi_gmem_wc_0_ARREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARREGION,
-        m_axi_gmem_wc_0_ARUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARUSER,
+        m_axi_gmem_wc_0_ARADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARADDR,
+        m_axi_gmem_wc_0_ARID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARID,
+        m_axi_gmem_wc_0_ARLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARLEN,
+        m_axi_gmem_wc_0_ARSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARSIZE,
+        m_axi_gmem_wc_0_ARBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARBURST,
+        m_axi_gmem_wc_0_ARLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARLOCK,
+        m_axi_gmem_wc_0_ARCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARCACHE,
+        m_axi_gmem_wc_0_ARPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARPROT,
+        m_axi_gmem_wc_0_ARQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARQOS,
+        m_axi_gmem_wc_0_ARREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARREGION,
+        m_axi_gmem_wc_0_ARUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARUSER,
         m_axi_gmem_wc_0_RVALID => gmem_wc_0_RVALID,
-        m_axi_gmem_wc_0_RREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_RREADY,
+        m_axi_gmem_wc_0_RREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_RREADY,
         m_axi_gmem_wc_0_RDATA => gmem_wc_0_RDATA,
         m_axi_gmem_wc_0_RLAST => ap_const_logic_0,
         m_axi_gmem_wc_0_RID => ap_const_lv1_0,
@@ -3388,47 +3388,47 @@ begin
         m_axi_gmem_wc_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_wc_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_wc_0_BVALID => ap_const_logic_0,
-        m_axi_gmem_wc_0_BREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_BREADY,
+        m_axi_gmem_wc_0_BREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_BREADY,
         m_axi_gmem_wc_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_wc_0_BID => ap_const_lv1_0,
         m_axi_gmem_wc_0_BUSER => ap_const_lv1_0,
-        W => W_conv77_read_reg_707,
-        B_val => trunc_ln205_reg_816,
-        m_axi_gmem_z_0_AWVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWVALID,
+        W => W_conv77_read_reg_715,
+        B_val => trunc_ln205_reg_824,
+        m_axi_gmem_z_0_AWVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWVALID,
         m_axi_gmem_z_0_AWREADY => gmem_z_0_AWREADY,
-        m_axi_gmem_z_0_AWADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWADDR,
-        m_axi_gmem_z_0_AWID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWID,
-        m_axi_gmem_z_0_AWLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWLEN,
-        m_axi_gmem_z_0_AWSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWSIZE,
-        m_axi_gmem_z_0_AWBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWBURST,
-        m_axi_gmem_z_0_AWLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWLOCK,
-        m_axi_gmem_z_0_AWCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWCACHE,
-        m_axi_gmem_z_0_AWPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWPROT,
-        m_axi_gmem_z_0_AWQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWQOS,
-        m_axi_gmem_z_0_AWREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWREGION,
-        m_axi_gmem_z_0_AWUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWUSER,
-        m_axi_gmem_z_0_WVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WVALID,
+        m_axi_gmem_z_0_AWADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWADDR,
+        m_axi_gmem_z_0_AWID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWID,
+        m_axi_gmem_z_0_AWLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWLEN,
+        m_axi_gmem_z_0_AWSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWSIZE,
+        m_axi_gmem_z_0_AWBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWBURST,
+        m_axi_gmem_z_0_AWLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWLOCK,
+        m_axi_gmem_z_0_AWCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWCACHE,
+        m_axi_gmem_z_0_AWPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWPROT,
+        m_axi_gmem_z_0_AWQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWQOS,
+        m_axi_gmem_z_0_AWREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWREGION,
+        m_axi_gmem_z_0_AWUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWUSER,
+        m_axi_gmem_z_0_WVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WVALID,
         m_axi_gmem_z_0_WREADY => gmem_z_0_WREADY,
-        m_axi_gmem_z_0_WDATA => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WDATA,
-        m_axi_gmem_z_0_WSTRB => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WSTRB,
-        m_axi_gmem_z_0_WLAST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WLAST,
-        m_axi_gmem_z_0_WID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WID,
-        m_axi_gmem_z_0_WUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WUSER,
-        m_axi_gmem_z_0_ARVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARVALID,
+        m_axi_gmem_z_0_WDATA => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WDATA,
+        m_axi_gmem_z_0_WSTRB => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WSTRB,
+        m_axi_gmem_z_0_WLAST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WLAST,
+        m_axi_gmem_z_0_WID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WID,
+        m_axi_gmem_z_0_WUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WUSER,
+        m_axi_gmem_z_0_ARVALID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARVALID,
         m_axi_gmem_z_0_ARREADY => ap_const_logic_0,
-        m_axi_gmem_z_0_ARADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARADDR,
-        m_axi_gmem_z_0_ARID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARID,
-        m_axi_gmem_z_0_ARLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARLEN,
-        m_axi_gmem_z_0_ARSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARSIZE,
-        m_axi_gmem_z_0_ARBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARBURST,
-        m_axi_gmem_z_0_ARLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARLOCK,
-        m_axi_gmem_z_0_ARCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARCACHE,
-        m_axi_gmem_z_0_ARPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARPROT,
-        m_axi_gmem_z_0_ARQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARQOS,
-        m_axi_gmem_z_0_ARREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARREGION,
-        m_axi_gmem_z_0_ARUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_ARUSER,
+        m_axi_gmem_z_0_ARADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARADDR,
+        m_axi_gmem_z_0_ARID => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARID,
+        m_axi_gmem_z_0_ARLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARLEN,
+        m_axi_gmem_z_0_ARSIZE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARSIZE,
+        m_axi_gmem_z_0_ARBURST => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARBURST,
+        m_axi_gmem_z_0_ARLOCK => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARLOCK,
+        m_axi_gmem_z_0_ARCACHE => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARCACHE,
+        m_axi_gmem_z_0_ARPROT => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARPROT,
+        m_axi_gmem_z_0_ARQOS => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARQOS,
+        m_axi_gmem_z_0_ARREGION => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARREGION,
+        m_axi_gmem_z_0_ARUSER => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_ARUSER,
         m_axi_gmem_z_0_RVALID => ap_const_logic_0,
-        m_axi_gmem_z_0_RREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_RREADY,
+        m_axi_gmem_z_0_RREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_RREADY,
         m_axi_gmem_z_0_RDATA => ap_const_lv512_lc_1,
         m_axi_gmem_z_0_RLAST => ap_const_logic_0,
         m_axi_gmem_z_0_RID => ap_const_lv1_0,
@@ -3436,11 +3436,11 @@ begin
         m_axi_gmem_z_0_RUSER => ap_const_lv1_0,
         m_axi_gmem_z_0_RRESP => ap_const_lv2_0,
         m_axi_gmem_z_0_BVALID => gmem_z_0_BVALID,
-        m_axi_gmem_z_0_BREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_BREADY,
+        m_axi_gmem_z_0_BREADY => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_BREADY,
         m_axi_gmem_z_0_BRESP => ap_const_lv2_0,
         m_axi_gmem_z_0_BID => ap_const_lv1_0,
         m_axi_gmem_z_0_BUSER => ap_const_lv1_0,
-        Z => Z_read_reg_697);
+        Z => Z_read_reg_705);
 
     control_s_axi_U : component full_generator_top_control_s_axi
     generic map (
@@ -3557,7 +3557,7 @@ begin
         ACLK_EN => ap_const_logic_1,
         I_CH0_ARVALID => gmem_bc_0_ARVALID,
         I_CH0_ARREADY => gmem_bc_0_ARREADY,
-        I_CH0_ARADDR => p_cast_cast_fu_656_p1,
+        I_CH0_ARADDR => p_cast_cast_fu_664_p1,
         I_CH0_ARLEN => gmem_bc_0_ARLEN,
         I_CH0_RVALID => gmem_bc_0_RVALID,
         I_CH0_RREADY => gmem_bc_0_RREADY,
@@ -3647,8 +3647,8 @@ begin
         ACLK_EN => ap_const_logic_1,
         I_CH0_ARVALID => gmem_pf_0_ARVALID,
         I_CH0_ARREADY => gmem_pf_0_ARREADY,
-        I_CH0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARADDR,
-        I_CH0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARLEN,
+        I_CH0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARADDR,
+        I_CH0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARLEN,
         I_CH0_RVALID => gmem_pf_0_RVALID,
         I_CH0_RREADY => gmem_pf_0_RREADY,
         I_CH0_RDATA => gmem_pf_0_RDATA,
@@ -3737,8 +3737,8 @@ begin
         ACLK_EN => ap_const_logic_1,
         I_CH0_ARVALID => gmem_pu_0_ARVALID,
         I_CH0_ARREADY => gmem_pu_0_ARREADY,
-        I_CH0_ARADDR => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARADDR,
-        I_CH0_ARLEN => grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARLEN,
+        I_CH0_ARADDR => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARADDR,
+        I_CH0_ARLEN => grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARLEN,
         I_CH0_RVALID => gmem_pu_0_RVALID,
         I_CH0_RREADY => gmem_pu_0_RREADY,
         I_CH0_RDATA => gmem_pu_0_RDATA,
@@ -3827,8 +3827,8 @@ begin
         ACLK_EN => ap_const_logic_1,
         I_CH0_ARVALID => gmem_wc_0_ARVALID,
         I_CH0_ARREADY => gmem_wc_0_ARREADY,
-        I_CH0_ARADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARADDR,
-        I_CH0_ARLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARLEN,
+        I_CH0_ARADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARADDR,
+        I_CH0_ARLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARLEN,
         I_CH0_RVALID => gmem_wc_0_RVALID,
         I_CH0_RREADY => gmem_wc_0_RREADY,
         I_CH0_RDATA => gmem_wc_0_RDATA,
@@ -3917,8 +3917,8 @@ begin
         ACLK_EN => ap_const_logic_1,
         I_CH0_ARVALID => gmem_wf_0_ARVALID,
         I_CH0_ARREADY => gmem_wf_0_ARREADY,
-        I_CH0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARADDR,
-        I_CH0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARLEN,
+        I_CH0_ARADDR => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARADDR,
+        I_CH0_ARLEN => grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARLEN,
         I_CH0_RVALID => gmem_wf_0_RVALID,
         I_CH0_RREADY => gmem_wf_0_RREADY,
         I_CH0_RDATA => gmem_wf_0_RDATA,
@@ -4007,8 +4007,8 @@ begin
         ACLK_EN => ap_const_logic_1,
         I_CH0_ARVALID => gmem_wu_0_ARVALID,
         I_CH0_ARREADY => gmem_wu_0_ARREADY,
-        I_CH0_ARADDR => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARADDR,
-        I_CH0_ARLEN => grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARLEN,
+        I_CH0_ARADDR => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARADDR,
+        I_CH0_ARLEN => grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARLEN,
         I_CH0_RVALID => gmem_wu_0_RVALID,
         I_CH0_RREADY => gmem_wu_0_RREADY,
         I_CH0_RDATA => gmem_wu_0_RDATA,
@@ -4195,12 +4195,12 @@ begin
         I_CH0_RFIFONUM => gmem_y_0_RFIFONUM,
         I_CH0_AWVALID => gmem_y_0_AWVALID,
         I_CH0_AWREADY => gmem_y_0_AWREADY,
-        I_CH0_AWADDR => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWADDR,
-        I_CH0_AWLEN => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWLEN,
+        I_CH0_AWADDR => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWADDR,
+        I_CH0_AWLEN => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWLEN,
         I_CH0_WVALID => gmem_y_0_WVALID,
         I_CH0_WREADY => gmem_y_0_WREADY,
-        I_CH0_WDATA => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WDATA,
-        I_CH0_WSTRB => grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WSTRB,
+        I_CH0_WDATA => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WDATA,
+        I_CH0_WSTRB => grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WSTRB,
         I_CH0_BVALID => gmem_y_0_BVALID,
         I_CH0_BREADY => gmem_y_0_BREADY);
 
@@ -4285,12 +4285,12 @@ begin
         I_CH0_RFIFONUM => gmem_z_0_RFIFONUM,
         I_CH0_AWVALID => gmem_z_0_AWVALID,
         I_CH0_AWREADY => gmem_z_0_AWREADY,
-        I_CH0_AWADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWADDR,
-        I_CH0_AWLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWLEN,
+        I_CH0_AWADDR => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWADDR,
+        I_CH0_AWLEN => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWLEN,
         I_CH0_WVALID => gmem_z_0_WVALID,
         I_CH0_WREADY => gmem_z_0_WREADY,
-        I_CH0_WDATA => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WDATA,
-        I_CH0_WSTRB => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WSTRB,
+        I_CH0_WDATA => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WDATA,
+        I_CH0_WSTRB => grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WSTRB,
         I_CH0_BVALID => gmem_z_0_BVALID,
         I_CH0_BREADY => gmem_z_0_BREADY);
 
@@ -4318,7 +4318,7 @@ begin
             else
                 if ((ap_continue = ap_const_logic_1)) then 
                     ap_done_reg <= ap_const_logic_0;
-                elsif (((ap_const_logic_1 = ap_CS_fsm_state82) and (grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done = ap_const_logic_1))) then 
+                elsif (((ap_const_logic_1 = ap_CS_fsm_state82) and (grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done = ap_const_logic_1))) then 
                     ap_done_reg <= ap_const_logic_1;
                 end if; 
             end if;
@@ -4326,64 +4326,64 @@ begin
     end process;
 
 
-    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_start_reg_assign_proc : process(ap_clk)
+    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_start_reg <= ap_const_logic_0;
+                grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_start_reg <= ap_const_logic_0;
             else
                 if ((ap_const_logic_1 = ap_CS_fsm_state81)) then 
-                    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_ready = ap_const_logic_1)) then 
-                    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_start_reg <= ap_const_logic_0;
+                    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_ready = ap_const_logic_1)) then 
+                    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
     end process;
 
 
-    grp_GlobalAdd_Kernel_16_s_fu_455_ap_start_reg_assign_proc : process(ap_clk)
+    grp_GlobalAdd_Kernel_16_s_fu_459_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_GlobalAdd_Kernel_16_s_fu_455_ap_start_reg <= ap_const_logic_0;
+                grp_GlobalAdd_Kernel_16_s_fu_459_ap_start_reg <= ap_const_logic_0;
             else
-                if (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_558_p2 = ap_const_lv1_1))) then 
-                    grp_GlobalAdd_Kernel_16_s_fu_455_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_GlobalAdd_Kernel_16_s_fu_455_ap_ready = ap_const_logic_1)) then 
-                    grp_GlobalAdd_Kernel_16_s_fu_455_ap_start_reg <= ap_const_logic_0;
+                if (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_566_p2 = ap_const_lv1_1))) then 
+                    grp_GlobalAdd_Kernel_16_s_fu_459_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_GlobalAdd_Kernel_16_s_fu_459_ap_ready = ap_const_logic_1)) then 
+                    grp_GlobalAdd_Kernel_16_s_fu_459_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
     end process;
 
 
-    grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_start_reg_assign_proc : process(ap_clk)
+    grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_start_reg <= ap_const_logic_0;
+                grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_start_reg <= ap_const_logic_0;
             else
                 if (((ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-                    grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_ready = ap_const_logic_1)) then 
-                    grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_start_reg <= ap_const_logic_0;
+                    grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_ready = ap_const_logic_1)) then 
+                    grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
     end process;
 
 
-    grp_run_upconv_block_fu_464_ap_start_reg_assign_proc : process(ap_clk)
+    grp_run_upconv_block_fu_468_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_run_upconv_block_fu_464_ap_start_reg <= ap_const_logic_0;
+                grp_run_upconv_block_fu_468_ap_start_reg <= ap_const_logic_0;
             else
                 if (((ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-                    grp_run_upconv_block_fu_464_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_run_upconv_block_fu_464_ap_ready = ap_const_logic_1)) then 
-                    grp_run_upconv_block_fu_464_ap_start_reg <= ap_const_logic_0;
+                    grp_run_upconv_block_fu_468_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_run_upconv_block_fu_468_ap_ready = ap_const_logic_1)) then 
+                    grp_run_upconv_block_fu_468_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
@@ -4411,35 +4411,35 @@ begin
         end if;
     end process;
 
-    i_fu_306_assign_proc : process (ap_clk)
+    i_fu_310_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_const_boolean_0 = ap_block_state1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-                i_fu_306 <= ap_const_lv4_0;
-            elsif (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_558_p2 = ap_const_lv1_0))) then 
-                i_fu_306 <= add_ln174_fu_564_p2;
+                i_fu_310 <= ap_const_lv4_0;
+            elsif (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_566_p2 = ap_const_lv1_0))) then 
+                i_fu_310 <= add_ln174_fu_572_p2;
             end if; 
         end if;
     end process;
 
-    phi_mul1_fu_298_assign_proc : process (ap_clk)
+    phi_mul1_fu_302_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_const_boolean_0 = ap_block_state1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-                phi_mul1_fu_298 <= ap_const_lv12_0;
-            elsif (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_558_p2 = ap_const_lv1_0))) then 
-                phi_mul1_fu_298 <= add_ln179_1_fu_588_p2;
+                phi_mul1_fu_302 <= ap_const_lv12_0;
+            elsif (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_566_p2 = ap_const_lv1_0))) then 
+                phi_mul1_fu_302 <= add_ln179_1_fu_596_p2;
             end if; 
         end if;
     end process;
 
-    phi_mul_fu_302_assign_proc : process (ap_clk)
+    phi_mul_fu_306_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_const_boolean_0 = ap_block_state1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-                phi_mul_fu_302 <= ap_const_lv24_0;
-            elsif (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_558_p2 = ap_const_lv1_0))) then 
-                phi_mul_fu_302 <= add_ln178_1_fu_576_p2;
+                phi_mul_fu_306 <= ap_const_lv24_0;
+            elsif (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_566_p2 = ap_const_lv1_0))) then 
+                phi_mul_fu_306 <= add_ln178_1_fu_584_p2;
             end if; 
         end if;
     end process;
@@ -4447,16 +4447,16 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_const_boolean_0 = ap_block_state1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
-                B_conv77_read_reg_702 <= B_conv77;
-                P_fusion_read_reg_728 <= P_fusion;
-                P_upconv_read_reg_718 <= P_upconv;
-                W_conv77_read_reg_707 <= W_conv77;
-                W_fusion_read_reg_737 <= W_fusion;
-                W_upconv_read_reg_723 <= W_upconv;
-                X_read_reg_742 <= X;
-                Y_read_reg_712 <= Y;
-                Z_read_reg_697 <= Z;
-                epsilon_read_reg_691 <= epsilon;
+                B_conv77_read_reg_710 <= B_conv77;
+                P_fusion_read_reg_736 <= P_fusion;
+                P_upconv_read_reg_726 <= P_upconv;
+                W_conv77_read_reg_715 <= W_conv77;
+                W_fusion_read_reg_745 <= W_fusion;
+                W_upconv_read_reg_731 <= W_upconv;
+                X_read_reg_750 <= X;
+                Y_read_reg_720 <= Y;
+                Z_read_reg_705 <= Z;
+                epsilon_read_reg_699 <= epsilon;
             end if;
         end if;
     end process;
@@ -4464,24 +4464,24 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state4)) then
-                add_ln178_reg_765 <= add_ln178_fu_582_p2;
-                add_ln179_reg_770 <= add_ln179_fu_594_p2;
-                add_ln180_reg_775 <= add_ln180_fu_600_p2;
-                add_ln181_reg_780 <= add_ln181_fu_606_p2;
-                p_cast_reg_785 <= B_conv77_read_reg_702(63 downto 5);
-                phi_mul1_load_reg_753 <= phi_mul1_fu_298;
-                phi_mul_load_reg_760 <= phi_mul_fu_302;
+                add_ln178_reg_773 <= add_ln178_fu_590_p2;
+                add_ln179_reg_778 <= add_ln179_fu_602_p2;
+                add_ln180_reg_783 <= add_ln180_fu_608_p2;
+                add_ln181_reg_788 <= add_ln181_fu_614_p2;
+                p_cast_reg_793 <= B_conv77_read_reg_710(63 downto 5);
+                phi_mul1_load_reg_761 <= phi_mul1_fu_302;
+                phi_mul_load_reg_768 <= phi_mul_fu_306;
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state6))) then
-                add_ln187_reg_790 <= add_ln187_fu_636_p2;
-                add_ln188_reg_795 <= add_ln188_fu_641_p2;
-                add_ln189_reg_800 <= add_ln189_fu_646_p2;
-                add_ln190_reg_805 <= add_ln190_fu_651_p2;
+            if (((grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state6))) then
+                add_ln187_reg_798 <= add_ln187_fu_644_p2;
+                add_ln188_reg_803 <= add_ln188_fu_649_p2;
+                add_ln189_reg_808 <= add_ln189_fu_654_p2;
+                add_ln190_reg_813 <= add_ln190_fu_659_p2;
             end if;
         end if;
     end process;
@@ -4489,12 +4489,12 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((gmem_bc_0_RVALID = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state80))) then
-                trunc_ln205_reg_816 <= trunc_ln205_fu_666_p1;
+                trunc_ln205_reg_824 <= trunc_ln205_fu_674_p1;
             end if;
         end if;
     end process;
 
-    ap_NS_fsm_assign_proc : process (ap_CS_fsm, ap_CS_fsm_state1, ap_CS_fsm_state9, ap_CS_fsm_state80, ap_block_state1, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done, gmem_bc_0_ARREADY, gmem_bc_0_RVALID, grp_GlobalAdd_Kernel_16_s_fu_455_ap_done, grp_run_upconv_block_fu_464_ap_done, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done, ap_CS_fsm_state3, ap_CS_fsm_state8, icmp_ln174_fu_558_p2, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state82)
+    ap_NS_fsm_assign_proc : process (ap_CS_fsm, ap_CS_fsm_state1, ap_CS_fsm_state9, ap_CS_fsm_state80, ap_block_state1, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done, gmem_bc_0_ARREADY, gmem_bc_0_RVALID, grp_GlobalAdd_Kernel_16_s_fu_459_ap_done, grp_run_upconv_block_fu_468_ap_done, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done, ap_CS_fsm_state3, ap_CS_fsm_state8, icmp_ln174_fu_566_p2, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state82)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
@@ -4506,13 +4506,13 @@ begin
             when ap_ST_fsm_state2 => 
                 ap_NS_fsm <= ap_ST_fsm_state3;
             when ap_ST_fsm_state3 => 
-                if (((grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then
+                if (((grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then
                     ap_NS_fsm <= ap_ST_fsm_state4;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state3;
                 end if;
             when ap_ST_fsm_state4 => 
-                if (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_558_p2 = ap_const_lv1_1))) then
+                if (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln174_fu_566_p2 = ap_const_lv1_1))) then
                     ap_NS_fsm <= ap_ST_fsm_state9;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state5;
@@ -4520,7 +4520,7 @@ begin
             when ap_ST_fsm_state5 => 
                 ap_NS_fsm <= ap_ST_fsm_state6;
             when ap_ST_fsm_state6 => 
-                if (((grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state6))) then
+                if (((grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state6))) then
                     ap_NS_fsm <= ap_ST_fsm_state7;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state6;
@@ -4528,13 +4528,13 @@ begin
             when ap_ST_fsm_state7 => 
                 ap_NS_fsm <= ap_ST_fsm_state8;
             when ap_ST_fsm_state8 => 
-                if (((grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state8))) then
+                if (((grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state8))) then
                     ap_NS_fsm <= ap_ST_fsm_state4;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state8;
                 end if;
             when ap_ST_fsm_state9 => 
-                if ((not(((grp_GlobalAdd_Kernel_16_s_fu_455_ap_done = ap_const_logic_0) or (gmem_bc_0_ARREADY = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state9))) then
+                if ((not(((grp_GlobalAdd_Kernel_16_s_fu_459_ap_done = ap_const_logic_0) or (gmem_bc_0_ARREADY = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state9))) then
                     ap_NS_fsm <= ap_ST_fsm_state10;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state9;
@@ -4542,7 +4542,7 @@ begin
             when ap_ST_fsm_state10 => 
                 ap_NS_fsm <= ap_ST_fsm_state11;
             when ap_ST_fsm_state11 => 
-                if (((grp_run_upconv_block_fu_464_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state11))) then
+                if (((grp_run_upconv_block_fu_468_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state11))) then
                     ap_NS_fsm <= ap_ST_fsm_state12;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state11;
@@ -4550,7 +4550,7 @@ begin
             when ap_ST_fsm_state12 => 
                 ap_NS_fsm <= ap_ST_fsm_state13;
             when ap_ST_fsm_state13 => 
-                if (((grp_run_upconv_block_fu_464_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state13))) then
+                if (((grp_run_upconv_block_fu_468_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state13))) then
                     ap_NS_fsm <= ap_ST_fsm_state14;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state13;
@@ -4558,7 +4558,7 @@ begin
             when ap_ST_fsm_state14 => 
                 ap_NS_fsm <= ap_ST_fsm_state15;
             when ap_ST_fsm_state15 => 
-                if (((grp_run_upconv_block_fu_464_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state15))) then
+                if (((grp_run_upconv_block_fu_468_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state15))) then
                     ap_NS_fsm <= ap_ST_fsm_state16;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state15;
@@ -4566,7 +4566,7 @@ begin
             when ap_ST_fsm_state16 => 
                 ap_NS_fsm <= ap_ST_fsm_state17;
             when ap_ST_fsm_state17 => 
-                if (((grp_run_upconv_block_fu_464_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state17))) then
+                if (((grp_run_upconv_block_fu_468_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state17))) then
                     ap_NS_fsm <= ap_ST_fsm_state18;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state17;
@@ -4704,7 +4704,7 @@ begin
             when ap_ST_fsm_state81 => 
                 ap_NS_fsm <= ap_ST_fsm_state82;
             when ap_ST_fsm_state82 => 
-                if (((ap_const_logic_1 = ap_CS_fsm_state82) and (grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done = ap_const_logic_1))) then
+                if (((ap_const_logic_1 = ap_CS_fsm_state82) and (grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done = ap_const_logic_1))) then
                     ap_NS_fsm <= ap_ST_fsm_state1;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state82;
@@ -4713,17 +4713,17 @@ begin
                 ap_NS_fsm <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end case;
     end process;
-    add_ln174_fu_564_p2 <= std_logic_vector(unsigned(i_fu_306) + unsigned(ap_const_lv4_1));
-    add_ln178_1_fu_576_p2 <= std_logic_vector(unsigned(phi_mul_fu_302) + unsigned(ap_const_lv24_FD200));
-    add_ln178_fu_582_p2 <= std_logic_vector(unsigned(phi_mul_fu_302) + unsigned(ap_const_lv24_1D880));
-    add_ln179_1_fu_588_p2 <= std_logic_vector(unsigned(phi_mul1_fu_298) + unsigned(ap_const_lv12_168));
-    add_ln179_fu_594_p2 <= std_logic_vector(unsigned(phi_mul1_fu_298) + unsigned(ap_const_lv12_D0));
-    add_ln180_fu_600_p2 <= std_logic_vector(unsigned(phi_mul1_fu_298) + unsigned(ap_const_lv12_10C));
-    add_ln181_fu_606_p2 <= std_logic_vector(unsigned(phi_mul1_fu_298) + unsigned(ap_const_lv12_148));
-    add_ln187_fu_636_p2 <= std_logic_vector(unsigned(phi_mul_load_reg_760) + unsigned(ap_const_lv24_9C180));
-    add_ln188_fu_641_p2 <= std_logic_vector(unsigned(phi_mul1_load_reg_753) + unsigned(ap_const_lv12_184));
-    add_ln189_fu_646_p2 <= std_logic_vector(unsigned(phi_mul1_load_reg_753) + unsigned(ap_const_lv12_1C0));
-    add_ln190_fu_651_p2 <= std_logic_vector(unsigned(phi_mul1_load_reg_753) + unsigned(ap_const_lv12_1FC));
+    add_ln174_fu_572_p2 <= std_logic_vector(unsigned(i_fu_310) + unsigned(ap_const_lv4_1));
+    add_ln178_1_fu_584_p2 <= std_logic_vector(unsigned(phi_mul_fu_306) + unsigned(ap_const_lv24_FD200));
+    add_ln178_fu_590_p2 <= std_logic_vector(unsigned(phi_mul_fu_306) + unsigned(ap_const_lv24_1D880));
+    add_ln179_1_fu_596_p2 <= std_logic_vector(unsigned(phi_mul1_fu_302) + unsigned(ap_const_lv12_168));
+    add_ln179_fu_602_p2 <= std_logic_vector(unsigned(phi_mul1_fu_302) + unsigned(ap_const_lv12_D0));
+    add_ln180_fu_608_p2 <= std_logic_vector(unsigned(phi_mul1_fu_302) + unsigned(ap_const_lv12_10C));
+    add_ln181_fu_614_p2 <= std_logic_vector(unsigned(phi_mul1_fu_302) + unsigned(ap_const_lv12_148));
+    add_ln187_fu_644_p2 <= std_logic_vector(unsigned(phi_mul_load_reg_768) + unsigned(ap_const_lv24_9C180));
+    add_ln188_fu_649_p2 <= std_logic_vector(unsigned(phi_mul1_load_reg_761) + unsigned(ap_const_lv12_184));
+    add_ln189_fu_654_p2 <= std_logic_vector(unsigned(phi_mul1_load_reg_761) + unsigned(ap_const_lv12_1C0));
+    add_ln190_fu_659_p2 <= std_logic_vector(unsigned(phi_mul1_load_reg_761) + unsigned(ap_const_lv12_1FC));
     ap_CS_fsm_state1 <= ap_CS_fsm(0);
     ap_CS_fsm_state10 <= ap_CS_fsm(9);
     ap_CS_fsm_state11 <= ap_CS_fsm(10);
@@ -4746,9 +4746,9 @@ begin
     ap_CS_fsm_state9 <= ap_CS_fsm(8);
     ap_ST_fsm_state10_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state11_blk_assign_proc : process(grp_run_upconv_block_fu_464_ap_done)
+    ap_ST_fsm_state11_blk_assign_proc : process(grp_run_upconv_block_fu_468_ap_done)
     begin
-        if ((grp_run_upconv_block_fu_464_ap_done = ap_const_logic_0)) then 
+        if ((grp_run_upconv_block_fu_468_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state11_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state11_blk <= ap_const_logic_0;
@@ -4757,9 +4757,9 @@ begin
 
     ap_ST_fsm_state12_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state13_blk_assign_proc : process(grp_run_upconv_block_fu_464_ap_done)
+    ap_ST_fsm_state13_blk_assign_proc : process(grp_run_upconv_block_fu_468_ap_done)
     begin
-        if ((grp_run_upconv_block_fu_464_ap_done = ap_const_logic_0)) then 
+        if ((grp_run_upconv_block_fu_468_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state13_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state13_blk <= ap_const_logic_0;
@@ -4768,9 +4768,9 @@ begin
 
     ap_ST_fsm_state14_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state15_blk_assign_proc : process(grp_run_upconv_block_fu_464_ap_done)
+    ap_ST_fsm_state15_blk_assign_proc : process(grp_run_upconv_block_fu_468_ap_done)
     begin
-        if ((grp_run_upconv_block_fu_464_ap_done = ap_const_logic_0)) then 
+        if ((grp_run_upconv_block_fu_468_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state15_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state15_blk <= ap_const_logic_0;
@@ -4779,9 +4779,9 @@ begin
 
     ap_ST_fsm_state16_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state17_blk_assign_proc : process(grp_run_upconv_block_fu_464_ap_done)
+    ap_ST_fsm_state17_blk_assign_proc : process(grp_run_upconv_block_fu_468_ap_done)
     begin
-        if ((grp_run_upconv_block_fu_464_ap_done = ap_const_logic_0)) then 
+        if ((grp_run_upconv_block_fu_468_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state17_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state17_blk <= ap_const_logic_0;
@@ -4822,9 +4822,9 @@ begin
     ap_ST_fsm_state38_blk <= ap_const_logic_0;
     ap_ST_fsm_state39_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state3_blk_assign_proc : process(grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done)
+    ap_ST_fsm_state3_blk_assign_proc : process(grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done)
     begin
-        if ((grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done = ap_const_logic_0)) then 
+        if ((grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state3_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state3_blk <= ap_const_logic_0;
@@ -4864,9 +4864,9 @@ begin
     ap_ST_fsm_state68_blk <= ap_const_logic_0;
     ap_ST_fsm_state69_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state6_blk_assign_proc : process(grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done)
+    ap_ST_fsm_state6_blk_assign_proc : process(grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done)
     begin
-        if ((grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done = ap_const_logic_0)) then 
+        if ((grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state6_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state6_blk <= ap_const_logic_0;
@@ -4896,9 +4896,9 @@ begin
 
     ap_ST_fsm_state81_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state82_blk_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done)
+    ap_ST_fsm_state82_blk_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done)
     begin
-        if ((grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done = ap_const_logic_0)) then 
+        if ((grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state82_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state82_blk <= ap_const_logic_0;
@@ -4906,9 +4906,9 @@ begin
     end process;
 
 
-    ap_ST_fsm_state8_blk_assign_proc : process(grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done)
+    ap_ST_fsm_state8_blk_assign_proc : process(grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done)
     begin
-        if ((grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_done = ap_const_logic_0)) then 
+        if ((grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state8_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state8_blk <= ap_const_logic_0;
@@ -4916,9 +4916,9 @@ begin
     end process;
 
 
-    ap_ST_fsm_state9_blk_assign_proc : process(gmem_bc_0_ARREADY, grp_GlobalAdd_Kernel_16_s_fu_455_ap_done)
+    ap_ST_fsm_state9_blk_assign_proc : process(gmem_bc_0_ARREADY, grp_GlobalAdd_Kernel_16_s_fu_459_ap_done)
     begin
-        if (((grp_GlobalAdd_Kernel_16_s_fu_455_ap_done = ap_const_logic_0) or (gmem_bc_0_ARREADY = ap_const_logic_0))) then 
+        if (((grp_GlobalAdd_Kernel_16_s_fu_459_ap_done = ap_const_logic_0) or (gmem_bc_0_ARREADY = ap_const_logic_0))) then 
             ap_ST_fsm_state9_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state9_blk <= ap_const_logic_0;
@@ -4932,9 +4932,9 @@ begin
     end process;
 
 
-    ap_done_assign_proc : process(ap_done_reg, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done, ap_CS_fsm_state82)
+    ap_done_assign_proc : process(ap_done_reg, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done, ap_CS_fsm_state82)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state82) and (grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done = ap_const_logic_1))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state82) and (grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done = ap_const_logic_1))) then 
             ap_done <= ap_const_logic_1;
         else 
             ap_done <= ap_done_reg;
@@ -4952,9 +4952,9 @@ begin
     end process;
 
 
-    ap_ready_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done, ap_CS_fsm_state82)
+    ap_ready_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done, ap_CS_fsm_state82)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state82) and (grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_done = ap_const_logic_1))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state82) and (grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_done = ap_const_logic_1))) then 
             ap_ready <= ap_const_logic_1;
         else 
             ap_ready <= ap_const_logic_0;
@@ -4962,30 +4962,30 @@ begin
     end process;
 
 
-    global_buf_ce0_assign_proc : process(ap_CS_fsm_state9, grp_GlobalAdd_Kernel_16_s_fu_455_global_buf_ce0)
+    global_buf_ce0_assign_proc : process(ap_CS_fsm_state9, grp_GlobalAdd_Kernel_16_s_fu_459_global_buf_ce0)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state9)) then 
-            global_buf_ce0 <= grp_GlobalAdd_Kernel_16_s_fu_455_global_buf_ce0;
+            global_buf_ce0 <= grp_GlobalAdd_Kernel_16_s_fu_459_global_buf_ce0;
         else 
             global_buf_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    global_buf_ce1_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_ce1, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    global_buf_ce1_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_ce1, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3))) then 
-            global_buf_ce1 <= grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_ce1;
+            global_buf_ce1 <= grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_ce1;
         else 
             global_buf_ce1 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    global_buf_we1_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_we1, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    global_buf_we1_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_we1, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3))) then 
-            global_buf_we1 <= grp_Universal_Engine_Kernel_16_half_s_fu_382_global_buf_we1;
+            global_buf_we1 <= grp_Universal_Engine_Kernel_16_half_s_fu_386_global_buf_we1;
         else 
             global_buf_we1 <= ap_const_logic_0;
         end if; 
@@ -4993,9 +4993,9 @@ begin
 
     gmem_bc_0_ARLEN <= ap_const_lv64_1(32 - 1 downto 0);
 
-    gmem_bc_0_ARVALID_assign_proc : process(ap_CS_fsm_state9, gmem_bc_0_ARREADY, grp_GlobalAdd_Kernel_16_s_fu_455_ap_done)
+    gmem_bc_0_ARVALID_assign_proc : process(ap_CS_fsm_state9, gmem_bc_0_ARREADY, grp_GlobalAdd_Kernel_16_s_fu_459_ap_done)
     begin
-        if ((not(((grp_GlobalAdd_Kernel_16_s_fu_455_ap_done = ap_const_logic_0) or (gmem_bc_0_ARREADY = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state9))) then 
+        if ((not(((grp_GlobalAdd_Kernel_16_s_fu_459_ap_done = ap_const_logic_0) or (gmem_bc_0_ARREADY = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state9))) then 
             gmem_bc_0_ARVALID <= ap_const_logic_1;
         else 
             gmem_bc_0_ARVALID <= ap_const_logic_0;
@@ -5033,493 +5033,493 @@ begin
     end process;
 
 
-    gmem_pf_0_ARVALID_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_pf_0_ARVALID_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_pf_0_ARVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_ARVALID;
+            gmem_pf_0_ARVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_ARVALID;
         else 
             gmem_pf_0_ARVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_pf_0_RREADY_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_RREADY, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_pf_0_RREADY_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_RREADY, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_pf_0_RREADY <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_pf_0_RREADY;
+            gmem_pf_0_RREADY <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_pf_0_RREADY;
         else 
             gmem_pf_0_RREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_pu_0_ARVALID_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_pu_0_ARVALID_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_pu_0_ARVALID <= grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_ARVALID;
+            gmem_pu_0_ARVALID <= grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_ARVALID;
         else 
             gmem_pu_0_ARVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_pu_0_RREADY_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_RREADY, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_pu_0_RREADY_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_RREADY, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_pu_0_RREADY <= grp_run_upconv_block_fu_464_m_axi_gmem_pu_0_RREADY;
+            gmem_pu_0_RREADY <= grp_run_upconv_block_fu_468_m_axi_gmem_pu_0_RREADY;
         else 
             gmem_pu_0_RREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_wc_0_ARVALID_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARVALID, ap_CS_fsm_state81, ap_CS_fsm_state82)
+    gmem_wc_0_ARVALID_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARVALID, ap_CS_fsm_state81, ap_CS_fsm_state82)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state82) or (ap_const_logic_1 = ap_CS_fsm_state81))) then 
-            gmem_wc_0_ARVALID <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_ARVALID;
+            gmem_wc_0_ARVALID <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_ARVALID;
         else 
             gmem_wc_0_ARVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_wc_0_RREADY_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_RREADY, ap_CS_fsm_state81, ap_CS_fsm_state82)
+    gmem_wc_0_RREADY_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_RREADY, ap_CS_fsm_state81, ap_CS_fsm_state82)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state82) or (ap_const_logic_1 = ap_CS_fsm_state81))) then 
-            gmem_wc_0_RREADY <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_wc_0_RREADY;
+            gmem_wc_0_RREADY <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_wc_0_RREADY;
         else 
             gmem_wc_0_RREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_wf_0_ARVALID_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_wf_0_ARVALID_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_wf_0_ARVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_ARVALID;
+            gmem_wf_0_ARVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_ARVALID;
         else 
             gmem_wf_0_ARVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_wf_0_RREADY_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_RREADY, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_wf_0_RREADY_assign_proc : process(ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_RREADY, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_wf_0_RREADY <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_wf_0_RREADY;
+            gmem_wf_0_RREADY <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_wf_0_RREADY;
         else 
             gmem_wf_0_RREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_wu_0_ARVALID_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_wu_0_ARVALID_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_wu_0_ARVALID <= grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_ARVALID;
+            gmem_wu_0_ARVALID <= grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_ARVALID;
         else 
             gmem_wu_0_ARVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_wu_0_RREADY_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_RREADY, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_wu_0_RREADY_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_RREADY, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_wu_0_RREADY <= grp_run_upconv_block_fu_464_m_axi_gmem_wu_0_RREADY;
+            gmem_wu_0_RREADY <= grp_run_upconv_block_fu_468_m_axi_gmem_wu_0_RREADY;
         else 
             gmem_wu_0_RREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_x_0_ARADDR_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARADDR, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARADDR, grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARADDR, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_x_0_ARADDR_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARADDR, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARADDR, grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARADDR, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_x_0_ARADDR <= grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARADDR;
+            gmem_x_0_ARADDR <= grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARADDR;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_ARADDR <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARADDR;
+            gmem_x_0_ARADDR <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARADDR;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_ARADDR <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARADDR;
+            gmem_x_0_ARADDR <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARADDR;
         else 
             gmem_x_0_ARADDR <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    gmem_x_0_ARLEN_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARLEN, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARLEN, grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARLEN, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_x_0_ARLEN_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARLEN, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARLEN, grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARLEN, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_x_0_ARLEN <= grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARLEN;
+            gmem_x_0_ARLEN <= grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARLEN;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_ARLEN <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARLEN;
+            gmem_x_0_ARLEN <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARLEN;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_ARLEN <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARLEN;
+            gmem_x_0_ARLEN <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARLEN;
         else 
             gmem_x_0_ARLEN <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    gmem_x_0_ARVALID_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARVALID, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARVALID, grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_x_0_ARVALID_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARVALID, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARVALID, grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_x_0_ARVALID <= grp_run_upconv_block_fu_464_m_axi_gmem_x_0_ARVALID;
+            gmem_x_0_ARVALID <= grp_run_upconv_block_fu_468_m_axi_gmem_x_0_ARVALID;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_ARVALID <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_ARVALID;
+            gmem_x_0_ARVALID <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_ARVALID;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_ARVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_ARVALID;
+            gmem_x_0_ARVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_ARVALID;
         else 
             gmem_x_0_ARVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_x_0_AWADDR_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWADDR, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWADDR, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_x_0_AWADDR_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWADDR, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWADDR, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_AWADDR <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWADDR;
+            gmem_x_0_AWADDR <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWADDR;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_AWADDR <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWADDR;
+            gmem_x_0_AWADDR <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWADDR;
         else 
             gmem_x_0_AWADDR <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    gmem_x_0_AWLEN_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWLEN, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWLEN, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_x_0_AWLEN_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWLEN, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWLEN, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_AWLEN <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWLEN;
+            gmem_x_0_AWLEN <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWLEN;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_AWLEN <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWLEN;
+            gmem_x_0_AWLEN <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWLEN;
         else 
             gmem_x_0_AWLEN <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    gmem_x_0_AWVALID_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWVALID, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_x_0_AWVALID_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWVALID, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_AWVALID <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_AWVALID;
+            gmem_x_0_AWVALID <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_AWVALID;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_AWVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_AWVALID;
+            gmem_x_0_AWVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_AWVALID;
         else 
             gmem_x_0_AWVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_x_0_BREADY_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_BREADY, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_BREADY, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_x_0_BREADY_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_BREADY, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_BREADY, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_BREADY <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_BREADY;
+            gmem_x_0_BREADY <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_BREADY;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_BREADY <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_BREADY;
+            gmem_x_0_BREADY <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_BREADY;
         else 
             gmem_x_0_BREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_x_0_RREADY_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_RREADY, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_RREADY, grp_run_upconv_block_fu_464_m_axi_gmem_x_0_RREADY, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_x_0_RREADY_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_RREADY, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_RREADY, grp_run_upconv_block_fu_468_m_axi_gmem_x_0_RREADY, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_x_0_RREADY <= grp_run_upconv_block_fu_464_m_axi_gmem_x_0_RREADY;
+            gmem_x_0_RREADY <= grp_run_upconv_block_fu_468_m_axi_gmem_x_0_RREADY;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_RREADY <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_RREADY;
+            gmem_x_0_RREADY <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_RREADY;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_RREADY <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_RREADY;
+            gmem_x_0_RREADY <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_RREADY;
         else 
             gmem_x_0_RREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_x_0_WDATA_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WDATA, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WDATA, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_x_0_WDATA_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WDATA, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WDATA, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_WDATA <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WDATA;
+            gmem_x_0_WDATA <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WDATA;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_WDATA <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WDATA;
+            gmem_x_0_WDATA <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WDATA;
         else 
             gmem_x_0_WDATA <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    gmem_x_0_WSTRB_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WSTRB, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WSTRB, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_x_0_WSTRB_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WSTRB, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WSTRB, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_WSTRB <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WSTRB;
+            gmem_x_0_WSTRB <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WSTRB;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_WSTRB <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WSTRB;
+            gmem_x_0_WSTRB <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WSTRB;
         else 
             gmem_x_0_WSTRB <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    gmem_x_0_WVALID_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WVALID, grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    gmem_x_0_WVALID_assign_proc : process(ap_CS_fsm_state9, ap_CS_fsm_state4, ap_CS_fsm_state6, grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WVALID, grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WVALID, ap_CS_fsm_state2, ap_CS_fsm_state5, ap_CS_fsm_state7, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state4) or (ap_const_logic_1 = ap_CS_fsm_state9))) then 
-            gmem_x_0_WVALID <= grp_GlobalAdd_Kernel_16_s_fu_455_m_axi_gmem_x_0_WVALID;
+            gmem_x_0_WVALID <= grp_GlobalAdd_Kernel_16_s_fu_459_m_axi_gmem_x_0_WVALID;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8) or (ap_const_logic_1 = ap_CS_fsm_state3) or (ap_const_logic_1 = ap_CS_fsm_state7) or (ap_const_logic_1 = ap_CS_fsm_state5) or (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            gmem_x_0_WVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_382_m_axi_gmem_x_0_WVALID;
+            gmem_x_0_WVALID <= grp_Universal_Engine_Kernel_16_half_s_fu_386_m_axi_gmem_x_0_WVALID;
         else 
             gmem_x_0_WVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_y_0_ARADDR_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARADDR, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARADDR, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state81, ap_CS_fsm_state82)
+    gmem_y_0_ARADDR_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARADDR, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARADDR, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state81, ap_CS_fsm_state82)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state82) or (ap_const_logic_1 = ap_CS_fsm_state81))) then 
-            gmem_y_0_ARADDR <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARADDR;
+            gmem_y_0_ARADDR <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARADDR;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_y_0_ARADDR <= grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARADDR;
+            gmem_y_0_ARADDR <= grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARADDR;
         else 
             gmem_y_0_ARADDR <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    gmem_y_0_ARLEN_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARLEN, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARLEN, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state81, ap_CS_fsm_state82)
+    gmem_y_0_ARLEN_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARLEN, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARLEN, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state81, ap_CS_fsm_state82)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state82) or (ap_const_logic_1 = ap_CS_fsm_state81))) then 
-            gmem_y_0_ARLEN <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARLEN;
+            gmem_y_0_ARLEN <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARLEN;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_y_0_ARLEN <= grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARLEN;
+            gmem_y_0_ARLEN <= grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARLEN;
         else 
             gmem_y_0_ARLEN <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    gmem_y_0_ARVALID_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARVALID, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state81, ap_CS_fsm_state82)
+    gmem_y_0_ARVALID_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARVALID, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state81, ap_CS_fsm_state82)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state82) or (ap_const_logic_1 = ap_CS_fsm_state81))) then 
-            gmem_y_0_ARVALID <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_ARVALID;
+            gmem_y_0_ARVALID <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_ARVALID;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_y_0_ARVALID <= grp_run_upconv_block_fu_464_m_axi_gmem_y_0_ARVALID;
+            gmem_y_0_ARVALID <= grp_run_upconv_block_fu_468_m_axi_gmem_y_0_ARVALID;
         else 
             gmem_y_0_ARVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_y_0_AWVALID_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_y_0_AWVALID_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_y_0_AWVALID <= grp_run_upconv_block_fu_464_m_axi_gmem_y_0_AWVALID;
+            gmem_y_0_AWVALID <= grp_run_upconv_block_fu_468_m_axi_gmem_y_0_AWVALID;
         else 
             gmem_y_0_AWVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_y_0_BREADY_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_y_0_BREADY, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_y_0_BREADY_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_y_0_BREADY, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_y_0_BREADY <= grp_run_upconv_block_fu_464_m_axi_gmem_y_0_BREADY;
+            gmem_y_0_BREADY <= grp_run_upconv_block_fu_468_m_axi_gmem_y_0_BREADY;
         else 
             gmem_y_0_BREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_y_0_RREADY_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_y_0_RREADY, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_RREADY, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state81, ap_CS_fsm_state82)
+    gmem_y_0_RREADY_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_y_0_RREADY, grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_RREADY, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17, ap_CS_fsm_state81, ap_CS_fsm_state82)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state82) or (ap_const_logic_1 = ap_CS_fsm_state81))) then 
-            gmem_y_0_RREADY <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_y_0_RREADY;
+            gmem_y_0_RREADY <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_y_0_RREADY;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_y_0_RREADY <= grp_run_upconv_block_fu_464_m_axi_gmem_y_0_RREADY;
+            gmem_y_0_RREADY <= grp_run_upconv_block_fu_468_m_axi_gmem_y_0_RREADY;
         else 
             gmem_y_0_RREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_y_0_WVALID_assign_proc : process(grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    gmem_y_0_WVALID_assign_proc : process(grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WVALID, ap_CS_fsm_state10, ap_CS_fsm_state12, ap_CS_fsm_state14, ap_CS_fsm_state16, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11) or (ap_const_logic_1 = ap_CS_fsm_state16) or (ap_const_logic_1 = ap_CS_fsm_state14) or (ap_const_logic_1 = ap_CS_fsm_state12) or (ap_const_logic_1 = ap_CS_fsm_state10))) then 
-            gmem_y_0_WVALID <= grp_run_upconv_block_fu_464_m_axi_gmem_y_0_WVALID;
+            gmem_y_0_WVALID <= grp_run_upconv_block_fu_468_m_axi_gmem_y_0_WVALID;
         else 
             gmem_y_0_WVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_z_0_AWVALID_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWVALID, ap_CS_fsm_state81, ap_CS_fsm_state82)
+    gmem_z_0_AWVALID_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWVALID, ap_CS_fsm_state81, ap_CS_fsm_state82)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state82) or (ap_const_logic_1 = ap_CS_fsm_state81))) then 
-            gmem_z_0_AWVALID <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_AWVALID;
+            gmem_z_0_AWVALID <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_AWVALID;
         else 
             gmem_z_0_AWVALID <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_z_0_BREADY_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_BREADY, ap_CS_fsm_state81, ap_CS_fsm_state82)
+    gmem_z_0_BREADY_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_BREADY, ap_CS_fsm_state81, ap_CS_fsm_state82)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state82) or (ap_const_logic_1 = ap_CS_fsm_state81))) then 
-            gmem_z_0_BREADY <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_BREADY;
+            gmem_z_0_BREADY <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_BREADY;
         else 
             gmem_z_0_BREADY <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    gmem_z_0_WVALID_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WVALID, ap_CS_fsm_state81, ap_CS_fsm_state82)
+    gmem_z_0_WVALID_assign_proc : process(grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WVALID, ap_CS_fsm_state81, ap_CS_fsm_state82)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state82) or (ap_const_logic_1 = ap_CS_fsm_state81))) then 
-            gmem_z_0_WVALID <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_m_axi_gmem_z_0_WVALID;
+            gmem_z_0_WVALID <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_m_axi_gmem_z_0_WVALID;
         else 
             gmem_z_0_WVALID <= ap_const_logic_0;
         end if; 
     end process;
 
-    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_start <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_526_ap_start_reg;
-    grp_GlobalAdd_Kernel_16_s_fu_455_ap_start <= grp_GlobalAdd_Kernel_16_s_fu_455_ap_start_reg;
-    grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_start <= grp_Universal_Engine_Kernel_16_half_s_fu_382_ap_start_reg;
+    grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_start <= grp_Conv77_Kernel_8_8_1_60_3_256_256_7_7_256_256_s_fu_534_ap_start_reg;
+    grp_GlobalAdd_Kernel_16_s_fu_459_ap_start <= grp_GlobalAdd_Kernel_16_s_fu_459_ap_start_reg;
+    grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_start <= grp_Universal_Engine_Kernel_16_half_s_fu_386_ap_start_reg;
 
-    grp_Universal_Engine_Kernel_16_half_s_fu_382_idx1_assign_proc : process(add_ln178_reg_765, add_ln187_reg_790, ap_CS_fsm_state6, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    grp_Universal_Engine_Kernel_16_half_s_fu_386_idx1_assign_proc : process(add_ln178_reg_773, add_ln187_reg_798, ap_CS_fsm_state6, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx1 <= add_ln187_reg_790;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx1 <= add_ln187_reg_798;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx1 <= add_ln178_reg_765;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx1 <= add_ln178_reg_773;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx1 <= ap_const_lv24_0;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx1 <= ap_const_lv24_0;
         else 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx1 <= "XXXXXXXXXXXXXXXXXXXXXXXX";
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx1 <= "XXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    grp_Universal_Engine_Kernel_16_half_s_fu_382_idx2_assign_proc : process(add_ln179_reg_770, ap_CS_fsm_state6, add_ln188_reg_795, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    grp_Universal_Engine_Kernel_16_half_s_fu_386_idx2_assign_proc : process(add_ln179_reg_778, ap_CS_fsm_state6, add_ln188_reg_803, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx2 <= add_ln188_reg_795;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx2 <= add_ln188_reg_803;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx2 <= add_ln179_reg_770;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx2 <= add_ln179_reg_778;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx2 <= ap_const_lv12_0;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx2 <= ap_const_lv12_0;
         else 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx2 <= "XXXXXXXXXXXX";
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx2 <= "XXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    grp_Universal_Engine_Kernel_16_half_s_fu_382_idx3_assign_proc : process(add_ln180_reg_775, ap_CS_fsm_state6, add_ln189_reg_800, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    grp_Universal_Engine_Kernel_16_half_s_fu_386_idx3_assign_proc : process(add_ln180_reg_783, ap_CS_fsm_state6, add_ln189_reg_808, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx3 <= add_ln189_reg_800;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx3 <= add_ln189_reg_808;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx3 <= add_ln180_reg_775;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx3 <= add_ln180_reg_783;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx3 <= ap_const_lv12_3C;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx3 <= ap_const_lv12_3C;
         else 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx3 <= "XXXXXXXXXXXX";
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx3 <= "XXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    grp_Universal_Engine_Kernel_16_half_s_fu_382_idx4_assign_proc : process(add_ln181_reg_780, ap_CS_fsm_state6, add_ln190_reg_805, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    grp_Universal_Engine_Kernel_16_half_s_fu_386_idx4_assign_proc : process(add_ln181_reg_788, ap_CS_fsm_state6, add_ln190_reg_813, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx4 <= add_ln190_reg_805;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx4 <= add_ln190_reg_813;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx4 <= add_ln181_reg_780;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx4 <= add_ln181_reg_788;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx4 <= ap_const_lv12_78;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx4 <= ap_const_lv12_78;
         else 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx4 <= "XXXXXXXXXXXX";
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx4 <= "XXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    grp_Universal_Engine_Kernel_16_half_s_fu_382_idx5_assign_proc : process(ap_CS_fsm_state6, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    grp_Universal_Engine_Kernel_16_half_s_fu_386_idx5_assign_proc : process(ap_CS_fsm_state6, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8))) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx5 <= ap_const_lv8_0;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx5 <= ap_const_lv8_0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx5 <= ap_const_lv8_B4;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx5 <= ap_const_lv8_B4;
         else 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx5 <= "XXXXXXXX";
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx5 <= "XXXXXXXX";
         end if; 
     end process;
 
 
-    grp_Universal_Engine_Kernel_16_half_s_fu_382_idx6_assign_proc : process(ap_CS_fsm_state6, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    grp_Universal_Engine_Kernel_16_half_s_fu_386_idx6_assign_proc : process(ap_CS_fsm_state6, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state8))) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx6 <= ap_const_lv7_0;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx6 <= ap_const_lv7_0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx6 <= ap_const_lv7_42;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx6 <= ap_const_lv7_42;
         else 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_idx6 <= "XXXXXXX";
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_idx6 <= "XXXXXXX";
         end if; 
     end process;
 
 
-    grp_Universal_Engine_Kernel_16_half_s_fu_382_mode_assign_proc : process(ap_CS_fsm_state6, ap_CS_fsm_state3, ap_CS_fsm_state8)
+    grp_Universal_Engine_Kernel_16_half_s_fu_386_mode_assign_proc : process(ap_CS_fsm_state6, ap_CS_fsm_state3, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_mode <= ap_const_lv2_2;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_mode <= ap_const_lv2_2;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_mode <= ap_const_lv2_1;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_mode <= ap_const_lv2_1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_mode <= ap_const_lv2_0;
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_mode <= ap_const_lv2_0;
         else 
-            grp_Universal_Engine_Kernel_16_half_s_fu_382_mode <= "XX";
+            grp_Universal_Engine_Kernel_16_half_s_fu_386_mode <= "XX";
         end if; 
     end process;
 
-    grp_run_upconv_block_fu_464_ap_start <= grp_run_upconv_block_fu_464_ap_start_reg;
+    grp_run_upconv_block_fu_468_ap_start <= grp_run_upconv_block_fu_468_ap_start_reg;
 
-    grp_run_upconv_block_fu_464_mode_assign_proc : process(ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    grp_run_upconv_block_fu_468_mode_assign_proc : process(ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state17)) then 
-            grp_run_upconv_block_fu_464_mode <= ap_const_lv2_3;
+            grp_run_upconv_block_fu_468_mode <= ap_const_lv2_3;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state15)) then 
-            grp_run_upconv_block_fu_464_mode <= ap_const_lv2_2;
+            grp_run_upconv_block_fu_468_mode <= ap_const_lv2_2;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state13)) then 
-            grp_run_upconv_block_fu_464_mode <= ap_const_lv2_1;
+            grp_run_upconv_block_fu_468_mode <= ap_const_lv2_1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state11)) then 
-            grp_run_upconv_block_fu_464_mode <= ap_const_lv2_0;
+            grp_run_upconv_block_fu_468_mode <= ap_const_lv2_0;
         else 
-            grp_run_upconv_block_fu_464_mode <= "XX";
+            grp_run_upconv_block_fu_468_mode <= "XX";
         end if; 
     end process;
 
 
-    grp_run_upconv_block_fu_464_slot_in_off_assign_proc : process(ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    grp_run_upconv_block_fu_468_slot_in_off_assign_proc : process(ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state15)) then 
-            grp_run_upconv_block_fu_464_slot_in_off <= ap_const_lv19_40000;
+            grp_run_upconv_block_fu_468_slot_in_off <= ap_const_lv19_40000;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state13) or (ap_const_logic_1 = ap_CS_fsm_state11))) then 
-            grp_run_upconv_block_fu_464_slot_in_off <= ap_const_lv19_0;
+            grp_run_upconv_block_fu_468_slot_in_off <= ap_const_lv19_0;
         else 
-            grp_run_upconv_block_fu_464_slot_in_off <= "XXXXXXXXXXXXXXXXXXX";
+            grp_run_upconv_block_fu_468_slot_in_off <= "XXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    grp_run_upconv_block_fu_464_slot_out_off_assign_proc : process(ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
+    grp_run_upconv_block_fu_468_slot_out_off_assign_proc : process(ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state15, ap_CS_fsm_state17)
     begin
         if (((ap_const_logic_1 = ap_CS_fsm_state17) or (ap_const_logic_1 = ap_CS_fsm_state13))) then 
-            grp_run_upconv_block_fu_464_slot_out_off <= ap_const_lv19_40000;
+            grp_run_upconv_block_fu_468_slot_out_off <= ap_const_lv19_40000;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state15) or (ap_const_logic_1 = ap_CS_fsm_state11))) then 
-            grp_run_upconv_block_fu_464_slot_out_off <= ap_const_lv19_0;
+            grp_run_upconv_block_fu_468_slot_out_off <= ap_const_lv19_0;
         else 
-            grp_run_upconv_block_fu_464_slot_out_off <= "XXXXXXXXXXXXXXXXXXX";
+            grp_run_upconv_block_fu_468_slot_out_off <= "XXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
-    icmp_ln174_fu_558_p2 <= "1" when (i_fu_306 = ap_const_lv4_9) else "0";
-        p_cast_cast_fu_656_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(p_cast_reg_785),64));
+    icmp_ln174_fu_566_p2 <= "1" when (i_fu_310 = ap_const_lv4_9) else "0";
+        p_cast_cast_fu_664_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(p_cast_reg_793),64));
 
-    trunc_ln205_fu_666_p1 <= gmem_bc_0_RDATA(48 - 1 downto 0);
+    trunc_ln205_fu_674_p1 <= gmem_bc_0_RDATA(48 - 1 downto 0);
 end behav;

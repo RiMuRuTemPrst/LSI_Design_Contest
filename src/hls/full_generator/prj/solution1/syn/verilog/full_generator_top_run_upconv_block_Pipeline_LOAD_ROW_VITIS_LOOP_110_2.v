@@ -273,8 +273,8 @@ wire   [7:0] select_ln108_1_fu_261_p3;
 reg   [7:0] select_ln108_1_reg_371;
 reg   [255:0] gmem_y_addr_read_reg_381;
 reg   [255:0] gmem_x_addr_read_reg_386;
-reg   [255:0] ap_phi_mux_empty_107_phi_fu_176_p4;
-wire   [255:0] ap_phi_reg_pp0_iter5_empty_107_reg_173;
+reg   [255:0] ap_phi_mux_empty_101_phi_fu_176_p4;
+wire   [255:0] ap_phi_reg_pp0_iter5_empty_101_reg_173;
 wire   [63:0] zext_ln113_fu_300_p1;
 reg   [5:0] ciw_fu_96;
 wire   [5:0] add_ln110_fu_269_p2;
@@ -329,7 +329,7 @@ full_generator_top_ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1 #(
     .din2_WIDTH( 6 ),
     .din3_WIDTH( 6 ),
     .dout_WIDTH( 11 ))
-ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U2369(
+ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U2417(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(select_ln108_1_reg_371),
@@ -529,14 +529,14 @@ end
 always @ (*) begin
     if ((icmp_ln108_reg_362_pp0_iter4_reg == 1'd0)) begin
         if ((icmp_ln92_reg_358 == 1'd0)) begin
-            ap_phi_mux_empty_107_phi_fu_176_p4 = gmem_y_addr_read_reg_381;
+            ap_phi_mux_empty_101_phi_fu_176_p4 = gmem_y_addr_read_reg_381;
         end else if ((icmp_ln92_reg_358 == 1'd1)) begin
-            ap_phi_mux_empty_107_phi_fu_176_p4 = gmem_x_addr_read_reg_386;
+            ap_phi_mux_empty_101_phi_fu_176_p4 = gmem_x_addr_read_reg_386;
         end else begin
-            ap_phi_mux_empty_107_phi_fu_176_p4 = ap_phi_reg_pp0_iter5_empty_107_reg_173;
+            ap_phi_mux_empty_101_phi_fu_176_p4 = ap_phi_reg_pp0_iter5_empty_101_reg_173;
         end
     end else begin
-        ap_phi_mux_empty_107_phi_fu_176_p4 = ap_phi_reg_pp0_iter5_empty_107_reg_173;
+        ap_phi_mux_empty_101_phi_fu_176_p4 = ap_phi_reg_pp0_iter5_empty_101_reg_173;
     end
 end
 
@@ -659,7 +659,7 @@ assign ap_enable_reg_pp0_iter0 = ap_start_int;
 
 assign ap_loop_exit_ready = ap_condition_exit_pp0_iter0_stage0;
 
-assign ap_phi_reg_pp0_iter5_empty_107_reg_173 = 'bx;
+assign ap_phi_reg_pp0_iter5_empty_101_reg_173 = 'bx;
 
 always @ (*) begin
     ap_predicate_op54_read_state5 = ((icmp_ln92_reg_358 == 1'd0) & (icmp_ln108_reg_362_pp0_iter3_reg == 1'd0));
@@ -817,7 +817,7 @@ assign x_buf_address0 = zext_ln113_fu_300_p1;
 
 assign x_buf_ce0 = x_buf_ce0_local;
 
-assign x_buf_d0 = ap_phi_mux_empty_107_phi_fu_176_p4;
+assign x_buf_d0 = ap_phi_mux_empty_101_phi_fu_176_p4;
 
 assign x_buf_we0 = x_buf_we0_local;
 

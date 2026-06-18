@@ -23,8 +23,6 @@ entity ucb0_bench_top_void_UpConv_Fused_Row_Bench_ap_uint_ap_uint_const_ap_uint_
         q0          : out std_logic_vector(DataWidth-1 downto 0);
         address1    : in std_logic_vector(AddressWidth-1 downto 0); 
         ce1         : in std_logic; 
-        d1          : in std_logic_vector(DataWidth-1 downto 0); 
-        we1         : in std_logic; 
         q1          : out std_logic_vector(DataWidth-1 downto 0);
         reset           : in std_logic; 
         clk             : in std_logic 
@@ -94,20 +92,15 @@ end process;   --
 
 
 
-
-p_memory_access_1: process (clk)  
+p_memory_access_1: process (clk)
 begin 
     if (clk'event and clk = '1') then
         if (ce1 = '1') then 
-            if (we1 = '0') then
-                q1 <= ram(CONV_INTEGER(address1_tmp));
-            end if;
-            if (we1 = '1') then 
-                ram(CONV_INTEGER(address1_tmp)) := d1; 
-            end if;     
+            q1 <= ram(CONV_INTEGER(address1_tmp));
         end if;
     end if;
 end process;
+
  
 
 end rtl;

@@ -266,8 +266,8 @@ reg   [5:0] select_ln95_reg_355;
 reg   [5:0] select_ln95_reg_355_pp0_iter2_reg;
 reg   [255:0] gmem_y_addr_read_reg_370;
 reg   [255:0] gmem_x_addr_read_reg_375;
-reg   [255:0] ap_phi_mux_empty_109_phi_fu_166_p4;
-wire   [255:0] ap_phi_reg_pp0_iter4_empty_109_reg_163;
+reg   [255:0] ap_phi_mux_empty_103_phi_fu_166_p4;
+wire   [255:0] ap_phi_reg_pp0_iter4_empty_103_reg_163;
 wire   [63:0] zext_ln100_fu_294_p1;
 reg   [5:0] ciw_fu_92;
 wire   [5:0] add_ln97_fu_263_p2;
@@ -507,14 +507,14 @@ end
 always @ (*) begin
     if ((icmp_ln95_reg_351_pp0_iter3_reg == 1'd0)) begin
         if ((icmp_ln92_reg_347 == 1'd0)) begin
-            ap_phi_mux_empty_109_phi_fu_166_p4 = gmem_y_addr_read_reg_370;
+            ap_phi_mux_empty_103_phi_fu_166_p4 = gmem_y_addr_read_reg_370;
         end else if ((icmp_ln92_reg_347 == 1'd1)) begin
-            ap_phi_mux_empty_109_phi_fu_166_p4 = gmem_x_addr_read_reg_375;
+            ap_phi_mux_empty_103_phi_fu_166_p4 = gmem_x_addr_read_reg_375;
         end else begin
-            ap_phi_mux_empty_109_phi_fu_166_p4 = ap_phi_reg_pp0_iter4_empty_109_reg_163;
+            ap_phi_mux_empty_103_phi_fu_166_p4 = ap_phi_reg_pp0_iter4_empty_103_reg_163;
         end
     end else begin
-        ap_phi_mux_empty_109_phi_fu_166_p4 = ap_phi_reg_pp0_iter4_empty_109_reg_163;
+        ap_phi_mux_empty_103_phi_fu_166_p4 = ap_phi_reg_pp0_iter4_empty_103_reg_163;
     end
 end
 
@@ -637,7 +637,7 @@ assign ap_enable_reg_pp0_iter0 = ap_start_int;
 
 assign ap_loop_exit_ready = ap_condition_exit_pp0_iter0_stage0;
 
-assign ap_phi_reg_pp0_iter4_empty_109_reg_163 = 'bx;
+assign ap_phi_reg_pp0_iter4_empty_103_reg_163 = 'bx;
 
 always @ (*) begin
     ap_predicate_op51_read_state4 = ((icmp_ln92_reg_347 == 1'd0) & (icmp_ln95_reg_351_pp0_iter2_reg == 1'd0));
@@ -799,7 +799,7 @@ assign x_buf_address0 = zext_ln100_fu_294_p1;
 
 assign x_buf_ce0 = x_buf_ce0_local;
 
-assign x_buf_d0 = ap_phi_mux_empty_109_phi_fu_166_p4;
+assign x_buf_d0 = ap_phi_mux_empty_103_phi_fu_166_p4;
 
 assign x_buf_we0 = x_buf_we0_local;
 

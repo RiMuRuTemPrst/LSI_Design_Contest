@@ -59,7 +59,7 @@ static void run_upconv_block(
 #pragma HLS INLINE off
 
     static data_256_t x_buf[2 * 1024];   // max(W_IN*CI_WORDS) = max(16*60,32*30,64*15,128*8) = 1024
-#pragma HLS BIND_STORAGE variable=x_buf type=ram_t2p impl=uram
+#pragma HLS BIND_STORAGE variable=x_buf type=ram_t2p impl=bram   // [DBUF] moved URAM->BRAM (BRAM has headroom after w_local->URAM); frees 4 URAM for wbuf PIPO
 
     int h_in, w_in, c_in, c_out;
     int w_off;

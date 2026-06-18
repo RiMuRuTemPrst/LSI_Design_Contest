@@ -186,8 +186,8 @@ attribute shreg_extract : string;
     signal select_ln108_1_reg_371 : STD_LOGIC_VECTOR (7 downto 0);
     signal gmem_y_addr_read_reg_381 : STD_LOGIC_VECTOR (255 downto 0);
     signal gmem_x_addr_read_reg_386 : STD_LOGIC_VECTOR (255 downto 0);
-    signal ap_phi_mux_empty_107_phi_fu_176_p4 : STD_LOGIC_VECTOR (255 downto 0);
-    signal ap_phi_reg_pp0_iter5_empty_107_reg_173 : STD_LOGIC_VECTOR (255 downto 0);
+    signal ap_phi_mux_empty_101_phi_fu_176_p4 : STD_LOGIC_VECTOR (255 downto 0);
+    signal ap_phi_reg_pp0_iter5_empty_101_reg_173 : STD_LOGIC_VECTOR (255 downto 0);
     signal zext_ln113_fu_300_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal ciw_fu_96 : STD_LOGIC_VECTOR (5 downto 0) := "000000";
     signal add_ln110_fu_269_p2 : STD_LOGIC_VECTOR (5 downto 0);
@@ -260,7 +260,7 @@ attribute shreg_extract : string;
 
 
 begin
-    ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U2369 : component full_generator_top_ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1
+    ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U2417 : component full_generator_top_ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1
     generic map (
         ID => 1,
         NUM_STAGE => 4,
@@ -567,22 +567,22 @@ begin
 
     ap_loop_exit_ready <= ap_condition_exit_pp0_iter0_stage0;
 
-    ap_phi_mux_empty_107_phi_fu_176_p4_assign_proc : process(icmp_ln92_reg_358, icmp_ln108_reg_362_pp0_iter4_reg, gmem_y_addr_read_reg_381, gmem_x_addr_read_reg_386, ap_phi_reg_pp0_iter5_empty_107_reg_173)
+    ap_phi_mux_empty_101_phi_fu_176_p4_assign_proc : process(icmp_ln92_reg_358, icmp_ln108_reg_362_pp0_iter4_reg, gmem_y_addr_read_reg_381, gmem_x_addr_read_reg_386, ap_phi_reg_pp0_iter5_empty_101_reg_173)
     begin
         if ((icmp_ln108_reg_362_pp0_iter4_reg = ap_const_lv1_0)) then
             if ((icmp_ln92_reg_358 = ap_const_lv1_0)) then 
-                ap_phi_mux_empty_107_phi_fu_176_p4 <= gmem_y_addr_read_reg_381;
+                ap_phi_mux_empty_101_phi_fu_176_p4 <= gmem_y_addr_read_reg_381;
             elsif ((icmp_ln92_reg_358 = ap_const_lv1_1)) then 
-                ap_phi_mux_empty_107_phi_fu_176_p4 <= gmem_x_addr_read_reg_386;
+                ap_phi_mux_empty_101_phi_fu_176_p4 <= gmem_x_addr_read_reg_386;
             else 
-                ap_phi_mux_empty_107_phi_fu_176_p4 <= ap_phi_reg_pp0_iter5_empty_107_reg_173;
+                ap_phi_mux_empty_101_phi_fu_176_p4 <= ap_phi_reg_pp0_iter5_empty_101_reg_173;
             end if;
         else 
-            ap_phi_mux_empty_107_phi_fu_176_p4 <= ap_phi_reg_pp0_iter5_empty_107_reg_173;
+            ap_phi_mux_empty_101_phi_fu_176_p4 <= ap_phi_reg_pp0_iter5_empty_101_reg_173;
         end if; 
     end process;
 
-    ap_phi_reg_pp0_iter5_empty_107_reg_173 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+    ap_phi_reg_pp0_iter5_empty_101_reg_173 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 
     ap_predicate_op54_read_state5_assign_proc : process(icmp_ln108_reg_362_pp0_iter3_reg, icmp_ln92_reg_358)
     begin
@@ -753,7 +753,7 @@ begin
         end if; 
     end process;
 
-    x_buf_d0 <= ap_phi_mux_empty_107_phi_fu_176_p4;
+    x_buf_d0 <= ap_phi_mux_empty_101_phi_fu_176_p4;
     x_buf_we0 <= x_buf_we0_local;
 
     x_buf_we0_local_assign_proc : process(ap_enable_reg_pp0_iter5, ap_block_pp0_stage0_11001_grp1)

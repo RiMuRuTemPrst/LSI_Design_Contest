@@ -224,7 +224,7 @@ upconv_core_top_ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1 #(
     .din2_WIDTH( 6 ),
     .din3_WIDTH( 6 ),
     .dout_WIDTH( 11 ))
-ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U722(
+ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U772(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(select_ln70_1_reg_305),

@@ -11,7 +11,7 @@ module upconv_core_top_UpConv_Fused_Row_8_s_void_UpConv_Fused_Row_ap_uint_ap_uin
     q0, 
       
     address1, ce1,
-    d1, we1, 
+    
     q1, 
      
     reset, clk);
@@ -28,8 +28,7 @@ output reg[DataWidth-1:0] q0;
   
 input[AddressWidth-1:0] address1;
 input ce1;
-input[DataWidth-1:0] d1;
-input we1; 
+
 output reg[DataWidth-1:0] q1; 
  
 input reset;
@@ -62,18 +61,13 @@ end
 
 
 
-
-
-
-always @(posedge clk)  
+always @(posedge clk) 
 begin 
     if (ce1) begin
-        if (we1) 
-            ram[address1] <= d1; 
-        else 
-            q1 <= ram[address1];
+        q1 <= ram[address1];
     end
 end 
+
  
  
 

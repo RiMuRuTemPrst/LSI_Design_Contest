@@ -64,6 +64,98 @@ static inline float my_sqrt_f(float x) {
 //   - Weight cache: DDR load only on ho==0 (persists in BRAM)
 // ============================================================
 
+// [DBUF-DATAFLOW] tile producer/consumer for canonical PIPO double-buffer (overlap PRELOAD‖MAC)
+template<int PEs>
+static void uc_load_tile(const data_256_t* W_ptr, int tile, int C_OUT, int CI_WORDS,
+                         data_256_t wbuf[PEs][540]) {
+#pragma HLS INLINE off
+    int co_base = tile * PEs;
+    PRELOAD_W: for (int tc = 0; tc < PEs; tc++) {
+        int co = co_base + tc;
+        if (co < C_OUT) {
+            int k_cnt = 0, ci_cnt = 0;
+            W_FLAT: for (int kci = 0; kci < 9 * CI_WORDS; kci++) {
+#pragma HLS PIPELINE II=1
+#pragma HLS LOOP_TRIPCOUNT min=72 max=540 avg=252
+                wbuf[tc][k_cnt * 60 + ci_cnt] = W_ptr[co * 9 * CI_WORDS + kci];
+                ci_cnt++;
+                if (ci_cnt >= CI_WORDS) { ci_cnt = 0; k_cnt++; }
+            }
+        }
+    }
+}
+
+template<int PEs>
+static void uc_compute_tile(data_256_t wbuf[PEs][540], data_256_t* x_buf,
+                            data_t row_acc[256][480], int tile, int ho,
+                            int H_IN, int W_IN, int CI_WORDS, int W_OUT, int C_OUT) {
+#pragma HLS INLINE off
+    const int S = 2, PAD = 1;
+    int co_base = tile * PEs;
+    KH_LOOP: for (int kh = 0; kh < 3; kh++) {
+#pragma HLS LOOP_TRIPCOUNT min=1 max=2
+        int hpk = ho + PAD - kh;
+        if (hpk < 0 || hpk % S != 0) continue;
+        int hi = hpk / S;
+        if (hi < 0 || hi >= H_IN) continue;
+        int x_row = hi % 2;
+
+        KW_LOOP: for (int kw = 0; kw < 3; kw++) {
+#pragma HLS LOOP_TRIPCOUNT min=2 max=3
+            int k = kh * 3 + kw;
+            const int M_TOTAL = W_IN * CI_WORDS;
+            const int x_base  = x_row * W_IN * CI_WORDS;
+            const int w_off   = k * 60;
+
+            data_t psum[PEs][4];
+#pragma HLS ARRAY_PARTITION variable=psum complete dim=0
+
+            int wi = 0, ci_w = 0;
+            FLAT_LOOP: for (int m = 0; m < M_TOTAL; m++) {
+#pragma HLS PIPELINE II=1
+#pragma HLS LOOP_TRIPCOUNT min=128 max=7680 avg=1680
+#pragma HLS DEPENDENCE variable=psum    type=inter false
+#pragma HLS DEPENDENCE variable=row_acc type=inter false
+                int acc_idx = ci_w & 3;
+                data_256_t x_word = x_buf[x_base + m];
+
+                TC_MAC: for (int tc = 0; tc < PEs; tc++) {
+#pragma HLS UNROLL
+                    data_256_t w_word = wbuf[tc][w_off + ci_w];
+                    data_t dot = 0;
+                    for (int l = 0; l < 16; l++) {
+#pragma HLS UNROLL
+                        data_t xv = bits_to_half<data_t>(x_word.range(16*l+15, 16*l));
+                        data_t wv = bits_to_half<data_t>(w_word.range(16*l+15, 16*l));
+                        data_t prod;
+#pragma HLS BIND_OP variable=prod op=hmul impl=fabric
+                        prod = xv * wv;
+                        dot += prod;
+                    }
+                    if (ci_w < 4) psum[tc][acc_idx]  = dot;
+                    else          psum[tc][acc_idx] += dot;
+                }
+
+                if (ci_w == CI_WORDS - 1) {
+                    int wo = wi * S + kw - PAD;
+                    if (wo >= 0 && wo < W_OUT) {
+                        ACC_WRITE: for (int tc = 0; tc < PEs; tc++) {
+#pragma HLS UNROLL
+                            if (co_base + tc < C_OUT) {
+                                data_t total = psum[tc][0] + psum[tc][1] + psum[tc][2] + psum[tc][3];
+                                row_acc[wo][co_base + tc] += total;
+                            }
+                        }
+                    }
+                    ci_w = 0; wi++;
+                } else {
+                    ci_w++;
+                }
+            }
+        }
+    }
+}
+
 template<int PEs>
 void UpConv_Fused_Row(
     data_256_t*       x_buf,
@@ -108,96 +200,17 @@ void UpConv_Fused_Row(
         if (rcw == C_WORDS_OUT - 1) { rcw = 0; rw++; } else { rcw++; }
     }
 
-    // Weight buffer — PEs=12 parallel outputs, reloaded from DDR every ho call.
-    data_256_t w_local[PEs][540];
-#pragma HLS BIND_STORAGE variable=w_local type=ram_t2p impl=bram
-#pragma HLS ARRAY_PARTITION variable=w_local complete dim=1
-
+    // [DBUF-DATAFLOW] PIPO double-buffer: uc_load_tile (producer) ‖ uc_compute_tile (consumer)
+    // share `wbuf` → Vitis auto-PIPOs it so load(tile+1) overlaps compute(tile). Bound to URAM
+    // (BRAM is the tight resource in full_generator; URAM has headroom).
     TILE_LOOP: for (int tile = 0; tile < N_TILES; tile++) {
 #pragma HLS LOOP_TRIPCOUNT min=6 max=41 avg=20
-        int co_base = tile * PEs;
-
-        PRELOAD_W: for (int tc = 0; tc < PEs; tc++) {
-            int co = co_base + tc;
-            if (co < C_OUT) {
-                int k_cnt = 0, ci_cnt = 0;
-                W_FLAT: for (int kci = 0; kci < 9 * CI_WORDS; kci++) {
-#pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=72 max=540 avg=252
-                    w_local[tc][k_cnt * 60 + ci_cnt] = W_ptr[co * 9 * CI_WORDS + kci];
-                    ci_cnt++;
-                    if (ci_cnt >= CI_WORDS) { ci_cnt = 0; k_cnt++; }
-                }
-            }
-        }
-
-        KH_LOOP: for (int kh = 0; kh < 3; kh++) {
-#pragma HLS LOOP_TRIPCOUNT min=1 max=2
-            int hpk = ho + PAD - kh;
-            if (hpk < 0 || hpk % S != 0) continue;
-            int hi = hpk / S;
-            if (hi < 0 || hi >= H_IN) continue;
-            int x_row = hi % 2;
-
-            KW_LOOP: for (int kw = 0; kw < 3; kw++) {
-#pragma HLS LOOP_TRIPCOUNT min=2 max=3
-                int k = kh * 3 + kw;
-
-                // [A] Flatten WI x CI into one II=1 pipeline: the deep MAC pipeline
-                // fill is paid once per (tile,kh,kw) instead of once per output column.
-                // m = wi*CI_WORDS + ci_w, so x_buf address is simply x_base + m.
-                // psum rotates depth-4 (>= fp16 add latency) keyed on ci_w&3; first-touch
-                // assignment (ci_w<4) seeds a wi's slots with no reset hazard.
-                // row_acc write fires only at ci_w==CI_WORDS-1; wo = wi*S+kw-PAD is injective
-                // in wi within this pass -> all write addresses distinct -> DEPENDENCE false valid.
-                const int M_TOTAL = W_IN * CI_WORDS;
-                const int x_base  = x_row * W_IN * CI_WORDS;
-                const int w_off   = k * 60;
-
-                data_t psum[PEs][4];
-#pragma HLS ARRAY_PARTITION variable=psum complete dim=0
-
-                int wi = 0, ci_w = 0;
-                FLAT_LOOP: for (int m = 0; m < M_TOTAL; m++) {
-#pragma HLS PIPELINE II=1
-#pragma HLS LOOP_TRIPCOUNT min=128 max=7680 avg=1680
-#pragma HLS DEPENDENCE variable=psum    type=inter false
-#pragma HLS DEPENDENCE variable=row_acc type=inter false
-                    int acc_idx = ci_w & 3;
-                    data_256_t x_word = x_buf[x_base + m];
-
-                    TC_MAC: for (int tc = 0; tc < PEs; tc++) {
-#pragma HLS UNROLL
-                        data_256_t w_word = w_local[tc][w_off + ci_w];
-                        data_t dot = 0;
-                        for (int l = 0; l < 16; l++) {
-#pragma HLS UNROLL
-                            data_t xv = bits_to_half<data_t>(x_word.range(16*l+15, 16*l));
-                            data_t wv = bits_to_half<data_t>(w_word.range(16*l+15, 16*l));
-                            dot += xv * wv;
-                        }
-                        if (ci_w < 4) psum[tc][acc_idx]  = dot;   // first touch in this wi
-                        else          psum[tc][acc_idx] += dot;   // distance-4 RAW (>= fp16 add latency)
-                    }
-
-                    if (ci_w == CI_WORDS - 1) {
-                        int wo = wi * S + kw - PAD;
-                        if (wo >= 0 && wo < W_OUT) {
-                            ACC_WRITE: for (int tc = 0; tc < PEs; tc++) {
-#pragma HLS UNROLL
-                                if (co_base + tc < C_OUT) {
-                                    data_t total = psum[tc][0] + psum[tc][1] + psum[tc][2] + psum[tc][3];
-                                    row_acc[wo][co_base + tc] += total;
-                                }
-                            }
-                        }
-                        ci_w = 0; wi++;
-                    } else {
-                        ci_w++;
-                    }
-                }
-            }
-        }
+#pragma HLS DATAFLOW
+        data_256_t wbuf[PEs][540];
+#pragma HLS BIND_STORAGE variable=wbuf type=ram_t2p impl=uram
+#pragma HLS ARRAY_PARTITION variable=wbuf complete dim=1
+        uc_load_tile<PEs>(W_ptr, tile, C_OUT, CI_WORDS, wbuf);
+        uc_compute_tile<PEs>(wbuf, x_buf, row_acc, tile, ho, H_IN, W_IN, CI_WORDS, W_OUT, C_OUT);
     }
 
     data_256_t b_buf[30], g_buf[30], be_buf[30];

@@ -203,7 +203,7 @@ attribute shreg_extract : string;
 
 
 begin
-    ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U722 : component upconv_core_top_ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1
+    ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1_U772 : component upconv_core_top_ama_addmuladd_8ns_8ns_6ns_6ns_11_4_1
     generic map (
         ID => 1,
         NUM_STAGE => 4,

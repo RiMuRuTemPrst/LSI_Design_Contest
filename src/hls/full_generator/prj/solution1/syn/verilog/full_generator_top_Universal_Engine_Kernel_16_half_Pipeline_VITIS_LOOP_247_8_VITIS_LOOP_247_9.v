@@ -687,7 +687,7 @@ reg   [7:0] indvar_flatten_fu_340;
 wire   [7:0] add_ln247_2_fu_1776_p2;
 reg   [7:0] ap_sig_allocacmp_indvar_flatten_load;
 wire    ap_block_pp0_stage0_01001;
-wire   [0:0] icmp_ln247_16_fu_1799_p2;
+wire   [0:0] icmp_ln247_1_fu_1799_p2;
 wire   [4:0] add_ln247_fu_1793_p2;
 wire   [3:0] select_ln247_fu_1805_p3;
 reg    ap_done_reg;
@@ -1896,7 +1896,7 @@ assign ap_loop_exit_ready = ap_condition_exit_pp0_iter0_stage0;
 
 assign ap_ready = ap_ready_sig;
 
-assign icmp_ln247_16_fu_1799_p2 = ((l_fu_332 == 4'd8) ? 1'b1 : 1'b0);
+assign icmp_ln247_1_fu_1799_p2 = ((l_fu_332 == 4'd8) ? 1'b1 : 1'b0);
 
 assign icmp_ln247_fu_1770_p2 = ((ap_sig_allocacmp_indvar_flatten_load == 8'd128) ? 1'b1 : 1'b0);
 
@@ -2156,8 +2156,8 @@ assign psum_293_out = 16'd0;
 
 assign psum_294_out = 16'd0;
 
-assign select_ln247_1_fu_1813_p3 = ((icmp_ln247_16_fu_1799_p2[0:0] == 1'b1) ? add_ln247_fu_1793_p2 : p_fu_336);
+assign select_ln247_1_fu_1813_p3 = ((icmp_ln247_1_fu_1799_p2[0:0] == 1'b1) ? add_ln247_fu_1793_p2 : p_fu_336);
 
-assign select_ln247_fu_1805_p3 = ((icmp_ln247_16_fu_1799_p2[0:0] == 1'b1) ? 4'd0 : l_fu_332);
+assign select_ln247_fu_1805_p3 = ((icmp_ln247_1_fu_1799_p2[0:0] == 1'b1) ? 4'd0 : l_fu_332);
 
 endmodule //full_generator_top_Universal_Engine_Kernel_16_half_Pipeline_VITIS_LOOP_247_8_VITIS_LOOP_247_9
