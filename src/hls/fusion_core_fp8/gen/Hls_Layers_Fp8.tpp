@@ -230,6 +230,28 @@ static void fp8_reduce_consumer(
     }
 }
 
+// ---- one output row: MAC producer || reduce/stats consumer.
+//      DATAFLOW must be on a FUNCTION BODY (or for-loop body) -- a bare { } scope
+//      is silently ignored (WARNING [HLS 207-5575]) -> processes serialize. ----
+template<int PEs, int LANES>
+static void fp8_conv_row(
+    DDR_CONST_PTR W_ptr,
+    data_256_t    x_buf[4][MODEL_W][60],
+    data_256_t    b_buf[60],
+    data_256_t    y_cache[960],
+    float         sum_acc[PEs],
+    float         sumsq_acc[PEs],
+    int CI_PAD, int CI_W, int r)
+{
+#pragma HLS INLINE off
+#pragma HLS DATAFLOW
+    hls::stream<ap_uint<PEs*128> > pstrm;
+#pragma HLS STREAM variable=pstrm depth=4
+#pragma HLS BIND_STORAGE variable=pstrm type=fifo impl=srl
+    fp8_mac_producer<PEs, LANES>(W_ptr, x_buf, CI_PAD, CI_W, r, pstrm);
+    fp8_reduce_consumer<PEs>(pstrm, b_buf, y_cache, sum_acc, sumsq_acc);
+}
+
 template<int PEs, int LANES>
 void Fp8_Conv_Engine(
     DDR_CONST_PTR X_ptr,    // fp8-packed activations (LANES/word)
@@ -291,14 +313,8 @@ void Fp8_Conv_Engine(
         }
 
         // STEP 2: conv (fp8 MAC producer || fp16 reduce/stats consumer)
-        {
-#pragma HLS DATAFLOW
-            hls::stream<ap_uint<PEs*128> > pstrm;
-#pragma HLS STREAM variable=pstrm depth=4
-#pragma HLS BIND_STORAGE variable=pstrm type=fifo impl=srl
-            fp8_mac_producer<PEs, LANES>(W_ptr, x_buf, CI_PAD, CI_W, r, pstrm);
-            fp8_reduce_consumer<PEs>(pstrm, b_buf, y_cache, sum_acc, sumsq_acc);
-        }
+        //         DATAFLOW now on a function body -> producer || consumer overlap.
+        fp8_conv_row<PEs, LANES>(W_ptr, x_buf, b_buf, y_cache, sum_acc, sumsq_acc, CI_PAD, CI_W, r);
 
         // STEP 3: norm (fp16) + ReLU + write fp16 output
         PASS_B: for (int p=0; p<PEs; p++) {

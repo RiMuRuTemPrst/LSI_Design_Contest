@@ -8,7 +8,7 @@
 <unit>ns</unit>
 <ProductFamily>zynquplus</ProductFamily>
 <Part>xczu7ev-ffvc1156-2-e</Part>
-<TopModelName>Fp8_Conv_Engine_16_Pipeline_LOAD_PARAMS</TopModelName>
+<TopModelName>Fp8_Conv_Engine_16_32_Pipeline_LOAD_PARAMS</TopModelName>
 <TargetClockPeriod>3.33</TargetClockPeriod>
 <ClockUncertainty>0.90</ClockUncertainty>
 <FlowTarget>vitis</FlowTarget>
@@ -46,13 +46,13 @@
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_Fp8.tpp:260</SourceLocation>
+<SourceLocation>gen/Hls_Layers_Fp8.tpp:287</SourceLocation>
 <SummaryOfLoopViolations>
 <LOAD_PARAMS>
 <Name>LOAD_PARAMS</Name>
 <IssueType>II Violation</IssueType>
 <ViolationType>Resource Limitation</ViolationType>
-<SourceLocation>gen/Hls_Layers_Fp8.tpp:260</SourceLocation>
+<SourceLocation>gen/Hls_Layers_Fp8.tpp:287</SourceLocation>
 </LOAD_PARAMS>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -78,7 +78,7 @@
 <InterfaceSummary>
 <RtlPorts>
 <name>ap_clk</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_LOAD_PARAMS</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_LOAD_PARAMS</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -89,7 +89,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_rst</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_LOAD_PARAMS</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_LOAD_PARAMS</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -100,7 +100,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_start</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_LOAD_PARAMS</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_LOAD_PARAMS</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -111,7 +111,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_done</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_LOAD_PARAMS</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_LOAD_PARAMS</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -122,7 +122,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_idle</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_LOAD_PARAMS</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_LOAD_PARAMS</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -133,7 +133,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_ready</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_LOAD_PARAMS</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_LOAD_PARAMS</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -781,8 +781,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sext_ln260</name>
-<Object>sext_ln260</Object>
+<name>sext_ln287</name>
+<Object>sext_ln287</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -792,8 +792,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sext_ln260_1</name>
-<Object>sext_ln260_1</Object>
+<name>sext_ln287_1</name>
+<Object>sext_ln287_1</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -803,8 +803,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sext_ln260_2</name>
-<Object>sext_ln260_2</Object>
+<name>sext_ln287_2</name>
+<Object>sext_ln287_2</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

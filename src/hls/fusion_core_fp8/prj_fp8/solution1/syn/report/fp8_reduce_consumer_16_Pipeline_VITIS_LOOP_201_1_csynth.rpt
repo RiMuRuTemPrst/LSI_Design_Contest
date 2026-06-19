@@ -1,9 +1,9 @@
 
 
 ================================================================
-== Vitis HLS Report for 'fp8_reduce_consumer_16_Pipeline_VITIS_LOOP_196_1'
+== Vitis HLS Report for 'fp8_reduce_consumer_16_Pipeline_VITIS_LOOP_201_1'
 ================================================================
-* Date:           Tue Jun 16 09:50:48 2026
+* Date:           Fri Jun 19 04:25:15 2026
 
 * Version:        2024.2 (Build 5238294 on Nov  8 2024)
 * Project:        prj_fp8
@@ -41,7 +41,7 @@
         |                    |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
         |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
         +--------------------+---------+---------+----------+-----------+-----------+------+----------+
-        |- VITIS_LOOP_196_1  |       16|       16|         1|          1|          1|    16|       yes|
+        |- VITIS_LOOP_201_1  |       16|       16|         1|          1|          1|    16|       yes|
         +--------------------+---------+---------+----------+-----------+-----------+------+----------+
 
 
@@ -85,8 +85,8 @@
     +----------------------+----------+----+---+----+------------+------------+
     |     Variable Name    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +----------------------+----------+----+---+----+------------+------------+
-    |add_ln196_fu_396_p2   |         +|   0|  0|  12|           5|           1|
-    |icmp_ln196_fu_390_p2  |      icmp|   0|  0|  13|           5|           6|
+    |add_ln201_fu_396_p2   |         +|   0|  0|  12|           5|           1|
+    |icmp_ln201_fu_390_p2  |      icmp|   0|  0|  13|           5|           6|
     +----------------------+----------+----+---+----+------------+------------+
     |Total                 |          |   0|  0|  25|          10|           7|
     +----------------------+----------+----+---+----+------------+------------+
@@ -122,16 +122,16 @@
 +---------------------+-----+-----+------------+---------------------------------------------------+--------------+
 |      RTL Ports      | Dir | Bits|  Protocol  |                   Source Object                   |    C Type    |
 +---------------------+-----+-----+------------+---------------------------------------------------+--------------+
-|ap_clk               |   in|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
-|ap_rst               |   in|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
-|ap_start             |   in|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
-|ap_done              |  out|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
-|ap_idle              |  out|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
-|ap_ready             |  out|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_196_1|  return value|
-|sum_acc_0            |  out|   32|      ap_vld|                                          sum_acc_0|       pointer|
-|sum_acc_0_ap_vld     |  out|    1|      ap_vld|                                          sum_acc_0|       pointer|
-|sumsq_acc_0          |  out|   32|      ap_vld|                                        sumsq_acc_0|       pointer|
-|sumsq_acc_0_ap_vld   |  out|    1|      ap_vld|                                        sumsq_acc_0|       pointer|
+|ap_clk               |   in|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_201_1|  return value|
+|ap_rst               |   in|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_201_1|  return value|
+|ap_start             |   in|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_201_1|  return value|
+|ap_done              |  out|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_201_1|  return value|
+|ap_idle              |  out|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_201_1|  return value|
+|ap_ready             |  out|    1|  ap_ctrl_hs|  fp8_reduce_consumer<16>_Pipeline_VITIS_LOOP_201_1|  return value|
+|sum_acc              |  out|   32|      ap_vld|                                            sum_acc|       pointer|
+|sum_acc_ap_vld       |  out|    1|      ap_vld|                                            sum_acc|       pointer|
+|sumsq_acc            |  out|   32|      ap_vld|                                          sumsq_acc|       pointer|
+|sumsq_acc_ap_vld     |  out|    1|      ap_vld|                                          sumsq_acc|       pointer|
 |sumsq_acc_15         |  out|   32|      ap_vld|                                       sumsq_acc_15|       pointer|
 |sumsq_acc_15_ap_vld  |  out|    1|      ap_vld|                                       sumsq_acc_15|       pointer|
 |sumsq_acc_14         |  out|   32|      ap_vld|                                       sumsq_acc_14|       pointer|

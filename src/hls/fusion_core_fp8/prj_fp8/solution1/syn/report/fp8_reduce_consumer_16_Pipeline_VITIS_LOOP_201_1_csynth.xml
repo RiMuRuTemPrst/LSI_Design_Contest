@@ -8,7 +8,7 @@
 <unit>ns</unit>
 <ProductFamily>zynquplus</ProductFamily>
 <Part>xczu7ev-ffvc1156-2-e</Part>
-<TopModelName>fp8_reduce_consumer_16_Pipeline_VITIS_LOOP_196_1</TopModelName>
+<TopModelName>fp8_reduce_consumer_16_Pipeline_VITIS_LOOP_201_1</TopModelName>
 <TargetClockPeriod>3.33</TargetClockPeriod>
 <ClockUncertainty>0.90</ClockUncertainty>
 <FlowTarget>vitis</FlowTarget>
@@ -32,7 +32,7 @@
 <Interval-max>17</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
-<VITIS_LOOP_196_1>
+<VITIS_LOOP_201_1>
 <Slack>2.43</Slack>
 <TripCount>16</TripCount>
 <Latency>16</Latency>
@@ -41,19 +41,19 @@
 <PipelineDepth>1</PipelineDepth>
 <InstanceList>
 </InstanceList>
-</VITIS_LOOP_196_1>
+</VITIS_LOOP_201_1>
 </SummaryOfLoopLatency>
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_Fp8.tpp:196</SourceLocation>
+<SourceLocation>gen/Hls_Layers_Fp8.tpp:201</SourceLocation>
 <SummaryOfLoopViolations>
-<VITIS_LOOP_196_1>
-<Name>VITIS_LOOP_196_1</Name>
+<VITIS_LOOP_201_1>
+<Name>VITIS_LOOP_201_1</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_Fp8.tpp:196</SourceLocation>
-</VITIS_LOOP_196_1>
+<SourceLocation>gen/Hls_Layers_Fp8.tpp:201</SourceLocation>
+</VITIS_LOOP_201_1>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
 </PerformanceEstimates>
@@ -78,7 +78,7 @@
 <InterfaceSummary>
 <RtlPorts>
 <name>ap_clk</name>
-<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_196_1</Object>
+<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_201_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -89,7 +89,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_rst</name>
-<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_196_1</Object>
+<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_201_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -100,7 +100,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_start</name>
-<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_196_1</Object>
+<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_201_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -111,7 +111,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_done</name>
-<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_196_1</Object>
+<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_201_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -122,7 +122,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_idle</name>
-<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_196_1</Object>
+<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_201_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -133,7 +133,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_ready</name>
-<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_196_1</Object>
+<Object>fp8_reduce_consumer&lt;16&gt;_Pipeline_VITIS_LOOP_201_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -143,8 +143,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sum_acc_0</name>
-<Object>sum_acc_0</Object>
+<name>sum_acc</name>
+<Object>sum_acc</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_vld</IOProtocol>
@@ -154,8 +154,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sum_acc_0_ap_vld</name>
-<Object>sum_acc_0</Object>
+<name>sum_acc_ap_vld</name>
+<Object>sum_acc</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_vld</IOProtocol>
@@ -165,8 +165,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sumsq_acc_0</name>
-<Object>sumsq_acc_0</Object>
+<name>sumsq_acc</name>
+<Object>sumsq_acc</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_vld</IOProtocol>
@@ -176,8 +176,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sumsq_acc_0_ap_vld</name>
-<Object>sumsq_acc_0</Object>
+<name>sumsq_acc_ap_vld</name>
+<Object>sumsq_acc</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_vld</IOProtocol>

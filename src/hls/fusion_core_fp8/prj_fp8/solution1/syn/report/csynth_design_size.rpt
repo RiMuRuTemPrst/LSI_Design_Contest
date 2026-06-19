@@ -6,53 +6,54 @@
 +---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
 | Phase         | Step                        | Instructions | Description                                                                            |
 +---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
-| Compile/Link  |                             |  3,166       | After all functions are compiled and linked into a single design                       |
+| Compile/Link  |                             |  3,168       | After all functions are compiled and linked into a single design                       |
 |               |                             |              |                                                                                        |
 | Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
-|               | (1) unroll                  | 46,601       | user unroll pragmas are applied                                                        |
-|               | (2) simplification          | 27,544       | simplification of applied user unroll pragmas                                          |
-|               | (3) inline                  | 27,354       | user inline pragmas are applied                                                        |
-|               | (4) simplification          | 26,295       | simplification of applied user inline pragmas                                          |
+|               | (1) unroll                  | 46,599       | user unroll pragmas are applied                                                        |
+|               | (2) simplification          | 27,543       | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  | 27,353       | user inline pragmas are applied                                                        |
+|               | (4) simplification          | 26,294       | simplification of applied user inline pragmas                                          |
 |               |                             |              |                                                                                        |
 | Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
-|               | (1) array partition         | 28,287       | user array partition pragmas are applied                                               |
-|               | (2) simplification          | 27,169       | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
-|               | (3) aggregate/disaggregate  | 27,169       | user struct aggregate/disaggregate pragmas are applied                                 |
-|               | (4) array reshape           | 27,153       | apply array reshape pragmas                                                            |
-|               | (5) access patterns         | 27,195       | array access pattern optmizations                                                      |
+|               | (1) array partition         | 28,286       | user array partition pragmas are applied                                               |
+|               | (2) simplification          | 27,168       | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  | 27,168       | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           | 27,152       | apply array reshape pragmas                                                            |
+|               | (5) access patterns         | 27,194       | array access pattern optmizations                                                      |
 |               |                             |              |                                                                                        |
 | Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
-|               | (1) loop simplification     | 27,204       | loop and instruction simplification                                                    |
-|               | (2) parallelization         | 27,204       | loops are unrolled or pipelined to meet performance targets                            |
-|               | (3) array partition         | 27,204       | arrays are partitioned to meet performance targets                                     |
-|               | (4) simplification          | 27,200       | simplification of design after performance transformations                             |
+|               | (1) loop simplification     | 27,203       | loop and instruction simplification                                                    |
+|               | (2) parallelization         | 27,203       | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         | 27,203       | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          | 27,199       | simplification of design after performance transformations                             |
 |               |                             |              |                                                                                        |
 | HW Transforms |                             |              | After hardware transfomations                                                          |
-|               | (1) lowering                | 27,741       | initial conversion to HW specific instructions                                         |
-|               | (2) optimizations           | 25,249       | high level synthesis optimizations                                                     |
+|               | (1) lowering                | 27,740       | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           | 25,253       | high level synthesis optimizations                                                     |
 +---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
 
 * Instructions per Function for each Compilation Phase
-+-----------------------------+------------------------+----------------+---------------+--------------+-------------+---------------+
-| Function                    | Location               | Compile/Link   | Unroll/Inline | Array/Struct | Performance | HW Transforms |
-+-----------------------------+------------------------+----------------+---------------+--------------+-------------+---------------+
-| + fp8_conv_top              | fp8_conv_top.cpp:8     | 3,166          | 26,295        | 27,195       | 27,200      | 25,249        |
-|  + Fp8_Conv_Engine<16>      | Hls_Layers_Fp8.tpp:229 | 3,150          | 26,277        | 27,177       | 27,182      | 25,223        |
-|   + my_sqrt_f               | Hls_Layers_Fp8.tpp:51  |    8 (2 calls) |               |              |             |               |
-|      sqrtf                  | sqrtfloat.cpp:11       |    4 (2 calls) |               |              |             |               |
-|     flat_idx                | Hls_Layers_Fp8.tpp:43  |    7           |               |              |             |               |
-|   + fp8_mac_producer<16>    | Hls_Layers_Fp8.tpp:115 | 2,189          | 25,739        | 26,003       | 26,004      | 24,101        |
-|      w_flat_idx             | Hls_Layers_Fp8.tpp:47  |   21 (3 calls) |               |              |             |               |
-|    + hdot32_fp8             | Hls_Layers_Fp8.tpp:93  | 1,836          |               |              |             |               |
-|     + fp8_mul_to_half       | Hls_Layers_Fp8.tpp:64  | 1,679          |               |              |             |               |
-|        bits_to_half<__fp16> | Hls_Layers_Fp8.tpp:35  |   18           |               |              |             |               |
-|      half_to_bits<__fp16>   | Hls_Layers_Fp8.tpp:26  |   26           |               |              |             |               |
-|   + fp8_reduce_consumer<16> | Hls_Layers_Fp8.tpp:188 |  391           |   145         |   416        |   416       |   427         |
-|      bits_to_half<__fp16>   | Hls_Layers_Fp8.tpp:35  |   36 (2 calls) |               |              |             |               |
-|      half_to_bits<__fp16>   | Hls_Layers_Fp8.tpp:26  |   26           |               |              |             |               |
-|     bits_to_half<__fp16>    | Hls_Layers_Fp8.tpp:35  |   54 (3 calls) |               |              |             |               |
-|     half_to_bits<__fp16>    | Hls_Layers_Fp8.tpp:26  |   26           |               |              |             |               |
-+-----------------------------+------------------------+----------------+---------------+--------------+-------------+---------------+
++-------------------------------+------------------------+----------------+---------------+--------------+-------------+---------------+
+| Function                      | Location               | Compile/Link   | Unroll/Inline | Array/Struct | Performance | HW Transforms |
++-------------------------------+------------------------+----------------+---------------+--------------+-------------+---------------+
+| + fp8_conv_top                | fp8_conv_top.cpp:8     | 3,168          | 26,294        | 27,194       | 27,199      | 25,253        |
+|  + Fp8_Conv_Engine<16, 32>    | Hls_Layers_Fp8.tpp:256 | 3,152          | 26,276        | 27,176       | 27,181      | 25,227        |
+|   + my_sqrt_f                 | Hls_Layers_Fp8.tpp:51  |    8 (2 calls) |               |              |             |               |
+|      sqrtf                    | sqrtfloat.cpp:11       |    4 (2 calls) |               |              |             |               |
+|     flat_idx                  | Hls_Layers_Fp8.tpp:43  |    7           |               |              |             |               |
+|   + fp8_conv_row<16, 32>      | Hls_Layers_Fp8.tpp:237 | 2,592          | 25,891        | 26,426       | 26,427      | 24,537        |
+|    + fp8_mac_producer<16, 32> | Hls_Layers_Fp8.tpp:120 | 2,189          | 25,739        | 26,003       | 26,004      | 24,101        |
+|       w_flat_idx              | Hls_Layers_Fp8.tpp:47  |   21 (3 calls) |               |              |             |               |
+|     + hdot_fp8<32>            | Hls_Layers_Fp8.tpp:95  | 1,836          |               |              |             |               |
+|      + fp8_mul_to_half        | Hls_Layers_Fp8.tpp:64  | 1,679          |               |              |             |               |
+|         bits_to_half<__fp16>  | Hls_Layers_Fp8.tpp:35  |   18           |               |              |             |               |
+|       half_to_bits<__fp16>    | Hls_Layers_Fp8.tpp:26  |   26           |               |              |             |               |
+|    + fp8_reduce_consumer<16>  | Hls_Layers_Fp8.tpp:193 |  391           |   145         |   416        |   416       |   427         |
+|       bits_to_half<__fp16>    | Hls_Layers_Fp8.tpp:35  |   36 (2 calls) |               |              |             |               |
+|       half_to_bits<__fp16>    | Hls_Layers_Fp8.tpp:26  |   26           |               |              |             |               |
+|     bits_to_half<__fp16>      | Hls_Layers_Fp8.tpp:35  |   54 (3 calls) |               |              |             |               |
+|     half_to_bits<__fp16>      | Hls_Layers_Fp8.tpp:26  |   26           |               |              |             |               |
++-------------------------------+------------------------+----------------+---------------+--------------+-------------+---------------+
 
 * Design Size Message Settings
 +---------------------------------------------+--------+------------------------------------------------------------------+

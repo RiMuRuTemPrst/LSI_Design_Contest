@@ -3,7 +3,8 @@
 > Phân tích đầy đủ engine **`fusion_core_fp8` bản 32-wide** (`prj_fp8`, `FP8_LANES=32`):
 > utilization / latency / efficiency của **từng khối con**, đào sâu mảng MAC từ **RTL**, và
 > micro-benchmark **chi phí 1 phép MAC** cho fp32/fp16/fp8/int16/int8. Tất cả là **số thực từ
-> Vitis HLS 2024.2 csynth** (xczu7ev-ffvc1156-2-e, target 3.333 ns / 300 MHz). Ngày: 2026-06-18.
+> Vitis HLS 2024.2 csynth** (xczu7ev-ffvc1156-2-e, target 3.333 ns / 300 MHz). Ngày: 2026-06-18
+> (cập nhật 2026-06-19: fp16 nhân `a*b` giờ cho **product full-precision float32** — xem §9).
 
 ## Mục lục
 1. [Tổng quan & scope](#1-tổng-quan--scope)
@@ -106,7 +107,7 @@ Fp8_Conv_Engine (4,426,560 cy)
   - @Fmax 369.55: **378.4 GOPS**; đạt = **354.6 GOPS**.
 - **GOPS/DSP** (MAC array, 1000 DSP): **0.307 @300** / 0.378 @Fmax. Engine (1141 DSP): 0.252 @300.
 
-> So sánh DSP-efficiency (per-MAC, xem mục 9): fp8 2 DSP/MAC — gấp đôi tốt so fp16 (4) nhưng kém int16/int8 (1).
+> So sánh DSP-efficiency (per-MAC, xem mục 9): fp8 2 DSP/MAC — tốt hơn fp16 full-precision (5) 2.5× nhưng kém int16/int8 (1).
 > Thế mạnh thật của fp8 KHÔNG ở GOPS/DSP mà ở **mật độ băng thông** (1 byte/phần tử → 2× phần tử/word).
 
 ---
@@ -118,13 +119,18 @@ không AXI → DSP/LUT thuần arithmetic). Source `src/hls/mac_probe/`.
 ### 9.1. Kết quả — DSP / LUT / FF
 | Phép | fp32 | fp16 | fp8 (E4M3) | int16 | int8 |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **nhân `a*b`** | 3 / 166 / 204 | 2 / 60 / 95 | **0** / 123 / 19 | 1 / 5 / 0 | **0** / 40 / 0 |
+| **nhân `a*b`** | 3 / 166 / 204 | **3 / 177 / 270** | **0** / 123 / 19 | 1 / 5 / 0 | **0** / 40 / 0 |
 | **cộng (accumulate)** | 2 / 301 / 380 | 2 / 144 / 114 | 2 / 144 / 114 | 0 / 39 / 0 | 0 / 39 / 0 |
-| **MAC `a*b+c`** | **5** / 456 / 616 | **4** / 201 / 225 | **2** / 265 / 147 | **1** / 26 / 4 | **1** / 26 / 4 |
+| **MAC `a*b+c`** | **5** / 456 / 616 | **5 / 465 / 682** | **2** / 265 / 147 | **1** / 26 / 4 | **1** / 26 / 4 |
 
-> Mỗi ô: **DSP / LUT / FF**. Hàng "cộng" = bộ cộng dùng cho phần *cộng dồn* của MAC, theo **kiểu
-> accumulate thực tế**: fp8 cộng ở **fp16** (nên trùng cột fp16); int16/int8 cộng ở **int32** (0/39/0).
-> Quan hệ MAC = nhân + cộng khớp: fp8 `2 = 0+2`, int16 `1 = 1+0`, fp16 `4 = 2+2`.
+> Mỗi ô: **DSP / LUT / FF**. Hàng "cộng" = bộ cộng fp16-native (half) dùng cho *cộng dồn*; fp8 tích lũy
+> ở **fp16** nên trùng cột fp16 (2/144/114); int16/int8 cộng ở **int32** (0/39/0).
+> Quan hệ MAC = nhân + cộng: fp8 `2 = 0+2`, int16 `1 = 1+0`, fp32 `5 = 3+2`.
+>
+> **fp16 (cập nhật 2026-06-19):** nhân `fp16×fp16` giờ cho **product full-precision float32** (không ép
+> về half), nên cả nhân (3 DSP, = fp32) lẫn cộng-tích-lũy (float32, 2 DSP) đều bằng fp32 → MAC `5 = 3+2`
+> ≈ fp32. Hàng "cộng" cột fp16 (2/144/114) là bộ cộng **fp16-half** mà fp8 dùng, KHÔNG phải bộ cộng của
+> MAC fp16 full-precision (bộ đó là cộng **float32**, cột fp32 = 2/301/380).
 
 ### 9.2. DSP mỗi MAC — xếp hạng
 | Kiểu | DSP/MAC | LUT/MAC | Gộp `×+` vào 1 DSP? | Cơ chế |
@@ -132,13 +138,18 @@ không AXI → DSP/LUT thuần arithmetic). Source `src/hls/mac_probe/`.
 | **int8** | **1** | 26 | ✅ | DSP48E2 `P = A×B + C` (số nguyên) |
 | **int16** | **1** | 26 | ✅ | như trên |
 | **fp8** | 2 | 265 | ❌ | nhân→LUT (0 DSP), cộng fp16→2 DSP |
-| **fp16** | 4 | 201 | ❌ | 2 (nhân) + 2 (cộng), hai khối rời |
+| **fp16** | **5** | 465 | ❌ | nhân full-precision→float32 (3) + cộng float32 (2) ⇒ = fp32 |
 | **fp32** | 5 | 456 | ❌ | 3 (nhân) + 2 (cộng) |
 
 ### 9.3. Đọc kết quả
 - **Số nguyên gộp `×+` vào 1 DSP — float thì không (đo được).** int16/int8 MAC = 1 DSP (cộng dồn
   gập miễn phí vào tích lũy DSP48E2). Float: MAC = nhân + cộng đúng tổng → adder float là khối DSP riêng.
-- **fp8 = bộ chuyển DSP→LUT:** nhân 0 DSP/123 LUT, cộng fp16 2 DSP → MAC 2 DSP nhưng LUT/MAC cao nhất sau fp32.
+- **fp16 full-precision = fp32.** Khi nhân `fp16×fp16` giữ product không mất mát → ra **float32**, nên
+  nhân = 3 DSP (= fp32) và MAC = 5 DSP; LUT/MAC (465) còn nhỉnh hơn fp32 (456) do thêm convert half→float
+  ở input. fp16 **chỉ** rẻ hơn fp32 nếu chấp nhận **truncate product về half** (như mảng [E] thật) → khi
+  đó MAC ~4 DSP. Tức "fp16 rẻ" là đánh đổi precision, không miễn phí.
+- **fp8 = bộ chuyển DSP→LUT:** nhân 0 DSP/123 LUT, cộng fp16 2 DSP → MAC 2 DSP; LUT/MAC = 265 (cao thứ 3,
+  sau fp16 465 và fp32 456).
 - **Số nguyên thắng cả 2 trục:** 1 DSP + 26 LUT, rẻ hơn fp8 và fp16 ở mọi mặt.
 
 ### 9.4. Đối chiếu micro-benchmark ↔ array thật
@@ -147,7 +158,7 @@ không AXI → DSP/LUT thuần arithmetic). Source `src/hls/mac_probe/`.
 | fp8-32: 512 MAC nhưng **~1000 DSP** | nhân fp8 = 0 DSP; **496 adder fp16 × 2 = ~992** → DSP toàn là cộng |
 | fp8-32 LUT nổ (167K mac_producer) | nhân fp8 = 123 LUT × 512 ≈ 63K + ráp |
 | resblock_q int16 đo **2.44 DSP/MAC** | MAC int16 thuần chỉ **1 DSP**; phần dư là **requantize** (nhân int64), KHÔNG phải MAC |
-| fp16 [E] array ~3.5 DSP/MAC | khớp MAC fp16 = 4 DSP (2+2), trừ phần dùng chung trong cây cộng |
+| fp16 [E] array ~3.5 DSP/MAC | array [E] **truncate product về fp16** (rẻ) → ~3.5–4 DSP/MAC; benchmark mới giữ product **float32** nên = fp32 (5 DSP). Chênh lệch chính là **precision của product** |
 
 ---
 
@@ -156,8 +167,9 @@ không AXI → DSP/LUT thuần arithmetic). Source `src/hls/mac_probe/`.
    (điểm rò rỉ duy nhất = reduce_consumer nối tiếp 5.6%, có thể overlap thêm).
 2. **1000 DSP của mảng MAC = 100% adder fp16**, không phải nhân (RTL xác nhận: 496 hadd, 0 nhân-DSP,
    512 nhân fp8 ở LUT). fp8 = **dời DSP→LUT**, không tạo hiệu quả tổng.
-3. **Chi phí DSP/MAC (đo): int8 = int16 = 1 < fp8 = 2 < fp16 = 4 < fp32 = 5.** "1 DSP = 1 MAC" chỉ
-   đúng với số nguyên (DSP48E2 gập `×+` native); float không bao giờ gập được.
+3. **Chi phí DSP/MAC (đo): int8 = int16 = 1 < fp8 = 2 < fp16 = fp32 = 5** (fp16 nhân full-precision ra
+   float32 ⇒ = fp32; chỉ ~4 DSP nếu truncate product về half như mảng [E]). "1 DSP = 1 MAC" chỉ đúng với
+   số nguyên (DSP48E2 gập `×+` native); float không bao giờ gập được.
 4. **Số nguyên rẻ nhất cả DSP lẫn LUT per-MAC** → chọn khi nút thắt là DSP/compute. **fp8 chỉ đáng khi
    nút thắt là băng thông bộ nhớ** (2× phần tử/byte), không phải vì rẻ DSP.
 5. Giá của số nguyên: cần lượng tử hóa + **requantize** mỗi layer — requant mới là phần ăn DSP/LUT thêm

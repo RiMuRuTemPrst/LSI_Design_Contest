@@ -31,20 +31,21 @@ static inline half fp8_mul_to_half(ap_uint<8> a, ap_uint<8> b) {
 
 // ===================== MULTIPLY ONLY =====================
 float       mul_fp32 (float a, float b)                 { return a * b; }
-half        mul_fp16 (half a, half b)                   { return (half)(a * b); }
+float       mul_fp16 (half a, half b)                   { return (float)a * (float)b; }
 half        mul_fp8  (ap_uint<8> a, ap_uint<8> b)       { return fp8_mul_to_half(a, b); }
 ap_int<32>  mul_int16(ap_int<16> a, ap_int<16> b)       { return (ap_int<32>)a * (ap_int<32>)b; }
 ap_int<16>  mul_int8 (ap_int<8>  a, ap_int<8>  b)       { return (ap_int<16>)a * (ap_int<16>)b; }
 
 // ===================== ADD ONLY =====================
 float       add_fp32 (float a, float b)                 { return a + b; }
-half        add_fp16 (half a, half b)                   { return (half)(a + b); }
+float       add_fp16 (half a, half b)                   { return (float)a + (float)b; }
+half        add_fp8  (ap_uint<8> a, ap_uint<8> b)       { return (float)(fp8_mul_to_half(a, 1) + fp8_mul_to_half(b, 1)); }
 ap_int<32>  add_int32(ap_int<32> a, ap_int<32> b)       { return a + b; }
 ap_int<16>  add_int16(ap_int<16> a, ap_int<16> b)       { return (ap_int<16>)(a + b); }
 
 // ===================== MAC: a*b + c =====================
 float       mac_fp32 (float a, float b, float c)                  { return a * b + c; }
-half        mac_fp16 (half a, half b, half c)                     { return (half)(a * b + c); }
+float       mac_fp16 (half a, half b, float c)                    { return (float)a * (float)b + c; }
 half        mac_fp8  (ap_uint<8> a, ap_uint<8> b, half c)         { return (half)(fp8_mul_to_half(a, b) + c); }
 ap_int<32>  mac_int16(ap_int<16> a, ap_int<16> b, ap_int<32> c)   { return (ap_int<32>)a * (ap_int<32>)b + c; }
 ap_int<32>  mac_int8 (ap_int<8>  a, ap_int<8>  b, ap_int<32> c)   { return (ap_int<32>)a * (ap_int<32>)b + c; }

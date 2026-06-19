@@ -8,7 +8,7 @@
 <unit>ns</unit>
 <ProductFamily>zynquplus</ProductFamily>
 <Part>xczu7ev-ffvc1156-2-e</Part>
-<TopModelName>fp8_mac_producer_16_Pipeline_VITIS_LOOP_131_1</TopModelName>
+<TopModelName>fp8_mac_producer_16_32_Pipeline_VITIS_LOOP_136_1</TopModelName>
 <TargetClockPeriod>3.33</TargetClockPeriod>
 <ClockUncertainty>0.90</ClockUncertainty>
 <FlowTarget>vitis</FlowTarget>
@@ -32,7 +32,7 @@
 <Interval-max>31</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
-<VITIS_LOOP_131_1>
+<VITIS_LOOP_136_1>
 <Slack>2.43</Slack>
 <TripCount>30</TripCount>
 <Latency>31</Latency>
@@ -41,19 +41,19 @@
 <PipelineDepth>3</PipelineDepth>
 <InstanceList>
 </InstanceList>
-</VITIS_LOOP_131_1>
+</VITIS_LOOP_136_1>
 </SummaryOfLoopLatency>
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_Fp8.tpp:131</SourceLocation>
+<SourceLocation>gen/Hls_Layers_Fp8.tpp:136</SourceLocation>
 <SummaryOfLoopViolations>
-<VITIS_LOOP_131_1>
-<Name>VITIS_LOOP_131_1</Name>
+<VITIS_LOOP_136_1>
+<Name>VITIS_LOOP_136_1</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_Fp8.tpp:131</SourceLocation>
-</VITIS_LOOP_131_1>
+<SourceLocation>gen/Hls_Layers_Fp8.tpp:136</SourceLocation>
+</VITIS_LOOP_136_1>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
 </PerformanceEstimates>
@@ -78,7 +78,7 @@
 <InterfaceSummary>
 <RtlPorts>
 <name>ap_clk</name>
-<Object>fp8_mac_producer&lt;16&gt;_Pipeline_VITIS_LOOP_131_1</Object>
+<Object>fp8_mac_producer&lt;16, 32&gt;_Pipeline_VITIS_LOOP_136_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -89,7 +89,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_rst</name>
-<Object>fp8_mac_producer&lt;16&gt;_Pipeline_VITIS_LOOP_131_1</Object>
+<Object>fp8_mac_producer&lt;16, 32&gt;_Pipeline_VITIS_LOOP_136_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -100,7 +100,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_start</name>
-<Object>fp8_mac_producer&lt;16&gt;_Pipeline_VITIS_LOOP_131_1</Object>
+<Object>fp8_mac_producer&lt;16, 32&gt;_Pipeline_VITIS_LOOP_136_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -111,7 +111,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_done</name>
-<Object>fp8_mac_producer&lt;16&gt;_Pipeline_VITIS_LOOP_131_1</Object>
+<Object>fp8_mac_producer&lt;16, 32&gt;_Pipeline_VITIS_LOOP_136_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -122,7 +122,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_idle</name>
-<Object>fp8_mac_producer&lt;16&gt;_Pipeline_VITIS_LOOP_131_1</Object>
+<Object>fp8_mac_producer&lt;16, 32&gt;_Pipeline_VITIS_LOOP_136_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -133,7 +133,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_ready</name>
-<Object>fp8_mac_producer&lt;16&gt;_Pipeline_VITIS_LOOP_131_1</Object>
+<Object>fp8_mac_producer&lt;16, 32&gt;_Pipeline_VITIS_LOOP_136_1</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -649,8 +649,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>sext_ln131</name>
-<Object>sext_ln131</Object>
+<name>sext_ln136</name>
+<Object>sext_ln136</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -667,7 +667,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>5</Bits>
+<Bits>6</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>

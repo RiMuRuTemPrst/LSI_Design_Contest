@@ -8,7 +8,7 @@
 <unit>ns</unit>
 <ProductFamily>zynquplus</ProductFamily>
 <Part>xczu7ev-ffvc1156-2-e</Part>
-<TopModelName>Fp8_Conv_Engine_16_Pipeline_VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD</TopModelName>
+<TopModelName>Fp8_Conv_Engine_16_32_Pipeline_VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD</TopModelName>
 <TargetClockPeriod>3.33</TargetClockPeriod>
 <ClockUncertainty>0.90</ClockUncertainty>
 <FlowTarget>vitis</FlowTarget>
@@ -22,17 +22,17 @@
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>558</Best-caseLatency>
-<Average-caseLatency>1038</Average-caseLatency>
-<Worst-caseLatency>1518</Worst-caseLatency>
-<Best-caseRealTimeLatency>1.860 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>3.460 us</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>5.059 us</Worst-caseRealTimeLatency>
+<Best-caseLatency>557</Best-caseLatency>
+<Average-caseLatency>1037</Average-caseLatency>
+<Worst-caseLatency>1517</Worst-caseLatency>
+<Best-caseRealTimeLatency>1.856 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>3.456 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>5.056 us</Worst-caseRealTimeLatency>
 <Interval-min>481</Interval-min>
 <Interval-max>1441</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
-<VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD>
+<VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD>
 <Slack>2.43</Slack>
 <TripCount>
 <range>
@@ -42,41 +42,41 @@
 </TripCount>
 <Latency>
 <range>
-<min>556</min>
-<max>1516</max>
+<min>555</min>
+<max>1515</max>
 </range>
 </Latency>
 <AbsoluteTimeLatency>
 <range>
-<min>1853</min>
-<max>5052</max>
+<min>1849</min>
+<max>5049</max>
 </range>
 </AbsoluteTimeLatency>
 <PipelineII>1</PipelineII>
-<PipelineDepth>78</PipelineDepth>
+<PipelineDepth>77</PipelineDepth>
 <InstanceList>
 </InstanceList>
-</VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD>
+</VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD>
 </SummaryOfLoopLatency>
 <SummaryOfViolations>
 <IssueType>Timing Violation</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_Fp8.tpp:281</SourceLocation>
+<SourceLocation>gen/Hls_Layers_Fp8.tpp:308</SourceLocation>
 <SummaryOfLoopViolations>
-<VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD>
-<Name>VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD</Name>
+<VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD>
+<Name>VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers_Fp8.tpp:279</SourceLocation>
-</VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD>
+<SourceLocation>gen/Hls_Layers_Fp8.tpp:306</SourceLocation>
+</VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
 </PerformanceEstimates>
 
 <AreaEstimates>
 <Resources>
-<FF>1331</FF>
-<LUT>2885</LUT>
+<FF>1301</FF>
+<LUT>2781</LUT>
 <BRAM_18K>0</BRAM_18K>
 <DSP>0</DSP>
 <URAM>0</URAM>
@@ -93,7 +93,7 @@
 <InterfaceSummary>
 <RtlPorts>
 <name>ap_clk</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -104,7 +104,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_rst</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -115,7 +115,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_start</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -126,7 +126,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_done</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -137,7 +137,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_idle</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -148,7 +148,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_ready</name>
-<Object>Fp8_Conv_Engine&lt;16&gt;_Pipeline_VITIS_LOOP_275_1_VITIS_LOOP_279_2_RB_LOAD</Object>
+<Object>Fp8_Conv_Engine&lt;16, 32&gt;_Pipeline_VITIS_LOOP_302_1_VITIS_LOOP_306_2_RB_LOAD</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -664,8 +664,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>select_ln269</name>
-<Object>select_ln269</Object>
+<name>select_ln296</name>
+<Object>select_ln296</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -675,8 +675,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>zext_ln275</name>
-<Object>zext_ln275</Object>
+<name>zext_ln302</name>
+<Object>zext_ln302</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -715,7 +715,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -759,7 +759,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -803,7 +803,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -847,7 +847,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -891,7 +891,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -935,7 +935,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -979,7 +979,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1023,7 +1023,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1067,7 +1067,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1111,7 +1111,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1148,19 +1148,19 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_address0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_address0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_ce0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_ce0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1170,8 +1170,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_we0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_we0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1181,8 +1181,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_d0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10_d0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_10</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1192,19 +1192,19 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_address0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_address0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_ce0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_ce0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1214,8 +1214,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_we0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_we0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1225,8 +1225,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_d0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11_d0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_11</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1236,19 +1236,19 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_address0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_address0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_ce0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_ce0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1258,8 +1258,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_we0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_we0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1269,8 +1269,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_d0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12_d0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_12</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1280,19 +1280,19 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_address0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_address0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_ce0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_ce0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1302,8 +1302,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_we0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_we0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1313,8 +1313,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_d0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13_d0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_13</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1324,19 +1324,19 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_address0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_address0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_ce0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_ce0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1346,8 +1346,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_we0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_we0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1357,8 +1357,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_d0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14_d0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_14</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1368,19 +1368,19 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_address0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_address0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>7</Bits>
+<Bits>8</Bits>
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_ce0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_ce0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1390,8 +1390,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_we0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_we0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -1401,8 +1401,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_d0</name>
-<Object>p_ZZ15Fp8_Conv_EngineILi16EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15</Object>
+<name>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15_d0</name>
+<Object>p_ZZ15Fp8_Conv_EngineILi16ELi32EEvPK7ap_uintILi256EES3_S3_S3_S3_PS1_DhE5x_buf_15</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
