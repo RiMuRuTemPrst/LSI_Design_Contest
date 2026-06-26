@@ -90,6 +90,7 @@ int main() {
     data_t* input_data  = ARENA_2.alloc<data_t>(HWC);
     data_t* output_data = ARENA_2.alloc<data_t>(HWC);
     data_t* golden_data = ARENA_2.alloc<data_t>(HWC);
+    data_t* dbg_data    = ARENA_2.alloc<data_t>(HWC * 8);   // raw psum probe [H][W][C][8]
 
     TensorMem<data_t> input (input_data,  Shape(1, MODEL_H, MODEL_W, MODEL_C), false);
     TensorMem<data_t> output(output_data, Shape(1, MODEL_H, MODEL_W, MODEL_C), false);
@@ -158,6 +159,7 @@ int main() {
         reinterpret_cast<const data_256_t*>(rb_weight_1.raw()),
         reinterpret_cast<const data_256_t*>(rb_bias_1.raw()),
         reinterpret_cast<data_256_t*>(output.raw()),
+        dbg_data,
         (data_t)0.001f
     );
 
@@ -200,6 +202,34 @@ int main() {
     std::cout << "Mean abs error: " << (sum_err / HWC) << std::endl;
     std::cout << "Error count   : " << err_cnt << " / " << HWC
               << "  (Threshold = " << ABS_THRESH << ")" << std::endl;
+
+    // ----------------------------------------------------------
+    // DBG psum probe check: reduce(8 lanes) + bias must reconstruct Y
+    // exactly (same FP16 add-tree as the kernel's FINAL_ACCUMULATION)
+    // ----------------------------------------------------------
+    float dbg_max = 0.0f; int dbg_bad = 0;
+    for (int h = 0; h < MODEL_H; h++)
+    for (int w = 0; w < MODEL_W; w++)
+    for (int co = 0; co < MODEL_C; co++) {
+        const data_t* p = &dbg_data[(((h * MODEL_W) + w) * MODEL_C + co) * 8];
+        data_t t0123 = (data_t)((data_t)(p[0] + p[1]) + (data_t)(p[2] + p[3]));
+        data_t t4567 = (data_t)((data_t)(p[4] + p[5]) + (data_t)(p[6] + p[7]));
+        data_t total = (data_t)(t0123 + t4567);
+        data_t recon = (data_t)(total + rb_bias_1.raw()[co]);
+        float d = std::fabs((float)recon - (float)output.raw()[(h * MODEL_W + w) * MODEL_C + co]);
+        if (d > dbg_max) dbg_max = d;
+        if (d > 0.0f) dbg_bad++;
+    }
+    std::cout << "\n=== DBG PSUM PROBE CHECK ===" << std::endl;
+    {
+        const data_t* p0 = &dbg_data[(((0 * MODEL_W) + 0) * MODEL_C + 0) * 8];
+        std::cout << "psum[h=0,w=0,co=0] lanes = ";
+        for (int l = 0; l < 8; l++) std::cout << (float)p0[l] << " ";
+        std::cout << std::endl;
+    }
+    std::cout << "reduce(lanes)+bias vs Y : max_diff=" << dbg_max
+              << "  mismatches=" << dbg_bad << " / " << HWC
+              << (dbg_bad == 0 ? "   [probe OK]" : "   [PROBE MISMATCH]") << std::endl;
 
     if (err_cnt == 0) {
         std::cout << "\n[PASS] ✅  CONV OUTPUT MATCHES GOLDEN REFERENCE!" << std::endl;

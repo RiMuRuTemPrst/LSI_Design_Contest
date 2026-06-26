@@ -44,6 +44,9 @@
 #define DEPTH_W_WIDE   (DEPTH_W_VAL / PACK_256)
 #define DEPTH_B_WIDE   (DEPTH_B_VAL / PACK_256)
 
+// DBG psum probe: 16-bit (half) granular port, 8 lanes per output element
+#define DEPTH_DBG_VAL  (DEPTH_X_VAL * 8)
+
 // =========================================================================
 // LIBRARIES
 // =========================================================================

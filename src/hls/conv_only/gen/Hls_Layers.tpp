@@ -160,11 +160,12 @@ static void Fused_Conv_CNorm_Act(
     data_256_t      x_buf_256[4][MODEL_W][C_IN / PACK_256],        
     data_256_t      skip_buf_256[MODEL_H * MODEL_W * C_OUT / PACK_256], 
     data_256_t      w_buf_256[2][C_IN / PACK_256],                 
-    T               y_cache_16[PEs][C_OUT],                        
+    T               y_cache_16[PEs][C_OUT],
     T               epsilon,
     int             n,
     bool            is_final_layer,
-    bool            conv_only
+    bool            conv_only,
+    T*              dbg_psum                                       // [H][W][C_OUT][8] raw psum probe (null-safe via valid ptr)
 ) {
 #pragma HLS INLINE off
     constexpr int H         = MODEL_H;
@@ -327,7 +328,18 @@ static void Fused_Conv_CNorm_Act(
                 sum_acc[pe]   += ff;
                 sumsq_acc[pe] += ff * ff;
             }
-        } 
+
+            // ---- DEBUG PROBE: dump raw 8-lane psum (pre-reduce, pre-bias) ----
+            // Layout DBG[h][w][co][lane], h=r*width, w=pe.  Kept in a separate
+            // loop so FINAL_ACCUMULATION above stays II=1 (conv timing intact).
+            DBG_PSUM_PE: for (int pe = 0; pe < PEs; pe++) {
+                int dbg_base = (((n * H + r * width) * W + pe) * C_OUT + co) * 8;
+                DBG_PSUM_LANE: for (int l = 0; l < 8; l++) {
+#pragma HLS PIPELINE II=1
+                    dbg_psum[dbg_base + l] = psum[pe][l];
+                }
+            }
+        }
 
         if (r < rolls - 1) {
             int h_next = r + 2;
@@ -423,7 +435,8 @@ void ConvOnly_Kernel(
     DDR_CONST_PTR   W1_ptr,
     DDR_CONST_PTR   B1_ptr,
     T               epsilon,
-    DDR_PTR         Y_ptr
+    DDR_PTR         Y_ptr,
+    T*              dbg_psum            // [H][W][C_OUT][8] raw psum probe
 ) {
     data_256_t x_buf_256[4][MODEL_W][C_IN / PACK_256];
 #pragma HLS BIND_STORAGE variable=x_buf_256 type=ram_2p impl=bram
@@ -458,6 +471,7 @@ void ConvOnly_Kernel(
             X_ptr, W1_ptr, /*Out=*/Y_ptr,
             b_buf_256, gamma_buf_256, beta_buf_256,
             x_buf_256, skip_buf_256, w_buf_256, y_cache_16,
-            epsilon, n, /*is_final_layer=*/false, /*conv_only=*/true);
+            epsilon, n, /*is_final_layer=*/false, /*conv_only=*/true,
+            dbg_psum);
     }
 }
