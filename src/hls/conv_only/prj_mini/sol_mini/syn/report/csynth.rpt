@@ -1,0 +1,873 @@
+
+
+================================================================
+== Synthesis Summary Report of 'conv_only_top'
+================================================================
++ General Information: 
+    * Date:           Wed Jul  1 20:47:31 2026
+    * Version:        2025.2 (Build 6295257 on Nov 14 2025)
+    * Project:        prj_mini
+    * Solution:       sol_mini (Vitis Kernel Flow Target)
+    * Product family: zynquplus
+    * Target device:  xczu7ev-ffvc1156-2-e
+    
+
+* Performance & Resource Estimates: 
++--------------------------------------------------------------------------+--------+-------------------+----------+---------+------+----------+---------+-----------+-------+-----------+-----------+-------------+-------------+-----+
+|                                  Modules                                 |  Issue |                   | Iteration|         | Trip |          |       Latency       |       |           |           |             |             |     |
+|                                  & Loops                                 |  Type  |   Violation Type  |  Latency | Interval| Count| Pipelined| (cycles)|    (ns)   | Slack |   BRAM    |    DSP    |      FF     |     LUT     | URAM|
++--------------------------------------------------------------------------+--------+-------------------+----------+---------+------+----------+---------+-----------+-------+-----------+-----------+-------------+-------------+-----+
+|+ conv_only_top                                                           |  Timing|                  -|         -|    80755|     -|        no|    80754|  2.692e+05|  -0.28|  240 (38%)|  179 (10%)|  53142 (11%)|  38072 (16%)|    -|
+| + init_rows_16_16_false_half_s                                           |  Timing|                  -|         -|        -|     -|       yes|      124|    413.292|  -0.00|          -|          -|   1384 (~0%)|    677 (~0%)|    -|
+|  o INIT_3_INPUT_ROWS_LOAD_1_INPUT_ROW                                    |       -|                  -|        76|        1|    48|       yes|      122|    406.626|   2.43|          -|          -|            -|            -|    -|
+| + Fused_Conv_CNorm_Act_16_16_16_half_s                                   |  Timing|                  -|         -|    80556|     -|        no|    80556|  2.685e+05|  -0.28|    16 (2%)|  179 (10%)|   44692 (9%)|  28736 (12%)|    -|
+|  o Slide_PEs_loop                                                        |       -|                  -|      5026|        -|    16|        no|    80416|  2.680e+05|   2.43|          -|          -|            -|            -|    -|
+|   + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_PREFETCH_NEXT_INPUT_ROW  |  Timing|                  -|         -|        -|     -|       yes|       19|     63.327|  -0.00|          -|          -|    792 (~0%)|    101 (~0%)|    -|
+|    o PREFETCH_NEXT_INPUT_ROW                                             |       -|                  -|         3|        1|    16|       yes|       17|     56.661|   2.43|          -|          -|            -|            -|    -|
+|   + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_PASS_B                   |  Timing|                  -|         -|        -|     -|       yes|       19|     63.327|  -0.00|          -|          -|    524 (~0%)|    295 (~0%)|    -|
+|    o PASS_B                                                              |       -|                  -|         3|        1|    16|       yes|       17|     56.661|   2.43|          -|          -|            -|            -|    -|
+|   o PASS_A                                                               |       -|                  -|       307|        -|    16|        no|     4912|  1.637e+04|   2.43|          -|          -|            -|            -|    -|
+|    + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_CONV_STEP_LOOP          |  Timing|                  -|         -|        -|     -|       yes|      155|    516.615|  -0.28|          -|   156 (9%)|   37848 (8%)|   21615 (9%)|    -|
+|     o CONV_STEP_LOOP                                                     |      II|  Memory Dependency|       106|        6|     9|       yes|      153|    509.949|   2.43|          -|          -|            -|            -|    -|
+|    + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_FINAL_ACCUMULATION      |       -|                  -|         -|        -|     -|       yes|       57|    189.981|   0.01|          -|    7 (~0%)|   1542 (~0%)|   1660 (~0%)|    -|
+|     o FINAL_ACCUMULATION                                                 |       -|                  -|        41|        1|    16|       yes|       55|    183.315|   2.43|          -|          -|            -|            -|    -|
+|    + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_PACK_OUTPUT_PE          |  Timing|                  -|         -|        -|     -|       yes|       89|    296.637|  -0.00|          -|          -|    358 (~0%)|    264 (~0%)|    -|
+|     o PACK_OUTPUT_PE                                                     |       -|                  -|        73|        1|    16|       yes|       87|    289.971|   2.43|          -|          -|            -|            -|    -|
++--------------------------------------------------------------------------+--------+-------------------+----------+---------+------+----------+---------+-----------+-------+-----------+-----------+-------------+-------------+-----+
+    II Violation Information: docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+    Name Prefix: '+' for module, 'o' for loop, '*' for dataflow
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-------------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface         | Read/Write | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|                   |            | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++-------------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_gmem_in     | READ_ONLY  | 256 -> 512 | 64            | 64      | slave  | 0        | 512       | 256          | 16           | 4           | 16          | BRAM=29           |
+| m_axi_gmem_out    | WRITE_ONLY | 256 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 256          | 16          | 4           | BRAM=29           |
+| m_axi_gmem_packed | WRITE_ONLY | 128 -> 128 | 64            | 64      | slave  | 0        | 512       | 16           | 64           | 16          | 4           | BRAM=8            |
+| m_axi_gmem_param  | READ_ONLY  | 256 -> 256 | 64            | 64      | slave  | 0        | 512       | 64           | 16           | 16          | 16          | BRAM=15           |
+| m_axi_gmem_weight | READ_ONLY  | 256 -> 256 | 64            | 64      | slave  | 0        | 512       | 64           | 16           | 2           | 16          | BRAM=15           |
++-------------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+---------------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| Interface     | Register      | Offset | Width | Access | Description                      | Bit Fields                                                                         |
++---------------+---------------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| s_axi_control | CTRL          | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 4=AP_CONTINUE 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER          | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                                           |
+| s_axi_control | IP_IER        | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                                      |
+| s_axi_control | IP_ISR        | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                                      |
+| s_axi_control | X_1           | 0x10   | 32    | W      | Data signal of X                 |                                                                                    |
+| s_axi_control | X_2           | 0x14   | 32    | W      | Data signal of X                 |                                                                                    |
+| s_axi_control | W1_1          | 0x1c   | 32    | W      | Data signal of W1                |                                                                                    |
+| s_axi_control | W1_2          | 0x20   | 32    | W      | Data signal of W1                |                                                                                    |
+| s_axi_control | B1_1          | 0x28   | 32    | W      | Data signal of B1                |                                                                                    |
+| s_axi_control | B1_2          | 0x2c   | 32    | W      | Data signal of B1                |                                                                                    |
+| s_axi_control | Y_1           | 0x34   | 32    | W      | Data signal of Y                 |                                                                                    |
+| s_axi_control | Y_2           | 0x38   | 32    | W      | Data signal of Y                 |                                                                                    |
+| s_axi_control | epsilon       | 0x40   | 32    | W      | Data signal of epsilon           |                                                                                    |
+| s_axi_control | PSUM_PACKED_1 | 0x48   | 32    | W      | Data signal of PSUM_PACKED       |                                                                                    |
+| s_axi_control | PSUM_PACKED_2 | 0x4c   | 32    | W      | Data signal of PSUM_PACKED       |                                                                                    |
++---------------+---------------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+---------------+-----------+
+| Interface | Type          | Ports     |
++-----------+---------------+-----------+
+| ap_clk    | clock         | ap_clk    |
+| ap_rst_n  | reset         | ap_rst_n  |
+| interrupt | interrupt     | interrupt |
+| ap_ctrl   | ap_ctrl_chain |           |
++-----------+---------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++-------------+-----------+----------------------+
+| Argument    | Direction | Datatype             |
++-------------+-----------+----------------------+
+| X           | in        | ap_uint<256>*        |
+| W1          | in        | ap_uint<256> const * |
+| B1          | in        | ap_uint<256> const * |
+| Y           | out       | ap_uint<256>*        |
+| epsilon     | in        | __fp16               |
+| PSUM_PACKED | out       | ap_uint<128>*        |
++-------------+-----------+----------------------+
+
+* SW-to-HW Mapping
++-------------+-------------------+-----------+----------+-----------------------------------------+
+| Argument    | HW Interface      | HW Type   | HW Usage | HW Info                                 |
++-------------+-------------------+-----------+----------+-----------------------------------------+
+| X           | m_axi_gmem_in     | interface |          | channel=0                               |
+| X           | s_axi_control     | register  | offset   | name=X_1 offset=0x10 range=32           |
+| X           | s_axi_control     | register  | offset   | name=X_2 offset=0x14 range=32           |
+| W1          | m_axi_gmem_weight | interface |          | channel=0                               |
+| W1          | s_axi_control     | register  | offset   | name=W1_1 offset=0x1c range=32          |
+| W1          | s_axi_control     | register  | offset   | name=W1_2 offset=0x20 range=32          |
+| B1          | m_axi_gmem_param  | interface |          | channel=0                               |
+| B1          | s_axi_control     | register  | offset   | name=B1_1 offset=0x28 range=32          |
+| B1          | s_axi_control     | register  | offset   | name=B1_2 offset=0x2c range=32          |
+| Y           | m_axi_gmem_out    | interface |          | channel=0                               |
+| Y           | s_axi_control     | register  | offset   | name=Y_1 offset=0x34 range=32           |
+| Y           | s_axi_control     | register  | offset   | name=Y_2 offset=0x38 range=32           |
+| epsilon     | s_axi_control     | register  |          | name=epsilon offset=0x40 range=32       |
+| PSUM_PACKED | m_axi_gmem_packed | interface |          | channel=0                               |
+| PSUM_PACKED | s_axi_control     | register  | offset   | name=PSUM_PACKED_1 offset=0x48 range=32 |
+| PSUM_PACKED | s_axi_control     | register  | offset   | name=PSUM_PACKED_2 offset=0x4c range=32 |
++-------------+-------------------+-----------+----------+-----------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++----------------+-----------+--------+-------+
+| HW Interface   | Direction | Length | Width |
++----------------+-----------+--------+-------+
+| m_axi_gmem_in  | read      | 8      | 512   |
+| m_axi_gmem_out | write     | 128    | 512   |
++----------------+-----------+--------+-------+
+
+* All M_AXI Variable Accesses
++-------------------+-------------+---------------------------+-----------+--------------+--------+-------------------------+---------------------------+------------+------------------------------------------+
+| HW Interface      | Variable    | Access Location           | Direction | Burst Status | Length | Loop                    | Loop Location             | Resolution | Problem                                  |
++-------------------+-------------+---------------------------+-----------+--------------+--------+-------------------------+---------------------------+------------+------------------------------------------+
+| m_axi_gmem_in     | X_ptr       | gen/Hls_Layers.tpp:131:55 | read      | Widened      | 8      | PREFETCH_NEXT_INPUT_ROW | gen/Hls_Layers.tpp:371:38 |            |                                          |
+| m_axi_gmem_in     | X_ptr       | gen/Hls_Layers.tpp:131:55 | read      | Widened      | 8      | LOAD_1_INPUT_ROW        | gen/Hls_Layers.tpp:129:27 |            |                                          |
+| m_axi_gmem_in     | X_ptr       | gen/Hls_Layers.tpp:131:55 | read      | Fail         |        | Slide_PEs_loop          | gen/Hls_Layers.tpp:184:5  | 214-229    | Could not analyze pattern                |
+| m_axi_gmem_in     | X_ptr       | gen/Hls_Layers.tpp:131:55 | read      | Fail         |        | INIT_3_INPUT_ROWS       | gen/Hls_Layers.tpp:122:24 | 214-229    | Could not analyze pattern                |
+| m_axi_gmem_in     | X_ptr       | gen/Hls_Layers.tpp:131:55 | read      | Inferred     | 16     | LOAD_1_INPUT_ROW        | gen/Hls_Layers.tpp:129:27 |            |                                          |
+| m_axi_gmem_in     | X_ptr       | gen/Hls_Layers.tpp:373:59 | read      | Inferred     | 16     | PREFETCH_NEXT_INPUT_ROW | gen/Hls_Layers.tpp:371:38 |            |                                          |
+| m_axi_gmem_out    | Out_ptr     | gen/Hls_Layers.tpp:436:49 | write     | Widened      | 128    | PASS_B                  | gen/Hls_Layers.tpp:385:17 |            |                                          |
+| m_axi_gmem_out    | Out_ptr     | gen/Hls_Layers.tpp:436:49 | write     | Inferred     | 256    | Slide_PEs_loop          | gen/Hls_Layers.tpp:184:5  |            |                                          |
+| m_axi_gmem_packed | psum_packed | gen/Hls_Layers.tpp:359:38 | write     | Fail         |        | PACK_OUTPUT_PE          | gen/Hls_Layers.tpp:335:29 | 214-230    | Stride is incompatible                   |
+| m_axi_gmem_weight | W_ptr       | gen/Hls_Layers.tpp:304:49 | read      | Fail         |        | CONV_STEP_LOOP          | gen/Hls_Layers.tpp:219:29 | 214-232    | Access load is in the conditional branch |
++-------------------+-------------+---------------------------+-----------+--------------+--------+-------------------------+---------------------------+------------+------------------------------------------+
+
+    * Resolution URL: docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++-------------------------------------------------------------------------+-----+--------+----------------+-----------+--------------------------+---------+
+| Name                                                                    | DSP | Pragma | Variable       | Op        | Impl                     | Latency |
++-------------------------------------------------------------------------+-----+--------+----------------+-----------+--------------------------+---------+
+| + conv_only_top                                                         | 179 |        |                |           |                          |         |
+|  + init_rows_16_16_false_half_s                                         | 0   |        |                |           |                          |         |
+|    icmp_ln122_fu_496_p2                                                 |     |        | icmp_ln122     | seteq     | auto                     | 0       |
+|    add_ln122_fu_502_p2                                                  |     |        | add_ln122      | add       | fabric                   | 0       |
+|    row_init_fu_592_p2                                                   |     |        | row_init       | add       | fabric                   | 0       |
+|    icmp_ln129_fu_516_p2                                                 |     |        | icmp_ln129     | seteq     | auto                     | 0       |
+|    select_ln122_fu_522_p3                                               |     |        | select_ln122   | select    | auto_sel                 | 0       |
+|    select_ln122_1_fu_678_p3                                             |     |        | select_ln122_1 | select    | auto_sel                 | 0       |
+|    select_ln122_2_fu_598_p3                                             |     |        | select_ln122_2 | select    | auto_sel                 | 0       |
+|    first_iter_0_fu_530_p2                                               |     |        | first_iter_0   | seteq     | auto                     | 0       |
+|    h_fu_605_p2                                                          |     |        | h              | add       | fabric                   | 0       |
+|    sub_ln125_fu_619_p2                                                  |     |        | sub_ln125      | sub       | fabric                   | 0       |
+|    select_ln125_fu_625_p3                                               |     |        | select_ln125   | select    | auto_sel                 | 0       |
+|    add_ln129_fu_645_p2                                                  |     |        | add_ln129      | add       | fabric                   | 0       |
+|    add_ln129_1_fu_578_p2                                                |     |        | add_ln129_1    | add       | fabric                   | 0       |
+|  + Fused_Conv_CNorm_Act_16_16_16_half_s                                 | 179 |        |                |           |                          |         |
+|    icmp_ln184_fu_1523_p2                                                |     |        | icmp_ln184     | seteq     | auto                     | 0       |
+|    add_ln184_fu_1529_p2                                                 |     |        | add_ln184      | add       | fabric                   | 0       |
+|    icmp_ln201_fu_1707_p2                                                |     |        | icmp_ln201     | seteq     | auto                     | 0       |
+|    add_ln201_fu_1713_p2                                                 |     |        | add_ln201      | add       | fabric                   | 0       |
+|    add_ln233_fu_1739_p2                                                 |     |        | add_ln233      | add       | fabric                   | 0       |
+|    icmp_ln233_fu_1746_p2                                                |     |        | icmp_ln233     | setlt     | auto                     | 0       |
+|    icmp_ln310_fu_1753_p2                                                |     |        | icmp_ln310     | seteq     | auto                     | 0       |
+|    b_word_reg_1_fu_1759_p3                                              |     |        | b_word_reg_1   | select    | auto_sel                 | 0       |
+|    xor_ln307_fu_2365_p2                                                 |     |        | xor_ln307      | xor       | auto                     | 0       |
+|    icmp_ln364_fu_1780_p2                                                |     |        | icmp_ln364     | setlt     | auto                     | 0       |
+|    add_ln365_fu_1785_p2                                                 |     |        | add_ln365      | add       | fabric                   | 0       |
+|    sub_ln367_fu_1798_p2                                                 |     |        | sub_ln367      | sub       | fabric                   | 0       |
+|    slot_fu_2402_p2                                                      |     |        | slot           | add       | fabric                   | 0       |
+|    select_ln367_fu_1803_p3                                              |     |        | select_ln367   | select    | auto_sel                 | 0       |
+|    add_ln371_fu_1823_p2                                                 |     |        | add_ln371      | add       | fabric                   | 0       |
+|   + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_CONV_STEP_LOOP          | 156 |        |                |           |                          |         |
+|     icmp_ln219_fu_3252_p2                                               |     |        | icmp_ln219     | seteq     | auto                     | 0       |
+|     add_ln231_fu_3258_p2                                                |     |        | add_ln231      | add       | fabric                   | 0       |
+|     slot_fu_3290_p2                                                     |     |        | slot           | add       | fabric                   | 0       |
+|     xor_ln230_fu_3278_p2                                                |     |        | xor_ln230      | xor       | auto                     | 0       |
+|     add_ln231_1_fu_3298_p2                                              |     |        | add_ln231_1    | add       | fabric                   | 0       |
+|     do_load_1_fu_3284_p2                                                |     |        | do_load_1      | or        | auto                     | 0       |
+|     wx_fu_3372_p2                                                       |     |        | wx             | add       | fabric                   | 0       |
+|     sub_ln304_fu_6545_p2                                                |     |        | sub_ln304      | sub       | fabric                   | 0       |
+|     icmp_ln248_fu_5795_p2                                               |     |        | icmp_ln248     | seteq     | auto                     | 0       |
+|     w_word_reg_fu_5801_p3                                               |     |        | w_word_reg     | select    | auto_sel                 | 0       |
+|     sub_ln271_fu_3385_p2                                                |     |        | sub_ln271      | sub       | fabric                   | 0       |
+|     wx_15_fu_3390_p3                                                    |     |        | wx_15          | select    | auto_sel                 | 0       |
+|     icmp_ln273_fu_3398_p2                                               |     |        | icmp_ln273     | seteq     | auto                     | 0       |
+|     select_ln273_fu_3404_p3                                             |     |        | select_ln273   | select    | auto_sel                 | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U62                                   | 2   |        | mul227_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U63                                   | 2   |        | mul228_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U64                                   | 2   |        | mul230_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U65                                   | 2   |        | mul231_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U66                                   | 2   |        | mul234_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U67                                   | 2   |        | mul235_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U68                                   | 2   |        | mul237_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U69                                   | 2   |        | mul238_i       | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U40                                  | 2   |        | add241_i       | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U70                                   | 2   |        | mul242_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U71                                   | 2   |        | mul243_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U72                                   | 2   |        | mul245_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U73                                   | 2   |        | mul246_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U74                                   | 2   |        | mul249_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U75                                   | 2   |        | mul250_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U76                                   | 2   |        | mul252_i       | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U77                                   | 2   |        | mul253_i       | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U41                                  | 2   |        | add256_i       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U51                                  | 2   |        | sum_16         | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U56                                  | 2   |        | add262_i       | hadd      | fulldsp                  | 4       |
+|     sparsemux_7_2_256_1_1_U105                                          |     |        | tmp_8          | sparsemux | onehotencoding_realdef   | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U78                                   | 2   |        | mul227_1_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U79                                   | 2   |        | mul228_1_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U27                                  | 2   |        | add229_1_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U80                                   | 2   |        | mul230_1_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U81                                   | 2   |        | mul231_1_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U28                                  | 2   |        | add232_1_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U82                                   | 2   |        | mul234_1_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U83                                   | 2   |        | mul235_1_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U29                                  | 2   |        | add236_1_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U84                                   | 2   |        | mul237_1_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U85                                   | 2   |        | mul238_1_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U30                                  | 2   |        | add239_1_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U42                                  | 2   |        | add241_1_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U86                                   | 2   |        | mul242_1_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U87                                   | 2   |        | mul243_1_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U31                                  | 2   |        | add244_1_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U88                                   | 2   |        | mul245_1_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U89                                   | 2   |        | mul246_1_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U32                                  | 2   |        | add247_1_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U90                                   | 2   |        | mul249_1_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U91                                   | 2   |        | mul250_1_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U33                                  | 2   |        | add251_1_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U92                                   | 2   |        | mul252_1_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U93                                   | 2   |        | mul253_1_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U34                                  | 2   |        | add254_1_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U43                                  | 2   |        | add256_1_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U52                                  | 2   |        | sum_16_1       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U57                                  | 2   |        | add262_1_i     | hadd      | fulldsp                  | 4       |
+|     tmp_s_fu_3684_p8                                                    |     |        | wx_16          | add       | fabric                   | 0       |
+|     sparsemux_7_2_256_1_1_U106                                          |     |        | tmp_s          | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U94                                   | 2   |        | mul227_2_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U95                                   | 2   |        | mul228_2_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U35                                  | 2   |        | add229_2_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U96                                   | 2   |        | mul230_2_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U97                                   | 2   |        | mul231_2_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U36                                  | 2   |        | add232_2_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U27                                  | 2   |        | add233_2_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U98                                   | 2   |        | mul234_2_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U99                                   | 2   |        | mul235_2_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U37                                  | 2   |        | add236_2_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U100                                  | 2   |        | mul237_2_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U101                                  | 2   |        | mul238_2_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U38                                  | 2   |        | add239_2_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U28                                  | 2   |        | add240_2_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U44                                  | 2   |        | add241_2_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U102                                  | 2   |        | mul242_2_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U103                                  | 2   |        | mul243_2_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U39                                  | 2   |        | add244_2_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U104                                  | 2   |        | mul245_2_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U62                                   | 2   |        | mul246_2_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U40                                  | 2   |        | add248_2_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U63                                   | 2   |        | mul249_2_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U64                                   | 2   |        | mul250_2_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U65                                   | 2   |        | mul252_2_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U66                                   | 2   |        | mul253_2_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U41                                  | 2   |        | add255_2_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U50                                  | 2   |        | add256_2_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U56                                  | 2   |        | sum_16_2       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U59                                  | 2   |        | add262_2_i     | hadd      | fulldsp                  | 4       |
+|     tmp_1_fu_3834_p8                                                    |     |        | wx_17          | add       | fabric                   | 0       |
+|     sparsemux_7_3_256_1_1_U107                                          |     |        | tmp_1          | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U67                                   | 2   |        | mul227_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U68                                   | 2   |        | mul228_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U69                                   | 2   |        | mul230_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U70                                   | 2   |        | mul231_3_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U42                                  | 2   |        | add233_3_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U71                                   | 2   |        | mul234_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U72                                   | 2   |        | mul235_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U73                                   | 2   |        | mul237_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U74                                   | 2   |        | mul238_3_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U43                                  | 2   |        | add240_3_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U51                                  | 2   |        | add241_3_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U75                                   | 2   |        | mul242_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U76                                   | 2   |        | mul243_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U77                                   | 2   |        | mul245_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U78                                   | 2   |        | mul246_3_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U27                                  | 2   |        | add247_3_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U44                                  | 2   |        | add248_3_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U79                                   | 2   |        | mul249_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U80                                   | 2   |        | mul250_3_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U28                                  | 2   |        | add251_3_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U81                                   | 2   |        | mul252_3_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U82                                   | 2   |        | mul253_3_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U29                                  | 2   |        | add254_3_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U45                                  | 2   |        | add255_3_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U52                                  | 2   |        | add256_3_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U57                                  | 2   |        | sum_16_3       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U60                                  | 2   |        | add262_3_i     | hadd      | fulldsp                  | 4       |
+|     tmp_2_fu_3984_p8                                                    |     |        | wx_18          | add       | fabric                   | 0       |
+|     sparsemux_7_3_256_1_1_U108                                          |     |        | tmp_2          | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U83                                   | 2   |        | mul227_4_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U84                                   | 2   |        | mul228_4_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U30                                  | 2   |        | add229_4_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U85                                   | 2   |        | mul230_4_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U86                                   | 2   |        | mul231_4_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U31                                  | 2   |        | add232_4_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U46                                  | 2   |        | add233_4_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U87                                   | 2   |        | mul234_4_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U88                                   | 2   |        | mul235_4_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U32                                  | 2   |        | add236_4_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U89                                   | 2   |        | mul237_4_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U90                                   | 2   |        | mul238_4_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U33                                  | 2   |        | add239_4_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U47                                  | 2   |        | add240_4_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U53                                  | 2   |        | add241_4_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U91                                   | 2   |        | mul242_4_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U92                                   | 2   |        | mul243_4_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U34                                  | 2   |        | add244_4_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U93                                   | 2   |        | mul245_4_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U94                                   | 2   |        | mul246_4_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U35                                  | 2   |        | add247_4_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U48                                  | 2   |        | add248_4_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U95                                   | 2   |        | mul249_4_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U96                                   | 2   |        | mul250_4_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U36                                  | 2   |        | add251_4_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U97                                   | 2   |        | mul252_4_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U98                                   | 2   |        | mul253_4_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U37                                  | 2   |        | add254_4_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U49                                  | 2   |        | add255_4_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U54                                  | 2   |        | add256_4_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U58                                  | 2   |        | sum_16_4       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U61                                  | 2   |        | add262_4_i     | hadd      | fulldsp                  | 4       |
+|     sparsemux_7_3_256_1_1_U109                                          |     |        | tmp_3          | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U99                                   | 2   |        | mul227_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U100                                  | 2   |        | mul228_5_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U38                                  | 2   |        | add229_5_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U101                                  | 2   |        | mul230_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U102                                  | 2   |        | mul231_5_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U39                                  | 2   |        | add232_5_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U50                                  | 2   |        | add233_5_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U103                                  | 2   |        | mul234_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U104                                  | 2   |        | mul235_5_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U40                                  | 2   |        | add236_5_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U62                                   | 2   |        | mul237_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U63                                   | 2   |        | mul238_5_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U41                                  | 2   |        | add240_5_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U51                                  | 2   |        | add241_5_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U64                                   | 2   |        | mul242_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U65                                   | 2   |        | mul243_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U66                                   | 2   |        | mul245_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U67                                   | 2   |        | mul246_5_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U42                                  | 2   |        | add248_5_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U68                                   | 2   |        | mul249_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U69                                   | 2   |        | mul250_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U70                                   | 2   |        | mul252_5_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U71                                   | 2   |        | mul253_5_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U43                                  | 2   |        | add255_5_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U52                                  | 2   |        | add256_5_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U55                                  | 2   |        | sum_16_5       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U59                                  | 2   |        | add262_5_i     | hadd      | fulldsp                  | 4       |
+|     wx_20_fu_4279_p2                                                    |     |        | wx_20          | add       | fabric                   | 0       |
+|     sparsemux_7_3_256_1_1_U110                                          |     |        | tmp_4          | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U72                                   | 2   |        | mul227_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U73                                   | 2   |        | mul228_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U74                                   | 2   |        | mul230_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U75                                   | 2   |        | mul231_6_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U44                                  | 2   |        | add233_6_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U76                                   | 2   |        | mul234_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U77                                   | 2   |        | mul235_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U78                                   | 2   |        | mul237_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U79                                   | 2   |        | mul238_6_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U27                                  | 2   |        | add239_6_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U45                                  | 2   |        | add240_6_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U53                                  | 2   |        | add241_6_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U80                                   | 2   |        | mul242_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U81                                   | 2   |        | mul243_6_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U28                                  | 2   |        | add244_6_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U82                                   | 2   |        | mul245_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U83                                   | 2   |        | mul246_6_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U29                                  | 2   |        | add247_6_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U46                                  | 2   |        | add248_6_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U84                                   | 2   |        | mul249_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U85                                   | 2   |        | mul250_6_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U30                                  | 2   |        | add251_6_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U86                                   | 2   |        | mul252_6_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U87                                   | 2   |        | mul253_6_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U31                                  | 2   |        | add254_6_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U47                                  | 2   |        | add255_6_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U54                                  | 2   |        | add256_6_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U56                                  | 2   |        | sum_16_6       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U60                                  | 2   |        | add262_6_i     | hadd      | fulldsp                  | 4       |
+|     tmp_5_fu_4435_p8                                                    |     |        | wx_21          | add       | fabric                   | 0       |
+|     sparsemux_7_4_256_1_1_U111                                          |     |        | tmp_5          | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U88                                   | 2   |        | mul227_7_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U89                                   | 2   |        | mul228_7_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U32                                  | 2   |        | add229_7_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U90                                   | 2   |        | mul230_7_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U91                                   | 2   |        | mul231_7_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U33                                  | 2   |        | add232_7_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U48                                  | 2   |        | add233_7_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U92                                   | 2   |        | mul234_7_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U93                                   | 2   |        | mul235_7_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U34                                  | 2   |        | add236_7_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U94                                   | 2   |        | mul237_7_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U95                                   | 2   |        | mul238_7_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U35                                  | 2   |        | add239_7_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U49                                  | 2   |        | add240_7_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U55                                  | 2   |        | add241_7_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U96                                   | 2   |        | mul242_7_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U97                                   | 2   |        | mul243_7_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U36                                  | 2   |        | add244_7_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U98                                   | 2   |        | mul245_7_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U99                                   | 2   |        | mul246_7_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U37                                  | 2   |        | add247_7_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U50                                  | 2   |        | add248_7_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U100                                  | 2   |        | mul249_7_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U101                                  | 2   |        | mul250_7_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U38                                  | 2   |        | add251_7_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U102                                  | 2   |        | mul252_7_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U103                                  | 2   |        | mul253_7_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U39                                  | 2   |        | add254_7_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U51                                  | 2   |        | add255_7_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U56                                  | 2   |        | add256_7_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U57                                  | 2   |        | sum_16_7       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U61                                  | 2   |        | add262_7_i     | hadd      | fulldsp                  | 4       |
+|     tmp_6_fu_4585_p8                                                    |     |        | wx_22          | add       | fabric                   | 0       |
+|     sparsemux_7_4_256_1_1_U112                                          |     |        | tmp_6          | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U104                                  | 2   |        | mul227_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U62                                   | 2   |        | mul228_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U63                                   | 2   |        | mul230_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U64                                   | 2   |        | mul231_8_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U40                                  | 2   |        | add233_8_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U65                                   | 2   |        | mul234_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U66                                   | 2   |        | mul235_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U67                                   | 2   |        | mul237_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U68                                   | 2   |        | mul238_8_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U41                                  | 2   |        | add240_8_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U52                                  | 2   |        | add241_8_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U69                                   | 2   |        | mul242_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U70                                   | 2   |        | mul243_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U71                                   | 2   |        | mul245_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U72                                   | 2   |        | mul246_8_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U42                                  | 2   |        | add248_8_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U73                                   | 2   |        | mul249_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U74                                   | 2   |        | mul250_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U75                                   | 2   |        | mul252_8_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U76                                   | 2   |        | mul253_8_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U43                                  | 2   |        | add255_8_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U53                                  | 2   |        | add256_8_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U57                                  | 2   |        | sum_16_8       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U58                                  | 2   |        | add262_8_i     | hadd      | fulldsp                  | 4       |
+|     sparsemux_7_4_256_1_1_U113                                          |     |        | tmp_7          | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U77                                   | 2   |        | mul227_9_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U78                                   | 2   |        | mul228_9_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U27                                  | 2   |        | add229_9_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U79                                   | 2   |        | mul230_9_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U80                                   | 2   |        | mul231_9_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U28                                  | 2   |        | add232_9_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U44                                  | 2   |        | add233_9_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U81                                   | 2   |        | mul234_9_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U82                                   | 2   |        | mul235_9_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U29                                  | 2   |        | add236_9_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U83                                   | 2   |        | mul237_9_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U84                                   | 2   |        | mul238_9_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U30                                  | 2   |        | add239_9_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U45                                  | 2   |        | add240_9_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U54                                  | 2   |        | add241_9_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U85                                   | 2   |        | mul242_9_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U86                                   | 2   |        | mul243_9_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U31                                  | 2   |        | add244_9_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U87                                   | 2   |        | mul245_9_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U88                                   | 2   |        | mul246_9_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U32                                  | 2   |        | add247_9_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U46                                  | 2   |        | add248_9_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U89                                   | 2   |        | mul249_9_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U90                                   | 2   |        | mul250_9_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U33                                  | 2   |        | add251_9_i     | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U91                                   | 2   |        | mul252_9_i     | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U92                                   | 2   |        | mul253_9_i     | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U34                                  | 2   |        | add254_9_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U47                                  | 2   |        | add255_9_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U55                                  | 2   |        | add256_9_i     | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U58                                  | 2   |        | sum_16_9       | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U59                                  | 2   |        | add262_9_i     | hadd      | fulldsp                  | 4       |
+|     tmp_11_fu_4887_p8                                                   |     |        | wx_24          | add       | fabric                   | 0       |
+|     sparsemux_7_4_256_1_1_U114                                          |     |        | tmp_11         | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U93                                   | 2   |        | mul227_10_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U94                                   | 2   |        | mul228_10_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U35                                  | 2   |        | add229_10_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U95                                   | 2   |        | mul230_10_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U96                                   | 2   |        | mul231_10_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U36                                  | 2   |        | add232_10_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U48                                  | 2   |        | add233_10_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U97                                   | 2   |        | mul234_10_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U98                                   | 2   |        | mul235_10_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U37                                  | 2   |        | add236_10_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U99                                   | 2   |        | mul237_10_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U100                                  | 2   |        | mul238_10_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U38                                  | 2   |        | add239_10_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U49                                  | 2   |        | add240_10_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U56                                  | 2   |        | add241_10_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U101                                  | 2   |        | mul242_10_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U102                                  | 2   |        | mul243_10_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U39                                  | 2   |        | add244_10_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U103                                  | 2   |        | mul245_10_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U104                                  | 2   |        | mul246_10_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U40                                  | 2   |        | add247_10_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U50                                  | 2   |        | add248_10_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U62                                   | 2   |        | mul249_10_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U63                                   | 2   |        | mul250_10_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U64                                   | 2   |        | mul252_10_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U65                                   | 2   |        | mul253_10_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U41                                  | 2   |        | add255_10_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U51                                  | 2   |        | add256_10_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U57                                  | 2   |        | sum_16_10      | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U59                                  | 2   |        | add262_10_i    | hadd      | fulldsp                  | 4       |
+|     tmp_12_fu_5037_p8                                                   |     |        | wx_25          | add       | fabric                   | 0       |
+|     sparsemux_7_4_256_1_1_U115                                          |     |        | tmp_12         | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U66                                   | 2   |        | mul227_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U67                                   | 2   |        | mul228_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U68                                   | 2   |        | mul230_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U69                                   | 2   |        | mul231_11_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U42                                  | 2   |        | add233_11_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U70                                   | 2   |        | mul234_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U71                                   | 2   |        | mul235_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U72                                   | 2   |        | mul237_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U73                                   | 2   |        | mul238_11_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U43                                  | 2   |        | add240_11_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U52                                  | 2   |        | add241_11_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U74                                   | 2   |        | mul242_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U75                                   | 2   |        | mul243_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U76                                   | 2   |        | mul245_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U77                                   | 2   |        | mul246_11_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U44                                  | 2   |        | add248_11_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U78                                   | 2   |        | mul249_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U79                                   | 2   |        | mul250_11_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U27                                  | 2   |        | add251_11_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U80                                   | 2   |        | mul252_11_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U81                                   | 2   |        | mul253_11_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U28                                  | 2   |        | add254_11_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U45                                  | 2   |        | add255_11_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U53                                  | 2   |        | add256_11_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U58                                  | 2   |        | sum_16_11      | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U60                                  | 2   |        | add262_11_i    | hadd      | fulldsp                  | 4       |
+|     tmp_13_fu_5187_p8                                                   |     |        | wx_26          | add       | fabric                   | 0       |
+|     sparsemux_7_4_256_1_1_U116                                          |     |        | tmp_13         | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U82                                   | 2   |        | mul227_12_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U83                                   | 2   |        | mul228_12_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U29                                  | 2   |        | add229_12_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U84                                   | 2   |        | mul230_12_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U85                                   | 2   |        | mul231_12_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U30                                  | 2   |        | add232_12_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U46                                  | 2   |        | add233_12_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U86                                   | 2   |        | mul234_12_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U87                                   | 2   |        | mul235_12_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U31                                  | 2   |        | add236_12_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U88                                   | 2   |        | mul237_12_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U89                                   | 2   |        | mul238_12_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U32                                  | 2   |        | add239_12_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U47                                  | 2   |        | add240_12_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U54                                  | 2   |        | add241_12_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U90                                   | 2   |        | mul242_12_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U91                                   | 2   |        | mul243_12_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U33                                  | 2   |        | add244_12_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U92                                   | 2   |        | mul245_12_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U93                                   | 2   |        | mul246_12_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U34                                  | 2   |        | add247_12_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U48                                  | 2   |        | add248_12_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U94                                   | 2   |        | mul249_12_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U95                                   | 2   |        | mul250_12_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U35                                  | 2   |        | add251_12_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U96                                   | 2   |        | mul252_12_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U97                                   | 2   |        | mul253_12_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U36                                  | 2   |        | add254_12_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U49                                  | 2   |        | add255_12_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U55                                  | 2   |        | add256_12_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U59                                  | 2   |        | sum_16_12      | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U61                                  | 2   |        | add262_12_i    | hadd      | fulldsp                  | 4       |
+|     sparsemux_7_3_256_1_1_U117                                          |     |        | tmp_14         | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U98                                   | 2   |        | mul227_13_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U99                                   | 2   |        | mul228_13_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U37                                  | 2   |        | add229_13_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U100                                  | 2   |        | mul230_13_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U101                                  | 2   |        | mul231_13_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U38                                  | 2   |        | add232_13_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U50                                  | 2   |        | add233_13_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U102                                  | 2   |        | mul234_13_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U103                                  | 2   |        | mul235_13_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U39                                  | 2   |        | add236_13_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U104                                  | 2   |        | mul237_13_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U62                                   | 2   |        | mul238_13_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U29                                  | 2   |        | add239_13_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U45                                  | 2   |        | add240_13_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U53                                  | 2   |        | add241_13_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U63                                   | 2   |        | mul242_13_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U64                                   | 2   |        | mul243_13_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U30                                  | 2   |        | add244_13_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U65                                   | 2   |        | mul245_13_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U66                                   | 2   |        | mul246_13_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U31                                  | 2   |        | add247_13_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U46                                  | 2   |        | add248_13_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U67                                   | 2   |        | mul249_13_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U68                                   | 2   |        | mul250_13_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U32                                  | 2   |        | add251_13_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U69                                   | 2   |        | mul252_13_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U70                                   | 2   |        | mul253_13_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U33                                  | 2   |        | add254_13_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U47                                  | 2   |        | add255_13_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U54                                  | 2   |        | add256_13_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U58                                  | 2   |        | sum_16_13      | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U60                                  | 2   |        | add262_13_i    | hadd      | fulldsp                  | 4       |
+|     sparsemux_7_3_256_1_1_U118                                          |     |        | tmp_15         | sparsemux | compactencoding_dontcare | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U71                                   | 2   |        | mul227_14_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U72                                   | 2   |        | mul228_14_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U34                                  | 2   |        | add229_14_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U73                                   | 2   |        | mul230_14_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U74                                   | 2   |        | mul231_14_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U35                                  | 2   |        | add232_14_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U48                                  | 2   |        | add233_14_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U75                                   | 2   |        | mul234_14_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U76                                   | 2   |        | mul235_14_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U36                                  | 2   |        | add236_14_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U77                                   | 2   |        | mul237_14_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U78                                   | 2   |        | mul238_14_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U37                                  | 2   |        | add239_14_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U49                                  | 2   |        | add240_14_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U55                                  | 2   |        | add241_14_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U79                                   | 2   |        | mul242_14_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U80                                   | 2   |        | mul243_14_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U38                                  | 2   |        | add244_14_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U81                                   | 2   |        | mul245_14_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U82                                   | 2   |        | mul246_14_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U39                                  | 2   |        | add247_14_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U50                                  | 2   |        | add248_14_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U83                                   | 2   |        | mul249_14_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U84                                   | 2   |        | mul250_14_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U40                                  | 2   |        | add251_14_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U85                                   | 2   |        | mul252_14_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U86                                   | 2   |        | mul253_14_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U41                                  | 2   |        | add254_14_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U51                                  | 2   |        | add255_14_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U56                                  | 2   |        | add256_14_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U59                                  | 2   |        | sum_16_14      | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U61                                  | 2   |        | add262_14_i    | hadd      | fulldsp                  | 4       |
+|     wx_14_fu_5619_p2                                                    |     |        | wx_14          | add       | fabric                   | 0       |
+|     sub_ln271_1_fu_5633_p2                                              |     |        | sub_ln271_1    | sub       | fabric                   | 0       |
+|     wc_13_fu_5639_p3                                                    |     |        | wc_13          | select    | auto_sel                 | 0       |
+|     icmp_ln273_1_fu_5647_p2                                             |     |        | icmp_ln273_1   | seteq     | auto                     | 0       |
+|     select_ln273_1_fu_5653_p3                                           |     |        | select_ln273_1 | select    | auto_sel                 | 0       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U87                                   | 2   |        | mul227_15_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U88                                   | 2   |        | mul228_15_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U42                                  | 2   |        | add229_15_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U89                                   | 2   |        | mul230_15_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U90                                   | 2   |        | mul231_15_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U43                                  | 2   |        | add232_15_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U52                                  | 2   |        | add233_15_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U91                                   | 2   |        | mul234_15_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U92                                   | 2   |        | mul235_15_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U44                                  | 2   |        | add236_15_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U93                                   | 2   |        | mul237_15_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U94                                   | 2   |        | mul238_15_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U45                                  | 2   |        | add239_15_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U53                                  | 2   |        | add240_15_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U57                                  | 2   |        | add241_15_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U95                                   | 2   |        | mul242_15_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U96                                   | 2   |        | mul243_15_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U46                                  | 2   |        | add244_15_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U97                                   | 2   |        | mul245_15_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U98                                   | 2   |        | mul246_15_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U47                                  | 2   |        | add247_15_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U54                                  | 2   |        | add248_15_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U99                                   | 2   |        | mul249_15_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U100                                  | 2   |        | mul250_15_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U48                                  | 2   |        | add251_15_i    | hadd      | fulldsp                  | 4       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U101                                  | 2   |        | mul252_15_i    | hmul      | maxdsp                   | 3       |
+|     hmul_16ns_16ns_16_4_max_dsp_1_U102                                  | 2   |        | mul253_15_i    | hmul      | maxdsp                   | 3       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U49                                  | 2   |        | add254_15_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U55                                  | 2   |        | add255_15_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U58                                  | 2   |        | add256_15_i    | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U60                                  | 2   |        | sum_16_15      | hadd      | fulldsp                  | 4       |
+|     hadd_16ns_16ns_16_5_full_dsp_1_U61                                  | 2   |        | add262_15_i    | hadd      | fulldsp                  | 4       |
+|     add_ln304_fu_3315_p2                                                |     |        | add_ln304      | add       | fabric                   | 0       |
+|     xor_ln307_fu_6743_p2                                                |     |        | xor_ln307      | xor       | auto                     | 0       |
+|   + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_FINAL_ACCUMULATION      | 7   |        |                |           |                          |         |
+|     icmp_ln317_fu_1999_p2                                               |     |        | icmp_ln317     | seteq     | auto                     | 0       |
+|     add_ln317_fu_2005_p2                                                |     |        | add_ln317      | add       | fabric                   | 0       |
+|     sparsemux_33_4_16_1_1_U297                                          |     |        | tmp            | sparsemux | compactencoding_dontcare | 0       |
+|     sparsemux_33_4_16_1_1_U298                                          |     |        | tmp_1          | sparsemux | compactencoding_dontcare | 0       |
+|     sparsemux_33_4_16_1_1_U299                                          |     |        | tmp_2          | sparsemux | compactencoding_dontcare | 0       |
+|     sparsemux_33_4_16_1_1_U300                                          |     |        | tmp_3          | sparsemux | compactencoding_dontcare | 0       |
+|     sparsemux_33_4_16_1_1_U301                                          |     |        | tmp_4          | sparsemux | compactencoding_dontcare | 0       |
+|     sparsemux_33_4_16_1_1_U302                                          |     |        | tmp_5          | sparsemux | compactencoding_dontcare | 0       |
+|     sparsemux_33_4_16_1_1_U303                                          |     |        | tmp_6          | sparsemux | compactencoding_dontcare | 0       |
+|     sparsemux_33_4_16_1_1_U304                                          |     |        | tmp_7          | sparsemux | compactencoding_dontcare | 0       |
+|     hptosp_16ns_32_2_no_dsp_1_U288                                      |     |        | ff             | hptosp    | auto                     | 1       |
+|     fmul_32ns_32ns_32_7_max_dsp_1_U287                                  | 3   |        | mul338_i       | fmul      | maxdsp                   | 6       |
+|     sparsemux_33_4_32_1_1_U305                                          |     |        | tmp_9          | sparsemux | compactencoding_dontcare | 0       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U285                                | 2   |        | sum_acc_16     | fadd      | fulldsp                  | 10      |
+|     sparsemux_33_4_32_1_1_U306                                          |     |        | tmp_s          | sparsemux | compactencoding_dontcare | 0       |
+|     fadd_32ns_32ns_32_11_full_dsp_1_U286                                | 2   |        | sumsq_acc_16   | fadd      | fulldsp                  | 10      |
+|   + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_PACK_OUTPUT_PE          | 0   |        |                |           |                          |         |
+|     icmp_ln335_fu_421_p2                                                |     |        | icmp_ln335     | seteq     | auto                     | 0       |
+|     pe_3_fu_427_p2                                                      |     |        | pe_3           | add       | fabric                   | 0       |
+|     sparsemux_33_4_16_1_1_U491                                          |     |        | tmp_s          | sparsemux | compactencoding_dontcare | 0       |
+|     hptodp_16ns_64_2_no_dsp_1_U490                                      |     |        | d_val          | hptodp    | auto                     | 1       |
+|     add_ln359_fu_546_p2                                                 |     |        | add_ln359      | add       | fabric                   | 0       |
+|   + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_PREFETCH_NEXT_INPUT_ROW | 0   |        |                |           |                          |         |
+|     icmp_ln371_fu_461_p2                                                |     |        | icmp_ln371     | seteq     | auto                     | 0       |
+|     add_ln371_fu_467_p2                                                 |     |        | add_ln371      | add       | fabric                   | 0       |
+|   + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_PASS_B                  | 0   |        |                |           |                          |         |
+|     icmp_ln385_fu_347_p2                                                |     |        | icmp_ln385     | seteq     | auto                     | 0       |
+|     add_ln385_fu_353_p2                                                 |     |        | add_ln385      | add       | fabric                   | 0       |
+|     select_ln385_fu_520_p3                                              |     |        | select_ln385   | select    | auto_sel                 | 0       |
++-------------------------------------------------------------------------+-----+--------+----------------+-----------+--------------------------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------------------------------------------------------+--------------+-----------+------+------+--------+---------------+------+---------+------------------+
+| Name                                                           | Usage        | Type      | BRAM | URAM | Pragma | Variable      | Impl | Latency | Bitwidth, Depth, |
+|                                                                |              |           |      |      |        |               |      |         | Banks            |
++----------------------------------------------------------------+--------------+-----------+------+------+--------+---------------+------+---------+------------------+
+| + conv_only_top                                                |              |           | 240  | 0    |        |               |      |         |                  |
+|   control_s_axi_U                                              | interface    | s_axilite |      |      |        |               |      |         |                  |
+|   gmem_in_m_axi_U                                              | interface    | m_axi     | 29   |      |        |               |      |         |                  |
+|   gmem_out_m_axi_U                                             | interface    | m_axi     | 29   |      |        |               |      |         |                  |
+|   gmem_packed_m_axi_U                                          | interface    | m_axi     | 8    |      |        |               |      |         |                  |
+|   gmem_param_m_axi_U                                           | interface    | m_axi     | 15   |      |        |               |      |         |                  |
+|   gmem_weight_m_axi_U                                          | interface    | m_axi     | 15   |      |        |               |      |         |                  |
+|   x_buf_256_U                                                  | ram_2p array |           | 8    |      | yes    | x_buf_256     | bram | 1       | 256, 4, 1        |
+|   x_buf_256_1_U                                                | ram_2p array |           | 8    |      | yes    | x_buf_256_1   | bram | 1       | 256, 4, 1        |
+|   x_buf_256_2_U                                                | ram_2p array |           | 8    |      | yes    | x_buf_256_2   | bram | 1       | 256, 4, 1        |
+|   x_buf_256_3_U                                                | ram_2p array |           | 8    |      | yes    | x_buf_256_3   | bram | 1       | 256, 4, 1        |
+|   x_buf_256_4_U                                                | ram_2p array |           | 8    |      | yes    | x_buf_256_4   | bram | 1       | 256, 4, 1        |
+|   x_buf_256_5_U                                                | ram_2p array |           | 8    |      | yes    | x_buf_256_5   | bram | 1       | 256, 4, 1        |
+|   x_buf_256_6_U                                                | ram_2p array |           | 8    |      | yes    | x_buf_256_6   | bram | 1       | 256, 4, 1        |
+|   x_buf_256_7_U                                                | ram_2p array |           | 8    |      | yes    | x_buf_256_7   | bram | 1       | 256, 4, 1        |
+|   x_buf_256_8_U                                                | ram_2p array |           | 8    |      | yes    | x_buf_256_8   | bram | 1       | 256, 4, 1        |
+|   x_buf_256_9_U                                                | ram_2p array |           | 8    |      | yes    | x_buf_256_9   | bram | 1       | 256, 4, 1        |
+|   x_buf_256_10_U                                               | ram_2p array |           | 8    |      | yes    | x_buf_256_10  | bram | 1       | 256, 4, 1        |
+|   x_buf_256_11_U                                               | ram_2p array |           | 8    |      | yes    | x_buf_256_11  | bram | 1       | 256, 4, 1        |
+|   x_buf_256_12_U                                               | ram_2p array |           | 8    |      | yes    | x_buf_256_12  | bram | 1       | 256, 4, 1        |
+|   x_buf_256_13_U                                               | ram_2p array |           | 8    |      | yes    | x_buf_256_13  | bram | 1       | 256, 4, 1        |
+|   x_buf_256_14_U                                               | ram_2p array |           | 8    |      | yes    | x_buf_256_14  | bram | 1       | 256, 4, 1        |
+|   x_buf_256_15_U                                               | ram_2p array |           | 8    |      | yes    | x_buf_256_15  | bram | 1       | 256, 4, 1        |
+|  + Fused_Conv_CNorm_Act_16_16_16_half_s                        |              |           | 16   | 0    |        |               |      |         |                  |
+|    y_cache_16_15_U                                             | ram_2p array |           | 1    |      | yes    | y_cache_16_15 | bram | 1       | 16, 16, 1        |
+|    y_cache_16_14_U                                             | ram_2p array |           | 1    |      | yes    | y_cache_16_14 | bram | 1       | 16, 16, 1        |
+|    y_cache_16_13_U                                             | ram_2p array |           | 1    |      | yes    | y_cache_16_13 | bram | 1       | 16, 16, 1        |
+|    y_cache_16_12_U                                             | ram_2p array |           | 1    |      | yes    | y_cache_16_12 | bram | 1       | 16, 16, 1        |
+|    y_cache_16_11_U                                             | ram_2p array |           | 1    |      | yes    | y_cache_16_11 | bram | 1       | 16, 16, 1        |
+|    y_cache_16_10_U                                             | ram_2p array |           | 1    |      | yes    | y_cache_16_10 | bram | 1       | 16, 16, 1        |
+|    y_cache_16_9_U                                              | ram_2p array |           | 1    |      | yes    | y_cache_16_9  | bram | 1       | 16, 16, 1        |
+|    y_cache_16_8_U                                              | ram_2p array |           | 1    |      | yes    | y_cache_16_8  | bram | 1       | 16, 16, 1        |
+|    y_cache_16_7_U                                              | ram_2p array |           | 1    |      | yes    | y_cache_16_7  | bram | 1       | 16, 16, 1        |
+|    y_cache_16_6_U                                              | ram_2p array |           | 1    |      | yes    | y_cache_16_6  | bram | 1       | 16, 16, 1        |
+|    y_cache_16_5_U                                              | ram_2p array |           | 1    |      | yes    | y_cache_16_5  | bram | 1       | 16, 16, 1        |
+|    y_cache_16_4_U                                              | ram_2p array |           | 1    |      | yes    | y_cache_16_4  | bram | 1       | 16, 16, 1        |
+|    y_cache_16_3_U                                              | ram_2p array |           | 1    |      | yes    | y_cache_16_3  | bram | 1       | 16, 16, 1        |
+|    y_cache_16_2_U                                              | ram_2p array |           | 1    |      | yes    | y_cache_16_2  | bram | 1       | 16, 16, 1        |
+|    y_cache_16_1_U                                              | ram_2p array |           | 1    |      | yes    | y_cache_16_1  | bram | 1       | 16, 16, 1        |
+|    y_cache_16_U                                                | ram_2p array |           | 1    |      | yes    | y_cache_16    | bram | 1       | 16, 16, 1        |
+|   + Fused_Conv_CNorm_Act_16_16_16_half_Pipeline_CONV_STEP_LOOP |              |           | 0    | 0    |        |               |      |         |                  |
+|     KH_LUT_U                                                   | rom_1p       |           |      |      |        | KH_LUT        | auto | 1       | 2, 10, 1         |
+|     KW_LUT_U                                                   | rom_1p       |           |      |      |        | KW_LUT        | auto | 1       | 2, 10, 1         |
++----------------------------------------------------------------+--------------+-----------+------+------+--------+---------------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Inferred Pragmas
++-----------------+--------------------------------------------+--------------------------------------------------------------------------------------------------------------------+------------------------------------------+
+| Type            | Options                                    | Location                                                                                                           | Inferred From                            |
++-----------------+--------------------------------------------+--------------------------------------------------------------------------------------------------------------------+------------------------------------------+
+| LOOP_FLATTEN    |                                            | loop INIT_3_INPUT_ROWS (gen/Hls_Layers.tpp:122:24) in init_rows<16, 16, false, half> (gen/Hls_Layers.tpp:122)      | pipeline gen/Hls_Layers.tpp:130          |
+| ARRAY_PARTITION | dim=1 type=complete variable=w_buf_256.i_0 | variable w_buf_256.i_0 in conv_only_top (gen/Hls_Layers.tpp:476)                                                   | syn.array_partition.complete_threshold=4 |
+| PIPELINE        |                                            | loop PASS_B (gen/Hls_Layers.tpp:385:17) in fused_conv_cnorm_act<16, 16, 16, half> (gen/Hls_Layers.tpp:385)         | syn.compile.pipeline_loops=64            |
+| PIPELINE        |                                            | loop PACK_OUTPUT_PE (gen/Hls_Layers.tpp:335:29) in fused_conv_cnorm_act<16, 16, 16, half> (gen/Hls_Layers.tpp:335) | syn.compile.pipeline_loops=64            |
+| PIPELINE        |                                            | loop CONV_STEP_LOOP (gen/Hls_Layers.tpp:219:29) in fused_conv_cnorm_act<16, 16, 16, half> (gen/Hls_Layers.tpp:219) | syn.compile.pipeline_loops=64            |
+| PIPELINE        |                                            | loop INIT_STATS (gen/Hls_Layers.tpp:190:21) in fused_conv_cnorm_act<16, 16, 16, half> (gen/Hls_Layers.tpp:190)     | syn.compile.pipeline_loops=64            |
++-----------------+--------------------------------------------+--------------------------------------------------------------------------------------------------------------------+------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------+
+| Type            | Options                                                                                                                       | Location                                         |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------+
+| INTERFACE       | m_axi port=X offset=slave bundle=gmem_in depth=(4096 / 16) max_read_burst_length=256 num_read_outstanding=4                   | in conv_only_top (gen/conv_only.cpp:24)          |
+| INTERFACE       | m_axi port=Y offset=slave bundle=gmem_out depth=(4096 / 16) max_write_burst_length=256 num_write_outstanding=4                | in conv_only_top (gen/conv_only.cpp:28)          |
+| INTERFACE       | m_axi port=W1 offset=slave bundle=gmem_weight depth=(2304 / 16) max_read_burst_length=64 num_read_outstanding=2               | in conv_only_top (gen/conv_only.cpp:32)          |
+| INTERFACE       | m_axi port=B1 offset=slave bundle=gmem_param depth=(16 / 16) max_read_burst_length=64                                         | in conv_only_top (gen/conv_only.cpp:36)          |
+| INTERFACE       | m_axi port=PSUM_PACKED offset=slave bundle=gmem_packed depth=(16 * 16 * 16) max_write_burst_length=64 num_write_outstanding=4 | in conv_only_top (gen/conv_only.cpp:40)          |
+| INTERFACE       | s_axilite port=X bundle=control                                                                                               | in conv_only_top (gen/conv_only.cpp:47)          |
+| INTERFACE       | s_axilite port=W1 bundle=control                                                                                              | in conv_only_top (gen/conv_only.cpp:48)          |
+| INTERFACE       | s_axilite port=B1 bundle=control                                                                                              | in conv_only_top (gen/conv_only.cpp:49)          |
+| INTERFACE       | s_axilite port=Y bundle=control                                                                                               | in conv_only_top (gen/conv_only.cpp:50)          |
+| INTERFACE       | s_axilite port=epsilon bundle=control                                                                                         | in conv_only_top (gen/conv_only.cpp:51)          |
+| INTERFACE       | s_axilite port=PSUM_PACKED bundle=control                                                                                     | in conv_only_top (gen/conv_only.cpp:52)          |
+| INTERFACE       | s_axilite port=return bundle=control                                                                                          | in conv_only_top (gen/conv_only.cpp:53)          |
+| INLINE          |                                                                                                                               | in index (gen/Core.h:103)                        |
+| INLINE          |                                                                                                                               | in tensormem<t> (gen/Core.h:111)                 |
+| INLINE          |                                                                                                                               | in tensormem<t> (gen/Core.h:117)                 |
+| INLINE          |                                                                                                                               | in raw_at (gen/Core.h:141)                       |
+| INLINE          |                                                                                                                               | in raw (gen/Core.h:147)                          |
+| INLINE          |                                                                                                                               | in raw (gen/Core.h:153)                          |
+| INLINE          |                                                                                                                               | in get (gen/Core.h:159)                          |
+| INLINE          |                                                                                                                               | in at (gen/Core.h:165)                           |
+| INLINE          |                                                                                                                               | in half_to_bits (gen/Hls_Layers.tpp:21)          |
+| INLINE          |                                                                                                                               | in bits_to_half (gen/Hls_Layers.tpp:37)          |
+| INLINE          |                                                                                                                               | in flat_idx (gen/Hls_Layers.tpp:52)              |
+| INLINE          |                                                                                                                               | in w_flat_idx (gen/Hls_Layers.tpp:58)            |
+| INLINE          |                                                                                                                               | in my_sqrt_f (gen/Hls_Layers.tpp:64)             |
+| INLINE          | off                                                                                                                           | in load_params (gen/Hls_Layers.tpp:87)           |
+| PIPELINE        | ii=1                                                                                                                          | in load_params (gen/Hls_Layers.tpp:89)           |
+| PIPELINE        | ii=1                                                                                                                          | in load_params (gen/Hls_Layers.tpp:93)           |
+| PIPELINE        | ii=1                                                                                                                          | in load_params (gen/Hls_Layers.tpp:97)           |
+| INLINE          | off                                                                                                                           | in init_rows (gen/Hls_Layers.tpp:116)            |
+| PIPELINE        | ii=1                                                                                                                          | in init_rows (gen/Hls_Layers.tpp:130)            |
+| PIPELINE        | ii=1                                                                                                                          | in init_rows (gen/Hls_Layers.tpp:137)            |
+| INLINE          | off                                                                                                                           | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:170) |
+| ARRAY_PARTITION | variable=sum_acc complete                                                                                                     | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:188) |
+| ARRAY_PARTITION | variable=sumsq_acc complete                                                                                                   | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:189) |
+| PIPELINE        | ii=1                                                                                                                          | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:195) |
+| ARRAY_PARTITION | variable=psum complete dim=0                                                                                                  | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:204) |
+| UNROLL          |                                                                                                                               | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:206) |
+| UNROLL          |                                                                                                                               | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:208) |
+| ARRAY_PARTITION | variable=x_word_reg complete                                                                                                  | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:240) |
+| PIPELINE        | ii=1                                                                                                                          | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:243) |
+| DEPENDENCE      | variable=psum type=inter false                                                                                                | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:246) |
+| UNROLL          |                                                                                                                               | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:268) |
+| PIPELINE        | ii=1                                                                                                                          | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:318) |
+| PIPELINE        | ii=1                                                                                                                          | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:372) |
+| PIPELINE        | ii=1                                                                                                                          | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:379) |
+| PIPELINE        | ii=1                                                                                                                          | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:396) |
+| UNROLL          |                                                                                                                               | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:404) |
+| UNROLL          |                                                                                                                               | in fused_conv_cnorm_act (gen/Hls_Layers.tpp:416) |
+| BIND_STORAGE    | variable=x_buf_256 type=ram_2p impl=bram                                                                                      | in convonly_kernel (gen/Hls_Layers.tpp:462)      |
+| ARRAY_PARTITION | variable=x_buf_256 complete dim=2                                                                                             | in convonly_kernel (gen/Hls_Layers.tpp:463)      |
+| BIND_STORAGE    | variable=skip_buf_256 type=ram_2p impl=uram                                                                                   | in convonly_kernel (gen/Hls_Layers.tpp:466)      |
+| BIND_STORAGE    | variable=y_cache_16 type=ram_2p impl=bram                                                                                     | in convonly_kernel (gen/Hls_Layers.tpp:469)      |
+| ARRAY_PARTITION | variable=y_cache_16 cyclic factor=16 dim=2                                                                                    | in convonly_kernel (gen/Hls_Layers.tpp:470)      |
+| ARRAY_PARTITION | variable=w_buf_256 complete dim=1                                                                                             | in convonly_kernel (gen/Hls_Layers.tpp:477)      |
+| PIPELINE        | ii=1                                                                                                                          | in convonly_kernel (gen/Hls_Layers.tpp:483)      |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------+
+
+
