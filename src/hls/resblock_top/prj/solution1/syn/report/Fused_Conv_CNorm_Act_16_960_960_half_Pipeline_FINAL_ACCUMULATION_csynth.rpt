@@ -3,9 +3,9 @@
 ================================================================
 == Vitis HLS Report for 'Fused_Conv_CNorm_Act_16_960_960_half_Pipeline_FINAL_ACCUMULATION'
 ================================================================
-* Date:           Thu May 14 22:48:51 2026
+* Date:           Sun Jul  5 16:29:08 2026
 
-* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Version:        2025.2 (Build 6295257 on Nov 14 2025)
 * Project:        prj
 * Solution:       solution1 (Vitis Kernel Flow Target)
 * Product family: zynquplus
@@ -25,12 +25,12 @@
 
 + Latency: 
     * Summary: 
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
-    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |       57|       57|  0.190 us|  0.190 us|   17|   17|  loop auto-rewind stp (delay=0 clock cycles(s))|
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |      Pipeline     |
+    |   min   |   max   |    min   |    max   | min | max |        Type       |
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |       57|       57|  0.190 us|  0.190 us|    0|    0|  loop pipeline stp|
+    +---------+---------+----------+----------+-----+-----+-------------------+
 
     + Detail: 
         * Instance: 
@@ -73,6 +73,7 @@
     +----------------------------+-----------------------+---------+----+---+----+-----+
     |          Instance          |         Module        | BRAM_18K| DSP| FF| LUT| URAM|
     +----------------------------+-----------------------+---------+----+---+----+-----+
+    |sparsemux_33_4_16_1_1_U798  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
     |sparsemux_33_4_16_1_1_U799  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
     |sparsemux_33_4_16_1_1_U800  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
     |sparsemux_33_4_16_1_1_U801  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
@@ -80,9 +81,8 @@
     |sparsemux_33_4_16_1_1_U803  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
     |sparsemux_33_4_16_1_1_U804  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
     |sparsemux_33_4_16_1_1_U805  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
-    |sparsemux_33_4_16_1_1_U806  |sparsemux_33_4_16_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_32_1_1_U806  |sparsemux_33_4_32_1_1  |        0|   0|  0|  65|    0|
     |sparsemux_33_4_32_1_1_U807  |sparsemux_33_4_32_1_1  |        0|   0|  0|  65|    0|
-    |sparsemux_33_4_32_1_1_U808  |sparsemux_33_4_32_1_1  |        0|   0|  0|  65|    0|
     +----------------------------+-----------------------+---------+----+---+----+-----+
     |Total                       |                       |        0|   0|  0| 650|    0|
     +----------------------------+-----------------------+---------+----+---+----+-----+
@@ -100,10 +100,10 @@
     +-----------------------+----------+----+---+----+------------+------------+
     |     Variable Name     | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +-----------------------+----------+----+---+----+------------+------------+
-    |add_ln315_fu_2023_p2   |         +|   0|  0|  12|           5|           1|
-    |add_ln323_fu_2638_p2   |         +|   0|  0|  18|          10|          10|
-    |sub_ln323_fu_2632_p2   |         -|   0|  0|  18|          10|          10|
-    |icmp_ln315_fu_2017_p2  |      icmp|   0|  0|  13|           5|           6|
+    |add_ln316_fu_2027_p2   |         +|   0|  0|  12|           5|           1|
+    |add_ln324_fu_2676_p2   |         +|   0|  0|  18|          10|          10|
+    |sub_ln324_fu_2670_p2   |         -|   0|  0|  18|          10|          10|
+    |icmp_ln316_fu_2021_p2  |      icmp|   0|  0|  13|           5|           6|
     |ap_enable_pp0          |       xor|   0|  0|   2|           1|           2|
     +-----------------------+----------+----+---+----+------------+------------+
     |Total                  |          |   0|  0|  63|          31|          29|
@@ -116,7 +116,7 @@
     |ap_done_int              |   9|          2|    1|          2|
     |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
     |ap_sig_allocacmp_pe_1    |   9|          2|    5|         10|
-    |pe_fu_448                |   9|          2|    5|         10|
+    |pe_fu_452                |   9|          2|    5|         10|
     |sum_acc_10_o             |   9|          2|   32|         64|
     |sum_acc_11_o             |   9|          2|   32|         64|
     |sum_acc_12_o             |   9|          2|   32|         64|
@@ -157,12 +157,12 @@
     +-----------------------------------+----+----+-----+-----------+
     |                Name               | FF | LUT| Bits| Const Bits|
     +-----------------------------------+----+----+-----+-----------+
-    |add14_reg_2887                     |  16|   0|   16|          0|
-    |add15_reg_2902                     |  16|   0|   16|          0|
-    |add16_reg_2892                     |  16|   0|   16|          0|
-    |add17_reg_2897                     |  16|   0|   16|          0|
-    |add18_reg_2907                     |  16|   0|   16|          0|
-    |add_reg_2882                       |  16|   0|   16|          0|
+    |add14_reg_2959                     |  16|   0|   16|          0|
+    |add15_reg_2974                     |  16|   0|   16|          0|
+    |add16_reg_2964                     |  16|   0|   16|          0|
+    |add17_reg_2969                     |  16|   0|   16|          0|
+    |add18_reg_2979                     |  16|   0|   16|          0|
+    |add_reg_2954                       |  16|   0|   16|          0|
     |ap_CS_fsm                          |   1|   0|    1|          0|
     |ap_done_reg                        |   1|   0|    1|          0|
     |ap_enable_reg_pp0_iter1            |   1|   0|    1|          0|
@@ -244,26 +244,26 @@
     |ap_loop_exit_ready_pp0_iter7_reg   |   1|   0|    1|          0|
     |ap_loop_exit_ready_pp0_iter8_reg   |   1|   0|    1|          0|
     |ap_loop_exit_ready_pp0_iter9_reg   |   1|   0|    1|          0|
-    |ff_reg_2938                        |  32|   0|   32|          0|
-    |fout_reg_2917                      |  16|   0|   16|          0|
-    |mul16_reg_2950                     |  32|   0|   32|          0|
-    |pe_1_reg_2826                      |   5|   0|    5|          0|
-    |pe_fu_448                          |   5|   0|    5|          0|
-    |tmp_31_reg_2842                    |  16|   0|   16|          0|
-    |tmp_32_reg_2847                    |  16|   0|   16|          0|
-    |tmp_33_reg_2857                    |  16|   0|   16|          0|
-    |tmp_34_reg_2862                    |  16|   0|   16|          0|
-    |tmp_35_reg_2867                    |  16|   0|   16|          0|
-    |tmp_36_reg_2872                    |  16|   0|   16|          0|
-    |tmp_37_reg_2877                    |  16|   0|   16|          0|
-    |tmp_38_reg_2945                    |  32|   0|   32|          0|
-    |tmp_39_reg_2955                    |  32|   0|   32|          0|
-    |tmp_s_reg_2852                     |  16|   0|   16|          0|
-    |total_reg_2912                     |  16|   0|   16|          0|
-    |trunc_ln323_reg_2835               |   4|   0|    4|          0|
-    |zext_ln201_cast_reg_2821           |   6|   0|   10|          4|
-    |pe_1_reg_2826                      |  64|  32|    5|          0|
-    |trunc_ln323_reg_2835               |  64|  32|    4|          0|
+    |ff_reg_3010                        |  32|   0|   32|          0|
+    |fout_reg_2989                      |  16|   0|   16|          0|
+    |mul16_reg_3022                     |  32|   0|   32|          0|
+    |pe_1_reg_2897                      |   5|   0|    5|          0|
+    |pe_fu_452                          |   5|   0|    5|          0|
+    |tmp_31_reg_2914                    |  16|   0|   16|          0|
+    |tmp_32_reg_2919                    |  16|   0|   16|          0|
+    |tmp_33_reg_2929                    |  16|   0|   16|          0|
+    |tmp_34_reg_2934                    |  16|   0|   16|          0|
+    |tmp_35_reg_2939                    |  16|   0|   16|          0|
+    |tmp_36_reg_2944                    |  16|   0|   16|          0|
+    |tmp_37_reg_2949                    |  16|   0|   16|          0|
+    |tmp_38_reg_3017                    |  32|   0|   32|          0|
+    |tmp_39_reg_3027                    |  32|   0|   32|          0|
+    |tmp_s_reg_2924                     |  16|   0|   16|          0|
+    |total_reg_2984                     |  16|   0|   16|          0|
+    |trunc_ln324_reg_2906               |   4|   0|    4|          0|
+    |zext_ln200_cast_reg_2892           |   6|   0|   10|          4|
+    |pe_1_reg_2897                      |  64|  32|    5|          0|
+    |trunc_ln324_reg_2906               |  64|  32|    4|          0|
     +-----------------------------------+----+----+-----+-----------+
     |Total                              | 613|  64|  498|          4|
     +-----------------------------------+----+----+-----+-----------+
@@ -283,55 +283,55 @@
 |ap_done                 |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
 |ap_idle                 |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
 |ap_ready                |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4698_p_din0      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4698_p_din1      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4698_p_opcode    |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4698_p_dout0     |   in|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4698_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4702_p_din0      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4702_p_din1      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4702_p_opcode    |  out|    2|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4702_p_dout0     |   in|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4702_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4706_p_din0      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4706_p_din1      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4706_p_dout0     |   in|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4706_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_1567_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_1567_p_dout0     |   in|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_1567_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4378_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4378_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4378_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4378_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4382_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4382_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4382_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4382_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4386_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4386_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4386_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4386_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4390_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4390_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4390_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4390_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4394_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4394_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4394_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4394_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4398_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4398_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4398_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4398_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4402_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4402_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4402_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4402_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4406_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4406_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4406_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
-|grp_fu_4406_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4638_p_din0      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4638_p_din1      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4638_p_opcode    |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4638_p_dout0     |   in|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4638_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4642_p_din0      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4642_p_din1      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4642_p_opcode    |  out|    2|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4642_p_dout0     |   in|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4642_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4646_p_din0      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4646_p_din1      |  out|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4646_p_dout0     |   in|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4646_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_1543_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_1543_p_dout0     |   in|   32|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_1543_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4318_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4318_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4318_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4318_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4322_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4322_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4322_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4322_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4326_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4326_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4326_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4326_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4330_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4330_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4330_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4330_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4334_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4334_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4334_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4334_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4338_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4338_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4338_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4338_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4342_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4342_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4342_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4342_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4346_p_din0      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4346_p_din1      |  out|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4346_p_dout0     |   in|   16|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
+|grp_fu_4346_p_ce        |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FINAL_ACCUMULATION|  return value|
 |sum_acc_i               |   in|   32|     ap_ovld|                                                               sum_acc|       pointer|
 |sum_acc_o               |  out|   32|     ap_ovld|                                                               sum_acc|       pointer|
 |sum_acc_o_ap_vld        |  out|    1|     ap_ovld|                                                               sum_acc|       pointer|
@@ -428,7 +428,7 @@
 |sumsq_acc_15_i          |   in|   32|     ap_ovld|                                                          sumsq_acc_15|       pointer|
 |sumsq_acc_15_o          |  out|   32|     ap_ovld|                                                          sumsq_acc_15|       pointer|
 |sumsq_acc_15_o_ap_vld   |  out|    1|     ap_ovld|                                                          sumsq_acc_15|       pointer|
-|zext_ln201              |   in|    6|     ap_none|                                                            zext_ln201|        scalar|
+|zext_ln200              |   in|    6|     ap_none|                                                            zext_ln200|        scalar|
 |y_cache_16_0_address1   |  out|   10|   ap_memory|                                                          y_cache_16_0|         array|
 |y_cache_16_0_ce1        |  out|    1|   ap_memory|                                                          y_cache_16_0|         array|
 |y_cache_16_0_we1        |  out|    1|   ap_memory|                                                          y_cache_16_0|         array|
@@ -622,6 +622,6 @@
 |psum_119_load_reload    |   in|   16|     ap_none|                                                  psum_119_load_reload|        scalar|
 |psum_127_load_reload    |   in|   16|     ap_none|                                                  psum_127_load_reload|        scalar|
 |bias                    |   in|   16|     ap_none|                                                                  bias|        scalar|
-|co                      |   in|    4|     ap_none|                                                                    co|        scalar|
+|empty                   |   in|    4|     ap_none|                                                                 empty|        scalar|
 +------------------------+-----+-----+------------+----------------------------------------------------------------------+--------------+
 

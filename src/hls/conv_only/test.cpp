@@ -90,7 +90,7 @@ int main() {
     data_t* input_data  = ARENA_2.alloc<data_t>(HWC);
     data_t* output_data = ARENA_2.alloc<data_t>(HWC);
     data_t* golden_data = ARENA_2.alloc<data_t>(HWC);
-    data_t* dbg_data    = ARENA_2.alloc<data_t>(HWC * 8);   // raw psum probe [H][W][C][8]
+    ap_uint<128>* psum_packed_data = ARENA_1.alloc<ap_uint<128>>(HWC); // [H][W][C] double psum+bias
 
     TensorMem<data_t> input (input_data,  Shape(1, MODEL_H, MODEL_W, MODEL_C), false);
     TensorMem<data_t> output(output_data, Shape(1, MODEL_H, MODEL_W, MODEL_C), false);
@@ -118,7 +118,7 @@ int main() {
     const char* env_dir = std::getenv("CONV_DATA_DIR");
     std::string base = env_dir ? std::string(env_dir) : std::string(DATA_PATH);
     std::cout << "[INFO] Loading real Gen_rb0 tensors from: " << base << std::endl;
-    read_tensor((base + "io_params/Gen_rb0_output.txt").c_str(),      input);
+    read_tensor((base + "io_params/Gen_Add_output_0.txt").c_str(),      input);
     read_tensor((base + "model_params/Gen_rb0_weight_1.txt").c_str(), rb_weight_1);
     read_tensor((base + "model_params/Gen_rb0_bias_1.txt").c_str(),   rb_bias_1);
     std::cout << "[INFO] Load complete.\n" << std::endl;
@@ -159,8 +159,8 @@ int main() {
         reinterpret_cast<const data_256_t*>(rb_weight_1.raw()),
         reinterpret_cast<const data_256_t*>(rb_bias_1.raw()),
         reinterpret_cast<data_256_t*>(output.raw()),
-        dbg_data,
-        (data_t)0.001f
+        (data_t)0.001f,
+        psum_packed_data
     );
 
     clock_t end = clock();
@@ -204,32 +204,49 @@ int main() {
               << "  (Threshold = " << ABS_THRESH << ")" << std::endl;
 
     // ----------------------------------------------------------
-    // DBG psum probe check: reduce(8 lanes) + bias must reconstruct Y
-    // exactly (same FP16 add-tree as the kernel's FINAL_ACCUMULATION)
+    // PSUM_PACKED check: packed double (psum+bias) vs fp16 Y and vs golden
+    // Layout: psum_packed[h*W*C + w*C + co]
+    //   bits[63: 0] = IEEE-754 double of (total_psum + bias)   <- this IS y_cache_16
+    //   bits[73:64] = lower 10 bits of flat NHWC index (metadata only)
     // ----------------------------------------------------------
-    float dbg_max = 0.0f; int dbg_bad = 0;
+    float pack_vs_y_max = 0.0f,  pack_vs_gold_max = 0.0f;
+    int   pack_vs_y_bad = 0;
+    const float PACK_TOL = 1e-3f;   // double→fp16 rounding tolerance
+
     for (int h = 0; h < MODEL_H; h++)
     for (int w = 0; w < MODEL_W; w++)
     for (int co = 0; co < MODEL_C; co++) {
-        const data_t* p = &dbg_data[(((h * MODEL_W) + w) * MODEL_C + co) * 8];
-        data_t t0123 = (data_t)((data_t)(p[0] + p[1]) + (data_t)(p[2] + p[3]));
-        data_t t4567 = (data_t)((data_t)(p[4] + p[5]) + (data_t)(p[6] + p[7]));
-        data_t total = (data_t)(t0123 + t4567);
-        data_t recon = (data_t)(total + rb_bias_1.raw()[co]);
-        float d = std::fabs((float)recon - (float)output.raw()[(h * MODEL_W + w) * MODEL_C + co]);
-        if (d > dbg_max) dbg_max = d;
-        if (d > 0.0f) dbg_bad++;
+        int idx = (h * MODEL_W + w) * MODEL_C + co;
+
+        // Extract double from low 64 bits
+        unsigned long long raw_bits = (unsigned long long)psum_packed_data[idx].range(63, 0);
+        double d_val;
+        std::memcpy(&d_val, &raw_bits, sizeof(d_val));
+        float f_packed = (float)d_val;
+
+        float f_y    = (float)output.raw()[idx];
+        float f_gold = (float)golden.raw()[idx];
+
+        float d_y    = std::fabs(f_packed - f_y);
+        float d_gold = std::fabs(f_packed - f_gold);
+        if (d_y    > pack_vs_y_max)    pack_vs_y_max    = d_y;
+        if (d_gold > pack_vs_gold_max) pack_vs_gold_max = d_gold;
+        if (d_y > PACK_TOL) pack_vs_y_bad++;
     }
-    std::cout << "\n=== DBG PSUM PROBE CHECK ===" << std::endl;
+
+    std::cout << "\n=== PSUM_PACKED PROBE CHECK ===" << std::endl;
     {
-        const data_t* p0 = &dbg_data[(((0 * MODEL_W) + 0) * MODEL_C + 0) * 8];
-        std::cout << "psum[h=0,w=0,co=0] lanes = ";
-        for (int l = 0; l < 8; l++) std::cout << (float)p0[l] << " ";
-        std::cout << std::endl;
+        // Print first element for a sanity peek
+        unsigned long long raw0 = (unsigned long long)psum_packed_data[0].range(63, 0);
+        double d0; std::memcpy(&d0, &raw0, sizeof(d0));
+        std::cout << "packed[h=0,w=0,co=0] = " << d0
+                  << "  Y=" << (float)output.raw()[0]
+                  << "  golden=" << (float)golden.raw()[0] << std::endl;
     }
-    std::cout << "reduce(lanes)+bias vs Y : max_diff=" << dbg_max
-              << "  mismatches=" << dbg_bad << " / " << HWC
-              << (dbg_bad == 0 ? "   [probe OK]" : "   [PROBE MISMATCH]") << std::endl;
+    std::cout << "packed_double vs fp16 Y : max_diff=" << pack_vs_y_max
+              << "  mismatches(>" << PACK_TOL << ")=" << pack_vs_y_bad << " / " << HWC
+              << (pack_vs_y_bad == 0 ? "   [OK]" : "   [MISMATCH — likely rounding]") << std::endl;
+    std::cout << "packed_double vs golden : max_diff=" << pack_vs_gold_max << std::endl;
 
     if (err_cnt == 0) {
         std::cout << "\n[PASS] ✅  CONV OUTPUT MATCHES GOLDEN REFERENCE!" << std::endl;

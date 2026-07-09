@@ -2,59 +2,59 @@
     <item name="Total Instructions per Compilation Phase">
         <table>
             <keys size="4">Phase, Step, Instructions, Description</keys>
-            <column name="Compile/Link">, 7132, After all functions are compiled and linked into a single design</column>
+            <column name="Compile/Link">, 7214, After all functions are compiled and linked into a single design</column>
             <column name="">, , </column>
             <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
-            <column name="">(1) unroll, 6135, user unroll pragmas are applied</column>
-            <column name="">(2) simplification, 4755, simplification of applied user unroll pragmas</column>
-            <column name="">(3) inline, 4545, user inline pragmas are applied</column>
-            <column name="">(4) simplification, 4528, simplification of applied user inline pragmas</column>
+            <column name="">(1) unroll, 6131, user unroll pragmas are applied</column>
+            <column name="">(2) simplification, 4757, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline, 4548, user inline pragmas are applied</column>
+            <column name="">(4) simplification, 4531, simplification of applied user inline pragmas</column>
             <column name="">, , </column>
             <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
-            <column name="">(1) array partition, 9820, user array partition pragmas are applied</column>
-            <column name="">(2) simplification, 7645, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
-            <column name="">(3) aggregate/disaggregate , 7645, user struct aggregate/disaggregate pragmas are applied</column>
-            <column name="">(4) array reshape, 7645, apply array reshape pragmas</column>
-            <column name="">(5) access patterns, 8006, array access pattern optmizations</column>
+            <column name="">(1) array partition, 9821, user array partition pragmas are applied</column>
+            <column name="">(2) simplification, 7638, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate, 7638, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape, 7638, apply array reshape pragmas</column>
+            <column name="">(5) access patterns, 7995, array access pattern optmizations</column>
             <column name="">, , </column>
             <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
-            <column name="">(1) loop simplification, 7756, loop and instruction simplification</column>
-            <column name="">(2) parallelization, 7726, loops are unrolled or pipelined to meet performance targets</column>
-            <column name="">(3) array partition, 7723, arrays are partitioned to meet performance targets</column>
-            <column name="">(4) simplification, 7723, simplification of design after performance transformations</column>
+            <column name="">(1) loop simplification, 7745, loop and instruction simplification</column>
+            <column name="">(2) parallelization, 7719, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition, 7716, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification, 7716, simplification of design after performance transformations</column>
             <column name="">, , </column>
             <column name="HW Transforms">, , After hardware transfomations</column>
-            <column name="">(1) lowering, 7760, initial conversion to HW specific instructions</column>
-            <column name="">(2) optimizations, 6802, high level synthesis optimizations</column>
+            <column name="">(1) lowering, 7753, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations, 6792, high level synthesis optimizations</column>
         </table>
     </item>
     <item name="Instructions per Function for each Compilation Phase">
         <hiertable>
             <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
             <rows>
-                <row id="0" col0="resblock_top" col1="resblock_top.cpp:11" col2="7132" col3="4528" col4="8006" col5="7723" col6="6802">
-                    <row id="8" col0="ResidualBlock_Kernel&lt;16, 960, 960, 1, __fp16&gt;" col1="Hls_Layers.tpp:404" col2="7108" col3="" col4="" col5="" col6="">
-                        <row id="11" col0="load_params&lt;960, __fp16&gt;" col1="Hls_Layers.tpp:79" col2="92" col2_disp="  92 (2 calls)" col3="" col4="" col5="" col6=""/>
-                        <row id="9" col0="init_rows&lt;16, 960, true, __fp16&gt;" col1="Hls_Layers.tpp:110" col2="85" col3="" col4="" col5="" col6="">
-                            <row id="10" col0="flat_idx" col1="Hls_Layers.tpp:51" col2="7" col3="" col4="" col5="" col6=""/>
+                <row id="0" col0="resblock_top" col1="resblock_top.cpp:11" col2="7214" col3="4531" col4="7995" col5="7716" col6="6792">
+                    <row id="4" col0="ResidualBlock_Kernel&lt;16, 960, 960, 1, __fp16&gt;" col1="Hls_Layers.tpp:405" col2="7190" col3="" col4="" col5="" col6="">
+                        <row id="6" col0="load_params&lt;960, __fp16&gt;" col1="Hls_Layers.tpp:79" col2="92" col2_disp="  92 (2 calls)" col3="" col4="" col5="" col6=""/>
+                        <row id="10" col0="init_rows&lt;16, 960, true, __fp16&gt;" col1="Hls_Layers.tpp:110" col2="85" col3="" col4="" col5="" col6="">
+                            <row id="11" col0="flat_idx" col1="Hls_Layers.tpp:51" col2="7" col3="" col4="" col5="" col6=""/>
                         </row>
-                        <row id="6" col0="Fused_Conv_CNorm_Act&lt;16, 960, 960, __fp16&gt;" col1="Hls_Layers.tpp:153" col2="6764" col2_disp="6,764 (2 calls)" col3="" col4="" col5="" col6="">
-                            <row id="5" col0="my_sqrt_f" col1="Hls_Layers.tpp:63" col2="16" col2_disp="  16 (4 calls)" col3="" col4="" col5="" col6="">
-                                <row id="1" col0="sqrtf" col1="sqrtfloat.cpp:11" col2="8" col2_disp="   8 (4 calls)" col3="" col4="" col5="" col6=""/>
+                        <row id="3" col0="Fused_Conv_CNorm_Act&lt;16, 960, 960, __fp16&gt;" col1="Hls_Layers.tpp:153" col2="6846" col2_disp="6,846 (2 calls)" col3="" col4="" col5="" col6="">
+                            <row id="2" col0="my_sqrt_f" col1="Hls_Layers.tpp:63" col2="16" col2_disp="  16 (4 calls)" col3="" col4="" col5="" col6="">
+                                <row id="8" col0="sqrtf" col1="sqrtfloat.cpp:11" col2="8" col2_disp="   8 (4 calls)" col3="" col4="" col5="" col6=""/>
                             </row>
-                            <row id="2" col0="w_flat_idx" col1="Hls_Layers.tpp:57" col2="14" col2_disp="  14 (2 calls)" col3="" col4="" col5="" col6=""/>
-                            <row id="4" col0="bits_to_half&lt;__fp16&gt;" col1="Hls_Layers.tpp:36" col2="1296" col2_disp="1,296 (72 calls)" col3="" col4="" col5="" col6=""/>
-                            <row id="10" col0="flat_idx" col1="Hls_Layers.tpp:51" col2="28" col2_disp="  28 (4 calls)" col3="" col4="" col5="" col6=""/>
-                            <row id="3" col0="half_to_bits&lt;__fp16&gt;" col1="Hls_Layers.tpp:20" col2="52" col2_disp="  52 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="7" col0="w_flat_idx" col1="Hls_Layers.tpp:57" col2="14" col2_disp="  14 (2 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="9" col0="bits_to_half&lt;__fp16&gt;" col1="Hls_Layers.tpp:36" col2="1296" col2_disp="1,296 (72 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="11" col0="flat_idx" col1="Hls_Layers.tpp:51" col2="28" col2_disp="  28 (4 calls)" col3="" col4="" col5="" col6=""/>
+                            <row id="5" col0="half_to_bits&lt;__fp16&gt;" col1="Hls_Layers.tpp:20" col2="52" col2_disp="  52 (2 calls)" col3="" col4="" col5="" col6=""/>
                         </row>
-                        <row id="7" col0="init_rows&lt;16, 960, false, __fp16&gt;" col1="Hls_Layers.tpp:110" col2="86" col3="" col4="" col5="" col6="">
-                            <row id="10" col0="flat_idx" col1="Hls_Layers.tpp:51" col2="7" col3="" col4="" col5="" col6=""/>
+                        <row id="1" col0="init_rows&lt;16, 960, false, __fp16&gt;" col1="Hls_Layers.tpp:110" col2="86" col3="" col4="" col5="" col6="">
+                            <row id="11" col0="flat_idx" col1="Hls_Layers.tpp:51" col2="7" col3="" col4="" col5="" col6=""/>
                         </row>
                     </row>
-                    <row id="11" col0="load_params&lt;960, __fp16&gt;" col1="Hls_Layers.tpp:79" col2="" col3="56" col3_disp="  56 (2 calls)" col4="116" col4_disp=" 116 (2 calls)" col5="122" col5_disp=" 122 (2 calls)" col6="142" col6_disp=" 142 (2 calls)"/>
-                    <row id="9" col0="init_rows&lt;16, 960, true, __fp16&gt;" col1="Hls_Layers.tpp:110" col2="" col3="55" col4="197" col5="196" col6="211"/>
-                    <row id="6" col0="Fused_Conv_CNorm_Act&lt;16, 960, 960, __fp16&gt;" col1="Hls_Layers.tpp:153" col2="" col3="4310" col3_disp="4,310 (2 calls)" col4="7270" col4_disp="7,270 (2 calls)" col5="6982" col5_disp="6,982 (2 calls)" col6="6132" col6_disp="6,132 (2 calls)"/>
-                    <row id="7" col0="init_rows&lt;16, 960, false, __fp16&gt;" col1="Hls_Layers.tpp:110" col2="" col3="35" col4="147" col5="147" col6="157"/>
+                    <row id="6" col0="load_params&lt;960, __fp16&gt;" col1="Hls_Layers.tpp:79" col2="" col3="56" col3_disp="  56 (2 calls)" col4="116" col4_disp=" 116 (2 calls)" col5="122" col5_disp=" 122 (2 calls)" col6="142" col6_disp=" 142 (2 calls)"/>
+                    <row id="10" col0="init_rows&lt;16, 960, true, __fp16&gt;" col1="Hls_Layers.tpp:110" col2="" col3="55" col4="194" col5="193" col6="208"/>
+                    <row id="3" col0="Fused_Conv_CNorm_Act&lt;16, 960, 960, __fp16&gt;" col1="Hls_Layers.tpp:153" col2="" col3="4314" col3_disp="4,314 (2 calls)" col4="7266" col4_disp="7,266 (2 calls)" col5="6982" col5_disp="6,982 (2 calls)" col6="6128" col6_disp="6,128 (2 calls)"/>
+                    <row id="1" col0="init_rows&lt;16, 960, false, __fp16&gt;" col1="Hls_Layers.tpp:110" col2="" col3="35" col4="144" col5="144" col6="154"/>
                 </row>
             </rows>
             <notes/>
@@ -67,4 +67,3 @@
         </table>
     </item>
 </design_size>
-

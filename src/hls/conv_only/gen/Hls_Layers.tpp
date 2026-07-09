@@ -165,7 +165,7 @@ static void Fused_Conv_CNorm_Act(
     int             n,
     bool            is_final_layer,
     bool            conv_only,
-    T*              dbg_psum                                       // [H][W][C_OUT][8] raw psum probe (null-safe via valid ptr)
+    ap_uint<128>*   psum_packed         // [N][H][W][C_OUT] packed {win_cnt[9:0], psum_double[63:0]}
 ) {
 #pragma HLS INLINE off
     constexpr int H         = MODEL_H;
@@ -189,7 +189,6 @@ static void Fused_Conv_CNorm_Act(
 #pragma HLS ARRAY_PARTITION variable=sumsq_acc complete
         INIT_STATS: for (int pe = 0; pe < PEs; pe++) { sum_acc[pe] = 0.0f; sumsq_acc[pe] = 0.0f; }
 
-        int ping = 0;
         int w_init_base = w_flat_idx(0, 0, 0, 0, C_IN) / PACK_256;
         PRELOAD_1_WEIGHT_PINGPONG: for (int i = 0; i < C_WORDS; i++) {
 #pragma HLS PIPELINE II=1
@@ -241,10 +240,13 @@ static void Fused_Conv_CNorm_Act(
 
                 COMPUTE_LOAD_LOOP: for (int ci = 0; ci < C_IN; ci += 16) {
 #pragma HLS PIPELINE II=1
-                    int acc_idx = (ci / 16) & 7;
                     int widx    = ci / 16;
+                    // Global index ensures distance=8 across CONV_STEP_LOOP boundaries in STP pipeline
+                    int acc_idx = (step * (C_IN / 16) + widx) & 7;
 #pragma HLS DEPENDENCE variable=psum type=inter false
 
+                    // ping derived from co+step avoids the 44-stage RTL lag in loop-carried ping
+                    int ping = (co + step) & 1;
                     w_word_reg = w_buf_256[ping][widx];
 
                     T w0 = bits_to_half<T>(w_word_reg.range(15, 0));
@@ -303,9 +305,8 @@ static void Fused_Conv_CNorm_Act(
                     if (do_load) {
                         w_buf_256[1-ping][widx] = W_ptr[wn_base + widx];
                     }
-                } 
-                ping ^= 1; 
-            } 
+                }
+            }
 
             if ((co % PACK_256) == 0) {
                 b_word_reg = b_buf_256[co / PACK_256];
@@ -329,16 +330,36 @@ static void Fused_Conv_CNorm_Act(
                 sumsq_acc[pe] += ff * ff;
             }
 
-            // ---- DEBUG PROBE: dump raw 8-lane psum (pre-reduce, pre-bias) ----
-            // Layout DBG[h][w][co][lane], h=r*width, w=pe.  Kept in a separate
-            // loop so FINAL_ACCUMULATION above stays II=1 (conv timing intact).
-            DBG_PSUM_PE: for (int pe = 0; pe < PEs; pe++) {
-                int dbg_base = (((n * H + r * width) * W + pe) * C_OUT + co) * 8;
-                DBG_PSUM_LANE: for (int l = 0; l < 8; l++) {
-#pragma HLS PIPELINE II=1
-                    dbg_psum[dbg_base + l] = psum[pe][l];
+            // ---- PACKED OUTPUT: {10-bit NHWC win_cnt, 64-bit double psum} ----
+            // win_idx = NHWC flat index: n*H*W*C + h*W*C + w*C + c
+            // Kept in a separate loop to preserve FINAL_ACCUMULATION II=1.
+            PACK_OUTPUT_PE: for (int pe = 0; pe < PEs; pe++) {
+                int win_idx = ((n * H + r) * W + pe) * C_OUT + co;
+
+                // half → float → double preserves full precision path
+                double d_val = (double)(float)y_cache_16[pe][co];
+
+                // Bit-cast double to its raw IEEE-754 bits (no value change)
+                ap_uint<64> d_bits;
+#if defined(__SYNTHESIS__)
+                union { double d; unsigned long long u; } _pck;
+                _pck.d = d_val;
+                d_bits = _pck.u;
+#else
+                {
+                    unsigned long long _tmp;
+                    std::memcpy(&_tmp, &d_val, sizeof(_tmp));
+                    d_bits = _tmp;
                 }
+#endif
+                // Pack: [127:74]=0 (padding) | [73:64]=win_cnt | [63:0]=psum bits
+                ap_uint<128> packed = 0;
+                packed.range(63,  0) = d_bits;
+                packed.range(73, 64) = (ap_uint<10>)win_idx;
+
+                psum_packed[win_idx] = packed;
             }
+
         }
 
         if (r < rolls - 1) {
@@ -436,7 +457,7 @@ void ConvOnly_Kernel(
     DDR_CONST_PTR   B1_ptr,
     T               epsilon,
     DDR_PTR         Y_ptr,
-    T*              dbg_psum            // [H][W][C_OUT][8] raw psum probe
+    ap_uint<128>*   psum_packed         // [N][H][W][C_OUT] packed {win_cnt[9:0], psum_double[63:0]}
 ) {
     data_256_t x_buf_256[4][MODEL_W][C_IN / PACK_256];
 #pragma HLS BIND_STORAGE variable=x_buf_256 type=ram_2p impl=bram
@@ -472,6 +493,6 @@ void ConvOnly_Kernel(
             b_buf_256, gamma_buf_256, beta_buf_256,
             x_buf_256, skip_buf_256, w_buf_256, y_cache_16,
             epsilon, n, /*is_final_layer=*/false, /*conv_only=*/true,
-            dbg_psum);
+            psum_packed);
     }
 }

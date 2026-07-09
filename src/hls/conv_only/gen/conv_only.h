@@ -7,7 +7,7 @@ void conv_only_top(
     const data_256_t* W1,       // [960][3][3][960] - Conv1 weights
     const data_256_t* B1,       // [960]            - Conv1 bias
     data_256_t* Y,              // [1][16][16][960] - raw Conv1 + bias output
-    data_t* DBG,                // [16][16][960][8] - raw psum probe (pre-reduce, pre-bias)
-    data_t epsilon              // kept for interface parity (unused in conv-only)
+    data_t epsilon,             // kept for interface parity (unused in conv-only)
+    ap_uint<128>* PSUM_PACKED   // [1][16][16][960] - packed {win_cnt[9:0], psum_double[63:0]}
 );
 }

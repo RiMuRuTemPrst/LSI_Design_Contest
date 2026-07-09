@@ -3,9 +3,9 @@
 ================================================================
 == Vitis HLS Report for 'init_rows_16_960_true_half_Pipeline_SAVE_1_SKIP_ROW'
 ================================================================
-* Date:           Thu May 14 22:48:48 2026
+* Date:           Sun Jul  5 16:29:05 2026
 
-* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Version:        2025.2 (Build 6295257 on Nov 14 2025)
 * Project:        prj
 * Solution:       solution1 (Vitis Kernel Flow Target)
 * Product family: zynquplus
@@ -25,12 +25,12 @@
 
 + Latency: 
     * Summary: 
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
-    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |      963|      963|  3.210 us|  3.210 us|  961|  961|  loop auto-rewind stp (delay=0 clock cycles(s))|
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |      Pipeline     |
+    |   min   |   max   |    min   |    max   | min | max |        Type       |
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |      963|      963|  3.210 us|  3.210 us|    0|    0|  loop pipeline stp|
+    +---------+---------+----------+----------+-----+-----+-------------------+
 
     + Detail: 
         * Instance: 
@@ -91,14 +91,14 @@
     +------------------------+----------+----+---+----+------------+------------+
     |      Variable Name     | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +------------------------+----------+----+---+----+------------+------------+
-    |add_ln136_1_fu_414_p2   |         +|   0|  0|  17|          10|           1|
-    |add_ln136_fu_405_p2     |         +|   0|  0|  17|          10|           1|
-    |add_ln138_1_fu_442_p2   |         +|   0|  0|  15|           8|           8|
-    |add_ln138_2_fu_487_p2   |         +|   0|  0|  28|          21|          11|
-    |add_ln138_fu_468_p2     |         +|   0|  0|  18|          11|          11|
-    |icmp_ln136_1_fu_420_p2  |      icmp|   0|  0|  17|          10|           6|
-    |icmp_ln136_fu_399_p2    |      icmp|   0|  0|  17|          10|           8|
-    |select_ln136_fu_426_p3  |    select|   0|  0|  10|           1|           1|
+    |add_ln136_1_fu_422_p2   |         +|   0|  0|  17|          10|           1|
+    |add_ln136_fu_413_p2     |         +|   0|  0|  17|          10|           1|
+    |add_ln138_1_fu_450_p2   |         +|   0|  0|  15|           8|           8|
+    |add_ln138_2_fu_495_p2   |         +|   0|  0|  28|          21|          11|
+    |add_ln138_fu_476_p2     |         +|   0|  0|  18|          11|          11|
+    |icmp_ln136_1_fu_428_p2  |      icmp|   0|  0|  17|          10|           6|
+    |icmp_ln136_fu_407_p2    |      icmp|   0|  0|  17|          10|           8|
+    |select_ln136_fu_434_p3  |    select|   0|  0|  10|           1|           1|
     |ap_enable_pp0           |       xor|   0|  0|   2|           1|           2|
     +------------------------+----------+----+---+----+------------+------------+
     |Total                   |          |   0|  0| 141|          82|          49|
@@ -112,9 +112,9 @@
     |ap_enable_reg_pp0_iter1            |   9|          2|    1|          2|
     |ap_sig_allocacmp_i_3               |   9|          2|   10|         20|
     |ap_sig_allocacmp_phi_urem202_load  |   9|          2|   10|         20|
-    |i_fu_132                           |   9|          2|   10|         20|
-    |phi_mul200_fu_128                  |   9|          2|   21|         42|
-    |phi_urem202_fu_124                 |   9|          2|   10|         20|
+    |i_fu_136                           |   9|          2|   10|         20|
+    |phi_mul200_fu_132                  |   9|          2|   21|         42|
+    |phi_urem202_fu_128                 |   9|          2|   10|         20|
     +-----------------------------------+----+-----------+-----+-----------+
     |Total                              |  63|         14|   63|        126|
     +-----------------------------------+----+-----------+-----+-----------+
@@ -123,17 +123,17 @@
     +----------------------------------+-----+----+-----+-----------+
     |               Name               |  FF | LUT| Bits| Const Bits|
     +----------------------------------+-----+----+-----+-----------+
-    |add_ln138_reg_689                 |   11|   0|   11|          0|
-    |add_ln138_reg_689_pp0_iter1_reg   |   11|   0|   11|          0|
+    |add_ln138_reg_697                 |   11|   0|   11|          0|
+    |add_ln138_reg_697_pp0_iter1_reg   |   11|   0|   11|          0|
     |ap_CS_fsm                         |    1|   0|    1|          0|
     |ap_done_reg                       |    1|   0|    1|          0|
     |ap_enable_reg_pp0_iter1           |    1|   0|    1|          0|
     |ap_enable_reg_pp0_iter2           |    1|   0|    1|          0|
     |ap_loop_exit_ready_pp0_iter1_reg  |    1|   0|    1|          0|
-    |i_fu_132                          |   10|   0|   10|          0|
-    |phi_mul200_fu_128                 |   21|   0|   21|          0|
-    |phi_urem202_fu_124                |   10|   0|   10|          0|
-    |tmp_reg_694                       |  256|   0|  256|          0|
+    |i_fu_136                          |   10|   0|   10|          0|
+    |phi_mul200_fu_132                 |   21|   0|   21|          0|
+    |phi_urem202_fu_128                |   10|   0|   10|          0|
+    |tmp_reg_702                       |  256|   0|  256|          0|
     +----------------------------------+-----+----+-----+-----------+
     |Total                             |  324|   0|  324|          0|
     +----------------------------------+-----+----+-----+-----------+
@@ -153,7 +153,7 @@
 |ap_done                |  out|    1|  ap_ctrl_hs|  init_rows<16, 960, true, half>_Pipeline_SAVE_1_SKIP_ROW|  return value|
 |ap_idle                |  out|    1|  ap_ctrl_hs|  init_rows<16, 960, true, half>_Pipeline_SAVE_1_SKIP_ROW|  return value|
 |ap_ready               |  out|    1|  ap_ctrl_hs|  init_rows<16, 960, true, half>_Pipeline_SAVE_1_SKIP_ROW|  return value|
-|mul_ln131              |   in|    7|     ap_none|                                                mul_ln131|        scalar|
+|mul_ln131_1            |   in|    7|     ap_none|                                              mul_ln131_1|        scalar|
 |x_buf_256_0_address0   |  out|    8|   ap_memory|                                              x_buf_256_0|         array|
 |x_buf_256_0_ce0        |  out|    1|   ap_memory|                                              x_buf_256_0|         array|
 |x_buf_256_0_q0         |   in|  256|   ap_memory|                                              x_buf_256_0|         array|
@@ -202,7 +202,7 @@
 |x_buf_256_15_address0  |  out|    8|   ap_memory|                                             x_buf_256_15|         array|
 |x_buf_256_15_ce0       |  out|    1|   ap_memory|                                             x_buf_256_15|         array|
 |x_buf_256_15_q0        |   in|  256|   ap_memory|                                             x_buf_256_15|         array|
-|zext_ln136             |   in|   10|     ap_none|                                               zext_ln136|        scalar|
+|zext_ln136             |   in|    9|     ap_none|                                               zext_ln136|        scalar|
 |skip_buf_256_address1  |  out|   14|   ap_memory|                                             skip_buf_256|         array|
 |skip_buf_256_ce1       |  out|    1|   ap_memory|                                             skip_buf_256|         array|
 |skip_buf_256_we1       |  out|    1|   ap_memory|                                             skip_buf_256|         array|

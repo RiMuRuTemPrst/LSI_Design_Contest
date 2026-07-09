@@ -1,7 +1,7 @@
 <profile>
 
 <ReportVersion>
-<Version>2024.2</Version>
+<Version>2025.2</Version>
 </ReportVersion>
 
 <UserAssignments>
@@ -15,7 +15,7 @@
 </UserAssignments>
 
 <PerformanceEstimates>
-<PipelineType>loop auto-rewind stp (delay=0 cycles)</PipelineType>
+<PipelineType>loop pipeline stp</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
 <EstimatedClockPeriod>2.433</EstimatedClockPeriod>
@@ -30,15 +30,18 @@
 <Worst-caseRealTimeLatency>3.933 us</Worst-caseRealTimeLatency>
 <Interval-min>961</Interval-min>
 <Interval-max>961</Interval-max>
+<PerformancePragma>-</PerformancePragma>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <PASS_B_CHANNEL_NORM>
 <Slack>2.43</Slack>
 <TripCount>960</TripCount>
+<isPerfectNested>0</isPerfectNested>
 <Latency>1178</Latency>
 <AbsoluteTimeLatency>3926</AbsoluteTimeLatency>
 <PipelineII>1</PipelineII>
 <PipelineDepth>220</PipelineDepth>
+<PerformancePragma>-</PerformancePragma>
 <InstanceList>
 </InstanceList>
 </PASS_B_CHANNEL_NORM>
@@ -46,13 +49,13 @@
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers.tpp:362</SourceLocation>
+<SourceLocation>gen/Hls_Layers.tpp:363</SourceLocation>
 <SummaryOfLoopViolations>
 <PASS_B_CHANNEL_NORM>
 <Name>PASS_B_CHANNEL_NORM</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers.tpp:362</SourceLocation>
+<SourceLocation>gen/Hls_Layers.tpp:363</SourceLocation>
 </PASS_B_CHANNEL_NORM>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -141,6 +144,666 @@
 <Dir>out</Dir>
 <Bits>1</Bits>
 <Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4446_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4446_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4446_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4446_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4450_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4450_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4450_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4450_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4454_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4454_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4454_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4454_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4458_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4458_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4458_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4458_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4462_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4462_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4462_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4462_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4466_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4466_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4466_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4466_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4470_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4470_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4470_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4470_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4474_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4474_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4474_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4474_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4478_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4478_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4478_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4478_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4482_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4482_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4482_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4482_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4486_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4486_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4486_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4486_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4490_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4490_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4490_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4490_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4494_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4494_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4494_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4494_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4498_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4498_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4498_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4498_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4502_p_din0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4502_p_din1</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4502_p_dout0</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4502_p_ce</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
 <name>grp_fu_4506_p_din0</name>
@@ -1602,7 +2265,7 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>16</Bits>
+<Bits>32</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1613,7 +2276,18 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>16</Bits>
+<Bits>32</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4638_p_opcode</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1624,7 +2298,7 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>16</Bits>
+<Bits>32</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1646,7 +2320,7 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>16</Bits>
+<Bits>32</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1657,7 +2331,18 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>16</Bits>
+<Bits>32</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>grp_fu_4642_p_opcode</name>
+<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>2</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1668,7 +2353,7 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>16</Bits>
+<Bits>32</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1690,7 +2375,7 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>16</Bits>
+<Bits>32</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1701,7 +2386,7 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>16</Bits>
+<Bits>32</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1712,7 +2397,7 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>16</Bits>
+<Bits>32</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -1727,7 +2412,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4650_p_din0</name>
+<name>grp_fu_4318_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1738,7 +2423,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4650_p_din1</name>
+<name>grp_fu_4318_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1749,7 +2434,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4650_p_dout0</name>
+<name>grp_fu_4318_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1760,7 +2445,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4650_p_ce</name>
+<name>grp_fu_4318_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1771,7 +2456,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4654_p_din0</name>
+<name>grp_fu_4322_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1782,7 +2467,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4654_p_din1</name>
+<name>grp_fu_4322_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1793,7 +2478,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4654_p_dout0</name>
+<name>grp_fu_4322_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1804,7 +2489,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4654_p_ce</name>
+<name>grp_fu_4322_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1815,7 +2500,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4658_p_din0</name>
+<name>grp_fu_4326_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1826,7 +2511,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4658_p_din1</name>
+<name>grp_fu_4326_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1837,7 +2522,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4658_p_dout0</name>
+<name>grp_fu_4326_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1848,7 +2533,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4658_p_ce</name>
+<name>grp_fu_4326_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1859,7 +2544,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4662_p_din0</name>
+<name>grp_fu_4330_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1870,7 +2555,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4662_p_din1</name>
+<name>grp_fu_4330_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1881,7 +2566,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4662_p_dout0</name>
+<name>grp_fu_4330_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1892,7 +2577,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4662_p_ce</name>
+<name>grp_fu_4330_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1903,7 +2588,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4666_p_din0</name>
+<name>grp_fu_4334_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1914,7 +2599,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4666_p_din1</name>
+<name>grp_fu_4334_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1925,7 +2610,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4666_p_dout0</name>
+<name>grp_fu_4334_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1936,7 +2621,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4666_p_ce</name>
+<name>grp_fu_4334_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1947,7 +2632,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4670_p_din0</name>
+<name>grp_fu_4338_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1958,7 +2643,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4670_p_din1</name>
+<name>grp_fu_4338_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1969,7 +2654,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4670_p_dout0</name>
+<name>grp_fu_4338_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1980,7 +2665,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4670_p_ce</name>
+<name>grp_fu_4338_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1991,7 +2676,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4674_p_din0</name>
+<name>grp_fu_4342_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2002,7 +2687,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4674_p_din1</name>
+<name>grp_fu_4342_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2013,7 +2698,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4674_p_dout0</name>
+<name>grp_fu_4342_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2024,7 +2709,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4674_p_ce</name>
+<name>grp_fu_4342_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2035,7 +2720,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4678_p_din0</name>
+<name>grp_fu_4346_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2046,7 +2731,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4678_p_din1</name>
+<name>grp_fu_4346_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2057,7 +2742,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4678_p_dout0</name>
+<name>grp_fu_4346_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2068,7 +2753,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4678_p_ce</name>
+<name>grp_fu_4346_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2079,7 +2764,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4682_p_din0</name>
+<name>grp_fu_4350_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2090,7 +2775,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4682_p_din1</name>
+<name>grp_fu_4350_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2101,7 +2786,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4682_p_dout0</name>
+<name>grp_fu_4350_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2112,7 +2797,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4682_p_ce</name>
+<name>grp_fu_4350_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2123,7 +2808,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4686_p_din0</name>
+<name>grp_fu_4354_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2134,7 +2819,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4686_p_din1</name>
+<name>grp_fu_4354_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2145,7 +2830,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4686_p_dout0</name>
+<name>grp_fu_4354_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2156,7 +2841,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4686_p_ce</name>
+<name>grp_fu_4354_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2167,7 +2852,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4690_p_din0</name>
+<name>grp_fu_4358_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2178,7 +2863,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4690_p_din1</name>
+<name>grp_fu_4358_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2189,7 +2874,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4690_p_dout0</name>
+<name>grp_fu_4358_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2200,7 +2885,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4690_p_ce</name>
+<name>grp_fu_4358_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2211,7 +2896,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4694_p_din0</name>
+<name>grp_fu_4362_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2222,7 +2907,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4694_p_din1</name>
+<name>grp_fu_4362_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2233,7 +2918,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4694_p_dout0</name>
+<name>grp_fu_4362_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2244,7 +2929,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4694_p_ce</name>
+<name>grp_fu_4362_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2255,51 +2940,40 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4698_p_din0</name>
+<name>grp_fu_4366_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4698_p_din1</name>
+<name>grp_fu_4366_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4698_p_opcode</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4698_p_dout0</name>
+<name>grp_fu_4366_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4698_p_ce</name>
+<name>grp_fu_4366_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2310,51 +2984,40 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4702_p_din0</name>
+<name>grp_fu_4370_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4702_p_din1</name>
+<name>grp_fu_4370_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4702_p_opcode</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>2</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4702_p_dout0</name>
+<name>grp_fu_4370_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4702_p_ce</name>
+<name>grp_fu_4370_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -2365,40 +3028,40 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4706_p_din0</name>
+<name>grp_fu_4374_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4706_p_din1</name>
+<name>grp_fu_4374_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4706_p_dout0</name>
+<name>grp_fu_4374_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>32</Bits>
+<Bits>16</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4706_p_ce</name>
+<name>grp_fu_4374_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -3157,666 +3820,6 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4446_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4446_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4446_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4446_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4450_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4450_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4450_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4450_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4454_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4454_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4454_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4454_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4458_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4458_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4458_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4458_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4462_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4462_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4462_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4462_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4466_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4466_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4466_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4466_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4470_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4470_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4470_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4470_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4474_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4474_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4474_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4474_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4478_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4478_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4478_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4478_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4482_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4482_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4482_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4482_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4486_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4486_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4486_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4486_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4490_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4490_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4490_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4490_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4494_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4494_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4494_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4494_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4498_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4498_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4498_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4498_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4502_p_din0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4502_p_din1</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4502_p_dout0</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>16</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>grp_fu_4502_p_ce</name>
-<Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_PASS_B_CHANNEL_NORM</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
 <name>m_axi_gmem_inout_0_AWVALID</name>
 <Object>gmem_inout</Object>
 <Type>pointer</Type>
@@ -4323,8 +4326,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>tmp_46</name>
-<Object>tmp_46</Object>
+<name>shl_ln3</name>
+<Object>shl_ln3</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

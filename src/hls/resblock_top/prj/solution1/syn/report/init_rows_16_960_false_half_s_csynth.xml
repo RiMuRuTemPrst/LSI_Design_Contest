@@ -1,7 +1,7 @@
 <profile>
 
 <ReportVersion>
-<Version>2024.2</Version>
+<Version>2025.2</Version>
 </ReportVersion>
 
 <UserAssignments>
@@ -15,7 +15,7 @@
 </UserAssignments>
 
 <PerformanceEstimates>
-<PipelineType>loop auto-rewind stp (delay=0 cycles)</PipelineType>
+<PipelineType>loop pipeline stp</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
 <EstimatedClockPeriod>2.433</EstimatedClockPeriod>
@@ -30,15 +30,18 @@
 <Worst-caseRealTimeLatency>9.856 us</Worst-caseRealTimeLatency>
 <Interval-min>2881</Interval-min>
 <Interval-max>2881</Interval-max>
+<PerformancePragma>-</PerformancePragma>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <INIT_3_INPUT_ROWS_LOAD_1_INPUT_ROW>
 <Slack>2.43</Slack>
 <TripCount>2880</TripCount>
+<isPerfectNested>0</isPerfectNested>
 <Latency>2955</Latency>
 <AbsoluteTimeLatency>9849</AbsoluteTimeLatency>
 <PipelineII>1</PipelineII>
 <PipelineDepth>77</PipelineDepth>
+<PerformancePragma>-</PerformancePragma>
 <InstanceList>
 </InstanceList>
 </INIT_3_INPUT_ROWS_LOAD_1_INPUT_ROW>

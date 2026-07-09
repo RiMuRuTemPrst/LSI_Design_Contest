@@ -3,9 +3,9 @@
 ================================================================
 == Vitis HLS Report for 'Fused_Conv_CNorm_Act_16_960_960_half_Pipeline_PREFETCH_NEXT_INPUT_ROW'
 ================================================================
-* Date:           Thu May 14 22:48:52 2026
+* Date:           Sun Jul  5 16:29:08 2026
 
-* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Version:        2025.2 (Build 6295257 on Nov 14 2025)
 * Project:        prj
 * Solution:       solution1 (Vitis Kernel Flow Target)
 * Product family: zynquplus
@@ -25,12 +25,12 @@
 
 + Latency: 
     * Summary: 
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
-    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |      963|      963|  3.210 us|  3.210 us|  961|  961|  loop auto-rewind stp (delay=0 clock cycles(s))|
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |      Pipeline     |
+    |   min   |   max   |    min   |    max   | min | max |        Type       |
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |      963|      963|  3.210 us|  3.210 us|    0|    0|  loop pipeline stp|
+    +---------+---------+----------+----------+-----+-----+-------------------+
 
     + Detail: 
         * Instance: 
@@ -85,15 +85,15 @@
     +---------------------------+----------+----+---+----+------------+------------+
     |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------------+----------+----+---+----+------------+------------+
-    |add_ln338_1_fu_541_p2      |         +|   0|  0|  17|          10|           1|
-    |add_ln338_fu_465_p2        |         +|   0|  0|  17|          10|           1|
-    |add_ln340_1_fu_485_p2      |         +|   0|  0|  28|          21|          11|
-    |add_ln340_fu_513_p2        |         +|   0|  0|  15|           8|           8|
+    |add_ln339_1_fu_579_p2      |         +|   0|  0|  17|          10|           1|
+    |add_ln339_fu_469_p2        |         +|   0|  0|  17|          10|           1|
+    |add_ln341_1_fu_489_p2      |         +|   0|  0|  28|          21|          11|
+    |add_ln341_fu_551_p2        |         +|   0|  0|  15|           8|           8|
     |ap_block_pp0_stage0_11001  |       and|   0|  0|   2|           1|           1|
     |ap_condition_238           |       and|   0|  0|   2|           1|           1|
-    |icmp_ln338_1_fu_547_p2     |      icmp|   0|  0|  17|          10|           6|
-    |icmp_ln338_fu_459_p2       |      icmp|   0|  0|  17|          10|           8|
-    |select_ln338_fu_553_p3     |    select|   0|  0|  10|           1|           1|
+    |icmp_ln339_1_fu_585_p2     |      icmp|   0|  0|  17|          10|           6|
+    |icmp_ln339_fu_463_p2       |      icmp|   0|  0|  17|          10|           8|
+    |select_ln339_fu_591_p3     |    select|   0|  0|  10|           1|           1|
     |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
     +---------------------------+----------+----+---+----+------------+------------+
     |Total                      |          |   0|  0| 127|          73|          40|
@@ -107,9 +107,9 @@
     |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
     |ap_sig_allocacmp_i       |   9|          2|   10|         20|
     |gmem_inout_blk_n_R       |   9|          2|    1|          2|
-    |i_4_fu_144               |   9|          2|   10|         20|
-    |phi_mul577_fu_140        |   9|          2|   21|         42|
-    |phi_urem_fu_136          |   9|          2|   10|         20|
+    |i_4_fu_148               |   9|          2|   10|         20|
+    |phi_mul575_fu_144        |   9|          2|   21|         42|
+    |phi_urem_fu_140          |   9|          2|   10|         20|
     +-------------------------+----+-----------+-----+-----------+
     |Total                    |  63|         14|   54|        108|
     +-------------------------+----+-----------+-----+-----------+
@@ -124,11 +124,11 @@
     |ap_enable_reg_pp0_iter1                    |    1|   0|    1|          0|
     |ap_enable_reg_pp0_iter2                    |    1|   0|    1|          0|
     |ap_loop_exit_ready_pp0_iter1_reg           |    1|   0|    1|          0|
-    |gmem_inout_addr_read_reg_606               |  256|   0|  256|          0|
-    |i_4_fu_144                                 |   10|   0|   10|          0|
-    |phi_mul577_fu_140                          |   21|   0|   21|          0|
-    |phi_urem_fu_136                            |   10|   0|   10|          0|
-    |trunc_ln340_1_reg_602                      |    4|   0|    4|          0|
+    |gmem_inout_addr_read_reg_644               |  256|   0|  256|          0|
+    |i_4_fu_148                                 |   10|   0|   10|          0|
+    |phi_mul575_fu_144                          |   21|   0|   21|          0|
+    |phi_urem_fu_140                            |   10|   0|   10|          0|
+    |trunc_ln341_1_reg_640                      |    4|   0|    4|          0|
     +-------------------------------------------+-----+----+-----+-----------+
     |Total                                      |  307|   0|  307|          0|
     +-------------------------------------------+-----+----+-----+-----------+
@@ -194,7 +194,7 @@
 |m_axi_gmem_inout_0_BRESP     |   in|    2|       m_axi|                                                                 gmem_inout|       pointer|
 |m_axi_gmem_inout_0_BID       |   in|    1|       m_axi|                                                                 gmem_inout|       pointer|
 |m_axi_gmem_inout_0_BUSER     |   in|    1|       m_axi|                                                                 gmem_inout|       pointer|
-|sext_ln338                   |   in|   59|     ap_none|                                                                 sext_ln338|        scalar|
+|sext_ln339                   |   in|   59|     ap_none|                                                                 sext_ln339|        scalar|
 |x_buf_256_15_address1        |  out|    8|   ap_memory|                                                               x_buf_256_15|         array|
 |x_buf_256_15_ce1             |  out|    1|   ap_memory|                                                               x_buf_256_15|         array|
 |x_buf_256_15_we1             |  out|    1|   ap_memory|                                                               x_buf_256_15|         array|
@@ -259,6 +259,6 @@
 |x_buf_256_0_ce1              |  out|    1|   ap_memory|                                                                x_buf_256_0|         array|
 |x_buf_256_0_we1              |  out|    1|   ap_memory|                                                                x_buf_256_0|         array|
 |x_buf_256_0_d1               |  out|  256|   ap_memory|                                                                x_buf_256_0|         array|
-|mul_ln340                    |   in|    8|     ap_none|                                                                  mul_ln340|        scalar|
+|mul_ln341_1                  |   in|    8|     ap_none|                                                                mul_ln341_1|        scalar|
 +-----------------------------+-----+-----+------------+---------------------------------------------------------------------------+--------------+
 

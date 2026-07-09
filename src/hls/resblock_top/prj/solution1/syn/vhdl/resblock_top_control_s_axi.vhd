@@ -1,8 +1,8 @@
 -- ==============================================================
--- Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.2 (64-bit)
--- Tool Version Limit: 2024.11
+-- Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2025.2 (64-bit)
+-- Tool Version Limit: 2025.11
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
--- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+-- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- 
 -- ==============================================================
 library IEEE;
@@ -134,6 +134,8 @@ end entity resblock_top_control_s_axi;
 -- (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 architecture behave of resblock_top_control_s_axi is
+attribute DowngradeIPIdentifiedWarnings : STRING;
+attribute DowngradeIPIdentifiedWarnings of behave : architecture is "yes";
     type states is (wridle, wrdata, wrresp, wrreset, rdidle, rddata, rdreset);  -- read and write fsm states
     signal wstate  : states := wrreset;
     signal rstate  : states := rdreset;
@@ -176,6 +178,11 @@ architecture behave of resblock_top_control_s_axi is
     constant ADDR_EPSILON_CTRL   : INTEGER := 16#8c#;
     constant ADDR_BITS         : INTEGER := 8;
 
+    signal AWREADY_t           : STD_LOGIC;
+    signal WREADY_t            : STD_LOGIC;
+    signal ARREADY_t           : STD_LOGIC;
+    signal RVALID_t            : STD_LOGIC;
+    signal BVALID_t            : STD_LOGIC;
     signal waddr               : UNSIGNED(ADDR_BITS-1 downto 0);
     signal wmask               : UNSIGNED(C_S_AXI_DATA_WIDTH-1 downto 0);
     signal aw_hs               : STD_LOGIC;
@@ -183,10 +190,6 @@ architecture behave of resblock_top_control_s_axi is
     signal rdata_data          : UNSIGNED(C_S_AXI_DATA_WIDTH-1 downto 0);
     signal ar_hs               : STD_LOGIC;
     signal raddr               : UNSIGNED(ADDR_BITS-1 downto 0);
-    signal AWREADY_t           : STD_LOGIC;
-    signal WREADY_t            : STD_LOGIC;
-    signal ARREADY_t           : STD_LOGIC;
-    signal RVALID_t            : STD_LOGIC;
     -- internal registers
     signal int_ap_idle         : STD_LOGIC := '0';
     signal int_ap_continue     : STD_LOGIC := '0';
@@ -225,8 +228,9 @@ begin
     AWREADY   <=  AWREADY_t;
     WREADY_t  <=  '1' when wstate = wrdata else '0';
     WREADY    <=  WREADY_t;
+    BVALID_t  <=  '1' when wstate = wrresp else '0';
+    BVALID    <=  BVALID_t;
     BRESP     <=  "00";  -- OKAY
-    BVALID    <=  '1' when wstate = wrresp else '0';
     wmask     <=  (31 downto 24 => WSTRB(3), 23 downto 16 => WSTRB(2), 15 downto 8 => WSTRB(1), 7 downto 0 => WSTRB(0));
     aw_hs     <=  AWVALID and AWREADY_t;
     w_hs      <=  WVALID and WREADY_t;
@@ -243,7 +247,7 @@ begin
         end if;
     end process;
 
-    process (wstate, AWVALID, WVALID, BREADY)
+    process (wstate, AWVALID, WVALID, BREADY, BVALID_t)
     begin
         case (wstate) is
         when wridle =>
@@ -259,7 +263,7 @@ begin
                 wnext <= wrdata;
             end if;
         when wrresp =>
-            if (BREADY = '1') then
+            if (BREADY = '1' and BVALID_t = '1') then
                 wnext <= wridle;
             else
                 wnext <= wrresp;

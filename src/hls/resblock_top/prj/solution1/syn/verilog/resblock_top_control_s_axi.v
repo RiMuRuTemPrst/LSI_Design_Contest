@@ -1,12 +1,12 @@
 // ==============================================================
-// Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.2 (64-bit)
-// Tool Version Limit: 2024.11
+// Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2025.2 (64-bit)
+// Tool Version Limit: 2025.11
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+// Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // 
 // ==============================================================
 `timescale 1ns/1ps
-module resblock_top_control_s_axi
+(* DowngradeIPIdentifiedWarnings="yes" *) module resblock_top_control_s_axi
 #(parameter
     C_S_AXI_ADDR_WIDTH = 8,
     C_S_AXI_DATA_WIDTH = 32
@@ -221,8 +221,8 @@ localparam
 //------------------------AXI write fsm------------------
 assign AWREADY = (wstate == WRIDLE);
 assign WREADY  = (wstate == WRDATA);
-assign BRESP   = 2'b00;  // OKAY
 assign BVALID  = (wstate == WRRESP);
+assign BRESP   = 2'b00;  // OKAY
 assign wmask   = { {8{WSTRB[3]}}, {8{WSTRB[2]}}, {8{WSTRB[1]}}, {8{WSTRB[0]}} };
 assign aw_hs   = AWVALID & AWREADY;
 assign w_hs    = WVALID & WREADY;
@@ -249,7 +249,7 @@ always @(*) begin
             else
                 wnext = WRDATA;
         WRRESP:
-            if (BREADY)
+            if (BREADY & BVALID)
                 wnext = WRIDLE;
             else
                 wnext = WRRESP;

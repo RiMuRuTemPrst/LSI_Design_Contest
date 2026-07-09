@@ -3,9 +3,9 @@
 ================================================================
 == Vitis HLS Report for 'Fused_Conv_CNorm_Act_16_960_960_half_Pipeline_PRELOAD_1_WEIGHT_PINGPONG'
 ================================================================
-* Date:           Thu May 14 22:48:49 2026
+* Date:           Sun Jul  5 16:29:06 2026
 
-* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Version:        2025.2 (Build 6295257 on Nov 14 2025)
 * Project:        prj
 * Solution:       solution1 (Vitis Kernel Flow Target)
 * Product family: zynquplus
@@ -25,12 +25,12 @@
 
 + Latency: 
     * Summary: 
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
-    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |       63|       63|  0.210 us|  0.210 us|   61|   61|  loop auto-rewind stp (delay=0 clock cycles(s))|
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |      Pipeline     |
+    |   min   |   max   |    min   |    max   | min | max |        Type       |
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |       63|       63|  0.210 us|  0.210 us|    0|    0|  loop pipeline stp|
+    +---------+---------+----------+----------+-----+-----+-------------------+
 
     + Detail: 
         * Instance: 
@@ -82,18 +82,18 @@
     N/A
 
     * Expression: 
-    +---------------------------------------+----------+----+---+----+------------+------------+
-    |             Variable Name             | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
-    +---------------------------------------+----------+----+---+----+------------+------------+
-    |add_ln192_fu_124_p2                    |         +|   0|  0|  13|           6|           1|
-    |ap_block_pp0_stage0_11001              |       and|   0|  0|   2|           1|           1|
-    |ap_block_state2_pp0_stage0_iter1_grp1  |       and|   0|  0|   2|           1|           1|
-    |ap_predicate_op21_read_state2          |       and|   0|  0|   2|           1|           1|
-    |icmp_ln192_fu_118_p2                   |      icmp|   0|  0|  13|           6|           4|
-    |ap_enable_pp0                          |       xor|   0|  0|   2|           1|           2|
-    +---------------------------------------+----------+----+---+----+------------+------------+
-    |Total                                  |          |   0|  0|  34|          16|          10|
-    +---------------------------------------+----------+----+---+----+------------+------------+
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |add_ln191_fu_124_p2               |         +|   0|  0|  13|           6|           1|
+    |ap_block_pp0_stage0_11001         |       and|   0|  0|   2|           1|           1|
+    |ap_block_state2_pp0_stage0_iter1  |       and|   0|  0|   2|           1|           1|
+    |ap_predicate_op22_read_state2     |       and|   0|  0|   2|           1|           1|
+    |icmp_ln191_fu_118_p2              |      icmp|   0|  0|  13|           6|           4|
+    |ap_enable_pp0                     |       xor|   0|  0|   2|           1|           2|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |Total                             |          |   0|  0|  34|          16|          10|
+    +----------------------------------+----------+----+---+----+------------+------------+
 
     * Multiplexer: 
     +-------------------------------+----+-----------+-----+-----------+
@@ -123,11 +123,11 @@
     |i_5_reg_196                        |    6|   0|    6|          0|
     |i_5_reg_196_pp0_iter1_reg          |    6|   0|    6|          0|
     |i_fu_64                            |    6|   0|    6|          0|
-    |icmp_ln192_reg_201                 |    1|   0|    1|          0|
-    |icmp_ln192_reg_201_pp0_iter1_reg   |    1|   0|    1|          0|
+    |icmp_ln191_reg_201                 |    1|   0|    1|          0|
+    |icmp_ln191_reg_201_pp0_iter1_reg   |    1|   0|    1|          0|
     |shiftreg_fu_60                     |  256|   0|  256|          0|
-    |trunc_ln192_reg_205                |    1|   0|    1|          0|
-    |trunc_ln192_reg_205_pp0_iter1_reg  |    1|   0|    1|          0|
+    |trunc_ln191_reg_205                |    1|   0|    1|          0|
+    |trunc_ln191_reg_205_pp0_iter1_reg  |    1|   0|    1|          0|
     +-----------------------------------+-----+----+-----+-----------+
     |Total                              |  795|   0|  795|          0|
     +-----------------------------------+-----+----+-----+-----------+
@@ -193,7 +193,7 @@
 |m_axi_gmem_weight_0_BRESP     |   in|    2|       m_axi|                                                                  gmem_weight|       pointer|
 |m_axi_gmem_weight_0_BID       |   in|    1|       m_axi|                                                                  gmem_weight|       pointer|
 |m_axi_gmem_weight_0_BUSER     |   in|    1|       m_axi|                                                                  gmem_weight|       pointer|
-|p_cast_cast                   |   in|   58|     ap_none|                                                                  p_cast_cast|        scalar|
+|sext_ln191                    |   in|   58|     ap_none|                                                                   sext_ln191|        scalar|
 |w_buf_256_0_address0          |  out|    6|   ap_memory|                                                                  w_buf_256_0|         array|
 |w_buf_256_0_ce0               |  out|    1|   ap_memory|                                                                  w_buf_256_0|         array|
 |w_buf_256_0_we0               |  out|    1|   ap_memory|                                                                  w_buf_256_0|         array|

@@ -1,7 +1,7 @@
 <profile>
 
 <ReportVersion>
-<Version>2024.2</Version>
+<Version>2025.2</Version>
 </ReportVersion>
 
 <UserAssignments>
@@ -22,14 +22,15 @@
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>20876521</Best-caseLatency>
-<Average-caseLatency>20902287</Average-caseLatency>
-<Worst-caseLatency>20943445</Worst-caseLatency>
-<Best-caseRealTimeLatency>69.581 ms</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>69.667 ms</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>69.805 ms</Worst-caseRealTimeLatency>
-<Interval-min>20876522</Interval-min>
-<Interval-max>20943446</Interval-max>
+<Best-caseLatency>20907241</Best-caseLatency>
+<Average-caseLatency>20933007</Average-caseLatency>
+<Worst-caseLatency>20974165</Worst-caseLatency>
+<Best-caseRealTimeLatency>69.684 ms</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>69.770 ms</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>69.907 ms</Worst-caseRealTimeLatency>
+<Interval-min>20907242</Interval-min>
+<Interval-max>20974166</Interval-max>
+<PerformancePragma>-</PerformancePragma>
 </SummaryOfOverallLatency>
 <SummaryOfViolations>
 <IssueType>-</IssueType>
@@ -42,8 +43,8 @@
 <Resources>
 <BRAM_18K>272</BRAM_18K>
 <DSP>1070</DSP>
-<FF>91845</FF>
-<LUT>71019</LUT>
+<FF>91763</FF>
+<LUT>70935</LUT>
 <URAM>16</URAM>
 </Resources>
 <AvailableResources>

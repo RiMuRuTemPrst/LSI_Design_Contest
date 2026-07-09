@@ -1,7 +1,7 @@
 <profile>
 
 <ReportVersion>
-<Version>2024.2</Version>
+<Version>2025.2</Version>
 </ReportVersion>
 
 <UserAssignments>
@@ -15,7 +15,7 @@
 </UserAssignments>
 
 <PerformanceEstimates>
-<PipelineType>loop auto-rewind stp (delay=0 cycles)</PipelineType>
+<PipelineType>loop pipeline stp</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
 <EstimatedClockPeriod>2.429</EstimatedClockPeriod>
@@ -30,15 +30,18 @@
 <Worst-caseRealTimeLatency>3.210 us</Worst-caseRealTimeLatency>
 <Interval-min>961</Interval-min>
 <Interval-max>961</Interval-max>
+<PerformancePragma>-</PerformancePragma>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <FETCH_NEXT_SKIP_ROW>
 <Slack>2.43</Slack>
 <TripCount>960</TripCount>
+<isPerfectNested>0</isPerfectNested>
 <Latency>961</Latency>
 <AbsoluteTimeLatency>3203</AbsoluteTimeLatency>
 <PipelineII>1</PipelineII>
 <PipelineDepth>3</PipelineDepth>
+<PerformancePragma>-</PerformancePragma>
 <InstanceList>
 </InstanceList>
 </FETCH_NEXT_SKIP_ROW>
@@ -46,13 +49,13 @@
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers.tpp:345</SourceLocation>
+<SourceLocation>gen/Hls_Layers.tpp:346</SourceLocation>
 <SummaryOfLoopViolations>
 <FETCH_NEXT_SKIP_ROW>
 <Name>FETCH_NEXT_SKIP_ROW</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers.tpp:345</SourceLocation>
+<SourceLocation>gen/Hls_Layers.tpp:346</SourceLocation>
 </FETCH_NEXT_SKIP_ROW>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -143,8 +146,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>mul_ln340</name>
-<Object>mul_ln340</Object>
+<name>mul_ln341_1</name>
+<Object>mul_ln341_1</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -682,8 +685,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>mul_ln345</name>
-<Object>mul_ln345</Object>
+<name>mul_ln346</name>
+<Object>mul_ln346</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

@@ -1,7 +1,7 @@
 <profile>
 
 <ReportVersion>
-<Version>2024.2</Version>
+<Version>2025.2</Version>
 </ReportVersion>
 
 <UserAssignments>
@@ -15,7 +15,7 @@
 </UserAssignments>
 
 <PerformanceEstimates>
-<PipelineType>loop auto-rewind stp (delay=0 cycles)</PipelineType>
+<PipelineType>loop pipeline stp</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
 <EstimatedClockPeriod>2.433</EstimatedClockPeriod>
@@ -30,15 +30,18 @@
 <Worst-caseRealTimeLatency>0.210 us</Worst-caseRealTimeLatency>
 <Interval-min>61</Interval-min>
 <Interval-max>61</Interval-max>
+<PerformancePragma>-</PerformancePragma>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <PRELOAD_1_WEIGHT_PINGPONG>
 <Slack>2.43</Slack>
 <TripCount>60</TripCount>
+<isPerfectNested>0</isPerfectNested>
 <Latency>61</Latency>
 <AbsoluteTimeLatency>203</AbsoluteTimeLatency>
 <PipelineII>1</PipelineII>
 <PipelineDepth>3</PipelineDepth>
+<PerformancePragma>-</PerformancePragma>
 <InstanceList>
 </InstanceList>
 </PRELOAD_1_WEIGHT_PINGPONG>
@@ -46,13 +49,13 @@
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers.tpp:192</SourceLocation>
+<SourceLocation>gen/Hls_Layers.tpp:191</SourceLocation>
 <SummaryOfLoopViolations>
 <PRELOAD_1_WEIGHT_PINGPONG>
 <Name>PRELOAD_1_WEIGHT_PINGPONG</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers.tpp:192</SourceLocation>
+<SourceLocation>gen/Hls_Layers.tpp:191</SourceLocation>
 </PRELOAD_1_WEIGHT_PINGPONG>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -649,8 +652,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_cast_cast</name>
-<Object>p_cast_cast</Object>
+<name>sext_ln191</name>
+<Object>sext_ln191</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

@@ -1,7 +1,7 @@
 <profile>
 
 <ReportVersion>
-<Version>2024.2</Version>
+<Version>2025.2</Version>
 </ReportVersion>
 
 <UserAssignments>
@@ -30,6 +30,7 @@
 <Worst-caseRealTimeLatency>1.357 us</Worst-caseRealTimeLatency>
 <Interval-min>407</Interval-min>
 <Interval-max>407</Interval-max>
+<PerformancePragma>-</PerformancePragma>
 </SummaryOfOverallLatency>
 <SummaryOfViolations>
 <IssueType>-</IssueType>

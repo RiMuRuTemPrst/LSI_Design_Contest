@@ -1,7 +1,7 @@
 <profile>
 
 <ReportVersion>
-<Version>2024.2</Version>
+<Version>2025.2</Version>
 </ReportVersion>
 
 <UserAssignments>
@@ -15,7 +15,7 @@
 </UserAssignments>
 
 <PerformanceEstimates>
-<PipelineType>loop auto-rewind stp (delay=0 cycles)</PipelineType>
+<PipelineType>loop pipeline stp</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
 <EstimatedClockPeriod>2.416</EstimatedClockPeriod>
@@ -30,15 +30,18 @@
 <Worst-caseRealTimeLatency>0.190 us</Worst-caseRealTimeLatency>
 <Interval-min>17</Interval-min>
 <Interval-max>17</Interval-max>
+<PerformancePragma>-</PerformancePragma>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <FINAL_ACCUMULATION>
 <Slack>2.43</Slack>
 <TripCount>16</TripCount>
+<isPerfectNested>0</isPerfectNested>
 <Latency>55</Latency>
 <AbsoluteTimeLatency>183</AbsoluteTimeLatency>
 <PipelineII>1</PipelineII>
 <PipelineDepth>41</PipelineDepth>
+<PerformancePragma>-</PerformancePragma>
 <InstanceList>
 </InstanceList>
 </FINAL_ACCUMULATION>
@@ -46,13 +49,13 @@
 <SummaryOfViolations>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers.tpp:315</SourceLocation>
+<SourceLocation>gen/Hls_Layers.tpp:316</SourceLocation>
 <SummaryOfLoopViolations>
 <FINAL_ACCUMULATION>
 <Name>FINAL_ACCUMULATION</Name>
 <IssueType>-</IssueType>
 <ViolationType>-</ViolationType>
-<SourceLocation>gen/Hls_Layers.tpp:323</SourceLocation>
+<SourceLocation>gen/Hls_Layers.tpp:316</SourceLocation>
 </FINAL_ACCUMULATION>
 </SummaryOfLoopViolations>
 </SummaryOfViolations>
@@ -143,7 +146,7 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4698_p_din0</name>
+<name>grp_fu_4638_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -154,7 +157,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4698_p_din1</name>
+<name>grp_fu_4638_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -165,7 +168,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4698_p_opcode</name>
+<name>grp_fu_4638_p_opcode</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -176,7 +179,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4698_p_dout0</name>
+<name>grp_fu_4638_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -187,7 +190,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4698_p_ce</name>
+<name>grp_fu_4638_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -198,7 +201,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4702_p_din0</name>
+<name>grp_fu_4642_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -209,7 +212,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4702_p_din1</name>
+<name>grp_fu_4642_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -220,7 +223,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4702_p_opcode</name>
+<name>grp_fu_4642_p_opcode</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -231,7 +234,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4702_p_dout0</name>
+<name>grp_fu_4642_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -242,7 +245,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4702_p_ce</name>
+<name>grp_fu_4642_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -253,7 +256,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4706_p_din0</name>
+<name>grp_fu_4646_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -264,7 +267,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4706_p_din1</name>
+<name>grp_fu_4646_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -275,7 +278,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4706_p_dout0</name>
+<name>grp_fu_4646_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -286,7 +289,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4706_p_ce</name>
+<name>grp_fu_4646_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -297,7 +300,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_1567_p_din0</name>
+<name>grp_fu_1543_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -308,7 +311,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_1567_p_dout0</name>
+<name>grp_fu_1543_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -319,7 +322,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_1567_p_ce</name>
+<name>grp_fu_1543_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -330,7 +333,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4378_p_din0</name>
+<name>grp_fu_4318_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -341,7 +344,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4378_p_din1</name>
+<name>grp_fu_4318_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -352,7 +355,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4378_p_dout0</name>
+<name>grp_fu_4318_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -363,7 +366,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4378_p_ce</name>
+<name>grp_fu_4318_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -374,7 +377,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4382_p_din0</name>
+<name>grp_fu_4322_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -385,7 +388,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4382_p_din1</name>
+<name>grp_fu_4322_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -396,7 +399,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4382_p_dout0</name>
+<name>grp_fu_4322_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -407,7 +410,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4382_p_ce</name>
+<name>grp_fu_4322_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -418,7 +421,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4386_p_din0</name>
+<name>grp_fu_4326_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -429,7 +432,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4386_p_din1</name>
+<name>grp_fu_4326_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -440,7 +443,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4386_p_dout0</name>
+<name>grp_fu_4326_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -451,7 +454,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4386_p_ce</name>
+<name>grp_fu_4326_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -462,7 +465,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4390_p_din0</name>
+<name>grp_fu_4330_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -473,7 +476,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4390_p_din1</name>
+<name>grp_fu_4330_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -484,7 +487,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4390_p_dout0</name>
+<name>grp_fu_4330_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -495,7 +498,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4390_p_ce</name>
+<name>grp_fu_4330_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -506,7 +509,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4394_p_din0</name>
+<name>grp_fu_4334_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -517,7 +520,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4394_p_din1</name>
+<name>grp_fu_4334_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -528,7 +531,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4394_p_dout0</name>
+<name>grp_fu_4334_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -539,7 +542,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4394_p_ce</name>
+<name>grp_fu_4334_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -550,7 +553,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4398_p_din0</name>
+<name>grp_fu_4338_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -561,7 +564,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4398_p_din1</name>
+<name>grp_fu_4338_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -572,7 +575,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4398_p_dout0</name>
+<name>grp_fu_4338_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -583,7 +586,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4398_p_ce</name>
+<name>grp_fu_4338_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -594,7 +597,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4402_p_din0</name>
+<name>grp_fu_4342_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -605,7 +608,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4402_p_din1</name>
+<name>grp_fu_4342_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -616,7 +619,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4402_p_dout0</name>
+<name>grp_fu_4342_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -627,7 +630,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4402_p_ce</name>
+<name>grp_fu_4342_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -638,7 +641,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4406_p_din0</name>
+<name>grp_fu_4346_p_din0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -649,7 +652,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4406_p_din1</name>
+<name>grp_fu_4346_p_din1</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -660,7 +663,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4406_p_dout0</name>
+<name>grp_fu_4346_p_dout0</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -671,7 +674,7 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>grp_fu_4406_p_ce</name>
+<name>grp_fu_4346_p_ce</name>
 <Object>Fused_Conv_CNorm_Act&lt;16, 960, 960, half&gt;_Pipeline_FINAL_ACCUMULATION</Object>
 <Type>return value</Type>
 <Scope></Scope>
@@ -1738,8 +1741,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>zext_ln201</name>
-<Object>zext_ln201</Object>
+<name>zext_ln200</name>
+<Object>zext_ln200</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -3872,8 +3875,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>co</name>
-<Object>co</Object>
+<name>empty</name>
+<Object>empty</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

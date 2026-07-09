@@ -2,7 +2,7 @@
 
 `timescale 1 ns / 1 ps
 
- module resblock_top_mul_10ns_12ns_21_1_1(din0, din1, dout);
+ (* DowngradeIPIdentifiedWarnings="yes" *) module resblock_top_mul_10ns_12ns_21_1_1(din0, din1, dout);
 parameter ID = 1;
 parameter NUM_STAGE = 0;
 parameter din0_WIDTH = 14;

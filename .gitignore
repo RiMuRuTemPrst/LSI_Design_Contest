@@ -87,3 +87,15 @@ repomix-output.txt
 /assets.zip
 /HLS/
 /data/
+
+# --- Board debug scripts (local-only, not for repo) ---
+**/run_*.sh
+**/run_*.tcl
+read_output.tcl
+copy_to_sdcard.sh
+
+# --- HLS generated TCL (auto-generated, not for repo) ---
+**/inferred_directives.tcl
+
+# --- Binary data files (weights, params, outputs — too large) ---
+**/*.bin

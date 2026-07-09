@@ -3,9 +3,9 @@
 ================================================================
 == Vitis HLS Report for 'Fused_Conv_CNorm_Act_16_960_960_half_Pipeline_FETCH_NEXT_SKIP_ROW'
 ================================================================
-* Date:           Thu May 14 22:48:52 2026
+* Date:           Sun Jul  5 16:29:08 2026
 
-* Version:        2024.2 (Build 5238294 on Nov  8 2024)
+* Version:        2025.2 (Build 6295257 on Nov 14 2025)
 * Project:        prj
 * Solution:       solution1 (Vitis Kernel Flow Target)
 * Product family: zynquplus
@@ -25,12 +25,12 @@
 
 + Latency: 
     * Summary: 
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
-    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
-    |      963|      963|  3.210 us|  3.210 us|  961|  961|  loop auto-rewind stp (delay=0 clock cycles(s))|
-    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |      Pipeline     |
+    |   min   |   max   |    min   |    max   | min | max |        Type       |
+    +---------+---------+----------+----------+-----+-----+-------------------+
+    |      963|      963|  3.210 us|  3.210 us|    0|    0|  loop pipeline stp|
+    +---------+---------+----------+----------+-----+-----+-------------------+
 
     + Detail: 
         * Instance: 
@@ -73,7 +73,7 @@
     +------------------------------+------------------------+---------+----+---+----+-----+
     |           Instance           |         Module         | BRAM_18K| DSP| FF| LUT| URAM|
     +------------------------------+------------------------+---------+----+---+----+-----+
-    |sparsemux_33_4_256_1_1_U1009  |sparsemux_33_4_256_1_1  |        0|   0|  0|  65|    0|
+    |sparsemux_33_4_256_1_1_U1008  |sparsemux_33_4_256_1_1  |        0|   0|  0|  65|    0|
     +------------------------------+------------------------+---------+----+---+----+-----+
     |Total                         |                        |        0|   0|  0|  65|    0|
     +------------------------------+------------------------+---------+----+---+----+-----+
@@ -91,14 +91,14 @@
     +------------------------+----------+----+---+----+------------+------------+
     |      Variable Name     | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +------------------------+----------+----+---+----+------------+------------+
-    |add_ln345_1_fu_406_p2   |         +|   0|  0|  17|          10|           1|
-    |add_ln345_fu_397_p2     |         +|   0|  0|  17|          10|           1|
-    |add_ln347_1_fu_430_p2   |         +|   0|  0|  15|           8|           8|
-    |add_ln347_2_fu_469_p2   |         +|   0|  0|  28|          21|          11|
-    |add_ln347_fu_565_p2     |         +|   0|  0|  21|          14|          14|
-    |icmp_ln345_1_fu_412_p2  |      icmp|   0|  0|  17|          10|           6|
-    |icmp_ln345_fu_391_p2    |      icmp|   0|  0|  17|          10|           8|
-    |select_ln345_fu_418_p3  |    select|   0|  0|  10|           1|           1|
+    |add_ln346_1_fu_410_p2   |         +|   0|  0|  17|          10|           1|
+    |add_ln346_fu_401_p2     |         +|   0|  0|  17|          10|           1|
+    |add_ln348_1_fu_434_p2   |         +|   0|  0|  15|           8|           8|
+    |add_ln348_2_fu_473_p2   |         +|   0|  0|  28|          21|          11|
+    |add_ln348_fu_569_p2     |         +|   0|  0|  21|          14|          14|
+    |icmp_ln346_1_fu_416_p2  |      icmp|   0|  0|  17|          10|           6|
+    |icmp_ln346_fu_395_p2    |      icmp|   0|  0|  17|          10|           8|
+    |select_ln346_fu_422_p3  |    select|   0|  0|  10|           1|           1|
     |ap_enable_pp0           |       xor|   0|  0|   2|           1|           2|
     +------------------------+----------+----+---+----+------------+------------+
     |Total                   |          |   0|  0| 144|          85|          52|
@@ -111,10 +111,10 @@
     |ap_done_int                        |   9|          2|    1|          2|
     |ap_enable_reg_pp0_iter1            |   9|          2|    1|          2|
     |ap_sig_allocacmp_i                 |   9|          2|   10|         20|
-    |ap_sig_allocacmp_phi_urem581_load  |   9|          2|   10|         20|
-    |i_5_fu_132                         |   9|          2|   10|         20|
-    |phi_mul579_fu_128                  |   9|          2|   21|         42|
-    |phi_urem581_fu_124                 |   9|          2|   10|         20|
+    |ap_sig_allocacmp_phi_urem579_load  |   9|          2|   10|         20|
+    |i_5_fu_136                         |   9|          2|   10|         20|
+    |phi_mul577_fu_132                  |   9|          2|   21|         42|
+    |phi_urem579_fu_128                 |   9|          2|   10|         20|
     +-----------------------------------+----+-----------+-----+-----------+
     |Total                              |  63|         14|   63|        126|
     +-----------------------------------+----+-----------+-----+-----------+
@@ -128,12 +128,12 @@
     |ap_enable_reg_pp0_iter1           |    1|   0|    1|          0|
     |ap_enable_reg_pp0_iter2           |    1|   0|    1|          0|
     |ap_loop_exit_ready_pp0_iter1_reg  |    1|   0|    1|          0|
-    |i_5_fu_132                        |   10|   0|   10|          0|
-    |i_reg_601                         |   10|   0|   10|          0|
-    |i_reg_601_pp0_iter1_reg           |   10|   0|   10|          0|
-    |phi_mul579_fu_128                 |   21|   0|   21|          0|
-    |phi_urem581_fu_124                |   10|   0|   10|          0|
-    |tmp_30_reg_690                    |  256|   0|  256|          0|
+    |i_5_fu_136                        |   10|   0|   10|          0|
+    |i_reg_605                         |   10|   0|   10|          0|
+    |i_reg_605_pp0_iter1_reg           |   10|   0|   10|          0|
+    |phi_mul577_fu_132                 |   21|   0|   21|          0|
+    |phi_urem579_fu_128                |   10|   0|   10|          0|
+    |tmp_30_reg_694                    |  256|   0|  256|          0|
     +----------------------------------+-----+----+-----+-----------+
     |Total                             |  322|   0|  322|          0|
     +----------------------------------+-----+----+-----+-----------+
@@ -153,7 +153,7 @@
 |ap_done                |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FETCH_NEXT_SKIP_ROW|  return value|
 |ap_idle                |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FETCH_NEXT_SKIP_ROW|  return value|
 |ap_ready               |  out|    1|  ap_ctrl_hs|  Fused_Conv_CNorm_Act<16, 960, 960, half>_Pipeline_FETCH_NEXT_SKIP_ROW|  return value|
-|mul_ln340              |   in|    8|     ap_none|                                                              mul_ln340|        scalar|
+|mul_ln341_1            |   in|    8|     ap_none|                                                            mul_ln341_1|        scalar|
 |x_buf_256_0_address0   |  out|    8|   ap_memory|                                                            x_buf_256_0|         array|
 |x_buf_256_0_ce0        |  out|    1|   ap_memory|                                                            x_buf_256_0|         array|
 |x_buf_256_0_q0         |   in|  256|   ap_memory|                                                            x_buf_256_0|         array|
@@ -202,7 +202,7 @@
 |x_buf_256_15_address0  |  out|    8|   ap_memory|                                                           x_buf_256_15|         array|
 |x_buf_256_15_ce0       |  out|    1|   ap_memory|                                                           x_buf_256_15|         array|
 |x_buf_256_15_q0        |   in|  256|   ap_memory|                                                           x_buf_256_15|         array|
-|mul_ln345              |   in|   14|     ap_none|                                                              mul_ln345|        scalar|
+|mul_ln346              |   in|   14|     ap_none|                                                              mul_ln346|        scalar|
 |skip_buf_256_address1  |  out|   14|   ap_memory|                                                           skip_buf_256|         array|
 |skip_buf_256_ce1       |  out|    1|   ap_memory|                                                           skip_buf_256|         array|
 |skip_buf_256_we1       |  out|    1|   ap_memory|                                                           skip_buf_256|         array|
