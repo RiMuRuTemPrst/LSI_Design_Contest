@@ -1,6 +1,6 @@
 [
   {
-    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component",
+    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/convtranspose/convtranspose_component",
     "arguments": [
       "/home/rimurutempest/Tool/Vitis/2024.2/vcxx/libexec/clang++",
       "--gcc-toolchain=/home/rimurutempest/Tool/Vitis/2024.2/tps/lnx64/gcc-8.3.0",
@@ -13,7 +13,7 @@
     "file": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/src/gen/convtranspose_top.cpp"
   },
   {
-    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/HLS/convtranspose/convtranspose_component",
+    "directory": "/home/rimurutempest/Code/LSI_Design_Contest/src/hls/convtranspose/convtranspose_component",
     "arguments": [
       "/home/rimurutempest/Tool/Vitis/2024.2/vcxx/libexec/clang++",
       "--gcc-toolchain=/home/rimurutempest/Tool/Vitis/2024.2/tps/lnx64/gcc-8.3.0",
